@@ -27,6 +27,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'cyneric.pythonanywhere.com',
+    '127.0.0.1',
+    'localhost',
 ]
 
 

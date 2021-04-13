@@ -7,7 +7,7 @@
 </head>
 <body>
 {% if map_type == 'political' %}
-<img src="{% static 'Relevant World Map.png' %}" alt="World Map" usemap="#worldmap">
+<img src="{% static 'Political World Map.png' %}" alt="World Map" usemap="#worldmap">
 <map name="worldmap">
   {% for town in towns %}
     <area shape="rect" coords="{{ town.coords }}" alt="{{ town.name }}" href="{{ town.link }}">
