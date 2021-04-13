@@ -25,7 +25,9 @@ SECRET_KEY = 'v2up2!+d24&!q1r24j6)b)1b4dr(4mtljtw2s(j9%0r2!h-ae*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'cyneric.pythonanywhere.com',
+]
 
 
 # Application definition
