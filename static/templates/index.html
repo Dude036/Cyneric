@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>World Map</title>
+</head>
+<body>
+{% if map_type == 'political' %}
+<img src="{% static 'Relevant World Map.png' %}" alt="World Map" usemap="#worldmap">
+<map name="worldmap">
+  {% for town in towns %}
+    <area shape="rect" coords="{{ town.coords }}" alt="{{ town.name }}" href="{{ town.link }}">
+  {% endfor %}
+</map>
+{% else %}
+<img src="{% static 'Relevant World Map.png' %}" alt="World Map">
+{% endif %}
+</body>
+</html>
