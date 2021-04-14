@@ -42,7 +42,7 @@ def town_info(request, town_name):
         'governing_body': town_data.governing_body,
         'economy': town_data.economy,
         'population': town_data.population,
-        'leader': "Placeholder",
+        'leader': town_data.leader.name + ', ' + town_data.leader.title,
     }
 
     return render(request, 'town.html', context)
