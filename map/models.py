@@ -7,6 +7,9 @@ class Person(models.Model):
     title = models.CharField(default='', max_length=50)
     description = models.TextField(default='')
 
+    def __str__(self):
+        return self.name
+
 
 class Town(models.Model):
     name = models.CharField(default='', max_length=50)
@@ -20,3 +23,7 @@ class Town(models.Model):
     y_coord_max = models.IntegerField(default=0)
     x_coord_min = models.IntegerField(default=0)
     y_coord_min = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
+
