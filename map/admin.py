@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Town, Person
+from .models import Town, Person, GeneratorShop
 
 
 class TownAdmin(admin.ModelAdmin):
@@ -13,4 +13,5 @@ class PersonAdmin(admin.ModelAdmin):
 # Register your models here.
 admin.site.register(Town, TownAdmin)
 admin.site.register(Person, PersonAdmin)
+admin.site.register(GeneratorShop)
 
