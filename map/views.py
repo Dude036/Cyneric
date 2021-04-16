@@ -53,3 +53,7 @@ def town_info(request, town_name):
 
 def person_info(request, person_name):
     return render(request, 'index.html', {'map_type': 'political'})
+
+
+def person_search(request):
+    return render(request, 'index.html', {'map_type': 'political'})
