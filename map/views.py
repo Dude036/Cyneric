@@ -3,8 +3,7 @@ from django.shortcuts import render
 from .models import Town, Person
 
 
-# Create your views here.
-def index(request):
+def __list_town_data():
     all_towns = Town.objects.all()
     towns = []
     for town in all_towns:
@@ -13,8 +12,13 @@ def index(request):
             'link': town.name.lower(),
             'name': town.name
         })
+    return towns
+
+
+# Create your views here.
+def index(request):
     context = {
-        'towns': towns,
+        'towns': __list_town_data(),
         'map_type': 'political'
     }
     return render(request, 'index.html', context)
