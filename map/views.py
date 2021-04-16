@@ -25,7 +25,6 @@ def index(request):
 
 
 def map(request, map_type):
-    all_towns = Town.objects.all()
     context = {
         'map_type': map_type
     }
