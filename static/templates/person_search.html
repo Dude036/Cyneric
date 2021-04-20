@@ -154,7 +154,7 @@
     var Sorted_names = {{ sorted_names|safe }};
 
     function bin_search(s_list, query) {
-      if (s_list.length == 0) {
+      if (query.length == 0) {
         return [];
       }
 
