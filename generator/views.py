@@ -1,18 +1,31 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from map.models import GeneratorShop
+from django.http import HttpResponse, Http404
+from map.models import GeneratorShop, Town
+
+
+def generate_town(settings):
+    # Run the rile remotely in a separate instance, and grab the returned HTML?
+    return ''
 
 
 # Create your views here.
 def town_gen(request, town_name):
-    all_settings = GeneratorShop.objects.all()
-    print(all_settings)
+    try:
+        town_data = Town.objects.all().filter(name=town_name.title())[0]
+        print(town_data.generator_settings)
+    except IndexError:
+        raise Http404("Unable to find: '" + town_name + "'")
+    if town_data.generator_settings is None:
+        return Http404("Unable to find generator settings for " + town_name)
+    generate_town(town_data.generator_settings)
 
     return HttpResponse("This is being tested! Please be patient.")
 
 
 def dummy_town(request):
-    context = {}
+    try:
+        town_data = GeneratorShop.objects.all()[0]
+    except IndexError:
+        raise Http404("No Default Generator Settings Applied. Please contact the site admin!")
 
-    return render(request, 'index.html', context)
-
+    return HttpResponse("This is being tested! Please be patient.")
+    # return HttpResponse(generate_town(town_data))
