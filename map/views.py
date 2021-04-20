@@ -68,10 +68,15 @@ def person_info(request, person_name):
 def person_search(request):
     all_people = Person.objects.all()
     # I need a list of people's names sent. That's it.
-    print(all_people)
     names = []
     for p in all_people:
         names.append(p.name)
     names.sort()
-    print(names)
-    return render(request, 'person_search.html', {'names': names})
+    all_names = {}
+    for n in names:
+        for m in n.split(' '):
+            all_names[m] = n
+    sorted_names = sorted(list(all_names.keys()))
+    print(all_names)
+    print(sorted_names)
+    return render(request, 'person_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names})
