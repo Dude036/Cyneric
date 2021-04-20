@@ -77,6 +77,4 @@ def person_search(request):
         for m in n.split(' '):
             all_names[m] = n
     sorted_names = sorted(list(all_names.keys()))
-    print(all_names)
-    print(sorted_names)
     return render(request, 'person_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names})

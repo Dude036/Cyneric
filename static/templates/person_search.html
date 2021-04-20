@@ -135,7 +135,7 @@
       border: 1px solid black;
       background-color: #dddddd;
       padding: 2px 4px;
-      margin: 0px 5px;
+      margin: 5px 10px;
       -webkit-user-select: none; /* Safari */        
       -moz-user-select: none; /* Firefox */
       -ms-user-select: none; /* IE10+/Edge */
@@ -203,7 +203,7 @@
     function search_list() {
       // Get information
       var inf = document.getElementById("person_search").value;
-      
+
       // Empty safe
       var output = document.getElementById("p_display");
       output.innerHTML = ""
@@ -219,13 +219,12 @@
     function search_dictionary() {
       var inf = document.getElementById("person_search").value;
 
-      var found = bin_search(Sorted_names, inf)
-
-      var all_names = []
-
       // Empty safe
       var output = document.getElementById("p_display");
       output.innerHTML = ""
+
+      var all_names = []
+      var found = bin_search(Sorted_names, inf)
 
       for (var i = 0; i < found.length; i++) {
         if (!all_names.includes(found[i])) {
