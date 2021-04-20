@@ -149,12 +149,62 @@
     }
   </style>
   <script>
-    function show_hide(ident) {
-      var a = document.getElementById(ident);
-      if (a.style.display === 'none') {
-        a.style.display = 'block';
-      } else {
-        a.style.display = 'none';
+    var Names = {{ names|safe }};
+    function search_list() {
+      // Get information
+      var inf = document.getElementById("person_search").value;
+      var inf_len = inf.length
+
+      // Empty safe
+      var output = document.getElementById("p_display");
+      output.innerHTML = ""
+      if (inf.length == 0) {
+        return;
+      }
+
+      // Set parameters for search, s = start, e = end, m = middle
+      var s = 0;
+      var e = Names.length - 1;
+      var m = Math.floor((s + e) / 2);
+
+      // Binary search
+      while (e > s) {
+        m = Math.floor((s + e) / 2)
+        if (Names[m].substring(0, inf_len).toLowerCase() < inf.toLowerCase()) {
+          s = m + 1
+        } else if (Names[m].substring(0, inf_len).toLowerCase() > inf.toLowerCase()) {
+          e = m - 1
+        } else {
+          break;
+        }
+      }
+
+      // Found Nothing?
+      if (s > e) { return; }
+
+      // Something!
+      var found = [];
+      // Get left until ignorable
+      for (var i = m; i >= s; i--) {
+        if (Names[i].toLowerCase().startsWith(inf.toLowerCase())) {
+          found.push(Names[i])
+        } else {
+          break;
+        }
+      }
+      // Get right until ignorable
+      for (var i = m + 1; i <= e; i++) {
+        if (Names[i].toLowerCase().startsWith(inf.toLowerCase())) {
+          found.push(Names[i])
+        } else {
+          break;
+        }
+      }
+      console.log(found)
+
+      // Display
+      for (var i = found.length - 1; i >= 0; i--) {
+        output.innerHTML += "<li onclick=\"location.href='" + encodeURI(found[i]) + "';\">" + found[i] + "</li>";
       }
     }
   </script>
@@ -170,7 +220,7 @@
       <td style="width: 30%;">
         Search by Name:
         <br/>
-        <input type="text" name="person_search">
+        <input type="text" id="person_search" name="person_search" oninput="search_list();">
       </td>
       <td>
         <ul class="suggestion" id="p_display">
