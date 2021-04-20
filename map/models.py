@@ -12,23 +12,6 @@ class Person(models.Model):
         return self.name
 
 
-class Town(models.Model):
-    name = models.CharField(default='', max_length=50)
-    description = models.TextField(default='')
-    government = models.TextField(default='')
-    governing_body = models.CharField(default='', max_length=200)
-    economy = models.TextField(default='')
-    population = models.BigIntegerField(default=0)
-    leader = models.ForeignKey(Person, on_delete=models.CASCADE, null=True)
-    x_coord_max = models.IntegerField(default=0)
-    y_coord_max = models.IntegerField(default=0)
-    x_coord_min = models.IntegerField(default=0)
-    y_coord_min = models.IntegerField(default=0)
-
-    def __str__(self):
-        return self.name
-
-
 class GeneratorShop(models.Model):
     # Weapons
     weapon_shop_num = models.IntegerField(default=2)
@@ -208,3 +191,21 @@ class GeneratorShop(models.Model):
             'Exotic': self.exotic
         }
         return generate, settings
+
+
+class Town(models.Model):
+    name = models.CharField(default='', max_length=50)
+    description = models.TextField(default='')
+    government = models.TextField(default='')
+    governing_body = models.CharField(default='', max_length=200)
+    economy = models.TextField(default='')
+    population = models.BigIntegerField(default=0)
+    leader = models.ForeignKey(Person, on_delete=models.CASCADE, null=True)
+    generator_settings = models.ForeignKey(GeneratorShop, on_delete=models.CASCADE, null=True)
+    x_coord_max = models.IntegerField(default=0)
+    y_coord_max = models.IntegerField(default=0)
+    x_coord_min = models.IntegerField(default=0)
+    y_coord_min = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.name
