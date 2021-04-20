@@ -201,7 +201,7 @@ class Town(models.Model):
     economy = models.TextField(default='')
     population = models.BigIntegerField(default=0)
     leader = models.ForeignKey(Person, on_delete=models.CASCADE, null=True)
-    generator_settings = models.ForeignKey(GeneratorShop, on_delete=models.CASCADE, null=True)
+    generator_settings = models.ForeignKey(GeneratorShop, on_delete=models.CASCADE, blank=True, null=True)
     x_coord_max = models.IntegerField(default=0)
     y_coord_max = models.IntegerField(default=0)
     x_coord_min = models.IntegerField(default=0)
