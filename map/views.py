@@ -56,4 +56,12 @@ def person_info(request, person_name):
 
 
 def person_search(request):
-    return render(request, 'index.html', {'map_type': 'political'})
+    all_people = Person.objects.all()
+    # I need a list of people's names sent. That's it.
+    print(all_people)
+    names = []
+    for p in all_people:
+        names.append(p.name)
+    names.sort()
+    print(names)
+    return render(request, 'person_search.html', {'names': names})
