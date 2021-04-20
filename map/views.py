@@ -34,7 +34,7 @@ def map(request, map_type):
 def town_info(request, town_name):
     try:
         town_data = Town.objects.all().filter(name=town_name.title())[0]
-    except Town.DoesNotExist:
+    except IndexError:
         raise Http404("Unable to find town: '" + town_name + "'")
 
     context = {
