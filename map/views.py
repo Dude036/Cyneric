@@ -52,7 +52,17 @@ def town_info(request, town_name):
 
 
 def person_info(request, person_name):
-    return render(request, 'index.html', {'map_type': 'political'})
+    try:
+        person_data = Person.objects.all().filter(name=person_name.title())[0]
+    except IndexError:
+        raise Http404("Unable to find Person: '" + person_name + "'")
+
+    content = {
+        'person_name': person_name,
+        'person_title': person_data.title,
+        'description': person_data.description,
+    }
+    return render(request, 'person.html', content)
 
 
 def person_search(request):
