@@ -19,6 +19,7 @@ def town_gen(request, town_name):
     generate_town(town_data.generator_settings)
 
     return HttpResponse("This is being tested! Please be patient.")
+    # return HttpResponse(generate_town(town_data))
 
 
 def dummy_town(request):
