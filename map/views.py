@@ -24,7 +24,7 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-def map(request, map_type):
+def map_info(request, map_type):
     context = {
         'map_type': map_type
     }
