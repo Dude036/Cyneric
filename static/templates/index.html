@@ -69,21 +69,24 @@
     <img src="{% static 'sidebar.png' %}">
     <ul id="header" style="display: none;">
       <li>
-        <a href="{% url 'index' %}">Home</a>
+        <a href="{% url 'map:index' %}">Home</a>
       </li>
       <ul id="header1" style="display: none;">
         <li>
-          <a href="{% url 'map' 'political' %}">Political Map</a>
+          <a href="{% url 'map:map_info' 'political' %}">Political Map</a>
         </li>
         <li>
-          <a href="{% url 'map' 'generic' %}">Generic Map</a>
+          <a href="{% url 'map:map_info' 'generic' %}">Generic Map</a>
         </li>
       </ul>
       <li>
-        <a href="{% url 'person_search' %}">Person Search</a>
+        <a href="{% url 'map:person_search' %}">Person Search</a>
       </li>
       <li>
-        <a href="{% url 'index' %}">Town Search</a>
+        <a href="{% url 'map:index' %}">Town Search</a>
+      </li>
+      <li>
+        <a href="{% url 'map:index' %}">Critical Table</a>
       </li>
     </ul>
   </div>
