@@ -78,3 +78,7 @@ def person_search(request):
             all_names[m] = n
     sorted_names = sorted(list(all_names.keys()))
     return render(request, 'person_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names})
+
+
+def crit(request):
+    return render(request, 'crit.html', {})
