@@ -89,7 +89,7 @@ def town_gen(request, town_name):
     except IndexError:
         raise Http404("Unable to find: '" + town_name + "'")
     if town_data.generator_settings is None:
-        return Http404("Unable to find generator settings for " + town_name)
+        raise Http404("Unable to find generator settings for " + town_name)
 
     # return HttpResponse("This is being tested! Please be patient.")
     return HttpResponse(generate_town(town_name, town_data.generator_settings))
