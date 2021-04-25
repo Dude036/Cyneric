@@ -2,7 +2,7 @@ from django.http import HttpResponse, Http404
 from map.models import GeneratorShop, Town
 
 
-def generate_town(settings):
+def generate_town(town_name, settings):
     # Run the rile remotely in a separate instance, and grab the returned HTML?
     return ''
 
@@ -16,7 +16,7 @@ def town_gen(request, town_name):
         raise Http404("Unable to find: '" + town_name + "'")
     if town_data.generator_settings is None:
         return Http404("Unable to find generator settings for " + town_name)
-    generate_town(town_data.generator_settings)
+    generate_town(town_name, town_data.generator_settings)
 
     return HttpResponse("This is being tested! Please be patient.")
     # return HttpResponse(generate_town(town_data))
@@ -27,6 +27,7 @@ def dummy_town(request):
         town_data = GeneratorShop.objects.all()[0]
     except IndexError:
         raise Http404("No Default Generator Settings Applied. Please contact the site admin!")
+    generate_town('', town_data)
 
     return HttpResponse("This is being tested! Please be patient.")
     # return HttpResponse(generate_town(town_data))
