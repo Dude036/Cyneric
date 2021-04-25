@@ -1,0 +1,9 @@
+__pycache__/
+.idea/
+*.txt
+*.html
+*.pyc
+*.csv
+*.town.json
+dist/
+build/
