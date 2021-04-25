@@ -51,6 +51,20 @@ def town_info(request, town_name):
     return render(request, 'town.html', context)
 
 
+def town_search(request):
+    town_data = Town.objects.all()
+    names = []
+    for p in town_data:
+        names.append(p.name)
+    names.sort()
+    all_names = {}
+    for n in names:
+        for m in n.split(' '):
+            all_names[m] = n
+    sorted_names = sorted(list(all_names.keys()))
+    return render(request, 'town_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names})
+
+
 def person_info(request, person_name):
     try:
         person_data = Person.objects.all().filter(name=person_name.title())[0]

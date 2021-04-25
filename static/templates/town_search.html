@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% block content %}
+  <script>
+    var Names = {{ names|safe }};;
+    var Name_dict = {{ name_dict|safe }};
+    var Sorted_names = {{ sorted_names|safe }};
+
+    function bin_search(s_list, query) {
+      if (query.length == 0) {
+        return [];
+      }
+
+      // Set parameters for search, s = start, e = end, m = middle
+      var s = 0;
+      var e = s_list.length - 1;
+      var m = Math.floor((s + e) / 2);
+
+      // Binary search
+      while (e > s) {
+        m = Math.floor((s + e) / 2)
+        if (s_list[m].substring(0, query.length).toLowerCase() < query.toLowerCase()) {
+          s = m + 1
+        } else if (s_list[m].substring(0, query.length).toLowerCase() > query.toLowerCase()) {
+          e = m - 1
+        } else {
+          break;
+        }
+      }
+
+      // Found Nothing?
+      if (s > e) { return []; }
+
+      // Something!
+      var found = [];
+      // Get left until ignorable
+      for (var i = m; i >= s; i--) {
+        if (s_list[i].toLowerCase().startsWith(query.toLowerCase())) {
+          found.push(s_list[i])
+        } else {
+          break;
+        }
+      }
+      // Get right until ignorable
+      for (var i = m + 1; i <= e; i++) {
+        if (s_list[i].toLowerCase().startsWith(query.toLowerCase())) {
+          found.push(s_list[i])
+        } else {
+          break;
+        }
+      }
+      console.log(found)
+      return found;
+    }
+
+    function search_list() {
+      // Get information
+      var inf = document.getElementById("town_search").value;
+
+      // Empty safe
+      var output = document.getElementById("p_display");
+      output.innerHTML = ""
+
+      var found = bin_search(Names, inf)
+
+      // Display
+      for (var i = found.length - 1; i >= 0; i--) {
+        output.innerHTML += "<li onclick=\"location.href='" + encodeURI(found[i]) + "';\">" + found[i] + "</li>";
+      }
+    }
+
+    function search_dictionary() {
+      var inf = document.getElementById("town_search").value;
+
+      // Empty safe
+      var output = document.getElementById("p_display");
+      output.innerHTML = ""
+
+      var all_names = []
+      var found = bin_search(Sorted_names, inf)
+
+      for (var i = 0; i < found.length; i++) {
+        if (!all_names.includes(found[i])) {
+          all_names.push(Name_dict[found[i]])
+        }
+      }
+      for (var i = all_names.length - 1; i >= 0; i--) {
+        output.innerHTML += "<li onclick=\"location.href='../" + encodeURI(all_names[i]) + "';\">" + all_names[i] + "</li>";
+      }
+    }
+  </script>
+  <table class="wrapper-box">
+    <tr>
+      <td colspan="2">
+        <h2>Town Search</h2>
+      </td>
+    </tr>
+    <tr>
+      <td style="width: 30%;">
+        Search:
+        <br/>
+        <input type="text" id="town_search" name="town_search" oninput="search_dictionary();">
+      </td>
+      <td>
+        <ul class="suggestion" id="p_display">
+        </ul>
+      </td>
+    </tr>
+  </table>
+  <br/>
+  <div class="center" style="margin-bottom:30px;">
+    <input type="button" onclick="location.href='..';" value="Return Home" />
+  </div>
+
+{% endblock %}
