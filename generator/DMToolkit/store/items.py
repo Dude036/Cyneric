@@ -10,7 +10,7 @@ import os
 SpellSource = 'D&D 5'
 if SpellSource == 'D&D 5':
     print(os.getcwd())
-    print(open(path.join('generator', 'DMToolkit', 'resource', '5e_spells.json')))
+    print(path.join('generator', 'DMToolkit', 'resource', '5e_spells.json'))
     MasterSpells = json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_spells.json'), 'r'), encoding='utf-8')
     MasterWondrous = json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_wondrous.json'), 'r'), encoding='utf-8')
 elif SpellSource == 'Pathfinder 1':
