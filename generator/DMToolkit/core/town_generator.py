@@ -186,7 +186,7 @@ def generate_shops(w, a, p, e, en, b, t, j, f, g, br, gu, v, qu, name='', dump_j
         i += 1
 
     for _ in range(qu[0]):
-        q = quests.QuestBoard(qu[1], qu[2], qu[3], town_name)
+        q = quests.QuestBoard(qu[1], qu[2], qu[3], town_name, False)
         characters = q.Members
         positions = q.Positions
         townHTML += str(q)
