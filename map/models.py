@@ -101,9 +101,9 @@ class GeneratorShop(models.Model):
     variety_shop_inf = models.FloatField(default=1.0)
     # Quest
     quest_shop_num = models.IntegerField(default=1)
-    quest_shop_llo = models.IntegerField(default=15)
-    quest_shop_lhi = models.IntegerField(default=25)
-    quest_shop_inf = models.FloatField(default=1.0)
+    quest_shop_llo = models.IntegerField(default=5)
+    quest_shop_lhi = models.IntegerField(default=10)
+    quest_shop_inf = models.IntegerField(default=10)
     # Settings
     allow_pokemon = models.BooleanField(default=False)
 
