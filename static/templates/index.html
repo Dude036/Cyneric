@@ -4,14 +4,18 @@
 <style type="text/css">body{max-width: 100%; padding-left: 0px; padding-right: 0px; }</style>
 
 {% if map_type == 'political' %}
-<img src="{% static 'Political World Map.png' %}" alt="World Map" usemap="#worldmap">
+<img id="World_Map" src="{% static 'Political World Map.png' %}" alt="World Map" usemap="#worldmap">
 <map name="worldmap">
   {% for town in towns %}
     <area shape="rect" coords="{{ town.coords }}" alt="{{ town.name }}" href="{{ town.link }}">
   {% endfor %}
 </map>
 {% else %}
-<img src="{% static 'Relevant World Map.png' %}" alt="World Map">
+<img id="World_Map" src="{% static 'Relevant World Map.png' %}" alt="World Map">
 {% endif %}
+
+<script>
+  document.getElementByID('World_Map').onclick = null
+</script>
 
 {% endblock %}
