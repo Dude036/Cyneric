@@ -1,6 +1,7 @@
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Town, Person
+from .forms import CritForm
 
 
 def __list_town_data():
@@ -96,3 +97,19 @@ def person_search(request):
 
 def crit(request):
     return render(request, 'crit.html', {})
+
+
+def add_crit(request):
+    if request.method == 'POST':
+        # create a form instance and populate it with data from the request:
+        form = CritForm(request.POST)
+        # check whether it's valid:
+        if form.is_valid():
+            print(form)
+            # redirect to a new URL:
+            return HttpResponseRedirect('/crit/')
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = CritForm()
+    return render(request, 'add_crit.html', {'form': form})
