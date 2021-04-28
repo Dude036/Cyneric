@@ -105,7 +105,10 @@ def add_crit(request):
         form = CritForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            print(form)
+            # print(form.data['category'])
+            # print(form.data['severity'])
+            # print(form.data['success'])
+            # print(form.data['flavor_text'])
             # redirect to a new URL:
             return HttpResponseRedirect('/crit/')
 
