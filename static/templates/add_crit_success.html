@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>
+    Thanks!
+  </h1>
+  <p>
+    Your submission is under review by the site admin. If this critical is accepted, it will be put on the site.
+  </p>
+  <div class="center" style="margin-bottom:30px;">
+    <input type="button" onclick="location.href='{% url 'map:crit' %}';" value="Back to Crit Table" />
+  </div>
+{% endblock %}

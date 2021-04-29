@@ -118,9 +118,13 @@ def add_crit(request):
             )
             new_crit.save()
             # redirect to a new URL:
-            return HttpResponseRedirect('/crit/')
+            return HttpResponseRedirect('/crit/form/success/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = CritForm()
     return render(request, 'add_crit.html', {'form': form})
+
+
+def add_crit_success(request):
+    return render(request, 'add_crit_success.html', {})
