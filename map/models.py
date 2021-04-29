@@ -3,6 +3,23 @@ from django.db import models
 
 
 # Create your models here.
+class Critical(models.Model):
+    class Category(models.TextChoices):
+        MAGIC = 'Magic'
+        SLASHING = 'Slashing'
+        PIERCING = 'Piercing'
+        BLUDGEONING = 'Bludgeoning'
+    category = models.CharField(max_length=15, choices=Category.choices, default='Magic')
+
+    class Severity(models.TextChoices):
+        EXTREME = 'Extreme'
+        MODERATE = 'Moderate'
+        MILD = 'Mild'
+    severity = models.CharField(max_length=15, choices=Severity.choices, default='Mild')
+    success = models.BooleanField(default=True)
+    flavor_text = models.TextField(max_length=1000, default='')
+
+
 class Person(models.Model):
     name = models.CharField(default='', max_length=50)
     title = models.CharField(default='', max_length=50)
