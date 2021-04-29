@@ -1,6 +1,6 @@
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
-from .models import Town, Person
+from .models import Town, Person, Critical
 from .forms import CritForm
 
 
@@ -105,10 +105,18 @@ def add_crit(request):
         form = CritForm(request.POST)
         # check whether it's valid:
         if form.is_valid():
-            # print(form.data['category'])
-            # print(form.data['severity'])
-            # print(form.data['success'])
-            # print(form.data['flavor_text'])
+            success_bool = True if form.data['success'] == 'Success' else False
+            print(form.data['category'])
+            print(form.data['severity'])
+            print(form.data['success'])
+            print(form.data['flavor_text'])
+            new_crit = Critical(
+                category=form.data['category'],
+                severity=form.data['severity'],
+                success=success_bool,
+                flavor_text=form.data['flavor_text']
+            )
+            new_crit.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/crit/')
 
