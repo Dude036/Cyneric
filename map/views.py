@@ -38,6 +38,10 @@ def town_info(request, town_name):
     except IndexError:
         raise Http404("Unable to find town: '" + town_name + "'")
 
+    if town_data.leader is not None:
+        leader_info = town_data.leader.name + ', ' + town_data.leader.title
+    else:
+        leader_info = 'N/A'
     context = {
         'town_name': town_name.title(),
         'name': town_data.name,
@@ -46,7 +50,7 @@ def town_info(request, town_name):
         'governing_body': town_data.governing_body,
         'economy': town_data.economy,
         'population': town_data.population,
-        'leader': town_data.leader.name + ', ' + town_data.leader.title,
+        'leader': leader_info
     }
 
     return render(request, 'town.html', context)
