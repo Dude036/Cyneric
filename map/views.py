@@ -119,6 +119,8 @@ def add_crit(request):
             new_crit.save()
             # redirect to a new URL:
             return HttpResponseRedirect('/crit/form/success/')
+        else:
+            return HttpResponse('The content was malformed, and unable to be processed. Please verify your submission is valid, and try again.')
 
     # if a GET (or any other method) we'll create a blank form
     else:
