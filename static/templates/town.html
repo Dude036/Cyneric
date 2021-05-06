@@ -8,7 +8,7 @@
     </tr>
     <tr>
       <td width="60%">
-        <div class="text-md"><b>Leader:</b> {{ leader }}</div>
+        <div class="text-md"><b>Leader:</b> <a href="{% url 'map:person' leader_link %}">{{ leader }}</a></div>
         <div class="text-md emp">&emsp;{{ leader_desc }}</div>
         <div class="text-md"><b>Population:</b> {{ population }}</div>
       </td>

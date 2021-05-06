@@ -9,6 +9,9 @@
     <tr>
       <td>
         <div class="text-md"><b>Title:</b> {{ person_title }}</div>
+        {% if town_link != '' %}
+        <div class="text-md"><b>Leader of:</b> <a href="{% url 'map:town' town_link %}">{{ town_link }}</a></div>
+        {% endif %}
       </td>
       <td>
         <img src="https://via.placeholder.com/150">

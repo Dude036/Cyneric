@@ -40,9 +40,11 @@ def town_info(request, town_name):
 
     if town_data.leader is not None:
         leader_info = town_data.leader.name + ', ' + town_data.leader.title
+        leader_link = town_data.leader.name
         leader_desc = town_data.leader.description
     else:
         leader_info = 'N/A'
+        leader_link = ''
         leader_desc = ''
     context = {
         'town_name': town_name.title(),
@@ -54,6 +56,7 @@ def town_info(request, town_name):
         'population': format(town_data.population, ',d'),
         'leader': leader_info,
         'leader_desc': leader_desc,
+        'leader_link': leader_link
     }
 
     return render(request, 'town.html', context)
@@ -76,6 +79,10 @@ def town_search(request):
 def person_info(request, person_name):
     try:
         person_data = Person.objects.all().filter(name=person_name.title())[0]
+        town_link = ''
+        for town in Town.objects.all():
+            if town.leader is not None and town.leader.name == person_name:
+                town_link = town.name
     except IndexError:
         raise Http404("Unable to find Person: '" + person_name + "'")
 
@@ -83,6 +90,7 @@ def person_info(request, person_name):
         'person_name': person_name,
         'person_title': person_data.title,
         'description': person_data.description,
+        'town_link': town_link,
     }
     return render(request, 'person.html', content)
 
