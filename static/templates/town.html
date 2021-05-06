@@ -10,7 +10,6 @@
       <td width="60%">
         {% if leader_link != '' %}
         <div class="text-md"><b>Leader:</b> <a href="{% url 'map:person' leader_link %}">{{ leader }}</a></div>
-        <div class="text-md emp">&emsp;{{ leader_desc }}</div>
         {% else %}
         <div class="text-md"><b>Leader:</b> {{ leader }}</div>
         {% endif %}
