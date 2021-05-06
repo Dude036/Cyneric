@@ -6,8 +6,13 @@
     var Sorted_names = {{ sorted_names|safe }};
 
     function bin_search(s_list, query) {
+      // If there's nothing there, clear the list.
       if (query.length == 0) {
         return [];
+      }
+      // if the first character is a *, show all.
+      if (query[0] === '*') {
+        return s_list;
       }
 
       // Set parameters for search, s = start, e = end, m = middle
@@ -95,7 +100,7 @@
       </td>
     </tr>
     <tr>
-      <td style="width: 30%;">
+      <td style="width: 30%;vertical-align:top;">
         Search by Name:
         <br/>
         <input type="text" id="person_search" name="person_search" oninput="search_dictionary();">
