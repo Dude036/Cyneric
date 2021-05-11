@@ -63,6 +63,7 @@ def town_info(request, town_name):
         'leader_desc': leader_desc,
         'leader_link': leader_link,
         'is_admin': user.is_authenticated,
+        'admin_description': town_data.admin_description,
     }
 
     return render(request, 'town.html', context)
@@ -101,6 +102,7 @@ def person_info(request, person_name):
         'description': person_data.description,
         'town_link': town_link,
         'is_admin': user.is_authenticated,
+        'admin_description': person_data.admin_description,
     }
     return render(request, 'person.html', content)
 

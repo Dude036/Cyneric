@@ -38,6 +38,14 @@
         {{ economy|linebreaksbr }}
       </td>
     </tr>
+    {% if is_admin %}
+    <tr>
+      <td colspan="2">
+        <h2>DM Notes</h2>
+        {{ admin_description|linebreaksbr }}
+      </td>
+    </tr>
+    {% endif %}
     <tr>
       <td colspan="2">
         <h2>Town Generation</h2>

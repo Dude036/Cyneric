@@ -23,6 +23,14 @@
         {{ description|linebreaksbr }}
       </td>
     </tr>
+    {% if is_admin %}
+    <tr>
+      <td colspan="2">
+        <h2>DM Notes</h2>
+        {{ admin_description|linebreaksbr }}
+      </td>
+    </tr>
+    {% endif %}
   </table>
   <div class="center" style="margin-bottom:30px;">
     <input type="button" onclick="location.href='{% url 'map:person_search' %}';" value="Back to Search" />
