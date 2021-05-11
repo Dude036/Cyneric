@@ -24,6 +24,7 @@ class Person(models.Model):
     name = models.CharField(default='', max_length=50)
     title = models.CharField(default='', max_length=50)
     description = models.TextField(default='')
+    admin_description = models.TextField(default='', blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -213,6 +214,7 @@ class GeneratorShop(models.Model):
 class Town(models.Model):
     name = models.CharField(default='', max_length=50)
     description = models.TextField(default='')
+    admin_description = models.TextField(default='', blank=True, null=True)
     government = models.TextField(default='')
     governing_body = models.CharField(default='', max_length=200)
     economy = models.TextField(default='')

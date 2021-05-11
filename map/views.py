@@ -2,6 +2,7 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
 from .models import Town, Person, Critical
 from .forms import CritForm
+from django.contrib import auth
 
 
 def __list_town_data():
@@ -46,6 +47,10 @@ def town_info(request, town_name):
         leader_info = 'N/A'
         leader_link = ''
         leader_desc = ''
+
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     context = {
         'town_name': town_name.title(),
         'name': town_data.name,
@@ -56,7 +61,8 @@ def town_info(request, town_name):
         'population': format(town_data.population, ',d'),
         'leader': leader_info,
         'leader_desc': leader_desc,
-        'leader_link': leader_link
+        'leader_link': leader_link,
+        'is_admin': user.is_authenticated,
     }
 
     return render(request, 'town.html', context)
@@ -86,11 +92,15 @@ def person_info(request, person_name):
     except IndexError:
         raise Http404("Unable to find Person: '" + person_name + "'")
 
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     content = {
         'person_name': person_name,
         'person_title': person_data.title,
         'description': person_data.description,
         'town_link': town_link,
+        'is_admin': user.is_authenticated,
     }
     return render(request, 'person.html', content)
 
