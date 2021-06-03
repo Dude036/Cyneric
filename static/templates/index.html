@@ -1,23 +1,20 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<style type="text/css">body{max-width: 100%; padding-left: 0px; padding-right: 0px; }</style>
-
-{% if map_type == 'political' %}
-<img id="World_Map" src="{% static 'Political World Map.png' %}" alt="World Map" usemap="#worldmap">
-<map name="worldmap">
-  {% for town in towns %}
-    <area shape="rect" coords="{{ town.coords }}" alt="{{ town.name }}" href="{{ town.link }}">
-  {% endfor %}
-</map>
-{% elif map_type == 'transit' %}
-<img id="World_Map" src="{% static 'Transit World Map.png' %}" alt="World Map">
-{% else %}
-<img id="World_Map" src="{% static 'Relevant World Map.png' %}" alt="World Map">
-{% endif %}
-
-<script>
-  document.getElementByID('World_Map').onclick = null
-</script>
+<style type="text/css">body{max-width: 100%; padding-left: 0px; padding-right: 0px;} .container{cursor: grab;}</style>
+<div id="container" class="container">
+  {% if map_type == 'political' %}
+  <img id="World_Map" src="{% static 'Political World Map.png' %}" alt="World Map" usemap="#worldmap">
+  <map name="worldmap">
+    {% for town in towns %}
+      <area shape="rect" coords="{{ town.coords }}" alt="{{ town.name }}" href="{{ town.link }}">
+    {% endfor %}
+  </map>
+  {% elif map_type == 'transit' %}
+  <img id="World_Map" src="{% static 'Transit World Map.png' %}" alt="World Map">
+  {% else %}
+  <img id="World_Map" src="{% static 'Relevant World Map.png' %}" alt="World Map">
+  {% endif %}
+</div>
 
 {% endblock %}
