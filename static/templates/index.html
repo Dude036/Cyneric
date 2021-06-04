@@ -16,5 +16,50 @@
   <img id="World_Map" src="{% static 'Relevant World Map.png' %}" alt="World Map">
   {% endif %}
 </div>
+<script type="text/javascript">
+  let down = false;
+  let element = document.getElementById('container');
+
+  let pos = {
+    x: 0,
+    y: 0,
+    s_x: 0,
+    s_y: 0,
+  };
+
+  function click_down(e) {
+    element.style.cursor = 'grabbing';
+    down = true;
+    pos = {
+      x: e.offsetX,
+      y: e.offsetY,
+      s_x: document.documentElement.scrollLeft,
+      s_y: document.documentElement.scrollTop,
+    }
+  }
+  function click_up(e) {
+    element.style.cursor = 'grab';
+    down = false;
+  }
+  function click_leave(e) {
+    element.style.cursor = 'grab';
+    down = false;
+  }
+
+  function click_drag(e) {
+    if (!down) { return; }
+    e.preventDefault();
+    var d_x = e.offsetX - pos.x;
+    var d_y = e.offsetY - pos.y;
+
+    document.documentElement.scrollLeft = pos.s_x - d_x;
+    document.documentElement.scrollTop = pos.s_y - d_y;
+  }
+
+  document.getElementById('container').addEventListener('mousedown', click_down);
+  document.getElementById('container').addEventListener('mouseup', click_up);
+  document.getElementById('container').addEventListener('mouseleave', click_leave);
+  document.getElementById('container').addEventListener('mousemove', click_drag);
+</script>
 
 {% endblock %}
