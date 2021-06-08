@@ -25,6 +25,7 @@ class Person(models.Model):
     title = models.CharField(default='', max_length=50)
     description = models.TextField(default='')
     admin_description = models.TextField(default='', blank=True, null=True)
+    img_source = models.CharField(default='', max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.name
