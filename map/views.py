@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Town, Person, Critical
 from .forms import CritForm
 from django.contrib import auth
+from os import path
 
 
 def __list_town_data():
@@ -103,7 +104,7 @@ def person_info(request, person_name):
         'town_link': town_link,
         'is_admin': user.is_authenticated,
         'admin_description': person_data.admin_description,
-        'img_src': '',
+        'img_src': 'img/' + person_data.img_source if person_data.img_source != '' else '',
     }
     return render(request, 'person.html', content)
 
