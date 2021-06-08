@@ -103,6 +103,7 @@ def person_info(request, person_name):
         'town_link': town_link,
         'is_admin': user.is_authenticated,
         'admin_description': person_data.admin_description,
+        'img_src': '',
     }
     return render(request, 'person.html', content)
 
