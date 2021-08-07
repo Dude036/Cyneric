@@ -20,16 +20,24 @@ def __list_town_data():
 
 # Create your views here.
 def index(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     context = {
         'towns': __list_town_data(),
-        'map_type': 'political'
+        'map_type': 'political',
+        'is_admin': user.is_authenticated,
     }
     return render(request, 'index.html', context)
 
 
 def map_info(request, map_type):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     context = {
-        'map_type': map_type
+        'map_type': map_type,
+        'is_admin': user.is_authenticated
     }
     return render(request, 'index.html', context)
 
@@ -71,6 +79,9 @@ def town_info(request, town_name):
 
 
 def town_search(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     town_data = Town.objects.all()
     names = []
     for p in town_data:
@@ -81,7 +92,7 @@ def town_search(request):
         for m in n.split(' '):
             all_names[m] = n
     sorted_names = sorted(list(all_names.keys()))
-    return render(request, 'town_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names})
+    return render(request, 'town_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names, 'is_admin': user.is_authenticated})
 
 
 def person_info(request, person_name):
@@ -110,6 +121,9 @@ def person_info(request, person_name):
 
 
 def person_search(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     all_people = Person.objects.all()
     # I need a list of people's names sent. That's it.
     names = []
@@ -121,14 +135,20 @@ def person_search(request):
         for m in n.split(' '):
             all_names[m] = n
     sorted_names = sorted(list(all_names.keys()))
-    return render(request, 'person_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names})
+    return render(request, 'person_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names, 'is_admin': user.is_authenticated})
 
 
 def crit(request):
-    return render(request, 'crit.html', {})
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    return render(request, 'crit.html', {'is_admin': user.is_authenticated})
 
 
 def add_crit(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = CritForm(request.POST)
@@ -154,8 +174,15 @@ def add_crit(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = CritForm()
-    return render(request, 'add_crit.html', {'form': form})
+    return render(request, 'add_crit.html', {'form': form, 'is_admin': user.is_authenticated})
 
 
 def add_crit_success(request):
-    return render(request, 'add_crit_success.html', {})
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    return render(request, 'add_crit_success.html', {'is_admin': user.is_authenticated})
+
+
+def admin_redirect(request):
+    return HttpResponseRedirect('/admin/')

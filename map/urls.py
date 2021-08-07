@@ -11,5 +11,6 @@ urlpatterns = [
     path('crit/form/', views.add_crit, name='add_crit'),
     path('crit/form/success/', views.add_crit_success, name='add_crit_success'),
     path('search/', views.town_search, name='town_search'),
+    path('admin/', views.admin_redirect, name='admin_redirect'),
     path('<str:town_name>/', views.town_info, name='town'),
 ]

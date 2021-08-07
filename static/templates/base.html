@@ -205,6 +205,11 @@
       <li>
         <a href="{% url 'generator:dummy' %}">Generate Town</a>
       </li>
+	    {% if is_admin %}
+      <li>
+	    <a href="{% url 'map:admin_redirect' %}">Admin</a>
+      </li>
+	    {% endif %}
     </ul>
   </div>
 </body>
