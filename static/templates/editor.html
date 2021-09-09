@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
+{% block content %}
 <head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1" name="viewport" />
-  <title>Thunia Map & Tools</title>
+  <meta charset="utf-8">
+  <title>Editor</title>
   <style>
     body {
       max-width: 1000px;
@@ -145,6 +144,33 @@
       background-color: #222;
       color: #ddd;
     }
+    .sidebar {
+      float: left;
+      position: fixed;
+      top: 0;
+      right: 0px;
+      margin: 5px;
+    }
+    .sidebar_object {
+      -webkit-user-select: none; /* Safari */        
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE10+/Edge */
+      user-select: none; /* Standard */
+      padding: 10px 20px;
+      border-style: solid;
+      border: 2px;
+      background-color: #EFEFEF;
+    }
+    .sidebar_object:hover {
+      background-color: #CFCFCF;
+    }
+    .sidebar_object:active {
+      background-color: #0000CF;
+      color: #EFEFEF;
+    }
+    .editor {
+      padding: 5px;
+    }
 
     @media only screen and (max-width: 600px) {
       .header a {
@@ -161,7 +187,9 @@
         float: none;
       }
     }
-  </style>
+</style>
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/fileSaver.js' %}"></script>
   <script>
     function show_hide(ident) {
       var a = document.getElementById(ident);
@@ -174,48 +202,46 @@
   </script>
 </head>
 <body>
-  {% block content %}
-  {% endblock %}
-  <div class="header" onclick="show_hide('header1');show_hide('header2');">
-    <img src="{% static 'sidebar.png' %}">
-    <ul id="header1" style="display: none;">
-      <li>
-        <a href="{% url 'map:index' %}">Home</a>
-      </li>
-      <li>
-        <ul id="header2" style="display: none;">
-          <li>
-            <a href="{% url 'map:map_info' 'political' %}">Political Map</a>
-          </li>
-          <li>
-            <a href="{% url 'map:map_info' 'transit' %}">Transit Map</a>
-          </li>
-          <li>
-            <a href="{% url 'map:map_info' 'generic' %}">Generic Map</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="{% url 'map:person_search' %}">Person Search</a>
-      </li>
-      <li>
-        <a href="{% url 'map:town_search' %}">Town Search</a>
-      </li>
-      <li>
-        <a href="{% url 'map:crit' %}">Critical Table</a>
-      </li>
-      <li>
-        <a href="{% url 'generator:dummy' %}">Generate Town</a>
-      </li>
-      <li>
-        <a href="{% url 'editor:editor' %}">Custom HTML Editor</a>
-      </li>
-	    {% if is_admin %}
-      <li>
-	    <a href="{% url 'map:admin_redirect' %}">Admin</a>
-      </li>
-	    {% endif %}
-    </ul>
+  <input type="text" id="header" name="header" placeholder="Town Name" style="margin: auto; display: block; font-size:32px;margin-bottom: 10px;">
+  <textarea id="description" name="description" placeholder="Town description" style="width: 100%;margin-bottom: 60px;"></textarea>
+  <div class="editor">
+    <div id="Stores" style="padding-bottom: 60px;">
+
+    </div>
+    <div id="Tables" style="padding-bottom: 60px;">
+
+    </div>
+    <div id="Divs" style="padding-bottom: 60px;">
+      
+    </div>
+    <div id="Lists" style="padding-bottom: 60px;">
+      
+    </div>
+  </div>
+  <div class="sidebar">
+    <div class="sidebar_object" onclick="create_element('Store');">
+      Add New Store Table
+    </div>
+    <div class="sidebar_object" onclick="create_element('Table');">
+      Add New Item Table
+    </div>
+    <div class="sidebar_object" onclick="create_element('Div');">
+      Add New Div
+    </div>
+    <div class="sidebar_object" onclick="create_element('List');">
+      Add New List
+    </div>
+    <div class="sidebar_object" style="background-color: #66FF66" onclick="export_page();">
+      Export to HTML
+    </div>
+    <div class="sidebar_object" style="background-color: #FFFF66" onclick="export_json();">
+      Export to JSON
+    </div>
+    <div class="sidebar_object" style="background-color: #6666FF" onclick="import_page();">
+      Import from JSON
+    </div>
   </div>
 </body>
 </html>
+
+{% endblock %}
