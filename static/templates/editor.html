@@ -171,6 +171,16 @@
     .editor {
       padding: 5px;
     }
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 5px 0px;
+      background-color: grey;
+      color: white;
+      text-align: center;
+    }
 
     @media only screen and (max-width: 600px) {
       .header a {
@@ -203,7 +213,7 @@
 </head>
 <body>
   <input type="text" id="header" name="header" placeholder="Town Name" style="margin: auto; display: block; font-size:32px;margin-bottom: 10px;">
-  <textarea id="description" name="description" placeholder="Town description" style="width: 100%;margin-bottom: 60px;"></textarea>
+  <textarea type="textarea" id="description" name="description" placeholder="Town description" style="width: 100%;margin-bottom: 60px;"></textarea>
   <div class="editor">
     <div id="Stores" style="padding-bottom: 60px;">
 
@@ -211,7 +221,7 @@
     <div id="Tables" style="padding-bottom: 60px;">
 
     </div>
-    <div id="Divs" style="padding-bottom: 60px;">
+    <div id="Monsters" style="padding-bottom: 60px;">
       
     </div>
     <div id="Lists" style="padding-bottom: 60px;">
@@ -225,8 +235,14 @@
     <div class="sidebar_object" onclick="create_element('Table');">
       Add New Item Table
     </div>
-    <div class="sidebar_object" onclick="create_element('Div');">
-      Add New Div
+    <div class="sidebar_object" onclick="create_element('Monster5');">
+      Add D&D 5e Monster
+    </div>
+    <div class="sidebar_object" onclick="create_element('Monster1');">
+      &ensp;Pathfinder 1e Monster
+    </div>
+    <div class="sidebar_object" onclick="create_element('Monster2');">
+      &ensp;Pathfinder 2e Monster
     </div>
     <div class="sidebar_object" onclick="create_element('List');">
       Add New List
@@ -234,14 +250,19 @@
     <div class="sidebar_object" style="background-color: #66FF66" onclick="export_page();">
       Export to HTML
     </div>
-    <div class="sidebar_object" style="background-color: #FFFF66" onclick="export_json();">
+    <div class="sidebar_object" style="background-color: #FFFF66" onclick="export_json(false);">
       Export to JSON
     </div>
     <div class="sidebar_object" style="background-color: #6666FF" onclick="import_page();">
       Import from JSON
     </div>
   </div>
+  <div class="footer">
+    Thank you so much for using this site. If you encounter any problems with the site, please 
+    <a href="mailto:mastersofdungeonspodcast@gmail.com">
+      email us
+    </a>
+    .
+  </div>
 </body>
-</html>
-
 {% endblock %}

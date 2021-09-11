@@ -5,14 +5,17 @@ let latest_table = 0;
 let latest_table_rows = 0;
 let latest_list = 0;
 let latest_list_rows = 0;
-let latest_div = 0;
+let latest_monster = 0;
+let latest_monster_rows = 0;
+let latest_monster_trait = 0;
+let latest_monster_action = 0;
 
 // Export Variables
 let export_obj = {
+	"Monsters": [],
 	"Stores": [],
 	"Tables": [],
 	"Lists": [],
-	"Divs": [],
 }
 let export_counter = 0;
 
@@ -227,6 +230,7 @@ function editor_container_table(element) {
 	return container;
 }
 
+
 /** Adds list item, and its input, to a parent list.
  * @param parent Parent list
  * @param descriptor The descriptor for the placeholder text and id
@@ -242,6 +246,7 @@ function sub_list_element(parent, descriptor, add_id) {
 	new_input.appendChild(new_input_input);
 	parent.appendChild(new_input);
 }
+
 
 /**Add list settings when creating a list element
  * @param parent_obj LI container
@@ -274,6 +279,7 @@ function add_list_settings(parent_obj, add_id) {
 	parent_obj.appendChild(add_underline);
 	parent_obj.appendChild(add_underline_label);
 }
+
 
 /**Create the Parent Container for List
  * @param element Primary child element, the list
@@ -337,6 +343,64 @@ function editor_container_list(element) {
 	return container;
 }
 
+
+/**Create the Parent Container for Monsters
+ * @param element Primary child element, the table
+ * @param element Primary child element, the table
+ * @return Fully formed container for Monster Table elements
+ */
+function editor_container_monster(element, edition) {
+	if (DEBUG) { console.log("Begin Monster Container Creation"); }
+
+	// Container options
+	var container = document.createElement("div");
+	container.id = element.id + "C";
+	container.width = '100%';
+
+	// Add monster information
+	// Delete Styling
+	var add_edition_div = document.createElement('div');
+	add_edition_div.style.float = 'right';
+	add_edition_div.style.padding = '5px';
+	add_edition_div.style.color = '#EFEFEF';
+	if (edition == '5') {
+		add_edition_div.style.backgroundColor = '#009999';
+		add_edition_div.innerHTML = "Edition: D&D 5e";
+	} else if (edition == '2') {
+		add_edition_div.style.backgroundColor = '#009900';
+		add_edition_div.innerHTML = "Edition: Pathfinder 2e";
+	} else if (edition == '1') {
+		add_edition_div.style.backgroundColor = '#000099';
+		add_edition_div.innerHTML = "Edition: Pathfinder 1e";
+	}
+	add_edition_div.id = container.id + "_EDITION";
+
+	// Delete Styling
+	var add_delete_div = document.createElement('div');
+	add_delete_div.style.float = 'right';
+	add_delete_div.style.padding = '5px';
+	add_delete_div.style.backgroundColor = '#C00000';
+	add_delete_div.style.color = '#EFEFEF';
+	add_delete_div.innerHTML = "Delete Monster";
+	add_delete_div.id = container.id + "_DELETE";
+
+	// Delete List Function
+	add_delete_div.onclick = function() {
+		if (confirm("Delete Monster?")) {
+			if (DEBUG) { console.log("Deleting Monster"); }
+			container.parentNode.removeChild(container);
+			if (DEBUG) { console.log("Monster successfully deleted"); }
+		}
+	}
+
+	container.appendChild(add_delete_div);
+	container.appendChild(add_edition_div);
+
+	container.appendChild(element);
+	return container;
+ }
+
+
 /**Function to add stuff to the main page. Creates the elements, to then wrap in containers
  * @param item The type of item to be made
  */
@@ -364,6 +428,7 @@ function create_element(item) {
 		owner_store_name.id = owner_container.id + "_STORE";
 		owner_store_name.type = 'text';
 		owner_store_name.placeholder = 'Store Name (Type)';
+		owner_store_name.value = '';
 		owner_store_name.style.fontSize = '24px';
 
 		owner_container.appendChild(owner_store_name);
@@ -373,6 +438,7 @@ function create_element(item) {
 		owner_name.id = owner_container.id + "_NAME";
 		owner_name.type = 'text';
 		owner_name.placeholder = 'Owner Name';
+		owner_name.value = '';
 		
 		owner_container.appendChild(owner_name);
 
@@ -414,18 +480,454 @@ function create_element(item) {
 		// Add
 		var parent = document.getElementById("Tables");
 		parent.appendChild(editor_container_table(table));
-	} else if (item == "Div") {
+	} else if (item.startsWith("Monster")) {
 		// Init
-		var div = document.createElement('div');
-		div.id = "D" + latest_div
-		latest_div += 1;
+		var monster = document.createElement('Table');
+		monster.id = "M" + latest_monster
+		latest_monster += 1;
 
 		// Style
-		div.style.width = "100%";
+		monster.style.width = "100%";
+		monster.style.borderBottom = "1px solid black";
+		monster.style.marginBottom = "20px";
+		monster.style.padding = '2px';
+
+		// Add Monster Header
+		var monster_header = document.createElement('tr');
+		monster_header.id = monster.id + 'R1';
+
+		var monster_header_content = document.createElement('div');
+		monster_header_content.style.width = '100%';
+
+		// Monster Name & CR
+		var monster_name = document.createElement('div');
+		var monster_name_input = document.createElement('input');
+		monster_name_input.style.fontSize = '24px';
+		monster_name_input.placeholder = 'Monster Name';
+		monster_name_input.id = monster_header.id + '_NAME'
+		monster_name.appendChild(monster_name_input);
+		monster_name.appendChild(document.createTextNode(' - CR: '));
+
+		var monster_cr_input = document.createElement('input');
+		monster_cr_input.style.fontSize = '24px';
+		monster_cr_input.placeholder = 'CR';
+		monster_cr_input.size = '3';
+		monster_cr_input.id = monster_header.id + '_CR'
+		monster_name.appendChild(monster_cr_input);
+
+		monster_header_content.appendChild(monster_name);
+
+		var monster_align = document.createElement('div');
+		var monster_align_input = document.createElement('input');
+		monster_align_input.id = monster_header.id + '_ALIGN'
+		monster_align_input.placeholder = 'Alignment';
+
+		monster_align.appendChild(monster_align_input);
+		monster_header_content.appendChild(monster_align);
+
+		// Traits for Pathfinder 2e
+		if (item.endsWith("2")) {
+			var monster_trait_list_add = document.createElement('div');
+			monster_trait_list_add.style.backgroundColor = '#030303';
+			monster_trait_list_add.style.color = '#EFEFEF';
+			monster_trait_list_add.style.float = 'right'
+			monster_trait_list_add.style.padding = '5px'
+			monster_trait_list_add.innerHTML = 'Add Trait';
+
+			var monster_trait_list_loc = document.createElement('ul');
+			monster_trait_list_loc.id = monster_header.id + '_TRAITS';
+
+			monster_trait_list_add.onclick = function() {
+				var ret = prompt('Input trait message');
+				if (ret != null) {
+					var temp_trait = document.createElement('li');
+					temp_trait.id = monster_trait_list_add.id + latest_monster_trait;
+					latest_monster_trait++;
+					temp_trait.innerHTML = ret.toUpperCase() + ' <span style="color: red;font-weight: bold;"> X</span>';
+					temp_trait.style.backgroundColor = '#666666'
+					temp_trait.style.color = '#EFEFEF';
+					temp_trait.style.display = 'inline';
+					temp_trait.style.padding = '8px';
+					temp_trait.style.margin = '8px';
+
+					temp_trait.onclick = function() {
+						if (confirm("Delete Trait?")) {
+							if (DEBUG) { console.log("Deleting Trait"); }
+							temp_trait.parentNode.removeChild(temp_trait);
+							if (DEBUG) { console.log("Trait successfully deleted"); }
+						}
+					}
+
+					monster_trait_list_loc.appendChild(temp_trait);
+				}
+			}
+
+			monster_header_content.appendChild(monster_trait_list_add);
+			monster_header_content.appendChild(monster_trait_list_loc);
+		}
+
+		// Monster Text Box
+		var monster_description = document.createElement('div');
+		var monster_description_input = document.createElement('textarea');
+		monster_description_input.id = monster_header.id + '_DESCRIBE'
+		monster_description_input.placeholder = 'Monster Description';
+		monster_description_input.style.width = '50%';
+		monster_description.appendChild(monster_description_input);
+
+		monster_header_content.appendChild(monster_description);
+		monster_header.appendChild(monster_header_content);
+		monster.appendChild(monster_header);
+
+		/*******************************************************************************************************/
+
+		var monster_info = document.createElement('tr');
+		monster_info.id = monster.id + 'R2';
+		var monster_info_content = document.createElement('div');
+		
+		// Monster Base Information
+		var monster_info_list = document.createElement('ul');
+		monster_info_list.style.columnCount = 2;
+		var monster_hp = document.createElement('li');
+		var monster_hp_input = document.createElement('input');
+		monster_hp_input.id = monster_header.id + '_HP';
+		monster_hp_input.placeholder = 'HP';
+		monster_hp.appendChild(monster_hp_input);
+		monster_info_list.appendChild(monster_hp);
+
+		var monster_speed = document.createElement('li');
+		var monster_speed_input = document.createElement('input');
+		monster_speed_input.id = monster_header.id + '_SPEED'
+		monster_speed_input.placeholder = 'Speed'
+		monster_speed.appendChild(monster_speed_input);
+		monster_info_list.appendChild(monster_speed);
+
+		var monster_size = document.createElement('li');
+		var monster_size_input = document.createElement('input');
+		monster_size_input.id = monster_header.id + '_SIZE'
+		monster_size_input.placeholder = 'Size'
+		monster_size.appendChild(monster_size_input);
+		monster_info_list.appendChild(monster_size);
+
+		var monster_ac = document.createElement('li');
+		var monster_ac_input = document.createElement('input');
+		monster_ac_input.id = monster_header.id + '_AC'
+		monster_ac_input.placeholder = 'AC'
+		monster_ac.appendChild(monster_ac_input);
+		monster_info_list.appendChild(monster_ac);
+
+		// Special AC for Pathfinder 1
+		if (item.endsWith("1")) {
+			var monster_touch_ac = document.createElement('li');
+			var monster_touch_ac_input = document.createElement('input');
+			monster_touch_ac_input.id = monster_header.id + '_TOUCH_AC'
+			monster_touch_ac_input.placeholder = 'Touch'
+			monster_touch_ac.appendChild(monster_touch_ac_input);
+			monster_info_list.appendChild(monster_touch_ac);
+
+			var monster_flat_ac = document.createElement('li');
+			var monster_flat_ac_input = document.createElement('input');
+			monster_flat_ac_input.id = monster_header.id + '_FLAT_AC'
+			monster_flat_ac_input.placeholder = 'Flat'
+			monster_flat_ac.appendChild(monster_flat_ac_input);
+			monster_info_list.appendChild(monster_flat_ac);
+
+			var monster_cmd = document.createElement('li');
+			var monster_cmd_input = document.createElement('input');
+			monster_cmd_input.id = monster_header.id + '_CMD'
+			monster_cmd_input.placeholder = 'CMD'
+			monster_cmd.appendChild(monster_cmd_input);
+			monster_info_list.appendChild(monster_cmd);
+
+			var monster_cmb = document.createElement('li');
+			var monster_cmb_input = document.createElement('input');
+			monster_cmb_input.id = monster_header.id + '_CMB'
+			monster_cmb_input.placeholder = 'CMB'
+			monster_cmb.appendChild(monster_cmb_input);
+			monster_info_list.appendChild(monster_cmb);
+		}
+		
+		//  Pathfinder Saves
+		if (item.endsWith("1") || item.endsWith("2")) {
+			var monster_fort_save = document.createElement('li');
+			var monster_fort_save_input = document.createElement('input');
+			monster_fort_save_input.id = monster_header.id + '_FORT_SAVE'
+			monster_fort_save_input.placeholder = 'Fortitude Save'
+			monster_fort_save.appendChild(monster_fort_save_input);
+			monster_info_list.appendChild(monster_fort_save);
+
+			var monster_will_save = document.createElement('li');
+			var monster_will_save_input = document.createElement('input');
+			monster_will_save_input.id = monster_header.id + '_WILL_SAVE'
+			monster_will_save_input.placeholder = 'Will Save'
+			monster_will_save.appendChild(monster_will_save_input);
+			monster_info_list.appendChild(monster_will_save);
+
+			var monster_ref_save = document.createElement('li');
+			var monster_ref_save_input = document.createElement('input');
+			monster_ref_save_input.id = monster_header.id + '_REF_SAVE'
+			monster_ref_save_input.placeholder = 'Reflex Save'
+			monster_ref_save.appendChild(monster_ref_save_input);
+			monster_info_list.appendChild(monster_ref_save);
+		} else if (item.endsWith('5')) {
+			// Saves for 5e
+			var monster_save_1 = document.createElement('li');
+			var monster_str_save = document.createElement('input');
+			monster_str_save.type = 'checkbox';
+			monster_str_save.id = monster_header.id  + '_STR_SAVE'
+			monster_str_save.name = monster_header.id  + '_STR_SAVE'
+
+			var monster_str_save_label = document.createElement('label');
+			monster_str_save_label.htmlFor = monster_header.id  + '_STR_SAVE'
+			monster_str_save_label.innerHTML = "<b>STR Save</b>"
+
+			monster_save_1.appendChild(monster_str_save);
+			monster_save_1.appendChild(monster_str_save_label);
+
+			var monster_dex_save = document.createElement('input');
+			monster_dex_save.type = 'checkbox';
+			monster_dex_save.id = monster_header.id  + '_DEX_SAVE'
+			monster_dex_save.name = monster_header.id  + '_DEX_SAVE'
+
+			var monster_dex_save_label = document.createElement('label');
+			monster_dex_save_label.htmlFor = monster_header.id  + '_DEX_SAVE'
+			monster_dex_save_label.innerHTML = "<b>DEX Save</b>"
+
+			monster_save_1.appendChild(monster_dex_save);
+			monster_save_1.appendChild(monster_dex_save_label);
+
+			monster_info_list.appendChild(monster_save_1);
+
+			var monster_save_2 = document.createElement('li');
+			var monster_con_save = document.createElement('input');
+			monster_con_save.type = 'checkbox';
+			monster_con_save.id = monster_header.id  + '_CON_SAVE'
+			monster_con_save.name = monster_header.id  + '_CON_SAVE'
+
+			var monster_con_save_label = document.createElement('label');
+			monster_con_save_label.htmlFor = monster_header.id  + '_CON_SAVE'
+			monster_con_save_label.innerHTML = "<b>CON Save</b>"
+
+			monster_save_2.appendChild(monster_con_save);
+			monster_save_2.appendChild(monster_con_save_label);
+
+			var monster_int_save = document.createElement('input');
+			monster_int_save.type = 'checkbox';
+			monster_int_save.id = monster_header.id  + '_INT_SAVE'
+			monster_int_save.name = monster_header.id  + '_INT_SAVE'
+
+			var monster_int_save_label = document.createElement('label');
+			monster_int_save_label.htmlFor = monster_header.id  + '_INT_SAVE'
+			monster_int_save_label.innerHTML = "<b>INT Save</b>"
+
+			monster_save_2.appendChild(monster_int_save);
+			monster_save_2.appendChild(monster_int_save_label);
+
+			monster_info_list.appendChild(monster_save_2);
+
+			var monster_save_3 = document.createElement('li');
+			var monster_wis_save = document.createElement('input');
+			monster_wis_save.type = 'checkbox';
+			monster_wis_save.id = monster_header.id  + '_WIS_SAVE'
+			monster_wis_save.name = monster_header.id  + '_WIS_SAVE'
+
+			var monster_wis_save_label = document.createElement('label');
+			monster_wis_save_label.htmlFor = monster_header.id  + '_WIS_SAVE'
+			monster_wis_save_label.innerHTML = "<b>WIS Save</b>"
+
+			monster_save_3.appendChild(monster_wis_save);
+			monster_save_3.appendChild(monster_wis_save_label);
+
+			var monster_cha_save = document.createElement('input');
+			monster_cha_save.type = 'checkbox';
+			monster_cha_save.id = monster_header.id  + '_CHA_SAVE'
+			monster_cha_save.name = monster_header.id  + '_CHA_SAVE'
+
+			var monster_cha_save_label = document.createElement('label');
+			monster_cha_save_label.htmlFor = monster_header.id  + '_CHA_SAVE'
+			monster_cha_save_label.innerHTML = "<b>CHA Save</b>"
+
+			monster_save_3.appendChild(monster_cha_save);
+			monster_save_3.appendChild(monster_cha_save_label);
+
+			monster_info_list.appendChild(monster_save_3);
+		}
+
+
+		// Incoming damage modifiers
+		var monster_dam_immune = document.createElement('li');
+		var monster_dam_immune_input = document.createElement('input');
+		monster_dam_immune_input.id = monster_header.id + '_DAM_IMMUNE';
+		monster_dam_immune_input.placeholder = 'Damage Immunities';
+		monster_dam_immune.appendChild(monster_dam_immune_input);
+		monster_info_list.appendChild(monster_dam_immune);
+
+		var monster_dam_resist = document.createElement('li');
+		var monster_dam_resist_input = document.createElement('input');
+		monster_dam_resist_input.id = monster_header.id + '_DAM_RESIST';
+		monster_dam_resist_input.placeholder = 'Damage Resistances';
+		monster_dam_resist.appendChild(monster_dam_resist_input);
+		monster_info_list.appendChild(monster_dam_resist);
+
+		var monster_dam_weak = document.createElement('li');
+		var monster_dam_weak_input = document.createElement('input');
+		monster_dam_weak_input.id = monster_header.id + '_DAM_WEAK';
+		monster_dam_weak_input.placeholder = 'Damage Weakness';
+		monster_dam_weak.appendChild(monster_dam_weak_input);
+		monster_info_list.appendChild(monster_dam_weak);
+
+		// Senses / Language
+		var monster_sense = document.createElement('li');
+		var monster_sense_input = document.createElement('input');
+		monster_sense_input.id = monster_header.id + '_SENSE';
+		monster_sense_input.placeholder = 'Senses';
+		monster_sense.appendChild(monster_sense_input);
+		monster_info_list.appendChild(monster_sense);
+
+		var monster_language = document.createElement('li');
+		var monster_language_input = document.createElement('input');
+		monster_language_input.id = monster_header.id + '_LANGUAGE';
+		monster_language_input.placeholder = 'Languages';
+		monster_language.appendChild(monster_language_input);
+		monster_info_list.appendChild(monster_language);
+
+		// Add all above info into the Header
+		monster_info_content.appendChild(monster_info_list);
+		monster_info.appendChild(monster_info_content);
+
+		monster.appendChild(monster_info);
+
+		/*******************************************************************************************************/
+
+		var monster_stats = document.createElement('tr')
+		monster_stats.id = monster.id + 'R3';
+		var monster_stats_content = document.createElement('div')
+
+		// Base Stats
+		var stats = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA']
+		var monster_stats_table = document.createElement('table');
+		monster_stats_table.style.width = '100%';
+		var monster_stats_header = document.createElement('tr');
+		var monster_stats_info = document.createElement('tr');
+		for (var i = 0; i < stats.length; i++) {
+			var temp_th = document.createElement('th');
+			temp_th.innerHTML = stats[i];
+			monster_stats_header.appendChild(temp_th);
+
+			var temp_td = document.createElement('td');
+			var temp_td_input = document.createElement('input');
+			temp_td_input.placeholder = stats[i];
+			temp_td_input.id = monster_header.id + '_' + stats[i];
+			temp_td_input.name = monster_header.id + '_' + stats[i];
+			temp_td_input.style.width = '130px';
+			temp_td.appendChild(temp_td_input);
+			monster_stats_info.appendChild(temp_td);
+		}
+		monster_stats_table.appendChild(monster_stats_header);
+		monster_stats_table.appendChild(monster_stats_info);
+
+		monster_stats_content.appendChild(monster_stats_table);
+		monster_stats.appendChild(monster_stats_content);
+
+		monster.appendChild(monster_stats)
+
+		/*******************************************************************************************************/
+		
+		var monster_action = document.createElement('tr')
+		var monster_action_content = document.createElement('div')
+		monster_action.id = monster.id + 'R4';
+
+		// Actions
+		var monster_action_container = document.createElement('div');
+		monster_action_container.style.display = 'flex';
+		monster_action_container.style.flexWrap = 'wrap';
+		monster_action_container.style.alignItems = 'flex-start';
+		monster_action_container.style.width = '100%';
+		monster_action_container.style.paddingTop = '10px';
+		monster_action_container.style.paddingBottom = '20px';
+		monster_action_container.id = monster_header.id + '_ACTIONS';
+
+		var monster_action_add = document.createElement('div');
+		monster_action_add.style.backgroundColor = '#030303';
+		monster_action_add.style.color = '#EFEFEF';
+		monster_action_add.style.float = 'right'
+		monster_action_add.style.padding = '5px'
+		monster_action_add.innerHTML = 'Add Action';
+
+		monster_action_add.onclick = function() {
+			if (DEBUG) { console.log("Adding Action to Monster " + monster_header.id); }
+
+			var temp_action = document.createElement('table');
+			temp_action.id = monster_action_container.id + latest_monster_action;
+			latest_monster_action++;
+			temp_action.style.width = '44%';
+			temp_action.style.marginLeft = '3%';
+			temp_action.style.marginRight = '3%';
+			temp_action.style.marginBottom = '1%';
+
+			// Header Info
+			var temp_action_header = document.createElement('tr');
+			
+			temp_action_header.style.backgroundColor = '#999999'
+			temp_action_header.style.color = '#EFEFEF';
+
+			var temp_action_header_input = document.createElement('input');
+			temp_action_header_input.type = 'text';
+			temp_action_header_input.id = temp_action.id + '_NAME';
+			temp_action_header_input.placeholder = 'Action Name';
+			temp_action_header.appendChild(temp_action_header_input);
+
+			// Delete action
+			var temp_action_header_delete = document.createElement('input');
+			temp_action_header_delete.type = 'button';
+			temp_action_header_delete.value = 'Delete';
+			temp_action_header_delete.style.backgroundColor = '#990000'
+			temp_action_header_delete.style.color = '#EFEFEF'
+
+			temp_action_header_delete.onclick = function() {
+				if (confirm("Delete Action?")) {
+					if (DEBUG) { console.log("Deleting Action"); }
+					temp_action.parentNode.removeChild(temp_action);
+					if (DEBUG) { console.log("Action successfully deleted"); }
+				}
+			}
+			temp_action_header.appendChild(temp_action_header_delete);
+
+			// Legendary Action Qualifier
+			if (item.endsWith('5')) {
+				var monster_action_legend = document.createElement('input');
+				monster_action_legend.type = 'checkbox';
+				monster_action_legend.id = temp_action.id  + '_LEGEND'
+				monster_action_legend.name = temp_action.id  + '_LEGEND'
+
+				var monster_action_legend_label = document.createElement('label');
+				monster_action_legend_label.htmlFor = temp_action.id  + '_LEGEND'
+				monster_action_legend_label.innerHTML = "<b>Legendary</b>"
+				monster_action_legend_label.style.paddingLeft = '10px'
+				temp_action_header.appendChild(monster_action_legend_label);
+				temp_action_header.appendChild(monster_action_legend);
+			}
+
+			// Detail Info
+			var temp_action_info = document.createElement('tr');
+			var temp_action_info_input = document.createElement('textarea');
+			temp_action_info_input.id = temp_action.id  + '_TEXT'
+			temp_action_info_input.placeholder = 'Action Details';
+			temp_action_info_input.style.width = '90%';
+			temp_action_info.appendChild(temp_action_info_input);
+
+			temp_action.appendChild(temp_action_header);
+			temp_action.appendChild(temp_action_info);
+			monster_action_container.appendChild(temp_action);
+		}
+
+		monster_action_content.appendChild(monster_action_add);
+		monster_action_content.appendChild(monster_action_container);
+		monster_action.appendChild(monster_action_content);
+		monster.appendChild(monster_action);
 
 		// Add
-		var parent = document.getElementById("Divs");
-		parent.appendChild(div)
+		var parent = document.getElementById("Monsters");
+		parent.appendChild(editor_container_monster(monster, item[item.length - 1]));
 	} else if (item == "List") {
 		// Init
 		var list = document.createElement('ul');
@@ -469,6 +971,7 @@ function get_table_owner_data(row) {
 	return owner_obj;
 }
 
+
 /**Extract all table data from the div table element
  * @param table The table produced
  * @return Object data for the table element
@@ -486,7 +989,7 @@ function get_table_data(table, store) {
 
 	// Loop through items
 	if (DEBUG) { console.log("Looping through item rows"); }
-	for (var i = 1; i < table.rows.length; i++) {
+	for (var i = store ? 1 : 0; i < table.rows.length; i++) {
 		if (DEBUG) { console.log(table.rows[i]); }
 		var item = {};
 
@@ -509,7 +1012,7 @@ function get_table_data(table, store) {
 			var children = table.rows[i].childNodes;
 			for (var x = 0; x < children.length; x++) {
 				if (children[x].id !== '') {
-					item[x.toString() + children[x].id[children[x].id.length - 2]] = document.getElementById(children[x].id + 'I').value
+					item[(x + 1).toString() + children[x].id[children[x].id.length - 2]] = document.getElementById(children[x].id + 'I').value
 				}
 			}
 		}
@@ -522,6 +1025,7 @@ function get_table_data(table, store) {
 	if (DEBUG) { console.log(table_obj); }
 	return table_obj;
 }
+
 
 /**Get list data in sequence
  * @param list The list DOM element
@@ -545,63 +1049,116 @@ function get_list_data(list) {
 	return list_obj;
 }
 
+
+/**Convert special ID string to object usable strings
+ * @param special Special string to convert
+ * @return ID usable strings
+ */
+function conver_special_to_id(special) {
+	var new_str = '';
+	special = special.slice(special.indexOf('_') + 1);
+	special.split('_').forEach(function(sub) {
+		new_str += sub[0] + sub.substring(1).toLowerCase();
+	});
+
+	return new_str;
+}
+
+
+/**Get monster data depending on edition
+ * @param monster The monster table DOM element
+ * @param edition Edition for the which type of export
+ */
+function get_monster_data(monster, edition) {
+	if (DEBUG) { console.log("Exporting Monster: " + monster.id); }
+
+	var monster_obj = {
+		'Edition': edition,
+	};
+
+	// Grab info from the first row (monster_header_content)
+	var monster_header = monster.rows[0];
+
+	monster_obj['Name'] = document.getElementById(monster_header.id + '_NAME').value;
+	monster_obj['Cr'] = document.getElementById(monster_header.id + '_CR').value;
+	monster_obj['Description'] = convert_text(document.getElementById(monster_header.id + '_DESCRIBE').value);
+	monster_obj['Alignment'] = document.getElementById(monster_header.id + '_ALIGN').value;
+
+	// Grab all traits for 2e monsters
+	if (edition === '2') {
+		var monster_trait_list = document.getElementById(monster_header.id + '_TRAITS').childNodes;
+		if (DEBUG) { console.log(monster_trait_list); }
+		monster_obj['Traits'] = [];
+		monster_trait_list.forEach(function(sub) {
+			var text = sub.innerText;
+			text = text.slice(0, text.lastIndexOf(' '))
+			monster_obj['Traits'].push(text);
+		});
+	}
+
+	/*******************************************************************************************************/
+
+	var monster_info = monster.rows[1].childNodes[0];
+	var monster_info_inputs = monster_info.querySelectorAll('input');
+	if (DEBUG) { console.log(monster_info_inputs); }
+	for (var i = 0; i < monster_info_inputs.length; i++) {
+		var new_key = conver_special_to_id(monster_info_inputs[i].id)
+		if (new_key.startsWith('Str') || new_key.startsWith('Dex') || new_key.startsWith('Con') || new_key.startsWith('Int') || new_key.startsWith('Wis') || new_key.startsWith('Cha')) {
+			monster_obj[new_key] = monster_info_inputs[i].checked;
+		} else {
+			monster_obj[new_key] = monster_info_inputs[i].value;
+		}
+	}
+
+	/*******************************************************************************************************/
+
+	var monster_stats = monster.rows[2].childNodes[0];
+	var monster_stats_inputs = monster_stats.querySelectorAll('input');
+	if (DEBUG) { console.log(monster_stats_inputs); }
+	for (var i = 0; i < monster_stats_inputs.length; i++) {
+		monster_obj[conver_special_to_id(monster_stats_inputs[i].id)] = monster_stats_inputs[i].value;
+	}
+
+	/*******************************************************************************************************/
+
+	var monster_action = monster.rows[3];
+	var monster_action_tables = monster_action.querySelectorAll('table');
+	monster_obj['Actions'] = [];
+	if (DEBUG) { console.log(monster_action_tables); }
+
+	monster_action_tables.forEach(function(action_table) {
+		var action_obj = {
+			'Name': document.getElementById(action_table.id + '_NAME').value,
+			'Text':convert_text(document.getElementById(action_table.id + '_TEXT').value),
+		};
+		if (edition === '5') {
+			action_obj['Legendary'] = document.getElementById(action_table.id + '_LEGEND').checked;
+		}
+
+		monster_obj['Actions'].push(action_obj);
+	});
+
+	if (DEBUG) { console.log("Monster successfully handled"); }
+	if (DEBUG) { console.log(monster_obj); }
+
+	return monster_obj;
+}
+
+
 /**Export everything into an object, then turn the object data into a usable html file
  */
 function export_page() {
 	if (DEBUG) { console.log("Exporting Page"); }
 	// Clear export object
-	export_obj = {
-		"Stores": [],
-		"Tables": [],
-		"Lists": [],
-		"Divs": [],
-	}
-	export_counter = 0;
+	export_obj = export_json(true);
 
-	// Begin exporting Stores
-	var editor_container = document.getElementById('Stores').childNodes;
-	if (DEBUG) { console.log(editor_container); }
-	for(var i = 0; i < editor_container.length; i++) {
-		// Found the container
-		if (/^S\dC/.test(editor_container[i].id)) {
-			var editor_element = editor_container[i];
-			export_obj['Stores'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], true));
-		}
-	}
-
-	// Export Tables Next
-	editor_container = document.getElementById('Tables').childNodes;
-	if (DEBUG) { console.log(editor_container); }
-	for(var i = 0; i < editor_container.length; i++) {
-		// Found the container
-		if (/^T\dC/.test(editor_container[i].id)) {
-			var editor_element = editor_container[i];
-			export_obj['Tables'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], false));
-		}
-	}
-
-	// Export Lists Next
-	editor_container = document.getElementById('Lists').childNodes;
-	if (DEBUG) { console.log(editor_container); }
-	for(var i = 0; i < editor_container.length; i++) {
-		// Found the container
-		if (/^L\dC/.test(editor_container[i].id)) {
-			var editor_element = editor_container[i];
-			export_obj['Lists'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1], false));
-		}
-	}
-
-	/*********************************************************/
-	/******************** EXPORT COMPLET E********************/
-	/*********************************************************/
-	if (DEBUG) { console.log("Final Export Data"); }
-	if (DEBUG) { console.log(export_obj); }
+	/************************************************************************************************/
 
 	// Create new Document for printing
 	// Going with a simple String to be coppied
 	// Boiler plate CSS header stuffs
 	var new_doc = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Custom HTML</title><style>body{max-width:1000px;margin-left:auto;margin-right:auto;padding-left:5px;padding-right:5px}html{font-family:Arial}h1,h2{color:#000;text-align:center}.center{text-align:center}.bold{font-weight:700}.emp{font-style:italic}table{border:1px solid #000;border-spacing:0}table tr th{background-color:gray;color:#fff;padding:5px}table tr td{margin:0;padding:5px}.text-xs{font-size:12px}.text-sm{font-size:14px}.text-md{font-size:18px}.text-lg{font-size:24px}.text-xl{font-size:32px}.wrapper-box{width:100%;border:2px solid #000;margin-bottom:60px padding:5px;}.inventory-table{width:100%;}.suggestion{padding:2px 0;margin:0;list-style:none}.suggestion li{border:1px solid #000;background-color:#ddd;padding:2px 4px;margin:5px 10px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.suggestion li:active{background-color:#404040}.suggestion li:hover{background-color:grey}.attacks{display:flex;flex-wrap:wrap;align-items:flex-start;width:100%;padding-top:10px;padding-bottom:20px}.attacks table{width:44%;margin-left:3%;margin-right:3%;margin-bottom:1%}.header{background-color:#f1f1f1;position:fixed;top:0;left:0;padding:5px 5px}.header ul{display:none;list-style-type:none;padding-left:10px;margin-top:0}.header a{float:left;color:#000;text-align:center;text-decoration:none;padding:5px 5px}.header a:hover{background-color:#ddd}.header a.active{background-color:#02f}.crit tr:nth-child(even){background-color:#eee}.link{text-align:center}.link li{padding-bottom:10px}.link a{border:1px solid #000;width:60%;text-decoration:none;color:#222;background-color:#ddd;padding:3px 3px 3px 3px}.link a:hover{background-color:#222;color:#ddd}.sidebar{float:left;position:fixed;top:0;right:0;margin:5px}.sidebar_object{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:10px 20px;border-style:solid;border:2px;background-color:#efefef}.sidebar_object:hover{background-color:#cfcfcf}.sidebar_object:active{background-color:#0000cf;color:#efefef}@media only screen and (max-width:600px){.header a{float:none;display:block;text-align:left;font-size:20px}.header img{height:50px;width:50px}.header-right{float:none}}</style><script>function show_hide(ident) {var a = document.getElementById(ident);if (a.style.display === "none") {a.style.display = "block";} else {a.style.display = "none";}}</script></head>';
-	new_doc += "<body>"
+	new_doc += "<body><!-- Thanks for using my Custom HTML editor! Feel free to visit again! -->"
 
 	// Header and description
 	if (document.getElementById("header").value === "") { document.getElementById("header").value = 'Town' }
@@ -662,6 +1219,8 @@ function export_page() {
 		new_doc += '</div>'
 	}
 
+	/************************************************************************************************/
+
 	// Next is Tables
 	if (export_obj['Tables'].length > 0) {
 		new_doc += '<h2 class="text-lg bold center">Tables</h2>';
@@ -671,7 +1230,7 @@ function export_page() {
 		if (DEBUG) { console.log("Adding Table " + i) };
 
 		// Loop through items.
-		new_doc += '<table id="Table" class="inventory-table" style="width:100%">';
+		new_doc += '<table class="inventory-table" style="width:100%">';
 		for (var x = 0; x < temp_store['Data'].length; x++) {
 
 			// For Items
@@ -703,6 +1262,100 @@ function export_page() {
 		new_doc += '</div>'
 	}
 
+	/************************************************************************************************/
+
+	// Next is Monsters
+	if (export_obj['Monsters'].length > 0) {
+		new_doc += '<h2 class="text-lg bold center">Monsters</h2>';
+	}
+	for (var i = 0; i < export_obj['Monsters'].length; i++) {
+		var temp_monster = export_obj['Monsters'][i]
+
+		// Header With Info
+		new_doc += '<table class="wrapper-box" style="margin-bottom: 60px;"><tr><td>';
+		new_doc += '<span class="text-lg bold">' + temp_monster['Name']
+		new_doc += '</span> - <span class="text-md bold">CR: ' + temp_monster['Cr'] + '</span><br>'
+		
+		// Traits if Second edition
+		if (temp_monster['Edition'] === '2') {
+			new_doc += '<ul style="margin: 2px 0px;padding: 0px;display: inline-flex;list-style-type: none;">';
+			for (var x = 0; x < temp_monster['Traits'].length; x++) {
+				new_doc += '<li style="margin: 2px 5px; padding: 2px 5px; background-color: #CFCFCF;">' + temp_monster['Traits'][x] + '</li>';
+			}
+			new_doc += '</ul><br>';
+		}
+		new_doc += '<span class="text-md emp">Alignment: ' + temp_monster['Alignment'] + '</span>' + temp_monster['Description'];
+		
+		// Adding Info Section
+		new_doc += '</td></tr><tr><td><ul style="column-count: 2;list-style-type: none;margin: 5px;">'
+		new_doc += '<li><span class="bold">HP:</span> ' + temp_monster['Hp'] + '</li>';
+		new_doc += '<li><span class="bold">Speed:</span> ' + temp_monster['Speed'] + '</li>';
+		new_doc += '<li><span class="bold">Size:</span> ' + temp_monster['Size'] + '</li>';
+
+		if (temp_monster['Edition'] === '5') {
+			new_doc += '<li><span class="bold">Saving Throws:</span> ';
+			['StrSave', 'DexSave', 'ConSave', 'IntSave', 'WisSave', 'ChaSave'].forEach(function(val) {
+				if (temp_monster[val]) {
+					new_doc += val.substring(0, 3) + ', ';
+				}
+			})
+			new_doc += '</li>';
+
+		} else if (temp_monster['Edition'] === '1') {
+			new_doc += '<li><span class="bold">CMD</span>: ' + temp_monster['Cmd'] + '</li>';
+			new_doc += '<li><span class="bold">CMB</span>: ' + temp_monster['Cmb'] + '</li>';
+
+			new_doc += '<li><span class="bold">Fortitude Save</span>: ' + temp_monster['FortSave'] + '</li>';
+			new_doc += '<li><span class="bold">Reflex Save</span>: ' + temp_monster['RefSave'] + '</li>';
+			new_doc += '<li><span class="bold">Will Save</span>: ' + temp_monster['WillSave'] + '</li>';
+
+		} else if (temp_monster['Edition'] === '2') {
+			new_doc += '<li><span class="bold">Fortitude Save</span>: ' + temp_monster['FortSave'] + '</li>';
+			new_doc += '<li><span class="bold">Reflex Save</span>: ' + temp_monster['RefSave'] + '</li>';
+			new_doc += '<li><span class="bold">Will Save</span>: ' + temp_monster['WillSave'] + '</li>';
+		}
+		new_doc += '<li><span class="bold">Damage Immunities</span>: ' + temp_monster['DamImmune'] + '</li>';
+		new_doc += '<li><span class="bold">Damage Resistances</span>: ' + temp_monster['DamResist'] + '</li>';
+		new_doc += '<li><span class="bold">Damage Weaknesses</span>: ' + temp_monster['DamWeak'] + '</li>';
+
+		new_doc += '<li><span class="bold">Senses</span>: ' + temp_monster['Sense'] + '</li>';
+		new_doc += '<li><span class="bold">Languages</span>: ' + temp_monster['Language'] + '</li>';
+
+		// Info Wrap up
+		new_doc += '</ul>';
+		new_doc += '</td></tr>';
+
+		// Stat Table
+		new_doc += '<tr><td><table class="inventory-table"><tr><th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th></tr><tr>';
+		['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'].forEach(function(stat) {
+			new_doc += '<td>';
+			if (is_numeric(temp_monster[stat])) {
+				new_doc += temp_monster[stat] + ' (' + get_mod(temp_monster[stat]) + ')';
+			} else {
+				new_doc += temp_monster[stat];
+			}
+			new_doc += '</td>';
+		})
+		new_doc += '</tr></table></td></tr>';
+
+		// Add actions
+		new_doc += '<tr><td><div class="attacks">'
+
+		for (var x = 0; x < temp_monster['Actions'].length; x++) {
+			var temp_action = temp_monster['Actions'][x];
+			new_doc += '<table><tr><th>' + temp_action['Name'];
+			if (temp_monster['Edition'] == '5' && temp_action['Legendary']) {
+				new_doc += ' - <span style="color:#FFD700">Legendary</span>';
+			}
+			new_doc += '</th></tr><tr><td>' + temp_action['Text'];
+			new_doc += '</td></tr></table>';
+		}
+
+		// Monster Wrap-up
+		new_doc += '</div></td></tr></table>';
+	}
+
+	/************************************************************************************************/
 
 	// Next is Lists
 	if (export_obj['Lists'].length > 0) {
@@ -726,28 +1379,33 @@ function export_page() {
 	}
 	new_doc += "</body></html>"
 
-	console.log(new_doc);
-	// // Parse to a DOM Document
-	// console.log(new DOMParser().parseFromString(new_doc, "text/html"));
+	if (DEBUG) { console.log('RAW String'); }
+	if (DEBUG) { console.log(new_doc); }
+
+	// Parse to a DOM Document
+	if (DEBUG) { console.log('Attempting to convert to a DOM object'); }
+	var new_dom = new DOMParser().parseFromString(new_doc, "text/html");
+	if (DEBUG) { console.log(new_dom); }
 
 	// Save to file
 	var textFile = null
-	var new_doc_blob = new Blob([new_doc], {type: 'text/plain;charset=utf-8'});
+	var new_doc_blob = new Blob([new_doc], {type: 'text/html;charset=utf-8'});
 	saveAs(new_doc_blob, document.getElementById("header").value + '.custom.html');
 }
 
+
 /**Export data to JSON object
- * @param ret Whether or not to return
- * @retrun JSON data for the webpage 
+ * @param callback Whether or not to return or print to file
+ * @return JSON data for the webpage 
  */
-function export_json(ret) {
-	if (DEBUG) { console.log("Exporting Page"); }
+function export_json(callback) {
+	if (DEBUG) { console.log("Exporting JSON"); }
 	// Clear export object
 	export_obj = {
+		"Monsters": [],
 		"Stores": [],
 		"Tables": [],
 		"Lists": [],
-		"Divs": [],
 	}
 	export_counter = 0;
 
@@ -755,21 +1413,61 @@ function export_json(ret) {
 	var editor_container = document.getElementById('Stores').childNodes;
 	if (DEBUG) { console.log(editor_container); }
 	for(var i = 0; i < editor_container.length; i++) {
-		// Found a container
+		// Found the container
 		if (/^S\dC/.test(editor_container[i].id)) {
 			var editor_element = editor_container[i];
-			export_obj['Stores'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
+			export_obj['Stores'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], true));
 		}
 	}
+
+	// Export Tables Next
+	editor_container = document.getElementById('Tables').childNodes;
+	if (DEBUG) { console.log(editor_container); }
+	for(var i = 0; i < editor_container.length; i++) {
+		// Found the container
+		if (/^T\dC/.test(editor_container[i].id)) {
+			var editor_element = editor_container[i];
+			export_obj['Tables'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], false));
+		}
+	}
+
+	// Export Monsters Next
+	editor_container = document.getElementById('Monsters').childNodes;
+	if (DEBUG) { console.log(editor_container); }
+	for(var i = 0; i < editor_container.length; i++) {
+		// Found the container
+		if (/^M\dC/.test(editor_container[i].id)) {
+			var editor_element = editor_container[i];
+			var edition = document.getElementById(editor_element.id + '_EDITION');
+			export_obj['Monsters'].push(get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
+		}
+	}
+
+	// Export Lists Next
+	editor_container = document.getElementById('Lists').childNodes;
+	if (DEBUG) { console.log(editor_container); }
+	for(var i = 0; i < editor_container.length; i++) {
+		// Found the container
+		if (/^L\dC/.test(editor_container[i].id)) {
+			var editor_element = editor_container[i];
+			export_obj['Lists'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
+		}
+	}
+
 	if (DEBUG) { console.log("Final Export Data"); }
 	if (DEBUG) { console.log(export_obj); }
-	// Save to file
-	var textFile = null
-	var new_doc_blob = new Blob([new_doc], {type: 'text/plain;charset=utf-8'});
-	saveAs(new_doc_blob, document.getElementById("header").value + '.custom.json');
+	if (!callback) {
+		// Save to file
+		var textFile = null
+		var new_doc_blob = new Blob([JSON.stringify(export_obj)], {type: 'text/plain;charset=utf-8'});
+		saveAs(new_doc_blob, document.getElementById("header").value + '.custom.json');
+	} else {
+		return export_obj;
+	}
 }
 
-/**Export everything into something readable
+
+/**Import everything from JSON object
  */
 function import_page() {
 	var string = prompt("Import JSON", '');
@@ -779,14 +1477,223 @@ function import_page() {
 	}
 
 	// Test whether the imported string is valid
-	if (DEBUG) { console.log("Import Data"); }
+	if (DEBUG) { console.log("Raw Import String"); }
 	if (DEBUG) { console.log(string); }
+	var new_json = {};
+	try {
+		new_json = JSON.parse(string);
+	} catch (e) {
+		alert('Invalid Import String!')
+		return
+	}
 
+	if (DEBUG) { console.log("JSON String validated. Beginning Document Change"); }
 
 
 	// Update page information to reflect the data imported.
+	for (let [key, value] of Object.entries(new_json)) {
+		if (DEBUG) { console.log("Parsing Key: " + key); }
+		if (DEBUG) { console.log(value); }
+
+		if (key === 'Stores') {
+			for (var i = 0; i < value.length; i++) {
+				if (DEBUG) { console.log("Parsing Store Owner"); }
+				create_element('Store');
+				latest_store--;
+				
+				// Set Owner Elements
+				set_dom_value('S' + latest_store + '_OWNER_STORE', value[i]['Owner']['Store Name']);
+				set_dom_value('S' + latest_store + '_OWNER_NAME', value[i]['Owner']['Name']);
+				set_dom_value('S' + latest_store + '_OWNER_DESCRIBE', value[i]['Owner']['Description']);
+				set_dom_value('S' + latest_store + '_OWNER_RACE', value[i]['Owner']['Race']);
+				set_dom_value('S' + latest_store + '_OWNER_GENDER', value[i]['Owner']['Gender']);
+				set_dom_value('S' + latest_store + '_OWNER_AGE', value[i]['Owner']['Age']);
+				set_dom_value('S' + latest_store + '_OWNER_TRAIT_1', value[i]['Owner']['Trait 1']);
+				set_dom_value('S' + latest_store + '_OWNER_TRAIT_2', value[i]['Owner']['Trait 2']);
+
+				// Set Item Elements
+				if (DEBUG) { console.log("Parsing Store Data"); }
+				for (var j = 0; j < value[i]['Data'].length; j++) {
+					if (value[i]['Data'][j]['Type'] === 'Blank') {
+						document.getElementById('S' + latest_store + 'C_ADD').click();
+						latest_store_rows--;
+						
+						var add_th = '';
+						var add_td = '';
+
+						// Since there's no Id's to follow, grab childNodes and select the one's that don't have Id's
+						var buttons = document.getElementById('S' + latest_store + 'R' + latest_store_rows).childNodes;
+						for (var x = buttons.length - 1; x >= 0; x--) {
+							if (add_th !== '' && add_td !== '') {
+								break;
+							}
+							if (buttons[x].innerHTML === "Add 'td'") {
+								add_td = buttons[x];
+							} else if (buttons[x].innerHTML === "Add 'th'") {
+								add_th = buttons[x];
+							}
+						}
+
+						// Loop through objects and hit buttons as needed.
+						Object.keys(value[i]['Data'][j]).forEach(function(key) {
+							var val = value[i]['Data'][j][key]
+							var add = key.split("").reverse().join("");
+							if (key.endsWith('H')) {
+								add_th.click();
+								set_dom_value('S' + latest_store + 'R' + latest_store_rows + key.split("").reverse().join("") + 'I', val)
+							} else if (key.endsWith('C')) {
+								add_td.click();
+								set_dom_value('S' + latest_store + 'R' + latest_store_rows + key.split("").reverse().join("") + 'I', val)
+							}
+						});
+
+						// Finally incriment when done, to not mess with future addition
+						latest_store_rows++;
+					} else {
+						document.getElementById('S' + latest_store + 'C_SPECIAL').click();
+						latest_store_rows--;
+						
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Name', value[i]['Data'][j]['Name']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Describe', value[i]['Data'][j]['Describe']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Text', value[i]['Data'][j]['Text']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Category_I', value[i]['Data'][j]['Cateogry']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Descriptor_I', value[i]['Data'][j]['Descriptor']);
+
+						// Finally incriment when done, to not mess with future addition
+						latest_store_rows++;
+					}
+				}
+
+				// Finally incriment when done, to not mess with future addition
+				latest_store++;
+			}
+		} else if (key === 'Tables') {
+			for (var i = 0; i < value.length; i++) {
+				if (DEBUG) { console.log("Parsing Table Data"); }
+				create_element('Table');
+				latest_table--;
+				
+				for (var j = 0; j < value[i]['Data'].length; j++) {
+					if (value[i]['Data'][j]['Type'] === 'Blank') {
+						document.getElementById('T' + latest_table + 'C_ADD').click();
+						latest_table_rows--;
+						
+						var add_th = '';
+						var add_td = '';
+
+						// Since there's no Id's to follow, grab childNodes and select the one's that don't have Id's
+						var buttons = document.getElementById('T' + latest_table + 'R' + latest_table_rows).childNodes;
+						for (var x = buttons.length - 1; x >= 0; x--) {
+							if (add_th !== '' && add_td !== '') {
+								break;
+							}
+							if (buttons[x].innerHTML === "Add 'td'") {
+								add_td = buttons[x];
+							} else if (buttons[x].innerHTML === "Add 'th'") {
+								add_th = buttons[x];
+							}
+						}
+
+						// Loop through objects and hit buttons as needed.
+						Object.keys(value[i]['Data'][j]).forEach(function(key) {
+							var val = value[i]['Data'][j][key]
+							var add = key.split("").reverse().join("");
+							if (key.endsWith('H')) {
+								add_th.click();
+								set_dom_value('T' + latest_table + 'R' + latest_table_rows + key.split("").reverse().join("") + 'I', val)
+							} else if (key.endsWith('C')) {
+								add_td.click();
+								set_dom_value('T' + latest_table + 'R' + latest_table_rows + key.split("").reverse().join("") + 'I', val)
+							}
+						});
+
+						// Finally incriment when done, to not mess with future addition
+						latest_table_rows++;
+					} else {
+						document.getElementById('T' + latest_table + 'C_SPECIAL').click();
+						latest_table_rows--;
+						
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Name', value[i]['Data'][j]['Name']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Describe', value[i]['Data'][j]['Describe']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Text', value[i]['Data'][j]['Text']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Category_I', value[i]['Data'][j]['Category']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Descriptor_I', value[i]['Data'][j]['Descriptor']);
+
+						// Finally incriment when done, to not mess with future addition
+						latest_table_rows++;
+					}
+				}
+
+				// Finally incriment when done, to not mess with future addition
+				latest_table++;
+			}
+		} else if (key.startsWith('Monster')) {
+			// TODO: Get this working for each type of Creature
+			for (var i = 0; i < value.length; i++) {
+				if (DEBUG) { console.log("Parsing Monster Data"); }
+				create_element('Monster');
+				latest_list--;
+				for (var j = 0; j < value[i].length; j++) {
+				}
+			}
+		} else if (key === 'Lists') {
+			for (var i = 0; i < value.length; i++) {
+				if (DEBUG) { console.log("Parsing List Data"); }
+				create_element('List');
+				latest_list--;
+				for (var j = 0; j < value[i].length; j++) {
+					document.getElementById('L' + latest_table + 'C_ADD').click();
+					latest_list_rows--;
+					set_dom_value('L' + latest_table + 'R' + latest_list_rows + 'I', value[i][j]['Data'])
+					if (value[i][j]['Bold']) {
+						document.getElementById('L' + latest_table + 'R' + latest_list_rows + 'I_BOLD').checked = true
+					}
+					if (value[i][j]['Underline']) {
+						document.getElementById('L' + latest_table + 'R' + latest_list_rows + 'I_UNDERLINE').checked = true
+					}
+					// Finally incriment when done, to not mess with future addition
+					latest_list_rows++;			
+				}
+
+				// Finally incriment when done, to not mess with future addition
+				latest_list++;
+			}
+		}
+	}
 }
 
-/** - Nice to Haves
- * I'd like to add the ability to import a file by a string.
+/**Set a DOM value for import
+ * @param dom DOM Id string
+ * @param value Value to be set
  */
+function set_dom_value(dom, value) {
+	var dom_elem = document.getElementById(dom);
+	dom_elem.value = value;
+}
+
+
+/**Convert Text to paragraphed HTML
+ * @param text The text to HTMLify
+ * @return HTMLified text
+ */
+function convert_text(text) {
+	return '<p>' + text.split('\n').join('</p><p>') + '</p>'
+}
+
+/**Validate id string passed in is Numeric
+ * @param value Number
+ * @return True if a number
+ */
+function is_numeric(value) {
+    return /^-?\d+$/.test(value);
+}
+
+
+/**Convert Stat to modifier
+ * @param stat Stat
+ * @return Modifier
+ */
+function get_mod(stat) {
+	var val = Math.floor(parseInt(stat) / 2) - 5;
+	return (val > 0) ? '+' + val : val;
+}
