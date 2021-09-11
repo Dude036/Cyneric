@@ -1,4 +1,4 @@
-let DEBUG = false;
+let DEBUG = true;
 let latest_store = 0;
 let latest_store_rows = 0;
 let latest_table = 0;
