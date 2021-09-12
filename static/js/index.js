@@ -541,7 +541,7 @@ function create_element(item) {
 				var ret = prompt('Input trait message');
 				if (ret != null) {
 					var temp_trait = document.createElement('li');
-					temp_trait.id = monster_trait_list_add.id + latest_monster_trait;
+					temp_trait.id = monster_trait_list_loc.id + '_' + latest_monster_trait;
 					latest_monster_trait++;
 					temp_trait.innerHTML = ret.toUpperCase() + ' <span style="color: red;font-weight: bold;"> X</span>';
 					temp_trait.style.backgroundColor = '#666666'
@@ -803,7 +803,7 @@ function create_element(item) {
 		var monster_stats_content = document.createElement('div')
 
 		// Base Stats
-		var stats = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA']
+		var stats = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
 		var monster_stats_table = document.createElement('table');
 		monster_stats_table.style.width = '100%';
 		var monster_stats_header = document.createElement('tr');
@@ -851,6 +851,7 @@ function create_element(item) {
 		monster_action_add.style.color = '#EFEFEF';
 		monster_action_add.style.float = 'right'
 		monster_action_add.style.padding = '5px'
+		monster_action_add.id = monster_header.id + '_ACTION_ADD';
 		monster_action_add.innerHTML = 'Add Action';
 
 		monster_action_add.onclick = function() {
@@ -1628,13 +1629,107 @@ function import_page() {
 				latest_table++;
 			}
 		} else if (key.startsWith('Monster')) {
-			// TODO: Get this working for each type of Creature
 			for (var i = 0; i < value.length; i++) {
 				if (DEBUG) { console.log("Parsing Monster Data"); }
-				create_element('Monster');
-				latest_list--;
-				for (var j = 0; j < value[i].length; j++) {
+				console.log(value[i]['Edition'])
+				create_element('Monster' + value[i]['Edition']);
+				latest_monster--;
+				console.log(value[i]);
+
+				// Begin Header section
+				set_dom_value('M' + latest_monster + 'R1_NAME', value[i]['Name']);
+				set_dom_value('M' + latest_monster + 'R1_CR', value[i]['Cr']);
+				set_dom_value('M' + latest_monster + 'R1_ALIGN', value[i]['Alignment']);
+				set_dom_value('M' + latest_monster + 'R1_DESCRIBE', deconvert_text(value[i]['Description']));
+				// Pathfinder 2e Traits
+				if (value[i]['Edition'] === '2') {
+					var trait_list_loc = document.getElementById('M' + latest_monster + 'R1_TRAITS')
+
+					// Since we can't replicate an Prompt Javascript tag, We just replicate the code
+					for (var j = 0; j < value[i]['Traits'].length; j++) {
+						var temp_trait = document.createElement('li');
+						temp_trait.id = 'M' + latest_monster + 'R1_TRAITS_' + latest_monster_trait;
+						latest_monster_trait++;
+						temp_trait.innerHTML = value[i]['Traits'][j].toUpperCase() + ' <span style="color: red;font-weight: bold;"> X</span>';
+						temp_trait.style.backgroundColor = '#666666'
+						temp_trait.style.color = '#EFEFEF';
+						temp_trait.style.display = 'inline';
+						temp_trait.style.padding = '8px';
+						temp_trait.style.margin = '8px';
+
+						temp_trait.onclick = function() {
+							if (confirm("Delete Trait?")) {
+								if (DEBUG) { console.log("Deleting Trait"); }
+								temp_trait.parentNode.removeChild(temp_trait);
+								if (DEBUG) { console.log("Trait successfully deleted"); }
+							}
+						}
+
+						trait_list_loc.appendChild(temp_trait);
+					}
 				}
+
+				// Begin Info section
+				set_dom_value('M' + latest_monster + 'R1_HP', value[i]['Hp']);
+				set_dom_value('M' + latest_monster + 'R1_SPEED', value[i]['Speed']);
+				set_dom_value('M' + latest_monster + 'R1_AC', value[i]['Ac']);
+				set_dom_value('M' + latest_monster + 'R1_SIZE', value[i]['Size']);
+				set_dom_value('M' + latest_monster + 'R1_DAM_IMMUNE', value[i]['DamImmune']);
+				set_dom_value('M' + latest_monster + 'R1_DAM_RESIST', value[i]['DamResist']);
+				set_dom_value('M' + latest_monster + 'R1_DAM_WEAK', value[i]['DamWeak']);
+				set_dom_value('M' + latest_monster + 'R1_SENSE', value[i]['Sense']);
+				set_dom_value('M' + latest_monster + 'R1_LANGUAGE', value[i]['Language']);
+
+				// 5e Saves vs Pathfinder Saves
+				if (value[i]['Edition'] === '5') {
+					['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'].forEach(function(save) {
+						if (value[i][save + 'Save']) {
+							document.getElementById('M' + latest_monster + 'R1_' + save.toUpperCase() + '_SAVE').checked = true;
+						}
+					});
+				} else if (value[i]['Edition'] === '1' || value[i]['Edition'] === '2') {
+					set_dom_value('M' + latest_monster + 'R1_FORT_SAVE', value[i]['FortSave']);
+					set_dom_value('M' + latest_monster + 'R1_REF_SAVE', value[i]['RefSave']);
+					set_dom_value('M' + latest_monster + 'R1_WILL_SAVE', value[i]['WillSave']);
+				}
+				// New AC and Combat Maneuver
+				if (value[i]['Edition'] === '1') {
+					set_dom_value('M' + latest_monster + 'R1_TOUCH_AC', value[i]['TouchAc']);
+					set_dom_value('M' + latest_monster + 'R1_FLAT_AC', value[i]['FlatAc']);
+					set_dom_value('M' + latest_monster + 'R1_CMB', value[i]['Cmb']);
+					set_dom_value('M' + latest_monster + 'R1_CMD', value[i]['Cmd']);
+
+				}
+
+				// Begin Stats section
+				set_dom_value('M' + latest_monster + 'R1_STR', value[i]['Str']);
+				set_dom_value('M' + latest_monster + 'R1_DEX', value[i]['Dex']);
+				set_dom_value('M' + latest_monster + 'R1_CON', value[i]['Con']);
+				set_dom_value('M' + latest_monster + 'R1_INT', value[i]['Int']);
+				set_dom_value('M' + latest_monster + 'R1_WIS', value[i]['Wis']);
+				set_dom_value('M' + latest_monster + 'R1_CHA', value[i]['Cha']);
+
+				// Begin Actions seciont (universal for monsters)
+				for (var j = 0; j < value[i]['Actions'].length; j++) {
+					var temp_action = value[i]['Actions'][j];
+					document.getElementById('M' + latest_monster + 'R1_ACTION_ADD').click();
+					latest_monster_action--;
+					set_dom_value('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_NAME', temp_action['Name']);
+					set_dom_value('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_TEXT', deconvert_text(temp_action['Text']));
+
+					// Legendary Action for 5th edition
+					if (value[i]['Edition'] === '5') {
+						if (temp_action['Legendary']) {
+							document.getElementById('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_LEGEND').checked = true;
+						}
+					}
+
+					// Incriment again
+					latest_monster_action++;
+				}
+
+				// Incriment again
+				latest_monster++;
 			}
 		} else if (key === 'Lists') {
 			for (var i = 0; i < value.length; i++) {
@@ -1678,6 +1773,15 @@ function set_dom_value(dom, value) {
  */
 function convert_text(text) {
 	return '<p>' + text.split('\n').join('</p><p>') + '</p>'
+}
+
+
+/**Reavers the convert text function into paragraphs
+ * @param text The text to normalize
+ * @return Normal text
+ */
+function deconvert_text(text) {
+	return text.substring(3, text.length - 4).split('</p><p>').join('\n');
 }
 
 /**Validate id string passed in is Numeric
