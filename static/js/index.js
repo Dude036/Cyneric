@@ -1836,8 +1836,64 @@ function import_page() {
 					latest_monster_action++;
 				}
 
+				// Add Monster Treasure Import
+				var loot_table = value[i]['Treasure']
+				latest_table--;
+
+				for (var j = 0; j < loot_table['Data'].length; j++) {
+					if (loot_table['Data'][j]['Type'] === 'Blank') {
+						document.getElementById('MT' + latest_table + 'C_ADD').click();
+						latest_table_rows--;
+						
+						var add_th = '';
+						var add_td = '';
+
+						// Since there's no Id's to follow, grab childNodes and select the one's that don't have Id's
+						var buttons = document.getElementById('MT' + latest_table + 'R' + latest_table_rows).childNodes;
+						for (var x = buttons.length - 1; x >= 0; x--) {
+							if (add_th !== '' && add_td !== '') {
+								break;
+							}
+							if (buttons[x].innerHTML === "Add 'td'") {
+								add_td = buttons[x];
+							} else if (buttons[x].innerHTML === "Add 'th'") {
+								add_th = buttons[x];
+							}
+						}
+
+						// Loop through objects and hit buttons as needed.
+						Object.keys(loot_table['Data'][j]).forEach(function(key) {
+							var val = loot_table['Data'][j][key]
+							var add = key.split("").reverse().join("");
+							if (key.endsWith('H')) {
+								add_th.click();
+								set_dom_value('MT' + latest_table + 'R' + latest_table_rows + key.split("").reverse().join("") + 'I', val)
+							} else if (key.endsWith('C')) {
+								add_td.click();
+								set_dom_value('MT' + latest_table + 'R' + latest_table_rows + key.split("").reverse().join("") + 'I', val)
+							}
+						});
+
+						// Finally incriment when done, to not mess with future addition
+						latest_table_rows++;
+					} else {
+						document.getElementById('MT' + latest_table + 'C_SPECIAL').click();
+						latest_table_rows--;
+						
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Name', loot_table['Data'][j]['Name']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Describe', loot_table['Data'][j]['Describe']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Text', loot_table['Data'][j]['Text']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Category_I', loot_table['Data'][j]['Category']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Descriptor_I', loot_table['Data'][j]['Descriptor']);
+
+						// Finally incriment when done, to not mess with future addition
+						latest_table_rows++;
+					}
+				}
+
 				// Incriment again
 				latest_monster++;
+				latest_table++;
 			}
 		} else if (key === 'Lists') {
 			for (var i = 0; i < value.length; i++) {
