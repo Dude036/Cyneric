@@ -32,92 +32,93 @@ function editor_container_table(element) {
 	container.width = '100%';
 
 	// Add Sub Element Methods
+	// Add New Row divs
+	var add_row_div = document.createElement('div');
+	add_row_div.id = container.id + "_ADD";
+	add_row_div.style.backgroundColor = '#500050';
+	add_row_div.style.color = '#EFEFEF';
+	add_row_div.style.float = 'right';
+	add_row_div.style.padding = '5px';
+	add_row_div.innerHTML = "Add Blank Row";
+
+	// Setup function to add items to the row
+	add_row_div.onclick = function() {
+		// Row Setup
+		var new_row = element.insertRow(element.rows.length);
+		if (element.id.startsWith("S")) {
+			new_row.id = element.id + "R" + latest_store_rows;
+			latest_store_rows++;
+		} else {
+			new_row.id = element.id + "R" + latest_table_rows;
+			latest_table_rows++;
+		}
+
+		// Delete Row
+		var add_delete = new_row.insertCell(0);
+		add_delete.style.float = 'right';
+		add_delete.style.width = '8px';
+		add_delete.style.backgroundColor = '#C00000';
+		add_delete.style.color = '#EFEFEF';
+		add_delete.innerHTML = "<b>X</b>";
+
+		// Add Delete row Method
+		add_delete.onclick = function() {
+			if (confirm("Are you sure you want to delete this row?")) {
+				if (DEBUG) { console.log("Deleting Row"); }
+				new_row.parentNode.removeChild(new_row);
+				if (DEBUG) { console.log("Row Successfully Deleted"); }
+			}
+		}
+
+		// Detail Style
+		var add_detail = new_row.insertCell(1);
+		add_detail.style.float = 'right';
+		add_detail.style.width = '55px';
+		add_detail.style.backgroundColor = '#500050';
+		add_detail.style.color = '#EFEFEF';
+		add_detail.innerHTML = "Add 'td'";
+
+		// Setup function for adding td Cell
+		add_detail.onclick = function() {
+			var new_cell = new_row.insertCell(new_row.cells.length-3);
+			if (DEBUG) { console.log(new_row.id) }
+			new_cell.id = new_row.id + 'C' + (new_row.cells.length - 3);
+			new_cell.style.backgroundColor = "#FFFFFF";
+
+			var new_input = document.createElement('input');
+			new_input.type = 'text';
+			new_input.name = new_cell.id + "I";
+			new_input.id = new_cell.id + "I";
+
+			new_cell.appendChild(new_input);
+		}
+
+		var add_header = new_row.insertCell(2);
+
+		// Header Style
+		add_header.style.float = 'right';
+		add_header.style.width = '55px';
+		add_header.style.backgroundColor = '#005050';
+		add_header.style.color = '#EFEFEF';
+		add_header.innerHTML = "Add 'th'";
+
+		// Setup function for adding th Cell
+		add_header.onclick = function() {
+			var new_cell = new_row.insertCell(new_row.cells.length-3);
+			new_cell.id = new_row.id + 'H' + (new_row.cells.length - 3);
+			new_cell.style.backgroundColor = "#CFCFCF";
+
+			var new_input = document.createElement('input');
+			new_input.type = 'text';
+			new_input.name = new_cell.id + "I";
+			new_input.id = new_cell.id + "I";
+
+			new_cell.appendChild(new_input);
+		}
+	};
+
+	// Only Delete if it is its own table.
 	if (element.id.startsWith("S") || element.id.startsWith("T")) {
-		// Add New Row divs
-		var add_row_div = document.createElement('div');
-		add_row_div.id = container.id + "_ADD";
-		add_row_div.style.backgroundColor = '#500050';
-		add_row_div.style.color = '#EFEFEF';
-		add_row_div.style.float = 'right';
-		add_row_div.style.padding = '5px';
-		add_row_div.innerHTML = "Add Blank Row";
-
-		// Setup function to add items to the row
-		add_row_div.onclick = function() {
-			// Row Setup
-			var new_row = element.insertRow(element.rows.length);
-			if (element.id.startsWith("S")) {
-				new_row.id = element.id + "R" + latest_store_rows;
-				latest_store_rows++;
-			} else {
-				new_row.id = element.id + "R" + latest_table_rows;
-				latest_table_rows++;
-			}
-
-			// Delete Row
-			var add_delete = new_row.insertCell(0);
-			add_delete.style.float = 'right';
-			add_delete.style.width = '8px';
-			add_delete.style.backgroundColor = '#C00000';
-			add_delete.style.color = '#EFEFEF';
-			add_delete.innerHTML = "<b>X</b>";
-
-			// Add Delete row Method
-			add_delete.onclick = function() {
-				if (confirm("Are you sure you want to delete this row?")) {
-					if (DEBUG) { console.log("Deleting Row"); }
-					new_row.parentNode.removeChild(new_row);
-					if (DEBUG) { console.log("Row Successfully Deleted"); }
-				}
-			}
-
-			// Detail Style
-			var add_detail = new_row.insertCell(1);
-			add_detail.style.float = 'right';
-			add_detail.style.width = '55px';
-			add_detail.style.backgroundColor = '#500050';
-			add_detail.style.color = '#EFEFEF';
-			add_detail.innerHTML = "Add 'td'";
-
-			// Setup function for adding td Cell
-			add_detail.onclick = function() {
-				var new_cell = new_row.insertCell(new_row.cells.length-3);
-				if (DEBUG) { console.log(new_row.id) }
-				new_cell.id = new_row.id + 'C' + (new_row.cells.length - 3);
-				new_cell.style.backgroundColor = "#FFFFFF";
-
-				var new_input = document.createElement('input');
-				new_input.type = 'text';
-				new_input.name = new_cell.id + "I";
-				new_input.id = new_cell.id + "I";
-
-				new_cell.appendChild(new_input);
-			}
-
-			var add_header = new_row.insertCell(2);
-
-			// Header Style
-			add_header.style.float = 'right';
-			add_header.style.width = '55px';
-			add_header.style.backgroundColor = '#005050';
-			add_header.style.color = '#EFEFEF';
-			add_header.innerHTML = "Add 'th'";
-
-			// Setup function for adding th Cell
-			add_header.onclick = function() {
-				var new_cell = new_row.insertCell(new_row.cells.length-3);
-				new_cell.id = new_row.id + 'H' + (new_row.cells.length - 3);
-				new_cell.style.backgroundColor = "#CFCFCF";
-
-				var new_input = document.createElement('input');
-				new_input.type = 'text';
-				new_input.name = new_cell.id + "I";
-				new_input.id = new_cell.id + "I";
-
-				new_cell.appendChild(new_input);
-			}
-		};
-
 		// Delete Method
 		var add_delete_div = document.createElement('div');
 		add_delete_div.style.float = 'right';
@@ -136,94 +137,115 @@ function editor_container_table(element) {
 			}
 		}
 
-		// Add Special Row
-		var add_item_div = document.createElement('div');
-		add_item_div.id = container.id + "_SPECIAL";
-		add_item_div.style.float = 'right';
-		add_item_div.style.padding = '5px';
-		add_item_div.style.backgroundColor = '#005050';
-		add_item_div.style.color = '#EFEFEF';
-		add_item_div.innerHTML = "Add Item Row";
+		container.appendChild(add_delete_div);
+	} else if (element.id.startsWith("M")) {
+		// Clear Elementes Method
+		var add_delete_div = document.createElement('div');
+		add_delete_div.style.float = 'right';
+		add_delete_div.style.padding = '5px';
+		add_delete_div.style.backgroundColor = '#C00000';
+		add_delete_div.style.color = '#EFEFEF';
+		add_delete_div.innerHTML = "Clear Table";
+		add_delete_div.id = container.id + "_CLEAR";
 
-		// Add Special Row options
-		add_item_div.onclick = function() {
-			// Row Setup
-			var item_row = element.insertRow(element.rows.length);
-			if (element.id.startsWith("S")) {
-				item_row.id = element.id + "R" + latest_store_rows;
-				latest_store_rows++;
-			} else {
-				item_row.id = element.id + "R" + latest_table_rows;
-				latest_table_rows++;
+		// Delete Table option
+		add_delete_div.onclick = function() {
+			if (confirm("Clear Table?")) {
+				if (DEBUG) { console.log("Clearing Table"); }
+				element.innerHTML = '';
+				if (DEBUG) { console.log("Table successfully Cleared"); }
 			}
-
-			// Delete Row
-			var add_delete = item_row.insertCell(0);
-			add_delete.style.float = 'right';
-			add_delete.style.width = '8px';
-			add_delete.style.backgroundColor = '#C00000';
-			add_delete.style.color = '#EFEFEF';
-			add_delete.innerHTML = "<b>X</b>";
-
-			// Add Delete row Method
-			add_delete.onclick = function() {
-				if (confirm("Are you sure you want to delete this row?")) {
-					if (DEBUG) { console.log("Deleting Row"); }
-					item_row.parentNode.removeChild(item_row);
-					if (DEBUG) { console.log("Row Successfully Deleted"); }
-				}
-			}
-
-			// Item additions
-			var item_descriptor_cell = item_row.insertCell(0);
-			item_descriptor_cell.id = item_row.id + "_Descriptor";
-
-			var item_descriptor = document.createElement('input');
-			item_descriptor.id = item_descriptor_cell.id + "_I";
-			item_descriptor.placeholder = 'Descriptor';
-			item_descriptor_cell.appendChild(item_descriptor);
-
-			var item_category_cell = item_row.insertCell(0);
-			item_category_cell.id = item_row.id + "_Category";
-
-			var item_category = document.createElement('input');
-			item_category.id = item_category_cell.id + "_I";
-			item_category.placeholder = 'Category';
-			item_category_cell.appendChild(item_category);
-
-			// Main Item info
-			var item_data_cell = item_row.insertCell(0);
-			item_data_cell.id = item_row.id + "_Data"
-
-			var item_name = document.createElement('input');
-			item_name.type = 'text';
-			item_name.name = item_row.id + "_Name";
-			item_name.id = item_row.id + "_Name";
-			item_name.placeholder = 'Name';
-			item_data_cell.appendChild(item_name);
-
-			item_data_cell.appendChild(document.createElement('br'));
-
-			var item_describe = document.createElement('input');
-			item_describe.type = 'text';
-			item_describe.name = item_row.id + "_Describe";
-			item_describe.id = item_row.id + "_Describe";
-			item_describe.placeholder = 'Description';
-			item_data_cell.appendChild(item_describe);
-
-			item_data_cell.appendChild(document.createElement('br'));
-
-			var item_text = document.createElement('textarea');
-			item_text.name = item_row.id + "_Text";
-			item_text.id = item_row.id + "_Text";
-			item_text.placeholder = 'Long Description';
-			item_data_cell.appendChild(item_text);
 		}
 
 		container.appendChild(add_delete_div);
-		container.appendChild(add_row_div);
-		container.appendChild(add_item_div);
 	}
+
+	// Add Special Row
+	var add_item_div = document.createElement('div');
+	add_item_div.id = container.id + "_SPECIAL";
+	add_item_div.style.float = 'right';
+	add_item_div.style.padding = '5px';
+	add_item_div.style.backgroundColor = '#005050';
+	add_item_div.style.color = '#EFEFEF';
+	add_item_div.innerHTML = "Add Item Row";
+
+	// Add Special Row options
+	add_item_div.onclick = function() {
+		// Row Setup
+		var item_row = element.insertRow(element.rows.length);
+		if (element.id.startsWith("S")) {
+			item_row.id = element.id + "R" + latest_store_rows;
+			latest_store_rows++;
+		} else {
+			item_row.id = element.id + "R" + latest_table_rows;
+			latest_table_rows++;
+		}
+
+		// Delete Row
+		var add_delete = item_row.insertCell(0);
+		add_delete.style.float = 'right';
+		add_delete.style.width = '8px';
+		add_delete.style.backgroundColor = '#C00000';
+		add_delete.style.color = '#EFEFEF';
+		add_delete.innerHTML = "<b>X</b>";
+
+		// Add Delete row Method
+		add_delete.onclick = function() {
+			if (confirm("Are you sure you want to delete this row?")) {
+				if (DEBUG) { console.log("Deleting Row"); }
+				item_row.parentNode.removeChild(item_row);
+				if (DEBUG) { console.log("Row Successfully Deleted"); }
+			}
+		}
+
+		// Item additions
+		var item_descriptor_cell = item_row.insertCell(0);
+		item_descriptor_cell.id = item_row.id + "_Descriptor";
+
+		var item_descriptor = document.createElement('input');
+		item_descriptor.id = item_descriptor_cell.id + "_I";
+		item_descriptor.placeholder = 'Descriptor';
+		item_descriptor_cell.appendChild(item_descriptor);
+
+		var item_category_cell = item_row.insertCell(0);
+		item_category_cell.id = item_row.id + "_Category";
+
+		var item_category = document.createElement('input');
+		item_category.id = item_category_cell.id + "_I";
+		item_category.placeholder = 'Category';
+		item_category_cell.appendChild(item_category);
+
+		// Main Item info
+		var item_data_cell = item_row.insertCell(0);
+		item_data_cell.id = item_row.id + "_Data"
+
+		var item_name = document.createElement('input');
+		item_name.type = 'text';
+		item_name.name = item_row.id + "_Name";
+		item_name.id = item_row.id + "_Name";
+		item_name.placeholder = 'Name';
+		item_data_cell.appendChild(item_name);
+
+		item_data_cell.appendChild(document.createElement('br'));
+
+		var item_describe = document.createElement('input');
+		item_describe.type = 'text';
+		item_describe.name = item_row.id + "_Describe";
+		item_describe.id = item_row.id + "_Describe";
+		item_describe.placeholder = 'Description';
+		item_data_cell.appendChild(item_describe);
+
+		item_data_cell.appendChild(document.createElement('br'));
+
+		var item_text = document.createElement('textarea');
+		item_text.name = item_row.id + "_Text";
+		item_text.id = item_row.id + "_Text";
+		item_text.placeholder = 'Long Description';
+		item_data_cell.appendChild(item_text);
+	}
+
+	container.appendChild(add_row_div);
+	container.appendChild(add_item_div);
 	
 	// Add Movement within local div?
 	container.appendChild(element);
@@ -921,10 +943,55 @@ function create_element(item) {
 			monster_action_container.appendChild(temp_action);
 		}
 
+
+		var monster_action_clear = document.createElement('div');
+		monster_action_clear.style.backgroundColor = '#C00000';
+		monster_action_clear.style.color = '#EFEFEF';
+		monster_action_clear.style.float = 'right'
+		monster_action_clear.style.padding = '5px'
+		monster_action_clear.id = monster_header.id + '_ACTION_CLEAR';
+		monster_action_clear.innerHTML = 'Clear Actions';
+
+		// Delete Table option
+		monster_action_clear.onclick = function() {
+			if (confirm("Clear Actions?")) {
+				if (DEBUG) { console.log("Clearing Actions"); }
+				monster_action_container.innerHTML = '';
+				if (DEBUG) { console.log("Actions successfully Cleared"); }
+			}
+		}
+
+		monster_action_content.appendChild(monster_action_clear);
 		monster_action_content.appendChild(monster_action_add);
 		monster_action_content.appendChild(monster_action_container);
 		monster_action.appendChild(monster_action_content);
 		monster.appendChild(monster_action);
+
+		/*******************************************************************************************************/
+
+		var monster_loot = document.createElement('tr');
+		var monster_loot_table = document.createElement('table');
+
+		monster_loot_table.id = "MT" + latest_table
+		latest_table += 1;
+
+		// Style
+		monster_loot_table.style.width = "100%";
+		monster_loot_table.style.borderBottom = "1px solid black";
+		monster_loot_table.style.marginBottom = "20px";
+
+		var monster_loot_container = editor_container_table(monster_loot_table);
+
+		monster_loot.id = monster.id + 'R5';
+
+		// Finalize
+
+		var monster_loot_text = document.createElement('h3');
+		monster_loot_text.style.textAlign = 'center'
+		monster_loot_text.innerHTML = 'Treasure';
+		monster_loot.appendChild(monster_loot_text);
+		monster_loot.appendChild(monster_loot_container);
+		monster.appendChild(monster_loot);
 
 		// Add
 		var parent = document.getElementById("Monsters");
@@ -975,6 +1042,7 @@ function get_table_owner_data(row) {
 
 /**Extract all table data from the div table element
  * @param table The table produced
+ * @param store Bool, True if table is a store
  * @return Object data for the table element
  */
 function get_table_data(table, store) {
@@ -1055,7 +1123,7 @@ function get_list_data(list) {
  * @param special Special string to convert
  * @return ID usable strings
  */
-function conver_special_to_id(special) {
+function convert_special_to_id(special) {
 	var new_str = '';
 	special = special.slice(special.indexOf('_') + 1);
 	special.split('_').forEach(function(sub) {
@@ -1103,7 +1171,7 @@ function get_monster_data(monster, edition) {
 	var monster_info_inputs = monster_info.querySelectorAll('input');
 	if (DEBUG) { console.log(monster_info_inputs); }
 	for (var i = 0; i < monster_info_inputs.length; i++) {
-		var new_key = conver_special_to_id(monster_info_inputs[i].id)
+		var new_key = convert_special_to_id(monster_info_inputs[i].id)
 		if (new_key.startsWith('Str') || new_key.startsWith('Dex') || new_key.startsWith('Con') || new_key.startsWith('Int') || new_key.startsWith('Wis') || new_key.startsWith('Cha')) {
 			monster_obj[new_key] = monster_info_inputs[i].checked;
 		} else {
@@ -1117,7 +1185,7 @@ function get_monster_data(monster, edition) {
 	var monster_stats_inputs = monster_stats.querySelectorAll('input');
 	if (DEBUG) { console.log(monster_stats_inputs); }
 	for (var i = 0; i < monster_stats_inputs.length; i++) {
-		monster_obj[conver_special_to_id(monster_stats_inputs[i].id)] = monster_stats_inputs[i].value;
+		monster_obj[convert_special_to_id(monster_stats_inputs[i].id)] = monster_stats_inputs[i].value;
 	}
 
 	/*******************************************************************************************************/
@@ -1138,6 +1206,12 @@ function get_monster_data(monster, edition) {
 
 		monster_obj['Actions'].push(action_obj);
 	});
+
+	/*******************************************************************************************************/
+	var monster_loot = monster.rows[4].querySelector('table');
+	console.log(monster_loot);
+	monster_obj['Treasure'] = get_table_data(monster_loot, false);
+	
 
 	if (DEBUG) { console.log("Monster successfully handled"); }
 	if (DEBUG) { console.log(monster_obj); }
@@ -1352,8 +1426,42 @@ function export_page() {
 			new_doc += '</td></tr></table>';
 		}
 
-		// Monster Wrap-up
-		new_doc += '</div></td></tr></table>';
+		// Monster Treasure
+		new_doc += '</div></td></tr><tr><td><h3 style="text-align:center;">Treasure</h3>'
+
+		var treasure = temp_monster['Treasure'];
+		if (DEBUG) { console.log("Adding Table " + i) };
+
+		// Loop through items
+		new_doc += '<table class="inventory-table" style="width:100%">';
+		for (var x = 0; x < treasure['Data'].length; x++) {
+
+			// For Items
+			new_doc += '<tr>'
+			if (treasure['Data'][x]['Type'] == 'Item') {
+				if (DEBUG) { console.log("Explicit Item found"); }
+				export_counter++;
+				new_doc += '<td style="width:50%;"><span class="text-md" onclick="show_hide(\'' + export_counter + '\')" style="color:blue;">';
+				new_doc += treasure['Data'][x]['Name'] + '</span><br><span class="text-sm emp" id="' + export_counter + '" style="display: none;">';
+				new_doc += treasure['Data'][x]['Describe'] + '<p>' + treasure['Data'][x]['Text'] + '</p></span></td><td>';
+				new_doc += treasure['Data'][x]['Category'] + '</td><td>' + treasure['Data'][x]['Descriptor'] + '</td>';
+			} else {
+				// For Blanks
+				if (DEBUG) { console.log("Blank row found"); }
+				var sorted_keys = Object.keys(treasure['Data'][x]);
+				sorted_keys.sort()
+
+				for (var y = 0; y < sorted_keys.length - 1; y++) {
+					if (sorted_keys[y].endsWith('H')) {
+						new_doc += '<th>' + treasure['Data'][x][sorted_keys[y]] + '</th>'
+					} else {
+						new_doc += '<td>' + treasure['Data'][x][sorted_keys[y]] + '</td>'
+					}
+				}
+			}
+			new_doc += '</tr>'
+		}
+		new_doc += '</table></td></tr></table>';
 	}
 
 	/************************************************************************************************/
@@ -1757,6 +1865,7 @@ function import_page() {
 	}
 }
 
+
 /**Set a DOM value for import
  * @param dom DOM Id string
  * @param value Value to be set
@@ -1783,6 +1892,7 @@ function convert_text(text) {
 function deconvert_text(text) {
 	return text.substring(3, text.length - 4).split('</p><p>').join('\n');
 }
+
 
 /**Validate id string passed in is Numeric
  * @param value Number
