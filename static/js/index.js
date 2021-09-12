@@ -677,7 +677,7 @@ function create_element(item) {
 			monster_str_save.name = monster_header.id  + '_STR_SAVE'
 
 			var monster_str_save_label = document.createElement('label');
-			monster_str_save_label.htmlFor = monster_header.id  + '_STR_SAVE'
+			monster_str_save_label.htmlFor = monster_header.id  + '_STR_SAVE_LABEL'
 			monster_str_save_label.innerHTML = "<b>STR Save</b>"
 
 			monster_save_1.appendChild(monster_str_save);
@@ -689,7 +689,7 @@ function create_element(item) {
 			monster_dex_save.name = monster_header.id  + '_DEX_SAVE'
 
 			var monster_dex_save_label = document.createElement('label');
-			monster_dex_save_label.htmlFor = monster_header.id  + '_DEX_SAVE'
+			monster_dex_save_label.htmlFor = monster_header.id  + '_DEX_SAVE_LABEL'
 			monster_dex_save_label.innerHTML = "<b>DEX Save</b>"
 
 			monster_save_1.appendChild(monster_dex_save);
@@ -704,7 +704,7 @@ function create_element(item) {
 			monster_con_save.name = monster_header.id  + '_CON_SAVE'
 
 			var monster_con_save_label = document.createElement('label');
-			monster_con_save_label.htmlFor = monster_header.id  + '_CON_SAVE'
+			monster_con_save_label.htmlFor = monster_header.id  + '_CON_SAVE_LABEL'
 			monster_con_save_label.innerHTML = "<b>CON Save</b>"
 
 			monster_save_2.appendChild(monster_con_save);
@@ -716,7 +716,7 @@ function create_element(item) {
 			monster_int_save.name = monster_header.id  + '_INT_SAVE'
 
 			var monster_int_save_label = document.createElement('label');
-			monster_int_save_label.htmlFor = monster_header.id  + '_INT_SAVE'
+			monster_int_save_label.htmlFor = monster_header.id  + '_INT_SAVE_LABEL'
 			monster_int_save_label.innerHTML = "<b>INT Save</b>"
 
 			monster_save_2.appendChild(monster_int_save);
@@ -731,7 +731,7 @@ function create_element(item) {
 			monster_wis_save.name = monster_header.id  + '_WIS_SAVE'
 
 			var monster_wis_save_label = document.createElement('label');
-			monster_wis_save_label.htmlFor = monster_header.id  + '_WIS_SAVE'
+			monster_wis_save_label.htmlFor = monster_header.id  + '_WIS_SAVE_LABEL'
 			monster_wis_save_label.innerHTML = "<b>WIS Save</b>"
 
 			monster_save_3.appendChild(monster_wis_save);
@@ -743,7 +743,7 @@ function create_element(item) {
 			monster_cha_save.name = monster_header.id  + '_CHA_SAVE'
 
 			var monster_cha_save_label = document.createElement('label');
-			monster_cha_save_label.htmlFor = monster_header.id  + '_CHA_SAVE'
+			monster_cha_save_label.htmlFor = monster_header.id  + '_CHA_SAVE_LABEL'
 			monster_cha_save_label.innerHTML = "<b>CHA Save</b>"
 
 			monster_save_3.appendChild(monster_cha_save);
@@ -900,7 +900,7 @@ function create_element(item) {
 				monster_action_legend.name = temp_action.id  + '_LEGEND'
 
 				var monster_action_legend_label = document.createElement('label');
-				monster_action_legend_label.htmlFor = temp_action.id  + '_LEGEND'
+				monster_action_legend_label.htmlFor = temp_action.id  + '_LEGEND_LABEL'
 				monster_action_legend_label.innerHTML = "<b>Legendary</b>"
 				monster_action_legend_label.style.paddingLeft = '10px'
 				temp_action_header.appendChild(monster_action_legend_label);
