@@ -12,6 +12,8 @@ let latest_monster_action = 0;
 
 // Export Variables
 let export_obj = {
+	"Name": "",
+	"Description": "",
 	"Monsters": [],
 	"Stores": [],
 	"Tables": [],
@@ -1238,8 +1240,7 @@ function export_page() {
 	// Header and description
 	if (document.getElementById("header").value === "") { document.getElementById("header").value = 'Town' }
 	if (document.getElementById("description").value === "") { document.getElementById("description").value = 'Description' }
-	new_doc += "<h1>" + document.getElementById("header").value + "</h1>";
-	new_doc += "<p>" + document.getElementById("description").value + "</p>";
+	new_doc += "<h1>" + export_obj['Name'] + "</h1>" + export_obj['Description'];
 
 	// Start with Stores
 	if (export_obj['Stores'].length > 0) {
@@ -1511,12 +1512,18 @@ function export_json(callback) {
 	if (DEBUG) { console.log("Exporting JSON"); }
 	// Clear export object
 	export_obj = {
+		"Name": "",
+		"Description": "",
 		"Monsters": [],
 		"Stores": [],
 		"Tables": [],
 		"Lists": [],
 	}
 	export_counter = 0;
+
+	// Header Info
+	export_obj['Name'] = document.getElementById('header').value;
+	export_obj['Description'] = convert_text(document.getElementById('description').value);
 
 	// Begin exporting Stores
 	var editor_container = document.getElementById('Stores').childNodes;
@@ -1600,6 +1607,9 @@ function import_page() {
 
 
 	// Update page information to reflect the data imported.
+	set_dom_value('header', new_json['Name']);
+	set_dom_value('description', deconvert_text(new_json['Description']));
+
 	for (let [key, value] of Object.entries(new_json)) {
 		if (DEBUG) { console.log("Parsing Key: " + key); }
 		if (DEBUG) { console.log(value); }
