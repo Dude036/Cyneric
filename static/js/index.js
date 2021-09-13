@@ -9,6 +9,8 @@ let latest_monster = 0;
 let latest_monster_rows = 0;
 let latest_monster_trait = 0;
 let latest_monster_action = 0;
+let latest_hazard = 0;
+let latest_hazard_trait = 0;
 
 // Export Variables
 let export_obj = {
@@ -18,6 +20,7 @@ let export_obj = {
 	"Stores": [],
 	"Tables": [],
 	"Lists": [],
+	"Hazards": [],
 }
 let export_counter = 0;
 
@@ -370,7 +373,7 @@ function editor_container_list(element) {
 
 /**Create the Parent Container for Monsters
  * @param element Primary child element, the table
- * @param element Primary child element, the table
+ * @param edition Child Element's edition
  * @return Fully formed container for Monster Table elements
  */
 function editor_container_monster(element, edition) {
@@ -382,7 +385,6 @@ function editor_container_monster(element, edition) {
 	container.width = '100%';
 
 	// Add monster information
-	// Delete Styling
 	var add_edition_div = document.createElement('div');
 	add_edition_div.style.float = 'right';
 	add_edition_div.style.padding = '5px';
@@ -422,7 +424,798 @@ function editor_container_monster(element, edition) {
 
 	container.appendChild(element);
 	return container;
- }
+}
+
+
+/**Create the Parent container for Hazard
+ * @param element Primary Child element, the table
+ * @param edition Child element's edition
+ * @return Fully formed chontainer for Hazard table elements
+ */
+function editor_container_hazard(element, edition) {
+	var container = document.createElement("div");
+	container.id = element.id + "C";
+	container.width = '100%';
+
+	// Add hazard information
+	var add_edition_div = document.createElement('div');
+	add_edition_div.style.float = 'right';
+	add_edition_div.style.padding = '5px';
+	add_edition_div.style.color = '#EFEFEF';
+	if (edition == '5') {
+		add_edition_div.style.backgroundColor = '#009999';
+		add_edition_div.innerHTML = "Edition: D&D 5e";
+	} else if (edition == '2') {
+		add_edition_div.style.backgroundColor = '#009900';
+		add_edition_div.innerHTML = "Edition: Pathfinder 2e";
+	} else if (edition == '1') {
+		add_edition_div.style.backgroundColor = '#000099';
+		add_edition_div.innerHTML = "Edition: Pathfinder 1e";
+	}
+	add_edition_div.id = container.id + "_EDITION";
+
+	// Delete Styling
+	var add_delete_div = document.createElement('div');
+	add_delete_div.style.float = 'right';
+	add_delete_div.style.padding = '5px';
+	add_delete_div.style.backgroundColor = '#C00000';
+	add_delete_div.style.color = '#EFEFEF';
+	add_delete_div.innerHTML = "Delete Hazard";
+	add_delete_div.id = container.id + "_DELETE";
+
+	// Delete List Function
+	add_delete_div.onclick = function() {
+		if (confirm("Delete Hazard?")) {
+			if (DEBUG) { console.log("Deleting Hazard"); }
+			container.parentNode.removeChild(container);
+			if (DEBUG) { console.log("Hazard successfully deleted"); }
+		}
+	}
+
+	container.appendChild(add_delete_div);
+	container.appendChild(add_edition_div);
+
+	container.appendChild(element);
+	return container;
+}
+
+
+/**Create Store element
+ * @param store Primary element to modify
+ * @return Full formed store DOM object
+ */
+function create_element_store(store) {
+	store.id = "S" + latest_store
+	latest_store += 1;
+
+	// Style
+	store.style.width = "100%";
+	store.style.borderBottom = "1px solid black";
+	store.style.marginBottom = "20px";
+	// store.style.padding = '5px'
+
+	// Add sub elements for Store
+	var owner_container = document.createElement('tr');
+	owner_container.id = store.id + "_OWNER";
+
+	// Store Name
+	var owner_store_name = document.createElement('input');
+	owner_store_name.id = owner_container.id + "_STORE";
+	owner_store_name.type = 'text';
+	owner_store_name.placeholder = 'Store Name (Type)';
+	owner_store_name.value = '';
+	owner_store_name.style.fontSize = '24px';
+
+	owner_container.appendChild(owner_store_name);
+	owner_container.appendChild(document.createElement('br'));
+	// Owner Name
+	var owner_name = document.createElement('input');
+	owner_name.id = owner_container.id + "_NAME";
+	owner_name.type = 'text';
+	owner_name.placeholder = 'Owner Name';
+	owner_name.value = '';
+	
+	owner_container.appendChild(owner_name);
+
+	// Descriptions
+	var owner_description = document.createElement('ul');
+
+	// Race
+	sub_list_element(owner_description, 'Race', owner_container.id);
+	sub_list_element(owner_description, 'Gender', owner_container.id);
+	sub_list_element(owner_description, 'Age', owner_container.id);
+	sub_list_element(owner_description, 'Trait_1', owner_container.id);
+	sub_list_element(owner_description, 'Trait_2', owner_container.id);
+
+	owner_container.appendChild(owner_description);
+
+	// Description
+	owner_description_text = document.createElement('textarea');
+	owner_description_text.placeholder = 'Owner Description'
+	owner_description_text.style.width = '90%';
+	owner_description_text.id = owner_container.id + "_DESCRIBE";
+
+	owner_container.appendChild(owner_description_text)
+
+	// Add
+	store.appendChild(owner_container);
+
+	return store;
+}
+
+
+/**Create Monster element
+ * @param monster Primary element to modify
+ * @param edition Edition
+ * @return Full formed monster DOM object
+ */
+function create_element_monster(monster, edition) {
+	monster.id = "M" + latest_monster
+	latest_monster += 1;
+
+	// Style
+	monster.style.width = "100%";
+	monster.style.borderBottom = "1px solid black";
+	monster.style.marginBottom = "20px";
+	monster.style.padding = '2px';
+
+	// Add Monster Header
+	var monster_header = document.createElement('tr');
+	monster_header.id = monster.id + 'R1';
+
+	var monster_header_content = document.createElement('div');
+	monster_header_content.style.width = '100%';
+
+	// Monster Name & CR
+	var monster_name = document.createElement('div');
+	var monster_name_input = document.createElement('input');
+	monster_name_input.style.fontSize = '24px';
+	monster_name_input.placeholder = 'Monster Name';
+	monster_name_input.id = monster_header.id + '_NAME'
+	monster_name.appendChild(monster_name_input);
+	monster_name.appendChild(document.createTextNode(' - CR: '));
+
+	var monster_cr_input = document.createElement('input');
+	monster_cr_input.style.fontSize = '24px';
+	monster_cr_input.placeholder = 'CR';
+	monster_cr_input.size = '3';
+	monster_cr_input.id = monster_header.id + '_CR'
+	monster_name.appendChild(monster_cr_input);
+
+	monster_header_content.appendChild(monster_name);
+
+	var monster_align = document.createElement('div');
+	var monster_align_input = document.createElement('input');
+	monster_align_input.id = monster_header.id + '_ALIGN'
+	monster_align_input.placeholder = 'Alignment';
+
+	monster_align.appendChild(monster_align_input);
+	monster_header_content.appendChild(monster_align);
+
+	// Traits for Pathfinder 2e
+	if (edition == "2") {
+		var monster_trait_list_add = document.createElement('div');
+		monster_trait_list_add.style.backgroundColor = '#030303';
+		monster_trait_list_add.style.color = '#EFEFEF';
+		monster_trait_list_add.style.float = 'right'
+		monster_trait_list_add.style.padding = '5px'
+		monster_trait_list_add.innerHTML = 'Add Trait';
+
+		var monster_trait_list_loc = document.createElement('ul');
+		monster_trait_list_loc.id = monster_header.id + '_TRAITS';
+
+		monster_trait_list_add.onclick = function() {
+			var ret = prompt('Input trait message');
+			if (ret != null) {
+				var temp_trait = document.createElement('li');
+				temp_trait.id = monster_trait_list_loc.id + '_' + latest_monster_trait;
+				latest_monster_trait++;
+				temp_trait.innerHTML = ret.toUpperCase() + ' <span style="color: red;font-weight: bold;"> X</span>';
+				temp_trait.style.backgroundColor = '#666666'
+				temp_trait.style.color = '#EFEFEF';
+				temp_trait.style.display = 'inline';
+				temp_trait.style.padding = '8px';
+				temp_trait.style.margin = '8px';
+
+				temp_trait.onclick = function() {
+					if (confirm("Delete Trait?")) {
+						if (DEBUG) { console.log("Deleting Trait"); }
+						temp_trait.parentNode.removeChild(temp_trait);
+						if (DEBUG) { console.log("Trait successfully deleted"); }
+					}
+				}
+
+				monster_trait_list_loc.appendChild(temp_trait);
+			}
+		}
+
+		monster_header_content.appendChild(monster_trait_list_add);
+		monster_header_content.appendChild(monster_trait_list_loc);
+	}
+
+	// Monster Text Box
+	var monster_description = document.createElement('div');
+	var monster_description_input = document.createElement('textarea');
+	monster_description_input.id = monster_header.id + '_DESCRIBE'
+	monster_description_input.placeholder = 'Monster Description';
+	monster_description_input.style.width = '50%';
+	monster_description.appendChild(monster_description_input);
+
+	monster_header_content.appendChild(monster_description);
+	monster_header.appendChild(monster_header_content);
+	monster.appendChild(monster_header);
+
+	/*******************************************************************************************************/
+
+	var monster_info = document.createElement('tr');
+	monster_info.id = monster.id + 'R2';
+	var monster_info_content = document.createElement('div');
+	
+	// Monster Base Information
+	var monster_info_list = document.createElement('ul');
+	monster_info_list.style.columnCount = 2;
+	var monster_hp = document.createElement('li');
+	var monster_hp_input = document.createElement('input');
+	monster_hp_input.id = monster_header.id + '_HP';
+	monster_hp_input.placeholder = 'HP';
+	monster_hp.appendChild(monster_hp_input);
+	monster_info_list.appendChild(monster_hp);
+
+	var monster_speed = document.createElement('li');
+	var monster_speed_input = document.createElement('input');
+	monster_speed_input.id = monster_header.id + '_SPEED'
+	monster_speed_input.placeholder = 'Speed'
+	monster_speed.appendChild(monster_speed_input);
+	monster_info_list.appendChild(monster_speed);
+
+	var monster_size = document.createElement('li');
+	var monster_size_input = document.createElement('input');
+	monster_size_input.id = monster_header.id + '_SIZE'
+	monster_size_input.placeholder = 'Size'
+	monster_size.appendChild(monster_size_input);
+	monster_info_list.appendChild(monster_size);
+
+	var monster_ac = document.createElement('li');
+	var monster_ac_input = document.createElement('input');
+	monster_ac_input.id = monster_header.id + '_AC'
+	monster_ac_input.placeholder = 'AC'
+	monster_ac.appendChild(monster_ac_input);
+	monster_info_list.appendChild(monster_ac);
+
+	// Special AC for Pathfinder 1
+	if (edition == "1") {
+		var monster_touch_ac = document.createElement('li');
+		var monster_touch_ac_input = document.createElement('input');
+		monster_touch_ac_input.id = monster_header.id + '_TOUCH_AC'
+		monster_touch_ac_input.placeholder = 'Touch'
+		monster_touch_ac.appendChild(monster_touch_ac_input);
+		monster_info_list.appendChild(monster_touch_ac);
+
+		var monster_flat_ac = document.createElement('li');
+		var monster_flat_ac_input = document.createElement('input');
+		monster_flat_ac_input.id = monster_header.id + '_FLAT_AC'
+		monster_flat_ac_input.placeholder = 'Flat'
+		monster_flat_ac.appendChild(monster_flat_ac_input);
+		monster_info_list.appendChild(monster_flat_ac);
+
+		var monster_cmd = document.createElement('li');
+		var monster_cmd_input = document.createElement('input');
+		monster_cmd_input.id = monster_header.id + '_CMD'
+		monster_cmd_input.placeholder = 'CMD'
+		monster_cmd.appendChild(monster_cmd_input);
+		monster_info_list.appendChild(monster_cmd);
+
+		var monster_cmb = document.createElement('li');
+		var monster_cmb_input = document.createElement('input');
+		monster_cmb_input.id = monster_header.id + '_CMB'
+		monster_cmb_input.placeholder = 'CMB'
+		monster_cmb.appendChild(monster_cmb_input);
+		monster_info_list.appendChild(monster_cmb);
+	}
+	
+	//  Pathfinder Saves
+	if (edition == "1" || edition == "2") {
+		var monster_fort_save = document.createElement('li');
+		var monster_fort_save_input = document.createElement('input');
+		monster_fort_save_input.id = monster_header.id + '_FORT_SAVE'
+		monster_fort_save_input.placeholder = 'Fortitude Save'
+		monster_fort_save.appendChild(monster_fort_save_input);
+		monster_info_list.appendChild(monster_fort_save);
+
+		var monster_will_save = document.createElement('li');
+		var monster_will_save_input = document.createElement('input');
+		monster_will_save_input.id = monster_header.id + '_WILL_SAVE'
+		monster_will_save_input.placeholder = 'Will Save'
+		monster_will_save.appendChild(monster_will_save_input);
+		monster_info_list.appendChild(monster_will_save);
+
+		var monster_ref_save = document.createElement('li');
+		var monster_ref_save_input = document.createElement('input');
+		monster_ref_save_input.id = monster_header.id + '_REF_SAVE'
+		monster_ref_save_input.placeholder = 'Reflex Save'
+		monster_ref_save.appendChild(monster_ref_save_input);
+		monster_info_list.appendChild(monster_ref_save);
+	} else if (edition == '5') {
+		// Saves for 5e
+		var monster_save_1 = document.createElement('li');
+		var monster_str_save = document.createElement('input');
+		monster_str_save.type = 'checkbox';
+		monster_str_save.id = monster_header.id  + '_STR_SAVE'
+		monster_str_save.name = monster_header.id  + '_STR_SAVE'
+
+		var monster_str_save_label = document.createElement('label');
+		monster_str_save_label.htmlFor = monster_header.id  + '_STR_SAVE_LABEL'
+		monster_str_save_label.innerHTML = "<b>STR Save</b>"
+
+		monster_save_1.appendChild(monster_str_save);
+		monster_save_1.appendChild(monster_str_save_label);
+
+		var monster_dex_save = document.createElement('input');
+		monster_dex_save.type = 'checkbox';
+		monster_dex_save.id = monster_header.id  + '_DEX_SAVE'
+		monster_dex_save.name = monster_header.id  + '_DEX_SAVE'
+
+		var monster_dex_save_label = document.createElement('label');
+		monster_dex_save_label.htmlFor = monster_header.id  + '_DEX_SAVE_LABEL'
+		monster_dex_save_label.innerHTML = "<b>DEX Save</b>"
+
+		monster_save_1.appendChild(monster_dex_save);
+		monster_save_1.appendChild(monster_dex_save_label);
+
+		monster_info_list.appendChild(monster_save_1);
+
+		var monster_save_2 = document.createElement('li');
+		var monster_con_save = document.createElement('input');
+		monster_con_save.type = 'checkbox';
+		monster_con_save.id = monster_header.id  + '_CON_SAVE'
+		monster_con_save.name = monster_header.id  + '_CON_SAVE'
+
+		var monster_con_save_label = document.createElement('label');
+		monster_con_save_label.htmlFor = monster_header.id  + '_CON_SAVE_LABEL'
+		monster_con_save_label.innerHTML = "<b>CON Save</b>"
+
+		monster_save_2.appendChild(monster_con_save);
+		monster_save_2.appendChild(monster_con_save_label);
+
+		var monster_int_save = document.createElement('input');
+		monster_int_save.type = 'checkbox';
+		monster_int_save.id = monster_header.id  + '_INT_SAVE'
+		monster_int_save.name = monster_header.id  + '_INT_SAVE'
+
+		var monster_int_save_label = document.createElement('label');
+		monster_int_save_label.htmlFor = monster_header.id  + '_INT_SAVE_LABEL'
+		monster_int_save_label.innerHTML = "<b>INT Save</b>"
+
+		monster_save_2.appendChild(monster_int_save);
+		monster_save_2.appendChild(monster_int_save_label);
+
+		monster_info_list.appendChild(monster_save_2);
+
+		var monster_save_3 = document.createElement('li');
+		var monster_wis_save = document.createElement('input');
+		monster_wis_save.type = 'checkbox';
+		monster_wis_save.id = monster_header.id  + '_WIS_SAVE'
+		monster_wis_save.name = monster_header.id  + '_WIS_SAVE'
+
+		var monster_wis_save_label = document.createElement('label');
+		monster_wis_save_label.htmlFor = monster_header.id  + '_WIS_SAVE_LABEL'
+		monster_wis_save_label.innerHTML = "<b>WIS Save</b>"
+
+		monster_save_3.appendChild(monster_wis_save);
+		monster_save_3.appendChild(monster_wis_save_label);
+
+		var monster_cha_save = document.createElement('input');
+		monster_cha_save.type = 'checkbox';
+		monster_cha_save.id = monster_header.id  + '_CHA_SAVE'
+		monster_cha_save.name = monster_header.id  + '_CHA_SAVE'
+
+		var monster_cha_save_label = document.createElement('label');
+		monster_cha_save_label.htmlFor = monster_header.id  + '_CHA_SAVE_LABEL'
+		monster_cha_save_label.innerHTML = "<b>CHA Save</b>"
+
+		monster_save_3.appendChild(monster_cha_save);
+		monster_save_3.appendChild(monster_cha_save_label);
+
+		monster_info_list.appendChild(monster_save_3);
+	}
+
+
+	// Incoming damage modifiers
+	var monster_dam_immune = document.createElement('li');
+	var monster_dam_immune_input = document.createElement('input');
+	monster_dam_immune_input.id = monster_header.id + '_DAM_IMMUNE';
+	monster_dam_immune_input.placeholder = 'Damage Immunities';
+	monster_dam_immune.appendChild(monster_dam_immune_input);
+	monster_info_list.appendChild(monster_dam_immune);
+
+	var monster_dam_resist = document.createElement('li');
+	var monster_dam_resist_input = document.createElement('input');
+	monster_dam_resist_input.id = monster_header.id + '_DAM_RESIST';
+	monster_dam_resist_input.placeholder = 'Damage Resistances';
+	monster_dam_resist.appendChild(monster_dam_resist_input);
+	monster_info_list.appendChild(monster_dam_resist);
+
+	var monster_dam_weak = document.createElement('li');
+	var monster_dam_weak_input = document.createElement('input');
+	monster_dam_weak_input.id = monster_header.id + '_DAM_WEAK';
+	monster_dam_weak_input.placeholder = 'Damage Weakness';
+	monster_dam_weak.appendChild(monster_dam_weak_input);
+	monster_info_list.appendChild(monster_dam_weak);
+
+	// Senses / Language
+	var monster_sense = document.createElement('li');
+	var monster_sense_input = document.createElement('input');
+	monster_sense_input.id = monster_header.id + '_SENSE';
+	monster_sense_input.placeholder = 'Senses';
+	monster_sense.appendChild(monster_sense_input);
+	monster_info_list.appendChild(monster_sense);
+
+	var monster_language = document.createElement('li');
+	var monster_language_input = document.createElement('input');
+	monster_language_input.id = monster_header.id + '_LANGUAGE';
+	monster_language_input.placeholder = 'Languages';
+	monster_language.appendChild(monster_language_input);
+	monster_info_list.appendChild(monster_language);
+
+	// Add all above info into the Header
+	monster_info_content.appendChild(monster_info_list);
+	monster_info.appendChild(monster_info_content);
+
+	monster.appendChild(monster_info);
+
+	/*******************************************************************************************************/
+
+	var monster_stats = document.createElement('tr')
+	monster_stats.id = monster.id + 'R3';
+	var monster_stats_content = document.createElement('div')
+
+	// Base Stats
+	var stats = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
+	var monster_stats_table = document.createElement('table');
+	monster_stats_table.style.width = '100%';
+	var monster_stats_header = document.createElement('tr');
+	var monster_stats_info = document.createElement('tr');
+	for (var i = 0; i < stats.length; i++) {
+		var temp_th = document.createElement('th');
+		temp_th.innerHTML = stats[i];
+		monster_stats_header.appendChild(temp_th);
+
+		var temp_td = document.createElement('td');
+		var temp_td_input = document.createElement('input');
+		temp_td_input.placeholder = stats[i];
+		temp_td_input.id = monster_header.id + '_' + stats[i];
+		temp_td_input.name = monster_header.id + '_' + stats[i];
+		temp_td_input.style.width = '130px';
+		temp_td.appendChild(temp_td_input);
+		monster_stats_info.appendChild(temp_td);
+	}
+	monster_stats_table.appendChild(monster_stats_header);
+	monster_stats_table.appendChild(monster_stats_info);
+
+	monster_stats_content.appendChild(monster_stats_table);
+	monster_stats.appendChild(monster_stats_content);
+
+	monster.appendChild(monster_stats)
+
+	/*******************************************************************************************************/
+	
+	var monster_action = document.createElement('tr')
+	var monster_action_content = document.createElement('div')
+	monster_action.id = monster.id + 'R4';
+
+	// Actions
+	var monster_action_container = document.createElement('div');
+	monster_action_container.style.display = 'flex';
+	monster_action_container.style.flexWrap = 'wrap';
+	monster_action_container.style.alignItems = 'flex-start';
+	monster_action_container.style.width = '100%';
+	monster_action_container.style.paddingTop = '10px';
+	monster_action_container.style.paddingBottom = '20px';
+	monster_action_container.id = monster_header.id + '_ACTIONS';
+
+	var monster_action_add = document.createElement('div');
+	monster_action_add.style.backgroundColor = '#030303';
+	monster_action_add.style.color = '#EFEFEF';
+	monster_action_add.style.float = 'right'
+	monster_action_add.style.padding = '5px'
+	monster_action_add.id = monster_header.id + '_ACTION_ADD';
+	monster_action_add.innerHTML = 'Add Action';
+
+	monster_action_add.onclick = function() {
+		if (DEBUG) { console.log("Adding Action to Monster " + monster_header.id); }
+
+		var temp_action = document.createElement('table');
+		temp_action.id = monster_action_container.id + latest_monster_action;
+		latest_monster_action++;
+		temp_action.style.width = '44%';
+		temp_action.style.marginLeft = '3%';
+		temp_action.style.marginRight = '3%';
+		temp_action.style.marginBottom = '1%';
+
+		// Header Info
+		var temp_action_header = document.createElement('tr');
+		
+		temp_action_header.style.backgroundColor = '#999999'
+		temp_action_header.style.color = '#EFEFEF';
+
+		var temp_action_header_input = document.createElement('input');
+		temp_action_header_input.type = 'text';
+		temp_action_header_input.id = temp_action.id + '_NAME';
+		temp_action_header_input.placeholder = 'Action Name';
+		temp_action_header.appendChild(temp_action_header_input);
+
+		// Delete action
+		var temp_action_header_delete = document.createElement('input');
+		temp_action_header_delete.type = 'button';
+		temp_action_header_delete.value = 'Delete';
+		temp_action_header_delete.style.backgroundColor = '#990000'
+		temp_action_header_delete.style.color = '#EFEFEF'
+
+		temp_action_header_delete.onclick = function() {
+			if (confirm("Delete Action?")) {
+				if (DEBUG) { console.log("Deleting Action"); }
+				temp_action.parentNode.removeChild(temp_action);
+				if (DEBUG) { console.log("Action successfully deleted"); }
+			}
+		}
+		temp_action_header.appendChild(temp_action_header_delete);
+
+		// Legendary Action Qualifier
+		if (edition == '5') {
+			var monster_action_legend = document.createElement('input');
+			monster_action_legend.type = 'checkbox';
+			monster_action_legend.id = temp_action.id  + '_LEGEND'
+			monster_action_legend.name = temp_action.id  + '_LEGEND'
+
+			var monster_action_legend_label = document.createElement('label');
+			monster_action_legend_label.htmlFor = temp_action.id  + '_LEGEND_LABEL'
+			monster_action_legend_label.innerHTML = "<b>Legendary</b>"
+			monster_action_legend_label.style.paddingLeft = '10px'
+			temp_action_header.appendChild(monster_action_legend_label);
+			temp_action_header.appendChild(monster_action_legend);
+		}
+		// Action Cost Qualifier
+		if (edition == '2') {
+			var monster_action_cost = document.createElement('select');
+			monster_action_cost.id = temp_action.id  + '_COST'
+			
+			var monster_action_cost_reaction = document.createElement("option");
+			monster_action_cost_reaction.text = 'Reaction';
+			monster_action_cost.add(monster_action_cost_reaction);
+
+			var monster_action_cost_free = document.createElement("option");
+			monster_action_cost_free.text = 'Free';
+			monster_action_cost.add(monster_action_cost_free);
+
+			var monster_action_cost_1 = document.createElement("option");
+			monster_action_cost_1.text = '1 Action';
+			monster_action_cost.add(monster_action_cost_1);
+
+			var monster_action_cost_2 = document.createElement("option");
+			monster_action_cost_2.text = '2 Action';
+			monster_action_cost.add(monster_action_cost_2);
+
+			var monster_action_cost_3 = document.createElement("option");
+			monster_action_cost_3.text = '3 Action';
+
+			monster_action_cost.add(monster_action_cost_3);
+			var monster_action_cost_label = document.createElement('label');
+			monster_action_cost_label.htmlFor = temp_action.id  + '_COST_LABEL'
+			monster_action_cost_label.innerHTML = "<b>Cost: </b>"
+			monster_action_cost_label.style.paddingLeft = '10px'
+
+			monster_action_cost.value = '1 Action';
+			console.log('Value: ' + monster_action_cost.value);
+
+			temp_action_header.appendChild(monster_action_cost_label);
+			temp_action_header.appendChild(monster_action_cost);
+		}
+
+		// Detail Info
+		var temp_action_info = document.createElement('tr');
+		var temp_action_info_input = document.createElement('textarea');
+		temp_action_info_input.id = temp_action.id  + '_TEXT'
+		temp_action_info_input.placeholder = 'Action Details';
+		temp_action_info_input.style.width = '90%';
+		temp_action_info.appendChild(temp_action_info_input);
+
+		temp_action.appendChild(temp_action_header);
+		temp_action.appendChild(temp_action_info);
+		monster_action_container.appendChild(temp_action);
+	}
+
+
+	var monster_action_clear = document.createElement('div');
+	monster_action_clear.style.backgroundColor = '#C00000';
+	monster_action_clear.style.color = '#EFEFEF';
+	monster_action_clear.style.float = 'right'
+	monster_action_clear.style.padding = '5px'
+	monster_action_clear.id = monster_header.id + '_ACTION_CLEAR';
+	monster_action_clear.innerHTML = 'Clear Actions';
+
+	// Delete Table option
+	monster_action_clear.onclick = function() {
+		if (confirm("Clear Actions?")) {
+			if (DEBUG) { console.log("Clearing Actions"); }
+			monster_action_container.innerHTML = '';
+			if (DEBUG) { console.log("Actions successfully Cleared"); }
+		}
+	}
+
+	monster_action_content.appendChild(monster_action_clear);
+	monster_action_content.appendChild(monster_action_add);
+	monster_action_content.appendChild(monster_action_container);
+	monster_action.appendChild(monster_action_content);
+	monster.appendChild(monster_action);
+
+	/*******************************************************************************************************/
+
+	var monster_loot = document.createElement('tr');
+	var monster_loot_table = document.createElement('table');
+
+	monster_loot_table.id = "MT" + latest_table
+	latest_table += 1;
+
+	// Style
+	monster_loot_table.style.width = "100%";
+	monster_loot_table.style.borderBottom = "1px solid black";
+	monster_loot_table.style.marginBottom = "20px";
+
+	var monster_loot_container = editor_container_table(monster_loot_table);
+
+	monster_loot.id = monster.id + 'R5';
+
+	// Finalize
+
+	var monster_loot_text = document.createElement('h3');
+	monster_loot_text.style.textAlign = 'center'
+	monster_loot_text.innerHTML = 'Treasure';
+	monster_loot.appendChild(monster_loot_text);
+	monster_loot.appendChild(monster_loot_container);
+	monster.appendChild(monster_loot);
+
+	return monster;
+}
+
+
+/**Create Hazard item
+ * @param hazard Primary element to modify
+ * @return Full formed hazard DOM object
+ */
+function create_element_hazard(hazard, item) {
+	hazard.id = 'H' + latest_hazard;
+	latest_hazard++;
+
+	hazard.style.width = "100%";
+	hazard.style.borderBottom = "1px solid black";
+	hazard.style.marginBottom = "20px";
+	hazard.style.padding = '2px';
+
+	// Add Hazard Header
+	var hazard_header = document.createElement('tr');
+	hazard_header.id = hazard.id + 'R1';
+
+	var hazard_header_content = document.createElement('th');
+	hazard_header_content.style.backgroundColor = '#CFCFCF';
+	// hazard_header_content.style.width = '100%';
+
+	// Name
+	var hazard_name = document.createElement('div');
+	hazard_name.style.float = 'left';
+
+	var hazard_name_input = document.createElement('input');
+	hazard_name_input.type = 'text'
+	hazard_name_input.style.fontSize = '24px';
+	hazard_name_input.placeholder = 'Hazard Name';
+	hazard_name_input.id = hazard_header.id + '_NAME';
+	hazard_name.appendChild(hazard_name_input);
+	hazard_header_content.appendChild(hazard_name);
+
+	// CR
+	var hazard_cr = document.createElement('div');
+	hazard_cr.style.float = 'right';
+
+	var hazard_cr_input = document.createElement('input');
+	hazard_cr_input.type = 'text'
+	hazard_cr_input.style.fontSize = '24px';
+	hazard_cr_input.size = '3';
+	hazard_cr_input.placeholder = 'CR';
+	hazard_cr_input.id = hazard_header.id + '_NAME';
+	hazard_cr.appendChild(hazard_cr_input);
+	hazard_header_content.appendChild(hazard_cr);
+
+	hazard_header.appendChild(hazard_header_content);
+	hazard.appendChild(hazard_header);
+
+
+	/*******************************************************************************************************/
+
+	var hazard_traits = document.createElement('tr');
+	hazard_traits.id = hazard.id + 'R2';
+	var hazard_traits_content = document.createElement('td');
+
+	var hazard_traits_sub = document.createElement('tr');
+	var hazard_traits_sub_content = document.createElement('td');
+
+	// Trait List
+	var hazard_trait_loc = document.createElement('ul');
+	hazard_trait_loc.id = hazard_traits.id + '_TRAITS';
+	hazard_trait_loc.style.padding = '5px 2px';
+	hazard_trait_loc.style.margin = '5px 5px';
+	hazard_trait_loc.style.display = 'inline-block';
+	hazard_trait_loc.style.listStyleType = 'none';
+	hazard_traits_content.appendChild(hazard_trait_loc);
+
+	// Add hazard trait button
+	var hazard_trait_add = document.createElement('div');
+	hazard_trait_add.style.float = 'right';
+	hazard_trait_add.style.padding = '5px';
+	hazard_trait_add.style.backgroundColor = '#606090';
+	hazard_trait_add.style.color = '#EFEFEF';
+	hazard_trait_add.innerHTML = "Add Hazard Trait";
+	hazard_trait_add.id = hazard_traits.id + "_TRAIT_ADD";
+
+	hazard_trait_add.onclick = function() {
+		var temp_trait = document.createElement('li');
+		temp_trait.style.backgroundColor = '#666666'
+		temp_trait.style.color = '#EFEFEF';
+		temp_trait.style.display = 'inline';
+		temp_trait.style.padding = '8px';
+		temp_trait.style.margin = '8px';
+
+		var temp_trait_input = document.createElement('input');
+		temp_trait_input.id = hazard_trait_loc.id + '_' + latest_hazard_trait;
+		latest_hazard_trait++;
+		temp_trait_input.style.fontSize = '13px';
+
+		var temp_trait_delete = document.createElement('span');
+		temp_trait_delete.style.color = 'red';
+		temp_trait_delete.style.fontWeight = 'bold';
+		temp_trait_delete.innerHTML = ' X';
+
+		temp_trait_delete.onclick = function() {
+			if (confirm("Delete Trait?")) {
+				if (DEBUG) { console.log("Deleting Trait"); }
+				temp_trait.parentNode.removeChild(temp_trait);
+				if (DEBUG) { console.log("Trait successfully deleted"); }
+			}
+		}
+
+		temp_trait.appendChild(temp_trait_input);
+		temp_trait.appendChild(temp_trait_delete);
+
+		hazard_trait_loc.appendChild(temp_trait);
+	}
+
+	var hazard_trait_clear = document.createElement('div');
+	hazard_trait_clear.style.float = 'right';
+	hazard_trait_clear.style.padding = '5px';
+	hazard_trait_clear.style.backgroundColor = '#900000';
+	hazard_trait_clear.style.color = '#EFEFEF';
+	hazard_trait_clear.innerHTML = "Clear Traits";
+	hazard_trait_clear.id = hazard_traits.id + "_TRAIT_CLEAR";
+
+	hazard_trait_clear.onclick = function() {
+		if (confirm("Clear All Traits?")) {
+			if (DEBUG) { console.log("Deleting Traits"); }
+			hazard_trait_loc.innerHTML = '';
+			if (DEBUG) { console.log("Traits successfully cleared"); }
+		}
+	}
+
+	// Add
+	hazard_traits_sub_content.appendChild(hazard_trait_clear);
+	hazard_traits_sub_content.appendChild(hazard_trait_add);
+	hazard_traits_sub.appendChild(hazard_traits_sub_content);
+
+	hazard_traits.appendChild(hazard_traits_content);
+	hazard.appendChild(hazard_traits);
+	hazard.appendChild(hazard_traits_sub);
+
+	/*******************************************************************************************************/
+
+	return hazard;
+}
 
 
 /**Function to add stuff to the main page. Creates the elements, to then wrap in containers
@@ -433,61 +1226,8 @@ function create_element(item) {
 
 	if (item == "Store") {
 		// Init
-		var store = document.createElement('table');
-		store.id = "S" + latest_store
-		latest_store += 1;
-
-		// Style
-		store.style.width = "100%";
-		store.style.borderBottom = "1px solid black";
-		store.style.marginBottom = "20px";
-		// store.style.padding = '5px'
-
-		// Add sub elements for Store
-		var owner_container = document.createElement('tr');
-		owner_container.id = store.id + "_OWNER";
-
-		// Store Name
-		var owner_store_name = document.createElement('input');
-		owner_store_name.id = owner_container.id + "_STORE";
-		owner_store_name.type = 'text';
-		owner_store_name.placeholder = 'Store Name (Type)';
-		owner_store_name.value = '';
-		owner_store_name.style.fontSize = '24px';
-
-		owner_container.appendChild(owner_store_name);
-		owner_container.appendChild(document.createElement('br'));
-		// Owner Name
-		var owner_name = document.createElement('input');
-		owner_name.id = owner_container.id + "_NAME";
-		owner_name.type = 'text';
-		owner_name.placeholder = 'Owner Name';
-		owner_name.value = '';
+		var store = create_element_store(document.createElement('table'));
 		
-		owner_container.appendChild(owner_name);
-
-		// Descriptions
-		var owner_description = document.createElement('ul');
-
-		// Race
-		sub_list_element(owner_description, 'Race', owner_container.id);
-		sub_list_element(owner_description, 'Gender', owner_container.id);
-		sub_list_element(owner_description, 'Age', owner_container.id);
-		sub_list_element(owner_description, 'Trait_1', owner_container.id);
-		sub_list_element(owner_description, 'Trait_2', owner_container.id);
-
-		owner_container.appendChild(owner_description);
-
-		// Description
-		owner_description_text = document.createElement('textarea');
-		owner_description_text.placeholder = 'Owner Description'
-		owner_description_text.style.width = '90%';
-		owner_description_text.id = owner_container.id + "_DESCRIBE";
-
-		owner_container.appendChild(owner_description_text)
-
-		// Add
-		store.appendChild(owner_container);
 		var parent = document.getElementById("Stores");
 		parent.appendChild(editor_container_table(store));
 	} else if (item == "Table") {
@@ -506,530 +1246,7 @@ function create_element(item) {
 		parent.appendChild(editor_container_table(table));
 	} else if (item.startsWith("Monster")) {
 		// Init
-		var monster = document.createElement('Table');
-		monster.id = "M" + latest_monster
-		latest_monster += 1;
-
-		// Style
-		monster.style.width = "100%";
-		monster.style.borderBottom = "1px solid black";
-		monster.style.marginBottom = "20px";
-		monster.style.padding = '2px';
-
-		// Add Monster Header
-		var monster_header = document.createElement('tr');
-		monster_header.id = monster.id + 'R1';
-
-		var monster_header_content = document.createElement('div');
-		monster_header_content.style.width = '100%';
-
-		// Monster Name & CR
-		var monster_name = document.createElement('div');
-		var monster_name_input = document.createElement('input');
-		monster_name_input.style.fontSize = '24px';
-		monster_name_input.placeholder = 'Monster Name';
-		monster_name_input.id = monster_header.id + '_NAME'
-		monster_name.appendChild(monster_name_input);
-		monster_name.appendChild(document.createTextNode(' - CR: '));
-
-		var monster_cr_input = document.createElement('input');
-		monster_cr_input.style.fontSize = '24px';
-		monster_cr_input.placeholder = 'CR';
-		monster_cr_input.size = '3';
-		monster_cr_input.id = monster_header.id + '_CR'
-		monster_name.appendChild(monster_cr_input);
-
-		monster_header_content.appendChild(monster_name);
-
-		var monster_align = document.createElement('div');
-		var monster_align_input = document.createElement('input');
-		monster_align_input.id = monster_header.id + '_ALIGN'
-		monster_align_input.placeholder = 'Alignment';
-
-		monster_align.appendChild(monster_align_input);
-		monster_header_content.appendChild(monster_align);
-
-		// Traits for Pathfinder 2e
-		if (item.endsWith("2")) {
-			var monster_trait_list_add = document.createElement('div');
-			monster_trait_list_add.style.backgroundColor = '#030303';
-			monster_trait_list_add.style.color = '#EFEFEF';
-			monster_trait_list_add.style.float = 'right'
-			monster_trait_list_add.style.padding = '5px'
-			monster_trait_list_add.innerHTML = 'Add Trait';
-
-			var monster_trait_list_loc = document.createElement('ul');
-			monster_trait_list_loc.id = monster_header.id + '_TRAITS';
-
-			monster_trait_list_add.onclick = function() {
-				var ret = prompt('Input trait message');
-				if (ret != null) {
-					var temp_trait = document.createElement('li');
-					temp_trait.id = monster_trait_list_loc.id + '_' + latest_monster_trait;
-					latest_monster_trait++;
-					temp_trait.innerHTML = ret.toUpperCase() + ' <span style="color: red;font-weight: bold;"> X</span>';
-					temp_trait.style.backgroundColor = '#666666'
-					temp_trait.style.color = '#EFEFEF';
-					temp_trait.style.display = 'inline';
-					temp_trait.style.padding = '8px';
-					temp_trait.style.margin = '8px';
-
-					temp_trait.onclick = function() {
-						if (confirm("Delete Trait?")) {
-							if (DEBUG) { console.log("Deleting Trait"); }
-							temp_trait.parentNode.removeChild(temp_trait);
-							if (DEBUG) { console.log("Trait successfully deleted"); }
-						}
-					}
-
-					monster_trait_list_loc.appendChild(temp_trait);
-				}
-			}
-
-			monster_header_content.appendChild(monster_trait_list_add);
-			monster_header_content.appendChild(monster_trait_list_loc);
-		}
-
-		// Monster Text Box
-		var monster_description = document.createElement('div');
-		var monster_description_input = document.createElement('textarea');
-		monster_description_input.id = monster_header.id + '_DESCRIBE'
-		monster_description_input.placeholder = 'Monster Description';
-		monster_description_input.style.width = '50%';
-		monster_description.appendChild(monster_description_input);
-
-		monster_header_content.appendChild(monster_description);
-		monster_header.appendChild(monster_header_content);
-		monster.appendChild(monster_header);
-
-		/*******************************************************************************************************/
-
-		var monster_info = document.createElement('tr');
-		monster_info.id = monster.id + 'R2';
-		var monster_info_content = document.createElement('div');
-		
-		// Monster Base Information
-		var monster_info_list = document.createElement('ul');
-		monster_info_list.style.columnCount = 2;
-		var monster_hp = document.createElement('li');
-		var monster_hp_input = document.createElement('input');
-		monster_hp_input.id = monster_header.id + '_HP';
-		monster_hp_input.placeholder = 'HP';
-		monster_hp.appendChild(monster_hp_input);
-		monster_info_list.appendChild(monster_hp);
-
-		var monster_speed = document.createElement('li');
-		var monster_speed_input = document.createElement('input');
-		monster_speed_input.id = monster_header.id + '_SPEED'
-		monster_speed_input.placeholder = 'Speed'
-		monster_speed.appendChild(monster_speed_input);
-		monster_info_list.appendChild(monster_speed);
-
-		var monster_size = document.createElement('li');
-		var monster_size_input = document.createElement('input');
-		monster_size_input.id = monster_header.id + '_SIZE'
-		monster_size_input.placeholder = 'Size'
-		monster_size.appendChild(monster_size_input);
-		monster_info_list.appendChild(monster_size);
-
-		var monster_ac = document.createElement('li');
-		var monster_ac_input = document.createElement('input');
-		monster_ac_input.id = monster_header.id + '_AC'
-		monster_ac_input.placeholder = 'AC'
-		monster_ac.appendChild(monster_ac_input);
-		monster_info_list.appendChild(monster_ac);
-
-		// Special AC for Pathfinder 1
-		if (item.endsWith("1")) {
-			var monster_touch_ac = document.createElement('li');
-			var monster_touch_ac_input = document.createElement('input');
-			monster_touch_ac_input.id = monster_header.id + '_TOUCH_AC'
-			monster_touch_ac_input.placeholder = 'Touch'
-			monster_touch_ac.appendChild(monster_touch_ac_input);
-			monster_info_list.appendChild(monster_touch_ac);
-
-			var monster_flat_ac = document.createElement('li');
-			var monster_flat_ac_input = document.createElement('input');
-			monster_flat_ac_input.id = monster_header.id + '_FLAT_AC'
-			monster_flat_ac_input.placeholder = 'Flat'
-			monster_flat_ac.appendChild(monster_flat_ac_input);
-			monster_info_list.appendChild(monster_flat_ac);
-
-			var monster_cmd = document.createElement('li');
-			var monster_cmd_input = document.createElement('input');
-			monster_cmd_input.id = monster_header.id + '_CMD'
-			monster_cmd_input.placeholder = 'CMD'
-			monster_cmd.appendChild(monster_cmd_input);
-			monster_info_list.appendChild(monster_cmd);
-
-			var monster_cmb = document.createElement('li');
-			var monster_cmb_input = document.createElement('input');
-			monster_cmb_input.id = monster_header.id + '_CMB'
-			monster_cmb_input.placeholder = 'CMB'
-			monster_cmb.appendChild(monster_cmb_input);
-			monster_info_list.appendChild(monster_cmb);
-		}
-		
-		//  Pathfinder Saves
-		if (item.endsWith("1") || item.endsWith("2")) {
-			var monster_fort_save = document.createElement('li');
-			var monster_fort_save_input = document.createElement('input');
-			monster_fort_save_input.id = monster_header.id + '_FORT_SAVE'
-			monster_fort_save_input.placeholder = 'Fortitude Save'
-			monster_fort_save.appendChild(monster_fort_save_input);
-			monster_info_list.appendChild(monster_fort_save);
-
-			var monster_will_save = document.createElement('li');
-			var monster_will_save_input = document.createElement('input');
-			monster_will_save_input.id = monster_header.id + '_WILL_SAVE'
-			monster_will_save_input.placeholder = 'Will Save'
-			monster_will_save.appendChild(monster_will_save_input);
-			monster_info_list.appendChild(monster_will_save);
-
-			var monster_ref_save = document.createElement('li');
-			var monster_ref_save_input = document.createElement('input');
-			monster_ref_save_input.id = monster_header.id + '_REF_SAVE'
-			monster_ref_save_input.placeholder = 'Reflex Save'
-			monster_ref_save.appendChild(monster_ref_save_input);
-			monster_info_list.appendChild(monster_ref_save);
-		} else if (item.endsWith('5')) {
-			// Saves for 5e
-			var monster_save_1 = document.createElement('li');
-			var monster_str_save = document.createElement('input');
-			monster_str_save.type = 'checkbox';
-			monster_str_save.id = monster_header.id  + '_STR_SAVE'
-			monster_str_save.name = monster_header.id  + '_STR_SAVE'
-
-			var monster_str_save_label = document.createElement('label');
-			monster_str_save_label.htmlFor = monster_header.id  + '_STR_SAVE_LABEL'
-			monster_str_save_label.innerHTML = "<b>STR Save</b>"
-
-			monster_save_1.appendChild(monster_str_save);
-			monster_save_1.appendChild(monster_str_save_label);
-
-			var monster_dex_save = document.createElement('input');
-			monster_dex_save.type = 'checkbox';
-			monster_dex_save.id = monster_header.id  + '_DEX_SAVE'
-			monster_dex_save.name = monster_header.id  + '_DEX_SAVE'
-
-			var monster_dex_save_label = document.createElement('label');
-			monster_dex_save_label.htmlFor = monster_header.id  + '_DEX_SAVE_LABEL'
-			monster_dex_save_label.innerHTML = "<b>DEX Save</b>"
-
-			monster_save_1.appendChild(monster_dex_save);
-			monster_save_1.appendChild(monster_dex_save_label);
-
-			monster_info_list.appendChild(monster_save_1);
-
-			var monster_save_2 = document.createElement('li');
-			var monster_con_save = document.createElement('input');
-			monster_con_save.type = 'checkbox';
-			monster_con_save.id = monster_header.id  + '_CON_SAVE'
-			monster_con_save.name = monster_header.id  + '_CON_SAVE'
-
-			var monster_con_save_label = document.createElement('label');
-			monster_con_save_label.htmlFor = monster_header.id  + '_CON_SAVE_LABEL'
-			monster_con_save_label.innerHTML = "<b>CON Save</b>"
-
-			monster_save_2.appendChild(monster_con_save);
-			monster_save_2.appendChild(monster_con_save_label);
-
-			var monster_int_save = document.createElement('input');
-			monster_int_save.type = 'checkbox';
-			monster_int_save.id = monster_header.id  + '_INT_SAVE'
-			monster_int_save.name = monster_header.id  + '_INT_SAVE'
-
-			var monster_int_save_label = document.createElement('label');
-			monster_int_save_label.htmlFor = monster_header.id  + '_INT_SAVE_LABEL'
-			monster_int_save_label.innerHTML = "<b>INT Save</b>"
-
-			monster_save_2.appendChild(monster_int_save);
-			monster_save_2.appendChild(monster_int_save_label);
-
-			monster_info_list.appendChild(monster_save_2);
-
-			var monster_save_3 = document.createElement('li');
-			var monster_wis_save = document.createElement('input');
-			monster_wis_save.type = 'checkbox';
-			monster_wis_save.id = monster_header.id  + '_WIS_SAVE'
-			monster_wis_save.name = monster_header.id  + '_WIS_SAVE'
-
-			var monster_wis_save_label = document.createElement('label');
-			monster_wis_save_label.htmlFor = monster_header.id  + '_WIS_SAVE_LABEL'
-			monster_wis_save_label.innerHTML = "<b>WIS Save</b>"
-
-			monster_save_3.appendChild(monster_wis_save);
-			monster_save_3.appendChild(monster_wis_save_label);
-
-			var monster_cha_save = document.createElement('input');
-			monster_cha_save.type = 'checkbox';
-			monster_cha_save.id = monster_header.id  + '_CHA_SAVE'
-			monster_cha_save.name = monster_header.id  + '_CHA_SAVE'
-
-			var monster_cha_save_label = document.createElement('label');
-			monster_cha_save_label.htmlFor = monster_header.id  + '_CHA_SAVE_LABEL'
-			monster_cha_save_label.innerHTML = "<b>CHA Save</b>"
-
-			monster_save_3.appendChild(monster_cha_save);
-			monster_save_3.appendChild(monster_cha_save_label);
-
-			monster_info_list.appendChild(monster_save_3);
-		}
-
-
-		// Incoming damage modifiers
-		var monster_dam_immune = document.createElement('li');
-		var monster_dam_immune_input = document.createElement('input');
-		monster_dam_immune_input.id = monster_header.id + '_DAM_IMMUNE';
-		monster_dam_immune_input.placeholder = 'Damage Immunities';
-		monster_dam_immune.appendChild(monster_dam_immune_input);
-		monster_info_list.appendChild(monster_dam_immune);
-
-		var monster_dam_resist = document.createElement('li');
-		var monster_dam_resist_input = document.createElement('input');
-		monster_dam_resist_input.id = monster_header.id + '_DAM_RESIST';
-		monster_dam_resist_input.placeholder = 'Damage Resistances';
-		monster_dam_resist.appendChild(monster_dam_resist_input);
-		monster_info_list.appendChild(monster_dam_resist);
-
-		var monster_dam_weak = document.createElement('li');
-		var monster_dam_weak_input = document.createElement('input');
-		monster_dam_weak_input.id = monster_header.id + '_DAM_WEAK';
-		monster_dam_weak_input.placeholder = 'Damage Weakness';
-		monster_dam_weak.appendChild(monster_dam_weak_input);
-		monster_info_list.appendChild(monster_dam_weak);
-
-		// Senses / Language
-		var monster_sense = document.createElement('li');
-		var monster_sense_input = document.createElement('input');
-		monster_sense_input.id = monster_header.id + '_SENSE';
-		monster_sense_input.placeholder = 'Senses';
-		monster_sense.appendChild(monster_sense_input);
-		monster_info_list.appendChild(monster_sense);
-
-		var monster_language = document.createElement('li');
-		var monster_language_input = document.createElement('input');
-		monster_language_input.id = monster_header.id + '_LANGUAGE';
-		monster_language_input.placeholder = 'Languages';
-		monster_language.appendChild(monster_language_input);
-		monster_info_list.appendChild(monster_language);
-
-		// Add all above info into the Header
-		monster_info_content.appendChild(monster_info_list);
-		monster_info.appendChild(monster_info_content);
-
-		monster.appendChild(monster_info);
-
-		/*******************************************************************************************************/
-
-		var monster_stats = document.createElement('tr')
-		monster_stats.id = monster.id + 'R3';
-		var monster_stats_content = document.createElement('div')
-
-		// Base Stats
-		var stats = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
-		var monster_stats_table = document.createElement('table');
-		monster_stats_table.style.width = '100%';
-		var monster_stats_header = document.createElement('tr');
-		var monster_stats_info = document.createElement('tr');
-		for (var i = 0; i < stats.length; i++) {
-			var temp_th = document.createElement('th');
-			temp_th.innerHTML = stats[i];
-			monster_stats_header.appendChild(temp_th);
-
-			var temp_td = document.createElement('td');
-			var temp_td_input = document.createElement('input');
-			temp_td_input.placeholder = stats[i];
-			temp_td_input.id = monster_header.id + '_' + stats[i];
-			temp_td_input.name = monster_header.id + '_' + stats[i];
-			temp_td_input.style.width = '130px';
-			temp_td.appendChild(temp_td_input);
-			monster_stats_info.appendChild(temp_td);
-		}
-		monster_stats_table.appendChild(monster_stats_header);
-		monster_stats_table.appendChild(monster_stats_info);
-
-		monster_stats_content.appendChild(monster_stats_table);
-		monster_stats.appendChild(monster_stats_content);
-
-		monster.appendChild(monster_stats)
-
-		/*******************************************************************************************************/
-		
-		var monster_action = document.createElement('tr')
-		var monster_action_content = document.createElement('div')
-		monster_action.id = monster.id + 'R4';
-
-		// Actions
-		var monster_action_container = document.createElement('div');
-		monster_action_container.style.display = 'flex';
-		monster_action_container.style.flexWrap = 'wrap';
-		monster_action_container.style.alignItems = 'flex-start';
-		monster_action_container.style.width = '100%';
-		monster_action_container.style.paddingTop = '10px';
-		monster_action_container.style.paddingBottom = '20px';
-		monster_action_container.id = monster_header.id + '_ACTIONS';
-
-		var monster_action_add = document.createElement('div');
-		monster_action_add.style.backgroundColor = '#030303';
-		monster_action_add.style.color = '#EFEFEF';
-		monster_action_add.style.float = 'right'
-		monster_action_add.style.padding = '5px'
-		monster_action_add.id = monster_header.id + '_ACTION_ADD';
-		monster_action_add.innerHTML = 'Add Action';
-
-		monster_action_add.onclick = function() {
-			if (DEBUG) { console.log("Adding Action to Monster " + monster_header.id); }
-
-			var temp_action = document.createElement('table');
-			temp_action.id = monster_action_container.id + latest_monster_action;
-			latest_monster_action++;
-			temp_action.style.width = '44%';
-			temp_action.style.marginLeft = '3%';
-			temp_action.style.marginRight = '3%';
-			temp_action.style.marginBottom = '1%';
-
-			// Header Info
-			var temp_action_header = document.createElement('tr');
-			
-			temp_action_header.style.backgroundColor = '#999999'
-			temp_action_header.style.color = '#EFEFEF';
-
-			var temp_action_header_input = document.createElement('input');
-			temp_action_header_input.type = 'text';
-			temp_action_header_input.id = temp_action.id + '_NAME';
-			temp_action_header_input.placeholder = 'Action Name';
-			temp_action_header.appendChild(temp_action_header_input);
-
-			// Delete action
-			var temp_action_header_delete = document.createElement('input');
-			temp_action_header_delete.type = 'button';
-			temp_action_header_delete.value = 'Delete';
-			temp_action_header_delete.style.backgroundColor = '#990000'
-			temp_action_header_delete.style.color = '#EFEFEF'
-
-			temp_action_header_delete.onclick = function() {
-				if (confirm("Delete Action?")) {
-					if (DEBUG) { console.log("Deleting Action"); }
-					temp_action.parentNode.removeChild(temp_action);
-					if (DEBUG) { console.log("Action successfully deleted"); }
-				}
-			}
-			temp_action_header.appendChild(temp_action_header_delete);
-
-			// Legendary Action Qualifier
-			if (item.endsWith('5')) {
-				var monster_action_legend = document.createElement('input');
-				monster_action_legend.type = 'checkbox';
-				monster_action_legend.id = temp_action.id  + '_LEGEND'
-				monster_action_legend.name = temp_action.id  + '_LEGEND'
-
-				var monster_action_legend_label = document.createElement('label');
-				monster_action_legend_label.htmlFor = temp_action.id  + '_LEGEND_LABEL'
-				monster_action_legend_label.innerHTML = "<b>Legendary</b>"
-				monster_action_legend_label.style.paddingLeft = '10px'
-				temp_action_header.appendChild(monster_action_legend_label);
-				temp_action_header.appendChild(monster_action_legend);
-			}
-			// Action Cost Qualifier
-			if (item.endsWith('2')) {
-				var monster_action_cost = document.createElement('select');
-				monster_action_cost.id = temp_action.id  + '_COST'
-				
-				var monster_action_cost_reaction = document.createElement("option");
-				monster_action_cost_reaction.text = 'Reaction';
-				monster_action_cost.add(monster_action_cost_reaction);
-
-				var monster_action_cost_free = document.createElement("option");
-				monster_action_cost_free.text = 'Free';
-				monster_action_cost.add(monster_action_cost_free);
-
-				var monster_action_cost_1 = document.createElement("option");
-				monster_action_cost_1.text = '1 Action';
-				monster_action_cost.add(monster_action_cost_1);
-
-				var monster_action_cost_2 = document.createElement("option");
-				monster_action_cost_2.text = '2 Action';
-				monster_action_cost.add(monster_action_cost_2);
-
-				var monster_action_cost_3 = document.createElement("option");
-				monster_action_cost_3.text = '3 Action';
-
-				monster_action_cost.add(monster_action_cost_3);
-				var monster_action_cost_label = document.createElement('label');
-				monster_action_cost_label.htmlFor = temp_action.id  + '_COST_LABEL'
-				monster_action_cost_label.innerHTML = "<b>Cost: </b>"
-				monster_action_cost_label.style.paddingLeft = '10px'
-
-				monster_action_cost.value = '1 Action';
-				console.log('Value: ' + monster_action_cost.value);
-
-				temp_action_header.appendChild(monster_action_cost_label);
-				temp_action_header.appendChild(monster_action_cost);
-			}
-
-			// Detail Info
-			var temp_action_info = document.createElement('tr');
-			var temp_action_info_input = document.createElement('textarea');
-			temp_action_info_input.id = temp_action.id  + '_TEXT'
-			temp_action_info_input.placeholder = 'Action Details';
-			temp_action_info_input.style.width = '90%';
-			temp_action_info.appendChild(temp_action_info_input);
-
-			temp_action.appendChild(temp_action_header);
-			temp_action.appendChild(temp_action_info);
-			monster_action_container.appendChild(temp_action);
-		}
-
-
-		var monster_action_clear = document.createElement('div');
-		monster_action_clear.style.backgroundColor = '#C00000';
-		monster_action_clear.style.color = '#EFEFEF';
-		monster_action_clear.style.float = 'right'
-		monster_action_clear.style.padding = '5px'
-		monster_action_clear.id = monster_header.id + '_ACTION_CLEAR';
-		monster_action_clear.innerHTML = 'Clear Actions';
-
-		// Delete Table option
-		monster_action_clear.onclick = function() {
-			if (confirm("Clear Actions?")) {
-				if (DEBUG) { console.log("Clearing Actions"); }
-				monster_action_container.innerHTML = '';
-				if (DEBUG) { console.log("Actions successfully Cleared"); }
-			}
-		}
-
-		monster_action_content.appendChild(monster_action_clear);
-		monster_action_content.appendChild(monster_action_add);
-		monster_action_content.appendChild(monster_action_container);
-		monster_action.appendChild(monster_action_content);
-		monster.appendChild(monster_action);
-
-		/*******************************************************************************************************/
-
-		var monster_loot = document.createElement('tr');
-		var monster_loot_table = document.createElement('table');
-
-		monster_loot_table.id = "MT" + latest_table
-		latest_table += 1;
-
-		// Style
-		monster_loot_table.style.width = "100%";
-		monster_loot_table.style.borderBottom = "1px solid black";
-		monster_loot_table.style.marginBottom = "20px";
-
-		var monster_loot_container = editor_container_table(monster_loot_table);
-
-		monster_loot.id = monster.id + 'R5';
-
-		// Finalize
-
-		var monster_loot_text = document.createElement('h3');
-		monster_loot_text.style.textAlign = 'center'
-		monster_loot_text.innerHTML = 'Treasure';
-		monster_loot.appendChild(monster_loot_text);
-		monster_loot.appendChild(monster_loot_container);
-		monster.appendChild(monster_loot);
+		var monster = create_element_monster(document.createElement('table'), item[item.length - 1]);
 
 		// Add
 		var parent = document.getElementById("Monsters");
@@ -1047,6 +1264,11 @@ function create_element(item) {
 		// Add
 		var parent = document.getElementById("Lists");
 		parent.appendChild(editor_container_list(list));
+	} else if (item.startsWith('Hazard')) {
+		var hazard = create_element_hazard(document.createElement('table'), item[item.length - 1]);
+
+		var parent = document.getElementById("Hazards");
+		parent.appendChild(editor_container_hazard(hazard, item[item.length - 1]));
 	} else {
 		alert("Invalid create_element parameter.");
 		return;
@@ -1576,6 +1798,7 @@ function export_json(callback) {
 		"Stores": [],
 		"Tables": [],
 		"Lists": [],
+		"Hazards": [],
 	}
 	export_counter = 0;
 
