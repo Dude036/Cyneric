@@ -1894,6 +1894,9 @@ function import_page() {
 							document.getElementById('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_LEGEND').checked = true;
 						}
 					}
+					if (value[i]['Edition'] === '2') {
+						set_dom_value('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_COST', temp_action['Cost']);
+					}
 
 					// Incriment again
 					latest_monster_action++;
