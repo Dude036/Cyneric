@@ -1542,6 +1542,11 @@ function export_page() {
 	}
 	new_doc += "</body></html>"
 
+	// Notice for getting the HTML prettified
+	new_doc += "\n\n<!-- If you're looking to prettify the above Code, I recommend using the following services. -->"
+	new_doc += "\n<!-- HTML: https://jsonformatter.org/html-pretty-print -->"
+	new_doc += "\n<!-- CSS: https://www.cleancss.com/css-beautify/ -->"
+
 	if (DEBUG) { console.log('RAW String'); }
 	if (DEBUG) { console.log(new_doc); }
 
