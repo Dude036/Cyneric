@@ -931,6 +931,42 @@ function create_element(item) {
 				temp_action_header.appendChild(monster_action_legend_label);
 				temp_action_header.appendChild(monster_action_legend);
 			}
+			// Action Cost Qualifier
+			if (item.endsWith('2')) {
+				var monster_action_cost = document.createElement('select');
+				monster_action_cost.id = temp_action.id  + '_COST'
+				
+				var monster_action_cost_reaction = document.createElement("option");
+				monster_action_cost_reaction.text = 'Reaction';
+				monster_action_cost.add(monster_action_cost_reaction);
+
+				var monster_action_cost_free = document.createElement("option");
+				monster_action_cost_free.text = 'Free';
+				monster_action_cost.add(monster_action_cost_free);
+
+				var monster_action_cost_1 = document.createElement("option");
+				monster_action_cost_1.text = '1 Action';
+				monster_action_cost.add(monster_action_cost_1);
+
+				var monster_action_cost_2 = document.createElement("option");
+				monster_action_cost_2.text = '2 Action';
+				monster_action_cost.add(monster_action_cost_2);
+
+				var monster_action_cost_3 = document.createElement("option");
+				monster_action_cost_3.text = '3 Action';
+
+				monster_action_cost.add(monster_action_cost_3);
+				var monster_action_cost_label = document.createElement('label');
+				monster_action_cost_label.htmlFor = temp_action.id  + '_COST_LABEL'
+				monster_action_cost_label.innerHTML = "<b>Cost: </b>"
+				monster_action_cost_label.style.paddingLeft = '10px'
+
+				monster_action_cost.value = '1 Action';
+				console.log('Value: ' + monster_action_cost.value);
+
+				temp_action_header.appendChild(monster_action_cost_label);
+				temp_action_header.appendChild(monster_action_cost);
+			}
 
 			// Detail Info
 			var temp_action_info = document.createElement('tr');
@@ -1205,6 +1241,9 @@ function get_monster_data(monster, edition) {
 		if (edition === '5') {
 			action_obj['Legendary'] = document.getElementById(action_table.id + '_LEGEND').checked;
 		}
+		if (edition === '2') {
+			action_obj['Cost'] = document.getElementById(action_table.id + '_COST').value;
+		}
 
 		monster_obj['Actions'].push(action_obj);
 	});
@@ -1422,6 +1461,20 @@ function export_page() {
 			new_doc += '<table><tr><th>' + temp_action['Name'];
 			if (temp_monster['Edition'] == '5' && temp_action['Legendary']) {
 				new_doc += ' - <span style="color:#FFD700">Legendary</span>';
+			}
+			if (temp_monster['Edition'] == '2') {
+				new_doc += ' - Cost: ';
+				if (temp_action['Cost'] == 'Free') {
+					new_doc += '<abbr title="Free Action">&#9671;</abbr>'
+				} else if (temp_action['Cost'] == 'Reaction') {
+					new_doc += '<abbr title="Reaction">&#8634;</abbr>'
+				} else if (temp_action['Cost'] == '1 Action') {
+					new_doc += '<abbr title="1 Action">&#9830;</abbr>'
+				} else if (temp_action['Cost'] == '2 Action') {
+					new_doc += '<abbr title="2 Action">&#9830;&#9830;</abbr>'
+				} else if (temp_action['Cost'] == '3 Action') {
+					new_doc += '<abbr title="3 Action">&#9830;&#9830;&#9830;</abbr>'
+				}
 			}
 			new_doc += '</th></tr><tr><td>' + temp_action['Text'];
 			new_doc += '</td></tr></table>';
