@@ -145,6 +145,43 @@
       background-color: #222;
       color: #ddd;
     }
+    .sidebar {
+      float: left;
+      position: fixed;
+      top: 0;
+      right: 0px;
+      margin: 5px;
+    }
+    .sidebar_object {
+      -webkit-user-select: none; /* Safari */        
+      -moz-user-select: none; /* Firefox */
+      -ms-user-select: none; /* IE10+/Edge */
+      user-select: none; /* Standard */
+      padding: 10px 20px;
+      border-style: solid;
+      border: 2px;
+      background-color: #EFEFEF;
+    }
+    .sidebar_object:hover {
+      background-color: #CFCFCF;
+    }
+    .sidebar_object:active {
+      background-color: #0000CF;
+      color: #EFEFEF;
+    }
+    .editor {
+      padding: 5px;
+    }
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 5px 0px;
+      background-color: grey;
+      color: white;
+      text-align: center;
+    }
 
     @media only screen and (max-width: 600px) {
       .header a {
