@@ -1215,7 +1215,7 @@ function create_element_hazard(hazard, item) {
 	hazard_trait_add.style.backgroundColor = '#606090';
 	hazard_trait_add.style.color = '#EFEFEF';
 	hazard_trait_add.innerHTML = "Add Hazard Trait";
-	hazard_trait_add.id = hazard_traits.id + "_TRAIT_ADD";
+	hazard_trait_add.id = hazard_traits_sub.id + "_TRAIT_ADD";
 
 	hazard_trait_add.onclick = function() {
 		var temp_trait = document.createElement('div');
@@ -1259,7 +1259,7 @@ function create_element_hazard(hazard, item) {
 	hazard_trait_clear.style.backgroundColor = '#900000';
 	hazard_trait_clear.style.color = '#EFEFEF';
 	hazard_trait_clear.innerHTML = "Clear Traits";
-	hazard_trait_clear.id = hazard_traits.id + "_TRAIT_CLEAR";
+	hazard_trait_clear.id = hazard_traits_sub.id + "_TRAIT_CLEAR";
 
 	hazard_trait_clear.onclick = function() {
 		if (confirm("Clear All Traits?")) {
@@ -1298,7 +1298,8 @@ function create_element_hazard(hazard, item) {
 	hazard_custom.id = hazard.id + 'R5';
 	var hazard_custom_content = document.createElement('td');
 
-	var hazard_custom_add = document.createElement('div')
+	var hazard_custom_add = document.createElement('div');
+	hazard_custom_add.id = hazard_custom.id + '_CUSTOM_ADD'
 	hazard_custom_add.innerHTML = 'Add Custom Field';
 	hazard_custom_add.style.padding = '5px';
 	hazard_custom_add.style.backgroundColor = '#606090';
@@ -2401,6 +2402,45 @@ function import_page() {
 				latest_monster++;
 				latest_table++;
 			}
+		} else if (key === 'Hazards') {
+			for (var i = 0; i < value.length; i++) {
+				if (DEBUG) { console.log("Parsing Hazard Data"); }
+				console.log(value[i]['Edition'])
+				create_element('Hazard' + value[i]['Edition']);
+				latest_hazard--;
+				console.log(value[i]);
+
+				// Standard Entries rendered
+				set_dom_value('H' + latest_hazard + 'R1_NAME', value[i]['Name']);
+				set_dom_value('H' + latest_hazard + 'R1_CR', value[i]['Cr']);
+				set_dom_value('H' + latest_hazard + 'R4_COMPLEXITY', value[i]['Complexity']);
+				set_dom_value('H' + latest_hazard + 'R4_STEALTH', value[i]['Stealth']);
+				set_dom_value('H' + latest_hazard + 'R4_DESCRIPTION', value[i]['Description']);
+				set_dom_value('H' + latest_hazard + 'R4_DISABLE', value[i]['Disable']);
+
+				// Traits
+				for (var x = 0; x < value[i]['Traits'].length; x++) {
+					document.getElementById('H' + latest_hazard + 'R3_TRAIT_ADD').click()
+					latest_hazard_trait--;
+					set_dom_value('H' + latest_hazard + 'R2_TRAITS_' + latest_hazard_trait, value[i]['Traits'][x]);
+					latest_hazard_trait++;
+				}
+
+				// Custom
+				for (var x = 0; x < value[i]['Custom'].length; x++) {
+					document.getElementById('H' + latest_hazard + 'R5_CUSTOM_ADD').click()
+					latest_hazard_custom--;
+					var temp_custom = value[i]['Custom'][x];
+
+					set_dom_value('H' + latest_hazard + 'R5_CUSTOM_' + latest_hazard_custom, Object.keys(temp_custom)[0]);
+					set_dom_value('H' + latest_hazard + 'R5_CUSTOM_' + latest_hazard_custom + '_INPUT', Object.values(temp_custom)[0]);
+
+					latest_hazard_custom++;
+				}
+
+				latest_hazard++;
+			}
+
 		} else if (key === 'Lists') {
 			for (var i = 0; i < value.length; i++) {
 				if (DEBUG) { console.log("Parsing List Data"); }
