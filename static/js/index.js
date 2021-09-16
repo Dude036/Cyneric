@@ -11,6 +11,7 @@ let latest_monster_trait = 0;
 let latest_monster_action = 0;
 let latest_hazard = 0;
 let latest_hazard_trait = 0;
+let latest_hazard_custom = 0;
 
 // Export Variables
 let export_obj = {
@@ -1079,6 +1080,64 @@ function create_element_monster(monster, edition) {
 
 
 /**Create Hazard item
+ * @param item_text Item text to use for id, text, and placeholder
+ * @param add_id Parent ID text
+ * @param custom Flag for whether or not to have a special input for Custom Keys
+ * @param input_options Options to impliment for the input
+ * @return Hazard div item
+ */
+function create_element_hazard_list_item(item_text, add_id, custom, input_options) {
+	// Key
+	var hazard_list_item = document.createElement('div');
+	if (custom) {
+		var hazard_list_key_input = document.createElement('input');
+		hazard_list_key_input.id = add_id + '_CUSTOM_' + latest_hazard_custom;
+		hazard_list_key_input.placeholder = 'Custom Key ' + latest_hazard_custom;
+		hazard_list_item.appendChild(hazard_list_key_input);
+	} else {
+		hazard_list_item.appendChild(document.createTextNode(item_text + ': '))
+	}
+	
+	// Value
+	var hazard_list_item_input = document.createElement('input');
+	hazard_list_item_input.type = 'text';
+	if (custom) {
+		hazard_list_item_input.id = add_id + '_CUSTOM_' + latest_hazard_custom + '_INPUT';
+		hazard_list_item_input.placeholder = 'Custom Input ' + latest_hazard_custom;
+		latest_hazard_custom++;
+	} else {
+		hazard_list_item_input.placeholder = item_text;
+		hazard_list_item_input.id = add_id + '_' + item_text.toUpperCase();
+	}
+
+	// Special Properties
+	for (const property in input_options) {
+		hazard_list_item_input[property] = input_options[property];
+	}
+
+	hazard_list_item.appendChild(hazard_list_item_input)
+
+	// Delete Method
+	if (custom) {
+		var hazard_list_button = document.createElement('button');
+		hazard_list_button.style.color = 'red';
+		hazard_list_button.style.fontWeight = 'bold';
+		hazard_list_button.innerHTML = ' X ';
+		hazard_list_button.onclick = function() {
+			if (confirm("Delete Custom Field?")) {
+				if (DEBUG) { console.log("Deleting Custom Field"); }
+				hazard_list_item.parentNode.removeChild(hazard_list_item);
+				if (DEBUG) { console.log("Custom Field successfully deleted"); }
+			}
+		}
+
+		hazard_list_item.appendChild(hazard_list_button);
+	}
+
+	return hazard_list_item;
+}
+
+/**Create Hazard item
  * @param hazard Primary element to modify
  * @return Full formed hazard DOM object
  */
@@ -1120,13 +1179,12 @@ function create_element_hazard(hazard, item) {
 	hazard_cr_input.style.fontSize = '24px';
 	hazard_cr_input.size = '3';
 	hazard_cr_input.placeholder = 'CR';
-	hazard_cr_input.id = hazard_header.id + '_NAME';
+	hazard_cr_input.id = hazard_header.id + '_CR';
 	hazard_cr.appendChild(hazard_cr_input);
 	hazard_header_content.appendChild(hazard_cr);
 
 	hazard_header.appendChild(hazard_header_content);
 	hazard.appendChild(hazard_header);
-
 
 	/*******************************************************************************************************/
 
@@ -1135,15 +1193,19 @@ function create_element_hazard(hazard, item) {
 	var hazard_traits_content = document.createElement('td');
 
 	var hazard_traits_sub = document.createElement('tr');
+
+	hazard_traits_sub.id = hazard.id + 'R3';
 	var hazard_traits_sub_content = document.createElement('td');
 
 	// Trait List
-	var hazard_trait_loc = document.createElement('ul');
+	var hazard_trait_loc = document.createElement('div');
 	hazard_trait_loc.id = hazard_traits.id + '_TRAITS';
 	hazard_trait_loc.style.padding = '5px 2px';
-	hazard_trait_loc.style.margin = '5px 5px';
-	hazard_trait_loc.style.display = 'inline-block';
-	hazard_trait_loc.style.listStyleType = 'none';
+	hazard_trait_loc.style.width = '95%';
+	hazard_trait_loc.style.margin = '15px 10px';
+	hazard_trait_loc.style.display = 'flex';
+	hazard_trait_loc.style.flexWrap = 'wrap';
+	hazard_trait_loc.style.alignItems = 'flex-start';
 	hazard_traits_content.appendChild(hazard_trait_loc);
 
 	// Add hazard trait button
@@ -1156,12 +1218,13 @@ function create_element_hazard(hazard, item) {
 	hazard_trait_add.id = hazard_traits.id + "_TRAIT_ADD";
 
 	hazard_trait_add.onclick = function() {
-		var temp_trait = document.createElement('li');
-		temp_trait.style.backgroundColor = '#666666'
+		var temp_trait = document.createElement('div');
+		temp_trait.style.backgroundColor = '#666666';
 		temp_trait.style.color = '#EFEFEF';
-		temp_trait.style.display = 'inline';
-		temp_trait.style.padding = '8px';
-		temp_trait.style.margin = '8px';
+		temp_trait.style.justfyContent = 'flex-start';
+		temp_trait.style.width = '23%';
+		temp_trait.style.margin = '0px 10px';
+		temp_trait.style.padding = '3px';
 
 		var temp_trait_input = document.createElement('input');
 		temp_trait_input.id = hazard_trait_loc.id + '_' + latest_hazard_trait;
@@ -1185,6 +1248,9 @@ function create_element_hazard(hazard, item) {
 		temp_trait.appendChild(temp_trait_delete);
 
 		hazard_trait_loc.appendChild(temp_trait);
+		if (hazard_trait_loc.childElementCount % 4 == 3) {
+			hazard_trait_loc.appendChild(document.createElement('hr'))
+		}
 	}
 
 	var hazard_trait_clear = document.createElement('div');
@@ -1211,6 +1277,45 @@ function create_element_hazard(hazard, item) {
 	hazard_traits.appendChild(hazard_traits_content);
 	hazard.appendChild(hazard_traits);
 	hazard.appendChild(hazard_traits_sub);
+
+	/*******************************************************************************************************/
+
+	var hazard_details = document.createElement('tr');
+	hazard_details.id = hazard.id + 'R4';
+	var hazard_details_content = document.createElement('td');
+
+	hazard_details_content.appendChild(create_element_hazard_list_item('Complexity', hazard_details.id, false, {}));
+	hazard_details_content.appendChild(create_element_hazard_list_item('Stealth', hazard_details.id, false, {}));
+	hazard_details_content.appendChild(create_element_hazard_list_item('Description', hazard_details.id, false, {'size': '100'}));
+	hazard_details_content.appendChild(create_element_hazard_list_item('Disable', hazard_details.id, false, {'size': '100'}));
+
+	hazard_details.appendChild(hazard_details_content);
+	hazard.appendChild(hazard_details);
+
+	/*******************************************************************************************************/
+
+	var hazard_custom = document.createElement('tr');
+	hazard_custom.id = hazard.id + 'R5';
+	var hazard_custom_content = document.createElement('td');
+
+	var hazard_custom_add = document.createElement('div')
+	hazard_custom_add.innerHTML = 'Add Custom Field';
+	hazard_custom_add.style.padding = '5px';
+	hazard_custom_add.style.backgroundColor = '#606090';
+	hazard_custom_add.style.color = '#EFEFEF';
+	hazard_custom_add.style.float = 'right';
+
+	hazard_custom_add.onclick = function() {
+		hazard_custom_loc.appendChild(create_element_hazard_list_item('', hazard_custom.id, true, {'size': '70'}))
+	}
+
+	hazard_custom_content.appendChild(hazard_custom_add);
+
+	var hazard_custom_loc = document.createElement('div')
+	hazard_custom_content.appendChild(hazard_custom_loc);
+
+	hazard_custom.appendChild(hazard_custom_content);
+	hazard.appendChild(hazard_custom);
 
 	/*******************************************************************************************************/
 
@@ -1483,6 +1588,60 @@ function get_monster_data(monster, edition) {
 }
 
 
+/**Get hazard data depending on edition
+ * @param hazard The hazard table DOM element
+ * @param edition Edition for the which type of export
+ */
+function get_hazard_data(hazard, edition) {
+	if (DEBUG) { console.log("Exporting Hazard: " + hazard.id); }
+
+	var hazard_obj = {
+		'Edition': edition,
+	};
+
+	var hazard_header = hazard.rows[0].querySelectorAll('input');
+
+	console.log(hazard_header);
+	hazard_obj['Name'] = hazard_header[0].value;
+	hazard_obj['Cr'] = hazard_header[1].value;
+
+	/*******************************************************************************************************/
+
+	var hazard_traits = hazard.rows[1].querySelectorAll('input');
+	hazard_obj['Traits'] = [];
+
+	for (var i = 0; i < hazard_traits.length; i++) {
+		hazard_obj['Traits'].push(hazard_traits[i].value);
+	}
+
+	/*******************************************************************************************************/
+
+	var hazard_details = hazard.rows[3].querySelectorAll('input');
+	hazard_obj['Complexity'] = hazard_details[0].value;
+	hazard_obj['Stealth'] = hazard_details[1].value;
+	hazard_obj['Description'] = hazard_details[2].value;
+	hazard_obj['Disable'] = hazard_details[3].value;
+
+	/*******************************************************************************************************/
+
+	var hazard_custom = hazard.rows[4].querySelectorAll('input');
+	hazard_obj['Custom'] = [];
+
+	for (var i = 0; i < hazard_custom.length; i += 2) {
+		var temp = {};
+		temp[hazard_custom[i].value] = hazard_custom[i + 1].value;
+		hazard_obj['Custom'].push(temp);
+	}
+
+	/*******************************************************************************************************/
+
+	if (DEBUG) { console.log("Hazard successfully handled"); }
+	if (DEBUG) { console.log(hazard_obj); }
+
+	return hazard_obj;
+}
+
+
 /**Export everything into an object, then turn the object data into a usable html file
  */
 function export_page() {
@@ -1495,7 +1654,7 @@ function export_page() {
 	// Create new Document for printing
 	// Going with a simple String to be coppied
 	// Boiler plate CSS header stuffs
-	var new_doc = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Custom HTML</title><style>body{max-width:1000px;margin-left:auto;margin-right:auto;padding-left:5px;padding-right:5px}html{font-family:Arial}h1,h2{color:#000;text-align:center}.center{text-align:center}.bold{font-weight:700}.emp{font-style:italic}table{border:1px solid #000;border-spacing:0}table tr th{background-color:gray;color:#fff;padding:5px}table tr td{margin:0;padding:5px}.text-xs{font-size:12px}.text-sm{font-size:14px}.text-md{font-size:18px}.text-lg{font-size:24px}.text-xl{font-size:32px}.wrapper-box{width:100%;border:2px solid #000;margin-bottom:60px padding:5px;}.inventory-table{width:100%;}.suggestion{padding:2px 0;margin:0;list-style:none}.suggestion li{border:1px solid #000;background-color:#ddd;padding:2px 4px;margin:5px 10px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.suggestion li:active{background-color:#404040}.suggestion li:hover{background-color:grey}.attacks{display:flex;flex-wrap:wrap;align-items:flex-start;width:100%;padding-top:10px;padding-bottom:20px}.attacks table{width:44%;margin-left:3%;margin-right:3%;margin-bottom:1%}.header{background-color:#f1f1f1;position:fixed;top:0;left:0;padding:5px 5px}.header ul{display:none;list-style-type:none;padding-left:10px;margin-top:0}.header a{float:left;color:#000;text-align:center;text-decoration:none;padding:5px 5px}.header a:hover{background-color:#ddd}.header a.active{background-color:#02f}.crit tr:nth-child(even){background-color:#eee}.link{text-align:center}.link li{padding-bottom:10px}.link a{border:1px solid #000;width:60%;text-decoration:none;color:#222;background-color:#ddd;padding:3px 3px 3px 3px}.link a:hover{background-color:#222;color:#ddd}.sidebar{float:left;position:fixed;top:0;right:0;margin:5px}.sidebar_object{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:10px 20px;border-style:solid;border:2px;background-color:#efefef}.sidebar_object:hover{background-color:#cfcfcf}.sidebar_object:active{background-color:#0000cf;color:#efefef}@media only screen and (max-width:600px){.header a{float:none;display:block;text-align:left;font-size:20px}.header img{height:50px;width:50px}.header-right{float:none}}</style><script>function show_hide(ident) {var a = document.getElementById(ident);if (a.style.display === "none") {a.style.display = "block";} else {a.style.display = "none";}}</script></head>';
+	var new_doc = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Custom HTML</title><style>body{max-width:1000px;margin-left:auto;margin-right:auto;padding-left:5px;padding-right:5px}html{font-family:Arial}h1,h2{color:#000;text-align:center}.center{text-align:center}.bold{font-weight:700}.emp{font-style:italic}table{border:1px solid #000;border-spacing:0}table tr th{background-color:gray;color:#fff;padding:5px}table tr td{margin:0;padding:5px}.text-xs{font-size:12px}.text-sm{font-size:14px}.text-md{font-size:18px}.text-lg{font-size:24px}.text-xl{font-size:32px}.wrapper-box{width:100%;border:2px solid #000;margin-bottom:60px padding:5px;}.inventory-table{width:100%;}.suggestion{padding:2px 0;margin:0;list-style:none}.suggestion li{border:1px solid #000;background-color:#ddd;padding:2px 4px;margin:5px 10px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.suggestion li:active{background-color:#404040}.suggestion li:hover{background-color:grey}.attacks{display:flex;flex-wrap:wrap;align-items:flex-start;width:100%;padding-top:10px;padding-bottom:20px}.attacks table{width:44%;margin-left:3%;margin-right:3%;margin-bottom:1%}.header{background-color:#f1f1f1;position:fixed;top:0;left:0;padding:5px 5px}.header ul{display:none;list-style-type:none;padding-left:10px;margin-top:0}.header a{float:left;color:#000;text-align:center;text-decoration:none;padding:5px 5px}.header a:hover{background-color:#ddd}.header a.active{background-color:#02f}.crit tr:nth-child(even){background-color:#eee}.link{text-align:center}.link li{padding-bottom:10px}.link a{border:1px solid #000;width:60%;text-decoration:none;color:#222;background-color:#ddd;padding:3px 3px 3px 3px}.link a:hover{background-color:#222;color:#ddd}.sidebar{float:left;position:fixed;top:0;right:0;margin:5px}.sidebar_object{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:10px 20px;border-style:solid;border:2px;background-color:#efefef}.sidebar_object:hover{background-color:#cfcfcf}.sidebar_object:active{background-color:#0000cf;color:#efefef}.traits {padding: 5px 2px;width: 95%;margin: 15px 10px;display: flex;flex-wrap: wrap;align-items: flex-start;}.traits_obj {justfy-content: flex-start;width: 23%;margin: 0px 10px;padding: 3px;background-color:#666666;color:#EFEFEF;}@media only screen and (max-width:600px){.header a{float:none;display:block;text-align:left;font-size:20px}.header img{height:50px;width:50px}.header-right{float:none}}</style><script>function show_hide(ident) {var a = document.getElementById(ident);if (a.style.display === "none") {a.style.display = "block";} else {a.style.display = "none";}}</script></head>';
 	new_doc += "<body><!-- Thanks for using my Custom HTML editor! Feel free to visit again! -->"
 
 	// Header and description
@@ -1742,6 +1901,47 @@ function export_page() {
 
 	/************************************************************************************************/
 
+	// Next is Hazards
+	if (export_obj['Hazards'].length > 0) {
+		new_doc += '<h2 class="text-lg bold center">Hazards</h2>';
+	}
+	for (var i = 0; i < export_obj['Hazards'].length; i++) {
+		var temp_hazard = export_obj['Hazards'][i];
+		if (DEBUG) { console.log("Adding List " + i) };
+
+		// Header
+		new_doc += '<table class="wrapper-box" style="margin-bottom: 60px;"><tr><th>';
+		new_doc += '<div style="float: left">' + temp_hazard['Name'] + '</div>';
+		new_doc += '<div style="float: right">Hazard ' + temp_hazard['Cr'] + '</div>';
+
+		// Traits
+		new_doc += '</th></tr><tr><td><div class="traits">';
+
+		for (var x = 0; x < temp_hazard['Traits'].length; x++) {
+			new_doc += '<div class="traits_obj">' + temp_hazard['Traits'][x].toUpperCase() + '</div>'
+		}
+
+		new_doc += '</div</td></tr><tr><td><ul>';
+
+		// Permenant Set of Details
+		new_doc += '<li><b>Complexity: </b>' + temp_hazard['Complexity'] + '</li>'
+		new_doc += '<li><b>Stealth: </b>' + temp_hazard['Stealth'] + '</li>'
+		new_doc += '<li><b>Description: </b>' + temp_hazard['Description'] + '</li>'
+		new_doc += '<li><b>Disable: </b>' + temp_hazard['Disable'] + '</li>'
+
+		new_doc += '</ul</td></tr><tr><td><hr></td></tr><tr><td><ul>';
+
+		// Custom details
+		for (var x = 0; x < temp_hazard['Custom'].length; x++) {
+			var temp_custom = temp_hazard['Custom'][x]
+			new_doc += '<li><b>' + Object.keys(temp_custom)[0] + ': </b>' + Object.values(temp_custom)[0] + '</li>'
+		}
+ 
+		new_doc += '</ul></td></tr></table>';
+	}
+
+	/************************************************************************************************/
+
 	// Next is Lists
 	if (export_obj['Lists'].length > 0) {
 		new_doc += '<h2 class="text-lg bold center">Lists</h2>';
@@ -1837,6 +2037,18 @@ function export_json(callback) {
 			var editor_element = editor_container[i];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
 			export_obj['Monsters'].push(get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
+		}
+	}
+
+	// Export Hazards Next
+	editor_container = document.getElementById('Hazards').childNodes;
+	if (DEBUG) { console.log(editor_container); }
+	for(var i = 0; i < editor_container.length; i++) {
+		// Found the container
+		if (/^H\dC/.test(editor_container[i].id)) {
+			var editor_element = editor_container[i];
+			var edition = document.getElementById(editor_element.id + '_EDITION');
+			export_obj['Hazards'].push(get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
 		}
 	}
 
