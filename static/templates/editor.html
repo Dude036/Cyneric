@@ -25,36 +25,39 @@
       
     </div>
   </div>
-  <div class="sidebar">
-    <div class="grey sidebar_object" onclick="create_element('Store');">
-      Add New Store Table
-    </div>
-    <div class="grey sidebar_object" onclick="create_element('Table');">
-      Add New Item Table
-    </div>
-    <div class="grey sidebar_object" onclick="create_element('Monster5');">
-      Add D&D 5e Monster
-    </div>
-    <div class="grey sidebar_object" onclick="create_element('Monster1');">
-      &ensp;Pathfinder 1e Monster
-    </div>
-    <div class="grey sidebar_object" onclick="create_element('Monster2');">
-      &ensp;Pathfinder 2e Monster
-    </div>
-    <div class="grey sidebar_object" onclick="create_element('Hazard2');">
-      Add New Hazard
-    </div>
-    <div class="grey sidebar_object" onclick="create_element('List');">
-      Add New List
-    </div>
-    <div class="green sidebar_object" onclick="export_page();">
-      Export to HTML
-    </div>
-    <div class="yellow sidebar_object" onclick="export_json(false);">
-      Export to JSON
-    </div>
-    <div class="blue sidebar_object" onclick="import_page();">
-      Import from JSON
+  <div class="sidebar" onclick="show_hide('sidebar_container');">
+    <img height="30px" style="float: right;" src="{% static 'editor_sidebar.svg' %}">
+    <div id="sidebar_container" style="display: block;">
+      <div class="grey sidebar_object" onclick="create_element('Store');">
+        Add New Store Table
+      </div>
+      <div class="grey sidebar_object" onclick="create_element('Table');">
+        Add New Item Table
+      </div>
+      <div class="grey sidebar_object" onclick="create_element('Monster5');">
+        Add D&D 5e Monster
+      </div>
+      <div class="grey sidebar_object" onclick="create_element('Monster1');">
+        &ensp;Pathfinder 1e Monster
+      </div>
+      <div class="grey sidebar_object" onclick="create_element('Monster2');">
+        &ensp;Pathfinder 2e Monster
+      </div>
+      <div class="grey sidebar_object" onclick="create_element('Hazard2');">
+        Add New Hazard
+      </div>
+      <div class="grey sidebar_object" onclick="create_element('List');">
+        Add New List
+      </div>
+      <div class="green sidebar_object" onclick="export_page();">
+        Export to HTML
+      </div>
+      <div class="yellow sidebar_object" onclick="export_json(false);">
+        Export to JSON
+      </div>
+      <div class="blue sidebar_object" onclick="import_page();">
+        Import from JSON
+      </div>
     </div>
   </div>
   <div class="footer">
