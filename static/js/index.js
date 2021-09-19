@@ -1583,13 +1583,12 @@ function get_monster_data(monster, edition) {
 
 	// Grab all traits for 2e monsters
 	if (edition === '2') {
-		var monster_trait_list = document.getElementById(monster_header.id + '_TRAITS').childNodes;
+		var monster_trait_loc = document.getElementById(monster_header.id + '_TRAITS');
+		var monster_trait_list = monster_trait_loc.querySelectorAll('input');
 		if (DEBUG) { console.log(monster_trait_list); }
 		monster_obj['Traits'] = [];
 		monster_trait_list.forEach(function(sub) {
-			var text = sub.innerText;
-			text = text.slice(0, text.lastIndexOf(' '))
-			monster_obj['Traits'].push(text);
+			monster_obj['Traits'].push(sub.value);
 		});
 	}
 
@@ -2320,7 +2319,6 @@ function import_page() {
 				// Pathfinder 2e Traits
 				if (value[i]['Edition'] === '2') {
 					for (var j = 0; j < value[i]['Traits'].length; j++) {
-						console.log('M' + latest_monster + 'R1_TRAIT_ADD')
 						document.getElementById('M' + latest_monster + 'R1_TRAIT_ADD').click();
 						latest_monster_trait--;
 
