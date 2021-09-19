@@ -2224,7 +2224,7 @@ function import_page() {
 						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Name', value[i]['Data'][j]['Name']);
 						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Describe', value[i]['Data'][j]['Describe']);
 						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Text', value[i]['Data'][j]['Text']);
-						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Category_I', value[i]['Data'][j]['Cateogry']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Category_I', value[i]['Data'][j]['Category']);
 						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Descriptor_I', value[i]['Data'][j]['Descriptor']);
 
 						// Finally incriment when done, to not mess with future addition
