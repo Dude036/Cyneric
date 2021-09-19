@@ -622,35 +622,67 @@ function create_element_monster(monster, edition) {
 		monster_trait_list_add.style.float = 'right'
 		monster_trait_list_add.style.padding = '5px'
 		monster_trait_list_add.innerHTML = 'Add Trait';
+		monster_trait_list_add.id = monster_header.id + "_TRAIT_ADD";
 
-		var monster_trait_list_loc = document.createElement('ul');
+		var monster_trait_list_loc = document.createElement('div');
 		monster_trait_list_loc.id = monster_header.id + '_TRAITS';
+		monster_trait_list_loc.style.padding = '5px 2px';
+		monster_trait_list_loc.style.width = '95%';
+		monster_trait_list_loc.style.margin = '15px 10px';
+		monster_trait_list_loc.style.display = 'flex';
+		monster_trait_list_loc.style.flexWrap = 'wrap';
+		monster_trait_list_loc.style.alignItems = 'flex-start';
 
 		monster_trait_list_add.onclick = function() {
-			var ret = prompt('Input trait message');
-			if (ret != null) {
-				var temp_trait = document.createElement('li');
-				temp_trait.id = monster_trait_list_loc.id + '_' + latest_monster_trait;
-				latest_monster_trait++;
-				temp_trait.innerHTML = ret.toUpperCase() + ' <span style="color: red;font-weight: bold;"> X</span>';
-				temp_trait.style.backgroundColor = '#666666'
-				temp_trait.style.color = '#EFEFEF';
-				temp_trait.style.display = 'inline';
-				temp_trait.style.padding = '8px';
-				temp_trait.style.margin = '8px';
+			var temp_trait = document.createElement('div');
+			temp_trait.style.backgroundColor = '#666666';
+			temp_trait.style.color = '#EFEFEF';
+			temp_trait.style.justfyContent = 'flex-start';
+			temp_trait.style.width = '23%';
+			temp_trait.style.margin = '0px 10px';
+			temp_trait.style.padding = '3px';
 
-				temp_trait.onclick = function() {
-					if (confirm("Delete Trait?")) {
-						if (DEBUG) { console.log("Deleting Trait"); }
-						temp_trait.parentNode.removeChild(temp_trait);
-						if (DEBUG) { console.log("Trait successfully deleted"); }
-					}
+			var temp_trait_input = document.createElement('input');
+			temp_trait_input.id = monster_trait_list_loc.id + '_' + latest_monster_trait;
+			latest_monster_trait++;
+			temp_trait_input.style.fontSize = '13px';
+
+			var temp_trait_delete = document.createElement('span');
+			temp_trait_delete.style.color = 'red';
+			temp_trait_delete.style.fontWeight = 'bold';
+			temp_trait_delete.innerHTML = ' X';
+
+			temp_trait_delete.onclick = function() {
+				if (confirm("Delete Trait?")) {
+					if (DEBUG) { console.log("Deleting Trait"); }
+					temp_trait.parentNode.removeChild(temp_trait);
+					if (DEBUG) { console.log("Trait successfully deleted"); }
 				}
+			}
 
-				monster_trait_list_loc.appendChild(temp_trait);
+			temp_trait.appendChild(temp_trait_input);
+			temp_trait.appendChild(temp_trait_delete);
+
+			monster_trait_list_loc.appendChild(temp_trait);
+		}
+
+		var monster_trait_list_clear = document.createElement('div');
+		monster_trait_list_clear.style.float = 'right';
+		monster_trait_list_clear.style.padding = '5px';
+		monster_trait_list_clear.style.backgroundColor = '#900000';
+		monster_trait_list_clear.style.color = '#EFEFEF';
+		monster_trait_list_clear.innerHTML = "Clear Traits";
+		monster_trait_list_clear.id = monster_header.id + "_TRAIT_CLEAR";
+
+		monster_trait_list_clear.onclick = function() {
+			if (confirm("Clear All Traits?")) {
+				if (DEBUG) { console.log("Deleting Traits"); }
+				hazard_trait_loc.innerHTML = '';
+				if (DEBUG) { console.log("Traits successfully cleared"); }
 			}
 		}
 
+		monster_header_content.appendChild(monster_trait_list_clear);
 		monster_header_content.appendChild(monster_trait_list_add);
 		monster_header_content.appendChild(monster_trait_list_loc);
 	}
@@ -1273,9 +1305,6 @@ function create_element_hazard(hazard, item) {
 		temp_trait.appendChild(temp_trait_delete);
 
 		hazard_trait_loc.appendChild(temp_trait);
-		if (hazard_trait_loc.childElementCount % 4 == 3) {
-			hazard_trait_loc.appendChild(document.createElement('hr'))
-		}
 	}
 
 	var hazard_trait_clear = document.createElement('div');
@@ -2269,7 +2298,7 @@ function import_page() {
 		} else if (key.startsWith('Monster')) {
 			for (var i = 0; i < value.length; i++) {
 				if (DEBUG) { console.log("Parsing Monster Data"); }
-				console.log(value[i]['Edition'])
+				console.log("Edition: " + value[i]['Edition'])
 				create_element('Monster' + value[i]['Edition']);
 				latest_monster--;
 				console.log(value[i]);
@@ -2279,31 +2308,17 @@ function import_page() {
 				set_dom_value('M' + latest_monster + 'R1_CR', value[i]['Cr']);
 				set_dom_value('M' + latest_monster + 'R1_ALIGN', value[i]['Alignment']);
 				set_dom_value('M' + latest_monster + 'R1_DESCRIBE', deconvert_text(value[i]['Description']));
+
 				// Pathfinder 2e Traits
 				if (value[i]['Edition'] === '2') {
-					var trait_list_loc = document.getElementById('M' + latest_monster + 'R1_TRAITS')
-
-					// Since we can't replicate an Prompt Javascript tag, We just replicate the code
 					for (var j = 0; j < value[i]['Traits'].length; j++) {
-						var temp_trait = document.createElement('li');
-						temp_trait.id = 'M' + latest_monster + 'R1_TRAITS_' + latest_monster_trait;
+						console.log('M' + latest_monster + 'R1_TRAIT_ADD')
+						document.getElementById('M' + latest_monster + 'R1_TRAIT_ADD').click();
+						latest_monster_trait--;
+
+						set_dom_value('M' + latest_monster + 'R1_TRAITS_' + latest_monster_trait, value[i]['Traits'][j]);
+
 						latest_monster_trait++;
-						temp_trait.innerHTML = value[i]['Traits'][j].toUpperCase() + ' <span style="color: red;font-weight: bold;"> X</span>';
-						temp_trait.style.backgroundColor = '#666666'
-						temp_trait.style.color = '#EFEFEF';
-						temp_trait.style.display = 'inline';
-						temp_trait.style.padding = '8px';
-						temp_trait.style.margin = '8px';
-
-						temp_trait.onclick = function() {
-							if (confirm("Delete Trait?")) {
-								if (DEBUG) { console.log("Deleting Trait"); }
-								temp_trait.parentNode.removeChild(temp_trait);
-								if (DEBUG) { console.log("Trait successfully deleted"); }
-							}
-						}
-
-						trait_list_loc.appendChild(temp_trait);
 					}
 				}
 
