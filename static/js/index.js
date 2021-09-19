@@ -1451,7 +1451,7 @@ function get_table_owner_data(row) {
 		'Age': document.getElementById(row.id + "_AGE").value,
 		'Trait 1': document.getElementById(row.id + "_TRAIT_1").value,
 		'Trait 2': document.getElementById(row.id + "_TRAIT_2").value,
-		'Description': document.getElementById(row.id + "_DESCRIBE").value,
+		'Description': convert_text(document.getElementById(row.id + "_DESCRIBE").value),
 	}
 
 	if (DEBUG) { console.log("Owner Complete"); }
@@ -2172,7 +2172,7 @@ function import_page() {
 				// Set Owner Elements
 				set_dom_value('S' + latest_store + '_OWNER_STORE', value[i]['Owner']['Store Name']);
 				set_dom_value('S' + latest_store + '_OWNER_NAME', value[i]['Owner']['Name']);
-				set_dom_value('S' + latest_store + '_OWNER_DESCRIBE', value[i]['Owner']['Description']);
+				set_dom_value('S' + latest_store + '_OWNER_DESCRIBE', deconvert_text(value[i]['Owner']['Description']));
 				set_dom_value('S' + latest_store + '_OWNER_RACE', value[i]['Owner']['Race']);
 				set_dom_value('S' + latest_store + '_OWNER_GENDER', value[i]['Owner']['Gender']);
 				set_dom_value('S' + latest_store + '_OWNER_AGE', value[i]['Owner']['Age']);
