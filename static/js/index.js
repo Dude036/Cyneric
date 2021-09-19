@@ -1796,10 +1796,17 @@ function export_page() {
 			if (temp_store['Data'][x]['Type'] == 'Item') {
 				if (DEBUG) { console.log("Explicit Item found"); }
 				export_counter++;
-				new_doc += '<td style="width:50%;"><span class="text-md" onclick="show_hide(\'' + export_counter + '\')" style="color:blue;">';
-				new_doc += temp_store['Data'][x]['Name'] + '</span><br><span class="text-sm emp" id="' + export_counter + '" style="display: none;">';
-				new_doc += temp_store['Data'][x]['Describe'] + '<p>' + temp_store['Data'][x]['Text'] + '</p></span></td><td>';
-				new_doc += temp_store['Data'][x]['Category'] + '</td><td>' + temp_store['Data'][x]['Descriptor'] + '</td>';
+				if (temp_store['Data'][x]['Describe'] === '') {
+					new_doc += '<td style="width:50%;"><span class="text-md">';
+					new_doc += temp_store['Data'][x]['Name'] + '</span><br>';
+					new_doc += temp_store['Data'][x]['Describe'] + '</td><td>';
+					new_doc += temp_store['Data'][x]['Category'] + '</td><td>' + temp_store['Data'][x]['Descriptor'] + '</td>';
+				} else {
+					new_doc += '<td style="width:50%;"><span class="text-md" onclick="show_hide(\'' + export_counter + '\')" style="color:blue;">';
+					new_doc += temp_store['Data'][x]['Name'] + '</span><br><span class="text-sm emp" id="' + export_counter + '" style="display: none;">';
+					new_doc += temp_store['Data'][x]['Describe'] + '<p>' + temp_store['Data'][x]['Text'] + '</p></span></td><td>';
+					new_doc += temp_store['Data'][x]['Category'] + '</td><td>' + temp_store['Data'][x]['Descriptor'] + '</td>';
+				}
 			} else {
 				// For Blanks
 				if (DEBUG) { console.log("Blank row found"); }
@@ -1836,9 +1843,15 @@ function export_page() {
 		
 		// Traits if Second edition
 		if (temp_monster['Edition'] === '2') {
-			new_doc += '<ul style="margin: 2px 0px;padding: 0px;display: inline-flex;list-style-type: none;">';
+			new_doc += '<ul style="margin: 2px 0px;padding: 0px;display: inline-flex;list-style-type: none;background-color: #d8c483">';
 			for (var x = 0; x < temp_monster['Traits'].length; x++) {
-				new_doc += '<li style="margin: 2px 5px; padding: 2px 5px; background-color: #CFCFCF;">' + temp_monster['Traits'][x] + '</li>';
+				var bgc = '#CFCFCF;'
+				if (['LE', 'LN', 'LG', 'NE', 'N', 'NG', 'CE', 'CN', 'CG'].includes(temp_monster['Traits'][x].toUpperCase())) {
+					bgc = '#4287f5';
+				} else if (['diminutive', 'tiny', 'small', 'medium', 'large', 'huge', 'gargantuan'].includes(temp_monster['Traits'][x].toLowerCase())) {
+					bgc = '#478c42';
+				}
+				new_doc += '<li style="margin: 2px 5px; padding: 2px 5px; background-color: ' + bgc + '">' + temp_monster['Traits'][x] + '</li>';
 			}
 			new_doc += '</ul><br>';
 		}
