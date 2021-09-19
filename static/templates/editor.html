@@ -25,8 +25,9 @@
       
     </div>
   </div>
-  <div class="sidebar" onclick="show_hide('sidebar_container');">
-    <img height="30px" style="float: right;" src="{% static 'editor_sidebar.svg' %}">
+  <div class="sidebar" onclick="show_hide('sidebar_container');show_hide('sidebar_open');show_hide('sidebar_closed');">
+    <img id="sidebar_open" height="30px" style="float: right;display: block;" src="{% static 'open_editor.svg' %}">
+    <img id="sidebar_closed" height="30px" style="float: right;display: none;" src="{% static 'closed_editor.svg' %}">
     <div id="sidebar_container" style="display: block;">
       <div class="grey sidebar_object" onclick="create_element('Store');">
         Add New Store Table
