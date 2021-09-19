@@ -1761,10 +1761,17 @@ function export_page() {
 			if (temp_store['Data'][x]['Type'] == 'Item') {
 				if (DEBUG) { console.log("Explicit Item found"); }
 				export_counter++;
-				new_doc += '<td style="width:50%;"><span class="text-md" onclick="show_hide(\'' + export_counter + '\')" style="color:blue;">';
-				new_doc += temp_store['Data'][x]['Name'] + '</span><br><span class="text-sm emp" id="' + export_counter + '" style="display: none;">';
-				new_doc += temp_store['Data'][x]['Describe'] + '<p>' + temp_store['Data'][x]['Text'] + '</p></span></td><td>';
-				new_doc += temp_store['Data'][x]['Category'] + '</td><td>' + temp_store['Data'][x]['Descriptor'] + '</td>';
+				if (temp_store['Data'][x]['Text'] === '') {
+					new_doc += '<td style="width:50%;"><span class="text-md">';
+					new_doc += temp_store['Data'][x]['Name'] + '</span><br><span class="text-sm emp">';
+					new_doc += temp_store['Data'][x]['Describe'] + '</span></td><td>';
+					new_doc += temp_store['Data'][x]['Category'] + '</td><td>' + temp_store['Data'][x]['Descriptor'] + '</td>';
+				} else {
+					new_doc += '<td style="width:50%;"><span class="text-md" onclick="show_hide(\'' + export_counter + '\')" style="color:blue;">';
+					new_doc += temp_store['Data'][x]['Name'] + '</span><br><span class="text-sm emp" id="' + export_counter + '" style="display: none;">';
+					new_doc += temp_store['Data'][x]['Describe'] + '<p>' + temp_store['Data'][x]['Text'] + '</p></span></td><td>';
+					new_doc += temp_store['Data'][x]['Category'] + '</td><td>' + temp_store['Data'][x]['Descriptor'] + '</td>';
+				}
 			} else {
 				// For Blanks
 				if (DEBUG) { console.log("Blank row found"); }
@@ -1804,10 +1811,10 @@ function export_page() {
 			if (temp_store['Data'][x]['Type'] == 'Item') {
 				if (DEBUG) { console.log("Explicit Item found"); }
 				export_counter++;
-				if (temp_store['Data'][x]['Describe'] === '') {
+				if (temp_store['Data'][x]['Text'] === '') {
 					new_doc += '<td style="width:50%;"><span class="text-md">';
-					new_doc += temp_store['Data'][x]['Name'] + '</span><br>';
-					new_doc += temp_store['Data'][x]['Describe'] + '</td><td>';
+					new_doc += temp_store['Data'][x]['Name'] + '</span><br><span class="text-sm emp">';
+					new_doc += temp_store['Data'][x]['Describe'] + '</span></td><td>';
 					new_doc += temp_store['Data'][x]['Category'] + '</td><td>' + temp_store['Data'][x]['Descriptor'] + '</td>';
 				} else {
 					new_doc += '<td style="width:50%;"><span class="text-md" onclick="show_hide(\'' + export_counter + '\')" style="color:blue;">';
@@ -1959,10 +1966,17 @@ function export_page() {
 			if (treasure['Data'][x]['Type'] == 'Item') {
 				if (DEBUG) { console.log("Explicit Item found"); }
 				export_counter++;
-				new_doc += '<td style="width:50%;"><span class="text-md" onclick="show_hide(\'' + export_counter + '\')" style="color:blue;">';
-				new_doc += treasure['Data'][x]['Name'] + '</span><br><span class="text-sm emp" id="' + export_counter + '" style="display: none;">';
-				new_doc += treasure['Data'][x]['Describe'] + '<p>' + treasure['Data'][x]['Text'] + '</p></span></td><td>';
-				new_doc += treasure['Data'][x]['Category'] + '</td><td>' + treasure['Data'][x]['Descriptor'] + '</td>';
+				if (treasure['Data'][x]['Text'] === '') {
+					new_doc += '<td style="width:50%;"><span class="text-md">';
+					new_doc += treasure['Data'][x]['Name'] + '</span><br><span class="text-sm emp">';
+					new_doc += treasure['Data'][x]['Describe'] + '</span></td><td>';
+					new_doc += treasure['Data'][x]['Category'] + '</td><td>' + treasure['Data'][x]['Descriptor'] + '</td>';
+				} else {
+					new_doc += '<td style="width:50%;"><span class="text-md" onclick="show_hide(\'' + export_counter + '\')" style="color:blue;">';
+					new_doc += treasure['Data'][x]['Name'] + '</span><br><span class="text-sm emp" id="' + export_counter + '" style="display: none;">';
+					new_doc += treasure['Data'][x]['Describe'] + '<p>' + treasure['Data'][x]['Text'] + '</p></span></td><td>';
+					new_doc += treasure['Data'][x]['Category'] + '</td><td>' + treasure['Data'][x]['Descriptor'] + '</td>';
+				}
 			} else {
 				// For Blanks
 				if (DEBUG) { console.log("Blank row found"); }
