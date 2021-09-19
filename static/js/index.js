@@ -875,7 +875,7 @@ function create_element_monster(monster, edition) {
 		monster_info_list.appendChild(monster_save_3);
 	}
 
-	// Skills
+	// Skills & Recall
 	var monster_skills = document.createElement('li');
 	var monster_skills_input = document.createElement('input');
 	monster_skills_input.id = monster_header.id + '_SKILLS';
@@ -883,6 +883,14 @@ function create_element_monster(monster, edition) {
 	monster_skills.appendChild(monster_skills_input);
 	monster_info_list.appendChild(monster_skills);
 
+	if (edition == '2') {
+		var monster_recall = document.createElement('li');
+		var monster_recall_input = document.createElement('input');
+		monster_recall_input.id = monster_header.id + '_RECALL';
+		monster_recall_input.placeholder = 'Recall';
+		monster_recall.appendChild(monster_recall_input);
+		monster_info_list.appendChild(monster_recall);
+	}
 
 	// Incoming damage modifiers
 	var monster_dam_immune = document.createElement('li');
@@ -2347,6 +2355,7 @@ function import_page() {
 				set_dom_value('M' + latest_monster + 'R1_AC', value[i]['Ac']);
 				set_dom_value('M' + latest_monster + 'R1_SIZE', value[i]['Size']);
 				set_dom_value('M' + latest_monster + 'R1_SKILLS', value[i]['Skills']);
+				set_dom_value('M' + latest_monster + 'R1_RECALL', value[i]['Recall']);
 				set_dom_value('M' + latest_monster + 'R1_DAM_IMMUNE', value[i]['DamImmune']);
 				set_dom_value('M' + latest_monster + 'R1_DAM_RESIST', value[i]['DamResist']);
 				set_dom_value('M' + latest_monster + 'R1_DAM_WEAK', value[i]['DamWeak']);
