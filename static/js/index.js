@@ -2123,7 +2123,7 @@ function export_json(callback) {
 	if (!callback) {
 		// Save to file
 		var textFile = null
-		var new_doc_blob = new Blob([JSON.stringify(export_obj)], {type: 'text/plain;charset=utf-8'});
+		var new_doc_blob = new Blob([JSON.stringify(export_obj, null, 2)], {type: 'text/plain;charset=utf-8'});
 		saveAs(new_doc_blob, document.getElementById("header").value + '.custom.json');
 	} else {
 		return export_obj;
