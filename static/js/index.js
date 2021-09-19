@@ -26,6 +26,23 @@ let export_obj = {
 let export_counter = 0;
 
 
+/**Dealing with Textarea Height
+ * @param element Textarea DOM element
+ */
+function calcHeight(element) {
+	var numberOfLineBreaks = (element.value.match(/\n/g) || []).length;
+	// min-height + lines x line-height + padding + border
+	var newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
+
+	element.style.height = newHeight + "px";
+}
+
+
+// Add variable height for description
+let textarea = document.getElementById("description");
+textarea.addEventListener("keyup", function() { calcHeight(textarea) });
+
+
 /**Create the Parent Container for Tables
  * @param element Primary child element, the table
  * @return Fully formed container for Table elements
@@ -247,6 +264,8 @@ function editor_container_table(element) {
 		item_text.name = item_row.id + "_Text";
 		item_text.id = item_row.id + "_Text";
 		item_text.placeholder = 'Long Description';
+		item_text.style.lineHeight = "20px"
+		item_text.addEventListener("keyup", function() { calcHeight(item_text) });
 		item_data_cell.appendChild(item_text);
 	}
 
@@ -534,6 +553,8 @@ function create_element_store(store) {
 	owner_description_text = document.createElement('textarea');
 	owner_description_text.placeholder = 'Owner Description'
 	owner_description_text.style.width = '90%';
+	owner_description_text.style.lineHeight = "20px"
+	owner_description_text.addEventListener("keyup", function() { calcHeight(owner_description_text) });
 	owner_description_text.id = owner_container.id + "_DESCRIBE";
 
 	owner_container.appendChild(owner_description_text)
@@ -640,6 +661,8 @@ function create_element_monster(monster, edition) {
 	monster_description_input.id = monster_header.id + '_DESCRIBE'
 	monster_description_input.placeholder = 'Monster Description';
 	monster_description_input.style.width = '50%';
+	monster_description_input.style.lineHeight = "20px"
+	monster_description_input.addEventListener("keyup", function() { calcHeight(monster_description_input) });
 	monster_description.appendChild(monster_description_input);
 
 	monster_header_content.appendChild(monster_description);
@@ -1018,6 +1041,8 @@ function create_element_monster(monster, edition) {
 		temp_action_info_input.id = temp_action.id  + '_TEXT'
 		temp_action_info_input.placeholder = 'Action Details';
 		temp_action_info_input.style.width = '90%';
+		temp_action_info_input.style.lineHeight = "20px"
+		temp_action_info_input.addEventListener("keyup", function() { calcHeight(temp_action_info_input) });
 		temp_action_info.appendChild(temp_action_info_input);
 
 		temp_action.appendChild(temp_action_header);
@@ -2103,6 +2128,7 @@ function import_page() {
 	// Update page information to reflect the data imported.
 	set_dom_value('header', new_json['Name']);
 	set_dom_value('description', deconvert_text(new_json['Description']));
+	calcHeight(textarea)
 
 	for (let [key, value] of Object.entries(new_json)) {
 		if (DEBUG) { console.log("Parsing Key: " + key); }
