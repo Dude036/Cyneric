@@ -8,6 +8,9 @@ let latest_list_rows = 0;
 let latest_monster = 0;
 let latest_monster_rows = 0;
 let latest_monster_trait = 0;
+let latest_monster_spell = 0;
+let latest_monster_spell_row = 0;
+let latest_monster_spell_col = 0;
 let latest_monster_action = 0;
 let latest_hazard = 0;
 let latest_hazard_trait = 0;
@@ -988,8 +991,8 @@ function create_element_monster(monster, edition) {
 	var monster_action_add = document.createElement('div');
 	monster_action_add.style.backgroundColor = '#030303';
 	monster_action_add.style.color = '#EFEFEF';
-	monster_action_add.style.float = 'right'
-	monster_action_add.style.padding = '5px'
+	monster_action_add.style.float = 'right';
+	monster_action_add.style.padding = '5px';
 	monster_action_add.id = monster_header.id + '_ACTION_ADD';
 	monster_action_add.innerHTML = 'Add Action';
 
@@ -1124,6 +1127,212 @@ function create_element_monster(monster, edition) {
 
 	/*******************************************************************************************************/
 
+
+	var monster_spell = document.createElement('tr');
+	monster_spell.id = monster.id + 'R5';
+
+
+	var monster_spell_sub = document.createElement('tr');
+	monster_spell_sub.id = monster.id + 'R6';
+
+	var monster_spell_container = document.createElement('div');
+	monster_spell_container.id = monster_spell.id + '_LOC';
+	monster_spell_container.style.marginTop = '5px';
+	monster_spell_container.style.marginBottom = '5px';
+
+	var monster_spell_add = document.createElement('div');
+	monster_spell_add.id = monster_spell.id + '_SPELL_ADD';
+
+	monster_spell_add.innerHTML = "Add Spell Table";
+	monster_spell_add.style.backgroundColor = '#030303';
+	monster_spell_add.style.color = '#EFEFEF';
+	monster_spell_add.style.float = 'right';
+	monster_spell_add.style.padding = '5px';
+
+	monster_spell_add.onclick = function() {
+		if (DEBUG) { console.log("Adding Spell Table to Monster " + monster.id); }
+
+		var monster_spell_table = document.createElement('table');
+		monster_spell_table.id = monster_spell_container.id + "_MS" + latest_table;
+		var monster_spell_table_container = document.createElement('div');
+		monster_spell_table_container.appendChild(monster_spell_table)
+		latest_table += 1;
+
+		var monster_spell_table_header = document.createElement('tr');
+		var monster_spell_table_header_usage = document.createElement('th');
+		monster_spell_table_header_usage.innerHTML = 'Usage';
+		monster_spell_table_header_usage.style.width = '20%';
+		var monster_spell_table_header_spells = document.createElement('th');
+		monster_spell_table_header_spells.innerHTML = 'Spell List';
+		monster_spell_table_header.appendChild(monster_spell_table_header_usage);
+		monster_spell_table_header.appendChild(monster_spell_table_header_spells);
+		monster_spell_table.appendChild(monster_spell_table_header)
+
+		// Table Style
+		monster_spell_table.style.width = "100%";
+		monster_spell_table.style.borderBottom = "1px solid black";
+		monster_spell_table.style.marginBottom = "20px";
+
+		var monster_spell_row_add = document.createElement('div');
+		monster_spell_row_add.id = monster_spell_table.id + '_ROW_ADD';
+		monster_spell_row_add.style.backgroundColor = '#030303';
+		monster_spell_row_add.style.color = '#EFEFEF';
+		monster_spell_row_add.style.float = 'right';
+		monster_spell_row_add.style.padding = '5px';
+		monster_spell_row_add.innerHTML = "Add Spell Row";
+
+		monster_spell_row_add.onclick = function() {
+			var temp_row = document.createElement('tr');
+			temp_row.id = monster_spell_table.id + 'R' + latest_monster_spell_row
+
+			var temp_spell_use = document.createElement('td');
+			temp_spell_use.id = temp_row.id + '_' + latest_monster_spell_row + '_USES';
+
+			var temp_spell_list = document.createElement('td');
+			temp_spell_list.id = temp_row.id + '_' + latest_monster_spell_row + '_LIST';
+			
+			latest_monster_spell_row++;
+
+			// Input Text for usage
+			temp_spell_use.style.width = '20%';
+
+			var temp_spell_use_input = document.createElement('input');
+			temp_spell_use_input.size = '5';
+			temp_spell_use_input.id = temp_spell_use.id + '_INPUT'
+			var temp_spell_use_text = document.createElement('span');
+			temp_spell_use_text.innerHTML = '/ times day';
+
+			temp_spell_use.appendChild(temp_spell_use_input);
+			temp_spell_use.appendChild(temp_spell_use_text);
+
+			// Input text for Spell list
+			var temp_spell_list_loc = document.createElement('div');
+			temp_spell_list_loc.style.width = "95%";
+			temp_spell_list_loc.style.display = 'flex';
+			temp_spell_list_loc.style.padding = '5px 2px';
+			temp_spell_list_loc.style.margin = '15px 10px';
+			temp_spell_list_loc.style.flexWrap = 'wrap';
+			temp_spell_list_loc.style.alignItems = 'flex-start';
+
+			var temp_spell_list_add = document.createElement('input');
+			temp_spell_list_add.style.width = "10%";
+			temp_spell_list_add.style.float = "right";
+			temp_spell_list_add.value = 'Add Spell';
+			temp_spell_list_add.id = temp_spell_list.id + '_ADD';
+			temp_spell_list_add.type = 'button';
+
+			// Button input for adding spells
+			temp_spell_list_add.onclick = function() {
+				var spell_cont = document.createElement('div');
+				spell_cont.style.justfyContent = 'flex-start';
+				spell_cont.style.width = '32%';
+				spell_cont.style.margin = '0px 10px';
+				spell_cont.style.padding = '3px';
+
+				var spell_name = document.createElement('input');
+				spell_name.type = 'text';
+				spell_name.placeholder = 'Spell Name';
+				spell_name.size = 26;
+				spell_name.id = temp_spell_list.id + '_NAME_' + latest_monster_spell_col;
+
+				var spell_link = document.createElement('input');
+				spell_link.type = 'text';
+				spell_link.placeholder = 'Spell Link';
+				spell_link.size = 22;
+				spell_link.id = temp_spell_list.id + '_LINK_' + latest_monster_spell_col;
+
+				var spell_delete = document.createElement('input');
+				spell_delete.type = 'button';
+				spell_delete.value = 'X';
+				spell_delete.style.marginLeft = '2px';
+				spell_delete.id = temp_spell_list.id + '_DELETE_' + latest_monster_spell_col;
+				spell_delete.onclick = function() {
+					if (confirm("Delete Spell Table?")) {
+						if (DEBUG) { console.log("Deleteing Spell Table"); }
+						spell_cont.parentNode.removeChild(spell_cont);
+						if (DEBUG) { console.log("Spell Tables successfully Deleted"); }
+					}
+				}
+
+				latest_monster_spell_col++;
+				spell_cont.appendChild(spell_name);
+				spell_cont.appendChild(spell_link);
+				spell_cont.appendChild(spell_delete);
+
+				temp_spell_list_loc.appendChild(spell_cont);
+			}
+
+			var temp_spell_list_delete = document.createElement('input');
+			temp_spell_list_delete.style.float = "right";
+			temp_spell_list_delete.value = 'Delete Spell';
+			temp_spell_list_delete.id = temp_spell_list.id + '_DELETE';
+			temp_spell_list_delete.type = 'button';
+
+			temp_spell_list_delete.onclick = function() {
+				if (confirm("Delete Spell Row?")) {
+					if (DEBUG) { console.log("Deleteing Spell Row"); }
+					temp_row.parentNode.removeChild(temp_row);
+					if (DEBUG) { console.log("Spell Row successfully Deleted"); }
+				}
+			}
+
+			temp_spell_list.appendChild(temp_spell_list_loc);
+			temp_spell_list.appendChild(temp_spell_list_delete);
+			temp_spell_list.appendChild(temp_spell_list_add);
+			temp_row.appendChild(temp_spell_use);
+			temp_row.appendChild(temp_spell_list);
+			monster_spell_table.appendChild(temp_row)
+		}
+
+		var monster_spell_row_delete = document.createElement('div');
+		monster_spell_row_delete.style.backgroundColor = '#C00000';
+		monster_spell_row_delete.style.color = '#EFEFEF';
+		monster_spell_row_delete.style.float = 'right'
+		monster_spell_row_delete.style.padding = '5px'
+		monster_spell_row_delete.id = monster_spell_table.id + '_SPELL_CLEAR';
+		monster_spell_row_delete.innerHTML = 'Delete Spell Table';
+
+		// Delete Table option
+		monster_spell_row_delete.onclick = function() {
+			if (confirm("Delete Spell Table?")) {
+				if (DEBUG) { console.log("Deleteing Spell Table"); }
+				monster_spell_table_container.parentNode.removeChild(monster_spell_table_container);
+				if (DEBUG) { console.log("Spell Tables successfully Deleted"); }
+			}
+		}
+		// Finalize
+		monster_spell_table_container.appendChild(monster_spell_row_delete);
+		monster_spell_table_container.appendChild(monster_spell_row_add);
+		monster_spell_table_container.appendChild(monster_spell_table);
+		monster_spell_container.appendChild(monster_spell_table_container);
+	}
+
+	var monster_spell_clear = document.createElement('div');
+	monster_spell_clear.style.backgroundColor = '#C00000';
+	monster_spell_clear.style.color = '#EFEFEF';
+	monster_spell_clear.style.float = 'right'
+	monster_spell_clear.style.padding = '5px'
+	monster_spell_clear.id = monster_header.id + '_SPELL_CLEAR';
+	monster_spell_clear.innerHTML = 'Delete Tables';
+
+	// Delete Table option
+	monster_spell_clear.onclick = function() {
+		if (confirm("Clear Spell Tables?")) {
+			if (DEBUG) { console.log("Clearing Spell Tables"); }
+			monster_spell_container.innerHTML = '';
+			if (DEBUG) { console.log("Spell Tables successfully Cleared"); }
+		}
+	}
+
+	monster_spell.appendChild(monster_spell_clear);
+	monster_spell.appendChild(monster_spell_add);
+	monster.appendChild(monster_spell);
+
+	monster_spell_sub.appendChild(monster_spell_container);
+	monster.appendChild(monster_spell_sub);
+
+	/*******************************************************************************************************/
+
 	var monster_loot = document.createElement('tr');
 	var monster_loot_table = document.createElement('table');
 
@@ -1137,7 +1346,7 @@ function create_element_monster(monster, edition) {
 
 	var monster_loot_container = editor_container_table(monster_loot_table);
 
-	monster_loot.id = monster.id + 'R5';
+	monster_loot.id = monster.id + 'R7';
 
 	// Finalize
 
