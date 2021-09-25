@@ -56,6 +56,11 @@ window.addEventListener('popstate', function (e) {
 }, false);
 
 
+// Add one time retrieval from storage, and then clear it, so if they reload twice, it'll go away forever.
+retrieve_session_storage();
+window.sessionStorage.setItem('state', '{"Name":"","Description":"","Monsters":[],"Stores":[],"Tables":[],"Lists":[],"Hazards":[]}');
+
+
 /**Create the Parent Container for Tables
  * @param element Primary child element, the table
  * @return Fully formed container for Table elements
@@ -1697,7 +1702,8 @@ function create_element(item) {
 		return;
 	}
 
-	if (DEBUG) { console.log("Element Creation successful"); }
+	if (DEBUG) { console.log("Element Creation successful."); }
+	set_session_storage();
 }
 
 
@@ -2503,8 +2509,14 @@ function import_page() {
 	}
 
 	if (DEBUG) { console.log("JSON String validated. Beginning Document Change"); }
+	update_page(new_json);
+}
 
 
+/**Update Page with given JSON object
+ * @param new_json JSON object to update from
+ */
+function update_page(new_json) {
 	// Update page information to reflect the data imported.
 	set_dom_value('header', new_json['Name']);
 	set_dom_value('description', deconvert_text(new_json['Description']));
@@ -2880,6 +2892,26 @@ function import_page() {
 				latest_list++;
 			}
 		}
+	}
+}
+
+
+/**Set storage value for page, for later retrieval
+ */
+function set_session_storage() {
+	if (DEBUG) { console.log("Saving JSON to Session"); }
+	var export_obj = export_json(true);
+	window.sessionStorage.setItem('state', JSON.stringify(export_obj));
+}
+
+
+/**Retrieve storage for page, and call Import JSON updater
+ */
+function retrieve_session_storage() {
+	if (DEBUG) { console.log("Retrieving JSON of Session"); }
+	var session = window.sessionStorage.getItem('state');
+	if (session !== null) {
+		update_page(JSON.parse(session));
 	}
 }
 
