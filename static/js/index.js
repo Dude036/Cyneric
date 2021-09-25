@@ -2660,6 +2660,7 @@ function import_page() {
 
 						latest_monster_trait++;
 					}
+					set_dom_value('M' + latest_monster + 'R1_RECALL', value[i]['Recall']);
 				}
 
 				// Begin Info section
@@ -2668,7 +2669,6 @@ function import_page() {
 				set_dom_value('M' + latest_monster + 'R1_AC', value[i]['Ac']);
 				set_dom_value('M' + latest_monster + 'R1_SIZE', value[i]['Size']);
 				set_dom_value('M' + latest_monster + 'R1_SKILLS', value[i]['Skills']);
-				set_dom_value('M' + latest_monster + 'R1_RECALL', value[i]['Recall']);
 				set_dom_value('M' + latest_monster + 'R1_DAM_IMMUNE', value[i]['DamImmune']);
 				set_dom_value('M' + latest_monster + 'R1_DAM_RESIST', value[i]['DamResist']);
 				set_dom_value('M' + latest_monster + 'R1_DAM_WEAK', value[i]['DamWeak']);
