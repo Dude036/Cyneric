@@ -2534,6 +2534,7 @@ function import_page() {
 
 	if (DEBUG) { console.log("JSON String validated. Beginning Document Change"); }
 	update_page(new_json);
+	set_session_storage();
 }
 
 
