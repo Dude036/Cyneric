@@ -1446,6 +1446,7 @@ function create_element_hazard_list_item(item_text, add_id, custom, input_option
 	return hazard_list_item;
 }
 
+
 /**Create Hazard item
  * @param hazard Primary element to modify
  * @return Full formed hazard DOM object
