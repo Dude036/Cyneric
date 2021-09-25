@@ -46,6 +46,16 @@ let textarea = document.getElementById("description");
 textarea.addEventListener("keyup", function() { calcHeight(textarea) });
 
 
+// Add Back button Cancel
+window.addEventListener('popstate', function (e) {
+    if (confirm("Are you sure you want to leave?")) {
+        window.history.back();
+    } else {
+        window.history.pushState(null, null, window.location.pathname);
+    }
+}, false);
+
+
 /**Create the Parent Container for Tables
  * @param element Primary child element, the table
  * @return Fully formed container for Table elements
