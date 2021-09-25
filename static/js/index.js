@@ -2316,7 +2316,7 @@ function export_page() {
 			new_doc += '<div class="traits_obj">' + temp_hazard['Traits'][x].toUpperCase() + '</div>'
 		}
 
-		new_doc += '</div</td></tr><tr><td><ul>';
+		new_doc += '</div></td></tr><tr><td><ul>';
 
 		// Permenant Set of Details
 		new_doc += '<li><b>Complexity: </b>' + temp_hazard['Complexity'] + '</li>'
