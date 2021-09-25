@@ -640,7 +640,7 @@ function create_element_monster(monster, edition) {
 			var temp_trait = document.createElement('div');
 			temp_trait.style.backgroundColor = '#666666';
 			temp_trait.style.color = '#EFEFEF';
-			temp_trait.style.justfyContent = 'flex-start';
+			temp_trait.style.justifyContent = 'flex-start';
 			temp_trait.style.width = '23%';
 			temp_trait.style.margin = '0px 10px';
 			temp_trait.style.padding = '3px';
@@ -1250,7 +1250,7 @@ function create_element_monster(monster, edition) {
 			// Button input for adding spells
 			temp_spell_list_add.onclick = function() {
 				var spell_cont = document.createElement('div');
-				spell_cont.style.justfyContent = 'flex-start';
+				spell_cont.style.justifyContent = 'flex-start';
 				spell_cont.style.width = '31%';
 				spell_cont.style.margin = '0px 5px';
 				spell_cont.style.padding = '3px';
@@ -1530,7 +1530,7 @@ function create_element_hazard(hazard, item) {
 		var temp_trait = document.createElement('div');
 		temp_trait.style.backgroundColor = '#666666';
 		temp_trait.style.color = '#EFEFEF';
-		temp_trait.style.justfyContent = 'flex-start';
+		temp_trait.style.justifyContent = 'flex-start';
 		temp_trait.style.width = '23%';
 		temp_trait.style.margin = '0px 10px';
 		temp_trait.style.padding = '3px';
@@ -2002,7 +2002,7 @@ function export_page() {
 	// Create new Document for printing
 	// Going with a simple String to be coppied
 	// Boiler plate CSS header stuffs
-	var new_doc = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Custom HTML</title><style>body{max-width:1000px;margin-left:auto;margin-right:auto;padding-left:5px;padding-right:5px}html{font-family:Arial}h1,h2{color:#000;text-align:center}.center{text-align:center}.bold{font-weight:700}.emp{font-style:italic}table{border:1px solid #000;border-spacing:0}table tr th{background-color:gray;color:#fff;padding:5px}table tr td{margin:0;padding:5px}.text-xs{font-size:12px}.text-sm{font-size:14px}.text-md{font-size:18px}.text-lg{font-size:24px}.text-xl{font-size:32px}.wrapper-box{width:100%;border:2px solid #000;margin-bottom:60px padding:5px;}.inventory-table{width:100%;}.suggestion{padding:2px 0;margin:0;list-style:none}.suggestion li{border:1px solid #000;background-color:#ddd;padding:2px 4px;margin:5px 10px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.suggestion li:active{background-color:#404040}.suggestion li:hover{background-color:grey}.attacks{display:flex;flex-wrap:wrap;align-items:flex-start;width:100%;padding-top:10px;padding-bottom:20px}.attacks table{width:44%;margin-left:3%;margin-right:3%;margin-bottom:1%}.header{background-color:#f1f1f1;position:fixed;top:0;left:0;padding:5px 5px}.header ul{display:none;list-style-type:none;padding-left:10px;margin-top:0}.header a{float:left;color:#000;text-align:center;text-decoration:none;padding:5px 5px}.header a:hover{background-color:#ddd}.header a.active{background-color:#02f}.crit tr:nth-child(even){background-color:#eee}.link{text-align:center}.link li{padding-bottom:10px}.link a{border:1px solid #000;width:60%;text-decoration:none;color:#222;background-color:#ddd;padding:3px 3px 3px 3px}.link a:hover{background-color:#222;color:#ddd}.sidebar{float:left;position:fixed;top:0;right:0;margin:5px}.sidebar_object{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:10px 20px;border-style:solid;border:2px;background-color:#efefef}.sidebar_object:hover{background-color:#cfcfcf}.sidebar_object:active{background-color:#0000cf;color:#efefef}.traits {padding: 5px 2px;width: 95%;margin: 15px 10px;display: flex;flex-wrap: wrap;align-items: flex-start;}.traits_obj {justfy-content: flex-start;width: 23%;margin: 0px 10px;padding: 3px;background-color:#666666;color:#EFEFEF;}@media only screen and (max-width:600px){.header a{float:none;display:block;text-align:left;font-size:20px}.header img{height:50px;width:50px}.header-right{float:none}}</style><script>function show_hide(ident) {var a = document.getElementById(ident);if (a.style.display === "none") {a.style.display = "block";} else {a.style.display = "none";}}</script></head>';
+	var new_doc = '<!DOCTYPE html><html><head><meta charset="utf-8"><title>Custom HTML</title><style>body{max-width:1000px;margin-left:auto;margin-right:auto;padding-left:5px;padding-right:5px}html{font-family:Arial}h1,h2{color:#000;text-align:center}.center{text-align:center}.bold{font-weight:700}.emp{font-style:italic}table{border:1px solid #000;border-spacing:0}table tr th{background-color:gray;color:#fff;padding:5px}table tr td{margin:0;padding:5px}.text-xs{font-size:12px}.text-sm{font-size:14px}.text-md{font-size:18px}.text-lg{font-size:24px}.text-xl{font-size:32px}.wrapper-box{width:100%;border:2px solid #000;margin-bottom:60px padding:5px;}.inventory-table{width:100%;}.suggestion{padding:2px 0;margin:0;list-style:none}.suggestion li{border:1px solid #000;background-color:#ddd;padding:2px 4px;margin:5px 10px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.suggestion li:active{background-color:#404040}.suggestion li:hover{background-color:grey}.attacks{display:flex;flex-wrap:wrap;align-items:flex-start;width:100%;padding-top:10px;padding-bottom:20px}.attacks table{width:44%;margin-left:3%;margin-right:3%;margin-bottom:1%}.header{background-color:#f1f1f1;position:fixed;top:0;left:0;padding:5px 5px}.header ul{display:none;list-style-type:none;padding-left:10px;margin-top:0}.header a{float:left;color:#000;text-align:center;text-decoration:none;padding:5px 5px}.header a:hover{background-color:#ddd}.header a.active{background-color:#02f}.crit tr:nth-child(even){background-color:#eee}.link{text-align:center}.link li{padding-bottom:10px}.link a{border:1px solid #000;width:60%;text-decoration:none;color:#222;background-color:#ddd;padding:3px 3px 3px 3px}.link a:hover{background-color:#222;color:#ddd}.sidebar{float:left;position:fixed;top:0;right:0;margin:5px}.sidebar_object{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:10px 20px;border-style:solid;border:2px;background-color:#efefef}.sidebar_object:hover{background-color:#cfcfcf}.sidebar_object:active{background-color:#0000cf;color:#efefef}.traits {padding: 5px 2px;width: 95%;margin: 15px 10px;display: flex;flex-wrap: wrap;align-items: flex-start;}.traits_obj {justify-content: flex-start;width: 23%;margin: 0px 10px;padding: 3px;background-color:#666666;color:#EFEFEF;}.spells {width: 95%;display: flex;padding: 5px 2px;margin: 2px 5px;flex-wrap: wrap;align-items: flex-start;}.spells_obj {justify-content: flex-start;width: 31%;margin: 0px 5px;padding: 3px;}@media only screen and (max-width:600px){.header a{float:none;display:block;text-align:left;font-size:20px}.header img{height:50px;width:50px}.header-right{float:none}}</style><script>function show_hide(ident) {var a = document.getElementById(ident);if (a.style.display === "none") {a.style.display = "block";} else {a.style.display = "none";}}</script></head>';
 	new_doc += "<body><!-- Thanks for using my Custom HTML editor! Feel free to visit again! -->"
 
 	// Header and description
@@ -2203,7 +2203,7 @@ function export_page() {
 		new_doc += '</tr></table></td></tr>';
 
 		// Add actions
-		new_doc += '<tr><td><div class="attacks">'
+		new_doc += '<tr><td><div class="attacks">';
 
 		for (var x = 0; x < temp_monster['Actions'].length; x++) {
 			var temp_action = temp_monster['Actions'][x];
@@ -2214,23 +2214,43 @@ function export_page() {
 			if (temp_monster['Edition'] == '2') {
 				new_doc += ' - Cost: ';
 				if (temp_action['Cost'] == 'Free') {
-					new_doc += '<abbr title="Free Action">&#9671;</abbr>'
+					new_doc += '<abbr title="Free Action">&#9671;</abbr>';
 				} else if (temp_action['Cost'] == 'Reaction') {
-					new_doc += '<abbr title="Reaction">&#8634;</abbr>'
+					new_doc += '<abbr title="Reaction">&#8634;</abbr>';
 				} else if (temp_action['Cost'] == '1 Action') {
-					new_doc += '<abbr title="1 Action">&#9830;</abbr>'
+					new_doc += '<abbr title="1 Action">&#9830;</abbr>';
 				} else if (temp_action['Cost'] == '2 Action') {
-					new_doc += '<abbr title="2 Action">&#9830;&#9830;</abbr>'
+					new_doc += '<abbr title="2 Action">&#9830;&#9830;</abbr>';
 				} else if (temp_action['Cost'] == '3 Action') {
-					new_doc += '<abbr title="3 Action">&#9830;&#9830;&#9830;</abbr>'
+					new_doc += '<abbr title="3 Action">&#9830;&#9830;&#9830;</abbr>';
 				}
 			}
 			new_doc += '</th></tr><tr><td>' + temp_action['Text'];
 			new_doc += '</td></tr></table>';
 		}
+		new_doc += '</div></td></tr>';
+
+		// Add Spell List if pertinent
+		if (temp_monster['Spells'].length > 0) {
+			new_doc += '<tr><td><table class="inventory-table"><tr><th style="width:20%;">Usage</th><th>Spell List</th></tr>';
+			// Loop through Row
+			for (var j = 0; j < temp_monster['Spells'].length; j++) {
+				var temp_spell_row = temp_monster['Spells'][j];
+				new_doc += '<tr><td><div>' + temp_spell_row['Uses'] + ' / times day</div><div>DC ' + temp_spell_row['Dc'] + '</div></td>';
+				new_doc += '<td><div class="spells">';
+
+				// Loop through Spells
+				for (var k = 0; k < temp_spell_row['List'].length; k++) {
+					new_doc += '<div class="spells_obj"><a href="' + temp_spell_row['List'][k]['Link'] + '">' + temp_spell_row['List'][k]['Name'] + '</a></div>'
+				}
+				new_doc += '</div></td></tr>';
+			}
+			new_doc += '</table>';
+			new_doc += '</td></tr>';
+		}
 
 		// Monster Treasure
-		new_doc += '</div></td></tr><tr><td><h3 style="text-align:center;">Treasure</h3>'
+		new_doc += '<tr><td><h3 style="text-align:center;">Treasure</h3>';
 
 		var treasure = temp_monster['Treasure'];
 		if (DEBUG) { console.log("Adding Table " + i) };
