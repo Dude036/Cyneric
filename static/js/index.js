@@ -1155,7 +1155,7 @@ function create_element_monster(monster, edition) {
 	monster_spell_clear.style.color = '#EFEFEF';
 	monster_spell_clear.style.float = 'right'
 	monster_spell_clear.style.padding = '5px'
-	monster_spell_clear.id = monster_header.id + '_SPELL_CLEAR';
+	monster_spell_clear.id = monster_spell.id + '_SPELL_CLEAR';
 	monster_spell_clear.innerHTML = 'Delete Tables';
 	monster_spell_clear.style.display = 'none';
 
@@ -1164,10 +1164,10 @@ function create_element_monster(monster, edition) {
 		if (DEBUG) { console.log("Adding Spell Table to Monster " + monster.id); }
 
 		var monster_spell_table = document.createElement('table');
-		monster_spell_table.id = monster_spell_container.id + "_MS" + latest_table;
+		monster_spell_table.id = monster_spell_container.id + "_MS" + latest_monster_spell;
 		var monster_spell_table_container = document.createElement('div');
 		monster_spell_table_container.appendChild(monster_spell_table)
-		latest_table += 1;
+		latest_monster_spell++;
 
 		var monster_spell_table_header = document.createElement('tr');
 		var monster_spell_table_header_usage = document.createElement('th');
@@ -1194,7 +1194,7 @@ function create_element_monster(monster, edition) {
 
 		monster_spell_row_add.onclick = function() {
 			var temp_row = document.createElement('tr');
-			temp_row.id = monster_spell_table.id + 'R' + latest_monster_spell_row
+			temp_row.id = monster_spell_table.id + 'R' + latest_monster_spell_row;
 
 			var temp_spell_use = document.createElement('td');
 			temp_spell_use.id = temp_row.id + '_USES';
@@ -2703,7 +2703,7 @@ function import_page() {
 				set_dom_value('M' + latest_monster + 'R1_WIS', value[i]['Wis']);
 				set_dom_value('M' + latest_monster + 'R1_CHA', value[i]['Cha']);
 
-				// Begin Actions seciont (universal for monsters)
+				// Begin Actions section (universal for monsters)
 				for (var j = 0; j < value[i]['Actions'].length; j++) {
 					var temp_action = value[i]['Actions'][j];
 					document.getElementById('M' + latest_monster + 'R1_ACTION_ADD').click();
@@ -2723,6 +2723,30 @@ function import_page() {
 
 					// Incriment again
 					latest_monster_action++;
+				}
+
+				// Begin Spell section
+				if (value[i]['Spells'].length > 0) {
+					document.getElementById('M' + latest_monster + 'R5_SPELL_ADD').click();
+				}
+				for (var j = 0; j < value[i]['Spells'].length; j++) {
+					latest_monster_spell--;
+					var temp_spell_row = value[i]['Spells'][j];
+					document.getElementById('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + '_ROW_ADD').click();
+					latest_monster_spell_row--;
+
+					set_dom_value('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_USES_DC_INPUT', temp_spell_row['Dc']);
+					set_dom_value('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_USES_INPUT', temp_spell_row['Uses']);
+					for (var col = 0; col < temp_spell_row['List'].length; col++) {
+						document.getElementById('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_LIST_ADD').click();
+						latest_monster_spell_col--;
+						set_dom_value('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_LIST_NAME_' + latest_monster_spell_col, temp_spell_row['List'][col]['Name']);
+						set_dom_value('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_LIST_LINK_' + latest_monster_spell_col, temp_spell_row['List'][col]['Link']);
+						latest_monster_spell_col++;
+					}
+
+					latest_monster_spell_row++;
+					latest_monster_spell++;
 				}
 
 				// Add Monster Treasure Import
@@ -2822,7 +2846,6 @@ function import_page() {
 
 				latest_hazard++;
 			}
-
 		} else if (key === 'Lists') {
 			for (var i = 0; i < value.length; i++) {
 				if (DEBUG) { console.log("Parsing List Data"); }
