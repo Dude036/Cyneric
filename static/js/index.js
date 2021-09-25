@@ -109,6 +109,7 @@ function editor_container_table(element) {
 				new_row.parentNode.removeChild(new_row);
 				if (DEBUG) { console.log("Row Successfully Deleted"); }
 			}
+			set_session_storage();
 		}
 
 		// Detail Style
@@ -132,6 +133,7 @@ function editor_container_table(element) {
 			new_input.id = new_cell.id + "I";
 
 			new_cell.appendChild(new_input);
+			set_session_storage();
 		}
 
 		var add_header = new_row.insertCell(2);
@@ -155,7 +157,9 @@ function editor_container_table(element) {
 			new_input.id = new_cell.id + "I";
 
 			new_cell.appendChild(new_input);
+			set_session_storage();
 		}
+		set_session_storage();
 	};
 
 	// Only Delete if it is its own table.
@@ -176,6 +180,7 @@ function editor_container_table(element) {
 				container.parentNode.removeChild(container);
 				if (DEBUG) { console.log("Table successfully deleted"); }
 			}
+			set_session_storage();
 		}
 
 		container.appendChild(add_delete_div);
@@ -196,6 +201,7 @@ function editor_container_table(element) {
 				element.innerHTML = '';
 				if (DEBUG) { console.log("Table successfully Cleared"); }
 			}
+			set_session_storage();
 		}
 
 		container.appendChild(add_delete_div);
@@ -237,6 +243,7 @@ function editor_container_table(element) {
 				item_row.parentNode.removeChild(item_row);
 				if (DEBUG) { console.log("Row Successfully Deleted"); }
 			}
+			set_session_storage();
 		}
 
 		// Item additions
@@ -285,6 +292,7 @@ function editor_container_table(element) {
 		item_text.style.lineHeight = "20px"
 		item_text.addEventListener("keyup", function() { calcHeight(item_text) });
 		item_data_cell.appendChild(item_text);
+		set_session_storage();
 	}
 
 	container.appendChild(add_row_div);
@@ -676,12 +684,14 @@ function create_element_monster(monster, edition) {
 					temp_trait.parentNode.removeChild(temp_trait);
 					if (DEBUG) { console.log("Trait successfully deleted"); }
 				}
+				set_session_storage();
 			}
 
 			temp_trait.appendChild(temp_trait_input);
 			temp_trait.appendChild(temp_trait_delete);
 
 			monster_trait_list_loc.appendChild(temp_trait);
+			set_session_storage();
 		}
 
 		var monster_trait_list_clear = document.createElement('div');
@@ -698,6 +708,7 @@ function create_element_monster(monster, edition) {
 				hazard_trait_loc.innerHTML = '';
 				if (DEBUG) { console.log("Traits successfully cleared"); }
 			}
+			set_session_storage();
 		}
 
 		monster_header_content.appendChild(monster_trait_list_clear);
@@ -1047,6 +1058,7 @@ function create_element_monster(monster, edition) {
 				temp_action.parentNode.removeChild(temp_action);
 				if (DEBUG) { console.log("Action successfully deleted"); }
 			}
+			set_session_storage();
 		}
 		temp_action_header.appendChild(temp_action_header_delete);
 
@@ -1114,6 +1126,7 @@ function create_element_monster(monster, edition) {
 		temp_action.appendChild(temp_action_header);
 		temp_action.appendChild(temp_action_info);
 		monster_action_container.appendChild(temp_action);
+		set_session_storage();
 	}
 
 
@@ -1293,6 +1306,7 @@ function create_element_monster(monster, edition) {
 						spell_cont.parentNode.removeChild(spell_cont);
 						if (DEBUG) { console.log("Spell Tables successfully Deleted"); }
 					}
+					set_session_storage();
 				}
 
 				latest_monster_spell_col++;
@@ -1315,6 +1329,7 @@ function create_element_monster(monster, edition) {
 					temp_row.parentNode.removeChild(temp_row);
 					if (DEBUG) { console.log("Spell Row successfully Deleted"); }
 				}
+				set_session_storage();
 			}
 
 			temp_spell_list.appendChild(temp_spell_list_loc);
@@ -1323,6 +1338,7 @@ function create_element_monster(monster, edition) {
 			temp_row.appendChild(temp_spell_use);
 			temp_row.appendChild(temp_spell_list);
 			monster_spell_table.appendChild(temp_row)
+			set_session_storage();
 		}
 
 		var monster_spell_row_delete = document.createElement('div');
@@ -1344,6 +1360,7 @@ function create_element_monster(monster, edition) {
 				monster_spell_add.style.display = 'block';
 				monster_spell_clear.style.display = 'none';
 			}
+			set_session_storage();
 		}
 		// Finalize
 		monster_spell_table_container.appendChild(monster_spell_row_delete);
@@ -1353,6 +1370,7 @@ function create_element_monster(monster, edition) {
 
 		monster_spell_add.style.display = 'none';
 		monster_spell_clear.style.display = 'block';
+		set_session_storage();
 	}
 
 	// Delete Table option
@@ -1364,6 +1382,7 @@ function create_element_monster(monster, edition) {
 		}
 		monster_spell_add.style.display = 'block';
 		monster_spell_clear.style.display = 'none';
+		set_session_storage();
 	}
 
 	monster_spell.appendChild(monster_spell_clear);
@@ -1453,6 +1472,7 @@ function create_element_hazard_list_item(item_text, add_id, custom, input_option
 				hazard_list_item.parentNode.removeChild(hazard_list_item);
 				if (DEBUG) { console.log("Custom Field successfully deleted"); }
 			}
+			set_session_storage();
 		}
 
 		hazard_list_item.appendChild(hazard_list_button);
@@ -1567,12 +1587,14 @@ function create_element_hazard(hazard, item) {
 				temp_trait.parentNode.removeChild(temp_trait);
 				if (DEBUG) { console.log("Trait successfully deleted"); }
 			}
+			set_session_storage();
 		}
 
 		temp_trait.appendChild(temp_trait_input);
 		temp_trait.appendChild(temp_trait_delete);
 
 		hazard_trait_loc.appendChild(temp_trait);
+		set_session_storage();
 	}
 
 	var hazard_trait_clear = document.createElement('div');
@@ -1589,6 +1611,7 @@ function create_element_hazard(hazard, item) {
 			hazard_trait_loc.innerHTML = '';
 			if (DEBUG) { console.log("Traits successfully cleared"); }
 		}
+		set_session_storage();
 	}
 
 	// Add
@@ -1630,6 +1653,7 @@ function create_element_hazard(hazard, item) {
 
 	hazard_custom_add.onclick = function() {
 		hazard_custom_loc.appendChild(create_element_hazard_list_item('', hazard_custom.id, true, {'size': '70'}))
+		set_session_storage();
 	}
 
 	hazard_custom_content.appendChild(hazard_custom_add);
