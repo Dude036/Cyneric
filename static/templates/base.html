@@ -176,6 +176,12 @@
     .green:hover {
       background-color: #66CF66;
     }
+    .red {
+      background-color: #FF6666;
+    }
+    .red:hover {
+      background-color: #CF6666;
+    }
     .grey:active, .blue:active, .yellow:active, .green:active {
       background-color: #000000;
       color: #EFEFEF;
@@ -266,7 +272,7 @@
 <body>
   {% block content %}
   {% endblock %}
-  <div class="header" onclick="show_hide('header1');show_hide('header2');">
+  <div id="header_img" class="header" onclick="show_hide('header1');show_hide('header2');">
     <img src="{% static 'sidebar.png' %}">
     <ul id="header1" style="display: none;">
       <li>
