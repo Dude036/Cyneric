@@ -2302,7 +2302,8 @@ function export_page() {
 		
 		// Adding Info Section
 		new_doc += '</td></tr><tr><td><ul style="column-count: 2;list-style-type: none;margin: 5px;">'
-		new_doc += '<li><span class="bold">HP:</span> ' + temp_monster['Hp'] + '</li>';
+		new_doc += '<li><span class="bold">AC:</span> ' + temp_monster['Ac'] + '</li>';
+		new_doc += '<li><span class="bold">HP:</span> <input type="text" value="' + temp_monster['Hp'] + '"></input></li>';
 		new_doc += '<li><span class="bold">Speed:</span> ' + temp_monster['Speed'] + '</li>';
 		new_doc += '<li><span class="bold">Size:</span> ' + temp_monster['Size'] + '</li>';
 
