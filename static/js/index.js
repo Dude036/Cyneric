@@ -509,6 +509,93 @@ function editor_container_monster(element, edition) {
 	}
 	add_edition_div.id = container.id + "_EDITION";
 
+	// Add import Div
+	var add_import_div = document.createElement('div');
+	add_import_div.style.float = 'right';
+	add_import_div.style.padding = '5px';
+	add_import_div.style.color = '#EFEFEF';
+	if (edition == '5') {
+		add_import_div.style.backgroundColor = '#002222';
+		add_import_div.innerHTML = "Import from 5e.tools";
+	} else if (edition == '2') {
+		add_import_div.style.backgroundColor = '#002200';
+		add_import_div.innerHTML = "Import from 2e.aonprd.com";
+	} else if (edition == '1') {
+		add_import_div.style.backgroundColor = '#000022';
+		add_import_div.innerHTML = "Import from d20pfsrd.com";
+	}
+	add_import_div.id = container.id + "_IMPORT";
+	add_import_div.onclick = function() {
+		// Get URL
+		var url = prompt("Import JSON", '');
+		if (url == null) {
+			alert("Invalid data entered.")
+			return
+		}
+
+		// Validate URL
+		try {
+			var check = new URL(url);
+		} catch (_) {
+			alert("Invalid Link.")
+			return  
+		}
+
+		// Link Validated, begin POST
+		var xhr = new XMLHttpRequest();
+		var connection = window.location.href + 'parser/';
+		const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+		xhr.open("POST", connection);
+
+		xhr.setRequestHeader("Accept", "application/json");
+		xhr.setRequestHeader("Content-Type", "application/json");
+		xhr.setRequestHeader("X-CSRFToken", token);
+
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4) {
+				// Completed request
+				if (DEBUG) {
+					console.log("Data recieved back for " + url);
+					console.log(xhr.status);
+					console.log(xhr.responseText);
+				}
+				var new_data = JSON.parse(xhr.responseText);
+				if ('ERROR' in new_data) {
+					// Post Toast Message about failure
+					(async () => {
+						var toast = document.createElement('div');
+						toast.style.backgroundColor = "#E34D4D";
+						toast.style.position = "fixed";
+						toast.style.top = "40px";
+						toast.style.left = "40px";
+						toast.style.width = "250px";
+						toast.id = "toast";
+						toast.style.padding = "10px 20px";
+
+						toast.appendChild(document.createTextNode(new_data['ERROR']));
+
+						var header_img = document.getElementById("header_img");
+						header_img.appendChild(toast);
+
+						setTimeout(function(){
+							toast.parentNode.removeChild(toast);
+						}, 9000);
+					})()
+				} else {
+					// We've recieved a creature, and can safely add it to the page.
+					update_session_storage(new_data, 'Monsters')
+				}
+			}
+		};
+
+		data = {
+		  "Edition": edition,
+		  "URL": url
+		};
+
+		xhr.send(JSON.stringify(data));
+	}
+
 	// Delete Styling
 	var add_delete_div = document.createElement('div');
 	add_delete_div.style.float = 'right';
@@ -530,6 +617,7 @@ function editor_container_monster(element, edition) {
 
 	container.appendChild(add_delete_div);
 	container.appendChild(add_edition_div);
+	container.appendChild(add_import_div);
 
 	container.appendChild(element);
 	return container;
@@ -3051,6 +3139,18 @@ function retrieve_session_storage() {
 }
 
 
+/**Update Session storage for page with imported data
+ * @param data Imported Data
+ * @param data_type Location in Session Storage
+ */
+function update_session_storage(data, data_type) {
+	if (DEBUG) { console.log("Updating Session JSON with imported info"); }
+	var export_obj = export_json(true);
+	export_obj[data_type].push(data);
+	window.sessionStorage.setItem('state', JSON.stringify(export_obj));
+}
+
+
 /**Set a DOM value for import
  * @param dom DOM Id string
  * @param value Value to be set
@@ -3095,4 +3195,13 @@ function is_numeric(value) {
 function get_mod(stat) {
 	var val = Math.floor(parseInt(stat) / 2) - 5;
 	return (val > 0) ? '+' + val : val;
+}
+
+
+/**Parse a monster statblock from 5e.tools
+ * @param html The raw HTML to be parsed
+ * @returns JSON object to build a character.
+ */
+function dnd_5e_import(html) {
+	
 }

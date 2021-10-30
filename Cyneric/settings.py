@@ -30,7 +30,15 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
 ]
-
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+    "https://localhost:8000",
+    "http://localhost:8000",
+    'https://cyneric.pythonanywhere.com',
+    'http://cyneric.pythonanywhere.com',
+    'https://127.0.0.1:8000',
+    'http://127.0.0.1:8000',
+)
 
 # Application definition
 
@@ -42,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -52,6 +61,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
 
 ROOT_URLCONF = 'Cyneric.urls'
