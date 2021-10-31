@@ -224,17 +224,21 @@ class Creature:
                 data_split = line.split('<b>')
                 for line in data_split[2:]:
                     level, spells = line.split('</b>')
+                    temp_spell_line = {
+                        'Dc': dc,
+                        'Uses': level,
+                        'List': [],
+                    }
                     print('\t\t\t\tProcessing ' + level + ' level spells')
                     spells = bs4.BeautifulSoup(spells, 'html.parser')
                     for link in spells.find_all('a'):
                         print('\t\t\t\t\t' + link.text.title())
                         temp_spell = {
                             'Name': link.text.title(),
-                            'Level': level,
                             'Link': "https://2e.aonprd.com/" + link['href'],
-                            'DC': dc
                         }
-                        self.Spells.append(temp_spell)
+                        temp_spell_line['List'].append(temp_spell)
+                    self.Spells.append(temp_spell_line)
 
             else:
                 print('\t\t\tAdding Ability')
@@ -256,7 +260,7 @@ class Creature:
         data = bs4.BeautifulSoup(action, 'html.parser')
         temp_a = {
             'Name': data.b.text.strip(),
-            'Description': data.text[len(data.b.text):].strip(),
+            'Text': '<p>' + data.text[len(data.b.text):].strip() + '</p>',
             'Cost': cost
 
         }
@@ -264,32 +268,39 @@ class Creature:
 
     def handle_actions(self, action):
         data = bs4.BeautifulSoup(action, 'html.parser')
-        actions =  data.find_all('span')
+        actions = data.find_all('span')
         for a in actions:
             cost = -2
             image = a.find('img', alt=True)
             if image is None:
-                cost = 0
+                cost = "1 Action"
             elif image['alt'] == "Reaction":
-                cost = -1
+                cost = "Reaction"
             elif image['alt'] == "Free Action":
-                cost = 0
+                cost = "Free"
             elif image['alt'] == "Single Action":
-                cost = 1
+                cost = "1 Action"
             elif image['alt'] == "Two Actions":
-                cost = 2
+                cost = "2 Action"
             elif image['alt'] == "Three Actions":
-                cost = 3
+                cost = "3 Action"
             print('\t\t\t\tAction: ' + a.b.text)
             temp_a = {
                 'Name': str(a.b.text),
-                'Description': a.text[len(a.b.text):].strip(),
+                'Text': '<p>' + a.text[len(a.b.text):].strip() + '</p>',
                 'Cost': cost
             }
             self.Actions.append(temp_a)
 
     def get_dict(self):
         return self.__dict__
+
+
+def de_dict(d):
+    s = ''
+    for k, v in d.items():
+        s += k + ' ' + v + ', '
+    return s[:-2]
 
 
 def parse_archives(url):
@@ -305,6 +316,11 @@ def parse_archives(url):
     # Traits and CR
     temp = name[1]
     monster.set_cr(temp.find('span').text.replace('Creature', '').strip())
+    print("\tStarting body search")
+    body = body.find_all('span')[4]
+
+    # Get data from Raw Text
+    monster.set_from_raw_text(body.text)
     monster.set_traits(
         body.find('span', class_=['traituncommon']),
         body.find('span', class_=['traitalignment']),
@@ -320,54 +336,77 @@ def parse_archives(url):
             break
         source_index += 1
 
+    # Source and other Boldened Text setters
+    monster.set_source(bs4.BeautifulSoup(raw_text_split[source_index], 'html.parser'))
+    executed = 0
+    exists = 0
+    for check in ['<b>Perception', '<b>Language', '<b>Skills', '<b>Str']:
+        exists += 1 if check in str(body) else 0
+
+    while executed < exists:
+        source_index += 1
+        if raw_text_split[source_index].startswith('<b>Perception'):
+            monster.set_perception(bs4.BeautifulSoup(raw_text_split[source_index], 'html.parser'))
+            executed += 1
+        elif raw_text_split[source_index].startswith('<b>Language'):
+            monster.set_languages(bs4.BeautifulSoup(raw_text_split[source_index], 'html.parser'))
+            executed += 1
+        elif raw_text_split[source_index].startswith('<b>Skills'):
+            monster.set_skills(bs4.BeautifulSoup(raw_text_split[source_index], 'html.parser'))
+            executed += 1
+        elif raw_text_split[source_index].startswith('<b>Str'):
+            monster.set_stats(bs4.BeautifulSoup(raw_text_split[source_index], 'html.parser'))
+            executed += 1
+
+    # Grab the remaining information
+    raw_text_split = raw_text_split[source_index+1:]
+    remaining = []
+    for line in raw_text_split:
+        if '<script' in line:
+            break
+        elif 'title="Sidebar - Additional Lore"' in line:
+            remaining.append(line)
+            break
+        elif '</span><b>' in line:
+            action, spell = line.split('</span><b>')
+            remaining.append(action + '</span>')
+            remaining.append('<b>' + spell)
+        else:
+            remaining.append(line)
+
+    # Everything is now up in the air for how things are setup.
+    monster.remaining_parser(remaining)
 
     print(monster.get_dict())
     base = {
         "Edition": "2",
         "Name": monster.Name,
         "Cr": monster.Cr,
-        "Description": "<p></p>",
-        "Alignment": "",
+        "Description": '<p>' + monster.Description + '</p>',
+        "Alignment": monster.Alignment,
         "Traits": monster.Traits,
-        "Hp": "",
-        "Speed": "",
-        "Size": "",
-        "Ac": "",
-        "FortSave": "",
-        "WillSave": "",
-        "RefSave": "",
-        "Skills": "",
-        "Recall": "",
-        "DamImmune": "",
-        "DamResist": "",
-        "DamWeak": "",
-        "Sense": "",
-        "Language": "",
-        "Str": "",
-        "Dex": "",
-        "Con": "",
-        "Int": "",
-        "Wis": "",
-        "Cha": "",
-        "Actions": [
-            {
-                "Name": "",
-                "Cost": "1 Action",
-                "Text": "<p></p>"
-            }
-        ],
-        "Spells": [
-            {
-                "Dc": 0,
-                "List": [
-                    {
-                        "Name": "",
-                        "Link": "",
-                    }
-                ],
-                "Usage": "<p></p>"
-            }
-        ],
+        "Hp": monster.Hp,
+        "Speed": monster.Speed,
+        "Size": monster.Size,
+        "Ac": monster.Ac,
+        "FortSave": monster.Fort,
+        "WillSave": monster.Will,
+        "RefSave": monster.Ref,
+        "Skills": de_dict(monster.Skills),
+        "Recall": monster.Recall,
+        "DamImmune": monster.Immune,
+        "DamResist": monster.Resist,
+        "DamWeak": monster.Weak,
+        "Sense": monster.Perception,
+        "Language": str(monster.Languages)[1:-1],
+        "Str": monster.Str,
+        "Dex": monster.Dex,
+        "Con": monster.Con,
+        "Int": monster.Int,
+        "Wis": monster.Wis,
+        "Cha": monster.Cha,
+        "Actions": monster.Actions,
+        "Spells": monster.Spells,
         "Treasure": {
             "Data": []
         }
