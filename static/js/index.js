@@ -48,11 +48,11 @@ textarea.addEventListener("keyup", function() { calcHeight(textarea) });
 
 // Add Back button Cancel
 window.addEventListener('popstate', function (e) {
-    if (confirm("Are you sure you want to leave?")) {
-        window.history.back();
-    } else {
-        window.history.pushState(null, null, window.location.pathname);
-    }
+	if (confirm("Are you sure you want to leave?")) {
+		window.history.back();
+	} else {
+		window.history.pushState(null, null, window.location.pathname);
+	}
 }, false);
 
 
@@ -562,6 +562,7 @@ function editor_container_monster(element, edition) {
 				var new_data = JSON.parse(xhr.responseText);
 				if ('ERROR' in new_data) {
 					// Post Toast Message about failure
+					console.log("ERROR:" + new_data['ERROR']);
 					(async () => {
 						var toast = document.createElement('div');
 						toast.style.backgroundColor = "#E34D4D";
@@ -583,7 +584,8 @@ function editor_container_monster(element, edition) {
 					})()
 				} else {
 					// We've recieved a creature, and can safely add it to the page.
-					update_session_storage(new_data, 'Monsters')
+					if (DEBUG) { console.log("Successfully recieved monster, posting to UI"); }
+					update_session_storage(new_data, 'Monsters', container.id)
 				}
 			}
 		};
@@ -1292,7 +1294,7 @@ function create_element_monster(monster, edition) {
 			monster_action_cost_label.style.paddingLeft = '10px'
 
 			monster_action_cost.value = '1 Action';
-			console.log('Value: ' + monster_action_cost.value);
+			if (DEBUG) { console.log('Value: ' + monster_action_cost.value); }
 
 			temp_action_header.appendChild(monster_action_cost_label);
 			temp_action_header.appendChild(monster_action_cost);
@@ -2164,7 +2166,7 @@ function get_monster_data(monster, edition) {
 	/*******************************************************************************************************/
 
 	var monster_loot = monster.rows[monster.rows.length - 1].querySelector('table');
-	console.log(monster_loot);
+	if (DEBUG) { console.log(monster_loot); }
 	monster_obj['Treasure'] = get_table_data(monster_loot, false);
 	
 	if (DEBUG) { console.log("Monster successfully handled"); }
@@ -2884,10 +2886,10 @@ function update_page(new_json) {
 		} else if (key.startsWith('Monster')) {
 			for (var i = 0; i < value.length; i++) {
 				if (DEBUG) { console.log("Parsing Monster Data"); }
-				console.log("Edition: " + value[i]['Edition'])
+				if (DEBUG) { console.log("Edition: " + value[i]['Edition']); }
 				create_element('Monster' + value[i]['Edition']);
 				latest_monster--;
-				console.log(value[i]);
+				if (DEBUG) { console.log(value[i]); }
 
 				// Begin Header section
 				set_dom_value('M' + latest_monster + 'R1_NAME', value[i]['Name']);
@@ -3142,12 +3144,138 @@ function retrieve_session_storage() {
 /**Update Session storage for page with imported data
  * @param data Imported Data
  * @param data_type Location in Session Storage
+ * @param current_id The Id requesting an import. Update this one.
  */
-function update_session_storage(data, data_type) {
+function update_session_storage(data, data_type, current_id) {
 	if (DEBUG) { console.log("Updating Session JSON with imported info"); }
+	// Get the data as if to save to local storage
 	var export_obj = export_json(true);
-	export_obj[data_type].push(data);
+
+	// Decipher which instance to replace
+	if (data_type == "Monsters") {
+		var temp_monster = null;
+		var editor_container = document.getElementById("Monsters").childNodes;
+		for(var i = 0; i < editor_container.length; i++) {
+			// Found the container
+			if (DEBUG) { console.log("searching through containers");  }
+			if (/^M\dC/.test(editor_container[i].id)) {
+				if (editor_container[i].id == current_id) {
+					// Found the creature. Save Data, and break
+					var editor_element = editor_container[i];
+					var edition = document.getElementById(editor_element.id + '_EDITION');
+					var temp_monster = get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]);
+					break;
+				}
+			}
+		}
+		if (temp_monster === null) {
+			if (DEBUG) { console.log("Monster ID not found. Must have been deleted.") }
+		}
+		for (var i = export_obj["Monsters"].length - 1; i >= 0; i--) {
+			if (monster_equals(temp_monster, export_obj["Monsters"][i])) {
+				if (DEBUG) { console.log("Found equivalent creature, replacing");  }
+				export_obj["Monsters"][i] = data;
+			} else {
+				if (DEBUG) { 
+					console.log(temp_monster);
+					console.log("IS NOT EQUAL TO");
+					console.log(export_obj["Monsters"][i]);
+				}
+			}
+		}
+	}
+
+	// Update the local storage
 	window.sessionStorage.setItem('state', JSON.stringify(export_obj));
+
+	// Clear page before reinstating data
+	["Stores", "Tables", "Monsters", "Hazards", "Lists"].forEach(function(elem) {
+		document.getElementById(elem).innerHTML = "";
+	})
+	retrieve_session_storage();
+}
+
+
+/**Check equality of two Monster Objects
+ * @oaram ma Monster 1
+ * @param mb Monster 2
+ * @return true if equal in all elements, else false
+ */
+function monster_equals(ma, mb) {
+	// Create arrays of property names
+	var aProps = Object.getOwnPropertyNames(ma);
+	var bProps = Object.getOwnPropertyNames(mb);
+
+	// If number of properties is different, objects are not equivalent
+	if (aProps.length != bProps.length) {
+		if (DEBUG) {console.log("Monsters have different property lengths"); }
+		return false;
+	}
+	// If the attributes are different, objects are not equal
+	for (var i = 0; i < aProps.length; i++) {
+		if (aProps[i] == "Traits") {
+			if (DEBUG) {console.log("Comparing Traits"); }
+			if (ma[aProps[i]].length !== mb[aProps[i]].length) {
+				return false;
+			}
+			for (var j = ma[aProps[i]].length - 1; j >= 0; j--) {
+				if (ma[aProps[i]][j] !== mb[aProps[i]][j]) {
+					return false;
+				}
+			}
+		} else if (aProps[i] == "Spells") {
+			if (DEBUG) {console.log("Comparing Spells"); }
+			if (ma[aProps[i]].length !== mb[aProps[i]].length) {
+				return false;
+			}
+			for (var j = ma[aProps[i]].length - 1; j >= 0; j--) {
+				if (ma[aProps[i]][j]["Dc"] !== mb[aProps[i]][j]["Dc"]) {
+					if (DEBUG) {console.log("DC Difference"); }
+					return false;
+				}
+				if (ma[aProps[i]][j]["Uses"] !== mb[aProps[i]][j]["Uses"]) {
+					if (DEBUG) {console.log("Uses Difference"); }
+					return false;
+				}
+				if (ma[aProps[i]][j]["List"].length !== mb[aProps[i]][j]["List"].length) {
+					if (DEBUG) {console.log("Spell List Length Difference"); }
+					return false;
+				}
+				for (var x = 0; x < ma[aProps[i]][j]["List"].length; x++) {
+					if (!monster_equals(ma[aProps[i]][j]["List"][x], mb[aProps[i]][j]["List"][x])) {
+						return false;
+					}
+				}
+			}
+		} else if (aProps[i] == "Actions") {
+			if (DEBUG) {console.log("Comparing Actions"); }
+			if (ma[aProps[i]].length !== mb[aProps[i]].length) {
+				return false;
+			}
+			for (var j = ma[aProps[i]].length - 1; j >= 0; j--) {
+				if (!monster_equals(ma[aProps[i]][j], mb[aProps[i]][j])) {
+					return false;
+				}
+			}
+		} else if (aProps[i] == "Treasure") {
+			if (DEBUG) {console.log("Comparing Treasure"); }
+			if (ma[aProps[i]]["Data"].length !== mb[aProps[i]]["Data"].length) {
+				return false;
+			}
+			for (var j = ma[aProps[i]]["Data"].length - 1; j >= 0; j--) {
+				if (!monster_equals(ma[aProps[i]]["Data"][j], mb[aProps[i]]["Data"][j])) {
+					return false;
+				}
+			}
+		} else if (ma[aProps[i]] !== mb[aProps[i]]) {
+			if (DEBUG) {console.log("Monster inequality found; " + aProps[i]); }
+			if (DEBUG) {console.log(ma[aProps[i]] + " !== " + mb[aProps[i]]); }
+			return false;
+		}
+	}
+
+	// All options exhausted
+	return true;
 }
 
 
@@ -3184,7 +3312,7 @@ function deconvert_text(text) {
  * @return True if a number
  */
 function is_numeric(value) {
-    return /^-?\d+$/.test(value);
+	return /^-?\d+$/.test(value);
 }
 
 
