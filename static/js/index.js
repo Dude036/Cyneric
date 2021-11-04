@@ -527,7 +527,7 @@ function editor_container_monster(element, edition) {
 	add_import_div.id = container.id + "_IMPORT";
 	add_import_div.onclick = function() {
 		// Get URL
-		var url = prompt("Import JSON", '');
+		var url = prompt(add_import_div.innerHTML, '');
 		if (url == null) {
 			alert("Invalid data entered.")
 			return
