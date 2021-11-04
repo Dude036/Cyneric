@@ -159,6 +159,8 @@ def parse_donjon(url):
 def parse_5etools(url):
     print("Parsing '", url, "' from 5e/tools")
     source_book = url[url.rfind('_')+1:]
+    if source_book not in sources_5etools.keys():
+        return {'ERROR': "This book is current;y not supported. Please contact support via email below."}
     file = requests.get(sources_5etools[source_book])
     data = json.loads(file.text)
     unparsed_name = parse.unquote_plus(url[url.find('#')+1 : url.rfind('_')])
