@@ -5,6 +5,7 @@ import simplejson as json
 import bs4
 import re
 import requests
+from .parse_tools import *
 
 
 # Create your views here.
@@ -16,291 +17,27 @@ def parser(request):
     if request.method != 'POST':
         return Http404("Unable to parse POST request")
     page_data = json.loads(request.body.decode('utf8'))
-    print(page_data)
+
+    # Handle creature Parsing
     new_data = None
-    if page_data['Edition'] == '5':
-        pass
-    elif page_data['Edition'] == '2':
-        new_data = parse_archives(page_data['URL'])
-    elif page_data['Edition'] == '1':
-        pass
+    try:
+        if page_data['Edition'] == '5' and '5e.tools' in page_data['URL']:
+            new_data = parse_5etools(page_data['URL'])
+        elif page_data['Edition'] == '5' and 'donjon.bin.sh' in page_data['URL']:
+            pass
+        elif page_data['Edition'] == '2' and '2e.aonprd.com' in page_data['URL']:
+            new_data = parse_archives(page_data['URL'])
+        elif page_data['Edition'] == '1':
+            pass
+    except Exception as e:
+        raise e
+        return JsonResponse({"ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided."})
 
     # Validate correctly configured info
     if new_data is None:
-        return JsonResponse({"ERROR": "That link is not currently not supported. If you wish for it to be supported, contact support found at the bottom of this page."})
+        return JsonResponse({"ERROR": "That link is not currently supported. If you wish for it to be supported, contact support found at the bottom of this page."})
 
     return JsonResponse(new_data)
-
-
-class Creature:
-    def __init__(self, name, link):
-        self.Name = name
-        self.Link = link
-
-        # Add new variables as Empty
-        self.Perception = ''
-        self.Recall = ''
-        self.Source = ''
-        self.Speed = ''
-        self.Size = ''
-        self.Description = ''
-        self.Alignment = ''
-        self.Traits = []
-        self.Languages = []
-        self.Skills = {}
-        self.Actions = []
-        self.Abilities = []
-        self.Spells = []
-        self.Str = -2
-        self.Dex = -2
-        self.Con = -2
-        self.Wis = -2
-        self.Int = -2
-        self.Cha = -2
-        self.Ac = ''
-        self.Hp = -2
-        self.Cr = -2
-        self.Fort = ''
-        self.Ref = ''
-        self.Will = ''
-        self.Resist = ''
-        self.Immune = ''
-        self.Weak = ''
-
-    def validate(self):
-        state = True
-        for key, value in vars(self).items():
-            if isinstance(value, str):
-                if value == '':
-                    print("!! Missing", key)
-                    state = False
-            elif isinstance(value, int):
-                if value == -2:
-                    print("!! Missing", key)
-                    state = False
-            elif isinstance(value, list):
-                if len(value) == 0:
-                    print("!! Missing", key)
-                    state = False
-            elif isinstance(value, dict):
-                if len(value.keys()) == 0:
-                    print("!! Missing", key)
-                    state = False
-        return state
-
-    def set_from_raw_text(self, text):
-        print("\t\tSetting Description")
-        match = re.search(r'([a-z\)][A-Z])', text)
-        if match is None:
-            self.Description = text[0 : text.index('Recall Knowledge')]
-            self.Description = self.Description.encode(encoding='utf-8', errors='replace')
-        else:
-            self.Description = text[text.find(match.group(1)) + 1 : text.index('Recall Knowledge')]
-
-        print("\t\tSetting Recall")
-        dc = text.find('DC ', text.index('Recall Knowledge'))
-        s = text.find('(', text.index('Recall Knowledge'))
-        e = text.find(')', text.index('Recall Knowledge'))
-        self.Recall = text[s+1 : e] + ': ' + text[dc: dc+5]
-
-    def set_traits(self, uncommon, align, size, traits):
-        print("\t\tSetting Traits")
-        if uncommon is not None:
-            self.Traits.append('Uncommon')
-        if align is not None:
-            self.Traits.append(align.text)
-            self.Alignment = align.text
-        if size is not None:
-            self.Traits.append(size.text)
-            self.Size = size.text
-
-        for t in traits:
-            self.Traits.append(str(t.string))
-
-    def set_source(self, line):
-        print("\t\tSetting Source")
-        self.Source = line.i.string
-
-    def set_cr(self, line):
-        print("\t\tSetting CR")
-        self.Cr = int(line)
-
-    def set_perception(self, line):
-        print("\t\tSetting Perception")
-        self.Perception = line.text.replace('Perception ', '')
-
-    def set_languages(self, line):
-        print("\t\tSetting Language")
-        self.Languages = [x.strip() for x in re.split(r'[\,\;]', line.text.replace('Languages ', ''))]
-
-    def set_skills(self, line):
-        print("\t\tSetting Skills")
-        for x in re.split(r'[\,\;]', line.text.replace('Skills ', '')):
-            match = re.match(r'\s*(\w+)\s(.*)', x)
-            self.Skills[match.group(1)] = match.group(2)
-
-    def set_stats(self, line):
-        print("\t\tSetting Stats")
-        for x in re.split(r'[\,\;]', line.text):
-            match = re.match(r'\s?([\w]{3}) ([\+\-]\d*)', x)
-            if match.group(1) == 'Str':
-                self.Str = match.group(2)
-            elif match.group(1) == 'Dex':
-                self.Dex = match.group(2)
-            elif match.group(1) == 'Con':
-                self.Con = match.group(2)
-            elif match.group(1) == 'Int':
-                self.Int = match.group(2)
-            elif match.group(1) == 'Wis':
-                self.Wis = match.group(2)
-            elif match.group(1) == 'Cha':
-                self.Cha = match.group(2)
-
-    def remaining_parser(self, lines):
-        print("\t\tParsing Remaining")
-        for line in lines:
-            if line.startswith('<span class="hanging-indent">'):
-                print('\t\t\tBegin Bulk action parsing')
-                self.handle_actions(line)
-
-            elif 'alt="Reaction"' in line:
-                print('\t\t\tReaction found. Adding to Abilities')
-                self.put_ability(line, -1)
-            elif 'alt="Free Action"' in line:
-                print('\t\t\tFree Action found. Adding to Abilities')
-                self.put_ability(line, 0)
-            elif 'alt="Single Action"' in line:
-                print('\t\t\tSingle Action found. Adding to Abilities')
-                self.put_ability(line, 1)
-            elif 'alt="Two Actions"' in line:
-                print('\t\t\tTwo Actions found. Adding to Abilities')
-                self.put_ability(line, 2)
-            elif 'alt="Three Actions"' in line:
-                print('\t\t\tThree Actions found. Adding to Abilities')
-                self.put_ability(line, 3)
-
-            elif '<b>Items</b>' in line:
-                print('\t\t\tItems found. Adding to Items')
-            elif '<b>Speed</b>' in line:
-                print('\t\t\tSpeed found')
-                self.Speed = line[13:]
-
-            elif '<b>AC</b>' in line:
-                print('\t\t\tAC and Saves found')
-                new_line = bs4.BeautifulSoup(line, 'html.parser')
-                self.Ac = new_line.text.split('; ')[0][3:]
-                new_line = new_line.text.split('; ')[1]
-
-                for x in re.split(r'\,', new_line):
-                    match = re.match(r'\s*(Fort|Ref|Will) (.*)', x)
-                    if match.group(1) == 'Fort':
-                        self.Fort = match.group(2)
-                    elif match.group(1) == 'Ref':
-                        self.Ref = match.group(2)
-                    elif match.group(1) == 'Will':
-                        self.Will = match.group(2)
-
-            elif '<b>HP</b>' in line:
-                new_line = bs4.BeautifulSoup(line, 'html.parser')
-                data = re.split(r'\;', new_line.text)
-                for d in data:
-                    match = re.match(r'\s?(HP|Immunities|Resistances|Weaknesses)\s(.*)', d)
-                    if match.group(1) == 'HP':
-                        self.Hp = match.group(2)
-                    elif match.group(1) == 'Immunities':
-                        self.Immune = match.group(2)
-                    elif match.group(1) == 'Resistances':
-                        self.Resist = match.group(2)
-                    elif match.group(1) == 'Weaknesses':
-                        self.Weak = match.group(2)
-
-            elif line.startswith('<b>Arcane') or line.startswith('<b>Divine') or line.startswith('<b>Occult') or line.startswith('<b>Primal') or line.startswith('<b>Monk') or line.startswith('<b>Champion'):
-                print('\t\t\tSpell Work Begins')
-                dc = int(line[line.index('DC ')+3 : line.index('DC ')+5])
-
-                data = bs4.BeautifulSoup(line, 'html.parser')
-                # print(type(data.find_all('b')[1].next_sibling.next_sibling.next_sibling))
-                # print(data.find_all('b')[1].next_sibling.next_sibling.next_sibling)
-                data_split = line.split('<b>')
-                for line in data_split[2:]:
-                    level, spells = line.split('</b>')
-                    temp_spell_line = {
-                        'Dc': dc,
-                        'Uses': level,
-                        'List': [],
-                    }
-                    print('\t\t\t\tProcessing ' + level + ' level spells')
-                    spells = bs4.BeautifulSoup(spells, 'html.parser')
-                    for link in spells.find_all('a'):
-                        print('\t\t\t\t\t' + link.text.title())
-                        temp_spell = {
-                            'Name': link.text.title(),
-                            'Link': "https://2e.aonprd.com/" + link['href'],
-                        }
-                        temp_spell_line['List'].append(temp_spell)
-                    self.Spells.append(temp_spell_line)
-
-            else:
-                print('\t\t\tAdding Ability')
-                try:
-                    temp_ab = {
-                        'Name': line[line.index('<b>')+3 : line.index('</b>')]
-                    }
-                    print('\t\t\t\t' + temp_ab['Name'])
-                    if temp_ab['Name'] in ['Critical Success', 'Critical Failure', 'Success', 'Failure']:
-                        self.Abilities[-1]['Description'] += line[line.index('</b>'):].strip()
-                    else:
-                        temp_ab['Description'] = line[line.index('</b>')+4:].strip()
-                        self.Abilities.append(temp_ab)
-                except Exception as e:
-                    print('!! Unparsable Ability:')
-                    print(line)
-
-    def put_ability(self, action, cost):
-        data = bs4.BeautifulSoup(action, 'html.parser')
-        temp_a = {
-            'Name': data.b.text.strip(),
-            'Text': '<p>' + data.text[len(data.b.text):].strip() + '</p>',
-            'Cost': cost
-
-        }
-        self.Actions.append(temp_a)
-
-    def handle_actions(self, action):
-        data = bs4.BeautifulSoup(action, 'html.parser')
-        actions = data.find_all('span')
-        for a in actions:
-            cost = -2
-            image = a.find('img', alt=True)
-            if image is None:
-                cost = "1 Action"
-            elif image['alt'] == "Reaction":
-                cost = "Reaction"
-            elif image['alt'] == "Free Action":
-                cost = "Free"
-            elif image['alt'] == "Single Action":
-                cost = "1 Action"
-            elif image['alt'] == "Two Actions":
-                cost = "2 Action"
-            elif image['alt'] == "Three Actions":
-                cost = "3 Action"
-            print('\t\t\t\tAction: ' + a.b.text)
-            temp_a = {
-                'Name': str(a.b.text),
-                'Text': '<p>' + a.text[len(a.b.text):].strip() + '</p>',
-                'Cost': cost
-            }
-            self.Actions.append(temp_a)
-
-    def get_dict(self):
-        return self.__dict__
-
-
-def de_dict(d):
-    s = ''
-    for k, v in d.items():
-        s += k + ' ' + v + ', '
-    return s[:-2]
 
 
 def parse_archives(url):
@@ -413,3 +150,145 @@ def parse_archives(url):
     }
 
     return base
+
+
+def parse_donjon(url):
+    pass
+
+
+def parse_5etools(url):
+    print("Parsing '", url, "' from 5e/tools")
+    source_book = url[url.rfind('_')+1:]
+    file = requests.get(sources_5etools[source_book])
+    data = json.loads(file.text)
+    unparsed_name = parse.unquote_plus(url[url.find('#')+1 : url.rfind('_')])
+    name = modify_title(unparsed_name.title())
+
+    # Query for creature in received JSON
+    creature = None
+    for c in data['monster']:
+        if c['name'] == name:
+            creature = c
+    if creature is None:
+        return {"ERROR": "Unable to locate creature from 5e.tools"}
+
+    # Validate if the creature is a copy
+    while '_copy' in creature.keys():
+        name = modify_title(creature['_copy']['name'])
+        source = creature['_copy']['source']
+        file = requests.get(sources_5etools[source.lower()])
+        data = json.loads(file.text)
+        old_creature = creature
+        creature = None
+        for c in data['monster']:
+            if c['name'] == name:
+                creature = c
+        if creature is None:
+            return {"ERROR": "Unable to locate creature from 5e.tools"}
+        creature = fix_dict_diff(old_creature, creature)
+
+    resist = ''
+    if 'resist' in creature.keys():
+        for point in creature['resist']:
+            if isinstance(point, str):
+                resist += point + ', '
+            elif isinstance(point, dict):
+                if 'resist' in point.keys() and 'note' in point.keys():
+                    resist += de_list(point['resist']) + ' ' + point['note']
+                elif 'special' in point.keys():
+                    resist += point['special'] + ', '
+    immune = ''
+    if 'conditionImmune' in creature.keys():
+        for p in creature['conditionImmune']:
+            if isinstance(p, str):
+                immune += p + ', '
+            if isinstance(p, dict):
+                immune += de_dict(p) + ', '
+    if 'immune' in creature.keys() and creature['immune'] is not None:
+        for p in creature['immune']:
+            if isinstance(p, str):
+                immune += p + ', '
+            if isinstance(p, dict):
+                immune += de_dict(p) + ', '
+
+    vulnerable = ''
+    if 'vulnerable' in creature.keys() and creature['vulnerable'] is not None:
+        for p in creature['vulnerable']:
+            if isinstance(p, str):
+                vulnerable += p + ', '
+            if isinstance(p, dict):
+                vulnerable += de_dict(p) + ', '
+
+    ac = ''
+    if isinstance(creature['ac'][0], int):
+        ac = str(creature['ac'][0])
+    elif isinstance(creature['ac'][0], dict):
+        if 'special' in creature['ac'][0].keys():
+            ac = creature['ac'][0]['special']
+        else:
+            ac = str(creature['ac'][0]['ac'])
+            if 'from' in creature['ac'][0].keys():
+                ac += ' (' + str(creature['ac'][0]['from']) + ')'
+
+    actions = []
+    if 'action' in creature.keys() and creature['action'] is not None:
+        actions += process_actions_5etools(creature['action'], False)
+    if 'trait' in creature.keys() and creature['trait'] is not None:
+        actions += process_actions_5etools(creature['trait'], False)
+    if 'legendary' in creature.keys() and creature['legendary'] is not None:
+        actions += process_actions_5etools(creature['legendary'], True)
+
+    spells = []
+    if 'spellcasting' in creature.keys() and creature['spellcasting'] is not None:
+        spells = process_spells_5etools(creature['spellcasting'][0])
+
+    align = ''
+    if 'alignment' not in creature.keys():
+        align = ''
+    elif isinstance(creature['alignment'][0], str):
+        align = ''.join(creature['alignment']) 
+    else:
+        align = str(creature['alignment'])
+
+    hp_info = ''
+    if 'special' in creature['hp'].keys():
+        hp_info += str(creature['hp']['special'])
+    else: 
+        hp_info += str(creature['hp']['average'])
+        if 'formula' in creature['hp'].keys():
+            hp_info += ' (' + creature['hp']['formula'] + ')'
+
+    target = {
+        "Ac": ac,
+        "Actions": actions,
+        "Alignment": align,
+        "Cha": creature['cha'],
+        "ChaSave": True if 'save' in creature.keys() and 'cha' in creature['save'] else False,
+        "Con": creature['con'],
+        "ConSave": True if 'save' in creature.keys() and 'con' in creature['save'] else False,
+        "Cr": creature['cr'] if 'cr' in creature.keys() else '',
+        "DamImmune": immune,
+        "DamResist": resist,
+        "DamWeak": vulnerable,
+        "Description": "<p></p>",
+        "Dex": creature['dex'],
+        "DexSave": True if 'save' in creature.keys() and 'dex' in creature['save'] else False,
+        "Edition": "5",
+        "Hp": hp_info,
+        "Int": creature['int'],
+        "IntSave": True if 'save' in creature.keys() and 'int' in creature['save'] else False,
+        "Language": de_list(creature['languages']) if 'languages' in creature.keys() and creature['languages'] is not None else '',
+        "Name": modify_title(unparsed_name.title()),
+        "Sense": de_list(creature['senses']) if 'senses' in creature.keys() and creature['senses'] is not None else '',
+        "Size": creature['size'],
+        "Skills": de_dict(creature['skill']) if 'skill' in creature.keys() else '',
+        "Speed": de_dict(creature['speed']),
+        "Spells": spells,
+        "Str": creature['str'],
+        "StrSave": True if 'save' in creature.keys() and 'str' in creature['save'] else False,
+        "Treasure": {"Data": []},
+        "Wis": creature['wis'],
+        "WisSave": True if 'save' in creature.keys() and 'wis' in creature['save'] else False,
+    }
+    
+    return target
