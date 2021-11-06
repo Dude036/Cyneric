@@ -34,7 +34,7 @@ def parser(request):
         return JsonResponse({
             "ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided.",
             "EXCEPTION": str(e)
-        })
+        }, safe=False)
 
     # Validate correctly configured info
     if new_data is None:
@@ -51,7 +51,7 @@ def parse_archives(url):
         return JsonResponse({
             "ERROR": "There was a problem importing from " + url,
             "EXCEPTION": str(e)
-        })
+        }, safe=False)
     soup = bs4.BeautifulSoup(file.text, 'html.parser')
 
     # Create monster
@@ -176,7 +176,7 @@ def parse_5etools(url):
         return JsonResponse({
             "ERROR": "There was a problem importing from " + url,
             "EXCEPTION": str(e)
-        })
+        }, safe=False)
     data = json.loads(file.text)
     unparsed_name = parse.unquote_plus(url[url.find('#')+1 : url.rfind('_')])
     name = modify_title(unparsed_name.title())
