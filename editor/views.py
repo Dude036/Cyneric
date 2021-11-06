@@ -33,7 +33,7 @@ def parser(request):
         print(e)
         return JsonResponse({
             "ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided.",
-            "EXCEPTION": e
+            "EXCEPTION": str(e)
         })
 
     # Validate correctly configured info
@@ -45,7 +45,13 @@ def parser(request):
 
 def parse_archives(url):
     # Make a request call to the website
-    file = requests.get(url)
+    try:
+        file = requests.get(url)
+    except ProxyError as e:
+        return JsonResponse({
+            "ERROR": "There was a problem importing from " + url,
+            "EXCEPTION": str(e)
+        })
     soup = bs4.BeautifulSoup(file.text, 'html.parser')
 
     # Create monster
@@ -164,7 +170,13 @@ def parse_5etools(url):
     source_book = url[url.rfind('_')+1:]
     if source_book not in sources_5etools.keys():
         return {'ERROR': "This book is current;y not supported. Please contact support via email below."}
-    file = requests.get(sources_5etools[source_book])
+    try:
+        file = requests.get(sources_5etools[source_book])
+    except ProxyError as e:
+        return JsonResponse({
+            "ERROR": "There was a problem importing from " + url,
+            "EXCEPTION": str(e)
+        })
     data = json.loads(file.text)
     unparsed_name = parse.unquote_plus(url[url.find('#')+1 : url.rfind('_')])
     name = modify_title(unparsed_name.title())
