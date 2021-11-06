@@ -40,7 +40,7 @@ def parser(request):
     if new_data is None:
         return JsonResponse({"ERROR": "That link is not currently supported. If you wish for it to be supported, contact support found at the bottom of this page."})
 
-    return JsonResponse(new_data)
+    return JsonResponse(new_data, safe=False)
 
 
 def parse_archives(url):
