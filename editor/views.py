@@ -47,7 +47,7 @@ def parse_archives(url):
     # Make a request call to the website
     try:
         file = requests.get(url)
-    except ProxyError as e:
+    except Exception as e:
         return JsonResponse({
             "ERROR": "There was a problem importing from " + url,
             "EXCEPTION": str(e)
@@ -172,7 +172,7 @@ def parse_5etools(url):
         return {'ERROR': "This book is current;y not supported. Please contact support via email below."}
     try:
         file = requests.get(sources_5etools[source_book])
-    except ProxyError as e:
+    except Exception as e:
         return JsonResponse({
             "ERROR": "There was a problem importing from " + url,
             "EXCEPTION": str(e)
