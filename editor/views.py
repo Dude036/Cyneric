@@ -48,10 +48,10 @@ def parse_archives(url):
     try:
         file = requests.get(url)
     except Exception as e:
-        return JsonResponse({
+        return {
             "ERROR": "There was a problem importing from " + url,
             "EXCEPTION": str(e)
-        }, safe=False)
+        }
     soup = bs4.BeautifulSoup(file.text, 'html.parser')
 
     # Create monster
@@ -173,10 +173,10 @@ def parse_5etools(url):
     try:
         file = requests.get(sources_5etools[source_book])
     except Exception as e:
-        return JsonResponse({
+        return {
             "ERROR": "There was a problem importing from " + url,
             "EXCEPTION": str(e)
-        }, safe=False)
+        }
     data = json.loads(file.text)
     unparsed_name = parse.unquote_plus(url[url.find('#')+1 : url.rfind('_')])
     name = modify_title(unparsed_name.title())
