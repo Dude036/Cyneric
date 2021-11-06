@@ -30,8 +30,11 @@ def parser(request):
         elif page_data['Edition'] == '1':
             pass
     except Exception as e:
-        raise e
-        return JsonResponse({"ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided."})
+        print(e)
+        return JsonResponse({
+            "ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided.",
+            "EXCEPTION": e
+        })
 
     # Validate correctly configured info
     if new_data is None:

@@ -562,7 +562,10 @@ function editor_container_monster(element, edition) {
 				var new_data = JSON.parse(xhr.responseText);
 				if ('ERROR' in new_data) {
 					// Post Toast Message about failure
-					console.log("ERROR:" + new_data['ERROR']);
+					console.log("ERROR: " + new_data['ERROR']);
+					if ("EXCEPTION" in new_data) {
+						console.log("EXCEPTION: " + new_data['EXCEPTION']);
+					}
 					(async () => {
 						var toast = document.createElement('div');
 						toast.style.backgroundColor = "#E34D4D";
