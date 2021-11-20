@@ -30,7 +30,9 @@ def parser(request):
         elif page_data['Edition'] == '1':
             pass
     except Exception as e:
-        print(e)
+        print('\n!! Type: ', type(e))
+        print('!! Args: ', e.args)
+        print('!! Stack:', e, '\n')
         return JsonResponse({
             "ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided.",
             "EXCEPTION": str(e)
@@ -46,6 +48,8 @@ def parser(request):
 def parse_archives(url):
     # Make a request call to the website
     try:
+        if 'AspxAutoDetectCookieSupport=1' not in url:
+            url += '&AspxAutoDetectCookieSupport=1'
         file = requests.get(url)
     except Exception as e:
         return {
@@ -66,13 +70,15 @@ def parse_archives(url):
     body = body.find_all('span')[4]
 
     # Get data from Raw Text
-    monster.set_from_raw_text(body.text)
     monster.set_traits(
         body.find('span', class_=['traituncommon']),
+        body.find('span', class_=['traitrare']),
+        body.find('span', class_=['traitunique']),
         body.find('span', class_=['traitalignment']),
         body.find('span', class_=['traitsize']),
         body.find_all('span', class_=['trait'])
     )
+    monster.set_from_raw_text(body.text)
 
     # Grab form Raw to get Source
     raw_text_split = re.split(r'<br />|<hr />', file.text)

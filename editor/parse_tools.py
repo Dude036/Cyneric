@@ -649,22 +649,36 @@ class Creature:
     def set_from_raw_text(self, text):
         print("\t\tSetting Description")
         match = re.search(r'([a-z\)][A-Z])', text)
-        if match is None:
-            self.Description = text[0 : text.index('Recall Knowledge')]
-            self.Description = self.Description.encode(encoding='utf-8', errors='replace')
+        if 'Recall Knowledge' in text:
+            if match is None:
+                self.Description = text[0 : text.index('Recall Knowledge')]
+                self.Description = self.Description.encode(encoding='utf-8', errors='replace')
+            else:
+                self.Description = text[text.find(match.group(1)) + 1 : text.index('Recall Knowledge')]
+            print("\t\tSetting Recall")
+            dc = text.find('DC ', text.index('Recall Knowledge'))
+            s = text.find('(', text.index('Recall Knowledge'))
+            e = text.find(')', text.index('Recall Knowledge'))
+            self.Recall = text[s+1 : e] + ': ' + text[dc: dc+5]
         else:
-            self.Description = text[text.find(match.group(1)) + 1 : text.index('Recall Knowledge')]
+            self.Description = text[0 : text.index('|')]
+            r = 10 + self.Cr
+            if 'Uncommon' in self.Traits:
+                r += 2
+            if 'Rare' in self.Traits:
+                r += 5
+            if 'Unique' in self.Traits:
+                r += 10
+            self.Recall = '?: DC' + str(r)
 
-        print("\t\tSetting Recall")
-        dc = text.find('DC ', text.index('Recall Knowledge'))
-        s = text.find('(', text.index('Recall Knowledge'))
-        e = text.find(')', text.index('Recall Knowledge'))
-        self.Recall = text[s+1 : e] + ': ' + text[dc: dc+5]
-
-    def set_traits(self, uncommon, align, size, traits):
+    def set_traits(self, uncommon, rare, unique, align, size, traits):
         print("\t\tSetting Traits")
         if uncommon is not None:
             self.Traits.append('Uncommon')
+        if rare is not None:
+            self.Traits.append('Rare')
+        if unique is not None:
+            self.Traits.append('Unique')
         if align is not None:
             self.Traits.append(align.text)
             self.Alignment = align.text
