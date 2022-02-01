@@ -2,6 +2,27 @@
 {% load static %}
 {% block content %}
 
-<h1>Currently under development. Please be patient!</h1>
+<h1>DM Toolkit API Usage Guide</h1>
+<hr>
+<p>
+	This api is designed to extract information that would otherwise be lost in the midst of creating a town or monster from my DMToolkit. Here are some example links you can go to. All api calls can be ended with <code>json</code> for a JSON object of the data to be extracted rather than plain text HTML.
+</p>
+
+<ul>
+	<li>
+		<a href="{% url 'api:npc' %}"><b>Generic NPC information</b></a>
+		<br>
+		<p>
+			Generate an NPC with a history and no character levels in HTML format
+		</p>
+	</li>
+	<li>
+		<a href="{% url 'api:npc_json' %}"><b>Generic NPC information (JSON)</b></a>
+		<br>
+		<p>
+			Generate an NPC with a history and no character levels in JSON format
+		</p>
+	</li>
+</ul>
 
 {% endblock %}
