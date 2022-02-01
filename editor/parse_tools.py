@@ -775,16 +775,23 @@ class Creature:
             elif '<b>HP</b>' in line:
                 new_line = bs4.BeautifulSoup(line, 'html.parser')
                 data = re.split(r'\;', new_line.text)
+                latest = None
                 for d in data:
                     match = re.match(r'\s?(HP|Immunities|Resistances|Weaknesses)\s(.*)', d)
-                    if match.group(1) == 'HP':
+                    if match is None and latest is not None:
+                        exec(latest)
+                    elif match.group(1) == 'HP':
                         self.Hp = match.group(2)
+                        latest = "self.Hp += d"
                     elif match.group(1) == 'Immunities':
                         self.Immune = match.group(2)
+                        latest = "self.Immune += d"
                     elif match.group(1) == 'Resistances':
                         self.Resist = match.group(2)
+                        latest = "self.Resist += d"
                     elif match.group(1) == 'Weaknesses':
                         self.Weak = match.group(2)
+                        latest = "self.Weak += d"
 
             elif line.startswith('<b>Arcane') or line.startswith('<b>Divine') or line.startswith('<b>Occult') or line.startswith('<b>Primal') or line.startswith('<b>Monk') or line.startswith('<b>Champion'):
                 print('\t\t\tSpell Work Begins')
