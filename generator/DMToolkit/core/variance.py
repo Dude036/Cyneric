@@ -152,3 +152,9 @@ def normalize_dict(v):
         # print(x, v[x])
         d[x] = v[x] / total
     return d
+
+def normal_settings():
+    normal = {}
+    for x in RACES:
+        normal[x] = 1
+    return normalize_dict(normal)
