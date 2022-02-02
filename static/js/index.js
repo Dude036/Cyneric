@@ -351,6 +351,87 @@ function editor_container_table(element) {
 		set_session_storage();
 	}
 
+	if (element.id.startsWith("S")) {
+		// Adding Automated store Button
+		var generate_owner_div = document.createElement('div');
+
+		generate_owner_div.style.float = 'right';
+		generate_owner_div.style.padding = '5px';
+		generate_owner_div.style.backgroundColor = '#50A0A0';
+		generate_owner_div.style.color = '#EFEFEF';
+		generate_owner_div.innerHTML = "Generate Owner";
+		generate_owner_div.id = container.id + "_GENERATE";
+
+		generate_owner_div.onclick = function() {
+			if (DEBUG) { console.log("container.id = " + container.id); }
+			var base_id = element.id + "_OWNER";
+			if (confirm("Overwrite Owner Content?")) {
+				// Link Validated, begin GET to self-API
+				var xhr = new XMLHttpRequest();
+				var connection = window.location.origin + '/api/npc/json';
+				const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+				xhr.open("GET", connection);
+
+				xhr.setRequestHeader("Accept", "application/json");
+				xhr.setRequestHeader("Content-Type", "application/json");
+				xhr.setRequestHeader("X-CSRFToken", token);
+
+				xhr.onreadystatechange = function () {
+					if (xhr.readyState === 4) {
+						// Completed request
+						if (DEBUG) {
+							console.log("Data recieved back for " + connection);
+							console.log(xhr.status);
+							console.log(xhr.responseText);
+						}
+						var new_data = JSON.parse(xhr.responseText);
+						if ('ERROR' in new_data) {
+							// Post Toast Message about failure
+							console.log("ERROR: " + new_data['ERROR']);
+							if ("EXCEPTION" in new_data) {
+								console.log("EXCEPTION: " + new_data['EXCEPTION']);
+							}
+							(async () => {
+								var toast = document.createElement('div');
+								toast.style.backgroundColor = "#E34D4D";
+								toast.style.position = "fixed";
+								toast.style.top = "40px";
+								toast.style.left = "40px";
+								toast.style.width = "250px";
+								toast.id = "toast";
+								toast.style.padding = "10px 20px";
+
+								toast.appendChild(document.createTextNode(new_data['ERROR']));
+
+								var header_img = document.getElementById("header_img");
+								header_img.appendChild(toast);
+
+								setTimeout(function(){
+									toast.parentNode.removeChild(toast);
+								}, 9000);
+							})()
+						} else {
+							// We've recieved a creature, and can safely add it to the page.
+							if (DEBUG) { console.log("Successfully recieved npc from API, posting to UI"); }
+							document.getElementById(base_id + "_NAME").value = new_data['Name'];
+							document.getElementById(base_id + "_RACE").value = new_data['Race'];
+							document.getElementById(base_id + "_GENDER").value = new_data['Gender'];
+							document.getElementById(base_id + "_AGE").value = new_data['Age'];
+							document.getElementById(base_id + "_TRAIT_1").value = new_data['Traits'][0];
+							document.getElementById(base_id + "_TRAIT_2").value = new_data['Traits'][1];
+							document.getElementById(base_id + "_DESCRIBE").value = new_data['Story'][0];
+						}
+					}
+				};
+
+				xhr.send();
+			}
+		}
+
+		container.appendChild(generate_owner_div);
+	}
+
+
 	container.appendChild(add_row_div);
 	container.appendChild(add_item_div);
 	
