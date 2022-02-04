@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.api, name='api'),
     path('npc/', views.npc, name='npc'),
     path('npc/json/', views.npc_json, name='npc_json'),
+    path('pc/', views.pc, name='pc'),
+    path('pc/json/', views.pc_json, name='pc_json'),
 ]
