@@ -417,6 +417,22 @@ class Weapon(object):
         ]:
             yield item
 
+    def to_dict(self):
+        return {
+            'Weight': self.Weight,
+            'Cost': self.Cost,
+            'Rarity': self.Rarity,
+            'Masterwork': self.Masterwork,
+            'Name': self.Name,
+            'Dice': self.Dice,
+            'Crit': self.Crit,
+            'Class': self.Class,
+            'Special': self.Special,
+            'Text': self.Text,
+            'Damage': self.Damage,
+            'Enchantment': None if self.Enchantment is None else self.Enchantment.to_dict(),
+        }
+
     def to_string(self):
         ench = ''
         if self.Enchantment is not None:
@@ -970,6 +986,15 @@ class Enchant(object):
 
     def to_string(self):
         return self.Spell + ' (' + determine_cost(self.Cost) + ')'
+
+    def to_dict(self):
+        return {     
+            'Spell': self.Spell,
+            'Description': self.Description,
+            'Level': self.Level, 
+            'Cost': self.Cost,
+            'Uses': self.Uses,
+        }
 
 
 class Potion(object):
