@@ -111,6 +111,25 @@ function update_page_state(state) {
 }
 
 
+/**Create a button for adding randomly generated content from the DMTK
+ * @param text Text to be added to the InnerHTML
+ * @param background Background Color
+ * @param color Text color 
+ * @return Flex box ready for an event listener
+ */
+function add_table_flex_box(text, background, color) {
+	var add_flex_box = document.createElement('div');
+	add_flex_box.style.justifyContent = 'flex-start';
+	add_flex_box.style.margin = '3px 5px';
+	add_flex_box.style.width = '38%';
+	add_flex_box.style.padding = '3px';
+	add_flex_box.style.backgroundColor = background;
+	add_flex_box.style.color = color;
+	add_flex_box.innerHTML = text;
+	return add_flex_box;
+}
+
+
 /**Create the Parent Container for Tables
  * @param element Primary child element, the table
  * @return Fully formed container for Table elements
@@ -280,13 +299,51 @@ function editor_container_table(element) {
 			latest_table_rows++;
 		}
 
+		// Add custom buttons for generated content
+		var add_button_td = item_row.insertCell(0);
+		var add_button_div = document.createElement('div');
+		add_button_div.style.padding = '5px 2px';
+		add_button_div.style.width = '100%';
+		add_button_div.style.margin = '5px 8px';
+		add_button_div.style.display = 'flex';
+		add_button_div.style.flexWrap = 'wrap';
+		add_button_div.style.alignItems = 'flex-start';
+
+		// Create Random Weapon
+		var add_weapon = add_table_flex_box("Generate Weapon", '#0CBFBF', '#000000');
+		add_button_div.appendChild(add_weapon);
+
+		// Create Random Armor
+		var add_armor = add_table_flex_box("Generate Armor", '#BF0CBF', '#000000');
+		add_button_div.appendChild(add_armor);
+
+		// Create Random Firearm
+		var add_firearm = add_table_flex_box("Generate Firearm", '#BFBF0C', '#000000');
+		add_button_div.appendChild(add_firearm);
+
+		// Create Random Scroll
+		var add_scroll = add_table_flex_box("Generate Scroll", '#0FAC0F', '#EFEFEF');
+		add_button_div.appendChild(add_scroll);
+		
+		// Create Random Scroll
+		var add_potion = add_table_flex_box("Generate Potion", '#0F0FAC', '#EFEFEF');
+		add_button_div.appendChild(add_potion);
+		
+		// Create Random Scroll
+		var add_book = add_table_flex_box("Generate Book", '#AC5F0F', '#EFEFEF');
+		add_button_div.appendChild(add_book);
+		
+		// Create Random Scroll
+		var add_food = add_table_flex_box("Generate Food", '#5FAC5F', '#EFEFEF');
+		add_button_div.appendChild(add_food);
+		
+		// Create Random Scroll
+		var add_food = add_table_flex_box("Generate Trinket", '#AC5FAC', '#EFEFEF');
+		add_button_div.appendChild(add_food);
+
 		// Delete Row
-		var add_delete = item_row.insertCell(0);
-		add_delete.style.float = 'right';
-		add_delete.style.width = '8px';
-		add_delete.style.backgroundColor = '#C00000';
-		add_delete.style.color = '#EFEFEF';
-		add_delete.innerHTML = "<b>X</b>";
+		var add_delete = add_table_flex_box("Delete Row", '#C00000', '#EFEFEF');
+		add_button_div.appendChild(add_delete);
 
 		// Add Delete row Method
 		add_delete.onclick = function() {
@@ -297,6 +354,8 @@ function editor_container_table(element) {
 			}
 			set_session_storage();
 		}
+
+		add_button_td.appendChild(add_button_div);
 
 		// Item additions
 		var item_descriptor_cell = item_row.insertCell(0);
@@ -346,6 +405,7 @@ function editor_container_table(element) {
 		item_text.id = item_row.id + "_Text";
 		item_text.placeholder = 'Long Description';
 		item_text.style.lineHeight = "20px"
+		item_text.style.width = "400px"
 		item_text.addEventListener("keyup", function() { calcHeight(item_text) });
 		item_data_cell.appendChild(item_text);
 		set_session_storage();

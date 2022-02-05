@@ -62,7 +62,18 @@ def pc_json(request):
     return JsonResponse(person)
 
 
-# Random Item (Created)
-# Random Item (Existing)
-# Random Gear
+# Create Random Weapon
+# Create Random Firearm
+# Create Random Armor
+# Create Random Scroll
+# Create Random Potion
+# Create Random Enchantment
+# Create Random Book
+# Create Random Food
+# Create Random Trinket
+
+# Choose Random Gear
+# Choose Random Weapon
+# Choose Random Firearm
+# Choose Random Armor
 
