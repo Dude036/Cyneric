@@ -454,6 +454,12 @@ function sub_list_element(parent, descriptor, add_id) {
 	new_input_input.id = add_id + "_" + descriptor.toUpperCase();
 	new_input_input.type = 'text';
 	new_input_input.placeholder = 'Owner ' + descriptor;
+	new_input_input.style.marginLeft = '10px';
+	var new_input_input_label = document.createElement('label');
+	new_input_input_label.id = new_input_input.id + '_LABEL'
+	new_input_input_label.innerHTML = 'Owner ' + descriptor;
+	new_input.appendChild(new_input_input_label);
+
 	new_input.appendChild(new_input_input);
 	parent.appendChild(new_input);
 }
@@ -824,8 +830,15 @@ function create_element_store(store) {
 	owner_store_name.value = '';
 	owner_store_name.style.fontSize = '24px';
 
+	owner_store_name.style.marginLeft = '10px';
+	var owner_store_name_label = document.createElement('label');
+	owner_store_name_label.id = owner_store_name.id + '_LABEL'
+	owner_store_name_label.innerHTML = "Store Name";
+	owner_container.appendChild(owner_store_name_label);
+
 	owner_container.appendChild(owner_store_name);
 	owner_container.appendChild(document.createElement('br'));
+
 	// Owner Name
 	var owner_name = document.createElement('input');
 	owner_name.addEventListener("keypress", set_session_storage);
@@ -833,6 +846,12 @@ function create_element_store(store) {
 	owner_name.type = 'text';
 	owner_name.placeholder = 'Owner Name';
 	owner_name.value = '';
+
+	owner_name.style.marginLeft = '10px';
+	var owner_name_label = document.createElement('label');
+	owner_name_label.id = owner_name.id + '_LABEL'
+	owner_name_label.innerHTML = "Owner Name";
+	owner_container.appendChild(owner_name_label);
 	
 	owner_container.appendChild(owner_name);
 
