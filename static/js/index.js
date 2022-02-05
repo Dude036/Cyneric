@@ -491,6 +491,27 @@ function add_list_settings(parent_obj, add_id) {
 
 	parent_obj.appendChild(add_underline);
 	parent_obj.appendChild(add_underline_label);
+
+	// Delete
+	var add_delete_div = document.createElement('span');
+	add_delete_div.style.padding = '5px';
+	add_delete_div.style.marginLeft = '15px';
+	add_delete_div.style.backgroundColor = '#C00000';
+	add_delete_div.style.color = '#EFEFEF';
+	add_delete_div.innerHTML = "Delete Row";
+	add_delete_div.id = add_id + "_DELETE";
+
+	// Delete Row option
+	add_delete_div.onclick = function() {
+		if (confirm("Delete row?")) {
+			if (DEBUG) { console.log("Deleting row"); }
+			parent_obj.parentNode.removeChild(parent_obj);
+			if (DEBUG) { console.log("Row successfully deleted"); }
+		}
+		set_session_storage();
+	}
+
+	parent_obj.appendChild(add_delete_div);
 }
 
 
@@ -552,6 +573,19 @@ function editor_container_list(element) {
 		set_session_storage();
 	}
 
+	// Add List Name
+	var list_name_div = document.createElement('div');
+	list_name_div.appendChild(document.createTextNode("List name:"));
+
+	var list_name_input = document.createElement('input');
+	list_name_input.addEventListener("keypress", set_session_storage);
+	list_name_input.type = 'Text';
+	list_name_input.style.marginLeft = '10px';
+	list_name_input.id = element.id + '_NAME';
+	list_name_input.placeholder = 'List name';
+	list_name_div.appendChild(list_name_input)
+
+	container.appendChild(list_name_div);
 	container.appendChild(add_delete_div);
 	container.appendChild(add_row_div);
 
