@@ -57,7 +57,6 @@ def pc(request):
 def pc_json(request):
     content = {}
     person = pc_create(content=content, json=True)
-    print(type(person['Weapon'][0]), ':', person['Weapon'][0].to_dict())
     person['Weapon'][0] = person['Weapon'][0].to_dict()
     person['Weapon'][1] = person['Weapon'][1].to_dict()
     return JsonResponse(person)
