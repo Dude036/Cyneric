@@ -1021,14 +1021,24 @@ function create_element_monster(monster, edition) {
 	monster_hp_input.addEventListener("keypress", set_session_storage);
 	monster_hp_input.id = monster_header.id + '_HP';
 	monster_hp_input.placeholder = 'HP';
+	monster_hp_input.style.marginLeft = '10px';
+	var monster_hp_label = document.createElement('label');
+	monster_hp_label.id = monster_hp_input.id + '_LABEL'
+	monster_hp_label.innerHTML = "HP";
+	monster_hp.appendChild(monster_hp_label);
 	monster_hp.appendChild(monster_hp_input);
 	monster_info_list.appendChild(monster_hp);
 
 	var monster_speed = document.createElement('li');
 	var monster_speed_input = document.createElement('input');
 	monster_speed_input.addEventListener("keypress", set_session_storage);
-	monster_speed_input.id = monster_header.id + '_SPEED'
-	monster_speed_input.placeholder = 'Speed'
+	monster_speed_input.id = monster_header.id + '_SPEED';
+	monster_speed_input.placeholder = 'Speed';
+	monster_speed_input.style.marginLeft = '10px';
+	var monster_speed_label = document.createElement('label');
+	monster_speed_label.id = monster_speed_input.id + '_LABEL'
+	monster_speed_label.innerHTML = "Speed";
+	monster_speed.appendChild(monster_speed_label);
 	monster_speed.appendChild(monster_speed_input);
 	monster_info_list.appendChild(monster_speed);
 
@@ -1036,15 +1046,25 @@ function create_element_monster(monster, edition) {
 	var monster_size_input = document.createElement('input');
 	monster_size_input.addEventListener("keypress", set_session_storage);
 	monster_size_input.id = monster_header.id + '_SIZE'
-	monster_size_input.placeholder = 'Size'
+	monster_size_input.placeholder = 'Size';
+	monster_size_input.style.marginLeft = '10px';
+	var monster_size_label = document.createElement('label');
+	monster_size_label.id = monster_size_input.id + '_LABEL'
+	monster_size_label.innerHTML = "size";
+	monster_size.appendChild(monster_size_label);
 	monster_size.appendChild(monster_size_input);
 	monster_info_list.appendChild(monster_size);
 
 	var monster_ac = document.createElement('li');
 	var monster_ac_input = document.createElement('input');
 	monster_ac_input.addEventListener("keypress", set_session_storage);
-	monster_ac_input.id = monster_header.id + '_AC'
-	monster_ac_input.placeholder = 'AC'
+	monster_ac_input.id = monster_header.id + '_AC';
+	monster_ac_input.placeholder = 'AC';
+	monster_ac_input.style.marginLeft = '10px';
+	var monster_ac_label = document.createElement('label');
+	monster_ac_label.id = monster_ac_input.id + '_LABEL'
+	monster_ac_label.innerHTML = "AC";
+	monster_ac.appendChild(monster_ac_label);
 	monster_ac.appendChild(monster_ac_input);
 	monster_info_list.appendChild(monster_ac);
 
@@ -1053,32 +1073,52 @@ function create_element_monster(monster, edition) {
 		var monster_touch_ac = document.createElement('li');
 		var monster_touch_ac_input = document.createElement('input');
 		monster_touch_ac_input.addEventListener("keypress", set_session_storage);
-		monster_touch_ac_input.id = monster_header.id + '_TOUCH_AC'
-		monster_touch_ac_input.placeholder = 'Touch'
+		monster_touch_ac_input.id = monster_header.id + '_TOUCH_AC';
+		monster_touch_ac_input.placeholder = 'Touch AC';
+		monster_touch_ac_input.style.marginLeft = '10px';
+		var monster_touch_ac_label = document.createElement('label');
+		monster_touch_ac_label.id = monster_touch_ac_input.id + '_LABEL'
+		monster_touch_ac_label.innerHTML = "Touch AC";
+		monster_touch_ac.appendChild(monster_touch_ac_label);
 		monster_touch_ac.appendChild(monster_touch_ac_input);
 		monster_info_list.appendChild(monster_touch_ac);
 
 		var monster_flat_ac = document.createElement('li');
 		var monster_flat_ac_input = document.createElement('input');
 		monster_flat_ac_input.addEventListener("keypress", set_session_storage);
-		monster_flat_ac_input.id = monster_header.id + '_FLAT_AC'
-		monster_flat_ac_input.placeholder = 'Flat'
+		monster_flat_ac_input.id = monster_header.id + '_FLAT_AC';
+		monster_flat_ac_input.placeholder = 'Flat AC';
+		monster_flat_ac_input.style.marginLeft = '10px';
+		var monster_flat_ac_label = document.createElement('label');
+		monster_flat_ac_label.id = monster_flat_ac_input.id + '_LABEL'
+		monster_flat_ac_label.innerHTML = "Flat AC";
+		monster_flat_ac.appendChild(monster_flat_ac_label);
 		monster_flat_ac.appendChild(monster_flat_ac_input);
 		monster_info_list.appendChild(monster_flat_ac);
 
 		var monster_cmd = document.createElement('li');
 		var monster_cmd_input = document.createElement('input');
 		monster_cmd_input.addEventListener("keypress", set_session_storage);
-		monster_cmd_input.id = monster_header.id + '_CMD'
-		monster_cmd_input.placeholder = 'CMD'
+		monster_cmd_input.id = monster_header.id + '_CMD';
+		monster_cmd_input.placeholder = 'CMD';
+		monster_cmd_input.style.marginLeft = '10px';
+		var monster_cmd_label = document.createElement('label');
+		monster_cmd_label.id = monster_cmd_input.id + '_LABEL'
+		monster_cmd_label.innerHTML = "CMD";
+		monster_cmd.appendChild(monster_cmd_label);
 		monster_cmd.appendChild(monster_cmd_input);
 		monster_info_list.appendChild(monster_cmd);
 
 		var monster_cmb = document.createElement('li');
 		var monster_cmb_input = document.createElement('input');
 		monster_cmb_input.addEventListener("keypress", set_session_storage);
-		monster_cmb_input.id = monster_header.id + '_CMB'
-		monster_cmb_input.placeholder = 'CMB'
+		monster_cmb_input.id = monster_header.id + '_CMB';
+		monster_cmb_input.placeholder = 'CMB';
+		monster_cmb_input.style.marginLeft = '10px';
+		var monster_cmb_label = document.createElement('label');
+		monster_cmb_label.id = monster_cmb_input.id + '_LABEL'
+		monster_cmb_label.innerHTML = "CMB";
+		monster_cmb.appendChild(monster_cmb_label);
 		monster_cmb.appendChild(monster_cmb_input);
 		monster_info_list.appendChild(monster_cmb);
 	}
@@ -1088,8 +1128,13 @@ function create_element_monster(monster, edition) {
 		var monster_fort_save = document.createElement('li');
 		var monster_fort_save_input = document.createElement('input');
 		monster_fort_save_input.addEventListener("keypress", set_session_storage);
-		monster_fort_save_input.id = monster_header.id + '_FORT_SAVE'
-		monster_fort_save_input.placeholder = 'Fortitude Save'
+		monster_fort_save_input.id = monster_header.id + '_FORT_SAVE';
+		monster_fort_save_input.placeholder = 'Fortitude Save';
+		monster_fort_save_input.style.marginLeft = '10px';
+		var monster_fort_save_label = document.createElement('label');
+		monster_fort_save_label.id = monster_fort_save_input.id + '_LABEL'
+		monster_fort_save_label.innerHTML = "Fortitude Save";
+		monster_fort_save.appendChild(monster_fort_save_label);
 		monster_fort_save.appendChild(monster_fort_save_input);
 		monster_info_list.appendChild(monster_fort_save);
 
@@ -1098,6 +1143,11 @@ function create_element_monster(monster, edition) {
 		monster_will_save_input.addEventListener("keypress", set_session_storage);
 		monster_will_save_input.id = monster_header.id + '_WILL_SAVE'
 		monster_will_save_input.placeholder = 'Will Save'
+		monster_will_save_input.style.marginLeft = '10px';
+		var monster_will_save_label = document.createElement('label');
+		monster_will_save_label.id = monster_will_save_input.id + '_LABEL'
+		monster_will_save_label.innerHTML = "Will Save";
+		monster_will_save.appendChild(monster_will_save_label);
 		monster_will_save.appendChild(monster_will_save_input);
 		monster_info_list.appendChild(monster_will_save);
 
@@ -1106,6 +1156,11 @@ function create_element_monster(monster, edition) {
 		monster_ref_save_input.addEventListener("keypress", set_session_storage);
 		monster_ref_save_input.id = monster_header.id + '_REF_SAVE'
 		monster_ref_save_input.placeholder = 'Reflex Save'
+		monster_ref_save_input.style.marginLeft = '10px';
+		var monster_ref_save_label = document.createElement('label');
+		monster_ref_save_label.id = monster_ref_save_input.id + '_LABEL'
+		monster_ref_save_label.innerHTML = "Reflex Save";
+		monster_ref_save.appendChild(monster_ref_save_label);
 		monster_ref_save.appendChild(monster_ref_save_input);
 		monster_info_list.appendChild(monster_ref_save);
 	} else if (edition == '5') {
@@ -1114,12 +1169,12 @@ function create_element_monster(monster, edition) {
 		var monster_str_save = document.createElement('input');
 		monster_str_save.addEventListener("keypress", set_session_storage);
 		monster_str_save.type = 'checkbox';
-		monster_str_save.id = monster_header.id  + '_STR_SAVE'
-		monster_str_save.name = monster_header.id  + '_STR_SAVE'
+		monster_str_save.id = monster_header.id  + '_STR_SAVE';
+		monster_str_save.name = monster_header.id  + '_STR_SAVE';
 
 		var monster_str_save_label = document.createElement('label');
-		monster_str_save_label.htmlFor = monster_header.id  + '_STR_SAVE_LABEL'
-		monster_str_save_label.innerHTML = "<b>STR Save</b>"
+		monster_str_save_label.htmlFor = monster_header.id  + '_STR_SAVE_LABEL';
+		monster_str_save_label.innerHTML = "<b>STR Save</b>";
 
 		monster_save_1.appendChild(monster_str_save);
 		monster_save_1.appendChild(monster_str_save_label);
@@ -1127,12 +1182,12 @@ function create_element_monster(monster, edition) {
 		var monster_dex_save = document.createElement('input');
 		monster_dex_save.addEventListener("keypress", set_session_storage);
 		monster_dex_save.type = 'checkbox';
-		monster_dex_save.id = monster_header.id  + '_DEX_SAVE'
-		monster_dex_save.name = monster_header.id  + '_DEX_SAVE'
+		monster_dex_save.id = monster_header.id  + '_DEX_SAVE';
+		monster_dex_save.name = monster_header.id  + '_DEX_SAVE';
 
 		var monster_dex_save_label = document.createElement('label');
-		monster_dex_save_label.htmlFor = monster_header.id  + '_DEX_SAVE_LABEL'
-		monster_dex_save_label.innerHTML = "<b>DEX Save</b>"
+		monster_dex_save_label.htmlFor = monster_header.id  + '_DEX_SAVE_LABEL';
+		monster_dex_save_label.innerHTML = "<b>DEX Save</b>";
 
 		monster_save_1.appendChild(monster_dex_save);
 		monster_save_1.appendChild(monster_dex_save_label);
@@ -1143,12 +1198,12 @@ function create_element_monster(monster, edition) {
 		var monster_con_save = document.createElement('input');
 		monster_con_save.addEventListener("keypress", set_session_storage);
 		monster_con_save.type = 'checkbox';
-		monster_con_save.id = monster_header.id  + '_CON_SAVE'
-		monster_con_save.name = monster_header.id  + '_CON_SAVE'
+		monster_con_save.id = monster_header.id  + '_CON_SAVE';
+		monster_con_save.name = monster_header.id  + '_CON_SAVE';
 
 		var monster_con_save_label = document.createElement('label');
-		monster_con_save_label.htmlFor = monster_header.id  + '_CON_SAVE_LABEL'
-		monster_con_save_label.innerHTML = "<b>CON Save</b>"
+		monster_con_save_label.htmlFor = monster_header.id  + '_CON_SAVE_LABEL';
+		monster_con_save_label.innerHTML = "<b>CON Save</b>";
 
 		monster_save_2.appendChild(monster_con_save);
 		monster_save_2.appendChild(monster_con_save_label);
@@ -1156,12 +1211,12 @@ function create_element_monster(monster, edition) {
 		var monster_int_save = document.createElement('input');
 		monster_int_save.addEventListener("keypress", set_session_storage);
 		monster_int_save.type = 'checkbox';
-		monster_int_save.id = monster_header.id  + '_INT_SAVE'
-		monster_int_save.name = monster_header.id  + '_INT_SAVE'
+		monster_int_save.id = monster_header.id  + '_INT_SAVE';
+		monster_int_save.name = monster_header.id  + '_INT_SAVE';
 
 		var monster_int_save_label = document.createElement('label');
-		monster_int_save_label.htmlFor = monster_header.id  + '_INT_SAVE_LABEL'
-		monster_int_save_label.innerHTML = "<b>INT Save</b>"
+		monster_int_save_label.htmlFor = monster_header.id  + '_INT_SAVE_LABEL';
+		monster_int_save_label.innerHTML = "<b>INT Save</b>";
 
 		monster_save_2.appendChild(monster_int_save);
 		monster_save_2.appendChild(monster_int_save_label);
@@ -1172,12 +1227,12 @@ function create_element_monster(monster, edition) {
 		var monster_wis_save = document.createElement('input');
 		monster_wis_save.addEventListener("keypress", set_session_storage);
 		monster_wis_save.type = 'checkbox';
-		monster_wis_save.id = monster_header.id  + '_WIS_SAVE'
-		monster_wis_save.name = monster_header.id  + '_WIS_SAVE'
+		monster_wis_save.id = monster_header.id  + '_WIS_SAVE';
+		monster_wis_save.name = monster_header.id  + '_WIS_SAVE';
 
 		var monster_wis_save_label = document.createElement('label');
-		monster_wis_save_label.htmlFor = monster_header.id  + '_WIS_SAVE_LABEL'
-		monster_wis_save_label.innerHTML = "<b>WIS Save</b>"
+		monster_wis_save_label.htmlFor = monster_header.id  + '_WIS_SAVE_LABEL';
+		monster_wis_save_label.innerHTML = "<b>WIS Save</b>";
 
 		monster_save_3.appendChild(monster_wis_save);
 		monster_save_3.appendChild(monster_wis_save_label);
@@ -1185,12 +1240,12 @@ function create_element_monster(monster, edition) {
 		var monster_cha_save = document.createElement('input');
 		monster_cha_save.addEventListener("keypress", set_session_storage);
 		monster_cha_save.type = 'checkbox';
-		monster_cha_save.id = monster_header.id  + '_CHA_SAVE'
-		monster_cha_save.name = monster_header.id  + '_CHA_SAVE'
+		monster_cha_save.id = monster_header.id  + '_CHA_SAVE';
+		monster_cha_save.name = monster_header.id  + '_CHA_SAVE';
 
 		var monster_cha_save_label = document.createElement('label');
-		monster_cha_save_label.htmlFor = monster_header.id  + '_CHA_SAVE_LABEL'
-		monster_cha_save_label.innerHTML = "<b>CHA Save</b>"
+		monster_cha_save_label.htmlFor = monster_header.id  + '_CHA_SAVE_LABEL';
+		monster_cha_save_label.innerHTML = "<b>CHA Save</b>";
 
 		monster_save_3.appendChild(monster_cha_save);
 		monster_save_3.appendChild(monster_cha_save_label);
@@ -1204,6 +1259,11 @@ function create_element_monster(monster, edition) {
 	monster_skills_input.addEventListener("keypress", set_session_storage);
 	monster_skills_input.id = monster_header.id + '_SKILLS';
 	monster_skills_input.placeholder = 'Skills';
+	monster_skills_input.style.marginLeft = '10px';
+	var monster_skills_label = document.createElement('label');
+	monster_skills_label.id = monster_skills_input.id + '_LABEL'
+	monster_skills_label.innerHTML = "Skills";
+	monster_skills.appendChild(monster_skills_label);
 	monster_skills.appendChild(monster_skills_input);
 	monster_info_list.appendChild(monster_skills);
 
@@ -1212,7 +1272,12 @@ function create_element_monster(monster, edition) {
 		var monster_recall_input = document.createElement('input');
 		monster_recall_input.addEventListener("keypress", set_session_storage);
 		monster_recall_input.id = monster_header.id + '_RECALL';
-		monster_recall_input.placeholder = 'Recall';
+		monster_recall_input.placeholder = 'Recall Knowledge';
+		monster_recall_input.style.marginLeft = '10px';
+		var monster_recall_label = document.createElement('label');
+		monster_recall_label.id = monster_recall_input.id + '_LABEL'
+		monster_recall_label.innerHTML = "Recall Knowledge";
+		monster_recall.appendChild(monster_recall_label);
 		monster_recall.appendChild(monster_recall_input);
 		monster_info_list.appendChild(monster_recall);
 	}
@@ -1223,6 +1288,11 @@ function create_element_monster(monster, edition) {
 	monster_dam_immune_input.addEventListener("keypress", set_session_storage);
 	monster_dam_immune_input.id = monster_header.id + '_DAM_IMMUNE';
 	monster_dam_immune_input.placeholder = 'Damage Immunities';
+	monster_dam_immune_input.style.marginLeft = '10px';
+	var monster_dam_immune_label = document.createElement('label');
+	monster_dam_immune_label.id = monster_dam_immune_input.id + '_LABEL'
+	monster_dam_immune_label.innerHTML = 'Damage Immunities';
+	monster_dam_immune.appendChild(monster_dam_immune_label);
 	monster_dam_immune.appendChild(monster_dam_immune_input);
 	monster_info_list.appendChild(monster_dam_immune);
 
@@ -1231,6 +1301,11 @@ function create_element_monster(monster, edition) {
 	monster_dam_resist_input.addEventListener("keypress", set_session_storage);
 	monster_dam_resist_input.id = monster_header.id + '_DAM_RESIST';
 	monster_dam_resist_input.placeholder = 'Damage Resistances';
+	monster_dam_resist_input.style.marginLeft = '10px';
+	var monster_dam_resist_label = document.createElement('label');
+	monster_dam_resist_label.id = monster_dam_resist_input.id + '_LABEL'
+	monster_dam_resist_label.innerHTML = 'Damage Resistances';
+	monster_dam_resist.appendChild(monster_dam_resist_label);
 	monster_dam_resist.appendChild(monster_dam_resist_input);
 	monster_info_list.appendChild(monster_dam_resist);
 
@@ -1239,6 +1314,11 @@ function create_element_monster(monster, edition) {
 	monster_dam_weak_input.addEventListener("keypress", set_session_storage);
 	monster_dam_weak_input.id = monster_header.id + '_DAM_WEAK';
 	monster_dam_weak_input.placeholder = 'Damage Weakness';
+	monster_dam_weak_input.style.marginLeft = '10px';
+	var monster_dam_weak_label = document.createElement('label');
+	monster_dam_weak_label.id = monster_dam_weak_input.id + '_LABEL'
+	monster_dam_weak_label.innerHTML = 'Damage Weakness';
+	monster_dam_weak.appendChild(monster_dam_weak_label);
 	monster_dam_weak.appendChild(monster_dam_weak_input);
 	monster_info_list.appendChild(monster_dam_weak);
 
@@ -1248,6 +1328,11 @@ function create_element_monster(monster, edition) {
 	monster_sense_input.addEventListener("keypress", set_session_storage);
 	monster_sense_input.id = monster_header.id + '_SENSE';
 	monster_sense_input.placeholder = 'Senses';
+	monster_sense_input.style.marginLeft = '10px';
+	var monster_sense_label = document.createElement('label');
+	monster_sense_label.id = monster_sense_input.id + '_LABEL'
+	monster_sense_label.innerHTML = 'Senses';
+	monster_sense.appendChild(monster_sense_label);
 	monster_sense.appendChild(monster_sense_input);
 	monster_info_list.appendChild(monster_sense);
 
@@ -1256,6 +1341,11 @@ function create_element_monster(monster, edition) {
 	monster_language_input.addEventListener("keypress", set_session_storage);
 	monster_language_input.id = monster_header.id + '_LANGUAGE';
 	monster_language_input.placeholder = 'Languages';
+	monster_language_input.style.marginLeft = '10px';
+	var monster_language_label = document.createElement('label');
+	monster_language_label.id = monster_language_input.id + '_LABEL'
+	monster_language_label.innerHTML = 'Languages';
+	monster_language.appendChild(monster_language_label);
 	monster_language.appendChild(monster_language_input);
 	monster_info_list.appendChild(monster_language);
 
