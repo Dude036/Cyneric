@@ -2536,7 +2536,9 @@ function export_page() {
 			new_doc += '<li><span class="bold">Fortitude Save</span>: ' + temp_monster['FortSave'] + '</li>';
 			new_doc += '<li><span class="bold">Reflex Save</span>: ' + temp_monster['RefSave'] + '</li>';
 			new_doc += '<li><span class="bold">Will Save</span>: ' + temp_monster['WillSave'] + '</li>';
+			new_doc += '<li><span class="bold">Recall Knowledge</span>: ' + temp_monster['Recall'] + '</li>';
 		}
+		new_doc += '<li><span class="bold">Skills</span>: ' + temp_monster['Skills'] + '</li>';
 		new_doc += '<li><span class="bold">Damage Immunities</span>: ' + temp_monster['DamImmune'] + '</li>';
 		new_doc += '<li><span class="bold">Damage Resistances</span>: ' + temp_monster['DamResist'] + '</li>';
 		new_doc += '<li><span class="bold">Damage Weaknesses</span>: ' + temp_monster['DamWeak'] + '</li>';
