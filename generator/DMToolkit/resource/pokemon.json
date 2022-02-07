@@ -100,6 +100,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Abra": {
@@ -181,6 +182,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Absol": {
@@ -296,6 +298,7 @@
       "Dark",
       "Ghost"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Aerodactyl": {
@@ -408,6 +411,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Aggron": {
@@ -529,6 +533,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Aipom": {
@@ -626,6 +631,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Alakazam": {
@@ -725,6 +731,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Altaria": {
@@ -832,6 +839,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Ambipom": {
@@ -927,6 +935,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Ampharos": {
@@ -1019,6 +1028,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Anorith": {
@@ -1111,6 +1121,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Arbok": {
@@ -1213,6 +1224,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Arcanine": {
@@ -1298,6 +1310,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Arceus": {
@@ -1420,6 +1433,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Ariados": {
@@ -1522,6 +1536,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Armaldo": {
@@ -1617,6 +1632,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Aron": {
@@ -1719,6 +1735,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Articuno": {
@@ -1812,6 +1829,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Azelf": {
@@ -1911,6 +1929,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Azumarill": {
@@ -2012,6 +2031,7 @@
       "Ice",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Azurill": {
@@ -2092,6 +2112,7 @@
       "Bug",
       "Dark"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Bagon": {
@@ -2183,6 +2204,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Baltoy": {
@@ -2296,6 +2318,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Banette": {
@@ -2398,6 +2421,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Barboach": {
@@ -2491,6 +2515,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Bastiodon": {
@@ -2595,6 +2620,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Bayleef": {
@@ -2687,6 +2713,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Beautifly": {
@@ -2779,6 +2806,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Beedrill": {
@@ -2878,6 +2906,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Beldum": {
@@ -2932,6 +2961,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Bellossom": {
@@ -3016,6 +3046,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Bellsprout": {
@@ -3112,6 +3143,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Bibarel": {
@@ -3217,6 +3249,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Bidoof": {
@@ -3309,6 +3342,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Blastoise": {
@@ -3407,6 +3441,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Blaziken": {
@@ -3517,6 +3552,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Blissey": {
@@ -3624,6 +3660,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Bonsly": {
@@ -3719,6 +3756,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Breloom": {
@@ -3824,6 +3862,7 @@
       "Dark",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Bronzong": {
@@ -3943,6 +3982,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Bronzor": {
@@ -4058,6 +4098,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Budew": {
@@ -4141,6 +4182,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Buizel": {
@@ -4232,6 +4274,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Bulbasaur": {
@@ -4328,6 +4371,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Buneary": {
@@ -4419,6 +4463,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Burmy": {
@@ -4471,6 +4516,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Butterfree": {
@@ -4555,6 +4601,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Cacnea": {
@@ -4654,6 +4701,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Cacturne": {
@@ -4759,6 +4807,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Camerupt": {
@@ -4861,6 +4910,7 @@
       "Poison",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Carnivine": {
@@ -4953,6 +5003,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Carvanha": {
@@ -5052,6 +5103,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Cascoon": {
@@ -5095,6 +5147,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Castform": {
@@ -5184,6 +5237,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Caterpie": {
@@ -5232,6 +5286,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Celebi": {
@@ -5337,6 +5392,7 @@
       "Psychic",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Chansey": {
@@ -5447,6 +5503,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Charizard": {
@@ -5557,6 +5614,7 @@
       "Grass",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Charmander": {
@@ -5652,6 +5710,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Charmeleon": {
@@ -5745,6 +5804,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Chatot": {
@@ -5838,6 +5898,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Cherrim": {
@@ -5925,6 +5986,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Cherubi": {
@@ -6010,6 +6072,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Chikorita": {
@@ -6104,6 +6167,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Chimchar": {
@@ -6205,6 +6269,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Chimecho": {
@@ -6299,6 +6364,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Chinchou": {
@@ -6396,6 +6462,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Chingling": {
@@ -6482,6 +6549,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Clamperl": {
@@ -6549,6 +6617,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Claydol": {
@@ -6663,6 +6732,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Clefable": {
@@ -6756,6 +6826,7 @@
       "Dark",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Clefairy": {
@@ -6871,6 +6942,7 @@
       "Dark",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Cleffa": {
@@ -6957,6 +7029,7 @@
       "Dark",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Cloyster": {
@@ -7041,6 +7114,7 @@
       "Ice",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Combee": {
@@ -7095,6 +7169,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Combusken": {
@@ -7198,6 +7273,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Corphish": {
@@ -7297,6 +7373,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Corsola": {
@@ -7408,6 +7485,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Cradily": {
@@ -7504,6 +7582,7 @@
       "Electric",
       "Normal"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Cranidos": {
@@ -7606,6 +7685,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Crawdaunt": {
@@ -7715,6 +7795,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Cresselia": {
@@ -7804,6 +7885,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Croagunk": {
@@ -7914,6 +7996,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Crobat": {
@@ -8017,6 +8100,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Croconaw": {
@@ -8113,6 +8197,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Cubone": {
@@ -8212,6 +8297,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Cyndaquil": {
@@ -8305,6 +8391,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Darkrai": {
@@ -8409,6 +8496,7 @@
       "Dark",
       "Ghost"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Delcatty": {
@@ -8490,6 +8578,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Delibird": {
@@ -8564,6 +8653,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Deoxys": {
@@ -8671,6 +8761,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Dewgong": {
@@ -8767,6 +8858,7 @@
       "Ice",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Dialga": {
@@ -8876,6 +8968,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Diglett": {
@@ -8968,6 +9061,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Ditto": {
@@ -9010,6 +9104,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Dodrio": {
@@ -9104,6 +9199,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Doduo": {
@@ -9195,6 +9291,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Donphan": {
@@ -9289,6 +9386,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Dragonair": {
@@ -9385,6 +9483,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Dragonite": {
@@ -9499,6 +9598,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Drapion": {
@@ -9611,6 +9711,7 @@
       "Ghost",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Dratini": {
@@ -9708,6 +9809,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Drifblim": {
@@ -9811,6 +9913,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Drifloon": {
@@ -9913,6 +10016,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Drowzee": {
@@ -10017,6 +10121,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Dugtrio": {
@@ -10116,6 +10221,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Dunsparce": {
@@ -10225,6 +10331,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Dusclops": {
@@ -10334,6 +10441,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Dusknoir": {
@@ -10443,6 +10551,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Duskull": {
@@ -10543,6 +10652,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Dustox": {
@@ -10641,6 +10751,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Eevee": {
@@ -10727,6 +10838,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Ekans": {
@@ -10825,6 +10937,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Electabuzz": {
@@ -10916,6 +11029,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Electivire": {
@@ -11013,6 +11127,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Electrike": {
@@ -11103,6 +11218,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Electrode": {
@@ -11194,6 +11310,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Elekid": {
@@ -11283,6 +11400,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Empoleon": {
@@ -11392,6 +11510,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Entei": {
@@ -11487,6 +11606,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Espeon": {
@@ -11582,6 +11702,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Exeggcute": {
@@ -11686,6 +11807,7 @@
       "Psychic",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Exeggutor": {
@@ -11784,6 +11906,7 @@
       "Psychic",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Exploud": {
@@ -11884,6 +12007,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Farfetch'd": {
@@ -11983,6 +12107,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Fearow": {
@@ -12071,6 +12196,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Feebas": {
@@ -12143,6 +12269,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Feraligatr": {
@@ -12243,6 +12370,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Finneon": {
@@ -12335,6 +12463,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Flaaffy": {
@@ -12422,6 +12551,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Flareon": {
@@ -12518,6 +12648,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Floatzel": {
@@ -12616,6 +12747,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Flygon": {
@@ -12717,6 +12849,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Forretress": {
@@ -12820,6 +12953,7 @@
       "Psychic",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Froslass": {
@@ -12924,6 +13058,7 @@
       "Ice",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Furret": {
@@ -13023,6 +13158,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Gabite": {
@@ -13114,6 +13250,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Gallade": {
@@ -13232,6 +13369,7 @@
       "Fighting",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Garchomp": {
@@ -13332,6 +13470,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Gardevoir": {
@@ -13441,6 +13580,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Gastly": {
@@ -13545,6 +13685,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Gastrodon": {
@@ -13639,6 +13780,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Gengar": {
@@ -13747,6 +13889,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Geodude": {
@@ -13854,6 +13997,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Gible": {
@@ -13945,6 +14089,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Girafarig": {
@@ -14048,6 +14193,7 @@
     "Weaknesses": [
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Giratina Altered Forme": {
@@ -14157,6 +14303,7 @@
       "Poison",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Giratina Origin Forme": {
@@ -14265,6 +14412,7 @@
       "Poison",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Glaceon": {
@@ -14357,6 +14505,7 @@
     "Weaknesses": [
       "Ice"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Glalie": {
@@ -14449,6 +14598,7 @@
     "Weaknesses": [
       "Ice"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Glameow": {
@@ -14544,6 +14694,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Gligar": {
@@ -14655,6 +14806,7 @@
       "Fighting",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Gliscor": {
@@ -14767,6 +14919,7 @@
       "Fighting",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Gloom": {
@@ -14860,6 +15013,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Golbat": {
@@ -14964,6 +15118,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Goldeen": {
@@ -15053,6 +15208,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Golduck": {
@@ -15153,6 +15309,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Golem": {
@@ -15258,6 +15415,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Gorebyss": {
@@ -15351,6 +15509,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Granbull": {
@@ -15464,6 +15623,7 @@
       "Dark",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Graveler": {
@@ -15569,6 +15729,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Grimer": {
@@ -15670,6 +15831,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Grotle": {
@@ -15759,6 +15921,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Groudon": {
@@ -15861,6 +16024,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Grovyle": {
@@ -15960,6 +16124,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Growlithe": {
@@ -16058,6 +16223,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Grumpig": {
@@ -16162,6 +16328,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Gulpin": {
@@ -16255,6 +16422,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Gyarados": {
@@ -16358,6 +16526,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Happiny": {
@@ -16435,6 +16604,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Hariyama": {
@@ -16536,6 +16706,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Haunter": {
@@ -16642,6 +16813,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Heatran": {
@@ -16744,6 +16916,7 @@
       "Psychic",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Heracross": {
@@ -16850,6 +17023,7 @@
       "Grass",
       "Ground"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Hippopotas": {
@@ -16936,6 +17110,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Hippowdon": {
@@ -17026,6 +17201,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Hitmonchan": {
@@ -17122,6 +17298,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Hitmonlee": {
@@ -17219,6 +17396,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Hitmontop": {
@@ -17312,6 +17490,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Ho-oh": {
@@ -17420,6 +17599,7 @@
       "Grass",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Honchkrow": {
@@ -17520,6 +17700,7 @@
       "Ghost",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Hoothoot": {
@@ -17620,6 +17801,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Hoppip": {
@@ -17720,6 +17902,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Horsea": {
@@ -17807,6 +17990,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Houndoom": {
@@ -17914,6 +18098,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Houndour": {
@@ -18020,6 +18205,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Huntail": {
@@ -18110,6 +18296,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Hypno": {
@@ -18216,6 +18403,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Igglybuff": {
@@ -18298,6 +18486,7 @@
       "Bug",
       "Dark"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Illumise": {
@@ -18397,6 +18586,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Infernape": {
@@ -18508,6 +18698,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Ivysaur": {
@@ -18602,6 +18793,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Jigglypuff": {
@@ -18713,6 +18905,7 @@
       "Bug",
       "Dark"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Jirachi": {
@@ -18822,6 +19015,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Jolteon": {
@@ -18916,6 +19110,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Jumpluff": {
@@ -19012,6 +19207,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Jynx": {
@@ -19122,6 +19318,7 @@
       "Ice",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Kabuto": {
@@ -19219,6 +19416,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Kabutops": {
@@ -19321,6 +19519,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Kadabra": {
@@ -19422,6 +19621,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Kakuna": {
@@ -19469,6 +19669,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Kangaskhan": {
@@ -19571,6 +19772,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Kecleon": {
@@ -19672,6 +19874,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Kingdra": {
@@ -19757,6 +19960,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Kingler": {
@@ -19854,6 +20058,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Kirlia": {
@@ -19959,6 +20164,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Koffing": {
@@ -20054,6 +20260,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Krabby": {
@@ -20150,6 +20357,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Kricketot": {
@@ -20199,6 +20407,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Kricketune": {
@@ -20290,6 +20499,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Kyogre": {
@@ -20381,6 +20591,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Lairon": {
@@ -20483,6 +20694,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Lanturn": {
@@ -20581,6 +20793,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Lapras": {
@@ -20681,6 +20894,7 @@
       "Ice",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Larvitar": {
@@ -20785,6 +20999,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Latias": {
@@ -20898,6 +21113,7 @@
       "Psychic",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Latios": {
@@ -21010,6 +21226,7 @@
       "Psychic",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Leafeon": {
@@ -21108,6 +21325,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Ledian": {
@@ -21207,6 +21425,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Ledyba": {
@@ -21303,6 +21522,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Lickilicky": {
@@ -21406,6 +21626,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Lickitung": {
@@ -21508,6 +21729,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Lileep": {
@@ -21602,6 +21824,7 @@
       "Electric",
       "Normal"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Linoone": {
@@ -21697,6 +21920,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Lombre": {
@@ -21793,6 +22017,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Lopunny": {
@@ -21893,6 +22118,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Lotad": {
@@ -21986,6 +22212,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Loudred": {
@@ -22081,6 +22308,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Lucario": {
@@ -22196,6 +22424,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Ludicolo": {
@@ -22279,6 +22508,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Lugia": {
@@ -22387,6 +22617,7 @@
       "Grass",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Lumineon": {
@@ -22478,6 +22709,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Lunatone": {
@@ -22595,6 +22827,7 @@
       "Poison",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Luvdisc": {
@@ -22683,6 +22916,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Luxio": {
@@ -22769,6 +23003,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Luxray": {
@@ -22854,6 +23089,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Machamp": {
@@ -22954,6 +23190,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Machoke": {
@@ -23055,6 +23292,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Machop": {
@@ -23158,6 +23396,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Magby": {
@@ -23249,6 +23488,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Magcargo": {
@@ -23355,6 +23595,7 @@
       "Poison",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Magikarp": {
@@ -23405,6 +23646,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Magmar": {
@@ -23498,6 +23740,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Magmortar": {
@@ -23598,6 +23841,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Magnemite": {
@@ -23701,6 +23945,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Magneton": {
@@ -23806,6 +24051,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Magnezone": {
@@ -23909,6 +24155,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Makuhita": {
@@ -24007,6 +24254,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Mamoswine": {
@@ -24102,6 +24350,7 @@
     "Weaknesses": [
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Manaphy": {
@@ -24193,6 +24442,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Manectric": {
@@ -24284,6 +24534,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Mankey": {
@@ -24391,6 +24642,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Mantine": {
@@ -24490,6 +24742,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Mantyke": {
@@ -24585,6 +24838,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Mareep": {
@@ -24671,6 +24925,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Marill": {
@@ -24770,6 +25025,7 @@
       "Ice",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Marowak": {
@@ -24873,6 +25129,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Marshtomp": {
@@ -24969,6 +25226,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Masquerain": {
@@ -25064,6 +25322,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Mawile": {
@@ -25180,6 +25439,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Medicham": {
@@ -25287,6 +25547,7 @@
       "Fighting",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Meditite": {
@@ -25388,6 +25649,7 @@
       "Fighting",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Meganium": {
@@ -25483,6 +25745,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Meowth": {
@@ -25580,6 +25843,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Mesprit": {
@@ -25675,6 +25939,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Metagross": {
@@ -25784,6 +26049,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Metang": {
@@ -25893,6 +26159,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Metapod": {
@@ -25936,6 +26203,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Mew": {
@@ -25990,6 +26258,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Mewtwo": {
@@ -26107,6 +26376,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Mightyena": {
@@ -26207,6 +26477,7 @@
       "Dark",
       "Ghost"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Milotic": {
@@ -26302,6 +26573,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Miltank": {
@@ -26399,6 +26671,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Mime Jr.": {
@@ -26510,6 +26783,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Minun": {
@@ -26601,6 +26875,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Misdreavus": {
@@ -26700,6 +26975,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Mismagius": {
@@ -26789,6 +27065,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Moltres": {
@@ -26885,6 +27162,7 @@
       "Grass",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Monferno": {
@@ -26991,6 +27269,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Mothim": {
@@ -27091,6 +27370,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Mr. Mime": {
@@ -27212,6 +27492,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Mudkip": {
@@ -27303,6 +27584,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Muk": {
@@ -27406,6 +27688,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Munchlax": {
@@ -27505,6 +27788,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Murkrow": {
@@ -27611,6 +27895,7 @@
       "Ghost",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Natu": {
@@ -27715,6 +28000,7 @@
       "Grass",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Nidoking": {
@@ -27820,6 +28106,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Nidoqueen": {
@@ -27927,6 +28214,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Nidoran F": {
@@ -28021,6 +28309,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Nidoran M": {
@@ -28110,6 +28399,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Nidorina": {
@@ -28202,6 +28492,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Nidorino": {
@@ -28294,6 +28585,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Nincada": {
@@ -28380,6 +28672,7 @@
       "Ground",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Ninetales": {
@@ -28462,6 +28755,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Ninjask": {
@@ -28560,6 +28854,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Noctowl": {
@@ -28661,6 +28956,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Nosepass": {
@@ -28764,6 +29060,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Numel": {
@@ -28860,6 +29157,7 @@
       "Poison",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Nuzleaf": {
@@ -28967,6 +29265,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Octillery": {
@@ -29068,6 +29367,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Oddish": {
@@ -29154,6 +29454,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Omanyte": {
@@ -29252,6 +29553,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Omastar": {
@@ -29350,6 +29652,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Onix": {
@@ -29466,6 +29769,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Pachirisu": {
@@ -29555,6 +29859,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Palkia": {
@@ -29657,6 +29962,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Paras": {
@@ -29755,6 +30061,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Parasect": {
@@ -29855,6 +30162,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Pelipper": {
@@ -29957,6 +30265,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Persian": {
@@ -30060,6 +30369,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Phanpy": {
@@ -30146,6 +30456,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Phione": {
@@ -30227,6 +30538,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Pichu": {
@@ -30303,6 +30615,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Pidgeot": {
@@ -30390,6 +30703,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Pidgeotto": {
@@ -30477,6 +30791,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Pidgey": {
@@ -30564,6 +30879,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Pikachu": {
@@ -30656,6 +30972,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Piloswine": {
@@ -30752,6 +31069,7 @@
     "Weaknesses": [
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Pineco": {
@@ -30845,6 +31163,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Pinsir": {
@@ -30944,6 +31263,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Piplup": {
@@ -31038,6 +31358,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Plusle": {
@@ -31128,6 +31449,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Politoed": {
@@ -31214,6 +31536,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Poliwag": {
@@ -31303,6 +31626,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Poliwhirl": {
@@ -31396,6 +31720,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Poliwrath": {
@@ -31494,6 +31819,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Ponyta": {
@@ -31586,6 +31912,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Poochyena": {
@@ -31681,6 +32008,7 @@
       "Dark",
       "Ghost"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Porygon": {
@@ -31775,6 +32103,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Porygon-Z": {
@@ -31875,6 +32204,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Porygon2": {
@@ -31967,6 +32297,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Primeape": {
@@ -32076,6 +32407,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Prinplup": {
@@ -32170,6 +32502,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Probopass": {
@@ -32278,6 +32611,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Psyduck": {
@@ -32377,6 +32711,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Pupitar": {
@@ -32479,6 +32814,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Purugly": {
@@ -32575,6 +32911,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Quagsire": {
@@ -32677,6 +33014,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Quilava": {
@@ -32770,6 +33108,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Qwilfish": {
@@ -32877,6 +33216,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Raichu": {
@@ -32950,6 +33290,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Raikou": {
@@ -33040,6 +33381,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Rainy Castform": {
@@ -33133,6 +33475,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Ralts": {
@@ -33238,6 +33581,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Rampardos": {
@@ -33345,6 +33689,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Rapidash": {
@@ -33438,6 +33783,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Raticate": {
@@ -33535,6 +33881,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Rattata": {
@@ -33626,6 +33973,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Rayquaza": {
@@ -33740,6 +34088,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Regice": {
@@ -33835,6 +34184,7 @@
     "Weaknesses": [
       "Ice"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Regigigas": {
@@ -33920,6 +34270,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Regirock": {
@@ -34016,6 +34367,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Registeel": {
@@ -34123,6 +34475,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Relicanth": {
@@ -34226,6 +34579,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Remoraid": {
@@ -34320,6 +34674,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Rhydon": {
@@ -34435,6 +34790,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Rhyhorn": {
@@ -34546,6 +34902,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Rhyperior": {
@@ -34664,6 +35021,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Riolu": {
@@ -34756,6 +35114,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Roselia": {
@@ -34854,6 +35213,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Roserade": {
@@ -34936,6 +35296,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Rotom": {
@@ -35029,6 +35390,7 @@
       "Poison",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Rotom Fan": {
@@ -35122,6 +35484,7 @@
       "Grass",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Rotom Frost": {
@@ -35215,6 +35578,7 @@
       "Electric",
       "Ice"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Rotom Heat": {
@@ -35312,6 +35676,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Rotom Mow": {
@@ -35406,6 +35771,7 @@
       "Water",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Rotom Wash": {
@@ -35499,6 +35865,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Sableye": {
@@ -35606,6 +35973,7 @@
     "Weaknesses": [
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Salamence": {
@@ -35710,6 +36078,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Sandshrew": {
@@ -35809,6 +36178,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Sandslash": {
@@ -35913,6 +36283,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Sceptile": {
@@ -36016,6 +36387,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Scizor": {
@@ -36121,6 +36493,7 @@
       "Psychic",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Scyther": {
@@ -36223,6 +36596,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Seadra": {
@@ -36308,6 +36682,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Seaking": {
@@ -36396,6 +36771,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Sealeo": {
@@ -36489,6 +36865,7 @@
       "Ice",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Seedot": {
@@ -36573,6 +36950,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Seel": {
@@ -36668,6 +37046,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Sentret": {
@@ -36763,6 +37142,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Seviper": {
@@ -36863,6 +37243,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Sharpedo": {
@@ -36970,6 +37351,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Shaymin Land": {
@@ -37056,6 +37438,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Shaymin Sky": {
@@ -37144,6 +37527,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Shedinja": {
@@ -37238,6 +37622,7 @@
       "Ground",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Shelgon": {
@@ -37328,6 +37713,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Shellder": {
@@ -37416,6 +37802,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Shellos": {
@@ -37500,6 +37887,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Shieldon": {
@@ -37604,6 +37992,7 @@
       "Psychic",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Shiftry": {
@@ -37706,6 +38095,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Shinx": {
@@ -37795,6 +38185,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Shroomish": {
@@ -37885,6 +38276,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Shuckle": {
@@ -37979,6 +38371,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Shuppet": {
@@ -38080,6 +38473,7 @@
       "Bug",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Silcoon": {
@@ -38123,6 +38517,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Skarmory": {
@@ -38225,6 +38620,7 @@
       "Psychic",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Skiploom": {
@@ -38323,6 +38719,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Skitty": {
@@ -38427,6 +38824,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Skorupi": {
@@ -38532,6 +38930,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Skuntank": {
@@ -38633,6 +39032,7 @@
       "Ghost",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Slaking": {
@@ -38730,6 +39130,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Slakoth": {
@@ -38818,6 +39219,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Slowbro": {
@@ -38932,6 +39334,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Slowking": {
@@ -39049,6 +39452,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Slowpoke": {
@@ -39161,6 +39565,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Slugma": {
@@ -39256,6 +39661,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Smeargle": {
@@ -39318,6 +39724,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Smoochum": {
@@ -39422,6 +39829,7 @@
       "Ice",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Sneasel": {
@@ -39535,6 +39943,7 @@
       "Ghost",
       "Ice"
     ],
+    "Version": "D&D 5",
     "XP": 1100
   },
   "Snorlax": {
@@ -39631,6 +40040,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Snorunt": {
@@ -39718,6 +40128,7 @@
     "Weaknesses": [
       "Ice"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Snover": {
@@ -39813,6 +40224,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Snowy Castform": {
@@ -39905,6 +40317,7 @@
     "Weaknesses": [
       "Ice"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Snubbull": {
@@ -40012,6 +40425,7 @@
       "Dark",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Solrock": {
@@ -40130,6 +40544,7 @@
       "Poison",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Spearow": {
@@ -40218,6 +40633,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Spheal": {
@@ -40313,6 +40729,7 @@
       "Ice",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Spinarak": {
@@ -40410,6 +40827,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Spinda": {
@@ -40502,6 +40920,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Spiritomb": {
@@ -40599,6 +41018,7 @@
     "Weaknesses": [
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Spoink": {
@@ -40699,6 +41119,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Squirtle": {
@@ -40785,6 +41206,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Stantler": {
@@ -40885,6 +41307,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Staraptor": {
@@ -40969,6 +41392,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Staravia": {
@@ -41054,6 +41478,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Starly": {
@@ -41139,6 +41564,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Starmie": {
@@ -41233,6 +41659,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Staryu": {
@@ -41334,6 +41761,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Steelix": {
@@ -41451,6 +41879,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Stunky": {
@@ -41550,6 +41979,7 @@
       "Ghost",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Sudowoodo": {
@@ -41654,6 +42084,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Suicune": {
@@ -41746,6 +42177,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Sunflora": {
@@ -41843,6 +42275,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Sunkern": {
@@ -41938,6 +42371,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Sunny Castform": {
@@ -42034,6 +42468,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Surskit": {
@@ -42121,6 +42556,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Swablu": {
@@ -42217,6 +42653,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Swalot": {
@@ -42311,6 +42748,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Swampert": {
@@ -42408,6 +42846,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Swellow": {
@@ -42497,6 +42936,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Swinub": {
@@ -42592,6 +43032,7 @@
     "Weaknesses": [
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Taillow": {
@@ -42679,6 +43120,7 @@
       "Bug",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Tangela": {
@@ -42777,6 +43219,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Tangrowth": {
@@ -42884,6 +43327,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Tauros": {
@@ -42982,6 +43426,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Teddiursa": {
@@ -43076,6 +43521,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Tentacool": {
@@ -43181,6 +43627,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 450
   },
   "Tentacruel": {
@@ -43287,6 +43734,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Togekiss": {
@@ -43381,6 +43829,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Togepi": {
@@ -43480,6 +43929,7 @@
       "Dark",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Togetic": {
@@ -43594,6 +44044,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Torchic": {
@@ -43687,6 +44138,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Torkoal": {
@@ -43790,6 +44242,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Torterra": {
@@ -43888,6 +44341,7 @@
       "Ground",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Totodile": {
@@ -43985,6 +44439,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Toxicroak": {
@@ -44098,6 +44553,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Trapinch": {
@@ -44192,6 +44648,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Treecko": {
@@ -44288,6 +44745,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Tropius": {
@@ -44386,6 +44844,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Turtwig": {
@@ -44477,6 +44936,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Typhlosion": {
@@ -44579,6 +45039,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Tyranitar": {
@@ -44701,6 +45162,7 @@
       "Normal",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Tyrogue": {
@@ -44772,6 +45234,7 @@
       "Dark",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Umbreon": {
@@ -44867,6 +45330,7 @@
       "Dark",
       "Ghost"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Unown": {
@@ -44909,6 +45373,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 200
   },
   "Ursaring": {
@@ -45007,6 +45472,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Uxie": {
@@ -45101,6 +45567,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Vaporeon": {
@@ -45195,6 +45662,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Venomoth": {
@@ -45293,6 +45761,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Venonat": {
@@ -45386,6 +45855,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Venusaur": {
@@ -45483,6 +45953,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Vespiquen": {
@@ -45583,6 +46054,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 3900
   },
   "Vibrava": {
@@ -45675,6 +46147,7 @@
       "Poison",
       "Rock"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Victreebel": {
@@ -45762,6 +46235,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 8400
   },
   "Vigoroth": {
@@ -45856,6 +46330,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Vileplume": {
@@ -45938,6 +46413,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Volbeat": {
@@ -46038,6 +46514,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Voltorb": {
@@ -46130,6 +46607,7 @@
       "Flying",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 100
   },
   "Vulpix": {
@@ -46228,6 +46706,7 @@
       "Ice",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Wailmer": {
@@ -46323,6 +46802,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 700
   },
   "Wailord": {
@@ -46416,6 +46896,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 5000
   },
   "Walrein": {
@@ -46512,6 +46993,7 @@
       "Ice",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 11500
   },
   "Wartortle": {
@@ -46594,6 +47076,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Weavile": {
@@ -46710,6 +47193,7 @@
       "Ghost",
       "Ice"
     ],
+    "Version": "D&D 5",
     "XP": 7200
   },
   "Weedle": {
@@ -46761,6 +47245,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Weepinbell": {
@@ -46855,6 +47340,7 @@
       "Grass",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Weezing": {
@@ -46951,6 +47437,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 5900
   },
   "Whiscash": {
@@ -47049,6 +47536,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Whismur": {
@@ -47135,6 +47623,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Wigglytuff": {
@@ -47228,6 +47717,7 @@
       "Bug",
       "Dark"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Wingull": {
@@ -47320,6 +47810,7 @@
       "Steel",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Wobbuffet": {
@@ -47367,6 +47858,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Wooper": {
@@ -47461,6 +47953,7 @@
       "Rock",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Wormadam Plant Cloak": {
@@ -47561,6 +48054,7 @@
       "Ground",
       "Water"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Wormadam Sand Cloak": {
@@ -47659,6 +48153,7 @@
       "Ground",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Wormadam Trash Cloak": {
@@ -47760,6 +48255,7 @@
       "Psychic",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Wurmple": {
@@ -47811,6 +48307,7 @@
       "Ground",
       "Fighting"
     ],
+    "Version": "D&D 5",
     "XP": 25
   },
   "Wynaut": {
@@ -47862,6 +48359,7 @@
       "Fighting",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Xatu": {
@@ -47972,6 +48470,7 @@
       "Grass",
       "Psychic"
     ],
+    "Version": "D&D 5",
     "XP": 2900
   },
   "Yanma": {
@@ -48067,6 +48566,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 1800
   },
   "Yanmega": {
@@ -48166,6 +48666,7 @@
       "Fighting",
       "Grass"
     ],
+    "Version": "D&D 5",
     "XP": 10000
   },
   "Zangoose": {
@@ -48268,6 +48769,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 2300
   },
   "Zapdos": {
@@ -48364,6 +48866,7 @@
       "Grass",
       "Steel"
     ],
+    "Version": "D&D 5",
     "XP": 13000
   },
   "Zigzagoon": {
@@ -48455,6 +48958,7 @@
     "Weaknesses": [
       "None"
     ],
+    "Version": "D&D 5",
     "XP": 50
   },
   "Zubat": {
@@ -48557,6 +49061,7 @@
       "Grass",
       "Poison"
     ],
+    "Version": "D&D 5",
     "XP": 50
   }
 }

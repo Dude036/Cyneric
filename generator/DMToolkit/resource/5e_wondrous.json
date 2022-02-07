@@ -5,6 +5,7 @@
         "Link": "https://5e.tools/items.html#%2b1%20all-purpose%20tool_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "+1 Amulet of the Devout": {
@@ -13,6 +14,7 @@
         "Link": "https://5e.tools/items.html#%2b1%20amulet%20of%20the%20devout_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "+1 Arcane Grimoire": {
@@ -21,6 +23,7 @@
         "Link": "https://5e.tools/items.html#%2b1%20arcane%20grimoire_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "+1 Bloodwell Vial": {
@@ -29,6 +32,7 @@
         "Link": "https://5e.tools/items.html#%2b1%20bloodwell%20vial_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "0.16 oz."
     },
     "+1 Rhythm-Maker's Drum": {
@@ -37,6 +41,7 @@
         "Link": "https://5e.tools/items.html#%2b1%20rhythm-maker's%20drum_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "+2 All-Purpose Tool": {
@@ -45,6 +50,7 @@
         "Link": "https://5e.tools/items.html#%2b2%20all-purpose%20tool_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "+2 Amulet of the Devout": {
@@ -53,6 +59,7 @@
         "Link": "https://5e.tools/items.html#%2b2%20amulet%20of%20the%20devout_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "+2 Arcane Grimoire": {
@@ -61,6 +68,7 @@
         "Link": "https://5e.tools/items.html#%2b2%20arcane%20grimoire_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "+2 Bloodwell Vial": {
@@ -69,6 +77,7 @@
         "Link": "https://5e.tools/items.html#%2b2%20bloodwell%20vial_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "0.16 oz."
     },
     "+2 Rhythm-Maker's Drum": {
@@ -77,6 +86,7 @@
         "Link": "https://5e.tools/items.html#%2b2%20rhythm-maker's%20drum_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "+3 All-Purpose Tool": {
@@ -85,6 +95,7 @@
         "Link": "https://5e.tools/items.html#%2b3%20all-purpose%20tool_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "+3 Amulet of the Devout": {
@@ -93,6 +104,7 @@
         "Link": "https://5e.tools/items.html#%2b3%20amulet%20of%20the%20devout_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "+3 Arcane Grimoire": {
@@ -101,6 +113,7 @@
         "Link": "https://5e.tools/items.html#%2b3%20arcane%20grimoire_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "+3 Bloodwell Vial": {
@@ -109,6 +122,7 @@
         "Link": "https://5e.tools/items.html#%2b3%20bloodwell%20vial_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "0.16 oz."
     },
     "+3 Rhythm-Maker's Drum": {
@@ -117,6 +131,7 @@
         "Link": "https://5e.tools/items.html#%2b3%20rhythm-maker's%20drum_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Abracadabrus": {
@@ -125,6 +140,7 @@
         "Link": "https://5e.tools/items.html#abracadabrus_idrotf",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "25 lb."
     },
     "Acid Absorbing Tattoo": {
@@ -133,6 +149,7 @@
         "Link": "https://5e.tools/items.html#acid%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Alchemical Compendium": {
@@ -141,6 +158,7 @@
         "Link": "https://5e.tools/items.html#alchemical%20compendium_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Alchemy Jug": {
@@ -149,6 +167,7 @@
         "Link": "https://5e.tools/items.html#alchemy%20jug_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "12 lb."
     },
     "Amulet of Health": {
@@ -157,6 +176,7 @@
         "Link": "https://5e.tools/items.html#amulet%20of%20health_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Amulet of Proof against Detection and Location": {
@@ -165,6 +185,7 @@
         "Link": "https://5e.tools/items.html#amulet%20of%20proof%20against%20detection%20and%20location_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Amulet of Protection from Turning": {
@@ -173,6 +194,7 @@
         "Link": "https://5e.tools/items.html#amulet%20of%20protection%20from%20turning_tftyp",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Amulet of the Black Skull": {
@@ -181,6 +203,7 @@
         "Link": "https://5e.tools/items.html#amulet%20of%20the%20black%20skull_toa",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Amulet of the Drunkard": {
@@ -189,6 +212,7 @@
         "Link": "https://5e.tools/items.html#amulet%20of%20the%20drunkard_egw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Amulet of the Planes": {
@@ -197,6 +221,7 @@
         "Link": "https://5e.tools/items.html#amulet%20of%20the%20planes_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Apparatus of Kwalish": {
@@ -205,6 +230,7 @@
         "Link": "https://5e.tools/items.html#apparatus%20of%20kwalish_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "500 lb."
     },
     "Arcane Cannon": {
@@ -213,6 +239,7 @@
         "Link": "https://5e.tools/items.html#arcane%20cannon_egw",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Arcane Propulsion Arm": {
@@ -221,6 +248,7 @@
         "Link": "https://5e.tools/items.html#arcane%20propulsion%20arm_erlw",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Astral Shard": {
@@ -229,6 +257,7 @@
         "Link": "https://5e.tools/items.html#astral%20shard_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Astromancy Archive": {
@@ -237,6 +266,7 @@
         "Link": "https://5e.tools/items.html#astromancy%20archive_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Atlas of Endless Horizons": {
@@ -245,6 +275,7 @@
         "Link": "https://5e.tools/items.html#atlas%20of%20endless%20horizons_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Azorius Keyrune": {
@@ -253,6 +284,7 @@
         "Link": "https://5e.tools/items.html#azorius%20keyrune_ggr",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Baba Yaga's Mortar and Pestle": {
@@ -261,6 +293,7 @@
         "Link": "https://5e.tools/items.html#baba%20yaga's%20mortar%20and%20pestle_tce",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Badge of the Watch": {
@@ -269,6 +302,7 @@
         "Link": "https://5e.tools/items.html#badge%20of%20the%20watch_wdh",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Bag of Beans": {
@@ -277,6 +311,7 @@
         "Link": "https://5e.tools/items.html#bag%20of%20beans_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "\u00bd lb."
     },
     "Bag of Devouring": {
@@ -285,6 +320,7 @@
         "Link": "https://5e.tools/items.html#bag%20of%20devouring_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "\u00bd lb."
     },
     "Bag of Holding": {
@@ -293,6 +329,7 @@
         "Link": "https://5e.tools/items.html#bag%20of%20holding_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "15 lb."
     },
     "Bag of Tricks, Gray": {
@@ -301,6 +338,7 @@
         "Link": "https://5e.tools/items.html#bag%20of%20tricks%2c%20gray_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "\u00bd lb."
     },
     "Bag of Tricks, Rust": {
@@ -309,6 +347,7 @@
         "Link": "https://5e.tools/items.html#bag%20of%20tricks%2c%20rust_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "\u00bd lb."
     },
     "Bag of Tricks, Tan": {
@@ -317,6 +356,7 @@
         "Link": "https://5e.tools/items.html#bag%20of%20tricks%2c%20tan_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "\u00bd lb."
     },
     "Balance of Harmony": {
@@ -325,6 +365,7 @@
         "Link": "https://5e.tools/items.html#balance%20of%20harmony_tftyp",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Balloon Pack": {
@@ -333,6 +374,7 @@
         "Link": "https://5e.tools/items.html#balloon%20pack_pota",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Banner of the Krig Rune": {
@@ -341,6 +383,7 @@
         "Link": "https://5e.tools/items.html#banner%20of%20the%20krig%20rune_skt",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Barrier Tattoo (Large)": {
@@ -349,6 +392,7 @@
         "Link": "https://5e.tools/items.html#barrier%20tattoo%20(large)_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Barrier Tattoo (Medium)": {
@@ -357,6 +401,7 @@
         "Link": "https://5e.tools/items.html#barrier%20tattoo%20(medium)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Barrier Tattoo (Small)": {
@@ -365,6 +410,7 @@
         "Link": "https://5e.tools/items.html#barrier%20tattoo%20(small)_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Battle Standard of Infernal Power": {
@@ -373,6 +419,7 @@
         "Link": "https://5e.tools/items.html#battle%20standard%20of%20infernal%20power_bgdia",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Bead of Force": {
@@ -381,6 +428,7 @@
         "Link": "https://5e.tools/items.html#bead%20of%20force_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 oz."
     },
     "Bead of Nourishment": {
@@ -389,6 +437,7 @@
         "Link": "https://5e.tools/items.html#bead%20of%20nourishment_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Bead of Refreshment": {
@@ -397,6 +446,7 @@
         "Link": "https://5e.tools/items.html#bead%20of%20refreshment_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Belashyrra's Beholder Crown": {
@@ -405,6 +455,7 @@
         "Link": "https://5e.tools/items.html#belashyrra's%20beholder%20crown_erlw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Bell Branch": {
@@ -413,6 +464,7 @@
         "Link": "https://5e.tools/items.html#bell%20branch_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "0.16 oz."
     },
     "Belt of Cloud Giant Strength": {
@@ -421,6 +473,7 @@
         "Link": "https://5e.tools/items.html#belt%20of%20cloud%20giant%20strength_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Belt of Dwarvenkind": {
@@ -429,6 +482,7 @@
         "Link": "https://5e.tools/items.html#belt%20of%20dwarvenkind_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Belt of Fire Giant Strength": {
@@ -437,6 +491,7 @@
         "Link": "https://5e.tools/items.html#belt%20of%20fire%20giant%20strength_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Belt of Frost Giant Strength": {
@@ -445,6 +500,7 @@
         "Link": "https://5e.tools/items.html#belt%20of%20frost%20giant%20strength_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Belt of Hill Giant Strength": {
@@ -453,6 +509,7 @@
         "Link": "https://5e.tools/items.html#belt%20of%20hill%20giant%20strength_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Belt of Stone Giant Strength": {
@@ -461,6 +518,7 @@
         "Link": "https://5e.tools/items.html#belt%20of%20stone%20giant%20strength_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Belt of Storm Giant Strength": {
@@ -469,6 +527,7 @@
         "Link": "https://5e.tools/items.html#belt%20of%20storm%20giant%20strength_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Black Crystal Tablet": {
@@ -477,6 +536,7 @@
         "Link": "https://5e.tools/items.html#black%20crystal%20tablet_wdmm",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Black Dragon Mask": {
@@ -485,6 +545,7 @@
         "Link": "https://5e.tools/items.html#black%20dragon%20mask_hotdq",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Blod Stone": {
@@ -493,6 +554,7 @@
         "Link": "https://5e.tools/items.html#blod%20stone_skt",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Blood Fury Tattoo": {
@@ -501,6 +563,7 @@
         "Link": "https://5e.tools/items.html#blood%20fury%20tattoo_tce",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Blue Dragon Mask": {
@@ -509,6 +572,7 @@
         "Link": "https://5e.tools/items.html#blue%20dragon%20mask_rotos",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Book of Exalted Deeds": {
@@ -517,6 +581,7 @@
         "Link": "https://5e.tools/items.html#book%20of%20exalted%20deeds_dmg",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Book of Vile Darkness": {
@@ -525,6 +590,7 @@
         "Link": "https://5e.tools/items.html#book%20of%20vile%20darkness_dmg",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Boots of Elvenkind": {
@@ -533,6 +599,7 @@
         "Link": "https://5e.tools/items.html#boots%20of%20elvenkind_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Boots of False Tracks": {
@@ -541,6 +608,7 @@
         "Link": "https://5e.tools/items.html#boots%20of%20false%20tracks_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Boots of Levitation": {
@@ -549,6 +617,7 @@
         "Link": "https://5e.tools/items.html#boots%20of%20levitation_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Boots of Speed": {
@@ -557,6 +626,7 @@
         "Link": "https://5e.tools/items.html#boots%20of%20speed_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Boots of Striding and Springing": {
@@ -565,6 +635,7 @@
         "Link": "https://5e.tools/items.html#boots%20of%20striding%20and%20springing_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Boots of the Winterlands": {
@@ -573,6 +644,7 @@
         "Link": "https://5e.tools/items.html#boots%20of%20the%20winterlands_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Boros Keyrune": {
@@ -581,6 +653,7 @@
         "Link": "https://5e.tools/items.html#boros%20keyrune_ggr",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Bowl of Commanding Water Elementals": {
@@ -589,6 +662,7 @@
         "Link": "https://5e.tools/items.html#bowl%20of%20commanding%20water%20elementals_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Bracelet of Rock Magic": {
@@ -597,6 +671,7 @@
         "Link": "https://5e.tools/items.html#bracelet%20of%20rock%20magic_tftyp",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Bracer of Flying Daggers": {
@@ -605,6 +680,7 @@
         "Link": "https://5e.tools/items.html#bracer%20of%20flying%20daggers_wdh",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Bracers of Archery": {
@@ -613,6 +689,7 @@
         "Link": "https://5e.tools/items.html#bracers%20of%20archery_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Bracers of Defense": {
@@ -621,6 +698,7 @@
         "Link": "https://5e.tools/items.html#bracers%20of%20defense_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Brazier of Commanding Fire Elementals": {
@@ -629,6 +707,7 @@
         "Link": "https://5e.tools/items.html#brazier%20of%20commanding%20fire%20elementals_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Breathing Bubble": {
@@ -637,6 +716,7 @@
         "Link": "https://5e.tools/items.html#breathing%20bubble_egw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Brooch of Living Essence": {
@@ -645,6 +725,7 @@
         "Link": "https://5e.tools/items.html#brooch%20of%20living%20essence_egw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Brooch of Shielding": {
@@ -653,6 +734,7 @@
         "Link": "https://5e.tools/items.html#brooch%20of%20shielding_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Broom of Flying": {
@@ -661,6 +743,7 @@
         "Link": "https://5e.tools/items.html#broom%20of%20flying_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Butcher's Bib": {
@@ -669,6 +752,7 @@
         "Link": "https://5e.tools/items.html#butcher's%20bib_egw",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Candle of Invocation": {
@@ -677,6 +761,7 @@
         "Link": "https://5e.tools/items.html#candle%20of%20invocation_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Candle of the Deep": {
@@ -685,6 +770,7 @@
         "Link": "https://5e.tools/items.html#candle%20of%20the%20deep_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cap of Water Breathing": {
@@ -693,6 +779,7 @@
         "Link": "https://5e.tools/items.html#cap%20of%20water%20breathing_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cape of the Mountebank": {
@@ -701,6 +788,7 @@
         "Link": "https://5e.tools/items.html#cape%20of%20the%20mountebank_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Carpet of Flying, 3 ft. x 5 ft.": {
@@ -709,6 +797,7 @@
         "Link": "https://5e.tools/items.html#carpet%20of%20flying%2c%203%20ft.%20%c3%97%205%20ft._dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Carpet of Flying, 4 ft. x 6 ft.": {
@@ -717,6 +806,7 @@
         "Link": "https://5e.tools/items.html#carpet%20of%20flying%2c%204%20ft.%20%c3%97%206%20ft._dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Carpet of Flying, 5 ft. x 7 ft.": {
@@ -725,6 +815,7 @@
         "Link": "https://5e.tools/items.html#carpet%20of%20flying%2c%205%20ft.%20%c3%97%207%20ft._dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Carpet of Flying, 6 ft. x 9 ft.": {
@@ -733,6 +824,7 @@
         "Link": "https://5e.tools/items.html#carpet%20of%20flying%2c%206%20ft.%20%c3%97%209%20ft._dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cartographer's Map Case": {
@@ -741,6 +833,7 @@
         "Link": "https://5e.tools/items.html#cartographer's%20map%20case_ai",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cauldron of Plenty": {
@@ -749,6 +842,7 @@
         "Link": "https://5e.tools/items.html#cauldron%20of%20plenty_idrotf",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "50 lb."
     },
     "Cauldron of Rebirth": {
@@ -757,6 +851,7 @@
         "Link": "https://5e.tools/items.html#cauldron%20of%20rebirth_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "0.16 oz."
     },
     "Censer of Controlling Air Elementals": {
@@ -765,6 +860,7 @@
         "Link": "https://5e.tools/items.html#censer%20of%20controlling%20air%20elementals_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Charlatan's Die": {
@@ -773,6 +869,7 @@
         "Link": "https://5e.tools/items.html#charlatan's%20die_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Charm of Plant Command": {
@@ -781,6 +878,7 @@
         "Link": "https://5e.tools/items.html#charm%20of%20plant%20command_gos",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Chest of Preserving": {
@@ -789,6 +887,7 @@
         "Link": "https://5e.tools/items.html#chest%20of%20preserving_wdmm",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "25 lb."
     },
     "Chime of Opening": {
@@ -797,6 +896,7 @@
         "Link": "https://5e.tools/items.html#chime%20of%20opening_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Chronolometer": {
@@ -805,6 +905,7 @@
         "Link": "https://5e.tools/items.html#chronolometer_ai",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Circlet of Blasting": {
@@ -813,6 +914,7 @@
         "Link": "https://5e.tools/items.html#circlet%20of%20blasting_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Claw of the Wyrm Rune": {
@@ -821,6 +923,7 @@
         "Link": "https://5e.tools/items.html#claw%20of%20the%20wyrm%20rune_skt",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Claws of the Umber Hulk": {
@@ -829,6 +932,7 @@
         "Link": "https://5e.tools/items.html#claws%20of%20the%20umber%20hulk_pota",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cleansing Stone": {
@@ -837,6 +941,7 @@
         "Link": "https://5e.tools/items.html#cleansing%20stone_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of Arachnida": {
@@ -845,6 +950,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20arachnida_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of Billowing": {
@@ -853,6 +959,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20billowing_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of Displacement": {
@@ -861,6 +968,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20displacement_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of Elvenkind": {
@@ -869,6 +977,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20elvenkind_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of Invisibility": {
@@ -877,6 +986,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20invisibility_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of Many Fashions": {
@@ -885,6 +995,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20many%20fashions_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of Protection": {
@@ -893,6 +1004,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20protection_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of the Bat": {
@@ -901,6 +1013,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20the%20bat_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cloak of the Manta Ray": {
@@ -909,6 +1022,7 @@
         "Link": "https://5e.tools/items.html#cloak%20of%20the%20manta%20ray_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Clockwork Amulet": {
@@ -917,6 +1031,7 @@
         "Link": "https://5e.tools/items.html#clockwork%20amulet_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Clothes of Mending": {
@@ -925,6 +1040,7 @@
         "Link": "https://5e.tools/items.html#clothes%20of%20mending_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Coiling Grasp Tattoo": {
@@ -933,6 +1049,7 @@
         "Link": "https://5e.tools/items.html#coiling%20grasp%20tattoo_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Coin of Decisionry": {
@@ -941,6 +1058,7 @@
         "Link": "https://5e.tools/items.html#coin%20of%20decisionry_ai",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Coin of Delving": {
@@ -949,6 +1067,7 @@
         "Link": "https://5e.tools/items.html#coin%20of%20delving_egw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cold Absorbing Tattoo": {
@@ -957,6 +1076,7 @@
         "Link": "https://5e.tools/items.html#cold%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Common Glamerweave": {
@@ -965,6 +1085,7 @@
         "Link": "https://5e.tools/items.html#common%20glamerweave_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Concertina": {
@@ -973,6 +1094,7 @@
         "Link": "https://5e.tools/items.html#concertina_rmbre",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Conch of Teleportation": {
@@ -981,6 +1103,7 @@
         "Link": "https://5e.tools/items.html#conch%20of%20teleportation_skt",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Crook of Rao": {
@@ -989,6 +1112,7 @@
         "Link": "https://5e.tools/items.html#crook%20of%20rao_tce",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Crystal Ball": {
@@ -997,6 +1121,7 @@
         "Link": "https://5e.tools/items.html#crystal%20ball_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Crystal Ball of Mind Reading": {
@@ -1005,6 +1130,7 @@
         "Link": "https://5e.tools/items.html#crystal%20ball%20of%20mind%20reading_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Crystal Ball of Telepathy": {
@@ -1013,6 +1139,7 @@
         "Link": "https://5e.tools/items.html#crystal%20ball%20of%20telepathy_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Crystal Ball of True Seeing": {
@@ -1021,6 +1148,7 @@
         "Link": "https://5e.tools/items.html#crystal%20ball%20of%20true%20seeing_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Crystalline Chronicle": {
@@ -1029,6 +1157,7 @@
         "Link": "https://5e.tools/items.html#crystalline%20chronicle_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Cube of Force": {
@@ -1037,6 +1166,7 @@
         "Link": "https://5e.tools/items.html#cube%20of%20force_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cubic Gate": {
@@ -1045,6 +1175,7 @@
         "Link": "https://5e.tools/items.html#cubic%20gate_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Cursed Luckstone": {
@@ -1053,6 +1184,7 @@
         "Link": "https://5e.tools/items.html#cursed%20luckstone_gos",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Daern's Instant Fortress": {
@@ -1061,6 +1193,7 @@
         "Link": "https://5e.tools/items.html#daern's%20instant%20fortress_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Danoth's Visor": {
@@ -1069,6 +1202,7 @@
         "Link": "https://5e.tools/items.html#danoth's%20visor_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dark Shard Amulet": {
@@ -1077,6 +1211,7 @@
         "Link": "https://5e.tools/items.html#dark%20shard%20amulet_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Decanter of Endless Water": {
@@ -1085,6 +1220,7 @@
         "Link": "https://5e.tools/items.html#decanter%20of%20endless%20water_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Deck of Illusions": {
@@ -1093,6 +1229,7 @@
         "Link": "https://5e.tools/items.html#deck%20of%20illusions_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Deck of Many Things": {
@@ -1101,6 +1238,7 @@
         "Link": "https://5e.tools/items.html#deck%20of%20many%20things_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Demonomicon of Iggwilv": {
@@ -1109,6 +1247,7 @@
         "Link": "https://5e.tools/items.html#demonomicon%20of%20iggwilv_tce",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Devastation Orb of Air": {
@@ -1117,6 +1256,7 @@
         "Link": "https://5e.tools/items.html#devastation%20orb%20of%20air_pota",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Devastation Orb of Earth": {
@@ -1125,6 +1265,7 @@
         "Link": "https://5e.tools/items.html#devastation%20orb%20of%20earth_pota",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Devastation Orb of Fire": {
@@ -1133,6 +1274,7 @@
         "Link": "https://5e.tools/items.html#devastation%20orb%20of%20fire_pota",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Devastation Orb of Water": {
@@ -1141,6 +1283,7 @@
         "Link": "https://5e.tools/items.html#devastation%20orb%20of%20water_pota",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dimensional Loop": {
@@ -1149,6 +1292,7 @@
         "Link": "https://5e.tools/items.html#dimensional%20loop_ai",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dimensional Shackles": {
@@ -1157,6 +1301,7 @@
         "Link": "https://5e.tools/items.html#dimensional%20shackles_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dimir Keyrune": {
@@ -1165,6 +1310,7 @@
         "Link": "https://5e.tools/items.html#dimir%20keyrune_ggr",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dispelling Stone": {
@@ -1173,6 +1319,7 @@
         "Link": "https://5e.tools/items.html#dispelling%20stone_egw",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Docent": {
@@ -1181,6 +1328,7 @@
         "Link": "https://5e.tools/items.html#docent_erlw",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Documancy Satchel": {
@@ -1189,6 +1337,7 @@
         "Link": "https://5e.tools/items.html#documancy%20satchel_ai",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dodecahedron of Doom": {
@@ -1197,6 +1346,7 @@
         "Link": "https://5e.tools/items.html#dodecahedron%20of%20doom_wdmm",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Draakhorn": {
@@ -1205,6 +1355,7 @@
         "Link": "https://5e.tools/items.html#draakhorn_rot",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dread Helm": {
@@ -1213,6 +1364,7 @@
         "Link": "https://5e.tools/items.html#dread%20helm_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Driftglobe": {
@@ -1221,6 +1373,7 @@
         "Link": "https://5e.tools/items.html#driftglobe_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Duplicitous Manuscript": {
@@ -1229,6 +1382,7 @@
         "Link": "https://5e.tools/items.html#duplicitous%20manuscript_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Dust of Deliciousness": {
@@ -1237,6 +1391,7 @@
         "Link": "https://5e.tools/items.html#dust%20of%20deliciousness_egw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dust of Disappearance": {
@@ -1245,6 +1400,7 @@
         "Link": "https://5e.tools/items.html#dust%20of%20disappearance_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dust of Dryness": {
@@ -1253,6 +1409,7 @@
         "Link": "https://5e.tools/items.html#dust%20of%20dryness_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Dust of Sneezing and Choking": {
@@ -1261,6 +1418,7 @@
         "Link": "https://5e.tools/items.html#dust%20of%20sneezing%20and%20choking_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Eagle Whistle": {
@@ -1269,6 +1427,7 @@
         "Link": "https://5e.tools/items.html#eagle%20whistle_tftyp",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Ear Horn of Hearing": {
@@ -1277,6 +1436,7 @@
         "Link": "https://5e.tools/items.html#ear%20horn%20of%20hearing_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Earworm": {
@@ -1285,6 +1445,7 @@
         "Link": "https://5e.tools/items.html#earworm_erlw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Efreeti Bottle": {
@@ -1293,6 +1454,7 @@
         "Link": "https://5e.tools/items.html#efreeti%20bottle_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Elder Cartographer's Glossography": {
@@ -1301,6 +1463,7 @@
         "Link": "https://5e.tools/items.html#elder%20cartographer's%20glossography_ai",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Eldritch Claw Tattoo": {
@@ -1309,6 +1472,7 @@
         "Link": "https://5e.tools/items.html#eldritch%20claw%20tattoo_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Elemental Essence Shard (Air)": {
@@ -1317,6 +1481,7 @@
         "Link": "https://5e.tools/items.html#elemental%20essence%20shard%20(air)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Elemental Essence Shard (Earth)": {
@@ -1325,6 +1490,7 @@
         "Link": "https://5e.tools/items.html#elemental%20essence%20shard%20(earth)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Elemental Essence Shard (Fire)": {
@@ -1333,6 +1499,7 @@
         "Link": "https://5e.tools/items.html#elemental%20essence%20shard%20(fire)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Elemental Essence Shard (Water)": {
@@ -1341,6 +1508,7 @@
         "Link": "https://5e.tools/items.html#elemental%20essence%20shard%20(water)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Elemental Gem": {
@@ -1349,6 +1517,7 @@
         "Link": "https://5e.tools/items.html#elemental%20gem_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Elemental Gem, Blue Sapphire": {
@@ -1357,6 +1526,7 @@
         "Link": "https://5e.tools/items.html#elemental%20gem%2c%20blue%20sapphire_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Elemental Gem, Emerald": {
@@ -1365,6 +1535,7 @@
         "Link": "https://5e.tools/items.html#elemental%20gem%2c%20emerald_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Elemental Gem, Red Corundum": {
@@ -1373,6 +1544,7 @@
         "Link": "https://5e.tools/items.html#elemental%20gem%2c%20red%20corundum_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Elemental Gem, Yellow Diamond": {
@@ -1381,6 +1553,7 @@
         "Link": "https://5e.tools/items.html#elemental%20gem%2c%20yellow%20diamond_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Enduring Spellbook": {
@@ -1389,6 +1562,7 @@
         "Link": "https://5e.tools/items.html#enduring%20spellbook_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ersatz Eye": {
@@ -1397,6 +1571,7 @@
         "Link": "https://5e.tools/items.html#ersatz%20eye_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Everbright Lantern": {
@@ -1405,6 +1580,7 @@
         "Link": "https://5e.tools/items.html#everbright%20lantern_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Eversmoking Bottle": {
@@ -1413,6 +1589,7 @@
         "Link": "https://5e.tools/items.html#eversmoking%20bottle_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Eye of Vecna": {
@@ -1421,6 +1598,7 @@
         "Link": "https://5e.tools/items.html#eye%20of%20vecna_dmg",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Eyes of Charming": {
@@ -1429,6 +1607,7 @@
         "Link": "https://5e.tools/items.html#eyes%20of%20charming_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Eyes of Minute Seeing": {
@@ -1437,6 +1616,7 @@
         "Link": "https://5e.tools/items.html#eyes%20of%20minute%20seeing_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Eyes of the Eagle": {
@@ -1445,6 +1625,7 @@
         "Link": "https://5e.tools/items.html#eyes%20of%20the%20eagle_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Far Gear": {
@@ -1453,6 +1634,7 @@
         "Link": "https://5e.tools/items.html#far%20gear_ai",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Far Realm Shard": {
@@ -1461,6 +1643,7 @@
         "Link": "https://5e.tools/items.html#far%20realm%20shard_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Feather Token": {
@@ -1469,6 +1652,7 @@
         "Link": "https://5e.tools/items.html#feather%20token_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Feather of Diatryma Summoning": {
@@ -1477,6 +1661,7 @@
         "Link": "https://5e.tools/items.html#feather%20of%20diatryma%20summoning_wdh",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Fernian Ash Rod": {
@@ -1485,6 +1670,7 @@
         "Link": "https://5e.tools/items.html#fernian%20ash%20rod_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Fernian Ash Staff": {
@@ -1493,6 +1679,7 @@
         "Link": "https://5e.tools/items.html#fernian%20ash%20staff_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Fernian Ash Wand": {
@@ -1501,6 +1688,7 @@
         "Link": "https://5e.tools/items.html#fernian%20ash%20wand_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Fernian Basalt Crystal": {
@@ -1509,6 +1697,7 @@
         "Link": "https://5e.tools/items.html#fernian%20basalt%20crystal_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Fernian Basalt Orb": {
@@ -1517,6 +1706,7 @@
         "Link": "https://5e.tools/items.html#fernian%20basalt%20orb_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Feywild Shard": {
@@ -1525,6 +1715,7 @@
         "Link": "https://5e.tools/items.html#feywild%20shard_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Figurine of Wondrous Power, Bronze Griffon": {
@@ -1533,6 +1724,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20bronze%20griffon_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Figurine of Wondrous Power, Ebony Fly": {
@@ -1541,6 +1733,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20ebony%20fly_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Figurine of Wondrous Power, Golden Lions": {
@@ -1549,6 +1742,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20golden%20lions_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Figurine of Wondrous Power, Ivory Goats": {
@@ -1557,6 +1751,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20ivory%20goats_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Figurine of Wondrous Power, Marble Elephant": {
@@ -1565,6 +1760,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20marble%20elephant_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Figurine of Wondrous Power, Obsidian Steed": {
@@ -1573,6 +1769,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20obsidian%20steed_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Figurine of Wondrous Power, Onyx Dog": {
@@ -1581,6 +1778,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20onyx%20dog_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Figurine of Wondrous Power, Serpentine Owl": {
@@ -1589,6 +1787,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20serpentine%20owl_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Figurine of Wondrous Power, Silver Raven": {
@@ -1597,6 +1796,7 @@
         "Link": "https://5e.tools/items.html#figurine%20of%20wondrous%20power%2c%20silver%20raven_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Finder's Goggles": {
@@ -1605,6 +1805,7 @@
         "Link": "https://5e.tools/items.html#finder's%20goggles_erlw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Fire Absorbing Tattoo": {
@@ -1613,6 +1814,7 @@
         "Link": "https://5e.tools/items.html#fire%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Flying Chariot": {
@@ -1621,6 +1823,7 @@
         "Link": "https://5e.tools/items.html#flying%20chariot_mot",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Folding Boat": {
@@ -1629,6 +1832,7 @@
         "Link": "https://5e.tools/items.html#folding%20boat_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Force Absorbing Tattoo": {
@@ -1637,6 +1841,7 @@
         "Link": "https://5e.tools/items.html#force%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Fulminating Treatise": {
@@ -1645,6 +1850,7 @@
         "Link": "https://5e.tools/items.html#fulminating%20treatise_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Gauntlets of Flaming Fury": {
@@ -1653,6 +1859,7 @@
         "Link": "https://5e.tools/items.html#gauntlets%20of%20flaming%20fury_bgdia",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Gauntlets of Ogre Power": {
@@ -1661,6 +1868,7 @@
         "Link": "https://5e.tools/items.html#gauntlets%20of%20ogre%20power_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Gavel of the Venn Rune": {
@@ -1669,6 +1877,7 @@
         "Link": "https://5e.tools/items.html#gavel%20of%20the%20venn%20rune_skt",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Gem of Brightness": {
@@ -1677,6 +1886,7 @@
         "Link": "https://5e.tools/items.html#gem%20of%20brightness_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Gem of Seeing": {
@@ -1685,6 +1895,7 @@
         "Link": "https://5e.tools/items.html#gem%20of%20seeing_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Ghost Lantern": {
@@ -1693,6 +1904,7 @@
         "Link": "https://5e.tools/items.html#ghost%20lantern_toa",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Ghost Step Tattoo": {
@@ -1701,6 +1913,7 @@
         "Link": "https://5e.tools/items.html#ghost%20step%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Gloves of Missile Snaring": {
@@ -1709,6 +1922,7 @@
         "Link": "https://5e.tools/items.html#gloves%20of%20missile%20snaring_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Gloves of Swimming and Climbing": {
@@ -1717,6 +1931,7 @@
         "Link": "https://5e.tools/items.html#gloves%20of%20swimming%20and%20climbing_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Gloves of Thievery": {
@@ -1725,6 +1940,7 @@
         "Link": "https://5e.tools/items.html#gloves%20of%20thievery_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Gnomengarde Grenade": {
@@ -1733,6 +1949,7 @@
         "Link": "https://5e.tools/items.html#gnomengarde%20grenade_dc",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Goggles of Night": {
@@ -1741,6 +1958,7 @@
         "Link": "https://5e.tools/items.html#goggles%20of%20night_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Goggles of Object Reading": {
@@ -1749,6 +1967,7 @@
         "Link": "https://5e.tools/items.html#goggles%20of%20object%20reading_egw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Golgari Keyrune": {
@@ -1757,6 +1976,7 @@
         "Link": "https://5e.tools/items.html#golgari%20keyrune_ggr",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Green Dragon Mask": {
@@ -1765,6 +1985,7 @@
         "Link": "https://5e.tools/items.html#green%20dragon%20mask_rotos",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Grimoire Infinitus": {
@@ -1773,6 +1994,7 @@
         "Link": "https://5e.tools/items.html#grimoire%20infinitus_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Gruul Keyrune": {
@@ -1781,6 +2003,7 @@
         "Link": "https://5e.tools/items.html#gruul%20keyrune_ggr",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Guardian Emblem": {
@@ -1789,6 +2012,7 @@
         "Link": "https://5e.tools/items.html#guardian%20emblem_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "0.32 oz."
     },
     "Hand of Vecna": {
@@ -1797,6 +2021,7 @@
         "Link": "https://5e.tools/items.html#hand%20of%20vecna_dmg",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Hat of Disguise": {
@@ -1805,6 +2030,7 @@
         "Link": "https://5e.tools/items.html#hat%20of%20disguise_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Hat of Vermin": {
@@ -1813,6 +2039,7 @@
         "Link": "https://5e.tools/items.html#hat%20of%20vermin_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Hat of Wizardry": {
@@ -1821,6 +2048,7 @@
         "Link": "https://5e.tools/items.html#hat%20of%20wizardry_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Headband of Intellect": {
@@ -1829,6 +2057,7 @@
         "Link": "https://5e.tools/items.html#headband%20of%20intellect_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Heart Weaver's Primer": {
@@ -1837,6 +2066,7 @@
         "Link": "https://5e.tools/items.html#heart%20weaver's%20primer_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Hell Hound Cloak": {
@@ -1845,6 +2075,7 @@
         "Link": "https://5e.tools/items.html#hell%20hound%20cloak_tftyp",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Helm of Brilliance": {
@@ -1853,6 +2084,7 @@
         "Link": "https://5e.tools/items.html#helm%20of%20brilliance_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Helm of Comprehending Languages": {
@@ -1861,6 +2093,7 @@
         "Link": "https://5e.tools/items.html#helm%20of%20comprehending%20languages_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Helm of Devil Command": {
@@ -1869,6 +2102,7 @@
         "Link": "https://5e.tools/items.html#helm%20of%20devil%20command_bgdia",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Helm of Telepathy": {
@@ -1877,6 +2111,7 @@
         "Link": "https://5e.tools/items.html#helm%20of%20telepathy_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Helm of Teleportation": {
@@ -1885,6 +2120,7 @@
         "Link": "https://5e.tools/items.html#helm%20of%20teleportation_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Helm of Underwater Action": {
@@ -1893,6 +2129,7 @@
         "Link": "https://5e.tools/items.html#helm%20of%20underwater%20action_gos",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Helm of the Gods": {
@@ -1901,6 +2138,7 @@
         "Link": "https://5e.tools/items.html#helm%20of%20the%20gods_mot",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Helm of the Scavenger": {
@@ -1909,6 +2147,7 @@
         "Link": "https://5e.tools/items.html#helm%20of%20the%20scavenger_wdmm",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Heward's Handy Haversack": {
@@ -1917,6 +2156,7 @@
         "Link": "https://5e.tools/items.html#heward's%20handy%20haversack_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Heward's Handy Spice Pouch": {
@@ -1925,6 +2165,7 @@
         "Link": "https://5e.tools/items.html#heward's%20handy%20spice%20pouch_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Holy Symbol of Ravenkind": {
@@ -1933,6 +2174,7 @@
         "Link": "https://5e.tools/items.html#holy%20symbol%20of%20ravenkind_cos",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Hook of Fisher's Delight": {
@@ -1941,6 +2183,7 @@
         "Link": "https://5e.tools/items.html#hook%20of%20fisher's%20delight_idrotf",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Horn of Blasting": {
@@ -1949,6 +2192,7 @@
         "Link": "https://5e.tools/items.html#horn%20of%20blasting_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Horn of Silent Alarm": {
@@ -1957,6 +2201,7 @@
         "Link": "https://5e.tools/items.html#horn%20of%20silent%20alarm_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Horn of Valhalla, Brass": {
@@ -1965,6 +2210,7 @@
         "Link": "https://5e.tools/items.html#horn%20of%20valhalla%2c%20brass_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Horn of Valhalla, Bronze": {
@@ -1973,6 +2219,7 @@
         "Link": "https://5e.tools/items.html#horn%20of%20valhalla%2c%20bronze_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Horn of Valhalla, Iron": {
@@ -1981,6 +2228,7 @@
         "Link": "https://5e.tools/items.html#horn%20of%20valhalla%2c%20iron_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Horn of Valhalla, Silver": {
@@ -1989,6 +2237,7 @@
         "Link": "https://5e.tools/items.html#horn%20of%20valhalla%2c%20silver_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Horn of the Endless Maze": {
@@ -1997,6 +2246,7 @@
         "Link": "https://5e.tools/items.html#horn%20of%20the%20endless%20maze_wdmm",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Horseshoes of Speed": {
@@ -2005,6 +2255,7 @@
         "Link": "https://5e.tools/items.html#horseshoes%20of%20speed_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Horseshoes of a Zephyr": {
@@ -2013,6 +2264,7 @@
         "Link": "https://5e.tools/items.html#horseshoes%20of%20a%20zephyr_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Icon of Ravenloft": {
@@ -2021,6 +2273,7 @@
         "Link": "https://5e.tools/items.html#icon%20of%20ravenloft_cos",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "10 lb."
     },
     "Illuminator's Tattoo": {
@@ -2029,6 +2282,7 @@
         "Link": "https://5e.tools/items.html#illuminator's%20tattoo_tce",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Illusionist's Bracers": {
@@ -2037,6 +2291,7 @@
         "Link": "https://5e.tools/items.html#illusionist's%20bracers_ggr",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Imbued Wood (Fernian Ash)": {
@@ -2045,6 +2300,7 @@
         "Link": "https://5e.tools/items.html#imbued%20wood%20(fernian%20ash)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Imbued Wood (Irian Rosewood)": {
@@ -2053,6 +2309,7 @@
         "Link": "https://5e.tools/items.html#imbued%20wood%20(irian%20rosewood)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Imbued Wood (Kythrian Manchineel)": {
@@ -2061,6 +2318,7 @@
         "Link": "https://5e.tools/items.html#imbued%20wood%20(kythrian%20manchineel)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Imbued Wood (Lamannian Oak)": {
@@ -2069,6 +2327,7 @@
         "Link": "https://5e.tools/items.html#imbued%20wood%20(lamannian%20oak)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Imbued Wood (Mabaran Ebony)": {
@@ -2077,6 +2336,7 @@
         "Link": "https://5e.tools/items.html#imbued%20wood%20(mabaran%20ebony)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Imbued Wood (Risian Pine)": {
@@ -2085,6 +2345,7 @@
         "Link": "https://5e.tools/items.html#imbued%20wood%20(risian%20pine)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Imbued Wood (Shavarran Birch)": {
@@ -2093,6 +2354,7 @@
         "Link": "https://5e.tools/items.html#imbued%20wood%20(shavarran%20birch)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Imbued Wood (Xorian Wenge)": {
@@ -2101,6 +2363,7 @@
         "Link": "https://5e.tools/items.html#imbued%20wood%20(xorian%20wenge)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Infernal Puzzle Box": {
@@ -2109,6 +2372,7 @@
         "Link": "https://5e.tools/items.html#infernal%20puzzle%20box_bgdia",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Infernal Tack": {
@@ -2117,6 +2381,7 @@
         "Link": "https://5e.tools/items.html#infernal%20tack_mtf",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Infiltrator's Key": {
@@ -2125,6 +2390,7 @@
         "Link": "https://5e.tools/items.html#infiltrator's%20key_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ingot of the Skold Rune": {
@@ -2133,6 +2399,7 @@
         "Link": "https://5e.tools/items.html#ingot%20of%20the%20skold%20rune_skt",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Insignia of Claws": {
@@ -2141,6 +2408,7 @@
         "Link": "https://5e.tools/items.html#insignia%20of%20claws_hotdq",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Instrument of Illusions": {
@@ -2149,6 +2417,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20illusions_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Instrument of Scribing": {
@@ -2157,6 +2426,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20scribing_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Instrument of the Bards, Anstruth Harp": {
@@ -2165,6 +2435,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20the%20bards%2c%20anstruth%20harp_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Instrument of the Bards, Canaith Mandolin": {
@@ -2173,6 +2444,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20the%20bards%2c%20canaith%20mandolin_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Instrument of the Bards, Cli Lyre": {
@@ -2181,6 +2453,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20the%20bards%2c%20cli%20lyre_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Instrument of the Bards, Doss Lute": {
@@ -2189,6 +2462,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20the%20bards%2c%20doss%20lute_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Instrument of the Bards, Fochlucan Bandore": {
@@ -2197,6 +2471,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20the%20bards%2c%20fochlucan%20bandore_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Instrument of the Bards, Mac-Fuirmidh Cittern": {
@@ -2205,6 +2480,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20the%20bards%2c%20mac-fuirmidh%20cittern_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Instrument of the Bards, Ollamh Harp": {
@@ -2213,6 +2489,7 @@
         "Link": "https://5e.tools/items.html#instrument%20of%20the%20bards%2c%20ollamh%20harp_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Ioun Stone, Absorption": {
@@ -2221,6 +2498,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20absorption_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Agility": {
@@ -2229,6 +2507,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20agility_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Awareness": {
@@ -2237,6 +2516,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20awareness_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Fortitude": {
@@ -2245,6 +2525,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20fortitude_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Greater Absorption": {
@@ -2253,6 +2534,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20greater%20absorption_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Insight": {
@@ -2261,6 +2543,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20insight_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Intellect": {
@@ -2269,6 +2552,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20intellect_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Leadership": {
@@ -2277,6 +2561,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20leadership_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Mastery": {
@@ -2285,6 +2570,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20mastery_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Protection": {
@@ -2293,6 +2579,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20protection_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Regeneration": {
@@ -2301,6 +2588,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20regeneration_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Reserve": {
@@ -2309,6 +2597,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20reserve_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Strength": {
@@ -2317,6 +2606,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20strength_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ioun Stone, Sustenance": {
@@ -2325,6 +2615,7 @@
         "Link": "https://5e.tools/items.html#ioun%20stone%2c%20sustenance_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Irian Quartz Crystal": {
@@ -2333,6 +2624,7 @@
         "Link": "https://5e.tools/items.html#irian%20quartz%20crystal_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Irian Quartz Orb": {
@@ -2341,6 +2633,7 @@
         "Link": "https://5e.tools/items.html#irian%20quartz%20orb_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Irian Rosewood Rod": {
@@ -2349,6 +2642,7 @@
         "Link": "https://5e.tools/items.html#irian%20rosewood%20rod_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Irian Rosewood Staff": {
@@ -2357,6 +2651,7 @@
         "Link": "https://5e.tools/items.html#irian%20rosewood%20staff_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Irian Rosewood Wand": {
@@ -2365,6 +2660,7 @@
         "Link": "https://5e.tools/items.html#irian%20rosewood%20wand_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Iron Bands of Bilarro": {
@@ -2373,6 +2669,7 @@
         "Link": "https://5e.tools/items.html#iron%20bands%20of%20bilarro_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Iron Flask": {
@@ -2381,6 +2678,7 @@
         "Link": "https://5e.tools/items.html#iron%20flask_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Izzet Keyrune": {
@@ -2389,6 +2687,7 @@
         "Link": "https://5e.tools/items.html#izzet%20keyrune_ggr",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Keoghtom's Ointment": {
@@ -2397,6 +2696,7 @@
         "Link": "https://5e.tools/items.html#keoghtom's%20ointment_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Keycharm": {
@@ -2405,6 +2705,7 @@
         "Link": "https://5e.tools/items.html#keycharm_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Knave's Eye Patch": {
@@ -2413,6 +2714,7 @@
         "Link": "https://5e.tools/items.html#knave's%20eye%20patch_wdh",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Kyrzin's Ooze": {
@@ -2421,6 +2723,7 @@
         "Link": "https://5e.tools/items.html#kyrzin's%20ooze_erlw",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Kythrian Manchineel Rod": {
@@ -2429,6 +2732,7 @@
         "Link": "https://5e.tools/items.html#kythrian%20manchineel%20rod_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Kythrian Manchineel Staff": {
@@ -2437,6 +2741,7 @@
         "Link": "https://5e.tools/items.html#kythrian%20manchineel%20staff_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Kythrian Manchineel Wand": {
@@ -2445,6 +2750,7 @@
         "Link": "https://5e.tools/items.html#kythrian%20manchineel%20wand_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Kythrian Skarn Crystal": {
@@ -2453,6 +2759,7 @@
         "Link": "https://5e.tools/items.html#kythrian%20skarn%20crystal_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Kythrian Skarn Orb": {
@@ -2461,6 +2768,7 @@
         "Link": "https://5e.tools/items.html#kythrian%20skarn%20orb_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Lamannian Flint Crystal": {
@@ -2469,6 +2777,7 @@
         "Link": "https://5e.tools/items.html#lamannian%20flint%20crystal_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Lamannian Flint Orb": {
@@ -2477,6 +2786,7 @@
         "Link": "https://5e.tools/items.html#lamannian%20flint%20orb_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Lamannian Oak Rod": {
@@ -2485,6 +2795,7 @@
         "Link": "https://5e.tools/items.html#lamannian%20oak%20rod_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Lamannian Oak Staff": {
@@ -2493,6 +2804,7 @@
         "Link": "https://5e.tools/items.html#lamannian%20oak%20staff_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Lamannian Oak Wand": {
@@ -2501,6 +2813,7 @@
         "Link": "https://5e.tools/items.html#lamannian%20oak%20wand_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Lantern of Revealing": {
@@ -2509,6 +2822,7 @@
         "Link": "https://5e.tools/items.html#lantern%20of%20revealing_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Lantern of Tracking": {
@@ -2517,6 +2831,7 @@
         "Link": "https://5e.tools/items.html#lantern%20of%20tracking_idrotf",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Libram of Souls and Flesh": {
@@ -2525,6 +2840,7 @@
         "Link": "https://5e.tools/items.html#libram%20of%20souls%20and%20flesh_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Lifewell Tattoo": {
@@ -2533,6 +2849,7 @@
         "Link": "https://5e.tools/items.html#lifewell%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Lightning Absorbing Tattoo": {
@@ -2541,6 +2858,7 @@
         "Link": "https://5e.tools/items.html#lightning%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Living Gloves": {
@@ -2549,6 +2867,7 @@
         "Link": "https://5e.tools/items.html#living%20gloves_erlw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Living Loot Satchel": {
@@ -2557,6 +2876,7 @@
         "Link": "https://5e.tools/items.html#living%20loot%20satchel_ai",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Loadstone": {
@@ -2565,6 +2885,7 @@
         "Link": "https://5e.tools/items.html#loadstone_tftyp",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Lock of Trickery": {
@@ -2573,6 +2894,7 @@
         "Link": "https://5e.tools/items.html#lock%20of%20trickery_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Lord's Ensemble": {
@@ -2581,6 +2903,7 @@
         "Link": "https://5e.tools/items.html#lord's%20ensemble_wdh",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Lost Crown of Besilmer": {
@@ -2589,6 +2912,7 @@
         "Link": "https://5e.tools/items.html#lost%20crown%20of%20besilmer_pota",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Luba's Tarokka of Souls": {
@@ -2597,6 +2921,7 @@
         "Link": "https://5e.tools/items.html#luba's%20tarokka%20of%20souls_tce",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Luxon Beacon": {
@@ -2605,6 +2930,7 @@
         "Link": "https://5e.tools/items.html#luxon%20beacon_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Lyre of Building": {
@@ -2613,6 +2939,7 @@
         "Link": "https://5e.tools/items.html#lyre%20of%20building_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Mabaran Ebony Rod": {
@@ -2621,6 +2948,7 @@
         "Link": "https://5e.tools/items.html#mabaran%20ebony%20rod_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Mabaran Ebony Staff": {
@@ -2629,6 +2957,7 @@
         "Link": "https://5e.tools/items.html#mabaran%20ebony%20staff_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Mabaran Ebony Wand": {
@@ -2637,6 +2966,7 @@
         "Link": "https://5e.tools/items.html#mabaran%20ebony%20wand_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Mabaran Obsidian Crystal": {
@@ -2645,6 +2975,7 @@
         "Link": "https://5e.tools/items.html#mabaran%20obsidian%20crystal_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Mabaran Obsidian Orb": {
@@ -2653,6 +2984,7 @@
         "Link": "https://5e.tools/items.html#mabaran%20obsidian%20orb_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Mantle of Spell Resistance": {
@@ -2661,6 +2993,7 @@
         "Link": "https://5e.tools/items.html#mantle%20of%20spell%20resistance_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Manual of Bodily Health": {
@@ -2669,6 +3002,7 @@
         "Link": "https://5e.tools/items.html#manual%20of%20bodily%20health_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Manual of Clay Golems": {
@@ -2677,6 +3011,7 @@
         "Link": "https://5e.tools/items.html#manual%20of%20clay%20golems_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Manual of Flesh Golems": {
@@ -2685,6 +3020,7 @@
         "Link": "https://5e.tools/items.html#manual%20of%20flesh%20golems_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Manual of Gainful Exercise": {
@@ -2693,6 +3029,7 @@
         "Link": "https://5e.tools/items.html#manual%20of%20gainful%20exercise_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Manual of Iron Golems": {
@@ -2701,6 +3038,7 @@
         "Link": "https://5e.tools/items.html#manual%20of%20iron%20golems_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Manual of Quickness of Action": {
@@ -2709,6 +3047,7 @@
         "Link": "https://5e.tools/items.html#manual%20of%20quickness%20of%20action_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Manual of Stone Golems": {
@@ -2717,6 +3056,7 @@
         "Link": "https://5e.tools/items.html#manual%20of%20stone%20golems_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Mask of the Beast": {
@@ -2725,6 +3065,7 @@
         "Link": "https://5e.tools/items.html#mask%20of%20the%20beast_toa",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Mask of the Dragon Queen": {
@@ -2733,6 +3074,7 @@
         "Link": "https://5e.tools/items.html#mask%20of%20the%20dragon%20queen_rot",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Masquerade Tattoo": {
@@ -2741,6 +3083,7 @@
         "Link": "https://5e.tools/items.html#masquerade%20tattoo_tce",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Medallion of Thoughts": {
@@ -2749,6 +3092,7 @@
         "Link": "https://5e.tools/items.html#medallion%20of%20thoughts_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Mighty Servant of Leuk-o": {
@@ -2757,6 +3101,7 @@
         "Link": "https://5e.tools/items.html#mighty%20servant%20of%20leuk-o_tce",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Mirror of Life Trapping": {
@@ -2765,6 +3110,7 @@
         "Link": "https://5e.tools/items.html#mirror%20of%20life%20trapping_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "50 lb."
     },
     "Mirror of the Past": {
@@ -2773,6 +3119,7 @@
         "Link": "https://5e.tools/items.html#mirror%20of%20the%20past_tftyp",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Mizzium Apparatus": {
@@ -2781,6 +3128,7 @@
         "Link": "https://5e.tools/items.html#mizzium%20apparatus_ggr",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "8 lb."
     },
     "Mizzium Mortar": {
@@ -2789,6 +3137,7 @@
         "Link": "https://5e.tools/items.html#mizzium%20mortar_ggr",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Moodmark Paint": {
@@ -2797,6 +3146,7 @@
         "Link": "https://5e.tools/items.html#moodmark%20paint_ggr",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Mystery Key": {
@@ -2805,6 +3155,7 @@
         "Link": "https://5e.tools/items.html#mystery%20key_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Nature's Mantle": {
@@ -2813,6 +3164,7 @@
         "Link": "https://5e.tools/items.html#nature's%20mantle_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Navigation Orb": {
@@ -2821,6 +3173,7 @@
         "Link": "https://5e.tools/items.html#navigation%20orb_skt",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Necklace of Adaptation": {
@@ -2829,6 +3182,7 @@
         "Link": "https://5e.tools/items.html#necklace%20of%20adaptation_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Necklace of Fireballs": {
@@ -2837,6 +3191,7 @@
         "Link": "https://5e.tools/items.html#necklace%20of%20fireballs_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Necklace of Prayer Beads": {
@@ -2845,6 +3200,7 @@
         "Link": "https://5e.tools/items.html#necklace%20of%20prayer%20beads_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Necrotic Absorbing Tattoo": {
@@ -2853,6 +3209,7 @@
         "Link": "https://5e.tools/items.html#necrotic%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Night Caller": {
@@ -2861,6 +3218,7 @@
         "Link": "https://5e.tools/items.html#night%20caller_tftyp",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Nightfall Pearl": {
@@ -2869,6 +3227,7 @@
         "Link": "https://5e.tools/items.html#nightfall%20pearl_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Nolzur's Marvelous Pigments": {
@@ -2877,6 +3236,7 @@
         "Link": "https://5e.tools/items.html#nolzur's%20marvelous%20pigments_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Obviator's Lenses": {
@@ -2885,6 +3245,7 @@
         "Link": "https://5e.tools/items.html#obviator's%20lenses_ai",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Occultant Abacus": {
@@ -2893,6 +3254,7 @@
         "Link": "https://5e.tools/items.html#occultant%20abacus_ai",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Opal of the Ild Rune": {
@@ -2901,6 +3263,7 @@
         "Link": "https://5e.tools/items.html#opal%20of%20the%20ild%20rune_skt",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Direction": {
@@ -2909,6 +3272,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20direction_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Orb of Dragonkind": {
@@ -2917,6 +3281,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20dragonkind_dmg",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Orb of Gonging": {
@@ -2925,6 +3290,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20gonging_wdmm",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Orb of Shielding (Fernian Basalt)": {
@@ -2933,6 +3299,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20shielding%20(fernian%20basalt)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Shielding (Irian Quartz)": {
@@ -2941,6 +3308,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20shielding%20(irian%20quartz)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Shielding (Kythrian Skarn)": {
@@ -2949,6 +3317,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20shielding%20(kythrian%20skarn)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Shielding (Lamannian Flint)": {
@@ -2957,6 +3326,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20shielding%20(lamannian%20flint)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Shielding (Mabaran Obsidian)": {
@@ -2965,6 +3335,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20shielding%20(mabaran%20obsidian)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Shielding (Risian Shale)": {
@@ -2973,6 +3344,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20shielding%20(risian%20shale)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Shielding (Shavarran Chert)": {
@@ -2981,6 +3353,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20shielding%20(shavarran%20chert)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Shielding (Xorian Marble)": {
@@ -2989,6 +3362,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20shielding%20(xorian%20marble)_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orb of Time": {
@@ -2997,6 +3371,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20time_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Orb of the Stein Rune": {
@@ -3005,6 +3380,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20the%20stein%20rune_skt",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Orb of the Veil": {
@@ -3013,6 +3389,7 @@
         "Link": "https://5e.tools/items.html#orb%20of%20the%20veil_egw",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Orc Stone": {
@@ -3021,6 +3398,7 @@
         "Link": "https://5e.tools/items.html#orc%20stone_idrotf",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orrery of the Wanderer": {
@@ -3029,6 +3407,7 @@
         "Link": "https://5e.tools/items.html#orrery%20of%20the%20wanderer_ai",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Orzhov Keyrune": {
@@ -3037,6 +3416,7 @@
         "Link": "https://5e.tools/items.html#orzhov%20keyrune_ggr",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Outer Essence Shard": {
@@ -3045,6 +3425,7 @@
         "Link": "https://5e.tools/items.html#outer%20essence%20shard_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Outer Essence Shard (Chaotic)": {
@@ -3053,6 +3434,7 @@
         "Link": "https://5e.tools/items.html#outer%20essence%20shard%20(chaotic)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Outer Essence Shard (Evil)": {
@@ -3061,6 +3443,7 @@
         "Link": "https://5e.tools/items.html#outer%20essence%20shard%20(evil)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Outer Essence Shard (Good)": {
@@ -3069,6 +3452,7 @@
         "Link": "https://5e.tools/items.html#outer%20essence%20shard%20(good)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Outer Essence Shard (Lawful)": {
@@ -3077,6 +3461,7 @@
         "Link": "https://5e.tools/items.html#outer%20essence%20shard%20(lawful)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Paper Bird": {
@@ -3085,6 +3470,7 @@
         "Link": "https://5e.tools/items.html#paper%20bird_wdh",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pearl of Power": {
@@ -3093,6 +3479,7 @@
         "Link": "https://5e.tools/items.html#pearl%20of%20power_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pennant of the Vind Rune": {
@@ -3101,6 +3488,7 @@
         "Link": "https://5e.tools/items.html#pennant%20of%20the%20vind%20rune_skt",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Peregrine Mask": {
@@ -3109,6 +3497,7 @@
         "Link": "https://5e.tools/items.html#peregrine%20mask_ggr",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Perfume of Bewitching": {
@@ -3117,6 +3506,7 @@
         "Link": "https://5e.tools/items.html#perfume%20of%20bewitching_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Periapt of Health": {
@@ -3125,6 +3515,7 @@
         "Link": "https://5e.tools/items.html#periapt%20of%20health_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Periapt of Proof against Poison": {
@@ -3133,6 +3524,7 @@
         "Link": "https://5e.tools/items.html#periapt%20of%20proof%20against%20poison_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Periapt of Wound Closure": {
@@ -3141,6 +3533,7 @@
         "Link": "https://5e.tools/items.html#periapt%20of%20wound%20closure_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Pipe of Remembrance": {
@@ -3149,6 +3542,7 @@
         "Link": "https://5e.tools/items.html#pipe%20of%20remembrance_gos",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pipe of Smoke Monsters": {
@@ -3157,6 +3551,7 @@
         "Link": "https://5e.tools/items.html#pipe%20of%20smoke%20monsters_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pipes of Haunting": {
@@ -3165,6 +3560,7 @@
         "Link": "https://5e.tools/items.html#pipes%20of%20haunting_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Pipes of the Sewers": {
@@ -3173,6 +3569,7 @@
         "Link": "https://5e.tools/items.html#pipes%20of%20the%20sewers_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Piwafwi (Cloak of Elvenkind)": {
@@ -3181,6 +3578,7 @@
         "Link": "https://5e.tools/items.html#piwafwi%20(cloak%20of%20elvenkind)_oota",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Piwafwi of Fire Resistance": {
@@ -3189,6 +3587,7 @@
         "Link": "https://5e.tools/items.html#piwafwi%20of%20fire%20resistance_oota",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Planecaller's Codex": {
@@ -3197,6 +3596,7 @@
         "Link": "https://5e.tools/items.html#planecaller's%20codex_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Poison Absorbing Tattoo": {
@@ -3205,6 +3605,7 @@
         "Link": "https://5e.tools/items.html#poison%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pole of Angling": {
@@ -3213,6 +3614,7 @@
         "Link": "https://5e.tools/items.html#pole%20of%20angling_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pole of Collapsing": {
@@ -3221,6 +3623,7 @@
         "Link": "https://5e.tools/items.html#pole%20of%20collapsing_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Portable Hole": {
@@ -3229,6 +3632,7 @@
         "Link": "https://5e.tools/items.html#portable%20hole_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Portfolio Keeper": {
@@ -3237,6 +3641,7 @@
         "Link": "https://5e.tools/items.html#portfolio%20keeper_ai",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pot of Awakening": {
@@ -3245,6 +3650,7 @@
         "Link": "https://5e.tools/items.html#pot%20of%20awakening_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pressure Capsule": {
@@ -3253,6 +3659,7 @@
         "Link": "https://5e.tools/items.html#pressure%20capsule_gos",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Professor Orb": {
@@ -3261,6 +3668,7 @@
         "Link": "https://5e.tools/items.html#professor%20orb_wdmm",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Professor Skant": {
@@ -3269,6 +3677,7 @@
         "Link": "https://5e.tools/items.html#professor%20skant_idrotf",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Propeller Helm": {
@@ -3277,6 +3686,7 @@
         "Link": "https://5e.tools/items.html#propeller%20helm_wdmm",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Prosthetic Limb": {
@@ -3285,6 +3695,7 @@
         "Link": "https://5e.tools/items.html#prosthetic%20limb_tce",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Protective Verses": {
@@ -3293,6 +3704,7 @@
         "Link": "https://5e.tools/items.html#protective%20verses_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Psi Crystal": {
@@ -3301,6 +3713,7 @@
         "Link": "https://5e.tools/items.html#psi%20crystal_idrotf",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Psychic Absorbing Tattoo": {
@@ -3309,6 +3722,7 @@
         "Link": "https://5e.tools/items.html#psychic%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pyroconverger": {
@@ -3317,6 +3731,7 @@
         "Link": "https://5e.tools/items.html#pyroconverger_ggr",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Pyxis of Pandemonium": {
@@ -3325,6 +3740,7 @@
         "Link": "https://5e.tools/items.html#pyxis%20of%20pandemonium_mot",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Quaal's Feather Token, Anchor": {
@@ -3333,6 +3749,7 @@
         "Link": "https://5e.tools/items.html#quaal's%20feather%20token%2c%20anchor_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Quaal's Feather Token, Bird": {
@@ -3341,6 +3758,7 @@
         "Link": "https://5e.tools/items.html#quaal's%20feather%20token%2c%20bird_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Quaal's Feather Token, Fan": {
@@ -3349,6 +3767,7 @@
         "Link": "https://5e.tools/items.html#quaal's%20feather%20token%2c%20fan_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Quaal's Feather Token, Swan Boat": {
@@ -3357,6 +3776,7 @@
         "Link": "https://5e.tools/items.html#quaal's%20feather%20token%2c%20swan%20boat_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Quaal's Feather Token, Tree": {
@@ -3365,6 +3785,7 @@
         "Link": "https://5e.tools/items.html#quaal's%20feather%20token%2c%20tree_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Quaal's Feather Token, Whip": {
@@ -3373,6 +3794,7 @@
         "Link": "https://5e.tools/items.html#quaal's%20feather%20token%2c%20whip_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Quiver of Ehlonna": {
@@ -3381,6 +3803,7 @@
         "Link": "https://5e.tools/items.html#quiver%20of%20ehlonna_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Radiant Absorbing Tattoo": {
@@ -3389,6 +3812,7 @@
         "Link": "https://5e.tools/items.html#radiant%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Rakdos Keyrune": {
@@ -3397,6 +3821,7 @@
         "Link": "https://5e.tools/items.html#rakdos%20keyrune_ggr",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Red Dragon Mask": {
@@ -3405,6 +3830,7 @@
         "Link": "https://5e.tools/items.html#red%20dragon%20mask_rotos",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Reincarnation Dust": {
@@ -3413,6 +3839,7 @@
         "Link": "https://5e.tools/items.html#reincarnation%20dust_egw",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Reveler's Concertina": {
@@ -3421,6 +3848,7 @@
         "Link": "https://5e.tools/items.html#reveler's%20concertina_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Risian Pine Rod": {
@@ -3429,6 +3857,7 @@
         "Link": "https://5e.tools/items.html#risian%20pine%20rod_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Risian Pine Staff": {
@@ -3437,6 +3866,7 @@
         "Link": "https://5e.tools/items.html#risian%20pine%20staff_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Risian Pine Wand": {
@@ -3445,6 +3875,7 @@
         "Link": "https://5e.tools/items.html#risian%20pine%20wand_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Risian Shale Crystal": {
@@ -3453,6 +3884,7 @@
         "Link": "https://5e.tools/items.html#risian%20shale%20crystal_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Risian Shale Orb": {
@@ -3461,6 +3893,7 @@
         "Link": "https://5e.tools/items.html#risian%20shale%20orb_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Robe of Eyes": {
@@ -3469,6 +3902,7 @@
         "Link": "https://5e.tools/items.html#robe%20of%20eyes_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Robe of Scintillating Colors": {
@@ -3477,6 +3911,7 @@
         "Link": "https://5e.tools/items.html#robe%20of%20scintillating%20colors_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Robe of Serpents": {
@@ -3485,6 +3920,7 @@
         "Link": "https://5e.tools/items.html#robe%20of%20serpents_skt",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Robe of Stars": {
@@ -3493,6 +3929,7 @@
         "Link": "https://5e.tools/items.html#robe%20of%20stars_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Robe of Summer": {
@@ -3501,6 +3938,7 @@
         "Link": "https://5e.tools/items.html#robe%20of%20summer_tftyp",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Robe of Useful Items": {
@@ -3509,6 +3947,7 @@
         "Link": "https://5e.tools/items.html#robe%20of%20useful%20items_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Robe of the Archmagi": {
@@ -3517,6 +3956,7 @@
         "Link": "https://5e.tools/items.html#robe%20of%20the%20archmagi_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Rope of Climbing": {
@@ -3525,6 +3965,7 @@
         "Link": "https://5e.tools/items.html#rope%20of%20climbing_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Rope of Entanglement": {
@@ -3533,6 +3974,7 @@
         "Link": "https://5e.tools/items.html#rope%20of%20entanglement_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Rope of Mending": {
@@ -3541,6 +3983,7 @@
         "Link": "https://5e.tools/items.html#rope%20of%20mending_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Rotor of Return": {
@@ -3549,6 +3992,7 @@
         "Link": "https://5e.tools/items.html#rotor%20of%20return_ai",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ruby of the War Mage": {
@@ -3557,6 +4001,7 @@
         "Link": "https://5e.tools/items.html#ruby%20of%20the%20war%20mage_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ruinstone": {
@@ -3565,6 +4010,7 @@
         "Link": "https://5e.tools/items.html#ruinstone_dc",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Saddle of the Cavalier": {
@@ -3573,6 +4019,7 @@
         "Link": "https://5e.tools/items.html#saddle%20of%20the%20cavalier_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Scarab of Protection": {
@@ -3581,6 +4028,7 @@
         "Link": "https://5e.tools/items.html#scarab%20of%20protection_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Scribe's Pen": {
@@ -3589,6 +4037,7 @@
         "Link": "https://5e.tools/items.html#scribe's%20pen_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Sekolahian Worshiping Statuette": {
@@ -3597,6 +4046,7 @@
         "Link": "https://5e.tools/items.html#sekolahian%20worshiping%20statuette_gos",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Selesnya Keyrune": {
@@ -3605,6 +4055,7 @@
         "Link": "https://5e.tools/items.html#selesnya%20keyrune_ggr",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Sending Stone": {
@@ -3613,6 +4064,7 @@
         "Link": "https://5e.tools/items.html#sending%20stone_ai",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Sending Stones": {
@@ -3621,6 +4073,7 @@
         "Link": "https://5e.tools/items.html#sending%20stones_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Shadowfell Brand Tattoo": {
@@ -3629,6 +4082,7 @@
         "Link": "https://5e.tools/items.html#shadowfell%20brand%20tattoo_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Shadowfell Shard": {
@@ -3637,6 +4091,7 @@
         "Link": "https://5e.tools/items.html#shadowfell%20shard_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Shard of the Ise Rune": {
@@ -3645,6 +4100,7 @@
         "Link": "https://5e.tools/items.html#shard%20of%20the%20ise%20rune_skt",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Shavarran Birch Rod": {
@@ -3653,6 +4109,7 @@
         "Link": "https://5e.tools/items.html#shavarran%20birch%20rod_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Shavarran Birch Staff": {
@@ -3661,6 +4118,7 @@
         "Link": "https://5e.tools/items.html#shavarran%20birch%20staff_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Shavarran Birch Wand": {
@@ -3669,6 +4127,7 @@
         "Link": "https://5e.tools/items.html#shavarran%20birch%20wand_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Shavarran Chert Crystal": {
@@ -3677,6 +4136,7 @@
         "Link": "https://5e.tools/items.html#shavarran%20chert%20crystal_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Shavarran Chert Orb": {
@@ -3685,6 +4145,7 @@
         "Link": "https://5e.tools/items.html#shavarran%20chert%20orb_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Shield Guardian Amulet": {
@@ -3693,6 +4154,7 @@
         "Link": "https://5e.tools/items.html#shield%20guardian%20amulet_idrotf",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Shiftweave": {
@@ -3701,6 +4163,7 @@
         "Link": "https://5e.tools/items.html#shiftweave_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Simic Keyrune": {
@@ -3709,6 +4172,7 @@
         "Link": "https://5e.tools/items.html#simic%20keyrune_ggr",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Siren Song Lyre": {
@@ -3717,6 +4181,7 @@
         "Link": "https://5e.tools/items.html#siren%20song%20lyre_mot",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Slippers of Spider Climbing": {
@@ -3725,6 +4190,7 @@
         "Link": "https://5e.tools/items.html#slippers%20of%20spider%20climbing_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Smokepowder": {
@@ -3733,6 +4199,7 @@
         "Link": "https://5e.tools/items.html#smokepowder_wdh",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Soul Coin": {
@@ -3741,6 +4208,7 @@
         "Link": "https://5e.tools/items.html#soul%20coin_bgdia",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Sovereign Glue": {
@@ -3749,6 +4217,7 @@
         "Link": "https://5e.tools/items.html#sovereign%20glue_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Speaking Stone": {
@@ -3757,6 +4226,7 @@
         "Link": "https://5e.tools/items.html#speaking%20stone_erlw",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Bottle": {
@@ -3765,6 +4235,7 @@
         "Link": "https://5e.tools/items.html#spell%20bottle_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Amber)": {
@@ -3773,6 +4244,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(amber)_oota",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Bloodstone)": {
@@ -3781,6 +4253,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(bloodstone)_oota",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Diamond)": {
@@ -3789,6 +4262,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(diamond)_oota",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Jade)": {
@@ -3797,6 +4271,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(jade)_oota",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Lapis lazuli)": {
@@ -3805,6 +4280,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(lapis%20lazuli)_oota",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Obsidian)": {
@@ -3813,6 +4289,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(obsidian)_oota",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Quartz)": {
@@ -3821,6 +4298,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(quartz)_oota",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Ruby)": {
@@ -3829,6 +4307,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(ruby)_oota",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Star ruby)": {
@@ -3837,6 +4316,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(star%20ruby)_oota",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spell Gem (Topaz)": {
@@ -3845,6 +4325,7 @@
         "Link": "https://5e.tools/items.html#spell%20gem%20(topaz)_oota",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spellshard": {
@@ -3853,6 +4334,7 @@
         "Link": "https://5e.tools/items.html#spellshard_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spellwrought Tattoo (1st Level)": {
@@ -3861,6 +4343,7 @@
         "Link": "https://5e.tools/items.html#spellwrought%20tattoo%20(1st%20level)_tce",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spellwrought Tattoo (2nd Level)": {
@@ -3869,6 +4352,7 @@
         "Link": "https://5e.tools/items.html#spellwrought%20tattoo%20(2nd%20level)_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spellwrought Tattoo (3rd Level)": {
@@ -3877,6 +4361,7 @@
         "Link": "https://5e.tools/items.html#spellwrought%20tattoo%20(3rd%20level)_tce",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spellwrought Tattoo (4th Level)": {
@@ -3885,6 +4370,7 @@
         "Link": "https://5e.tools/items.html#spellwrought%20tattoo%20(4th%20level)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spellwrought Tattoo (5th Level)": {
@@ -3893,6 +4379,7 @@
         "Link": "https://5e.tools/items.html#spellwrought%20tattoo%20(5th%20level)_tce",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spellwrought Tattoo (Cantrip)": {
@@ -3901,6 +4388,7 @@
         "Link": "https://5e.tools/items.html#spellwrought%20tattoo%20(cantrip)_tce",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Sphere of Annihilation": {
@@ -3909,6 +4397,7 @@
         "Link": "https://5e.tools/items.html#sphere%20of%20annihilation_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spies' Murmur": {
@@ -3917,6 +4406,7 @@
         "Link": "https://5e.tools/items.html#spies'%20murmur_ggr",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Spyglass of Clairvoyance": {
@@ -3925,6 +4415,7 @@
         "Link": "https://5e.tools/items.html#spyglass%20of%20clairvoyance_ai",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Stone of Controlling Earth Elementals": {
@@ -3933,6 +4424,7 @@
         "Link": "https://5e.tools/items.html#stone%20of%20controlling%20earth%20elementals_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Stone of Golorr": {
@@ -3941,6 +4433,7 @@
         "Link": "https://5e.tools/items.html#stone%20of%20golorr_wdh",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Stone of Good Luck": {
@@ -3949,6 +4442,7 @@
         "Link": "https://5e.tools/items.html#stone%20of%20good%20luck_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Stone of Ill Luck": {
@@ -3957,6 +4451,7 @@
         "Link": "https://5e.tools/items.html#stone%20of%20ill%20luck_tftyp",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Stonespeaker Crystal": {
@@ -3965,6 +4460,7 @@
         "Link": "https://5e.tools/items.html#stonespeaker%20crystal_oota",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Stormgirdle": {
@@ -3973,6 +4469,7 @@
         "Link": "https://5e.tools/items.html#stormgirdle_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Talisman of Pure Good": {
@@ -3981,6 +4478,7 @@
         "Link": "https://5e.tools/items.html#talisman%20of%20pure%20good_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Talisman of Ultimate Evil": {
@@ -3989,6 +4487,7 @@
         "Link": "https://5e.tools/items.html#talisman%20of%20ultimate%20evil_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Talisman of the Sphere": {
@@ -3997,6 +4496,7 @@
         "Link": "https://5e.tools/items.html#talisman%20of%20the%20sphere_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Talking Doll": {
@@ -4005,6 +4505,7 @@
         "Link": "https://5e.tools/items.html#talking%20doll_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Tankard of Sobriety": {
@@ -4013,6 +4514,7 @@
         "Link": "https://5e.tools/items.html#tankard%20of%20sobriety_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Teeth of Dahlver-Nar": {
@@ -4021,6 +4523,7 @@
         "Link": "https://5e.tools/items.html#teeth%20of%20dahlver-nar_tce",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "The Codicil of White": {
@@ -4029,6 +4532,7 @@
         "Link": "https://5e.tools/items.html#the%20codicil%20of%20white_idrotf",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Thermal Cube": {
@@ -4037,6 +4541,7 @@
         "Link": "https://5e.tools/items.html#thermal%20cube_idrotf",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Thunder Absorbing Tattoo": {
@@ -4045,6 +4550,7 @@
         "Link": "https://5e.tools/items.html#thunder%20absorbing%20tattoo_tce",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Timepiece of Travel": {
@@ -4053,6 +4559,7 @@
         "Link": "https://5e.tools/items.html#timepiece%20of%20travel_ai",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Tome of Clear Thought": {
@@ -4061,6 +4568,7 @@
         "Link": "https://5e.tools/items.html#tome%20of%20clear%20thought_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Tome of Leadership and Influence": {
@@ -4069,6 +4577,7 @@
         "Link": "https://5e.tools/items.html#tome%20of%20leadership%20and%20influence_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Tome of Understanding": {
@@ -4077,6 +4586,7 @@
         "Link": "https://5e.tools/items.html#tome%20of%20understanding_dmg",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Tome of the Stilled Tongue": {
@@ -4085,6 +4595,7 @@
         "Link": "https://5e.tools/items.html#tome%20of%20the%20stilled%20tongue_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "5 lb."
     },
     "Travel Alchemical Kit": {
@@ -4093,6 +4604,7 @@
         "Link": "https://5e.tools/items.html#travel%20alchemical%20kit_ai",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Uncommon Glamerweave": {
@@ -4101,6 +4613,7 @@
         "Link": "https://5e.tools/items.html#uncommon%20glamerweave_erlw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Universal Solvent": {
@@ -4109,6 +4622,7 @@
         "Link": "https://5e.tools/items.html#universal%20solvent_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Ventilating Lungs": {
@@ -4117,6 +4631,7 @@
         "Link": "https://5e.tools/items.html#ventilating%20lungs_erlw",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Verminshroud": {
@@ -4125,6 +4640,7 @@
         "Link": "https://5e.tools/items.html#verminshroud_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Veteran's Cane": {
@@ -4133,6 +4649,7 @@
         "Link": "https://5e.tools/items.html#veteran's%20cane_xge",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Voting Kit": {
@@ -4141,6 +4658,7 @@
         "Link": "https://5e.tools/items.html#voting%20kit_ai",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Vox Seeker": {
@@ -4149,6 +4667,7 @@
         "Link": "https://5e.tools/items.html#vox%20seeker_egw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Wand Sheath": {
@@ -4157,6 +4676,7 @@
         "Link": "https://5e.tools/items.html#wand%20sheath_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Weird Tank": {
@@ -4165,6 +4685,7 @@
         "Link": "https://5e.tools/items.html#weird%20tank_pota",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Well of Many Worlds": {
@@ -4173,6 +4694,7 @@
         "Link": "https://5e.tools/items.html#well%20of%20many%20worlds_dmg",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Wheel of Stars": {
@@ -4181,6 +4703,7 @@
         "Link": "https://5e.tools/items.html#wheel%20of%20stars_ai",
         "Price": "50000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Wheel of Wind and Water": {
@@ -4189,6 +4712,7 @@
         "Link": "https://5e.tools/items.html#wheel%20of%20wind%20and%20water_erlw",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Whisper Jar": {
@@ -4197,6 +4721,7 @@
         "Link": "https://5e.tools/items.html#whisper%20jar_ai",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "White Dragon Mask": {
@@ -4205,6 +4730,7 @@
         "Link": "https://5e.tools/items.html#white%20dragon%20mask_rotos",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Wind Fan": {
@@ -4213,6 +4739,7 @@
         "Link": "https://5e.tools/items.html#wind%20fan_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Winged Boots": {
@@ -4221,6 +4748,7 @@
         "Link": "https://5e.tools/items.html#winged%20boots_dmg",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Wings of Flying": {
@@ -4229,6 +4757,7 @@
         "Link": "https://5e.tools/items.html#wings%20of%20flying_dmg",
         "Price": "5000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Wingwear": {
@@ -4237,6 +4766,7 @@
         "Link": "https://5e.tools/items.html#wingwear_pota",
         "Price": "500",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Wreath of the Prism": {
@@ -4245,6 +4775,7 @@
         "Link": "https://5e.tools/items.html#wreath%20of%20the%20prism_egw",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Wyrmskull Throne": {
@@ -4253,6 +4784,7 @@
         "Link": "https://5e.tools/items.html#wyrmskull%20throne_skt",
         "Price": "0",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     },
     "Xorian Marble Crystal": {
@@ -4261,6 +4793,7 @@
         "Link": "https://5e.tools/items.html#xorian%20marble%20crystal_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Xorian Marble Orb": {
@@ -4269,6 +4802,7 @@
         "Link": "https://5e.tools/items.html#xorian%20marble%20orb_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "3 lb."
     },
     "Xorian Wenge Rod": {
@@ -4277,6 +4811,7 @@
         "Link": "https://5e.tools/items.html#xorian%20wenge%20rod_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "2 lb."
     },
     "Xorian Wenge Staff": {
@@ -4285,6 +4820,7 @@
         "Link": "https://5e.tools/items.html#xorian%20wenge%20staff_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "4 lb."
     },
     "Xorian Wenge Wand": {
@@ -4293,6 +4829,7 @@
         "Link": "https://5e.tools/items.html#xorian%20wenge%20wand_erlw",
         "Price": "100",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": "1 lb."
     },
     "Ythryn Mythallar": {
@@ -4301,6 +4838,7 @@
         "Link": "https://5e.tools/items.html#ythryn%20mythallar_idrotf",
         "Price": "500000",
         "Slot": "None",
+        "Version": "D&D 5",
         "Weight": ""
     }
 }
