@@ -63,8 +63,11 @@ class Item:
                 s += ' id=\"' + str(MasterID) + '\" style="display: none;"'
                 MasterID += 1
             s += '>' + self.Description + '</span>'
-        s += '</td><td>' + determine_cost(self.Cost) + '</td><td>' + self.Category + '</td></tr>'
+        s += '</td><td>' + determine_cost(self.Cost) + '</td><td>' + str(self.Category) + '</td></tr>'
         return s
+
+    def __repr__(self):
+        return self.Title + ' (' + str(self.Category) + ')'
 
 
 class Book(Item):
@@ -265,104 +268,104 @@ class Art(Item):
         if quality == 0:
             c %= 3
             if c == 0:
-                self.Description = choice(['Silvered', 'Gilded']) + ' ' + choice(['bottle', 'flask', 'jug']) + \
+                self.Title = choice(['Silvered', 'Gilded']) + ' ' + choice(['bottle', 'flask', 'jug']) + \
                                    ' of ' + choice(['dwarven', 'elven', 'Dragonborn']) + ' ' + \
                                    choice(['beer', 'wine', 'ale', 'mead'])
             elif c == 1:
-                self.Description = 'Pair of ' + choice(self.descriptor) + ' ' + choice(self.cloth) + ' gloves'
+                self.Title = 'Pair of ' + choice(self.descriptor) + ' ' + choice(self.cloth) + ' gloves'
             elif c == 2:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.cloth) + ' ' + choice(['hat', 'ribbon'])
+                self.Title = choice(self.descriptor) + ' ' + choice(self.cloth) + ' ' + choice(['hat', 'ribbon'])
         elif quality == 1:
             c %= 6
             if c == 0:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
                                    choice(self.figurine) + ', ' + choice(self.bad_condition)
             elif c == 1:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
                                    choice(self.object) + ', ' + choice(self.bad_condition)
             elif c == 2:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
                                    choice(self.figurine) + ', inlaid with ' + choice(self.filigree[0])
             elif c == 3:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
                                    choice(self.object) + ', inlaid with ' + choice(self.filigree[0])
             elif c == 4:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
                                    choice(self.figurine) + ', set with a' + choice(self.gems[0])
             elif c == 5:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[0]) + ' ' + \
                                    choice(self.object) + ', set with a' + choice(self.gems[0])
         elif quality == 2:
             c %= 2
             if c == 0:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.cloth) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.cloth) + ' ' + \
                                    choice(['cloth', 'cloak']) + ' with ' + choice(self.materials[1]) + ' clasps'
             elif c == 1:
-                self.Description = choice(self.descriptor) + ' belt with a(n) ' + choice(self.materials[1]) + ' buckle'
+                self.Title = choice(self.descriptor) + ' belt with a(n) ' + choice(self.materials[1]) + ' buckle'
         elif quality == 3:
             c %= 8
             if c == 0:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[1]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[1]) + ' ' + \
                                    choice(self.figurine) + ', inlaid with ' + choice(self.filigree[1])
             elif c == 1:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[1]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[1]) + ' ' + \
                                    choice(self.object) + ', inlaid with ' + choice(self.filigree[1])
             elif c == 2:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[1]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[1]) + ' ' + \
                                    choice(self.figurine) + ', set with a' + choice(self.gems[2])
             elif c == 3:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[1]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[1]) + ' ' + \
                                    choice(self.object) + ', set with a' + choice(self.gems[2])
             elif c == 4:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
                                    choice(self.figurine) + ', inlaid with ' + choice(self.filigree[1])
             elif c == 5:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
                                    choice(self.object) + ', inlaid with ' + choice(self.filigree[1])
             elif c == 6:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
                                    choice(self.figurine) + ', set with a' + choice(self.gems[2])
             elif c == 7:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
                                    choice(self.object) + ', set with a' + choice(self.gems[2])
         elif quality == 4:
             c %= 5
             if c == 0:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
                                    choice(self.figurine) + ', inlaid with ' + choice(self.filigree[2])
             elif c == 1:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
                                    choice(self.object) + ', inlaid with ' + choice(self.filigree[2])
             elif c == 2:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
                                    choice(self.figurine) + ', set with a' + choice(self.gems[3])
             elif c == 3:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[2]) + ' ' + \
                                    choice(self.object) + ', set with a' + choice(self.gems[3])
             elif c == 4:
-                self.Description = choice(self.materials[3]) + ' framed painting of ' + choice(self.figurine)
+                self.Title = choice(self.materials[3]) + ' framed painting of ' + choice(self.figurine)
         elif quality == 5:
             c %= 4
             if c == 0:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[3]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[3]) + ' ' + \
                                    choice(self.figurine) + ', inlaid with ' + choice(self.filigree[3]) + ' ' + \
                                    choice(self.magic)
             elif c == 1:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[3]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[3]) + ' ' + \
                                    choice(self.object) + ', inlaid with ' + choice(self.filigree[3]) + ' ' + \
                                    choice(self.magic)
             elif c == 2:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[3]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[3]) + ' ' + \
                                    choice(self.figurine) + ', set with a' + choice(self.gems[3]) + ' ' + \
                                    choice(self.magic)
             elif c == 3:
-                self.Description = choice(self.descriptor) + ' ' + choice(self.materials[3]) + ' ' + \
+                self.Title = choice(self.descriptor) + ' ' + choice(self.materials[3]) + ' ' + \
                                    choice(self.object) + ', set with a' + choice(self.gems[3]) + ' ' + \
                                    choice(self.magic)
-        self.Description = self.Description.title()
+        self.Title = self.Title.title()
         cost_factor = [50, 150, 500, 1000, 5000, 10000, 50000]
         self.Cost = cost_factor[quality + 1]
-        self.Category = str(quality+1)
+        self.Category = 'Grade ' + str(quality) + ' Art'
 
 
 class Wondrous(Item):
