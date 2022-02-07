@@ -16,10 +16,10 @@ settings = {
 
 Beasts = {}
 Poke_moves = {}
-BeastSource = 'D&D 5'
-if BeastSource == 'D&D 5':
+BeastSource = 'All'
+if BeastSource == 'D&D 5' or BeastSource == 'All':
     Beasts.update(json.load(open(os.path.join('generator', 'DMToolkit', 'resource', '5e_beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
-elif BeastSource == 'Pathfinder 1':
+if BeastSource == 'Pathfinder 1' or BeastSource == 'All':
     Beasts.update(json.load(open(os.path.join('generator', 'DMToolkit', 'resource', 'beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
 
 if settings["Allow Pokemon"]:
@@ -88,6 +88,20 @@ def pick_monster(name='', cr=-1.0):
         # Check if Monster is in the Dictionary, if not, it'll return None
         monster = Beasts[name]
     return name, monster
+
+
+def random_monster(version='D&D 5'):
+    print(version)
+    monster = None
+    if BeastSource != 'All' or BeastSource != version:
+        options = list(Beasts.keys())
+        while monster is None:
+            name = choice(options)
+            if Beasts[name]['Version'] == version:
+                monster = Beasts[name]
+        return name, monster
+    else:
+        return monster
 
 
 def roll_hp(string):

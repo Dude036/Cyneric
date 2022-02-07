@@ -63,24 +63,31 @@ def pc_json(request):
 
 
 # Create Monster
-def beast_padding(char):
-    return char
-
-
-def beast_create(content={}, json=True):
-    name, beast = dmk.beasts.beastiary.pick_monster()
+def beast_create(version, content={}, json=True):
+    name, beast = dmk.beasts.beastiary.random_monster(version)
     beast['Name'] = name
     return beast if json else dmk.beasts.beastiary.print_monster((name, beast), to_file=False)
 
 
-def beast(request):
+def beast_5e(request):
     content = {}
-    return HttpResponse(beast_create(content=content, json=False))
+    return HttpResponse(beast_create('D&D 5', content=content, json=False))
 
 
-def beast_json(request):
+def beast_5e_json(request):
     content = {}
-    beast = beast_create(content=content, json=True)
+    beast = beast_create('D&D 5', content=content, json=True)
+    return JsonResponse(beast)
+
+
+def beast_pf1(request):
+    content = {}
+    return HttpResponse(beast_create('Pathfinder 1', content=content, json=False))
+
+
+def beast_pf1_json(request):
+    content = {}
+    beast = beast_create('Pathfinder 1', content=content, json=True)
     return JsonResponse(beast)
 
 
