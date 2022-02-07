@@ -20,7 +20,7 @@ elif SpellSource == 'Pathfinder 1':
 
 def determine_cost(c):
     s = ""
-    if isinstance(type(c), int):
+    if isinstance(c, int):
         s = format(c, ',d') + " gp"
     else:
         if int(c) > 0:
