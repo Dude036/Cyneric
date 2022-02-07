@@ -62,6 +62,28 @@ def pc_json(request):
     return JsonResponse(person)
 
 
+# Create Monster
+def beast_padding(char):
+    return char
+
+
+def beast_create(content={}, json=True):
+    name, beast = dmk.beasts.beastiary.pick_monster()
+    beast['Name'] = name
+    return beast if json else dmk.beasts.beastiary.print_monster((name, beast), to_file=False)
+
+
+def beast(request):
+    content = {}
+    return HttpResponse(beast_create(content=content, json=False))
+
+
+def beast_json(request):
+    content = {}
+    beast = beast_create(content=content, json=True)
+    return JsonResponse(beast)
+
+
 # Create Random Weapon
 # Create Random Firearm
 # Create Random Armor
