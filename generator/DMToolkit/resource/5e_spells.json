@@ -14,7 +14,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Absorb Elements": {
         "altname": "absorb-elements",
@@ -31,7 +31,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Acid Splash": {
         "altname": "acid-splash",
@@ -48,7 +48,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Acid Stream": {
         "altname": "acid-stream",
@@ -65,7 +65,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Aganazzar's Scorcher": {
         "altname": "aganazzar's-scorcher",
@@ -82,7 +82,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Aid": {
         "altname": "aid",
@@ -99,7 +99,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Alarm": {
         "altname": "alarm",
@@ -116,7 +116,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Alter Self": {
         "altname": "alter-self",
@@ -133,7 +133,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Animal Friendship": {
         "altname": "animal-friendship",
@@ -150,7 +150,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Animal Messenger": {
         "altname": "animal-messenger",
@@ -167,7 +167,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Animal Shapes": {
         "altname": "animal-shapes",
@@ -184,7 +184,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Animate Dead": {
         "altname": "animate-dead",
@@ -201,7 +201,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Animate Objects": {
         "altname": "animate-objects",
@@ -218,7 +218,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Antilife Shell": {
         "altname": "antilife-shell",
@@ -235,7 +235,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Antimagic Field": {
         "altname": "antimagic-field",
@@ -252,7 +252,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Antipathy/Sympathy": {
         "altname": "antipathy/sympathy",
@@ -269,7 +269,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Arcane Eye": {
         "altname": "arcane-eye",
@@ -286,7 +286,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Arcane Gate": {
         "altname": "arcane-gate",
@@ -303,7 +303,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Arcane Hacking (UA)": {
         "altname": "arcane-hacking-(ua)",
@@ -320,7 +320,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Arcane Lock": {
         "altname": "arcane-lock",
@@ -337,7 +337,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Arcane Weapon": {
         "altname": "arcane-weapon",
@@ -354,7 +354,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Armor of Agathys": {
         "altname": "armor-of-agathys",
@@ -371,7 +371,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Arms of Hadar": {
         "altname": "arms-of-hadar",
@@ -388,7 +388,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Astral Projection": {
         "altname": "astral-projection",
@@ -405,7 +405,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Augury": {
         "altname": "augury",
@@ -422,7 +422,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Aura of Life": {
         "altname": "aura-of-life",
@@ -439,7 +439,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Aura of Purity": {
         "altname": "aura-of-purity",
@@ -456,7 +456,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Aura of Vitality": {
         "altname": "aura-of-vitality",
@@ -473,7 +473,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Awaken": {
         "altname": "awaken",
@@ -490,7 +490,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Bane": {
         "altname": "bane",
@@ -507,7 +507,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Banishing Smite": {
         "altname": "banishing-smite",
@@ -524,7 +524,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Banishment": {
         "altname": "banishment",
@@ -541,7 +541,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Barkskin": {
         "altname": "barkskin",
@@ -558,7 +558,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Beacon of Hope": {
         "altname": "beacon-of-hope",
@@ -575,7 +575,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Beast Bond": {
         "altname": "beast-bond",
@@ -592,7 +592,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Beast Sense": {
         "altname": "beast-sense",
@@ -609,7 +609,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Bestow Curse": {
         "altname": "bestow-curse",
@@ -626,7 +626,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Bigby's Hand": {
         "altname": "bigby's-hand",
@@ -643,7 +643,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Blade Barrier": {
         "altname": "blade-barrier",
@@ -660,7 +660,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Blade Ward": {
         "altname": "blade-ward",
@@ -677,7 +677,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Blade of Disaster": {
         "altname": "blade-of-disaster",
@@ -694,7 +694,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Bless": {
         "altname": "bless",
@@ -711,7 +711,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Blight": {
         "altname": "blight",
@@ -728,7 +728,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Blinding Smite": {
         "altname": "blinding-smite",
@@ -745,7 +745,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Blindness/Deafness": {
         "altname": "blindness/deafness",
@@ -762,7 +762,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Blink": {
         "altname": "blink",
@@ -779,7 +779,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Blur": {
         "altname": "blur",
@@ -796,7 +796,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Bones of the Earth": {
         "altname": "bones-of-the-earth",
@@ -813,7 +813,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Booming Blade": {
         "altname": "booming-blade",
@@ -830,7 +830,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Branding Smite": {
         "altname": "branding-smite",
@@ -847,7 +847,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Burning Hands": {
         "altname": "burning-hands",
@@ -864,7 +864,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Call Lightning": {
         "altname": "call-lightning",
@@ -881,7 +881,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Calm Emotions": {
         "altname": "calm-emotions",
@@ -898,7 +898,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Catapult": {
         "altname": "catapult",
@@ -915,7 +915,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Catnap": {
         "altname": "catnap",
@@ -932,7 +932,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Cause Fear": {
         "altname": "cause-fear",
@@ -949,7 +949,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Cause Fear (UA)": {
         "altname": "cause-fear-(ua)",
@@ -966,7 +966,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ceremony": {
         "altname": "ceremony",
@@ -983,7 +983,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ceremony (UA)": {
         "altname": "ceremony-(ua)",
@@ -1000,7 +1000,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Chain Lightning": {
         "altname": "chain-lightning",
@@ -1017,7 +1017,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Chaos Bolt": {
         "altname": "chaos-bolt",
@@ -1034,7 +1034,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Chaos Bolt (UA)": {
         "altname": "chaos-bolt-(ua)",
@@ -1051,7 +1051,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Charm Monster": {
         "altname": "charm-monster",
@@ -1068,7 +1068,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Charm Person": {
         "altname": "charm-person",
@@ -1085,7 +1085,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Chill Touch": {
         "altname": "chill-touch",
@@ -1102,7 +1102,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Chromatic Orb": {
         "altname": "chromatic-orb",
@@ -1119,7 +1119,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Circle of Death": {
         "altname": "circle-of-death",
@@ -1136,7 +1136,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Circle of Power": {
         "altname": "circle-of-power",
@@ -1153,7 +1153,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Clairvoyance": {
         "altname": "clairvoyance",
@@ -1170,7 +1170,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Clone": {
         "altname": "clone",
@@ -1187,7 +1187,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Cloud of Daggers": {
         "altname": "cloud-of-daggers",
@@ -1204,7 +1204,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Cloudkill": {
         "altname": "cloudkill",
@@ -1221,7 +1221,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Color Spray": {
         "altname": "color-spray",
@@ -1238,7 +1238,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Command": {
         "altname": "command",
@@ -1255,7 +1255,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Commune": {
         "altname": "commune",
@@ -1272,7 +1272,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Commune with City (UA)": {
         "altname": "commune-with-city-(ua)",
@@ -1289,7 +1289,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Commune with Nature": {
         "altname": "commune-with-nature",
@@ -1306,7 +1306,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Compelled Duel": {
         "altname": "compelled-duel",
@@ -1323,7 +1323,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Comprehend Languages": {
         "altname": "comprehend-languages",
@@ -1340,7 +1340,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Compulsion": {
         "altname": "compulsion",
@@ -1357,7 +1357,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Cone of Cold": {
         "altname": "cone-of-cold",
@@ -1374,7 +1374,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Confusion": {
         "altname": "confusion",
@@ -1391,7 +1391,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Animals": {
         "altname": "conjure-animals",
@@ -1408,7 +1408,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Barlgura (UA)": {
         "altname": "conjure-barlgura-(ua)",
@@ -1425,7 +1425,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Barrage": {
         "altname": "conjure-barrage",
@@ -1442,7 +1442,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Celestial": {
         "altname": "conjure-celestial",
@@ -1459,7 +1459,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Elemental": {
         "altname": "conjure-elemental",
@@ -1476,7 +1476,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Fey": {
         "altname": "conjure-fey",
@@ -1493,7 +1493,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Hezrou (UA)": {
         "altname": "conjure-hezrou-(ua)",
@@ -1510,7 +1510,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Knowbot (UA)": {
         "altname": "conjure-knowbot-(ua)",
@@ -1527,7 +1527,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Lesser Demon (UA)": {
         "altname": "conjure-lesser-demon-(ua)",
@@ -1544,7 +1544,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Minor Elementals": {
         "altname": "conjure-minor-elementals",
@@ -1561,7 +1561,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Shadow Demon (UA)": {
         "altname": "conjure-shadow-demon-(ua)",
@@ -1578,7 +1578,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Volley": {
         "altname": "conjure-volley",
@@ -1595,7 +1595,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Vrock (UA)": {
         "altname": "conjure-vrock-(ua)",
@@ -1612,7 +1612,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Conjure Woodland Beings": {
         "altname": "conjure-woodland-beings",
@@ -1629,7 +1629,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Contact Other Plane": {
         "altname": "contact-other-plane",
@@ -1646,7 +1646,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Contagion": {
         "altname": "contagion",
@@ -1663,7 +1663,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Contingency": {
         "altname": "contingency",
@@ -1680,7 +1680,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Continual Flame": {
         "altname": "continual-flame",
@@ -1697,7 +1697,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Control Flames": {
         "altname": "control-flames",
@@ -1714,7 +1714,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Control Water": {
         "altname": "control-water",
@@ -1731,7 +1731,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Control Weather": {
         "altname": "control-weather",
@@ -1748,7 +1748,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Control Winds": {
         "altname": "control-winds",
@@ -1765,7 +1765,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Cordon of Arrows": {
         "altname": "cordon-of-arrows",
@@ -1782,7 +1782,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Counterspell": {
         "altname": "counterspell",
@@ -1799,7 +1799,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Create Bonfire": {
         "altname": "create-bonfire",
@@ -1816,7 +1816,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Create Food and Water": {
         "altname": "create-food-and-water",
@@ -1833,7 +1833,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Create Homunculus": {
         "altname": "create-homunculus",
@@ -1850,7 +1850,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Create Magen": {
         "altname": "create-magen",
@@ -1867,7 +1867,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Create Undead": {
         "altname": "create-undead",
@@ -1884,7 +1884,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Create or Destroy Water": {
         "altname": "create-or-destroy-water",
@@ -1901,7 +1901,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Creation": {
         "altname": "creation",
@@ -1918,7 +1918,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Crown of Madness": {
         "altname": "crown-of-madness",
@@ -1935,7 +1935,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Crown of Stars": {
         "altname": "crown-of-stars",
@@ -1952,7 +1952,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Crusader's Mantle": {
         "altname": "crusader's-mantle",
@@ -1969,7 +1969,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Cure Wounds": {
         "altname": "cure-wounds",
@@ -1986,7 +1986,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dancing Lights": {
         "altname": "dancing-lights",
@@ -2003,7 +2003,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Danse Macabre": {
         "altname": "danse-macabre",
@@ -2020,7 +2020,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dark Star": {
         "altname": "dark-star",
@@ -2037,7 +2037,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Darkness": {
         "altname": "darkness",
@@ -2054,7 +2054,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Darkvision": {
         "altname": "darkvision",
@@ -2071,7 +2071,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dawn": {
         "altname": "dawn",
@@ -2088,7 +2088,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Daylight": {
         "altname": "daylight",
@@ -2105,7 +2105,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Death Ward": {
         "altname": "death-ward",
@@ -2122,7 +2122,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Delayed Blast Fireball": {
         "altname": "delayed-blast-fireball",
@@ -2139,7 +2139,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Demiplane": {
         "altname": "demiplane",
@@ -2156,7 +2156,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Destructive Wave": {
         "altname": "destructive-wave",
@@ -2173,7 +2173,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Detect Evil and Good": {
         "altname": "detect-evil-and-good",
@@ -2190,7 +2190,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Detect Magic": {
         "altname": "detect-magic",
@@ -2207,7 +2207,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Detect Poison and Disease": {
         "altname": "detect-poison-and-disease",
@@ -2224,7 +2224,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Detect Thoughts": {
         "altname": "detect-thoughts",
@@ -2241,7 +2241,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Digital Phantom (UA)": {
         "altname": "digital-phantom-(ua)",
@@ -2258,7 +2258,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dimension Door": {
         "altname": "dimension-door",
@@ -2275,7 +2275,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Disguise Self": {
         "altname": "disguise-self",
@@ -2292,7 +2292,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Disintegrate": {
         "altname": "disintegrate",
@@ -2309,7 +2309,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dispel Evil and Good": {
         "altname": "dispel-evil-and-good",
@@ -2326,7 +2326,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dispel Magic": {
         "altname": "dispel-magic",
@@ -2343,7 +2343,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dissonant Whispers": {
         "altname": "dissonant-whispers",
@@ -2360,7 +2360,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Distort Value": {
         "altname": "distort-value",
@@ -2377,7 +2377,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Divination": {
         "altname": "divination",
@@ -2394,7 +2394,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Divine Favor": {
         "altname": "divine-favor",
@@ -2411,7 +2411,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Divine Word": {
         "altname": "divine-word",
@@ -2428,7 +2428,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dominate Beast": {
         "altname": "dominate-beast",
@@ -2445,7 +2445,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dominate Monster": {
         "altname": "dominate-monster",
@@ -2462,7 +2462,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dominate Person": {
         "altname": "dominate-person",
@@ -2479,7 +2479,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dragon's Breath": {
         "altname": "dragon's-breath",
@@ -2496,7 +2496,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Drawmij's Instant Summons": {
         "altname": "drawmij's-instant-summons",
@@ -2513,7 +2513,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dream": {
         "altname": "dream",
@@ -2530,7 +2530,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Druid Grove": {
         "altname": "druid-grove",
@@ -2547,7 +2547,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Druidcraft": {
         "altname": "druidcraft",
@@ -2564,7 +2564,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Dust Devil": {
         "altname": "dust-devil",
@@ -2581,7 +2581,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Earth Tremor": {
         "altname": "earth-tremor",
@@ -2598,7 +2598,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Earthbind": {
         "altname": "earthbind",
@@ -2615,7 +2615,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Earthquake": {
         "altname": "earthquake",
@@ -2632,7 +2632,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ego Whip": {
         "altname": "ego-whip",
@@ -2649,7 +2649,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Eldritch Blast": {
         "altname": "eldritch-blast",
@@ -2666,7 +2666,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Elemental Bane": {
         "altname": "elemental-bane",
@@ -2683,7 +2683,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Elemental Weapon": {
         "altname": "elemental-weapon",
@@ -2700,7 +2700,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Encode Thoughts": {
         "altname": "encode-thoughts",
@@ -2717,7 +2717,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Enemies Abound": {
         "altname": "enemies-abound",
@@ -2734,7 +2734,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Enervation": {
         "altname": "enervation",
@@ -2751,7 +2751,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Enhance Ability": {
         "altname": "enhance-ability",
@@ -2768,7 +2768,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Enlarge/Reduce": {
         "altname": "enlarge/reduce",
@@ -2785,7 +2785,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ensnaring Strike": {
         "altname": "ensnaring-strike",
@@ -2802,7 +2802,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Entangle": {
         "altname": "entangle",
@@ -2819,7 +2819,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Enter Mindscape": {
         "altname": "enter-mindscape",
@@ -2836,7 +2836,7 @@
         "school": "Psionic",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Enthrall": {
         "altname": "enthrall",
@@ -2853,7 +2853,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Erupting Earth": {
         "altname": "erupting-earth",
@@ -2870,7 +2870,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Etherealness": {
         "altname": "etherealness",
@@ -2887,7 +2887,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Evard's Black Tentacles": {
         "altname": "evard's-black-tentacles",
@@ -2904,7 +2904,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Expeditious Retreat": {
         "altname": "expeditious-retreat",
@@ -2921,7 +2921,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Eyebite": {
         "altname": "eyebite",
@@ -2938,7 +2938,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fabricate": {
         "altname": "fabricate",
@@ -2955,7 +2955,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Faerie Fire": {
         "altname": "faerie-fire",
@@ -2972,7 +2972,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "False Life": {
         "altname": "false-life",
@@ -2989,7 +2989,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Far Step": {
         "altname": "far-step",
@@ -3006,7 +3006,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fast Friends": {
         "altname": "fast-friends",
@@ -3023,7 +3023,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fear": {
         "altname": "fear",
@@ -3040,7 +3040,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Feather Fall": {
         "altname": "feather-fall",
@@ -3057,7 +3057,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Feeblemind": {
         "altname": "feeblemind",
@@ -3074,7 +3074,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Feign Death": {
         "altname": "feign-death",
@@ -3091,7 +3091,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Find Familiar": {
         "altname": "find-familiar",
@@ -3108,7 +3108,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Find Greater Steed": {
         "altname": "find-greater-steed",
@@ -3125,7 +3125,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Find Steed": {
         "altname": "find-steed",
@@ -3142,7 +3142,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Find Traps": {
         "altname": "find-traps",
@@ -3159,7 +3159,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Find Vehicle (UA)": {
         "altname": "find-vehicle-(ua)",
@@ -3176,7 +3176,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Find the Path": {
         "altname": "find-the-path",
@@ -3193,7 +3193,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Finger of Death": {
         "altname": "finger-of-death",
@@ -3210,7 +3210,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fire Bolt": {
         "altname": "fire-bolt",
@@ -3227,7 +3227,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fire Shield": {
         "altname": "fire-shield",
@@ -3244,7 +3244,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fire Storm": {
         "altname": "fire-storm",
@@ -3261,7 +3261,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fireball": {
         "altname": "fireball",
@@ -3278,7 +3278,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Flame Arrows": {
         "altname": "flame-arrows",
@@ -3295,7 +3295,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Flame Blade": {
         "altname": "flame-blade",
@@ -3312,7 +3312,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Flame Strike": {
         "altname": "flame-strike",
@@ -3329,7 +3329,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Flaming Sphere": {
         "altname": "flaming-sphere",
@@ -3346,7 +3346,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Flesh to Stone": {
         "altname": "flesh-to-stone",
@@ -3363,7 +3363,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Flock of Familiars": {
         "altname": "flock-of-familiars",
@@ -3380,7 +3380,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fly": {
         "altname": "fly",
@@ -3397,7 +3397,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fog Cloud": {
         "altname": "fog-cloud",
@@ -3414,7 +3414,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Forbiddance": {
         "altname": "forbiddance",
@@ -3431,7 +3431,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Forcecage": {
         "altname": "forcecage",
@@ -3448,7 +3448,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Foresight": {
         "altname": "foresight",
@@ -3465,7 +3465,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Fortune's Favor": {
         "altname": "fortune's-favor",
@@ -3482,7 +3482,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Freedom of Movement": {
         "altname": "freedom-of-movement",
@@ -3499,7 +3499,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Friends": {
         "altname": "friends",
@@ -3516,7 +3516,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Frost Fingers": {
         "altname": "frost-fingers",
@@ -3533,7 +3533,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Frostbite": {
         "altname": "frostbite",
@@ -3550,7 +3550,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Galder's Speedy Courier": {
         "altname": "galder's-speedy-courier",
@@ -3567,7 +3567,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Galder's Tower": {
         "altname": "galder's-tower",
@@ -3584,7 +3584,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gaseous Form": {
         "altname": "gaseous-form",
@@ -3601,7 +3601,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gate": {
         "altname": "gate",
@@ -3618,7 +3618,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Geas": {
         "altname": "geas",
@@ -3635,7 +3635,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gentle Repose": {
         "altname": "gentle-repose",
@@ -3652,7 +3652,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Giant Insect": {
         "altname": "giant-insect",
@@ -3669,7 +3669,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gift of Alacrity": {
         "altname": "gift-of-alacrity",
@@ -3686,7 +3686,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gift of Gab": {
         "altname": "gift-of-gab",
@@ -3703,7 +3703,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Glibness": {
         "altname": "glibness",
@@ -3720,7 +3720,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Globe of Invulnerability": {
         "altname": "globe-of-invulnerability",
@@ -3737,7 +3737,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Glyph of Warding": {
         "altname": "glyph-of-warding",
@@ -3754,7 +3754,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Goodberry": {
         "altname": "goodberry",
@@ -3771,7 +3771,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Grasping Vine": {
         "altname": "grasping-vine",
@@ -3788,7 +3788,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gravity Fissure": {
         "altname": "gravity-fissure",
@@ -3805,7 +3805,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gravity Sinkhole": {
         "altname": "gravity-sinkhole",
@@ -3822,7 +3822,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Grease": {
         "altname": "grease",
@@ -3839,7 +3839,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Greater Invisibility": {
         "altname": "greater-invisibility",
@@ -3856,7 +3856,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Greater Restoration": {
         "altname": "greater-restoration",
@@ -3873,7 +3873,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Green-Flame Blade": {
         "altname": "green-flame-blade",
@@ -3890,7 +3890,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Guardian of Faith": {
         "altname": "guardian-of-faith",
@@ -3907,7 +3907,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Guardian of Nature": {
         "altname": "guardian-of-nature",
@@ -3924,7 +3924,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Guards and Wards": {
         "altname": "guards-and-wards",
@@ -3941,7 +3941,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Guidance": {
         "altname": "guidance",
@@ -3958,7 +3958,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Guiding Bolt": {
         "altname": "guiding-bolt",
@@ -3975,7 +3975,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Guiding Hand (UA)": {
         "altname": "guiding-hand-(ua)",
@@ -3992,7 +3992,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gust": {
         "altname": "gust",
@@ -4009,7 +4009,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Gust of Wind": {
         "altname": "gust-of-wind",
@@ -4026,7 +4026,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hail of Thorns": {
         "altname": "hail-of-thorns",
@@ -4043,7 +4043,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hallow": {
         "altname": "hallow",
@@ -4060,7 +4060,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hallucinatory Terrain": {
         "altname": "hallucinatory-terrain",
@@ -4077,7 +4077,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hand of Radiance (UA)": {
         "altname": "hand-of-radiance-(ua)",
@@ -4094,7 +4094,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Harm": {
         "altname": "harm",
@@ -4111,7 +4111,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Haste": {
         "altname": "haste",
@@ -4128,7 +4128,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Haywire (UA)": {
         "altname": "haywire-(ua)",
@@ -4145,7 +4145,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Heal": {
         "altname": "heal",
@@ -4162,7 +4162,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Healing Elixir (UA)": {
         "altname": "healing-elixir-(ua)",
@@ -4179,7 +4179,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Healing Spirit": {
         "altname": "healing-spirit",
@@ -4196,7 +4196,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Healing Word": {
         "altname": "healing-word",
@@ -4213,7 +4213,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Heat Metal": {
         "altname": "heat-metal",
@@ -4230,7 +4230,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hellish Rebuke": {
         "altname": "hellish-rebuke",
@@ -4247,7 +4247,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Heroes' Feast": {
         "altname": "heroes'-feast",
@@ -4264,7 +4264,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Heroism": {
         "altname": "heroism",
@@ -4281,7 +4281,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hex": {
         "altname": "hex",
@@ -4298,7 +4298,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hold Monster": {
         "altname": "hold-monster",
@@ -4315,7 +4315,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hold Person": {
         "altname": "hold-person",
@@ -4332,7 +4332,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Holy Aura": {
         "altname": "holy-aura",
@@ -4349,7 +4349,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Holy Weapon": {
         "altname": "holy-weapon",
@@ -4366,7 +4366,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hunger of Hadar": {
         "altname": "hunger-of-hadar",
@@ -4383,7 +4383,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hunter's Mark": {
         "altname": "hunter's-mark",
@@ -4400,7 +4400,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Hypnotic Pattern": {
         "altname": "hypnotic-pattern",
@@ -4417,7 +4417,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ice Knife": {
         "altname": "ice-knife",
@@ -4434,7 +4434,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ice Storm": {
         "altname": "ice-storm",
@@ -4451,7 +4451,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Id Insinuation": {
         "altname": "id-insinuation",
@@ -4468,7 +4468,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Identify": {
         "altname": "identify",
@@ -4485,7 +4485,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Illusory Dragon": {
         "altname": "illusory-dragon",
@@ -4502,7 +4502,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Illusory Script": {
         "altname": "illusory-script",
@@ -4519,7 +4519,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Immolation": {
         "altname": "immolation",
@@ -4536,7 +4536,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Immovable Object": {
         "altname": "immovable-object",
@@ -4553,7 +4553,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Imprisonment": {
         "altname": "imprisonment",
@@ -4570,7 +4570,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Incendiary Cloud": {
         "altname": "incendiary-cloud",
@@ -4587,7 +4587,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Incite Greed": {
         "altname": "incite-greed",
@@ -4604,7 +4604,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Infallible Relay (UA)": {
         "altname": "infallible-relay-(ua)",
@@ -4621,7 +4621,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Infernal Calling": {
         "altname": "infernal-calling",
@@ -4638,7 +4638,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Infestation": {
         "altname": "infestation",
@@ -4655,7 +4655,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Infestation (UA)": {
         "altname": "infestation-(ua)",
@@ -4672,7 +4672,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Inflict Wounds": {
         "altname": "inflict-wounds",
@@ -4689,7 +4689,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Insect Plague": {
         "altname": "insect-plague",
@@ -4706,7 +4706,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Intellect Fortress": {
         "altname": "intellect-fortress",
@@ -4723,7 +4723,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Investiture of Flame": {
         "altname": "investiture-of-flame",
@@ -4740,7 +4740,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Investiture of Ice": {
         "altname": "investiture-of-ice",
@@ -4757,7 +4757,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Investiture of Stone": {
         "altname": "investiture-of-stone",
@@ -4774,7 +4774,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Investiture of Wind": {
         "altname": "investiture-of-wind",
@@ -4791,7 +4791,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Invisibility": {
         "altname": "invisibility",
@@ -4808,7 +4808,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Invisibility to Cameras (UA)": {
         "altname": "invisibility-to-cameras-(ua)",
@@ -4825,7 +4825,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Invulnerability": {
         "altname": "invulnerability",
@@ -4842,7 +4842,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Jim's Glowing Coin": {
         "altname": "jim's-glowing-coin",
@@ -4859,7 +4859,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Jim's Magic Missile": {
         "altname": "jim's-magic-missile",
@@ -4876,7 +4876,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Jump": {
         "altname": "jump",
@@ -4893,7 +4893,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Knock": {
         "altname": "knock",
@@ -4910,7 +4910,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Legend Lore": {
         "altname": "legend-lore",
@@ -4927,7 +4927,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Leomund's Secret Chest": {
         "altname": "leomund's-secret-chest",
@@ -4944,7 +4944,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Leomund's Tiny Hut": {
         "altname": "leomund's-tiny-hut",
@@ -4961,7 +4961,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Lesser Restoration": {
         "altname": "lesser-restoration",
@@ -4978,7 +4978,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Levitate": {
         "altname": "levitate",
@@ -4995,7 +4995,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Life Transference": {
         "altname": "life-transference",
@@ -5012,7 +5012,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Light": {
         "altname": "light",
@@ -5029,7 +5029,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Lightning Arrow": {
         "altname": "lightning-arrow",
@@ -5046,7 +5046,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Lightning Bolt": {
         "altname": "lightning-bolt",
@@ -5063,7 +5063,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Lightning Lure": {
         "altname": "lightning-lure",
@@ -5080,7 +5080,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Locate Animals or Plants": {
         "altname": "locate-animals-or-plants",
@@ -5097,7 +5097,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Locate Creature": {
         "altname": "locate-creature",
@@ -5114,7 +5114,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Locate Object": {
         "altname": "locate-object",
@@ -5131,7 +5131,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Longstrider": {
         "altname": "longstrider",
@@ -5148,7 +5148,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Maddening Darkness": {
         "altname": "maddening-darkness",
@@ -5165,7 +5165,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Maelstrom": {
         "altname": "maelstrom",
@@ -5182,7 +5182,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mage Armor": {
         "altname": "mage-armor",
@@ -5199,7 +5199,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mage Hand": {
         "altname": "mage-hand",
@@ -5216,7 +5216,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Magic Circle": {
         "altname": "magic-circle",
@@ -5233,7 +5233,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Magic Jar": {
         "altname": "magic-jar",
@@ -5250,7 +5250,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Magic Missile": {
         "altname": "magic-missile",
@@ -5267,7 +5267,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Magic Mouth": {
         "altname": "magic-mouth",
@@ -5284,7 +5284,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Magic Stone": {
         "altname": "magic-stone",
@@ -5301,7 +5301,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Magic Weapon": {
         "altname": "magic-weapon",
@@ -5318,7 +5318,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Magnify Gravity": {
         "altname": "magnify-gravity",
@@ -5335,7 +5335,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Major Image": {
         "altname": "major-image",
@@ -5352,7 +5352,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mass Cure Wounds": {
         "altname": "mass-cure-wounds",
@@ -5369,7 +5369,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mass Heal": {
         "altname": "mass-heal",
@@ -5386,7 +5386,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mass Healing Word": {
         "altname": "mass-healing-word",
@@ -5403,7 +5403,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mass Polymorph": {
         "altname": "mass-polymorph",
@@ -5420,7 +5420,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mass Suggestion": {
         "altname": "mass-suggestion",
@@ -5437,7 +5437,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Maximilian's Earthen Grasp": {
         "altname": "maximilian's-earthen-grasp",
@@ -5454,7 +5454,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Maze": {
         "altname": "maze",
@@ -5471,7 +5471,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Meld into Stone": {
         "altname": "meld-into-stone",
@@ -5488,7 +5488,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Melf's Acid Arrow": {
         "altname": "melf's-acid-arrow",
@@ -5505,7 +5505,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Melf's Minute Meteors": {
         "altname": "melf's-minute-meteors",
@@ -5522,7 +5522,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mending": {
         "altname": "mending",
@@ -5539,7 +5539,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mental Barrier": {
         "altname": "mental-barrier",
@@ -5556,7 +5556,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mental Prison": {
         "altname": "mental-prison",
@@ -5573,7 +5573,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Message": {
         "altname": "message",
@@ -5590,7 +5590,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Meteor Swarm": {
         "altname": "meteor-swarm",
@@ -5607,7 +5607,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mighty Fortress": {
         "altname": "mighty-fortress",
@@ -5624,7 +5624,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mind Blank": {
         "altname": "mind-blank",
@@ -5641,7 +5641,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mind Fist": {
         "altname": "mind-fist",
@@ -5658,7 +5658,7 @@
         "school": "Psionic",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mind Sliver": {
         "altname": "mind-sliver",
@@ -5675,7 +5675,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mind Spike": {
         "altname": "mind-spike",
@@ -5692,7 +5692,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mind Strike": {
         "altname": "mind-strike",
@@ -5709,7 +5709,7 @@
         "school": "Psionic",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mind Thrust": {
         "altname": "mind-thrust",
@@ -5726,7 +5726,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Minor Illusion": {
         "altname": "minor-illusion",
@@ -5743,7 +5743,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mirage Arcane": {
         "altname": "mirage-arcane",
@@ -5760,7 +5760,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mirror Image": {
         "altname": "mirror-image",
@@ -5777,7 +5777,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mislead": {
         "altname": "mislead",
@@ -5794,7 +5794,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Misty Step": {
         "altname": "misty-step",
@@ -5811,7 +5811,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Modify Memory": {
         "altname": "modify-memory",
@@ -5828,7 +5828,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mold Earth": {
         "altname": "mold-earth",
@@ -5845,7 +5845,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Moonbeam": {
         "altname": "moonbeam",
@@ -5862,7 +5862,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mordenkainen's Faithful Hound": {
         "altname": "mordenkainen's-faithful-hound",
@@ -5879,7 +5879,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mordenkainen's Magnificent Mansion": {
         "altname": "mordenkainen's-magnificent-mansion",
@@ -5896,7 +5896,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mordenkainen's Private Sanctum": {
         "altname": "mordenkainen's-private-sanctum",
@@ -5913,7 +5913,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Mordenkainen's Sword": {
         "altname": "mordenkainen's-sword",
@@ -5930,7 +5930,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Motivational Speech": {
         "altname": "motivational-speech",
@@ -5947,7 +5947,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Move Earth": {
         "altname": "move-earth",
@@ -5964,7 +5964,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Negative Energy Flood": {
         "altname": "negative-energy-flood",
@@ -5981,7 +5981,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Nondetection": {
         "altname": "nondetection",
@@ -5998,7 +5998,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Nystul's Magic Aura": {
         "altname": "nystul's-magic-aura",
@@ -6015,7 +6015,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "On/Off (UA)": {
         "altname": "on/off-(ua)",
@@ -6032,7 +6032,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Otherworldly Form": {
         "altname": "otherworldly-form",
@@ -6049,7 +6049,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Otiluke's Freezing Sphere": {
         "altname": "otiluke's-freezing-sphere",
@@ -6066,7 +6066,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Otiluke's Resilient Sphere": {
         "altname": "otiluke's-resilient-sphere",
@@ -6083,7 +6083,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Otto's Irresistible Dance": {
         "altname": "otto's-irresistible-dance",
@@ -6100,7 +6100,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Pass without Trace": {
         "altname": "pass-without-trace",
@@ -6117,7 +6117,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Passwall": {
         "altname": "passwall",
@@ -6134,7 +6134,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Phantasmal Force": {
         "altname": "phantasmal-force",
@@ -6151,7 +6151,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Phantasmal Killer": {
         "altname": "phantasmal-killer",
@@ -6168,7 +6168,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Phantom Steed": {
         "altname": "phantom-steed",
@@ -6185,7 +6185,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Planar Ally": {
         "altname": "planar-ally",
@@ -6202,7 +6202,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Planar Binding": {
         "altname": "planar-binding",
@@ -6219,7 +6219,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Plane Shift": {
         "altname": "plane-shift",
@@ -6236,7 +6236,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Plant Growth": {
         "altname": "plant-growth",
@@ -6253,7 +6253,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Poison Spray": {
         "altname": "poison-spray",
@@ -6270,7 +6270,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Polymorph": {
         "altname": "polymorph",
@@ -6287,7 +6287,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Power Word Heal": {
         "altname": "power-word-heal",
@@ -6304,7 +6304,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Power Word Kill": {
         "altname": "power-word-kill",
@@ -6321,7 +6321,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Power Word Pain": {
         "altname": "power-word-pain",
@@ -6338,7 +6338,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Power Word Stun": {
         "altname": "power-word-stun",
@@ -6355,7 +6355,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Prayer of Healing": {
         "altname": "prayer-of-healing",
@@ -6372,7 +6372,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Prestidigitation": {
         "altname": "prestidigitation",
@@ -6389,7 +6389,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Primal Savagery": {
         "altname": "primal-savagery",
@@ -6406,7 +6406,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Primal Savagery (UA)": {
         "altname": "primal-savagery-(ua)",
@@ -6423,7 +6423,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Primordial Ward": {
         "altname": "primordial-ward",
@@ -6440,7 +6440,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Prismatic Spray": {
         "altname": "prismatic-spray",
@@ -6457,7 +6457,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Prismatic Wall": {
         "altname": "prismatic-wall",
@@ -6474,7 +6474,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Produce Flame": {
         "altname": "produce-flame",
@@ -6491,7 +6491,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Programmed Illusion": {
         "altname": "programmed-illusion",
@@ -6508,7 +6508,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Project Image": {
         "altname": "project-image",
@@ -6525,7 +6525,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Protection from Ballistics (UA)": {
         "altname": "protection-from-ballistics-(ua)",
@@ -6542,7 +6542,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Protection from Energy": {
         "altname": "protection-from-energy",
@@ -6559,7 +6559,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Protection from Evil and Good": {
         "altname": "protection-from-evil-and-good",
@@ -6576,7 +6576,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Protection from Poison": {
         "altname": "protection-from-poison",
@@ -6593,7 +6593,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Psionic Blast": {
         "altname": "psionic-blast",
@@ -6610,7 +6610,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Psychic Crush": {
         "altname": "psychic-crush",
@@ -6627,7 +6627,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Psychic Scream": {
         "altname": "psychic-scream",
@@ -6644,7 +6644,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Psychic Step": {
         "altname": "psychic-step",
@@ -6661,7 +6661,7 @@
         "school": "Psionic",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Pulse Wave": {
         "altname": "pulse-wave",
@@ -6678,7 +6678,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Puppet (UA)": {
         "altname": "puppet-(ua)",
@@ -6695,7 +6695,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Purify Food and Drink": {
         "altname": "purify-food-and-drink",
@@ -6712,7 +6712,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Pyrotechnics": {
         "altname": "pyrotechnics",
@@ -6729,7 +6729,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Raise Dead": {
         "altname": "raise-dead",
@@ -6746,7 +6746,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Rary's Telepathic Bond": {
         "altname": "rary's-telepathic-bond",
@@ -6763,7 +6763,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ravenous Void": {
         "altname": "ravenous-void",
@@ -6780,7 +6780,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ray of Enfeeblement": {
         "altname": "ray-of-enfeeblement",
@@ -6797,7 +6797,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ray of Frost": {
         "altname": "ray-of-frost",
@@ -6814,7 +6814,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Ray of Sickness": {
         "altname": "ray-of-sickness",
@@ -6831,7 +6831,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Reality Break": {
         "altname": "reality-break",
@@ -6848,7 +6848,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Regenerate": {
         "altname": "regenerate",
@@ -6865,7 +6865,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Reincarnate": {
         "altname": "reincarnate",
@@ -6882,7 +6882,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Remote Access (UA)": {
         "altname": "remote-access-(ua)",
@@ -6899,7 +6899,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Remove Curse": {
         "altname": "remove-curse",
@@ -6916,7 +6916,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Resistance": {
         "altname": "resistance",
@@ -6933,7 +6933,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Resurrection": {
         "altname": "resurrection",
@@ -6950,7 +6950,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Reverse Gravity": {
         "altname": "reverse-gravity",
@@ -6967,7 +6967,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Revivify": {
         "altname": "revivify",
@@ -6984,7 +6984,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Rope Trick": {
         "altname": "rope-trick",
@@ -7001,7 +7001,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sacred Flame": {
         "altname": "sacred-flame",
@@ -7018,7 +7018,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sanctuary": {
         "altname": "sanctuary",
@@ -7035,7 +7035,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sapping Sting": {
         "altname": "sapping-sting",
@@ -7052,7 +7052,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Scatter": {
         "altname": "scatter",
@@ -7069,7 +7069,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Scorching Ray": {
         "altname": "scorching-ray",
@@ -7086,7 +7086,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Scrying": {
         "altname": "scrying",
@@ -7103,7 +7103,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Searing Smite": {
         "altname": "searing-smite",
@@ -7120,7 +7120,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "See Invisibility": {
         "altname": "see-invisibility",
@@ -7137,7 +7137,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Seeming": {
         "altname": "seeming",
@@ -7154,7 +7154,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sending": {
         "altname": "sending",
@@ -7171,7 +7171,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sense Emotion (UA)": {
         "altname": "sense-emotion-(ua)",
@@ -7188,7 +7188,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sequester": {
         "altname": "sequester",
@@ -7205,7 +7205,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shadow Blade": {
         "altname": "shadow-blade",
@@ -7222,7 +7222,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shadow of Moil": {
         "altname": "shadow-of-moil",
@@ -7239,7 +7239,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shape Water": {
         "altname": "shape-water",
@@ -7256,7 +7256,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shapechange": {
         "altname": "shapechange",
@@ -7273,7 +7273,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shatter": {
         "altname": "shatter",
@@ -7290,7 +7290,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shield": {
         "altname": "shield",
@@ -7307,7 +7307,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shield of Faith": {
         "altname": "shield-of-faith",
@@ -7324,7 +7324,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shillelagh": {
         "altname": "shillelagh",
@@ -7341,7 +7341,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shocking Grasp": {
         "altname": "shocking-grasp",
@@ -7358,7 +7358,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Shutdown (UA)": {
         "altname": "shutdown-(ua)",
@@ -7375,7 +7375,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sickening Radiance": {
         "altname": "sickening-radiance",
@@ -7392,7 +7392,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Silence": {
         "altname": "silence",
@@ -7409,7 +7409,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Silent Image": {
         "altname": "silent-image",
@@ -7426,7 +7426,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Simulacrum": {
         "altname": "simulacrum",
@@ -7443,7 +7443,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Skill Empowerment": {
         "altname": "skill-empowerment",
@@ -7460,7 +7460,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Skywrite": {
         "altname": "skywrite",
@@ -7477,7 +7477,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sleep": {
         "altname": "sleep",
@@ -7494,7 +7494,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sleet Storm": {
         "altname": "sleet-storm",
@@ -7511,7 +7511,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Slow": {
         "altname": "slow",
@@ -7528,7 +7528,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Snare": {
         "altname": "snare",
@@ -7545,7 +7545,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Snare (UA)": {
         "altname": "snare-(ua)",
@@ -7562,7 +7562,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Snilloc's Snowball Swarm": {
         "altname": "snilloc's-snowball-swarm",
@@ -7579,7 +7579,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Soul Cage": {
         "altname": "soul-cage",
@@ -7596,7 +7596,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Spare the Dying": {
         "altname": "spare-the-dying",
@@ -7613,7 +7613,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Speak with Animals": {
         "altname": "speak-with-animals",
@@ -7630,7 +7630,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Speak with Dead": {
         "altname": "speak-with-dead",
@@ -7647,7 +7647,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Speak with Plants": {
         "altname": "speak-with-plants",
@@ -7664,7 +7664,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Spider Climb": {
         "altname": "spider-climb",
@@ -7681,7 +7681,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Spike Growth": {
         "altname": "spike-growth",
@@ -7698,7 +7698,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Spirit Guardians": {
         "altname": "spirit-guardians",
@@ -7715,7 +7715,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Spirit Shroud": {
         "altname": "spirit-shroud",
@@ -7732,7 +7732,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Spiritual Weapon": {
         "altname": "spiritual-weapon",
@@ -7749,7 +7749,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Staggering Smite": {
         "altname": "staggering-smite",
@@ -7766,7 +7766,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Steel Wind Strike": {
         "altname": "steel-wind-strike",
@@ -7783,7 +7783,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Stinking Cloud": {
         "altname": "stinking-cloud",
@@ -7800,7 +7800,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Stone Shape": {
         "altname": "stone-shape",
@@ -7817,7 +7817,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Stoneskin": {
         "altname": "stoneskin",
@@ -7834,7 +7834,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Storm Sphere": {
         "altname": "storm-sphere",
@@ -7851,7 +7851,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Storm of Vengeance": {
         "altname": "storm-of-vengeance",
@@ -7868,7 +7868,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sudden Awakening (UA)": {
         "altname": "sudden-awakening-(ua)",
@@ -7885,7 +7885,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Suggestion": {
         "altname": "suggestion",
@@ -7902,7 +7902,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Aberrant Spirit": {
         "altname": "summon-aberrant-spirit",
@@ -7919,7 +7919,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Bestial Spirit": {
         "altname": "summon-bestial-spirit",
@@ -7936,7 +7936,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Celestial Spirit": {
         "altname": "summon-celestial-spirit",
@@ -7953,7 +7953,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Elemental Spirit": {
         "altname": "summon-elemental-spirit",
@@ -7970,7 +7970,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Fey Spirit": {
         "altname": "summon-fey-spirit",
@@ -7987,7 +7987,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Fiendish Spirit": {
         "altname": "summon-fiendish-spirit",
@@ -8004,7 +8004,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Greater Demon": {
         "altname": "summon-greater-demon",
@@ -8021,7 +8021,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Lesser Demons": {
         "altname": "summon-lesser-demons",
@@ -8038,7 +8038,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Shadow Spirit": {
         "altname": "summon-shadow-spirit",
@@ -8055,7 +8055,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Summon Undead Spirit": {
         "altname": "summon-undead-spirit",
@@ -8072,7 +8072,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sunbeam": {
         "altname": "sunbeam",
@@ -8089,7 +8089,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sunburst": {
         "altname": "sunburst",
@@ -8106,7 +8106,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Swift Quiver": {
         "altname": "swift-quiver",
@@ -8123,7 +8123,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Sword Burst": {
         "altname": "sword-burst",
@@ -8140,7 +8140,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Symbol": {
         "altname": "symbol",
@@ -8157,7 +8157,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Synaptic Static": {
         "altname": "synaptic-static",
@@ -8174,7 +8174,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Synchronicity (UA)": {
         "altname": "synchronicity-(ua)",
@@ -8191,7 +8191,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "System Backdoor (UA)": {
         "altname": "system-backdoor-(ua)",
@@ -8208,7 +8208,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tasha's Hideous Laughter": {
         "altname": "tasha's-hideous-laughter",
@@ -8225,7 +8225,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Telekinesis": {
         "altname": "telekinesis",
@@ -8242,7 +8242,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Telepathy": {
         "altname": "telepathy",
@@ -8259,7 +8259,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Teleport": {
         "altname": "teleport",
@@ -8276,7 +8276,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Teleportation Circle": {
         "altname": "teleportation-circle",
@@ -8293,7 +8293,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Temple of the Gods": {
         "altname": "temple-of-the-gods",
@@ -8310,7 +8310,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Temporal Shunt": {
         "altname": "temporal-shunt",
@@ -8327,7 +8327,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tenser's Floating Disk": {
         "altname": "tenser's-floating-disk",
@@ -8344,7 +8344,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tenser's Transformation": {
         "altname": "tenser's-transformation",
@@ -8361,7 +8361,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tether Essence": {
         "altname": "tether-essence",
@@ -8378,7 +8378,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Thaumaturgy": {
         "altname": "thaumaturgy",
@@ -8395,7 +8395,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Thorn Whip": {
         "altname": "thorn-whip",
@@ -8412,7 +8412,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Thought Shield": {
         "altname": "thought-shield",
@@ -8429,7 +8429,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Thunder Step": {
         "altname": "thunder-step",
@@ -8446,7 +8446,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Thunderclap": {
         "altname": "thunderclap",
@@ -8463,7 +8463,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Thunderous Smite": {
         "altname": "thunderous-smite",
@@ -8480,7 +8480,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Thunderwave": {
         "altname": "thunderwave",
@@ -8497,7 +8497,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tidal Wave": {
         "altname": "tidal-wave",
@@ -8514,7 +8514,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Time Ravage": {
         "altname": "time-ravage",
@@ -8531,7 +8531,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Time Stop": {
         "altname": "time-stop",
@@ -8548,7 +8548,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tiny Servant": {
         "altname": "tiny-servant",
@@ -8565,7 +8565,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Toll the Dead": {
         "altname": "toll-the-dead",
@@ -8582,7 +8582,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Toll the Dead (UA)": {
         "altname": "toll-the-dead-(ua)",
@@ -8599,7 +8599,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tongues": {
         "altname": "tongues",
@@ -8616,7 +8616,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Transmute Rock": {
         "altname": "transmute-rock",
@@ -8633,7 +8633,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Transport via Plants": {
         "altname": "transport-via-plants",
@@ -8650,7 +8650,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tree Stride": {
         "altname": "tree-stride",
@@ -8667,7 +8667,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "True Polymorph": {
         "altname": "true-polymorph",
@@ -8684,7 +8684,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "True Resurrection": {
         "altname": "true-resurrection",
@@ -8701,7 +8701,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "True Seeing": {
         "altname": "true-seeing",
@@ -8718,7 +8718,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "True Strike": {
         "altname": "true-strike",
@@ -8735,7 +8735,7 @@
         "school": "Divination",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Tsunami": {
         "altname": "tsunami",
@@ -8752,7 +8752,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Unearthly Chorus (UA)": {
         "altname": "unearthly-chorus-(ua)",
@@ -8769,7 +8769,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Unseen Servant": {
         "altname": "unseen-servant",
@@ -8786,7 +8786,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Vampiric Touch": {
         "altname": "vampiric-touch",
@@ -8803,7 +8803,7 @@
         "school": "Necromancy",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Vicious Mockery": {
         "altname": "vicious-mockery",
@@ -8820,7 +8820,7 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Virtue (UA)": {
         "altname": "virtue-(ua)",
@@ -8837,7 +8837,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Vitriolic Sphere": {
         "altname": "vitriolic-sphere",
@@ -8854,7 +8854,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wall of Fire": {
         "altname": "wall-of-fire",
@@ -8871,7 +8871,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wall of Force": {
         "altname": "wall-of-force",
@@ -8888,7 +8888,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wall of Ice": {
         "altname": "wall-of-ice",
@@ -8905,7 +8905,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wall of Light": {
         "altname": "wall-of-light",
@@ -8922,7 +8922,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wall of Sand": {
         "altname": "wall-of-sand",
@@ -8939,7 +8939,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wall of Stone": {
         "altname": "wall-of-stone",
@@ -8956,7 +8956,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wall of Thorns": {
         "altname": "wall-of-thorns",
@@ -8973,7 +8973,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wall of Water": {
         "altname": "wall-of-water",
@@ -8990,7 +8990,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Warding Bond": {
         "altname": "warding-bond",
@@ -9007,7 +9007,7 @@
         "school": "Abjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Warding Wind": {
         "altname": "warding-wind",
@@ -9024,7 +9024,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Water Breathing": {
         "altname": "water-breathing",
@@ -9041,7 +9041,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Water Walk": {
         "altname": "water-walk",
@@ -9058,7 +9058,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Watery Sphere": {
         "altname": "watery-sphere",
@@ -9075,7 +9075,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Web": {
         "altname": "web",
@@ -9092,7 +9092,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Weird": {
         "altname": "weird",
@@ -9109,7 +9109,7 @@
         "school": "Illusion",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Whirlwind": {
         "altname": "whirlwind",
@@ -9126,7 +9126,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wild Cunning (UA)": {
         "altname": "wild-cunning-(ua)",
@@ -9143,7 +9143,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wind Walk": {
         "altname": "wind-walk",
@@ -9160,7 +9160,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wind Wall": {
         "altname": "wind-wall",
@@ -9177,7 +9177,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wish": {
         "altname": "wish",
@@ -9194,7 +9194,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Witch Bolt": {
         "altname": "witch-bolt",
@@ -9211,7 +9211,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Word of Radiance": {
         "altname": "word-of-radiance",
@@ -9228,7 +9228,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Word of Recall": {
         "altname": "word-of-recall",
@@ -9245,7 +9245,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wrath of Nature": {
         "altname": "wrath-of-nature",
@@ -9262,7 +9262,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wrathful Smite": {
         "altname": "wrathful-smite",
@@ -9279,7 +9279,7 @@
         "school": "Evocation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Wristpocket": {
         "altname": "wristpocket",
@@ -9296,7 +9296,7 @@
         "school": "Conjuration",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Zephyr Strike": {
         "altname": "zephyr-strike",
@@ -9313,7 +9313,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Zephyr Strike (UA)": {
         "altname": "zephyr-strike-(ua)",
@@ -9330,7 +9330,7 @@
         "school": "Transmutation",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     },
     "Zone of Truth": {
         "altname": "zone-of-truth",
@@ -9347,6 +9347,6 @@
         "school": "Enchantment",
         "spell_resistance": "",
         "subschool": "",
-        "version": "D&D 5"
+        "Version": "D&D 5"
     }
 }
