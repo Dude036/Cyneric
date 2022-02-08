@@ -91,15 +91,17 @@ def pick_monster(name='', cr=-1.0):
 
 
 def random_monster(version='D&D 5'):
-    print(version)
     monster = None
+    options = list(Beasts.keys())
     if BeastSource != 'All' or BeastSource != version:
-        options = list(Beasts.keys())
         while monster is None:
             name = choice(options)
             if Beasts[name]['Version'] == version:
                 monster = Beasts[name]
         return name, monster
+    elif BeastSource == 'All':
+        name = choice(options)
+        return name, Beasts[name]
     else:
         return monster
 

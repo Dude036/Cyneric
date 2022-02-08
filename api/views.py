@@ -69,6 +69,16 @@ def beast_create(version, content={}, json=True):
     return beast if json else dmk.beasts.beastiary.print_monster((name, beast), to_file=False)
 
 
+def beast(request):
+    content = {}
+    return HttpResponse(beast_create('All', content=content, json=False))
+
+
+def beast_json(request):
+    content = {}
+    return JsonResponse(beast_create('All', content=content, json=True))
+
+
 def beast_5e(request):
     content = {}
     return HttpResponse(beast_create('D&D 5', content=content, json=False))
@@ -76,8 +86,7 @@ def beast_5e(request):
 
 def beast_5e_json(request):
     content = {}
-    beast = beast_create('D&D 5', content=content, json=True)
-    return JsonResponse(beast)
+    return JsonResponse(beast_create('D&D 5', content=content, json=True))
 
 
 def beast_pf1(request):
@@ -87,8 +96,8 @@ def beast_pf1(request):
 
 def beast_pf1_json(request):
     content = {}
-    beast = beast_create('Pathfinder 1', content=content, json=True)
-    return JsonResponse(beast)
+    return JsonResponse(beast_create('Pathfinder 1', content=content, json=True))
+
 
 
 # Create Random Weapon
