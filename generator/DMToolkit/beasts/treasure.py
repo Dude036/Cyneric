@@ -908,20 +908,14 @@ def scroll(g):
     return l
 
 
-def print_treasure(monster_name='', monster_cr=0.0):
+def print_treasure(monster_name='', monster_cr=0.0, monster_json=True):
     import os
     from bs4 import BeautifulSoup as bs
     import simplejson as json
 
-    with open("generate.json", 'r') as inf:
-        settings = json.load(inf)
-
     Beasts = {}
-    with open('beasts.json', 'r') as inf:
-        Beasts.update(json.load(inf, encoding='utf-8'))
-    if settings["Allow Pokemon"]:
-        with open('pokemon.json', 'r') as inf:
-            Beasts.update(json.load(inf, encoding='utf-8'))
+    Beasts.update(json.load(open(os.path.join('generator', 'DMToolkit', 'resource', '5e_beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
+    Beasts.update(json.load(open(os.path.join('generator', 'DMToolkit', 'resource', 'beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
 
     if 'beasts' not in os.listdir(os.getcwd()):
         try:
@@ -946,6 +940,10 @@ def print_treasure(monster_name='', monster_cr=0.0):
     else:
         monster = Beasts[monster_name]
 
+    treasure = treasure_calculator(monster['Treasure'], monster['Type'], monster['CR'])
+    if monster_json:
+        return treasure
+
     html = '<!DOCTYPE html><html><head><meta content="width=device-width" name="viewport"/><title></title><style>' + \
            'body {max-width:800px;margin-left:auto;margin-right:auto;padding-left:5px;padding-right:5px;} html' + \
            '{font-family:Arial;}h1, h2 {color:black;text-align:center;} .center{text-align:center;} .bold' + \
@@ -963,12 +961,10 @@ def print_treasure(monster_name='', monster_cr=0.0):
            'style="width:100%;"><tbody><tr><th style="text-align:left;">Item</th><th style="text-align:left;">' + \
            'Cost</th><th style="text-align:left;">Rarity</th></tr>'
 
-    treasure = treasure_calculator(monster['Treasure'], monster['Type'], monster['CR'])
     for t in treasure:
         html += str(t)
     html += '</tr></table></body></html>'
-    with open('beasts/' + monster_name + ' Treasure.html', 'w') as outf:
-        outf.write(bs(html, 'html5lib').prettify())
+    return bs(html, 'html5lib').prettify()
 
 
 if __name__ == '__main__':

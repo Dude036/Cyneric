@@ -417,6 +417,9 @@ class Weapon(object):
         ]:
             yield item
 
+    def __repr__(self):
+        return self.Name + "(" + self.Class + ")"
+
     def to_dict(self):
         return {
             'Weight': self.Weight,
@@ -584,6 +587,10 @@ class Firearm(object):
                 determine_cost(self.Cost) + '</td><td>' + master + r[self.Rarity] + enchant_lvl + '</td></tr>'
             MasterID += 1
         return s
+
+    def __repr__(self):
+        return self.Name + "(" + self.Class + ")"
+
 
 
 class Armor(object):
@@ -821,6 +828,10 @@ class Armor(object):
             ench = ' ' + self.Enchantment.to_string()
         return self.Name + ench + ' (' + determine_cost(self.Cost) + ')'
 
+    def __repr__(self):
+        return self.Name + "(" + self.Class + ")"
+
+
 
 class Scroll(object):
     Name = Spell = Add = ''
@@ -900,6 +911,10 @@ class Scroll(object):
 
     def to_string(self):
         return self.Name + ' (' + str(self.Cost) + ')'
+
+    def __repr__(self):
+        return self.Name + "(Scroll)"
+
 
 
 class Enchant(object):
@@ -1072,6 +1087,9 @@ class Potion(object):
     def to_string(self):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
 
+    def __repr__(self):
+        return self.Name + "(Potion)"
+
 
 class Wand(object):
     Spell = Name = ""
@@ -1146,6 +1164,9 @@ class Wand(object):
 
     def to_string(self):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
+
+    def __repr__(self):
+        return self.Name + "(Wand)"
 
 
 class Inn(object):
@@ -1265,6 +1286,9 @@ class Ring(object):
 
     def to_string(self):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
+
+    def __repr__(self):
+        return self.Name + "(Ring)"
 
 
 def create_variety_shop(owner, quan, inflate=1):
