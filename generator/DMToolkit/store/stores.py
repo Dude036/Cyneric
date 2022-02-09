@@ -532,7 +532,7 @@ class Firearm(object):
             'Class': self.Class,
             'Special': self.Special,
             'Text': self.Text,
-            'Enchantment': self.Enchantment.to_dict(),
+            'Enchantment': None if self.Enchantment is None else self.Enchantment.to_dict(),
             'Misfire': self.Misfire,
             'Damage': self.Damage,
         }
@@ -789,7 +789,7 @@ class Armor(object):
             'Special': self.Special,
             'Text': self.Text,
             'Metal': self.Metal,
-            'Enchantment': self.Enchantment.to_dict(),
+            'Enchantment': None if self.Enchantment is None else self.Enchantment.to_dict(),
         }
 
     def __repr__(self):
