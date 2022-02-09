@@ -69,6 +69,104 @@ class Item:
         }
 
 
+class Enchant(object):
+    Spell:str = ''
+    Description:str = ''
+    Level:int = 0
+    Cost:float = 0.0
+    Uses:int = 0
+
+    def __init__(self, iSpell=None, rechargable=True):
+        self.Spell = iSpell
+
+        if self.Spell is not None:
+            self.Level = find_spell_level(self.Spell)
+        else:
+            self.Level = int(choice(list(level_likelihood.keys()), p=list(level_likelihood.values())))
+            if self.Level == 0:
+                self.Spell = choice(level_0)
+            elif self.Level == 1:
+                self.Spell = choice(level_1)
+            elif self.Level == 2:
+                self.Spell = choice(level_2)
+            elif self.Level == 3:
+                self.Spell = choice(level_3)
+            elif self.Level == 4:
+                self.Spell = choice(level_4)
+            elif self.Level == 5:
+                self.Spell = choice(level_5)
+            elif self.Level == 6:
+                self.Spell = choice(level_6)
+            elif self.Level == 7:
+                self.Spell = choice(level_7)
+            elif self.Level == 8:
+                self.Spell = choice(level_8)
+            elif self.Level == 9:
+                self.Spell = choice(level_9)
+
+        self.__spell_pricing()
+
+        if rechargable:
+            self.Uses = int(choice([2, 4, 6, 8, 10, 12], p=[.35, .3, .15, .1, .05, .05]))
+            self.Cost += self.Uses * (self.Level + 1)**self.Level
+            self.__describe(rechargable)
+        else:
+            self.Uses = 1
+            self.__describe(rechargable)
+
+    def __spell_pricing(self):
+        if self.Level == 0:
+            self.Cost = 12.5
+        elif self.Level == 1:
+            self.Cost = 25
+        elif self.Level == 2:
+            self.Cost = 150
+        elif self.Level == 3:
+            self.Cost = 375
+        elif self.Level == 4:
+            self.Cost = 700
+        elif self.Level == 5:
+            self.Cost = 1125
+        elif self.Level == 6:
+            self.Cost = 1650
+        elif self.Level == 7:
+            self.Cost = 2275
+        elif self.Level == 8:
+            self.Cost = 3000
+        elif self.Level == 9:
+            self.Cost = 4825
+        # Odd pricing for more complex spells
+        if self.Spell in odd_price:
+            self.Cost *= odd_price[self.Spell]
+
+    def __describe(self, recharge):
+        deets = find_spell_details(self.Spell)
+        usable = ""
+        if recharge:
+            usable += "<p>This item has " + str(self.Uses) + " charges. You may cast the spell at a level above the " + \
+                     "natural spell level, but for every spell level above, expend an additional charge until " + \
+                     "depletion. Once depleted, roll 1d20. On a Natural 1, the item is destroyed. This item " + \
+                     "regenerates 1d" + str(self.Uses) + " charges at Sunrise.</P>"
+        self.Description = '<p>Name: <a href="' + deets[0] + '">' + self.Spell + '</a> (' + deets[1] + \
+                           ')</p><p>Casting: ' + deets[2] + ' | ' + deets[3] + ' | ' + deets[4] + '</p>' + usable + \
+                           deets[5]
+
+    def __str__(self):
+        return self.Description
+
+    def __repr__(self):
+        return self.Spell + ' (' + determine_cost(self.Cost) + ')'
+
+    def to_dict(self):
+        return {
+            'Spell': self.Spell,
+            'Description': self.Description,
+            'Level': self.Level, 
+            'Cost': self.Cost,
+            'Uses': self.Uses,
+        }
+
+
 class Book(Item):
     g = {
         0: 'Children',
