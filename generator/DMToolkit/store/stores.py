@@ -5,76 +5,6 @@ from generator.DMToolkit.resource.resources import *
 import simplejson as json
 from generator.DMToolkit.store.items import *
 
-SpellSource = 'D&D 5'
-if SpellSource == 'D&D 5':
-    MasterSpells = json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_spells.json'), 'r'), encoding='utf-8')
-    MasterWondrous = json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_wondrous.json'), 'r'), encoding='utf-8')
-elif SpellSource == 'Pathfinder 1':
-    MasterSpells = json.load(open(path.join('generator', 'DMToolkit', 'resource', 'spells.json'), 'r'), encoding='utf-8')
-    MasterWondrous = json.load(open(path.join('generator', 'DMToolkit', 'resource', 'wondrous.json'), 'r'), encoding='utf-8')
-
-
-def find_spell_level(spell):
-    l = None
-    a = [level_0, level_1, level_2, level_3, level_4, level_5, level_6, level_7, level_8, level_9]
-    for level in range(len(a)):
-        if spell in a[level]:
-            l = level
-    return l
-
-
-def find_spell_details(spell):
-    while spell not in list(MasterSpells.keys()):
-        spell = choice(list(MasterSpells.keys()))
-    if MasterSpells[spell]['link'] in MasterSpellBlacklist:
-        return None
-    return MasterSpells[spell]['link'], MasterSpells[spell]['school'], MasterSpells[spell]['casting_time'], \
-           MasterSpells[spell]['components'], MasterSpells[spell]['range'], MasterSpells[spell]['description'],
-
-
-def find_spell_description(spell):
-    if spell in list(MasterSpells.keys()):
-        return MasterSpells[spell]['description']
-    else:
-        return None
-
-
-def find_spell_link(spell):
-    if spell in list(MasterSpells.keys()):
-        return MasterSpells[spell]['link']
-    else:
-        return None
-
-
-def find_spell_range(spell):
-    if spell in list(MasterSpells.keys()):
-        return MasterSpells[spell]['range']
-    else:
-        return None
-
-
-def find_spell_components(spell):
-    if spell in list(MasterSpells.keys()):
-        return MasterSpells[spell]['components']
-    else:
-        return None
-
-
-def determine_rarity(q):
-    if q[0] == q[1]:
-        return q[0]
-    l = []
-    for x in range(q[0], q[1] + 1):
-        l.append((x + 1) * x * x)
-    l[0] += 1
-    l = l[::-1]
-    d = {}
-    pos = 0
-    for x in range(q[0], q[1] + 1):
-        d[x] = l[pos]
-        pos += 1
-    return choice(list(d.keys()), p=list(normalize_dict(d).values()))
-
 
 class Store(object):
     """Everyone needs things!
@@ -418,7 +348,7 @@ class Weapon(object):
             yield item
 
     def __repr__(self):
-        return self.Name + "(" + self.Class + ")"
+        return self.Name + " (" + self.Class + ")"
 
     def to_dict(self):
         return {
@@ -589,7 +519,7 @@ class Firearm(object):
         return s
 
     def __repr__(self):
-        return self.Name + "(" + self.Class + ")"
+        return self.Name + " (" + self.Class + ")"
 
 
 
@@ -829,7 +759,7 @@ class Armor(object):
         return self.Name + ench + ' (' + determine_cost(self.Cost) + ')'
 
     def __repr__(self):
-        return self.Name + "(" + self.Class + ")"
+        return self.Name + " (" + self.Class + ")"
 
 
 
@@ -913,7 +843,7 @@ class Scroll(object):
         return self.Name + ' (' + str(self.Cost) + ')'
 
     def __repr__(self):
-        return self.Name + "(Scroll)"
+        return self.Name + " (Scroll)"
 
 
 
@@ -1088,7 +1018,7 @@ class Potion(object):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
 
     def __repr__(self):
-        return self.Name + "(Potion)"
+        return self.Name + " (Potion)"
 
 
 class Wand(object):
@@ -1166,7 +1096,7 @@ class Wand(object):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
 
     def __repr__(self):
-        return self.Name + "(Wand)"
+        return self.Name + " (Wand)"
 
 
 class Inn(object):
@@ -1288,7 +1218,7 @@ class Ring(object):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
 
     def __repr__(self):
-        return self.Name + "(Ring)"
+        return self.Name + " (Ring)"
 
 
 def create_variety_shop(owner, quan, inflate=1):

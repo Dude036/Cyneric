@@ -4,18 +4,6 @@ from generator.DMToolkit.people.character import create_person
 from generator.DMToolkit.resource.names import Antiques, Books, Enchanter, Potions, Tavern, Restaurant, Jeweller, Blacksmith, GeneralStore, Weapons,\
     Jewelling, Brothel, Gunsmithing
 from generator.DMToolkit.core.variance import normalize_dict
-from os import path
-import os
-
-SpellSource = 'D&D 5'
-if SpellSource == 'D&D 5' or SpellSource == 'All':
-    print(path.join(os.path.abspath(os.getcwd()), 'generator', 'DMToolkit', 'resource', '5e_spells.json'))
-    MasterSpells = json.load(open(path.join(os.path.abspath(os.getcwd()), 'generator', 'DMToolkit', 'resource', '5e_spells.json'), 'r'), encoding='utf-8')
-    MasterWondrous = json.load(open(path.join(os.path.abspath(os.getcwd()), 'generator', 'DMToolkit', 'resource', '5e_wondrous.json'), 'r'), encoding='utf-8')
-if SpellSource == 'Pathfinder 1' or SpellSource == 'All':
-    print(path.join(os.path.abspath(os.getcwd()), 'generator', 'DMToolkit', 'resource', 'spells.json'))
-    MasterSpells = json.load(open(path.join('generator', 'DMToolkit', 'resource', 'spells.json'), 'r'), encoding='utf-8')
-    MasterWondrous = json.load(open(path.join('generator', 'DMToolkit', 'resource', 'wondrous.json'), 'r'), encoding='utf-8')
 
 
 def determine_cost(c):
@@ -68,6 +56,17 @@ class Item:
 
     def __repr__(self):
         return self.Title + ' (' + str(self.Category) + ')'
+
+    def to_dict(self):
+        return {
+            "Title:": self.Title,
+            "Description": self.Description,
+            "Category": self.Category,
+            "Link": self.Link,
+            "Cost": self.Cost,
+            "Expandable": self.Expandable,
+            "Linkable": self.Linkable
+        }
 
 
 class Book(Item):

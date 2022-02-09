@@ -8,25 +8,9 @@ from tqdm import tqdm
 from numpy.random import randint
 import os
 import simplejson as json
+from generator.DMToolkit.resource.resources import *
+
 errored = {}
-
-settings = {
-    'Allow Pokemon': False
-}
-
-Beasts = {}
-Poke_moves = {}
-BeastSource = 'All'
-if BeastSource == 'D&D 5' or BeastSource == 'All':
-    Beasts.update(json.load(open(os.path.join('generator', 'DMToolkit', 'resource', '5e_beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
-if BeastSource == 'Pathfinder 1' or BeastSource == 'All':
-    Beasts.update(json.load(open(os.path.join('generator', 'DMToolkit', 'resource', 'beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
-
-if settings["Allow Pokemon"]:
-    with open(os.path.join('generator', 'DMToolkit', 'resource', 'pokemon.json'), 'r') as inf:
-        Beasts.update(json.load(inf, encoding='utf-8'))
-    with open(os.path.join('generator', 'DMToolkit', 'resource', 'pokemon_moves.json'), 'r') as inf:
-        Poke_moves = json.load(inf, encoding='utf-8')
 
 Levels = {
     '0.0': 0,

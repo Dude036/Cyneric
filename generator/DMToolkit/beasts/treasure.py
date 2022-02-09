@@ -1,7 +1,9 @@
 #!/usr/bin/python3
 import re
 from numpy.random import randint, choice
-from generator.DMToolkit.store.stores import Jewel, Art, Scroll, Ring, Wondrous, Weapon, Armor, Potion, determine_cost
+from generator.DMToolkit.store.stores import Scroll, Ring, Weapon, Armor, Potion, determine_cost
+from generator.DMToolkit.store.items import Jewel, Art, Wondrous
+from generator.DMToolkit.resource.resources import *
 
 Monster_Types = {
     "aberration": [
@@ -912,16 +914,12 @@ def print_treasure(monster_name='', monster_cr=0.0, monster_json=True):
     import os
     from bs4 import BeautifulSoup as bs
     import simplejson as json
+    import re
 
     Beasts = {}
     Beasts.update(json.load(open(os.path.join('generator', 'DMToolkit', 'resource', '5e_beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
     Beasts.update(json.load(open(os.path.join('generator', 'DMToolkit', 'resource', 'beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
 
-    if 'beasts' not in os.listdir(os.getcwd()):
-        try:
-            os.mkdir(os.getcwd() + '/beasts')
-        except OSError:
-            print("Beasts directory creation failed")
     if monster_name not in list(Beasts.keys()) and monster_cr == 0.0:
         # Choose a random monster
         monster_name = choice(list(Beasts.keys()))

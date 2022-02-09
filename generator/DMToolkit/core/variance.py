@@ -2,6 +2,7 @@
 
 from numpy.random import choice, randint
 import simplejson as json
+from generator.DMToolkit.resource.resources import *
 
 RACES = [
     # Pathfinder Races
@@ -144,14 +145,6 @@ def create_variance(predef={}):
     global_pop = normalize_dict(pop)
     return global_pop
 
-
-def normalize_dict(v):
-    d = {}
-    total = sum(v.values())
-    for x in v.keys():
-        # print(x, v[x])
-        d[x] = v[x] / total
-    return d
 
 def normal_settings():
     normal = {}

@@ -1,15 +1,25 @@
 import simplejson as json
+from os import path, getcwd
+from numpy.random import choice
+
 
 MasterID = 1
+MasterSpells = {}
+MasterWondrous = {}
+SpellSource = 'All'
+Beasts = {}
+Poke_moves = {}
+BeastSource = 'All'
+AllowPokemon = False
 
 '''
     'Sample' : { 'Weight': 10, 'Cost' : 1, 'Type' : ['B','S','P','LA','MA','HA','2','1','Si','Ma','Ex','Ra','Ar',], },
-B, S, P          - Blunt, Slash, Pierce
-LA, MA, HA        - Light Armor, Medium Armor, Heavy Armor
-2, 1                - 2 Handed, 1 Handed
-Si, Ma, Ex, Ra, Ar  - Simple, Martial, Exotic, Ranged (bows), Ranged (arrows)s
-    If you want to make your life hell:
-https://the-eye.eu/public/Books/rpg.rem.uz/Pathfinder/3rd%20Party/Rite%20Publishing/101%20Series/101%20Special%20Materials%20%26%20Power%20Components.pdf
+    B, S, P          - Blunt, Slash, Pierce
+    LA, MA, HA        - Light Armor, Medium Armor, Heavy Armor
+    2, 1                - 2 Handed, 1 Handed
+    Si, Ma, Ex, Ra, Ar  - Simple, Martial, Exotic, Ranged (bows), Ranged (arrows)s
+        If you want to make your life hell:
+    https://the-eye.eu/public/Books/rpg.rem.uz/Pathfinder/3rd%20Party/Rite%20Publishing/101%20Series/101%20Special%20Materials%20%26%20Power%20Components.pdf
 '''
 common_material = {
     'Bronze': {
@@ -494,8 +504,7 @@ Level 8 : 3000 GP
 Level 9 : 4825 GP
 """
 MasterSpellBlacklist = ["https://homebrewery.naturalcrit.com/share/r1TpuSfiz"]
-SpellSource = 'D&D 5'
-if SpellSource == 'D&D 5':
+if SpellSource == 'D&D 5' or SpellSource == 'All':
     level_0 = [
         'Acid Splash', 'Blade Ward', 'Booming Blade', 'Chill Touch', 'Control Flames', 'Create Bonfire',
         'Dancing Lights', 'Druidcraft', 'Eldritch Blast', 'Encode Thoughts', 'Enter Mindscape', 'Fire Bolt', 'Friends',
@@ -613,7 +622,7 @@ if SpellSource == 'D&D 5':
         'True Resurrection', 'Weird', 'Wish'
     ]
 
-elif SpellSource == 'Pathfinder 1':
+elif SpellSource == 'Pathfinder 1' or SpellSource == 'All':
     level_0 = [
         'Acid Splash', 'Arcane Mark', 'Bleed', 'Create Water', 'Dancing Lights', 'Daze', 'Detect Magic',
         'Detect Poison', 'Disrupt Undead', 'Flare', 'Ghost Sound', 'Guidance', 'Haunted Fey Aspect', 'Know Direction',
@@ -1099,3 +1108,104 @@ Drink_d2 = [
     'Stout', 'Pale Lager', 'Rye Ale', 'Rum', 'Cocktail', 'Whiskey', 'Vodka', 'Moonshine', 'Bourban', 'Brandy', 'Rum',
     'Vermouth'
 ]
+
+''' Spell Content Update
+'''
+if SpellSource == 'D&D 5' or SpellSource == 'All':
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_spells.json'))
+    MasterSpells.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_spells.json'), 'r'), encoding='utf-8'))
+    MasterWondrous.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_wondrous.json'), 'r'), encoding='utf-8'))
+if SpellSource == 'Pathfinder 1' or SpellSource == 'All':
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'spells.json'))
+    MasterSpells.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'spells.json'), 'r'), encoding='utf-8'))
+    MasterWondrous.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'wondrous.json'), 'r'), encoding='utf-8'))
+
+''' Beast Content Upgrade
+'''
+if BeastSource == 'D&D 5' or BeastSource == 'All':
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_beasts.json'))
+    Beasts.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
+if BeastSource == 'Pathfinder 1' or BeastSource == 'All':
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'beasts.json'))
+    Beasts.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
+
+if AllowPokemon:
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'pokemon.json'))
+    with open(path.join('generator', 'DMToolkit', 'resource', 'pokemon.json'), 'r') as inf:
+        Beasts.update(json.load(inf, encoding='utf-8'))
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'pokemon_moves.json'))
+    with open(path.join('generator', 'DMToolkit', 'resource', 'pokemon_moves.json'), 'r') as inf:
+        Poke_moves = json.load(inf, encoding='utf-8')
+
+
+''' Spell Helper functions
+'''
+def normalize_dict(v):
+    d = {}
+    total = sum(v.values())
+    for x in v.keys():
+        # print(x, v[x])
+        d[x] = v[x] / total
+    return d
+
+
+def find_spell_level(spell):
+    l = None
+    a = [level_0, level_1, level_2, level_3, level_4, level_5, level_6, level_7, level_8, level_9]
+    for level in range(len(a)):
+        if spell in a[level]:
+            l = level
+    return l
+
+
+def find_spell_details(spell):
+    while spell not in list(MasterSpells.keys()):
+        spell = choice(list(MasterSpells.keys()))
+    if MasterSpells[spell]['link'] in MasterSpellBlacklist:
+        return None
+    return MasterSpells[spell]['link'], MasterSpells[spell]['school'], MasterSpells[spell]['casting_time'], \
+           MasterSpells[spell]['components'], MasterSpells[spell]['range'], MasterSpells[spell]['description'],
+
+
+def find_spell_description(spell):
+    if spell in list(MasterSpells.keys()):
+        return MasterSpells[spell]['description']
+    else:
+        return None
+
+
+def find_spell_link(spell):
+    if spell in list(MasterSpells.keys()):
+        return MasterSpells[spell]['link']
+    else:
+        return None
+
+
+def find_spell_range(spell):
+    if spell in list(MasterSpells.keys()):
+        return MasterSpells[spell]['range']
+    else:
+        return None
+
+
+def find_spell_components(spell):
+    if spell in list(MasterSpells.keys()):
+        return MasterSpells[spell]['components']
+    else:
+        return None
+
+
+def determine_rarity(q):
+    if q[0] == q[1]:
+        return q[0]
+    l = []
+    for x in range(q[0], q[1] + 1):
+        l.append((x + 1) * x * x)
+    l[0] += 1
+    l = l[::-1]
+    d = {}
+    pos = 0
+    for x in range(q[0], q[1] + 1):
+        d[x] = l[pos]
+        pos += 1
+    return choice(list(d.keys()), p=list(normalize_dict(d).values()))
