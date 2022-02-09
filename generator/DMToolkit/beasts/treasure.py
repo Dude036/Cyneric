@@ -943,7 +943,25 @@ def print_treasure(monster_name='', monster_cr=0.0, monster_json=True):
         for t in range(len(treasure)):
             if isinstance(treasure[t], str):
                 matches = re.findall(r'<td>([^<]*)<\/td>', treasure[t])
-                treasure[t] = { "Gold": matches[0] if matches is not None else '0 gp' }
+                gold = 0
+                if matches is not None:
+                    gold_matches = re.findall(r'(\d+) ([gcs])p', treasure[t])
+                    for m in gold_matches:
+                        if m[1] == 'g':
+                            gold += float(m[0].replace(',', ''))
+                        elif m[1] == 's':
+                            gold += float(m[0]) / 10
+                        elif m[1] == 'c':
+                            gold += float(m[0]) / 100
+                treasure[t] = {
+                    'Title': 'Gold',
+                    "Description": "",
+                    "Category": "Currency",
+                    "Link": "",
+                    "Cost": gold,
+                    "Expandable": False,
+                    "Linkable": False
+                }
             if not isinstance(treasure[t], (str, dict)) and 'Enchantment' in treasure[t].__dict__.keys():
                 treasure[t].Enchantment = treasure[t].Enchantment.to_dict() if treasure[t].Enchantment is not None else None
             if not isinstance(treasure[t], (str, dict)):
