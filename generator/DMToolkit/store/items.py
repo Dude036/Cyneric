@@ -609,3 +609,60 @@ class Wearable(Item):
         self.Description = self.Enchantment.Description
         self.Title = slot + ' of ' + self.Spell
         self.Category += ' (' + slot + ')'
+
+
+class Scroll(object):
+    Name = Spell = Add = ''
+    Enchantment = None
+    Cost = 0
+
+    def __init__(self, level, spell=None, naming=True):
+        self.Expandable = True
+        if spell is None:
+            if level == 0:
+                self.Spell = choice(level_0)
+                self.Cost = 12.5
+            elif level == 1:
+                self.Spell = choice(level_1)
+                self.Cost = 25
+            elif level == 2:
+                self.Spell = choice(level_2)
+                self.Cost = 150
+            elif level == 3:
+                self.Spell = choice(level_3)
+                self.Cost = 375
+            elif level == 4:
+                self.Spell = choice(level_4)
+                self.Cost = 700
+            elif level == 5:
+                self.Spell = choice(level_5)
+                self.Cost = 1125
+            elif level == 6:
+                self.Spell = choice(level_6)
+                self.Cost = 1650
+            elif level == 7:
+                self.Spell = choice(level_7)
+                self.Cost = 2275
+            elif level == 8:
+                self.Spell = choice(level_8)
+                self.Cost = 3000
+            elif level == 9:
+                self.Spell = choice(level_9)
+                self.Cost = 4825
+
+            if self.Spell in odd_price:
+                self.Cost = round(self.Cost * odd_price[self.Spell])
+
+            self.Enchantment = Enchant(iSpell=self.Spell, rechargable=False)
+        else:
+            if find_spell_level(spell) == level:
+                self.Spell = spell
+                self.Enchantment = Enchant(iSpell=self.Spell, rechargable=False)
+
+        if naming:
+            self.Title = Scroll_Name_Potential[randint(len(Scroll_Name_Potential))] + self.Spell
+        else:
+            self.Title = self.Spell
+            self.Add = '+'
+
+        self.Description = self.Enchantment.Description
