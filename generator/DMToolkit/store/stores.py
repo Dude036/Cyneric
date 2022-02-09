@@ -518,6 +518,25 @@ class Firearm(object):
             MasterID += 1
         return s
 
+    def to_dict(self):
+        return {
+            'Weight': self.Weight,
+            'Cost': self.Cost,
+            'Rarity': self.Rarity,
+            'Masterwork': self.Masterwork,
+            'Range': self.Range,
+            'Capacity': self.Capacity,
+            'Name': self.Name,
+            'Dice': self.Dice,
+            'Crit': self.Crit,
+            'Class': self.Class,
+            'Special': self.Special,
+            'Text': self.Text,
+            'Enchantment': self.Enchantment.to_dict(),
+            'Misfire': self.Misfire,
+            'Damage': self.Damage,
+        }
+
     def __repr__(self):
         return self.Name + " (" + self.Class + ")"
 
@@ -758,6 +777,21 @@ class Armor(object):
             ench = ' ' + self.Enchantment.to_string()
         return self.Name + ench + ' (' + determine_cost(self.Cost) + ')'
 
+    def to_dict(self):
+        return {
+            'Weight': self.Weight,
+            'Cost': self.Cost,
+            'Rarity': self.Rarity,
+            'Masterwork': self.Masterwork,
+            'AC': self.AC,
+            'Name': self.Name,
+            'Class': self.Class,
+            'Special': self.Special,
+            'Text': self.Text,
+            'Metal': self.Metal,
+            'Enchantment': self.Enchantment.to_dict(),
+        }
+
     def __repr__(self):
         return self.Name + " (" + self.Class + ")"
 
@@ -841,6 +875,14 @@ class Scroll(object):
 
     def to_string(self):
         return self.Name + ' (' + str(self.Cost) + ')'
+
+    def to_dict(self):
+        return {
+            "Spell": self.Spell,
+            "Name": self.Name,
+            "Cost": self.Cost,
+            "Enchantment": self.Enchantment.to_dict()
+        }
 
     def __repr__(self):
         return self.Name + " (Scroll)"
@@ -1017,6 +1059,14 @@ class Potion(object):
     def to_string(self):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
 
+    def to_dict(self):
+        return {
+            "Spell": self.Spell,
+            "Name": self.Name,
+            "Cost": self.Cost,
+            "Enchantment": self.Enchantment.to_dict()
+        }
+
     def __repr__(self):
         return self.Name + " (Potion)"
 
@@ -1094,6 +1144,15 @@ class Wand(object):
 
     def to_string(self):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
+
+    def to_dict(self):
+        return {
+            "Spell": self.Spell,
+            "Name": self.Name,
+            "Cost": self.Cost,
+            "Level": self.Level,
+            "Enchantment": self.Enchantment.to_dict()
+        }
 
     def __repr__(self):
         return self.Name + " (Wand)"
@@ -1216,6 +1275,15 @@ class Ring(object):
 
     def to_string(self):
         return self.Name + ' (' + determine_cost(self.Cost) + ')'
+
+    def to_dict(self):
+        return {
+            "Spell": self.Spell,
+            "Name": self.Name,
+            "Cost": self.Cost,
+            "Level": self.Level,
+            "Enchantment": self.Enchantment.to_dict()
+        }
 
     def __repr__(self):
         return self.Name + " (Ring)"

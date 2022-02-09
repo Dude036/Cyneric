@@ -940,6 +940,14 @@ def print_treasure(monster_name='', monster_cr=0.0, monster_json=True):
 
     treasure = treasure_calculator(monster['Treasure'], monster['Type'], monster['CR'])
     if monster_json:
+        for t in range(len(treasure)):
+            if isinstance(treasure[t], str):
+                matches = re.findall(r'<td>([^<]*)<\/td>', treasure[t])
+                treasure[t] = { "Gold": matches[0] if matches is not None else '0 gp' }
+            if not isinstance(treasure[t], (str, dict)) and 'Enchantment' in treasure[t].__dict__.keys():
+                treasure[t].Enchantment = treasure[t].Enchantment.to_dict()
+            if not isinstance(treasure[t], (str, dict)):
+                treasure[t] = treasure[t].to_dict()
         return treasure
 
     html = '<!DOCTYPE html><html><head><meta content="width=device-width" name="viewport"/><title></title><style>' + \

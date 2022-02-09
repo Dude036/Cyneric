@@ -2,7 +2,8 @@ import simplejson as json
 from os import path, getcwd
 from numpy.random import choice
 
-
+''' Core Settings
+'''
 MasterID = 1
 MasterSpells = {}
 MasterWondrous = {}
@@ -1114,10 +1115,12 @@ Drink_d2 = [
 if SpellSource == 'D&D 5' or SpellSource == 'All':
     print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_spells.json'))
     MasterSpells.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_spells.json'), 'r'), encoding='utf-8'))
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_wondrous.json'))
     MasterWondrous.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_wondrous.json'), 'r'), encoding='utf-8'))
 if SpellSource == 'Pathfinder 1' or SpellSource == 'All':
     print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'spells.json'))
     MasterSpells.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'spells.json'), 'r'), encoding='utf-8'))
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'wondrous.json'))
     MasterWondrous.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'wondrous.json'), 'r'), encoding='utf-8'))
 
 ''' Beast Content Upgrade
