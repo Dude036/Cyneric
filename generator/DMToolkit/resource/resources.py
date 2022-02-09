@@ -1123,7 +1123,7 @@ if SpellSource == 'Pathfinder 1' or SpellSource == 'All':
     print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'wondrous.json'))
     MasterWondrous.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'wondrous.json'), 'r'), encoding='utf-8'))
 
-''' Beast Content Upgrade
+''' Beast Content Update
 '''
 if BeastSource == 'D&D 5' or BeastSource == 'All':
     print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_beasts.json'))

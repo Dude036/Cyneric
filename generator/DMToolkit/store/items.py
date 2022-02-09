@@ -35,22 +35,33 @@ class Item:
 
     def __str__(self):
         global MasterID
+        # Header Content
         s = '<tr><td style="width:50%;"><span class="text-md"'
         if self.Expandable:
-            s += """onclick="show_hide('""" + str(MasterID) + """')" style="color:blue;"""
+            s += """onclick="show_hide('""" + str(MasterID) + """a')" style="color:blue;" """
         s += '>'
+
+        # Link a potential item
         if self.Linkable:
-            s += '<a href="' + self.Link + '">'
-        s += self.Title
-        if self.Linkable:
-            s += '</a>'
+            s += '<a href="' + self.Link + '">' + self.Title + '</a>'
+        else:
+            s += self.Title
+
+        # End Header
         s += '</span>'
+
+        # Sub section
         if self.Description != "":
             s += '<br /><span class="text-sm emp"'
+
+            # Add clickable
             if self.Expandable:
-                s += ' id=\"' + str(MasterID) + '\" style="display: none;"'
+                s += ' id=\"' + str(MasterID) + 'a\" style="display: none;"'
                 MasterID += 1
+                print(self.Title, 'is Expandable')
             s += '>' + self.Description + '</span>'
+
+        # Cost and Category
         s += '</td><td>' + determine_cost(self.Cost) + '</td><td>' + str(self.Category) + '</td></tr>'
         return s
 
@@ -69,7 +80,7 @@ class Item:
         }
 
 
-class Enchant(object):
+class Enchant():
     Spell:str = ''
     Description:str = ''
     Level:int = 0
@@ -259,11 +270,6 @@ class Food(Item):
         else:
             self.Cost = (len(s) * sum(random_sample(meal_option))) // 10
 
-    def __str__(self):
-        s = """<tr><td style="width:50%;"><span class="text-md">""" + self.Title + """</span></td><td>""" + \
-            determine_cost(self.Cost) + """</td><td>""" + self.Category + """</td></tr>"""
-        return s
-
 
 class Drink(Item):
     def __init__(self, level):
@@ -280,11 +286,6 @@ class Drink(Item):
             self.Cost = (len(s) * random_sample() + .5) / 10
         else:
             self.Cost = (len(s) * sum(random_sample(num))) / 10
-
-    def __str__(self):
-        s = """<tr><td style="width:50%;"><span class="text-md">""" + self.Title + """</span></td><td>""" + \
-            determine_cost(self.Cost) + """</td><td>""" + self.Category + """</td></tr>"""
-        return s
 
 
 class Jewel(Item):
@@ -544,3 +545,67 @@ class General(Item):
         while self.Gear[rarity][item]['Class'] != c:
             item = choice(list(self.Gear[rarity].keys()))
         return item
+
+
+class Wearable(Item):
+    Spell = Name = Type = ""
+    Level = Cost = 0
+    Enchantment = None
+
+    def __init__(self, level, spell=None):
+        self.Expandable = True
+        if spell is None:
+            if level == 0:
+                self.Spell = choice(level_0)
+                self.Cost = 13
+                self.Category = 'Level 0'
+            elif level == 1:
+                self.Spell = choice(level_1)
+                self.Cost = 25
+                self.Category = 'Level 1'
+            elif level == 2:
+                self.Spell = choice(level_2)
+                self.Cost = 150
+                self.Category = 'Level 2' 
+            elif level == 3:
+                self.Spell = choice(level_3)
+                self.Cost = 375
+                self.Category = 'Level 3' 
+            elif level == 4:
+                self.Spell = choice(level_4)
+                self.Cost = 700
+                self.Category = 'Level 4' 
+            elif level == 5:
+                self.Spell = choice(level_5)
+                self.Cost = 1125
+                self.Category = 'Level 5'
+            elif level == 6:
+                self.Spell = choice(level_6)
+                self.Cost = 1650
+                self.Category = 'Level 6'
+            elif level == 7:
+                self.Spell = choice(level_7)
+                self.Cost = 2275
+                self.Category = 'Level 7'
+            elif level == 8:
+                self.Spell = choice(level_8)
+                self.Cost = 3000
+                self.Category = 'Level 8'
+            elif level == 9:
+                self.Spell = choice(level_9)
+                self.Cost = 4825
+                self.Category = 'Level 9'
+
+            if self.Spell in odd_price:
+                self.Cost = round(self.Cost * odd_price[self.Spell])
+
+            self.Enchantment = Enchant(iSpell=self.Spell, rechargable=True)
+        else:
+            if find_spell_level(spell) == level:
+                self.Spell = spell
+                self.Enchantment = Enchant(iSpell=self.Spell)
+                self.Category = 'Level ' + str(level)
+        slot = choice(['Ring', 'Necklace', 'Headband'])
+        self.Description = self.Enchantment.Description
+        self.Title = slot + ' of ' + self.Spell
+        self.Category += ' (' + slot + ')'

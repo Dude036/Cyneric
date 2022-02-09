@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import re
 from numpy.random import randint, choice
-from generator.DMToolkit.store.stores import Scroll, Ring, Weapon, Armor, Potion, determine_cost
-from generator.DMToolkit.store.items import Jewel, Art, Wondrous
+from generator.DMToolkit.store.stores import Scroll, Weapon, Armor, Potion, determine_cost
+from generator.DMToolkit.store.items import Jewel, Art, Wondrous, Wearable
 from generator.DMToolkit.resource.resources import *
 
 Monster_Types = {
@@ -809,11 +809,11 @@ def ring(g):
 
     for _ in range(quantity):
         if category[1] == 'minor':
-            l.append(Ring(randint(0, 3)))
+            l.append(Wearable(randint(0, 3)))
         elif category[1] == 'medium':
-            l.append(Ring(randint(2, 5)))
+            l.append(Wearable(randint(2, 5)))
         elif category[1] == 'major':
-            l.append(Ring(randint(4, 9)))
+            l.append(Wearable(randint(4, 9)))
     return l
 
 
