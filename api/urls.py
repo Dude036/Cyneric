@@ -13,4 +13,8 @@ urlpatterns = [
     path('beast/5e/json/', views.beast_5e_json, name='beast_5e_json'),
     path('beast/pf1/', views.beast_pf1, name='beast_pf1'),
     path('beast/pf1/json/', views.beast_pf1_json, name='beast_pf1_json'),
+    path('treasure/pf1/', views.treasure_pf1, name='treasure_pf1'),
+    path('treasure/pf1/json/', views.treasure_pf1_json, name='treasure_pf1_json'),
+    path('treasure/pf1/<int:cr>/', views.treasure_pf1_cr, name='treasure_pf1'),
+    path('treasure/pf1/<int:cr>/json/', views.treasure_pf1_cr_json, name='treasure_pf1_json'),
 ]
