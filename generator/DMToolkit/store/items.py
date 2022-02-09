@@ -41,7 +41,6 @@ class Item:
             if self.Expandable:
                 s += ' id=\"' + str(MasterID) + 'a\" style="display: none;"'
                 MasterID += 1
-                print(self.Title, 'is Expandable')
             s += '>' + self.Description + '</span>'
 
         # Cost and Category
@@ -594,7 +593,7 @@ class Wearable(Item):
         self.Category += ' (' + slot + ')'
 
 
-class Scroll(object):
+class Scroll(Item):
     Name = Spell = Add = ''
     Enchantment = None
     Cost = 0
@@ -604,33 +603,43 @@ class Scroll(object):
         if spell is None:
             if level == 0:
                 self.Spell = choice(level_0)
+                self.Category = 'Level 0'
                 self.Cost = 12.5
             elif level == 1:
                 self.Spell = choice(level_1)
+                self.Category = 'Level 1'
                 self.Cost = 25
             elif level == 2:
                 self.Spell = choice(level_2)
+                self.Category = 'Level 2'
                 self.Cost = 150
             elif level == 3:
                 self.Spell = choice(level_3)
+                self.Category = 'Level 3'
                 self.Cost = 375
             elif level == 4:
                 self.Spell = choice(level_4)
+                self.Category = 'Level 4'
                 self.Cost = 700
             elif level == 5:
                 self.Spell = choice(level_5)
+                self.Category = 'Level 5'
                 self.Cost = 1125
             elif level == 6:
                 self.Spell = choice(level_6)
+                self.Category = 'Level 6'
                 self.Cost = 1650
             elif level == 7:
                 self.Spell = choice(level_7)
+                self.Category = 'Level 7'
                 self.Cost = 2275
             elif level == 8:
                 self.Spell = choice(level_8)
+                self.Category = 'Level 8'
                 self.Cost = 3000
             elif level == 9:
                 self.Spell = choice(level_9)
+                self.Category = 'Level 9'
                 self.Cost = 4825
 
             if self.Spell in odd_price:
@@ -641,6 +650,7 @@ class Scroll(object):
             if find_spell_level(spell) == level:
                 self.Spell = spell
                 self.Enchantment = Enchant(iSpell=self.Spell, rechargable=False)
+                self.Category = 'Level ' + level
 
         if naming:
             self.Title = Scroll_Name_Potential[randint(len(Scroll_Name_Potential))] + self.Spell
@@ -651,7 +661,7 @@ class Scroll(object):
         self.Description = self.Enchantment.Description
 
 
-class Potion(object):
+class Potion(Item):
     Spell = Name = ""
     Cost = 0
     Enchantment = None
@@ -661,33 +671,43 @@ class Potion(object):
         if spell is None:
             if level == 0:
                 self.Spell = choice(level_0)
+                self.Category = 'Level 0'
                 self.Cost = 13
             elif level == 1:
                 self.Spell = choice(level_1)
+                self.Category = 'Level 1'
                 self.Cost = 25
             elif level == 2:
                 self.Spell = choice(level_2)
+                self.Category = 'Level 2'
                 self.Cost = 150
             elif level == 3:
                 self.Spell = choice(level_3)
+                self.Category = 'Level 3'
                 self.Cost = 375
             elif level == 4:
                 self.Spell = choice(level_4)
+                self.Category = 'Level 4'
                 self.Cost = 700
             elif level == 5:
                 self.Spell = choice(level_5)
+                self.Category = 'Level 5'
                 self.Cost = 1125
             elif level == 6:
                 self.Spell = choice(level_6)
+                self.Category = 'Level 6'
                 self.Cost = 1650
             elif level == 7:
                 self.Spell = choice(level_7)
+                self.Category = 'Level 7'
                 self.Cost = 2275
             elif level == 8:
                 self.Spell = choice(level_8)
+                self.Category = 'Level 8'
                 self.Cost = 3000
             elif level == 9:
                 self.Spell = choice(level_9)
+                self.Category = 'Level 9'
                 self.Cost = 4825
 
             if self.Spell in odd_price:
@@ -697,8 +717,70 @@ class Potion(object):
         else:
             if find_spell_level(spell) == level:
                 self.Spell = spell
+                self.Category = 'Level ' + level
                 self.Enchantment = Enchant(iSpell=self.Spell, rechargable=False)
 
         self.Title = Potion_Name_Potential[randint(len(Potion_Name_Potential))] + self.Spell
         self.Description = self.Enchantment.Description
 
+
+class Wand(Item):
+    Spell = Name = ""
+    Level = Cost = 0
+    Enchantment = None
+
+    def __init__(self, level, spell=None):
+        if spell is None:
+            if level == 0:
+                self.Spell = choice(level_0)
+                self.Category = 'Level 0'
+                self.Cost = 13
+            elif level == 1:
+                self.Spell = choice(level_1)
+                self.Category = 'Level 1'
+                self.Cost = 25
+            elif level == 2:
+                self.Spell = choice(level_2)
+                self.Category = 'Level 2'
+                self.Cost = 150
+            elif level == 3:
+                self.Spell = choice(level_3)
+                self.Category = 'Level 3'
+                self.Cost = 375
+            elif level == 4:
+                self.Spell = choice(level_4)
+                self.Category = 'Level 4'
+                self.Cost = 700
+            elif level == 5:
+                self.Spell = choice(level_5)
+                self.Category = 'Level 5'
+                self.Cost = 1125
+            elif level == 6:
+                self.Spell = choice(level_6)
+                self.Category = 'Level 6'
+                self.Cost = 1650
+            elif level == 7:
+                self.Spell = choice(level_7)
+                self.Category = 'Level 7'
+                self.Cost = 2275
+            elif level == 8:
+                self.Spell = choice(level_8)
+                self.Category = 'Level 8'
+                self.Cost = 3000
+            elif level == 9:
+                self.Spell = choice(level_9)
+                self.Category = 'Level 9'
+                self.Cost = 4825
+
+            if self.Spell in odd_price:
+                self.Cost = round(self.Cost * odd_price[self.Spell])
+
+            self.Enchantment = Enchant(iSpell=self.Spell)
+        else:
+            if find_spell_level(spell) == level:
+                self.Spell = spell
+                self.Enchantment = Enchant(iSpell=self.Spell)
+                self.Category = 'Level ' + level
+
+        self.Title = Wand_Name_Potential[randint(len(Wand_Name_Potential))] + self.Spell
+        self.Description = self.Enchantment.Description
