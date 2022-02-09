@@ -1212,3 +1212,21 @@ def determine_rarity(q):
         d[x] = l[pos]
         pos += 1
     return choice(list(d.keys()), p=list(normalize_dict(d).values()))
+
+
+def determine_cost(c):
+    s = ""
+    if isinstance(c, int):
+        s = format(c, ',d') + " gp"
+    else:
+        if int(c) > 0:
+            s += format(int(c), ',d') + " gp "
+            c %= int(c)
+        if int(c * 10) > 0:
+            s += str(int(c * 10)) + " sp "
+        if int((c * 100) % 10) > 0:
+            s += str(int((c * 100) % 10)) + " cp"
+    if len(s) == 0:
+        s = "0 cp"
+    return s
+

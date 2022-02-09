@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import re
 from numpy.random import randint, choice
-from generator.DMToolkit.store.stores import Weapon, Armor, Potion, determine_cost
-from generator.DMToolkit.store.items import Jewel, Art, Wondrous, Wearable, Scroll
+from generator.DMToolkit.store.stores import Weapon, Armor
+from generator.DMToolkit.store.items import Jewel, Art, Wondrous, Wearable, Potion, Scroll
 from generator.DMToolkit.resource.resources import *
 
 Monster_Types = {
@@ -945,7 +945,7 @@ def print_treasure(monster_name='', monster_cr=0.0, monster_json=True):
                 matches = re.findall(r'<td>([^<]*)<\/td>', treasure[t])
                 treasure[t] = { "Gold": matches[0] if matches is not None else '0 gp' }
             if not isinstance(treasure[t], (str, dict)) and 'Enchantment' in treasure[t].__dict__.keys():
-                treasure[t].Enchantment = treasure[t].Enchantment.to_dict()
+                treasure[t].Enchantment = treasure[t].Enchantment.to_dict() if treasure[t].Enchantment is not None else None
             if not isinstance(treasure[t], (str, dict)):
                 treasure[t] = treasure[t].to_dict()
         return treasure

@@ -6,23 +6,6 @@ from generator.DMToolkit.resource.names import Antiques, Books, Enchanter, Potio
 from generator.DMToolkit.core.variance import normalize_dict
 
 
-def determine_cost(c):
-    s = ""
-    if isinstance(c, int):
-        s = format(c, ',d') + " gp"
-    else:
-        if int(c) > 0:
-            s += format(int(c), ',d') + " gp "
-            c %= int(c)
-        if int(c * 10) > 0:
-            s += str(int(c * 10)) + " sp "
-        if int((c * 100) % 10) > 0:
-            s += str(int((c * 100) % 10)) + " cp"
-    if len(s) == 0:
-        s = "0 cp"
-    return s
-
-
 class Item:
     """Parent Class for All items"""
     Title: str = ""
@@ -666,3 +649,56 @@ class Scroll(object):
             self.Add = '+'
 
         self.Description = self.Enchantment.Description
+
+
+class Potion(object):
+    Spell = Name = ""
+    Cost = 0
+    Enchantment = None
+
+    def __init__(self, level, spell=None):
+        self.Expandable = True
+        if spell is None:
+            if level == 0:
+                self.Spell = choice(level_0)
+                self.Cost = 13
+            elif level == 1:
+                self.Spell = choice(level_1)
+                self.Cost = 25
+            elif level == 2:
+                self.Spell = choice(level_2)
+                self.Cost = 150
+            elif level == 3:
+                self.Spell = choice(level_3)
+                self.Cost = 375
+            elif level == 4:
+                self.Spell = choice(level_4)
+                self.Cost = 700
+            elif level == 5:
+                self.Spell = choice(level_5)
+                self.Cost = 1125
+            elif level == 6:
+                self.Spell = choice(level_6)
+                self.Cost = 1650
+            elif level == 7:
+                self.Spell = choice(level_7)
+                self.Cost = 2275
+            elif level == 8:
+                self.Spell = choice(level_8)
+                self.Cost = 3000
+            elif level == 9:
+                self.Spell = choice(level_9)
+                self.Cost = 4825
+
+            if self.Spell in odd_price:
+                self.Cost = round(self.Cost * odd_price[self.Spell])
+
+            self.Enchantment = Enchant(iSpell=self.Spell, rechargable=False)
+        else:
+            if find_spell_level(spell) == level:
+                self.Spell = spell
+                self.Enchantment = Enchant(iSpell=self.Spell, rechargable=False)
+
+        self.Title = Potion_Name_Potential[randint(len(Potion_Name_Potential))] + self.Spell
+        self.Description = self.Enchantment.Description
+
