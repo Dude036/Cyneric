@@ -814,7 +814,7 @@ class Weapon(Item):
                 special_masterwork_weapon(self, iTrait)
 
         # Item conversion portion
-        self.Title = self.Name
+        self.Title = self.Name + ' (' + self.Class + ')'
         self.Expandable = True if self.Enchantment is not None or self.Special != '' else False
 
         self.Category = ''
@@ -968,6 +968,128 @@ class Weapon(Item):
             if self.Masterwork == 0:
                 self.Masterwork = int(mlevel)
                 self.Cost += (1 + mlevel) * 1000
+                self.Name = "+" + str(mlevel) + ' ' + self.Name
+                self.Dice += "+" + str(mlevel)
+
+
+class Firearm(Item):
+    cost_and_weight = {
+        'Pistol': [100, .8],
+        'Rifle': [250, 2],
+        'Sniper': [1000, 5],
+        'Shotgun': [500, 3],
+    }
+    Weight = Cost = Rarity = Masterwork = Range = Capacity = 0
+    Name = Dice = Crit = Class = Special = Text = ''
+    Enchantment = None
+    Misfire = []
+    Damage = []
+
+    def __init__(self, rarity, iClass=None, iName=None, iTrait=None):
+        if iClass is None or iClass not in list(possible_guns.keys()):
+            self.Class = choice(list(possible_guns.keys()))
+        else:
+            self.Class = iClass
+        if rarity > 4:
+            rarity %= 4
+        self.Rarity = rarity
+        self.Crit = 'x' + str(choice([3, 4, 5, 6], p=[.5625, .25, .125, 0.0625]))
+        self.Damage = ['P']
+        self.__choose_metal()
+        self.Name += choice(possible_guns[self.Class])
+
+        if self.Class == 'Pistol':
+            self.Capacity = int(choice([1, 2, 4, 6]))
+            self.Range = 10 + randint(2, 4) * 5 * (self.Rarity + 1)
+            self.Dice = str(int(self.Rarity + 1)) + 'd' + str(choice([4, 6, 8], p=[.625, .25, .125]))
+            self.Max_Range = 5 * round((self.Range * 2.5) / 5)
+
+        elif self.Class == 'Rifle':
+            self.Capacity = int(randint(1, 8) * 5)
+            self.Range = 10 + randint(2, 10) * 5 * (self.Rarity + 1)
+            self.Dice = str(int(self.Rarity + 1)) + 'd' + str(choice([6, 8, 10], p=[.625, .25, .125]))
+            self.Max_Range = self.Range * 3
+
+        elif self.Class == 'Shotgun':
+            self.Capacity = int(choice([1, 2, 3, 4]))
+            self.Range = 10 + randint(2, 5) * 5 * ((self.Rarity + 1) // 2)
+            self.Dice = str(int(self.Rarity + 1)) + 'd' + str(choice([6, 8, 10], p=[.625, .25, .125]))
+            self.Max_Range = self.Range * 2
+
+        elif self.Class == 'Sniper':
+            self.Capacity = int(choice([1, 2, 4, 6]))
+            self.Range = 30 + randint(3, 7) * 10 * (self.Rarity + 1)
+            self.Dice = str(int(self.Rarity + 1)) + 'd' + str(choice([10, 12, 20], p=[.625, .25, .125]))
+            self.Max_Range = self.Range * 4
+        if self.Class != 'Sniper' and self.Rarity > 0:
+            self.Dice = str(int(self.Dice[0]) - 1) + self.Dice[1:]
+
+        if iName is not None:
+            self.Name = iName
+
+        if randint(1, 101) + self.Rarity * self.Rarity >= 95:
+            self.add_enchantment(Enchant())
+        if randint(1, 101) + self.Rarity * self.Rarity >= 75:
+            self.add_masterwork(determine_rarity([1, 9]))
+            if randint(1, 101) + self.Rarity * self.Rarity >= 75:
+                special_masterwork_weapon(self, iTrait)
+
+        self.Misfire = [1]
+        if self.Class == 'Sniper' or self.Class == 'Shotgun':
+            self.Misfire += [2, 3]
+        elif self.Class == 'Rifle':
+            self.Misfire += [2]
+        if self.Masterwork > 0:
+            self.Misfire.pop()
+
+        # Item conversion portion
+        self.Title = self.Name + ' (' + self.Class + ')'
+        self.Expandable = True if self.Enchantment is not None or self.Special != '' else False
+
+        self.Category = ''
+        if self.Masterwork is not None:
+            self.Category += 'Masterwork '
+        self.Category += ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary'][self.Rarity]
+        if self.Enchantment is not None:
+            self.Category += ', Level ' + [str(x) for x in range(10)][self.Enchantment.Level]
+
+        misfire = "Misfire: N/A"
+        if len(self.Misfire) > 0:
+            misfire = "Misfire: " + str(self.Misfire)
+
+        self.Description = 'Damage: ' + self.Dice + ' (' + self.Crit + ') ' + str(self.Damage) + ' Weight: ' + str(self.Weight) + ' lbs. Range: '
+        self.Description += str(self.Range) + ' / ' + str(self.Max_Range) + ' ft. Mag: ' + str(self.Capacity) + ' ' + misfire + self.Text
+        if self.Enchantment is not None:
+            self.Description += str(self.Enchantment)
+
+    def __choose_metal(self):
+        if self.Rarity > 4:
+            self.Rarity %= 4
+
+        cl = [common_material, uncommon_material, rare_material, very_rare_material, legendary_material][self.Rarity]
+        metal = None
+        while metal is None:
+            metal = choice(list(cl.keys()))
+            if 'HA' in cl[metal]['Type'] and 'P' in cl[metal]['Type']:
+                self.Name += metal + ' '
+            else:
+                metal = None
+        self.Cost = self.cost_and_weight[self.Class][0] * cl[metal]['Cost'] * (self.Rarity + 2)**self.Rarity * (
+            int(self.Crit[1]) / 2)
+        self.Weight = round(self.cost_and_weight[self.Class][1] * cl[metal]['Weight'] * 4, 1)
+
+    def add_enchantment(self, ench):
+        if self.Enchantment is None:
+            self.Enchantment = ench
+            self.Cost = self.Cost + self.Enchantment.Cost
+        else:
+            print("This Item is already enchanted.")
+
+    def add_masterwork(self, mlevel):
+        if mlevel < 10:
+            if self.Masterwork == 0:
+                self.Masterwork = int(mlevel)
+                self.Cost += (1 + mlevel) * (1 + mlevel) * 1000
                 self.Name = "+" + str(mlevel) + ' ' + self.Name
                 self.Dice += "+" + str(mlevel)
 
