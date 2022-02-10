@@ -1,8 +1,7 @@
 #!/usr/bin/python3
 import re
 from numpy.random import randint, choice
-from generator.DMToolkit.store.stores import Armor
-from generator.DMToolkit.store.items import Weapon, Jewel, Art, Wondrous, Wearable, Potion, Scroll
+from generator.DMToolkit.store.items import Weapon, Firearm, Armor, Jewel, Art, Wondrous, Wearable, Potion, Scroll
 from generator.DMToolkit.resource.resources import *
 
 Monster_Types = {
@@ -730,14 +729,25 @@ def weapon(g):
                     break
 
         for _ in range(quantity):
-            if category[1] == 'minor':
-                w = Weapon(randint(0, 1))
-            elif category[1] == 'medium':
-                w = Weapon(randint(1, 2))
-            elif category[1] == 'major':
-                w = Weapon(randint(3, 4))
+            t = randint(0, 5)
+            if t == 0:
+                if category[1] == 'minor':
+                    w = Weapon(randint(0, 1))
+                elif category[1] == 'medium':
+                    w = Weapon(randint(1, 2))
+                elif category[1] == 'major':
+                    w = Weapon(randint(3, 5))
+                else:
+                    w = Weapon(0)
             else:
-                w = Weapon(0)
+                if category[1] == 'minor':
+                    w = Firearm(randint(0, 1))
+                elif category[1] == 'medium':
+                    w = Firearm(randint(1, 2))
+                elif category[1] == 'major':
+                    w = Firearm(randint(3, 5))
+                else:
+                    w = Firearm(0)
             l.append(w)
     return l
 

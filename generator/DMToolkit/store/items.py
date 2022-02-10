@@ -814,7 +814,7 @@ class Weapon(Item):
                 special_masterwork_weapon(self, iTrait)
 
         # Item conversion portion
-        self.Title = self.Name + ' (' + self.Class + ')'
+        self.Title = self.Name.title() + ' (' + self.Class + ')'
         self.Expandable = True if self.Enchantment is not None or self.Special != '' else False
 
         self.Category = ''
@@ -1043,7 +1043,7 @@ class Firearm(Item):
             self.Misfire.pop()
 
         # Item conversion portion
-        self.Title = self.Name + ' (' + self.Class + ')'
+        self.Title = self.Name.title() + ' (' + self.Class + ')'
         self.Expandable = True if self.Enchantment is not None or self.Special != '' else False
 
         self.Category = ''
@@ -1093,3 +1093,206 @@ class Firearm(Item):
                 self.Name = "+" + str(mlevel) + ' ' + self.Name
                 self.Dice += "+" + str(mlevel)
 
+
+class Armor(object):
+    light_armor = {
+        # Name  :           HP, AC, Cost, Weight
+        'Padded': [5, 1, 5, 10],
+        'Leathered': [10, 1, 10, 15],
+        'Studded': [15, 2, 25, 20],
+        'Chained': [20, 2, 100, 25],
+    }
+    medium_armor = {
+        # Name  :           HP, AC, Cost, Weight
+        'Hide': [
+            15,
+            2,
+            15,
+            25,
+        ],
+        'Scale mail': [
+            20,
+            2,
+            50,
+            30,
+        ],
+        'Chainmail': [
+            25,
+            3,
+            150,
+            40,
+        ],
+        'Breastplate': [
+            25,
+            3,
+            200,
+            30,
+        ],
+    }
+    heavy_armor = {
+        # Name  :           HP, AC, Cost, Weight
+        'Splint mail': [
+            30,
+            3,
+            200,
+            45,
+        ],
+        'Banded mail': [
+            30,
+            3,
+            250,
+            35,
+        ],
+        'Half-plate': [
+            35,
+            4,
+            600,
+            50,
+        ],
+        'Full plate': [
+            40,
+            4,
+            1500,
+            50,
+        ],
+    }
+    shield = {
+        # Name  :           HP, AC, Cost, Weight
+        'Buckler': [
+            5,
+            1,
+            5,
+            5,
+        ],
+        'Light Shield': [
+            10,
+            1,
+            9,
+            6,
+        ],
+        'Heavy Shield': [
+            20,
+            2,
+            20,
+            15,
+        ],
+        'Tower Shield': [
+            20,
+            4,
+            30,
+            45,
+        ],
+    }
+
+    Weight = Cost = Rarity = Masterwork = AC = 0
+    Name = Class = Special = Text = ''
+    Metal = Enchantment = None
+
+    def __init__(self, rare, iClass=None, iName=None, iTrait=None):
+        self.Rarity = rare
+        self.Name = iName
+        self.Class = iClass
+        self.__choose_metal()
+        self.__choose_type()
+
+        if randint(1, 101) + self.Rarity * self.Rarity >= 95:
+            self.add_enchantment(Enchant())
+        if randint(1, 101) + self.Rarity * self.Rarity >= 95:
+            self.add_masterwork(determine_rarity([1, 9]))
+            if randint(1, 101) + self.Rarity * self.Rarity >= 75:
+                special_masterwork_armor(self, iTrait)
+
+        # Item conversion portion
+        self.Title = self.Name.title() + ' (' + self.Class + ')'
+        self.Expandable = True if self.Enchantment is not None or self.Special != '' else False
+
+        self.Category = ''
+        if self.Masterwork is not None:
+            self.Category += 'Masterwork '
+        self.Category += ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary'][self.Rarity]
+        if self.Enchantment is not None:
+            self.Category += ', Level ' + [str(x) for x in range(10)][self.Enchantment.Level]
+
+        self.Description = 'AC: +' + str(self.AC) + ' Weight: ' + str(self.Weight) + ' lbs.' + self.Text
+        if self.Enchantment is not None:
+            self.Description += str(self.Enchantment)
+
+    def __choose_metal(self):
+        if self.Rarity > 4:
+            self.Rarity %= 4
+
+        if self.Rarity == 0:
+            self.Metal = choice(list(common_material.keys()))
+            self.AC = round(common_material[self.Metal]['AC'] / 10)
+            self.Cost = common_material[self.Metal]['Cost']
+            self.Weight = common_material[self.Metal]['Weight']
+        elif self.Rarity == 1:
+            self.Metal = choice(list(uncommon_material.keys()))
+            self.AC = round(uncommon_material[self.Metal]['AC'] / 10)
+            self.Cost = uncommon_material[self.Metal]['Cost']
+            self.Weight = uncommon_material[self.Metal]['Weight']
+        elif self.Rarity == 2:
+            self.Metal = choice(list(rare_material.keys()))
+            self.AC = round(rare_material[self.Metal]['AC'] / 10)
+            self.Cost = rare_material[self.Metal]['Cost']
+            self.Weight = rare_material[self.Metal]['Weight']
+        elif self.Rarity == 3:
+            self.Metal = choice(list(very_rare_material.keys()))
+            self.AC = round(very_rare_material[self.Metal]['AC'] / 10)
+            self.Cost = very_rare_material[self.Metal]['Cost']
+            self.Weight = very_rare_material[self.Metal]['Weight']
+        elif self.Rarity == 4:
+            self.Metal = choice(list(legendary_material.keys()))
+            self.AC = round(legendary_material[self.Metal]['AC'] / 10)
+            self.Cost = legendary_material[self.Metal]['Cost']
+            self.Weight = legendary_material[self.Metal]['Weight']
+
+    def __choose_type(self):
+        if self.Class not in ['Light', 'Medium', 'Heavy', 'Shield'] or self.Class is None:
+            self.Class = choice(['Light', 'Medium', 'Heavy', 'Shield'])
+        if self.Class == 'Light':
+            c = choice(list(self.light_armor.keys()))
+            self.AC += self.light_armor[c][1]
+            self.Cost = round(self.Cost * self.light_armor[c][2] * (self.Rarity + 1)**self.Rarity)
+            self.Weight *= round(self.light_armor[c][3], 1)
+            self.Name = c + " " + self.Metal
+            if c == 'Leathered' and self.Metal == "Leather":
+                self.Name = "Leather"
+        elif self.Class == 'Medium':
+            c = choice(list(self.medium_armor.keys()))
+            self.AC += self.medium_armor[c][1]
+            self.Cost = round(self.Cost * self.medium_armor[c][2] * (self.Rarity + 1)**self.Rarity)
+            self.Weight *= round(self.medium_armor[c][3], 1)
+            self.Name = self.Metal + " " + c
+        elif self.Class == 'Heavy':
+            c = choice(list(self.heavy_armor.keys()))
+            self.AC += self.heavy_armor[c][1]
+            self.Cost = round(self.Cost * self.heavy_armor[c][2] * (self.Rarity + 1)**self.Rarity)
+            self.Weight *= round(self.heavy_armor[c][3], 1)
+            self.Name = self.Metal + " " + c
+        else:
+            c = choice(list(self.shield.keys()))
+            self.AC += self.shield[c][1]
+            self.Cost = round(self.Cost * self.shield[c][2] * (self.Rarity + 1)**self.Rarity)
+            self.Weight *= round(self.shield[c][3], 1)
+            self.Name = self.Metal + " " + c
+
+    def add_enchantment(self, ench):
+        if self.Enchantment is None:
+            self.Enchantment = ench
+            self.Cost = round(self.Cost + self.Enchantment.Cost)
+        else:
+            print("This Item is already enchanted.")
+
+    def add_trait(self, trait):
+        if self.Special == '':
+            special_masterwork_armor(self, trait)
+
+    def add_masterwork(self, mlevel):
+        if mlevel > 10:
+            mlevel %= 9
+        if self.Masterwork == 0:
+            self.Masterwork = int(mlevel)
+            self.Cost += 2 * mlevel * mlevel * 1000
+            self.Name = "+" + str(mlevel) + ' ' + self.Name
+            self.AC += mlevel
