@@ -893,7 +893,7 @@ def get_flavor_text_weapon(name, Weapon=None):
                "effect, or a successful DC15 Medicine Check."
 
     if Weapon is not None:
-        Weapon.Text = '<p>' + text + '</p>'
+        Weapon.Text = '<p><b>Special Property:</b> ' + text + '</p>'
     else:
         return text
 
@@ -1619,7 +1619,7 @@ def get_flavor_text_armor(name, Armor=None):
                ' Once cast, roll 1d10. On a 10, the breath weapon is recharged, and able to be used again.'
 
     if Armor is not None:
-        Armor.Text = '<p>' + text + '</p>'
+        Armor.Text = '<p><b>Special Property:</b> ' + text + '</p>'
     else:
         return text
 

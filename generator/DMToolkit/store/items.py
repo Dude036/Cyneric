@@ -3,6 +3,7 @@ from numpy.random import randint, choice, random_sample
 from generator.DMToolkit.people.character import create_person
 from generator.DMToolkit.resource.names import Antiques, Books, Enchanter, Potions, Tavern, Restaurant, Jeweller, Blacksmith, GeneralStore, Weapons,\
     Jewelling, Brothel, Gunsmithing
+from generator.DMToolkit.store.masterwork import special_masterwork_weapon, special_masterwork_armor
 from generator.DMToolkit.core.variance import normalize_dict
 
 
@@ -784,3 +785,189 @@ class Wand(Item):
 
         self.Title = Wand_Name_Potential[randint(len(Wand_Name_Potential))] + self.Spell
         self.Description = self.Enchantment.Description
+
+
+class Weapon(Item):
+    """
+    Cost should be in GP
+    Rarity [0, 4] - Common, Uncommon, Rare, Very Rare, Legendary
+        Rarity will also determine what types of material to use as well as the
+            price for an item. Also note, that the prices are how much they cost
+            to make, not the cost they'll be sold for.
+    """
+    Weight = Cost = Rarity = Masterwork = 0
+    Name = Dice = Crit = Class = Special = Text = ''
+    Damage = []
+    Enchantment = None
+
+    def __init__(self, rare, iClass=None, iName=None, iTrait=None):
+        self.Rarity = rare
+        self.Name = iName
+        self.__choose_type(iClass)
+        self.__choose_metal()
+
+        if randint(1, 101) + self.Rarity * self.Rarity >= 95:
+            self.add_enchantment(Enchant())
+        if randint(1, 101) + self.Rarity * self.Rarity >= 75:
+            self.add_masterwork(determine_rarity([1, 9]))
+            if randint(1, 101) + self.Rarity * self.Rarity >= 75:
+                special_masterwork_weapon(self, iTrait)
+
+        # Item conversion portion
+        self.Title = self.Name
+        self.Expandable = True if self.Enchantment is not None or self.Special != '' else False
+
+        self.Category = ''
+        if self.Masterwork is not None:
+            self.Category += 'Masterwork '
+        self.Category += ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary'][self.Rarity]
+        if self.Enchantment is not None:
+            self.Category += ', Level ' + [str(x) for x in range(10)][self.Enchantment.Level]
+
+
+        self.Description = 'Damage: ' + self.Dice + ' (' + self.Crit + ') ' + str(self.Damage) + ' Weight: ' + str(self.Weight) + ' lbs' + self.Text
+        if self.Enchantment is not None:
+            self.Description += str(self.Enchantment)
+
+
+    def __choose_type(self, requirement=None):
+        if requirement is None:
+            # Make a pick with each weapon type
+            if randint(2):
+                self.Class = choice(list(possible_melee.keys()))
+                self.Name = choice(list(possible_melee[self.Class])).title()
+            else:
+                self.Class = choice(list(possible_ranged.keys()))
+                self.Name = choice(list(possible_ranged[self.Class])).title()
+        # Existing requirement
+        elif requirement in list(possible_melee.keys()):
+            self.Class = requirement
+            self.Name = choice(list(possible_melee[self.Class])).title()
+
+        elif requirement in list(possible_ranged.keys()):
+            self.Class = requirement
+            self.Name = choice(list(possible_ranged[self.Class])).title()
+
+        else:
+            print("The requirement is not in the list of possible weapons.")
+            return None
+
+        # We have a class of weapon. Get weapon Damage
+        self.Dice = str(int(self.Rarity / 2) + 1) + 'd' + str(choice(die_values[self.Class]))
+
+        # Give Damage Types
+        if self.Class == 'Heavy Axe' or self.Class == 'Light Axe':
+            self.Damage = ['S']
+        elif self.Class == 'Heavy Blade' or self.Class == 'Light Blade':
+            self.Damage = ['S', 'P']
+        elif self.Class == 'Close':
+            self.Damage = ['B', 'P']
+        elif self.Class == 'Double':
+            self.Damage = ['S', 'B', 'P']
+        elif self.Class == 'Flail':
+            self.Damage = ['B', 'S']
+        elif self.Class == 'Hammer':
+            self.Damage = ['B']
+        elif self.Class == 'Monk':
+            self.Damage = ['B', 'S', 'P']
+        elif self.Class == 'Polearm':
+            self.Damage = ['P', 'S']
+        elif self.Class == 'Spear':
+            self.Damage = ['P']
+        elif self.Class == 'Bows':
+            self.Damage = ['Ra', 'P', choice(['30', '40', '50', '60', '70', '80', '90', '100', '110', '120']) + ' ft.']
+        elif self.Class == 'Crossbow':
+            self.Damage = ['Ra', 'P', choice(['60', '70', '80', '90', '100', '110', '120']) + ' ft.']
+        elif self.Class == 'Thrown':
+            self.Damage = ['Ar', 'P', 'S', choice(['15', '20', '25', '30', '35', '40']) + ' ft.']
+        return
+
+    def __choose_metal(self):
+        if self.Rarity > 4:
+            self.Rarity %= 4
+
+        if self.Rarity == 1:  # Uncommon Materials
+            m = self.__verify_metal(uncommon_material)
+
+        elif self.Rarity == 2:  # Rare Materials
+            m = self.__verify_metal(rare_material)
+
+        elif self.Rarity == 3:  # Very Rare Materials
+            m = self.__verify_metal(very_rare_material)
+
+        elif self.Rarity == 4:  # Legendary Materials
+            m = self.__verify_metal(legendary_material)
+
+        else:  # Common Materials
+            m = self.__verify_metal(common_material)
+
+        if m[0] in ['Cold Iron', 'Cold Siccatite']:
+            self.Damage.append('Cold')
+        elif m[0] in ['Elysian Bronze']:
+            self.Damage.append('Radiant')
+        elif m[0] in ['Hot Siccatite']:
+            self.Damage.append('Fire')
+        elif m[0] in ['Mindglass']:
+            self.Damage.append('Psychic')
+
+        self.Name = m[0] + ' ' + self.Name
+        self.__weigh(m[0], m[1])
+
+    def __verify_metal(self, cl):
+        metal = None
+        while metal is None:
+            metal = choice(list(cl.keys()))
+            # print(metal, '=', cl[metal])
+            t = 0
+            while t < len(self.Damage):
+                if self.Damage[t] not in cl[metal]['Type']:
+                    if 'ft.' not in self.Damage[t]:
+                        # print(metal, 'Not compatible with a', self.Name, '(\''+self.Damage[t]+'\')')
+                        metal = None
+                        t = len(self.Damage)
+                t += 1
+        return metal, cl
+
+    def __crit(self):
+        chance = randint(100) + self.Rarity * 10
+        if chance < 80:
+            self.Crit = 'x2'
+        elif chance < 92:
+            self.Crit = '19-20 x2'
+        elif chance < 97:
+            self.Crit = '18-20 x2'
+        elif chance < 100:
+            self.Crit = 'x3'
+        elif chance < 130:
+            self.Crit = '19-20 x3'
+        else:
+            self.Crit = '18-20 x3'
+        return chance
+
+    def __weigh(self, metal, cl):
+        dice_incriment = int(eval(self.Dice.split('d')[1]) / 2) * 2**eval(self.Dice.split('d')[0])
+        crit_val = (self.__crit() // 20)
+        cost_factor = max([weapon_cost_and_weight[self.Class][0], dice_incriment * crit_val])
+
+        self.Cost = float(round(cost_factor * cl[metal]['Cost'] * (self.Rarity + 1)**self.Rarity, 2))
+        self.Weight = round(weapon_cost_and_weight[self.Class][1] * cl[metal]['Weight'] * 14, 1)
+
+    def add_enchantment(self, ench):
+        if self.Enchantment is None:
+            self.Enchantment = ench
+            self.Cost = float(self.Cost + self.Enchantment.Cost)
+        else:
+            print("This Item is already enchanted.")
+
+    def add_trait(self, trait):
+        if self.Special == '':
+            special_masterwork_weapon(self, trait)
+
+    def add_masterwork(self, mlevel):
+        if mlevel < 10:
+            if self.Masterwork == 0:
+                self.Masterwork = int(mlevel)
+                self.Cost += (1 + mlevel) * 1000
+                self.Name = "+" + str(mlevel) + ' ' + self.Name
+                self.Dice += "+" + str(mlevel)
+

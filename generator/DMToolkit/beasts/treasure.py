@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import re
 from numpy.random import randint, choice
-from generator.DMToolkit.store.stores import Weapon, Armor
-from generator.DMToolkit.store.items import Jewel, Art, Wondrous, Wearable, Potion, Scroll
+from generator.DMToolkit.store.stores import Armor
+from generator.DMToolkit.store.items import Weapon, Jewel, Art, Wondrous, Wearable, Potion, Scroll
 from generator.DMToolkit.resource.resources import *
 
 Monster_Types = {
