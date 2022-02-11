@@ -1094,7 +1094,7 @@ class Firearm(Item):
                 self.Dice += "+" + str(mlevel)
 
 
-class Armor(object):
+class Armor(Item):
     light_armor = {
         # Name  :           HP, AC, Cost, Weight
         'Padded': [5, 1, 5, 10],
