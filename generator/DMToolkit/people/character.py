@@ -41,8 +41,17 @@ class Character(object):
                 info += """<p>"""
         return info
 
-    def from_dict(self, new_self):
-        self.__dict__.update(new_self)
+    def to_dict(self):
+        return {
+            'Name': self.Name,
+            'Race': self.Race,
+            'Gender': self.Gender,
+            'Age': self.Age,
+            'Appearance': self.Appearance,
+            'Traits': self.Traits,
+            'Story': self.Story,
+            'Orientation': self.Orientation,
+        }
 
 
 def create_person(pop):
