@@ -6,7 +6,6 @@ from generator.DMToolkit.people import PC
 from generator.DMToolkit.people.character import create_person
 from generator.DMToolkit.core.variance import create_variance
 import simplejson as json
-from generator.DMToolkit.store.masterwork import find_masterwork_traits_weapon, find_masterwork_traits_armor
 
 statHTML = '<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width" /><title></title><style>body'\
            '{max-width:800px;margin-left:auto;margin-right:auto;padding-left:5px;padding-right:5px;} html{font-family:'\

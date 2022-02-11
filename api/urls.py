@@ -17,4 +17,6 @@ urlpatterns = [
     path('treasure/pf1/json/', views.treasure_pf1_json, name='treasure_pf1_json'),
     path('treasure/pf1/<int:cr>/', views.treasure_pf1_cr, name='treasure_pf1'),
     path('treasure/pf1/<int:cr>/json/', views.treasure_pf1_cr_json, name='treasure_pf1_json'),
+    path('store/weapon/', views.store_weapon, name='store_weapon'),
+    path('store/weapon/json/', views.store_weapon_json, name='store_weapon_json'),
 ]
