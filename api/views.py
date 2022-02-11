@@ -177,7 +177,10 @@ def treasure_pf1_cr_json(request, cr):
 
 # Create Weapon Store
 def store_weapon_create(content={}, json=False):
-    quantity = content['Quantity'] if 'Quantity' in content.keys() else 15
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
     store = dmk.store.stores.create_weapon_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
@@ -194,7 +197,32 @@ def store_weapon(request):
 
 def store_weapon_json(request):
     content = {}
-    return JsonResponse(npc_create(content=content, json=True))
+    return JsonResponse(store_weapon_create(content=content, json=True))
+
+
+# Create Firearm Store
+def store_firearm_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_gunsmith(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_firearm(request):
+    content = {}
+    inner_html = store_firearm_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_firearm_json(request):
+    content = {}
+    return JsonResponse(store_firearm_create(content=content, json=True))
 
 
 # Create Random Weapon
