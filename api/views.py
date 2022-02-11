@@ -396,7 +396,7 @@ def store_general_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_general_store(npc_create(), [0, 4], quantity)
+    store = dmk.store.stores.create_general_store(npc_create(), [0, 4], quantity, 3)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -439,6 +439,58 @@ def store_food(request):
 def store_food_json(request):
     content = {}
     store = store_food_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
+
+
+# Create Random Inn
+def store_inn_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_tavern(npc_create(), 3, quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_inn(request):
+    content = {}
+    inner_html = store_inn_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_inn_json(request):
+    content = {}
+    store = store_inn_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
+
+
+# Create Random Variety Store
+def store_variety_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_variety_shop(npc_create(), quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_variety(request):
+    content = {}
+    inner_html = store_variety_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_variety_json(request):
+    content = {}
+    store = store_variety_create(content=content, json=True)
     return JsonResponse(store_to_dict(store))
 
 

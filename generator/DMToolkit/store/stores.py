@@ -144,7 +144,7 @@ class Store():
         return s +'</div>'
 
 
-class Inn(object):
+class Inn(Store):
     Store_name = ""
     Shopkeeper = Rooms = None
     Edibles = Stock = []

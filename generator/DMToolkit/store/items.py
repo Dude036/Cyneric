@@ -731,6 +731,7 @@ class Wand(Item):
     Enchantment = None
 
     def __init__(self, level, spell=None):
+        self.Expandable = True
         if spell is None:
             if level == 0:
                 self.Spell = choice(level_0)
