@@ -48,9 +48,16 @@ CR_SELECTION = [
 ]
 
 
-# Usage Guide content
+# Usage Guide content and General funtions
 def api(request):
     return render(request, 'api.html', {})
+
+
+def store_to_dict(store):
+    store['Shopkeeper'] = store['Shopkeeper'].to_dict()
+    for i in range(len(store['Stock'])):
+        store['Stock'][i] = store['Stock'][i].to_dict()
+    return store
 
 
 # Random NPCs
@@ -181,7 +188,7 @@ def store_weapon_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_weapon_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_weapon_shop(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -197,7 +204,8 @@ def store_weapon(request):
 
 def store_weapon_json(request):
     content = {}
-    return JsonResponse(store_weapon_create(content=content, json=True))
+    store = store_weapon_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Random Armor Store
@@ -206,7 +214,7 @@ def store_armor_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_armor_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_armor_shop(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -222,7 +230,8 @@ def store_armor(request):
 
 def store_armor_json(request):
     content = {}
-    return JsonResponse(store_armor_create(content=content, json=True))
+    store = store_armor_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Firearm Store
@@ -231,7 +240,7 @@ def store_firearm_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_gunsmith(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_gunsmith(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -247,7 +256,8 @@ def store_firearm(request):
 
 def store_firearm_json(request):
     content = {}
-    return JsonResponse(store_firearm_create(content=content, json=True))
+    store = store_firearm_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Random Book Store
@@ -256,7 +266,7 @@ def store_book_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_book_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_book_shop(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -272,7 +282,8 @@ def store_book(request):
 
 def store_book_json(request):
     content = {}
-    return JsonResponse(store_book_create(content=content, json=True))
+    store = store_book_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Random Enchantment Store
@@ -281,7 +292,7 @@ def store_enchanter_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_enchanter_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_enchanter_shop(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -297,7 +308,8 @@ def store_enchanter(request):
 
 def store_enchanter_json(request):
     content = {}
-    return JsonResponse(store_enchanter_create(content=content, json=True))
+    store = store_enchanter_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Random Scroll Store
@@ -306,7 +318,7 @@ def store_scroll_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_enchantment_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_enchantment_shop(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -322,7 +334,8 @@ def store_scroll(request):
 
 def store_scroll_json(request):
     content = {}
-    return JsonResponse(store_scroll_create(content=content, json=True))
+    store = store_scroll_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Random Potion Store
@@ -331,7 +344,7 @@ def store_potion_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_potion_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_potion_shop(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -347,7 +360,8 @@ def store_potion(request):
 
 def store_potion_json(request):
     content = {}
-    return JsonResponse(store_potion_create(content=content, json=True))
+    store = store_potion_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Random Jewel Store
@@ -356,7 +370,7 @@ def store_jewel_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_jewel_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_jewel_shop(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -372,7 +386,8 @@ def store_jewel(request):
 
 def store_jewel_json(request):
     content = {}
-    return JsonResponse(store_jewel_create(content=content, json=True))
+    store = store_jewel_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Random General Store
@@ -381,7 +396,7 @@ def store_general_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_general_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_general_shop(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -397,7 +412,8 @@ def store_general(request):
 
 def store_general_json(request):
     content = {}
-    return JsonResponse(store_general_create(content=content, json=True))
+    store = store_general_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 # Create Random Food Store
@@ -406,7 +422,7 @@ def store_food_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_restaurant(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    store = dmk.store.stores.create_restaurant(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -422,7 +438,8 @@ def store_food(request):
 
 def store_food_json(request):
     content = {}
-    return JsonResponse(store_food_create(content=content, json=True))
+    store = store_food_create(content=content, json=True)
+    return JsonResponse(store_to_dict(store))
 
 
 
