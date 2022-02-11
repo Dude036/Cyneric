@@ -57,7 +57,7 @@ class Item:
             "Description": self.Description,
             "Category": self.Category,
             "Link": self.Link,
-            "Cost": self.Cost,
+            "Cost": float(self.Cost),
             "Expandable": self.Expandable,
             "Linkable": self.Linkable
         }

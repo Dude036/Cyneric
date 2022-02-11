@@ -44,4 +44,13 @@ urlpatterns = [
     path('store/inn/json/', views.store_inn_json, name='store_inn_json'),
     path('store/variety/', views.store_variety, name='store_variety'),
     path('store/variety/json/', views.store_variety_json, name='store_variety_json'),
+
+    path('item/weapon/', views.item_weapon, name='item_weapon'),
+    path('item/weapon/json/', views.item_weapon_json, name='item_weapon_json'),
+    path('item/weapon/<int:r>/', views.item_weapon_r, name='item_weapon_r'),
+    path('item/weapon/<int:r>/json/', views.item_weapon_r_json, name='item_weapon_r_json'),
+    path('item/armor/', views.item_armor, name='item_armor'),
+    path('item/armor/json/', views.item_armor_json, name='item_armor_json'),
+    path('item/armor/<int:r>/', views.item_armor_r, name='item_armor_r'),
+    path('item/armor/<int:r>/json/', views.item_armor_r_json, name='item_armor_r_json'),
 ]

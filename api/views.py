@@ -3,7 +3,7 @@ from django.http import HttpResponse, Http404, JsonResponse
 from django.template.response import SimpleTemplateResponse
 from django.template import engines, Template, Context
 import generator.DMToolkit as dmk
-from numpy.random import choice
+from numpy.random import choice, randint
 
 
 CR_SELECTION = [
@@ -58,6 +58,11 @@ def store_to_dict(store):
     for i in range(len(store['Stock'])):
         store['Stock'][i] = store['Stock'][i].to_dict()
     return store
+
+
+def item_padding(char):
+    return '<table class="inventory-table" style="width:100%">' + str(char) + '</table>'
+
 
 
 # Random NPCs
@@ -495,8 +500,76 @@ def store_variety_json(request):
 
 
 # Create Random Weapon
+def item_weapon_create(rarity, content={}, json=False):
+    item = dmk.store.items.Weapon(rarity)
+    for key, value in content.items():
+        if key in item.__dict__ and value is not None:
+            item.__dict__[key] = value
+    return item.to_dict() if json else item
+
+
+def item_weapon(request):
+    content = {}
+    inner_html = item_weapon_create(randint(0, 5), content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_weapon_json(request):
+    content = {}
+    item = item_weapon_create(randint(0, 5), content=content, json=True)
+    return JsonResponse(item)
+
+
+def item_weapon_r(request, r):
+    content = {}
+    inner_html = item_weapon_create(r, content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_weapon_r_json(request, r):
+    content = {}
+    item = item_weapon_create(r, content=content, json=True)
+    return JsonResponse(item)
+
+
 # Create Random Firearm
 # Create Random Armor
+def item_armor_create(rarity, content={}, json=False):
+    item = dmk.store.items.Armor(rarity)
+    for key, value in content.items():
+        if key in item.__dict__ and value is not None:
+            item.__dict__[key] = value
+    return item.to_dict() if json else item
+
+
+def item_armor(request):
+    content = {}
+    inner_html = item_armor_create(randint(0, 5), content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_armor_json(request):
+    content = {}
+    item = item_armor_create(randint(0, 5), content=content, json=True)
+    return JsonResponse(item)
+
+
+def item_armor_r(request, r):
+    content = {}
+    inner_html = item_armor_create(r, content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_armor_r_json(request, r):
+    content = {}
+    item = item_armor_create(r, content=content, json=True)
+    return JsonResponse(item)
+
+
 # Create Random Scroll
 # Create Random Potion
 # Create Random Enchantment

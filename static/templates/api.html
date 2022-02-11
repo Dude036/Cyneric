@@ -266,6 +266,39 @@
 			</li>
 		</ul>
 	</li>
+	<li>
+		<div class="text-md bold" style="padding-bottom: 15px;">Item Generators</div>
+		<ul>
+			<li>
+				<a href="{% url 'api:item_weapon' %}"><b>Weapon</b></a>
+				<br>
+				<p>
+					Generate a Weapon in HTML format
+				</p>
+			</li>
+			<li>
+				<a href="{% url 'api:item_weapon_json' %}"><b>Weapon (JSON)</b></a>
+				<br>
+				<p>
+					Generate a Weapon in JSON format
+				</p>
+			</li>
+			<li>
+				<a href="{% url 'api:item_armor' %}"><b>Armor</b></a>
+				<br>
+				<p>
+					Generate a Armor in HTML format
+				</p>
+			</li>
+			<li>
+				<a href="{% url 'api:item_armor_json' %}"><b>Armor (JSON)</b></a>
+				<br>
+				<p>
+					Generate a Armor in JSON format
+				</p>
+			</li>
+		</ul>
+	</li>
 </ul>
 
 {% endblock %}
