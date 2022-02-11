@@ -200,6 +200,31 @@ def store_weapon_json(request):
     return JsonResponse(store_weapon_create(content=content, json=True))
 
 
+# Create Random Armor Store
+def store_armor_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_armor_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_armor(request):
+    content = {}
+    inner_html = store_armor_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_armor_json(request):
+    content = {}
+    return JsonResponse(store_armor_create(content=content, json=True))
+
+
 # Create Firearm Store
 def store_firearm_create(content={}, json=False):
     if 'Quantity' in content.keys():
@@ -223,6 +248,183 @@ def store_firearm(request):
 def store_firearm_json(request):
     content = {}
     return JsonResponse(store_firearm_create(content=content, json=True))
+
+
+# Create Random Book Store
+def store_book_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_book_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_book(request):
+    content = {}
+    inner_html = store_book_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_book_json(request):
+    content = {}
+    return JsonResponse(store_book_create(content=content, json=True))
+
+
+# Create Random Enchantment Store
+def store_enchanter_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_enchanter_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_enchanter(request):
+    content = {}
+    inner_html = store_enchanter_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_enchanter_json(request):
+    content = {}
+    return JsonResponse(store_enchanter_create(content=content, json=True))
+
+
+# Create Random Scroll Store
+def store_scroll_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_enchantment_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_scroll(request):
+    content = {}
+    inner_html = store_scroll_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_scroll_json(request):
+    content = {}
+    return JsonResponse(store_scroll_create(content=content, json=True))
+
+
+# Create Random Potion Store
+def store_potion_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_potion_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_potion(request):
+    content = {}
+    inner_html = store_potion_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_potion_json(request):
+    content = {}
+    return JsonResponse(store_potion_create(content=content, json=True))
+
+
+# Create Random Jewel Store
+def store_jewel_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_jewel_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_jewel(request):
+    content = {}
+    inner_html = store_jewel_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_jewel_json(request):
+    content = {}
+    return JsonResponse(store_jewel_create(content=content, json=True))
+
+
+# Create Random General Store
+def store_general_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_general_shop(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_general(request):
+    content = {}
+    inner_html = store_general_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_general_json(request):
+    content = {}
+    return JsonResponse(store_general_create(content=content, json=True))
+
+
+# Create Random Food Store
+def store_food_create(content={}, json=False):
+    if 'Quantity' in content.keys():
+        quantity = content['Quantity']
+    else:
+        quantity = 15
+    store = dmk.store.stores.create_restaurant(dmk.people.character.create_person(dmk.core.variance.normal_settings()), [0, 4], quantity)
+    for key, value in content.items():
+        if key in store.__dict__ and value is not None:
+            store.__dict__[key] = value
+    return store.__dict__ if json else store
+
+
+def store_food(request):
+    content = {}
+    inner_html = store_food_create(content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + str(inner_html) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def store_food_json(request):
+    content = {}
+    return JsonResponse(store_food_create(content=content, json=True))
+
+
 
 
 # Create Random Weapon
