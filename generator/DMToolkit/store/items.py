@@ -456,7 +456,7 @@ class Wondrous(Item):
     def __init__(self, cl=-1):
         self.Category = "Wondrous Item"
         self.Linkable = True
-        if cl == -1 or SpellSource == 'D&D 5':
+        if cl == -1 or SpellSource == 'D&D 5' or SpellSource == 'All':
             pick = choice(list(MasterWondrous.keys()))
             self.Title = pick
             self.Link = MasterWondrous[pick]['Link']
@@ -465,7 +465,7 @@ class Wondrous(Item):
             self.Aura = MasterWondrous[pick]['Aura']
             self.Slot = MasterWondrous[pick]['Slot']
             self.Weight = MasterWondrous[pick]['Weight']
-        elif SpellSource == 'Pathfinder 1' and cl != -1:
+        elif SpellSource in ['Pathfinder 1','All'] and cl != -1:
             i = 0
             while True:
                 pick = choice(list(MasterWondrous.keys()))
@@ -483,6 +483,7 @@ class Wondrous(Item):
                     cl = int(MasterWondrous[pick]['CL']) + 1
                 else:
                     i += 1
+
         self.Description = 'Aura ' + self.Aura + '; CL ' + str(self.CL) + '; Weight ' + \
                            str(self.Weight) + '; Slot ' + self.Slot
 
