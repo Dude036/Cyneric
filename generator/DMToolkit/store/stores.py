@@ -1,4 +1,4 @@
-from numpy.random import randint, choice, random_sample
+from numpy.random import randint, choice, random_sample, shuffle
 from generator.DMToolkit.resource.names import Antiques, Enchanter, Potions, Tavern, Restaurant, Jeweller, Blacksmith, GeneralStore, Weapons, Jewelling, Brothel, Gunsmithing
 from generator.DMToolkit.resource.resources import *
 import simplejson as json
@@ -6,7 +6,7 @@ from generator.DMToolkit.store.items import *
 from generator.DMToolkit.store.masterwork import find_masterwork_traits_weapon, find_masterwork_traits_armor
 
 
-class Store(object):
+class Store():
     """Everyone needs things!
     Inflation is the upsell rate at which things are sold for. this could be due
         to the amount of market dominance, rarity of items, or accessibility
@@ -326,9 +326,12 @@ def create_jewel_shop(owner, rarity, quan, inflate=1):
 def create_restaurant(owner, quan, inflate=1):
     name = str(Restaurant()) + " (Restaurant)"
     if isinstance(inflate, float):
-        a = Inn(owner, name, inflate, 0, quan)
+        a = Store(owner, name, inflate, [0, 0])
     else:
-        a = Inn(owner, name, (sum(random_sample(inflate))), 0, quan)
+        a = Store(owner, name, (sum(random_sample(inflate))), [0, 0])
+    a.fill_store(Food, quan)
+    a.fill_store(Drink, quan)
+    shuffle(a.Stock)
     return a
 
 

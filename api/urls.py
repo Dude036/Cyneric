@@ -38,4 +38,6 @@ urlpatterns = [
     path('store/jewel/json/', views.store_jewel_json, name='store_jewel_json'),
     path('store/general/', views.store_general, name='store_general'),
     path('store/general/json/', views.store_general_json, name='store_general_json'),
+    path('store/food/', views.store_food, name='store_food'),
+    path('store/food/json/', views.store_food_json, name='store_food_json'),
 ]
