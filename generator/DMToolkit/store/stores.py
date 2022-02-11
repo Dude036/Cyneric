@@ -3,6 +3,7 @@ from generator.DMToolkit.resource.names import Antiques, Enchanter, Potions, Tav
 from generator.DMToolkit.resource.resources import *
 import simplejson as json
 from generator.DMToolkit.store.items import *
+from generator.DMToolkit.store.masterwork import find_masterwork_traits_weapon, find_masterwork_traits_armor
 
 
 class Store(object):
@@ -122,6 +123,25 @@ class Store(object):
             if new_class == 'General':
                 for _ in range(2):
                     self.Stock.append(General(0, True))
+
+    def __str__(self):
+        s = '<div class="wrapper-box" style="margin-bottom:60px;padding:5px;"><span class="text-lg bold">'
+        s += self.Store_name + '</span><br />\n<span class="bold text-md">Proprietor: </span><span class="text-md">'
+        s += str(self.Shopkeeper) + '</div><span class="text-lg bold">Inventory</span>'
+        s += '<table style="width:100%;" class="inventory-table"><tr><th style="text-align:left;">Item</th>'
+        s += '<th style="text-align:left;">Cost</th><th style="text-align:left;">Type</th></tr>'
+        for x in range(len(self.Stock)):
+            s += str(self.Stock[x])
+        s += '</table>'
+
+        if '(Weapon)' in self.Store_name:
+            s += find_masterwork_traits_weapon(self.Stock, 3)
+        elif '(Gunsmith)' in self.Store_name:
+            s += find_masterwork_traits_weapon(self.Stock, 3)
+        elif '(Armor' in self.Store_name:
+            s += find_masterwork_traits_armor(self.Stock, 3)
+
+        return s +'</div>'
 
 
 class Inn(object):
