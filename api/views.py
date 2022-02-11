@@ -396,7 +396,7 @@ def store_general_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_general_shop(npc_create(), [0, 4], quantity)
+    store = dmk.store.stores.create_general_store(npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
