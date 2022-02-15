@@ -329,6 +329,7 @@ function editor_container_table(element) {
 
 		// Create Random Scroll
 		var add_scroll = add_table_flex_box("Scroll", '#0FAC0F', '#EFEFEF');
+		add_scroll.onclick = function() { item_api_wrapper(item_row.id, 'item/scroll/json/'); }
 		add_button_div.appendChild(add_scroll);
 		
 		// Create Random Potion

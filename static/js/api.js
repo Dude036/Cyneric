@@ -72,7 +72,7 @@ async function item_api_wrapper(base_id, link_suffix) {
  * @param link_suffix String containing the link suffix to connect to self api
  */
 async function owner_api_wrapper(base_id, link_suffix) {
-// Clear Item Content
+	// Clear Item Content
 	['_TRAIT_1', '_TRAIT_2', '_DESCRIBE', '_NAME', '_RACE', '_GENDER', '_AGE'].forEach(s => document.getElementById(base_id + s).value = '');
 
 	// Get from API

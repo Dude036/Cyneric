@@ -57,4 +57,8 @@ urlpatterns = [
     path('item/firearm/json/', views.item_firearm_json, name='item_firearm_json'),
     path('item/firearm/<int:r>/', views.item_firearm_r, name='item_firearm_r'),
     path('item/firearm/<int:r>/json/', views.item_firearm_r_json, name='item_firearm_r_json'),
+    path('item/scroll/', views.item_scroll, name='item_scroll'),
+    path('item/scroll/json/', views.item_scroll_json, name='item_scroll_json'),
+    path('item/scroll/<int:r>/', views.item_scroll_r, name='item_scroll_r'),
+    path('item/scroll/<int:r>/json/', views.item_scroll_r_json, name='item_scroll_r_json'),
 ]

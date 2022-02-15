@@ -605,6 +605,40 @@ def item_armor_r_json(request, r):
 
 
 # Create Random Scroll
+def item_scroll_create(rarity, content={}, json=False):
+    item = dmk.store.items.Scroll(rarity)
+    for key, value in content.items():
+        if key in item.__dict__ and value is not None:
+            item.__dict__[key] = value
+    return item.to_dict() if json else item
+
+
+def item_scroll(request):
+    content = {}
+    inner_html = item_scroll_create(randint(0, 10), content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_scroll_json(request):
+    content = {}
+    item = item_scroll_create(randint(0, 10), content=content, json=True)
+    return JsonResponse(item)
+
+
+def item_scroll_r(request, r):
+    content = {}
+    inner_html = item_scroll_create(r % 10, content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_scroll_r_json(request, r):
+    content = {}
+    item = item_scroll_create(r % 10, content=content, json=True)
+    return JsonResponse(item)
+
+
 # Create Random Potion
 # Create Random Enchantment
 # Create Random Book
