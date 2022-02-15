@@ -334,6 +334,7 @@ function editor_container_table(element) {
 		
 		// Create Random Potion
 		var add_potion = add_table_flex_box("Potion", '#0F0FAC', '#EFEFEF');
+		add_potion.onclick = function() { item_api_wrapper(item_row.id, 'item/potion/json/'); }
 		add_button_div.appendChild(add_potion);
 		
 		// Create Random Book

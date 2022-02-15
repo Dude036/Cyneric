@@ -61,4 +61,8 @@ urlpatterns = [
     path('item/scroll/json/', views.item_scroll_json, name='item_scroll_json'),
     path('item/scroll/<int:r>/', views.item_scroll_r, name='item_scroll_r'),
     path('item/scroll/<int:r>/json/', views.item_scroll_r_json, name='item_scroll_r_json'),
+    path('item/potion/', views.item_potion, name='item_potion'),
+    path('item/potion/json/', views.item_potion_json, name='item_potion_json'),
+    path('item/potion/<int:r>/', views.item_potion_r, name='item_potion_r'),
+    path('item/potion/<int:r>/json/', views.item_potion_r_json, name='item_potion_r_json'),
 ]
