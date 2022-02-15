@@ -676,6 +676,27 @@ def item_potion_r_json(request, r):
 
 # Create Random Enchantment
 # Create Random Book
+def item_book_create(rarity, content={}, json=False):
+    item = dmk.store.items.Book(rarity)
+    for key, value in content.items():
+        if key in item.__dict__ and value is not None:
+            item.__dict__[key] = value
+    return item.to_dict() if json else item
+
+
+def item_book(request):
+    content = {}
+    inner_html = item_book_create(randint(0, 10), content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_book_json(request):
+    content = {}
+    item = item_book_create(randint(0, 10), content=content, json=True)
+    return JsonResponse(item)
+
+
 # Create Random Food
 # Create Random Trinket
 

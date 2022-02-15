@@ -339,6 +339,7 @@ function editor_container_table(element) {
 		
 		// Create Random Book
 		var add_book = add_table_flex_box("Book", '#AC5F0F', '#EFEFEF');
+		add_book.onclick = function() { item_api_wrapper(item_row.id, 'item/book/json/'); }
 		add_button_div.appendChild(add_book);
 		
 		// Create Random Food
