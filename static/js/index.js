@@ -324,27 +324,28 @@ function editor_container_table(element) {
 
 		// Create Random Firearm
 		var add_firearm = add_table_flex_box("Firearm", '#BFBF0C', '#000000');
+		add_firearm.onclick = function() { item_api_wrapper(item_row.id, 'item/firearm/json/'); }
 		add_button_div.appendChild(add_firearm);
 
 		// Create Random Scroll
 		var add_scroll = add_table_flex_box("Scroll", '#0FAC0F', '#EFEFEF');
 		add_button_div.appendChild(add_scroll);
 		
-		// Create Random Scroll
+		// Create Random Potion
 		var add_potion = add_table_flex_box("Potion", '#0F0FAC', '#EFEFEF');
 		add_button_div.appendChild(add_potion);
 		
-		// Create Random Scroll
+		// Create Random Book
 		var add_book = add_table_flex_box("Book", '#AC5F0F', '#EFEFEF');
 		add_button_div.appendChild(add_book);
 		
-		// Create Random Scroll
+		// Create Random Food
 		var add_food = add_table_flex_box("Food", '#5FAC5F', '#EFEFEF');
 		add_button_div.appendChild(add_food);
 		
-		// Create Random Scroll
-		var add_food = add_table_flex_box("Trinket", '#AC5FAC', '#EFEFEF');
-		add_button_div.appendChild(add_food);
+		// Create Random Trinket
+		var add_trinket = add_table_flex_box("Trinket", '#AC5F5F', '#EFEFEF');
+		add_button_div.appendChild(add_trinket);
 
 		// Delete Row
 		var add_delete = add_table_flex_box("Delete Row", '#C00000', '#EFEFEF');

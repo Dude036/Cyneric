@@ -535,6 +535,40 @@ def item_weapon_r_json(request, r):
 
 
 # Create Random Firearm
+def item_firearm_create(rarity, content={}, json=False):
+    item = dmk.store.items.Firearm(rarity)
+    for key, value in content.items():
+        if key in item.__dict__ and value is not None:
+            item.__dict__[key] = value
+    return item.to_dict() if json else item
+
+
+def item_firearm(request):
+    content = {}
+    inner_html = item_firearm_create(randint(0, 5), content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_firearm_json(request):
+    content = {}
+    item = item_firearm_create(randint(0, 5), content=content, json=True)
+    return JsonResponse(item)
+
+
+def item_firearm_r(request, r):
+    content = {}
+    inner_html = item_firearm_create(r, content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_firearm_r_json(request, r):
+    content = {}
+    item = item_firearm_create(r, content=content, json=True)
+    return JsonResponse(item)
+
+
 # Create Random Armor
 def item_armor_create(rarity, content={}, json=False):
     item = dmk.store.items.Armor(rarity)
