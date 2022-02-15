@@ -820,17 +820,15 @@ class Weapon(Item):
         self.Expandable = True if self.Enchantment is not None or self.Special != '' else False
 
         self.Category = ''
-        if self.Masterwork is not None:
+        if self.Masterwork != 0:
             self.Category += 'Masterwork '
         self.Category += ['Common', 'Uncommon', 'Rare', 'Very Rare', 'Legendary'][self.Rarity]
         if self.Enchantment is not None:
             self.Category += ', Level ' + [str(x) for x in range(10)][self.Enchantment.Level]
 
-
         self.Description = 'Damage: ' + self.Dice + ' (' + self.Crit + ') ' + str(self.Damage) + ' Weight: ' + str(self.Weight) + ' lbs' + self.Text
         if self.Enchantment is not None:
             self.Description += str(self.Enchantment)
-
 
     def __choose_type(self, requirement=None):
         if requirement is None:
@@ -966,12 +964,10 @@ class Weapon(Item):
             special_masterwork_weapon(self, trait)
 
     def add_masterwork(self, mlevel):
-        if mlevel < 10:
-            if self.Masterwork == 0:
-                self.Masterwork = int(mlevel)
-                self.Cost += (1 + mlevel) * 1000
-                self.Name = "+" + str(mlevel) + ' ' + self.Name
-                self.Dice += "+" + str(mlevel)
+        self.Masterwork = int(mlevel)
+        self.Cost += (1 + mlevel) * 1000
+        self.Name = "+" + str(mlevel) + ' ' + self.Name
+        self.Dice += "+" + str(mlevel)
 
 
 class Firearm(Item):
@@ -1298,3 +1294,4 @@ class Armor(Item):
             self.Cost += 2 * mlevel * mlevel * 1000
             self.Name = "+" + str(mlevel) + ' ' + self.Name
             self.AC += mlevel
+

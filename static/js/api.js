@@ -48,7 +48,6 @@ async function item_api_wrapper(base_id, link_suffix) {
 
 	// Setup applicator
 	var applicator = {
-		'_Category_I': 'Cost',
 		'_Descriptor_I': 'Category',
 		'_Name': 'Title'
 	};
@@ -62,6 +61,7 @@ async function item_api_wrapper(base_id, link_suffix) {
 	Object.keys(applicator).forEach(key => {
 		document.getElementById(base_id + key).value = content[applicator[key]];
 	})
+	document.getElementById(base_id + "_Category_I").value = content['Cost'] + ' gp';
 
 	set_session_storage();
 }
