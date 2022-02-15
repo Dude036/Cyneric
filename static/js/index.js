@@ -349,6 +349,7 @@ function editor_container_table(element) {
 		
 		// Create Random Trinket
 		var add_trinket = add_table_flex_box("Trinket", '#AC5F5F', '#EFEFEF');
+		add_trinket.onclick = function() { item_api_wrapper(item_row.id, 'item/trinket/json/'); }
 		add_button_div.appendChild(add_trinket);
 
 		// Delete Row

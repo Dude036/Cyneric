@@ -69,4 +69,6 @@ urlpatterns = [
     path('item/book/json/', views.item_book_json, name='item_book_json'),
     path('item/food/', views.item_food, name='item_food'),
     path('item/food/json/', views.item_food_json, name='item_food_json'),
+    path('item/trinket/', views.item_trinket, name='item_trinket'),
+    path('item/trinket/json/', views.item_trinket_json, name='item_trinket_json'),
 ]
