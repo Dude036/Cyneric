@@ -53,7 +53,7 @@ class Item:
 
     def to_dict(self):
         return {
-            "Title:": self.Title,
+            "Title": self.Title,
             "Description": self.Description,
             "Category": self.Category,
             "Link": self.Link,

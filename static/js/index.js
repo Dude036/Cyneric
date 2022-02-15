@@ -312,10 +312,12 @@ function editor_container_table(element) {
 		// Create Random Weapon
 		var add_weapon = add_table_flex_box("Generate Weapon", '#0CBFBF', '#000000');
 		add_button_div.appendChild(add_weapon);
+		add_weapon.onclick = function() { item_api_wrapper(item_row.id, 'item/weapon/json/'); }
 
 		// Create Random Armor
 		var add_armor = add_table_flex_box("Generate Armor", '#BF0CBF', '#000000');
 		add_button_div.appendChild(add_armor);
+		add_weapon.onclick = function() { item_api_wrapper(item_row.id, 'item/armor/json/'); }
 
 		// Create Random Firearm
 		var add_firearm = add_table_flex_box("Generate Firearm", '#BFBF0C', '#000000');
