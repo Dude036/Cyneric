@@ -310,37 +310,37 @@ function editor_container_table(element) {
 		add_button_div.style.alignItems = 'flex-start';
 
 		// Create Random Weapon
-		var add_weapon = add_table_flex_box("Generate Weapon", '#0CBFBF', '#000000');
-		add_button_div.appendChild(add_weapon);
+		var add_weapon = add_table_flex_box("Weapon", '#0CBFBF', '#000000');
 		add_weapon.onclick = function() { item_api_wrapper(item_row.id, 'item/weapon/json/'); }
+		add_button_div.appendChild(add_weapon);
 
 		// Create Random Armor
-		var add_armor = add_table_flex_box("Generate Armor", '#BF0CBF', '#000000');
+		var add_armor = add_table_flex_box("Armor", '#BF0CBF', '#000000');
+		add_armor.onclick = function() { item_api_wrapper(item_row.id, 'item/armor/json/'); }
 		add_button_div.appendChild(add_armor);
-		add_weapon.onclick = function() { item_api_wrapper(item_row.id, 'item/armor/json/'); }
 
 		// Create Random Firearm
-		var add_firearm = add_table_flex_box("Generate Firearm", '#BFBF0C', '#000000');
+		var add_firearm = add_table_flex_box("Firearm", '#BFBF0C', '#000000');
 		add_button_div.appendChild(add_firearm);
 
 		// Create Random Scroll
-		var add_scroll = add_table_flex_box("Generate Scroll", '#0FAC0F', '#EFEFEF');
+		var add_scroll = add_table_flex_box("Scroll", '#0FAC0F', '#EFEFEF');
 		add_button_div.appendChild(add_scroll);
 		
 		// Create Random Scroll
-		var add_potion = add_table_flex_box("Generate Potion", '#0F0FAC', '#EFEFEF');
+		var add_potion = add_table_flex_box("Potion", '#0F0FAC', '#EFEFEF');
 		add_button_div.appendChild(add_potion);
 		
 		// Create Random Scroll
-		var add_book = add_table_flex_box("Generate Book", '#AC5F0F', '#EFEFEF');
+		var add_book = add_table_flex_box("Book", '#AC5F0F', '#EFEFEF');
 		add_button_div.appendChild(add_book);
 		
 		// Create Random Scroll
-		var add_food = add_table_flex_box("Generate Food", '#5FAC5F', '#EFEFEF');
+		var add_food = add_table_flex_box("Food", '#5FAC5F', '#EFEFEF');
 		add_button_div.appendChild(add_food);
 		
 		// Create Random Scroll
-		var add_food = add_table_flex_box("Generate Trinket", '#AC5FAC', '#EFEFEF');
+		var add_food = add_table_flex_box("Trinket", '#AC5FAC', '#EFEFEF');
 		add_button_div.appendChild(add_food);
 
 		// Delete Row
@@ -406,9 +406,8 @@ function editor_container_table(element) {
 		item_text.name = item_row.id + "_Text";
 		item_text.id = item_row.id + "_Text";
 		item_text.placeholder = 'Long Description';
-		item_text.style.lineHeight = "20px"
-		item_text.style.width = "400px"
-		item_text.addEventListener("keyup", function() { calcHeight(item_text) });
+		item_text.style.lineHeight = "20px";
+		item_text.style.width = "400px";
 		item_data_cell.appendChild(item_text);
 		set_session_storage();
 	}
@@ -428,65 +427,8 @@ function editor_container_table(element) {
 			if (DEBUG) { console.log("container.id = " + container.id); }
 			var base_id = element.id + "_OWNER";
 			if (confirm("Overwrite Owner Content?")) {
-				// Link Validated, begin GET to self-API
-				var xhr = new XMLHttpRequest();
-				var connection = window.location.origin + '/api/npc/json';
-				const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
-				xhr.open("GET", connection);
-
-				xhr.setRequestHeader("Accept", "application/json");
-				xhr.setRequestHeader("Content-Type", "application/json");
-				xhr.setRequestHeader("X-CSRFToken", token);
-
-				xhr.onreadystatechange = function () {
-					if (xhr.readyState === 4) {
-						// Completed request
-						if (DEBUG) {
-							console.log("Data recieved back for " + connection);
-							console.log(xhr.status);
-							console.log(xhr.responseText);
-						}
-						var new_data = JSON.parse(xhr.responseText);
-						if ('ERROR' in new_data) {
-							// Post Toast Message about failure
-							console.log("ERROR: " + new_data['ERROR']);
-							if ("EXCEPTION" in new_data) {
-								console.log("EXCEPTION: " + new_data['EXCEPTION']);
-							}
-							(async () => {
-								var toast = document.createElement('div');
-								toast.style.backgroundColor = "#E34D4D";
-								toast.style.position = "fixed";
-								toast.style.top = "40px";
-								toast.style.left = "40px";
-								toast.style.width = "250px";
-								toast.id = "toast";
-								toast.style.padding = "10px 20px";
-
-								toast.appendChild(document.createTextNode(new_data['ERROR']));
-
-								var header_img = document.getElementById("header_img");
-								header_img.appendChild(toast);
-
-								setTimeout(function(){
-									toast.parentNode.removeChild(toast);
-								}, 9000);
-							})()
-						} else {
-							// We've recieved a creature, and can safely add it to the page.
-							if (DEBUG) { console.log("Successfully recieved npc from API, posting to UI"); }
-							document.getElementById(base_id + "_NAME").value = new_data['Name'];
-							document.getElementById(base_id + "_RACE").value = new_data['Race'];
-							document.getElementById(base_id + "_GENDER").value = new_data['Gender'];
-							document.getElementById(base_id + "_AGE").value = new_data['Age'];
-							document.getElementById(base_id + "_TRAIT_1").value = new_data['Traits'][0];
-							document.getElementById(base_id + "_TRAIT_2").value = new_data['Traits'][1];
-							document.getElementById(base_id + "_DESCRIBE").value = new_data['Story'][0];
-						}
-					}
-				};
-
-				xhr.send();
+				owner_api_wrapper(base_id, 'npc/json');
+				set_session_storage();
 			}
 		}
 
@@ -933,8 +875,7 @@ function create_element_store(store) {
 	owner_description_text = document.createElement('textarea');
 	owner_description_text.placeholder = 'Owner Description'
 	owner_description_text.style.width = '90%';
-	owner_description_text.style.lineHeight = "20px"
-	owner_description_text.addEventListener("keyup", function() { calcHeight(owner_description_text) });
+	owner_description_text.style.lineHeight = "20px";
 	owner_description_text.id = owner_container.id + "_DESCRIBE";
 
 	owner_container.appendChild(owner_description_text)
@@ -1080,8 +1021,7 @@ function create_element_monster(monster, edition) {
 	monster_description_input.id = monster_header.id + '_DESCRIBE'
 	monster_description_input.placeholder = 'Monster Description';
 	monster_description_input.style.width = '50%';
-	monster_description_input.style.lineHeight = "20px"
-	monster_description_input.addEventListener("keyup", function() { calcHeight(monster_description_input) });
+	monster_description_input.style.lineHeight = "20px";
 	monster_description.appendChild(monster_description_input);
 
 	monster_header_content.appendChild(monster_description);
@@ -1595,8 +1535,7 @@ function create_element_monster(monster, edition) {
 		temp_action_info_input.id = temp_action.id  + '_TEXT'
 		temp_action_info_input.placeholder = 'Action Details';
 		temp_action_info_input.style.width = '90%';
-		temp_action_info_input.style.lineHeight = "20px"
-		temp_action_info_input.addEventListener("keyup", function() { calcHeight(temp_action_info_input) });
+		temp_action_info_input.style.lineHeight = "20px";
 		temp_action_info.appendChild(temp_action_info_input);
 
 		temp_action.appendChild(temp_action_header);
