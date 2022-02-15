@@ -309,13 +309,16 @@ function editor_container_table(element) {
 		add_button_div.style.flexWrap = 'wrap';
 		add_button_div.style.alignItems = 'flex-start';
 
+		var add_generate_label = add_table_flex_box("Generate:", '#FFFFFF', '#000000');
+		add_button_div.appendChild(add_generate_label);
+
 		// Create Random Weapon
 		var add_weapon = add_table_flex_box("Weapon", '#0CBFBF', '#000000');
 		add_weapon.onclick = function() { item_api_wrapper(item_row.id, 'item/weapon/json/'); }
 		add_button_div.appendChild(add_weapon);
 
 		// Create Random Armor
-		var add_armor = add_table_flex_box("Armor", '#BF0CBF', '#000000');
+		var add_armor = add_table_flex_box("Armor", '#BF0CBF', '#EFEFEF');
 		add_armor.onclick = function() { item_api_wrapper(item_row.id, 'item/armor/json/'); }
 		add_button_div.appendChild(add_armor);
 
