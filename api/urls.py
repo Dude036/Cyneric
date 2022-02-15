@@ -67,4 +67,6 @@ urlpatterns = [
     path('item/potion/<int:r>/json/', views.item_potion_r_json, name='item_potion_r_json'),
     path('item/book/', views.item_book, name='item_book'),
     path('item/book/json/', views.item_book_json, name='item_book_json'),
+    path('item/food/', views.item_food, name='item_food'),
+    path('item/food/json/', views.item_food_json, name='item_food_json'),
 ]

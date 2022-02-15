@@ -344,6 +344,7 @@ function editor_container_table(element) {
 		
 		// Create Random Food
 		var add_food = add_table_flex_box("Food", '#5FAC5F', '#EFEFEF');
+		add_food.onclick = function() { item_api_wrapper(item_row.id, 'item/food/json/'); }
 		add_button_div.appendChild(add_food);
 		
 		// Create Random Trinket

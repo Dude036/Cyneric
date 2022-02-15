@@ -698,6 +698,27 @@ def item_book_json(request):
 
 
 # Create Random Food
+def item_food_create(rarity, content={}, json=False):
+    item = dmk.store.items.Food(rarity)
+    for key, value in content.items():
+        if key in item.__dict__ and value is not None:
+            item.__dict__[key] = value
+    return item.to_dict() if json else item
+
+
+def item_food(request):
+    content = {}
+    inner_html = item_food_create(0, content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def item_food_json(request):
+    content = {}
+    item = item_food_create(0, content=content, json=True)
+    return JsonResponse(item)
+
+
 # Create Random Trinket
 
 # Choose Random Gear
