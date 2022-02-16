@@ -310,47 +310,77 @@ function editor_container_table(element) {
 		add_button_div.style.alignItems = 'flex-start';
 
 		var add_generate_label = add_table_flex_box("Generate:", '#FFFFFF', '#000000');
+		add_generate_label.style.border = '1px solid black';
+		add_generate_label.style.backgroundColor = '#FFFFFF';
+		add_generate_label.onclick = function() {
+			if (add_generate_label.style.backgroundColor == 'rgb(255, 255, 255)') {
+				// Setup Show Hide feature
+				add_generate_label.style.backgroundColor = '#0F0F0F';
+				add_generate_label.style.color = '#EFEFEF';
+
+				// Setup another column for buttons
+				var add_generator_div = document.createElement('div');
+				add_generator_div.id = item_row.id + '_Generate_Buttons'
+				add_generator_div.style.padding = '5px 2px';
+				add_generator_div.style.width = '100%';
+				add_generator_div.style.margin = '5px 8px';
+				add_generator_div.style.display = 'flex';
+				add_generator_div.style.flexWrap = 'wrap';
+				add_generator_div.style.alignItems = 'flex-start';
+				add_button_td.appendChild(add_generator_div);
+				
+				/* Populate with Generate functions */
+
+				// Create Random Weapon
+				var add_weapon = add_table_flex_box("Weapon", '#0CBFBF', '#000000');
+				add_weapon.onclick = function() { item_api_wrapper(item_row.id, 'item/weapon/json/'); }
+				add_generator_div.appendChild(add_weapon);
+
+				// Create Random Armor
+				var add_armor = add_table_flex_box("Armor", '#BF0CBF', '#EFEFEF');
+				add_armor.onclick = function() { item_api_wrapper(item_row.id, 'item/armor/json/'); }
+				add_generator_div.appendChild(add_armor);
+
+				// Create Random Firearm
+				var add_firearm = add_table_flex_box("Firearm", '#BFBF0C', '#000000');
+				add_firearm.onclick = function() { item_api_wrapper(item_row.id, 'item/firearm/json/'); }
+				add_generator_div.appendChild(add_firearm);
+
+				// Create Random Scroll
+				var add_scroll = add_table_flex_box("Scroll", '#0FAC0F', '#EFEFEF');
+				add_scroll.onclick = function() { item_api_wrapper(item_row.id, 'item/scroll/json/'); }
+				add_generator_div.appendChild(add_scroll);
+				
+				// Create Random Potion
+				var add_potion = add_table_flex_box("Potion", '#0F0FAC', '#EFEFEF');
+				add_potion.onclick = function() { item_api_wrapper(item_row.id, 'item/potion/json/'); }
+				add_generator_div.appendChild(add_potion);
+				
+				// Create Random Book
+				var add_book = add_table_flex_box("Book", '#AC5F0F', '#EFEFEF');
+				add_book.onclick = function() { item_api_wrapper(item_row.id, 'item/book/json/'); }
+				add_generator_div.appendChild(add_book);
+				
+				// Create Random Food
+				var add_food = add_table_flex_box("Food", '#5FAC5F', '#EFEFEF');
+				add_food.onclick = function() { item_api_wrapper(item_row.id, 'item/food/json/'); }
+				add_generator_div.appendChild(add_food);
+				
+				// Create Random Trinket
+				var add_trinket = add_table_flex_box("Trinket", '#AC5F5F', '#EFEFEF');
+				add_trinket.onclick = function() { item_api_wrapper(item_row.id, 'item/trinket/json/'); }
+				add_generator_div.appendChild(add_trinket);
+
+				// Populate with Create functions
+			} else {
+				// Setup Show Hide feature
+				add_generate_label.style.backgroundColor = '#FFFFFF';
+				add_generate_label.style.color = '#000000';
+				// Delete generator stuff
+				document.getElementById(item_row.id + '_Generate_Buttons').remove();
+			}
+		}
 		add_button_div.appendChild(add_generate_label);
-
-		// Create Random Weapon
-		var add_weapon = add_table_flex_box("Weapon", '#0CBFBF', '#000000');
-		add_weapon.onclick = function() { item_api_wrapper(item_row.id, 'item/weapon/json/'); }
-		add_button_div.appendChild(add_weapon);
-
-		// Create Random Armor
-		var add_armor = add_table_flex_box("Armor", '#BF0CBF', '#EFEFEF');
-		add_armor.onclick = function() { item_api_wrapper(item_row.id, 'item/armor/json/'); }
-		add_button_div.appendChild(add_armor);
-
-		// Create Random Firearm
-		var add_firearm = add_table_flex_box("Firearm", '#BFBF0C', '#000000');
-		add_firearm.onclick = function() { item_api_wrapper(item_row.id, 'item/firearm/json/'); }
-		add_button_div.appendChild(add_firearm);
-
-		// Create Random Scroll
-		var add_scroll = add_table_flex_box("Scroll", '#0FAC0F', '#EFEFEF');
-		add_scroll.onclick = function() { item_api_wrapper(item_row.id, 'item/scroll/json/'); }
-		add_button_div.appendChild(add_scroll);
-		
-		// Create Random Potion
-		var add_potion = add_table_flex_box("Potion", '#0F0FAC', '#EFEFEF');
-		add_potion.onclick = function() { item_api_wrapper(item_row.id, 'item/potion/json/'); }
-		add_button_div.appendChild(add_potion);
-		
-		// Create Random Book
-		var add_book = add_table_flex_box("Book", '#AC5F0F', '#EFEFEF');
-		add_book.onclick = function() { item_api_wrapper(item_row.id, 'item/book/json/'); }
-		add_button_div.appendChild(add_book);
-		
-		// Create Random Food
-		var add_food = add_table_flex_box("Food", '#5FAC5F', '#EFEFEF');
-		add_food.onclick = function() { item_api_wrapper(item_row.id, 'item/food/json/'); }
-		add_button_div.appendChild(add_food);
-		
-		// Create Random Trinket
-		var add_trinket = add_table_flex_box("Trinket", '#AC5F5F', '#EFEFEF');
-		add_trinket.onclick = function() { item_api_wrapper(item_row.id, 'item/trinket/json/'); }
-		add_button_div.appendChild(add_trinket);
 
 		// Delete Row
 		var add_delete = add_table_flex_box("Delete Row", '#C00000', '#EFEFEF');
