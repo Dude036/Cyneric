@@ -760,8 +760,13 @@ class Creature:
             elif '<b>AC</b>' in line:
                 print('\t\t\tAC and Saves found')
                 new_line = bs4.BeautifulSoup(line, 'html.parser')
-                self.Ac = new_line.text.split('; ')[0][3:]
-                new_line = new_line.text.split('; ')[1]
+                match = re.search(r'b>([^<]*)<b', str(new_line))
+                if match is None:
+                    self.Ac = new_line.text.split('; ')[0][3:]
+                    new_line = new_line.text.split('; ')[1]
+                else:
+                    self.Ac = match[0].strip()
+                    new_line = ''.join(str(new_line).split('<b>')[2:]).replace('</b>', '')
 
                 for x in re.split(r'\,', new_line):
                     match = re.match(r'\s*(Fort|Ref|Will) (.*)', x)
