@@ -4,6 +4,7 @@ from django.template.response import SimpleTemplateResponse
 from django.template import engines, Template, Context
 import generator.DMToolkit as dmk
 from numpy.random import choice, randint
+from . import views
 
 
 def store_to_dict(store):
@@ -19,7 +20,7 @@ def store_weapon_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_weapon_shop(npc_create(), [0, 4], quantity)
+    store = dmk.store.stores.create_weapon_shop(views.npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -45,7 +46,7 @@ def store_armor_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_armor_shop(npc_create(), [0, 4], quantity)
+    store = dmk.store.stores.create_armor_shop(views.npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -71,7 +72,7 @@ def store_firearm_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_gunsmith(npc_create(), [0, 4], quantity)
+    store = dmk.store.stores.create_gunsmith(views.npc_create(), [0, 4], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -97,7 +98,7 @@ def store_book_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_book_shop(npc_create(), ['Children', 'Drama', 'Fiction', 'Horror', 'Humor', 'Mystery', 'Nonfiction', 'Romance', 'SciFi', 'Tome'], quantity)
+    store = dmk.store.stores.create_book_shop(views.npc_create(), ['Children', 'Drama', 'Fiction', 'Horror', 'Humor', 'Mystery', 'Nonfiction', 'Romance', 'SciFi', 'Tome'], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -123,7 +124,7 @@ def store_enchanter_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_enchanter_shop(npc_create(), [0, 9], quantity)
+    store = dmk.store.stores.create_enchanter_shop(views.npc_create(), [0, 9], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -149,7 +150,7 @@ def store_scroll_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_enchantment_shop(npc_create(), [0, 9], quantity)
+    store = dmk.store.stores.create_enchantment_shop(views.npc_create(), [0, 9], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -175,7 +176,7 @@ def store_potion_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_potion_shop(npc_create(), [0, 9], quantity)
+    store = dmk.store.stores.create_potion_shop(views.npc_create(), [0, 9], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -201,7 +202,7 @@ def store_jewel_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_jewel_shop(npc_create(), [0, 6], quantity)
+    store = dmk.store.stores.create_jewel_shop(views.npc_create(), [0, 6], quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -227,7 +228,7 @@ def store_general_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_general_store(npc_create(), [0, 4], quantity, 3)
+    store = dmk.store.stores.create_general_store(views.npc_create(), [0, 4], quantity, 3)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -253,7 +254,7 @@ def store_food_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_restaurant(npc_create(), quantity)
+    store = dmk.store.stores.create_restaurant(views.npc_create(), quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -279,7 +280,7 @@ def store_inn_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_tavern(npc_create(), 3, quantity)
+    store = dmk.store.stores.create_tavern(views.npc_create(), 3, quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
@@ -305,7 +306,7 @@ def store_variety_create(content={}, json=False):
         quantity = content['Quantity']
     else:
         quantity = 15
-    store = dmk.store.stores.create_variety_shop(npc_create(), quantity)
+    store = dmk.store.stores.create_variety_shop(views.npc_create(), quantity)
     for key, value in content.items():
         if key in store.__dict__ and value is not None:
             store.__dict__[key] = value
