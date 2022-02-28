@@ -79,4 +79,8 @@ urlpatterns = [
     path('item/food/json/', item_views.item_food_json, name='item_food_json'),
     path('item/trinket/', item_views.item_trinket, name='item_trinket'),
     path('item/trinket/json/', item_views.item_trinket_json, name='item_trinket_json'),
+
+    # Existing Item Content
+    path('item/existing/<str:item>/', views.existing_item, name='existing_item'),
+    path('item/existing/<str:item>/json/', views.existing_item_json, name='existing_item_json'),
 ]

@@ -7,6 +7,11 @@ from numpy.random import choice
 MasterID = 1
 MasterSpells = {}
 MasterWondrous = {}
+MasterItems = {
+    "Armor": {},
+    "Equipment": {},
+    "Weapon": {}
+}
 SpellSource = 'All'
 Beasts = {}
 Poke_moves = {}
@@ -1139,6 +1144,27 @@ if AllowPokemon:
     print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'pokemon_moves.json'))
     with open(path.join('generator', 'DMToolkit', 'resource', 'pokemon_moves.json'), 'r') as inf:
         Poke_moves = json.load(inf, encoding='utf-8')
+
+''' Special Item Content Update
+'''
+if SpellSource == 'D&D 5' or SpellSource == 'All':
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_items.json'))
+    contents = json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_items.json'), 'r', encoding='utf-8'))
+    MasterItems['Weapon'].update(contents['Weapon'], encoding='utf-8')
+    MasterItems['Armor'].update(contents['Armor'], encoding='utf-8')
+    MasterItems['Equipment'].update(contents['Equipment'], encoding='utf-8')
+if SpellSource == 'Pathfinder 1' or SpellSource == 'All':
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'items.json'))
+    contents = json.load(open(path.join('generator', 'DMToolkit', 'resource', 'items.json'), 'r', encoding='utf-8'))
+    MasterItems['Weapon'].update(contents['Weapon'], encoding='utf-8')
+    MasterItems['Armor'].update(contents['Armor'], encoding='utf-8')
+    MasterItems['Equipment'].update(contents['Equipment'], encoding='utf-8')
+if SpellSource == 'Pathfinder 2' or SpellSource == 'All':
+    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '2e_items.json'))
+    contents = json.load(open(path.join('generator', 'DMToolkit', 'resource', '2e_items.json'), 'r', encoding='utf-8'))
+    MasterItems['Weapon'].update(contents['Weapon'], encoding='utf-8')
+    MasterItems['Armor'].update(contents['Armor'], encoding='utf-8')
+    MasterItems['Equipment'].update(contents['Equipment'], encoding='utf-8')
 
 
 ''' Spell Helper functions

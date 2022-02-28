@@ -1295,3 +1295,24 @@ class Armor(Item):
             self.Name = "+" + str(mlevel) + ' ' + self.Name
             self.AC += mlevel
 
+
+class Item_Specific(Item):
+    Title: str = ""
+    Description: str = ""
+    Category: str = ""
+    Cost: float = 0
+
+    def __init__(self, item_type, version=None):
+        if version is None:
+            if item_type.lower() == 'armor':
+                self.Title = choice(list(MasterItems['Armor'].keys()))
+                self.__dict__.update(MasterItems['Armor'][self.Title])
+            elif item_type.lower() == 'weapon':
+                self.Title = choice(list(MasterItems['Weapon'].keys()))
+                self.__dict__.update(MasterItems['Weapon'][self.Title])
+            elif item_type.lower() == 'equipment':
+                self.Title = choice(list(MasterItems['Equipment'].keys()))
+                self.__dict__.update(MasterItems['Equipment'][self.Title])
+    
+    def from_dict(self, new_self):
+        self.__dict__.update(new_self)

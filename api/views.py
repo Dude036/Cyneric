@@ -47,6 +47,10 @@ CR_SELECTION = [
     '39.0'
 ]
 
+def item_padding(char):
+    return '<table class="inventory-table" style="width:100%">' + str(char) + '</table>'
+
+
 
 # Usage Guide content and General funtions
 def api(request):
@@ -177,6 +181,35 @@ def treasure_pf1_cr_json(request, cr):
 
 # Choose Random Gear
 # Choose Random Weapon
+def existing_item_padding(char):
+    return '<table class="inventory-table" style="width:100%">' + str(char) + '</table>'
+
+
+# Create Random Weapon
+def existing_item_create(item_type, content={}, json=False):
+    if item_type.lower() not in ['armor', ' weapon', 'equipment']:
+        return {"ERROR": "Invalid equipment type!"} if json else 'Invalid equipment type'
+    item = dmk.store.items.Item_Specific(item_type)
+    for key, value in content.items():
+        if key in item.__dict__ and value is not None:
+            item.__dict__[key] = value
+    return item.to_dict() if json else item
+
+
+def existing_item(request, item):
+    content = {}
+    inner_html = existing_item_create(item, content=content)
+    template = Template("{% extends 'base.html' %}{% load static %}{% block content %}" + existing_item_padding(str(inner_html)) + "{% endblock %}")
+    return HttpResponse(template.render(Context({})))
+
+
+def existing_item_json(request, item):
+    content = {}
+    item_json = existing_item_create(item, content=content, json=True)
+    # return JsonResponse(dmk.store.items.get_all_armors())
+    return JsonResponse(item_json)
+
+
 # Choose Random Firearm
 # Choose Random Armor
 
