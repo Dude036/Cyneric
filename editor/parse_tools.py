@@ -852,21 +852,21 @@ class Creature:
 
     def handle_actions(self, action):
         data = bs4.BeautifulSoup(action, 'html.parser')
-        actions = data.find_all('span')
+        actions = data.find_all('span', recursive=False)
         for a in actions:
             cost = -2
-            image = a.find('img', alt=True)
-            if image is None:
+            action = a.find('span')
+            if action is None:
                 cost = "1 Action"
-            elif image['alt'] == "Reaction":
+            elif action['title'] == "Reaction":
                 cost = "Reaction"
-            elif image['alt'] == "Free Action":
+            elif action['title'] == "Free Action":
                 cost = "Free"
-            elif image['alt'] == "Single Action":
+            elif action['title'] == "Single Action":
                 cost = "1 Action"
-            elif image['alt'] == "Two Actions":
+            elif action['title'] == "Two Actions":
                 cost = "2 Action"
-            elif image['alt'] == "Three Actions":
+            elif action['title'] == "Three Actions":
                 cost = "3 Action"
             print('\t\t\t\tAction: ' + a.b.text)
             temp_a = {
