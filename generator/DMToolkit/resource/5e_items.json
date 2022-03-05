@@ -70,6 +70,16 @@
       "Title": "Half Plate",
       "Type": "DD5E"
     },
+    "Survival Mantle": {
+      "Category": "Medium Armor",
+      "Cost": 750.0,
+      "Description": "<b>AC:</b> 15 + DEX (max 2); <b>Weight:</b> 40; Stealth Disdvantage;<p>This carapace-like augmentation encases portions of the wearer's shoulders, neck, and chest. A survival mantle is equivalent to a suit of nonmagical half plate armor and takes just as long to don or doff. It can't be worn with other kinds of armor.</p><p>A creature wearing a survival mantle can breathe normally in any environment (including a vacuum) and has advantage on saving throws against harmful gases (such as those created by a <a href=\"https://5e.tools/spells.html#cloudkill_phb\">cloudkill</a> spell, a <a href=\"https://5e.tools/spells.html#stinking%20cloud_phb\">stinking cloud</a> spell, inhaled poisons, and the breath weapons of some dragons).</p>",
+      "Expandable": true,
+      "Link": "",
+      "Linkable": false,
+      "Title": "Survival Mantle",
+      "Type": "DD5E"
+    },
     "Ring Mail": {
       "Category": "Heavy Armor",
       "Cost": 30.0,
@@ -118,6 +128,366 @@
       "Link": "",
       "Linkable": false,
       "Title": "Shield",
+      "Type": "DD5E"
+    },
+    "+1 Padded": {
+      "Category": "Light Armor",
+      "Cost": 1005.0,
+      "Description": "<b>AC:</b> 12 + DEX; <b>Weight:</b> 8; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Padded",
+      "Type": "DD5E"
+    },
+    "+1 Leather": {
+      "Category": "Light Armor",
+      "Cost": 1010.0,
+      "Description": "<b>AC:</b> 12 + DEX; <b>Weight:</b> 10",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Leather",
+      "Type": "DD5E"
+    },
+    "+1 Studded Leather": {
+      "Category": "Light Armor",
+      "Cost": 1045.0,
+      "Description": "<b>AC:</b> 13 + DEX; <b>Weight:</b> 13",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Studded Leather",
+      "Type": "DD5E"
+    },
+    "+1 Hide": {
+      "Category": "Medium Armor",
+      "Cost": 1010.0,
+      "Description": "<b>AC:</b> 13 + DEX (max 2); <b>Weight:</b> 12",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Hide",
+      "Type": "DD5E"
+    },
+    "+1 Chain Shirt": {
+      "Category": "Medium Armor",
+      "Cost": 1400.0,
+      "Description": "<b>AC:</b> 15 + DEX (max 2); <b>Weight:</b> 20",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Chain Shirt",
+      "Type": "DD5E"
+    },
+    "+1 Scale Mail": {
+      "Category": "Medium Armor",
+      "Cost": 1050.0,
+      "Description": "<b>AC:</b> 15 + DEX (max 2); <b>Weight:</b> 45; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Scale Mail",
+      "Type": "DD5E"
+    },
+    "+1 Half Plate": {
+      "Category": "Medium Armor",
+      "Cost": 1750.0,
+      "Description": "<b>AC:</b> 16 + DEX (max 2); <b>Weight:</b> 40; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Half Plate",
+      "Type": "DD5E"
+    },
+    "+1 Ring Mail": {
+      "Category": "Heavy Armor",
+      "Cost": 1030.0,
+      "Description": "<b>AC:</b> 15; <b>Weight:</b> 40; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Ring Mail",
+      "Type": "DD5E"
+    },
+    "+1 Chain Mail": {
+      "Category": "Heavy Armor",
+      "Cost": 1075.0,
+      "Description": "<b>AC:</b> 17; <b>Weight:</b> 55; Stealth Disdvantage; Requires STR 13",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Chain Mail",
+      "Type": "DD5E"
+    },
+    "+1 Splint": {
+      "Category": "Heavy Armor",
+      "Cost": 1200.0,
+      "Description": "<b>AC:</b> 18; <b>Weight:</b> 60; Stealth Disdvantage; Requires STR 15",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Splint",
+      "Type": "DD5E"
+    },
+    "+1 Plate": {
+      "Category": "Heavy Armor",
+      "Cost": 1500.0,
+      "Description": "<b>AC:</b> 18; <b>Weight:</b> 65; Stealth Disdvantage; Requires STR 15",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Plate",
+      "Type": "DD5E"
+    },
+    "+1 Shield": {
+      "Category": "Shield Armor",
+      "Cost": 1010.0,
+      "Description": "<b>AC:</b> +3; <b>Weight:</b> 6",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+1 Shield",
+      "Type": "DD5E"
+    },
+    "+2 Padded": {
+      "Category": "Light Armor",
+      "Cost": 6005.0,
+      "Description": "<b>AC:</b> 13 + DEX; <b>Weight:</b> 8; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Padded",
+      "Type": "DD5E"
+    },
+    "+2 Leather": {
+      "Category": "Light Armor",
+      "Cost": 6010.0,
+      "Description": "<b>AC:</b> 13 + DEX; <b>Weight:</b> 10",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Leather",
+      "Type": "DD5E"
+    },
+    "+2 Studded Leather": {
+      "Category": "Light Armor",
+      "Cost": 6045.0,
+      "Description": "<b>AC:</b> 14 + DEX; <b>Weight:</b> 13",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Studded Leather",
+      "Type": "DD5E"
+    },
+    "+2 Hide": {
+      "Category": "Medium Armor",
+      "Cost": 6010.0,
+      "Description": "<b>AC:</b> 14 + DEX (max 2); <b>Weight:</b> 12",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Hide",
+      "Type": "DD5E"
+    },
+    "+2 Chain Shirt": {
+      "Category": "Medium Armor",
+      "Cost": 6400.0,
+      "Description": "<b>AC:</b> 16 + DEX (max 2); <b>Weight:</b> 20",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Chain Shirt",
+      "Type": "DD5E"
+    },
+    "+2 Scale Mail": {
+      "Category": "Medium Armor",
+      "Cost": 6050.0,
+      "Description": "<b>AC:</b> 16 + DEX (max 2); <b>Weight:</b> 45; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Scale Mail",
+      "Type": "DD5E"
+    },
+    "+2 Half Plate": {
+      "Category": "Medium Armor",
+      "Cost": 6750.0,
+      "Description": "<b>AC:</b> 17 + DEX (max 2); <b>Weight:</b> 40; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Half Plate",
+      "Type": "DD5E"
+    },
+    "+2 Ring Mail": {
+      "Category": "Heavy Armor",
+      "Cost": 6030.0,
+      "Description": "<b>AC:</b> 16; <b>Weight:</b> 40; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Ring Mail",
+      "Type": "DD5E"
+    },
+    "+2 Chain Mail": {
+      "Category": "Heavy Armor",
+      "Cost": 6075.0,
+      "Description": "<b>AC:</b> 18; <b>Weight:</b> 55; Stealth Disdvantage; Requires STR 13",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Chain Mail",
+      "Type": "DD5E"
+    },
+    "+2 Splint": {
+      "Category": "Heavy Armor",
+      "Cost": 6200.0,
+      "Description": "<b>AC:</b> 19; <b>Weight:</b> 60; Stealth Disdvantage; Requires STR 15",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Splint",
+      "Type": "DD5E"
+    },
+    "+2 Plate": {
+      "Category": "Heavy Armor",
+      "Cost": 6500.0,
+      "Description": "<b>AC:</b> 19; <b>Weight:</b> 65; Stealth Disdvantage; Requires STR 15",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Plate",
+      "Type": "DD5E"
+    },
+    "+2 Shield": {
+      "Category": "Shield Armor",
+      "Cost": 6010.0,
+      "Description": "<b>AC:</b> +4; <b>Weight:</b> 6",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+2 Shield",
+      "Type": "DD5E"
+    },
+    "+3 Padded": {
+      "Category": "Light Armor",
+      "Cost": 50005.0,
+      "Description": "<b>AC:</b> 14 + DEX; <b>Weight:</b> 8; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Padded",
+      "Type": "DD5E"
+    },
+    "+3 Leather": {
+      "Category": "Light Armor",
+      "Cost": 50010.0,
+      "Description": "<b>AC:</b> 14 + DEX; <b>Weight:</b> 10",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Leather",
+      "Type": "DD5E"
+    },
+    "+3 Studded Leather": {
+      "Category": "Light Armor",
+      "Cost": 50045.0,
+      "Description": "<b>AC:</b> 15 + DEX; <b>Weight:</b> 13",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Studded Leather",
+      "Type": "DD5E"
+    },
+    "+3 Hide": {
+      "Category": "Medium Armor",
+      "Cost": 50010.0,
+      "Description": "<b>AC:</b> 15 + DEX (max 2); <b>Weight:</b> 12",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Hide",
+      "Type": "DD5E"
+    },
+    "+3 Chain Shirt": {
+      "Category": "Medium Armor",
+      "Cost": 50400.0,
+      "Description": "<b>AC:</b> 17 + DEX (max 2); <b>Weight:</b> 20",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Chain Shirt",
+      "Type": "DD5E"
+    },
+    "+3 Scale Mail": {
+      "Category": "Medium Armor",
+      "Cost": 50050.0,
+      "Description": "<b>AC:</b> 17 + DEX (max 2); <b>Weight:</b> 45; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Scale Mail",
+      "Type": "DD5E"
+    },
+    "+3 Half Plate": {
+      "Category": "Medium Armor",
+      "Cost": 50750.0,
+      "Description": "<b>AC:</b> 18 + DEX (max 2); <b>Weight:</b> 40; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Half Plate",
+      "Type": "DD5E"
+    },
+    "+3 Ring Mail": {
+      "Category": "Heavy Armor",
+      "Cost": 50030.0,
+      "Description": "<b>AC:</b> 17; <b>Weight:</b> 40; Stealth Disdvantage",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Ring Mail",
+      "Type": "DD5E"
+    },
+    "+3 Chain Mail": {
+      "Category": "Heavy Armor",
+      "Cost": 50075.0,
+      "Description": "<b>AC:</b> 18; <b>Weight:</b> 55; Stealth Disdvantage; Requires STR 13",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Chain Mail",
+      "Type": "DD5E"
+    },
+    "+3 Splint": {
+      "Category": "Heavy Armor",
+      "Cost": 50200.0,
+      "Description": "<b>AC:</b> 20; <b>Weight:</b> 60; Stealth Disdvantage; Requires STR 15",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Splint",
+      "Type": "DD5E"
+    },
+    "+3 Plate": {
+      "Category": "Heavy Armor",
+      "Cost": 50500.0,
+      "Description": "<b>AC:</b> 20; <b>Weight:</b> 65; Stealth Disdvantage; Requires STR 15",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Plate",
+      "Type": "DD5E"
+    },
+    "+3 Shield": {
+      "Category": "Shield Armor",
+      "Cost": 50010.0,
+      "Description": "<b>AC:</b> +5; <b>Weight:</b> 6",
+      "Expandable": false,
+      "Link": "",
+      "Linkable": false,
+      "Title": "+3 Shield",
       "Type": "DD5E"
     }
   },
