@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <table class="wrapper-box" style="margin-bottom:60px;">
+    {% if is_admin %}
+    <tr>
+      <td>
+        <h1>Authorized</h1>
+        <p>
+          Currently in progress
+        </p>
+      </td>
+    </tr>
+    {% else %}
+    <tr>
+      <td>
+        <h1>Unauthorized</h1>
+        <p>
+          Ensure that you're logged in as an admin before accessing this page
+        </p>
+      </td>
+    </tr>
+    {% endif %}
+  <div class="center" style="margin-bottom:30px;">
+    <input type="button" onclick="location.href='{% url 'news:calender' %}';" value="Back to news" />
+  </div>
+{% endblock %}

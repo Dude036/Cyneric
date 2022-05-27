@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <h1>
+    Year {{ current_year }}, in the Era of {{ era_name }}
+  </h1>
+  <div style="display: flex; flex-direction: row; justify-content: space-between;">
+    <input type="button" value="Year {{ previous_year }}" onclick="location.href='{% url 'news:calender_era' era previous_year %}';" />
+    <input type="button" value="Now" onclick="location.href='{% url 'news:calender' %}';" />
+    <input type="button" value="Year {{ next_year }}" onclick="location.href='{% url 'news:calender_era' era next_year %}';" />
+  </div>
+  <table class="wrapper-box" style="margin-bottom:60px; margin-top:60px;">
+    <tr>
+      {% for month in spring %}
+        <td>
+          <table class=calender>
+            <tr colspan=7>
+              <div class="bold text-lg center">
+                {{ month.name }}
+              </div>
+            </tr>
+            <tr>
+              {% for abbrev in 'MTWHFSU'|make_list %}
+                <th>
+                  {{ abbrev }}
+                </th>
+              {% endfor %}
+            </tr>
+            {% for week in month.days %}
+              <tr>
+                {% for day in week %}
+                  {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
+                    <td style="background-color: lightblue; border: 3px solid darkblue;">
+                  {% else %}
+                    <td>
+                  {% endif %}
+                    {% if day|is_int %}
+                      {{ day }}
+                    {% else %}
+                      <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
+                    {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </table>
+        </td>
+      {% endfor %}
+    </tr>
+    <!-- -------------------------------------------------------------- -->
+    <tr>
+      {% for month in summer %}
+        <td>
+          <table class=calender>
+            <tr colspan=7>
+              <div class="bold text-lg center">
+                {{ month.name }}
+              </div>
+            </tr>
+            <tr>
+              {% for abbrev in 'MTWHFSU'|make_list %}
+                <th>
+                  {{ abbrev }}
+                </th>
+              {% endfor %}
+            </tr>
+            {% for week in month.days %}
+              <tr>
+                {% for day in week %}
+                  {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
+                    <td style="background-color: lightblue; border: 3px solid darkblue;">
+                  {% else %}
+                    <td>
+                  {% endif %}
+                    {% if day|is_int %}
+                      {{ day }}
+                    {% else %}
+                      <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
+                    {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </table>
+        </td>
+      {% endfor %}
+    </tr>
+    <!-- -------------------------------------------------------------- -->
+    <tr>
+      {% for month in fall %}
+        <td>
+          <table class=calender>
+            <tr colspan=7>
+              <div class="bold text-lg center">
+                {{ month.name }}
+              </div>
+            </tr>
+            <tr>
+              {% for abbrev in 'MTWHFSU'|make_list %}
+                <th>
+                  {{ abbrev }}
+                </th>
+              {% endfor %}
+            </tr>
+            {% for week in month.days %}
+              <tr>
+                {% for day in week %}
+                  {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
+                    <td style="background-color: lightblue; border: 3px solid darkblue;">
+                  {% else %}
+                    <td>
+                  {% endif %}
+                    {% if day|is_int %}
+                      {{ day }}
+                    {% else %}
+                      <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
+                    {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </table>
+        </td>
+      {% endfor %}
+    </tr>
+    <!-- -------------------------------------------------------------- -->
+    <tr>
+      {% for month in winter %}
+        <td>
+          <table class=calender>
+            <tr colspan=7>
+              <div class="bold text-lg center">
+                {{ month.name }}
+              </div>
+            </tr>
+            <tr>
+              {% for abbrev in 'MTWHFSU'|make_list %}
+                <th>
+                  {{ abbrev }}
+                </th>
+              {% endfor %}
+            </tr>
+            {% for week in month.days %}
+              <tr>
+                {% for day in week %}
+                  {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
+                    <td style="background-color: lightblue; border: 3px solid darkblue;">
+                  {% else %}
+                    <td>
+                  {% endif %}
+                    {% if day|is_int %}
+                      {{ day }}
+                    {% else %}
+                      <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
+                    {% endif %}
+                  </td>
+                {% endfor %}
+              </tr>
+            {% endfor %}
+          </table>
+        </td>
+      {% endfor %}
+    </tr>
+  </table>
+  {% if is_admin %}
+    <!-- Add News Article -->
+    <input type="button" onclick="location.href='{% url 'news:create_article' %}';" value="Add a News Article" />
+  {% endif %}
+{% endblock %}

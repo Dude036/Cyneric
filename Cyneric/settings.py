@@ -44,6 +44,7 @@ CORS_ORIGIN_WHITELIST = (
 
 INSTALLED_APPS = [
     'map.apps.MapConfig',
+    'news.apps.NewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

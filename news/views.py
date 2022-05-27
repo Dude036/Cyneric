@@ -1,0 +1,118 @@
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render
+from django.template.defaulttags import register
+from django.contrib import auth
+from .models import Article, Month, Era
+
+# Create your views here.
+def today():
+    return {
+        "Era": Era.Sixth_Age,
+        "Year": 98,
+        "Day": 5,
+        "Month": Month.Fruiting
+    }
+
+
+def calender_enumeration(name):
+    month = {}
+    month['name'] = name
+    month['days'] = []
+    for week in range(4):
+        new_week = []
+        for day in range(7):
+            new_week.append(1 + day + week * 7)
+        month['days'].append(new_week)
+    return month
+
+
+def add_day(article, month):
+    day = article.day
+    week = (day - 1) // 7
+    i = day - 1 - (week * 7)
+    month['days'][week][i] = {
+        "link": article.id,
+        "number": day,
+    }
+
+
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
+
+
+@register.filter
+def is_int(thing):
+    return isinstance(thing, int)
+
+
+def calender(request):
+    return calender_era(request, today()['Year'], list(Era).index(today()['Era']))
+
+
+def calender_year(request, year):
+    return calender_era(request, year, list(Era).index(today()['Era']))
+
+
+def calender_era(request, year, era):
+    if year > 100:
+        year -= 100
+        era += 1
+        HttpResponseRedirect('news/' + str(year) + '/' + str(era))
+    elif year <= 0:
+        year += 100
+        era -= 1
+        HttpResponseRedirect('news/' + str(year) + '/' + str(era))
+
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    months = []
+
+    for m in Month:
+        current = calender_enumeration(m)
+        current_articles = Article.objects.all().filter(month=m, year=year, era=list(Era)[era])
+        for article in current_articles:
+            add_day(article, current)
+
+        months.append(current)
+
+    context = {
+        'today': today(),
+        'current_year': year,
+        'previous_year': year - 1,
+        'next_year': year + 1,
+        'era': era,
+        'era_name': list(Era)[era],
+        'spring': months[0:3],
+        'summer': months[3:6],
+        'fall': months[6:9],
+        'winter': months[9:12],
+        'is_admin': user.is_authenticated,
+    }
+    return render(request, 'news.html', context)
+
+
+def create_article(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    context = {
+        'is_admin': user.is_authenticated,
+    }
+    return render(request, 'news_add.html', context)
+
+
+def article(request, article_id):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    article = get_object_or_404(Article, pk=article_id)
+
+    context = {
+        'is_admin': user.is_authenticated,
+        'id': article_id,
+        'title': article.title,
+        'article': article.article,
+    }
+    return render(request, 'news_article.html', context)
