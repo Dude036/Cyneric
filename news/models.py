@@ -47,4 +47,7 @@ class Article(models.Model):
 	era = models.CharField(max_length=20, choices=Era.choices, default=Era.Sixth_Age)
 
 	def __repr__(self):
-		return self.title + ": " + str(self.day) + '/' + list(Month).index(self.month) + '/' + str(self.year) + 'E' + list(Era).index(self.era)
+		return self.title + ": " + str(self.day) + '/' + str(list(Month).index(self.month)) + '/' + str(self.year) + 'E' + str(list(Era).index(self.era))
+
+	def __str__(self):
+		return self.title + ": " + str(self.day) + '/' + str(list(Month).index(self.month)) + '/' + str(self.year) + 'E' + str(list(Era).index(self.era))

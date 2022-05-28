@@ -1,7 +1,8 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import get_object_or_404, render
 from django.template.defaulttags import register
 from django.contrib import auth
+from .forms import NewsForm
 from .models import Article, Month, Era
 
 # Create your views here.
@@ -9,7 +10,7 @@ def today():
     return {
         "Era": Era.Sixth_Age,
         "Year": 98,
-        "Day": 5,
+        "Day": 6,
         "Month": Month.Fruiting
     }
 
@@ -97,10 +98,35 @@ def create_article(request):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
 
-    context = {
-        'is_admin': user.is_authenticated,
-    }
-    return render(request, 'news_add.html', context)
+    if request.method == 'POST':
+        # Handle incoming request
+        form = NewsForm(request.POST)
+        if form.is_valid():
+            new_article = Article(
+                title=form.data['title'],
+                article=form.data['article'],
+                day=form.data['day'],
+                month=form.data['month'],
+                year=form.data['year'],
+                era=form.data['era'],
+            )
+            new_article.save()
+            return HttpResponseRedirect('/news/add/success/')
+        else:
+            return HttpResponse('The content was malformed, and unable to be processed. Please verify your submission is valid, and try again.')
+    else:
+        context = {
+            'is_admin': user.is_authenticated,
+            'form': NewsForm
+        }
+        return render(request, 'news_add.html', context)
+
+
+def article_success(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    return render(request, 'news_add_success.html', {'is_admin': user.is_authenticated})
 
 
 def article(request, article_id):

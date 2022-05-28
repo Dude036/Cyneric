@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>
+    Thanks!
+  </h1>
+  <p>
+    Your submission has been uploaded and is now accessable via the calender.
+  </p>
+  <div class="center" style="margin-bottom:30px;">
+    <input type="button" onclick="location.href='{% url 'news:calender' %}';" value="Back to news" />
+  </div>
+{% endblock %}

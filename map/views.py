@@ -155,10 +155,7 @@ def add_crit(request):
         # check whether it's valid:
         if form.is_valid():
             success_bool = True if form.data['success'] == 'Success' else False
-            print(form.data['category'])
-            print(form.data['severity'])
-            print(form.data['success'])
-            print(form.data['flavor_text'])
+
             new_crit = Critical(
                 category=form.data['category'],
                 severity=form.data['severity'],

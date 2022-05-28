@@ -5,10 +5,24 @@
     {% if is_admin %}
     <tr>
       <td>
-        <h1>Authorized</h1>
-        <p>
-          Currently in progress
-        </p>
+        <h1>
+          Submit News Story Form
+        </h1>
+          <form action="/news/add/" method="post">
+            {% csrf_token %}
+            <div class="attacks">
+              {% for field in form %}
+              <div style="width: 44%; margin-left: 3%; margin-right: 3%; margin-bottom: 1%;">
+                {{ field.errors }}
+                {{ field.label_tag }}
+                <br/>
+                {{ field }}
+              </div>
+              {% endfor %}
+            </div>
+            <br/>
+            <input type="submit" value="Submit" style="padding: 5px 10px;">
+          </form>
       </td>
     </tr>
     {% else %}
@@ -16,7 +30,7 @@
       <td>
         <h1>Unauthorized</h1>
         <p>
-          Ensure that you're logged in as an admin before accessing this page
+          Ensure that you're logged in as an admin before trying to access this page
         </p>
       </td>
     </tr>
