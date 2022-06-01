@@ -9,159 +9,45 @@
     <input type="button" value="Now" onclick="location.href='{% url 'news:calender' %}';" />
     <input type="button" value="Year {{ next_year }}" onclick="location.href='{% url 'news:calender_era' era next_year %}';" />
   </div>
-  <table class="wrapper-box" style="margin-bottom:60px; margin-top:60px;">
-    <tr>
-      {% for month in spring %}
-        <td>
-          <table class=calender>
-            <tr colspan=7>
-              <div class="bold text-lg center">
-                {{ month.name }}
-              </div>
-            </tr>
-            <tr>
-              {% for abbrev in 'MTWHFSU'|make_list %}
-                <th>
-                  {{ abbrev }}
-                </th>
-              {% endfor %}
-            </tr>
-            {% for week in month.days %}
-              <tr>
-                {% for day in week %}
-                  {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
-                    <td style="background-color: lightblue; border: 3px solid darkblue;">
-                  {% else %}
-                    <td>
-                  {% endif %}
-                    {% if day|is_int %}
-                      {{ day }}
-                    {% else %}
-                      <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
-                    {% endif %}
-                  </td>
-                {% endfor %}
-              </tr>
-            {% endfor %}
-          </table>
-        </td>
+  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; border: 2px solid black; padding: 20px 5px; margin: 60px 0px;">
+    {% for month in year %}
+    <div class="calender">
+      <div class="calender_name">
+        {{ month.name }}
+      </div>
+      {% for abbrev in 'MTWHFSU'|make_list %}
+        <div class="calender_head"> {{ abbrev }} </div>
       {% endfor %}
-    </tr>
-    <!-- -------------------------------------------------------------- -->
-    <tr>
-      {% for month in summer %}
-        <td>
-          <table class=calender>
-            <tr colspan=7>
-              <div class="bold text-lg center">
-                {{ month.name }}
+
+      {% for week in month.days %}
+        {% for day in week %}
+          {% if day|is_int %}
+            {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
+              <div class="calender_day" style="background-color: dodgerblue;">
+                {{ day }}
               </div>
-            </tr>
-            <tr>
-              {% for abbrev in 'MTWHFSU'|make_list %}
-                <th>
-                  {{ abbrev }}
-                </th>
-              {% endfor %}
-            </tr>
-            {% for week in month.days %}
-              <tr>
-                {% for day in week %}
-                  {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
-                    <td style="background-color: lightblue; border: 3px solid darkblue;">
-                  {% else %}
-                    <td>
-                  {% endif %}
-                    {% if day|is_int %}
-                      {{ day }}
-                    {% else %}
-                      <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
-                    {% endif %}
-                  </td>
-                {% endfor %}
-              </tr>
-            {% endfor %}
-          </table>
-        </td>
-      {% endfor %}
-    </tr>
-    <!-- -------------------------------------------------------------- -->
-    <tr>
-      {% for month in fall %}
-        <td>
-          <table class=calender>
-            <tr colspan=7>
-              <div class="bold text-lg center">
-                {{ month.name }}
+            {% else %}
+              <div class="calender_day">
+                {{ day }}
               </div>
-            </tr>
-            <tr>
-              {% for abbrev in 'MTWHFSU'|make_list %}
-                <th>
-                  {{ abbrev }}
-                </th>
-              {% endfor %}
-            </tr>
-            {% for week in month.days %}
-              <tr>
-                {% for day in week %}
-                  {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
-                    <td style="background-color: lightblue; border: 3px solid darkblue;">
-                  {% else %}
-                    <td>
-                  {% endif %}
-                    {% if day|is_int %}
-                      {{ day }}
-                    {% else %}
-                      <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
-                    {% endif %}
-                  </td>
-                {% endfor %}
-              </tr>
-            {% endfor %}
-          </table>
-        </td>
-      {% endfor %}
-    </tr>
-    <!-- -------------------------------------------------------------- -->
-    <tr>
-      {% for month in winter %}
-        <td>
-          <table class=calender>
-            <tr colspan=7>
-              <div class="bold text-lg center">
-                {{ month.name }}
+            {% endif %}
+          {% else %}
+            {% if month.name == today.Month and day.number == today.Day and current_year == today.Year %}
+              <div class="calender_day" style="background-color: dodgerblue;">
+                <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
               </div>
-            </tr>
-            <tr>
-              {% for abbrev in 'MTWHFSU'|make_list %}
-                <th>
-                  {{ abbrev }}
-                </th>
-              {% endfor %}
-            </tr>
-            {% for week in month.days %}
-              <tr>
-                {% for day in week %}
-                  {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
-                    <td style="background-color: lightblue; border: 3px solid darkblue;">
-                  {% else %}
-                    <td>
-                  {% endif %}
-                    {% if day|is_int %}
-                      {{ day }}
-                    {% else %}
-                      <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
-                    {% endif %}
-                  </td>
-                {% endfor %}
-              </tr>
-            {% endfor %}
-          </table>
-        </td>
+            {% else %}
+              <div class="calender_day">
+                <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
+              </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
       {% endfor %}
-    </tr>
-  </table>
+    </div>
+    {% endfor %}
+  </div>
+
   {% if is_admin %}
     <!-- Add News Article -->
     <input type="button" onclick="location.href='{% url 'news:create_article' %}';" value="Add a News Article" />

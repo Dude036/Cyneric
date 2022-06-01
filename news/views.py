@@ -15,6 +15,16 @@ def today():
     }
 
 
+@register.filter
+def get_item(dictionary, key):
+    return dictionary.get(key)
+
+
+@register.filter
+def is_int(thing):
+    return isinstance(thing, int)
+
+
 def calender_enumeration(name):
     month = {}
     month['name'] = name
@@ -35,16 +45,6 @@ def add_day(article, month):
         "link": article.id,
         "number": day,
     }
-
-
-@register.filter
-def get_item(dictionary, key):
-    return dictionary.get(key)
-
-
-@register.filter
-def is_int(thing):
-    return isinstance(thing, int)
 
 
 def calender(request):
@@ -85,10 +85,7 @@ def calender_era(request, year, era):
         'next_year': year + 1,
         'era': era,
         'era_name': list(Era)[era],
-        'spring': months[0:3],
-        'summer': months[3:6],
-        'fall': months[6:9],
-        'winter': months[9:12],
+        'year': months,
         'is_admin': user.is_authenticated,
     }
     return render(request, 'news.html', context)

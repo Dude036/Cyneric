@@ -249,7 +249,34 @@
     }
 
     .calender {
-      width: 100%;
+      width: 32%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .calender_name {
+      margin: 1%;
+      flex: 7 0 100%;
+      font-size: 24px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .calender_head {
+      flex: 1 1 14%;
+      background-color: gray;
+      color: white;
+      text-align: center;
+      min-height: 30px;
+      padding: 5px 0px 0px 0px;
+    }
+
+    .calender_day {
+      flex: 1 1 14%;
+      text-align: center;
+      min-height: 25px;
+      padding: 5px 0px 0px 0px;
     }
 
     .calender a {
