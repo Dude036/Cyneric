@@ -67,8 +67,18 @@
     {% endfor %}
   </div>
 
-  {% if is_admin %}
-    <!-- Add News Article -->
-    <input type="button" onclick="location.href='{% url 'news:create_article' %}';" value="Add a News Article" />
-  {% endif %}
+  <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 60px;">
+    <div>
+      <a href="{% url 'news:article_latest' %}" style="background-color: darkblue; color: white; padding: 10px;">
+        See latest articles here
+      </a>
+    </div>
+    {% if is_admin %}
+      <div>
+        <a href="{% url 'news:create_article' %}" style="background-color: darkblue; color: white; padding: 10px;">
+          Add news article
+        </a>
+      </div>
+    {% endif %}
+  </div>
 {% endblock %}
