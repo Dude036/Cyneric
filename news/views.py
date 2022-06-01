@@ -169,5 +169,5 @@ def article_list(request):
 
 
 def article_latest(request):
-    latest = Article.objects.all()[:5]
-    return render(request, 'news_list.html', { 'article_list': [{ 'title': article.title, 'article': article.article } for article in latest]})
+    latest = Article.objects.all()[::-1]
+    return render(request, 'news_list.html', { 'article_list': [{ 'title': article.title, 'article': article.article } for article in latest[:5]]})
