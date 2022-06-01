@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  {% for article in article_list %}
+    <table class="wrapper-box" style="margin-bottom:60px;">
+      <tr>
+        <td>
+          <h1>{{ article.title }}</h1>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          {{ article.article|linebreaksbr }}
+        </td>
+      </tr>
+    </table>
+  {% endfor %}
+  <div class="center" style="margin-bottom:30px;">
+    <input type="button" onclick="location.href='{% url 'news:calender' %}';" value="Back to news" />
+  </div>
+{% endblock %}

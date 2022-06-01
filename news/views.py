@@ -41,10 +41,15 @@ def add_day(article, month):
     day = article.day
     week = (day - 1) // 7
     i = day - 1 - (week * 7)
-    month['days'][week][i] = {
-        "link": article.id,
-        "number": day,
-    }
+    if isinstance(month['days'][week][i], int):
+        month['days'][week][i] = {
+            "link": '',
+            "links": [article.id],
+            "number": day,
+        }
+    else:
+        month['days'][week][i]['links'].append(article.id)
+
 
 
 def calender(request):
@@ -139,3 +144,26 @@ def article(request, article_id):
         'article': article.article,
     }
     return render(request, 'news_article.html', context)
+
+
+def article_list(request):
+    if request.method == 'POST':
+        # Receive '[#, #, etc]' or '[#]'
+        all_links = request.POST['links'][1:-1]
+        print(all_links, type(all_links))
+        all_links = [int(s) for s in all_links.strip(',').split(', ') if s.isdigit()]
+        print(all_links, type(all_links))
+
+        # Only one Link
+        if len(all_links) == 1:
+            return article(request, all_links[0])
+        else:
+            all_articles = [get_object_or_404(Article, pk=article_id) for article_id in all_links]
+            context = {
+                'article_list': [{ 'title': article.title, 'article': article.article } for article in all_articles],
+            }
+
+            return render(request, 'news_list.html', context)
+    else:
+        return  HttpResponseRedirect('/news/')
+

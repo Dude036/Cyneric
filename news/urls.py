@@ -8,5 +8,6 @@ urlpatterns = [
     path('<int:era>/<int:year>/', views.calender_era, name='calender_era'),
     path('add/', views.create_article, name='create_article'),
     path('add/success/', views.article_success, name='article_success'),
+    path('article/list', views.article_list, name='article_list'),
     path('article/<int:article_id>', views.article, name='article'),
 ]
