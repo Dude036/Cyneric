@@ -9,42 +9,53 @@
     <input type="button" value="Now" onclick="location.href='{% url 'news:calender' %}';" />
     <input type="button" value="Year {{ next_year }}" onclick="location.href='{% url 'news:calender_era' era next_year %}';" />
   </div>
-  <div style="display: flex; flex-wrap: wrap; justify-content: space-between; border: 2px solid black; padding: 20px 5px; margin: 60px 0px;">
+  <div class="calender">
     {% for month in year %}
-    <div class="calender">
-      <div class="calender_name">
-        {{ month.name }}
-      </div>
-      {% for abbrev in 'MTWHFSU'|make_list %}
-        <div class="calender_head"> {{ abbrev }} </div>
-      {% endfor %}
-
-      {% for week in month.days %}
-        {% for day in week %}
-          {% if day|is_int %}
-            {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
-              <div class="calender_day" style="background-color: dodgerblue;">
-                {{ day }}
-              </div>
-            {% else %}
-              <div class="calender_day">
-                {{ day }}
-              </div>
-            {% endif %}
-          {% else %}
-            {% if month.name == today.Month and day.number == today.Day and current_year == today.Year %}
-              <div class="calender_day" style="background-color: dodgerblue;">
-                <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
-              </div>
-            {% else %}
-              <div class="calender_day">
-                <input type="button" onclick="location.href='{% url 'news:article' day.link %}';" value="{{ day.number }}" />
-              </div>
-            {% endif %}
-          {% endif %}
+    <table class="calender_table">
+      <tr>
+        <td colspan="7">
+          <div class="center text-lg bold">
+            {{ month.name }}
+          </div>
+        </td>
+      </tr>
+      <tr>
+        {% for abbrev in 'MTWHFSU'|make_list %}
+          <th> {{ abbrev }} </th>
         {% endfor %}
+      </tr>
+      {% for week in month.days %}
+        <tr>
+          {% for day in week %}
+            {% if day|is_int %}
+              {% if month.name == today.Month and day == today.Day and current_year == today.Year %}
+                <td style="background-color: dodgerblue;">
+                  {{ day }}
+                </td>
+              {% else %}
+                <td>
+                  {{ day }}
+                </td>
+              {% endif %}
+            {% else %}
+              {% if month.name == today.Month and day.number == today.Day and current_year == today.Year %}
+                <td style="background-color: dodgerblue;">
+                  <a class="calender_link" href="{% url 'news:article' day.link %}">
+                    {{ day.number }}
+                  </a>
+                </td>
+              {% else %}
+                <td>
+                  <a class="calender_link" href="{% url 'news:article' day.link %}">
+                    {{ day.number }}
+                  </a>
+                </td>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </tr>
       {% endfor %}
-    </div>
+    </table>
     {% endfor %}
   </div>
 
