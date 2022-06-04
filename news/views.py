@@ -5,7 +5,7 @@ from django.contrib import auth
 from .forms import NewsForm
 from .models import Article, Month, Era
 
-# Create your views here.
+# Helper functions
 def today():
     return {
         "Era": Era.Sixth_Age,
@@ -51,7 +51,13 @@ def add_day(article, month):
         month['days'][week][i]['links'].append(article.id)
 
 
+def text_to_html(text):
+    # Swap out newlines with paragraph tags
+    text = '<p>' + text.replace('\n', '</p><p>') + '</p>'
+    return text
 
+
+# Views
 def calender(request):
     return calender_era(request, today()['Year'], list(Era).index(today()['Era']))
 
@@ -138,15 +144,15 @@ def article(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
 
     context = {
-        'is_admin': user.is_authenticated,
-        'id': article_id,
-        'title': article.title,
-        'article': article.article,
+        'article_list': [{ 'is_admin': user.is_authenticated, 'title': article.title, 'article': text_to_html(article.article) }]
     }
-    return render(request, 'news_article.html', context)
+    return render(request, 'news_list.html', context)
 
 
 def article_list(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     if request.method == 'POST':
         # Receive '[#, #, etc]' or '[#]'
         all_links = request.POST['links'][1:-1]
@@ -161,6 +167,7 @@ def article_list(request):
             all_articles = [get_object_or_404(Article, pk=article_id) for article_id in all_links]
             context = {
                 'article_list': [{ 'title': article.title, 'article': article.article } for article in all_articles],
+                'is_admin': user.is_authenticated,
             }
 
             return render(request, 'news_list.html', context)
@@ -169,5 +176,12 @@ def article_list(request):
 
 
 def article_latest(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
     latest = Article.objects.all()[::-1]
-    return render(request, 'news_list.html', { 'article_list': [{ 'title': article.title, 'article': article.article } for article in latest[:5]]})
+    context = {
+        'is_admin': user.is_authenticated,
+        'article_list': [{ 'title': article.title, 'article': article.article } for article in latest[:5]]
+    }
+    return render(request, 'news_list.html', context)
