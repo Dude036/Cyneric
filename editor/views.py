@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.http import Http404
+from django.contrib import auth
 import simplejson as json
 import bs4
 import re
@@ -10,7 +11,9 @@ from .parse_tools import *
 
 # Create your views here.
 def editor(request):
-    return render(request, 'editor.html', {})
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+    return render(request, 'editor.html', {'is_admin': user.is_authenticated})
 
 
 def parser(request):
