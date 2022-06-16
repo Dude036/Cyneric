@@ -10,7 +10,7 @@ def today():
     return {
         "Era": Era.Sixth_Age,
         "Year": 98,
-        "Day": 7,
+        "Day": 11,
         "Month": Month.Fruiting
     }
 
