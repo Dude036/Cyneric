@@ -183,3 +183,11 @@ def add_crit_success(request):
 
 def admin_redirect(request):
     return HttpResponseRedirect('/admin/')
+
+
+def magic_phrases(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    return render(request, 'phrases.html', {'is_admin': user.is_authenticated})
+
