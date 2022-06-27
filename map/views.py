@@ -72,6 +72,7 @@ def town_info(request, town_name):
         'leader_desc': leader_desc,
         'leader_link': leader_link,
         'is_admin': user.is_authenticated,
+        'magic_phrase': town_data.magic_phrase,
         'admin_description': town_data.admin_description,
     }
 
