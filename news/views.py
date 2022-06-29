@@ -7,7 +7,8 @@ from .models import *
 
 # Helper functions
 Holidays = [
-    Holiday(Date(15, Month.Fruiting, 1, Era.First_Age), "Midsummer", "An Elven celebration of their Fey Heritage"),
+    Holiday(Date(15, Month.Apex, 1, Era.First_Age), "Midsummer", "An Elven celebration of their Fey Heritage"),
+    Holiday(Date(15, Month.Bottom, 1, Era.First_Age), "Dark Night", "An Outsiders Celebration of their closeness to the shadow plane"),
 ]
 
 today = Date(1, Month.Play, 98, Era.Sixth_Age)
@@ -59,8 +60,8 @@ def holiday_css():
     css = ""
     for holi in Holidays:
         css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + " { border-bottom: 4px solid #483D8B; position: relative; border-radius: 10px; }\n"
-        css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + "::after { content: \"" + holi.Name + ": " + holi.Description + "\"; top: 0; left: 50%; transform: translate(-50%, calc(-100% - 10px)); padding: 10px 15px; border-radius: 10px; background-color: #483D8B; color: #DCDCDC; display: none; position: absolute; z-index: 999; }\n"
-        css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + ":hover::after { display: block; }\n"
+        css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + "::after { content: \"" + holi.Name + ": " + holi.Description + "\"; width: 100px; top: 0; left: 50%; transform: translate(-50%, calc(-100% - 10px)); padding: 10px 15px; border-radius: 10px; background-color: #483D8B; color: #DCDCDC; display: none; position: absolute; z-index: 999; }\n"
+        css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + ":hover::after { display: block;  width: 100px; }\n"
     return css
 
 
