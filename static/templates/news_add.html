@@ -4,7 +4,7 @@
   <table class="wrapper-box" style="margin-bottom:60px;">
     {% if is_admin %}
     <tr>
-      <td>
+      <td colspan=2>
         <h1>
           Submit News Story Form
         </h1>
@@ -25,6 +25,39 @@
           </form>
       </td>
     </tr>
+    <tr>
+      <td colspan="2" class="center bold">Helpful Hints</td>
+    </tr>
+    <tr>
+      <td class="center text-sm">
+        <p>Birth = Genysi</p>
+        <p>Melting = Tixyl</p>
+        <p>Roots = Rysumas</p>
+        <p>Bloom = Anthys</p>
+        <p>Apex = Perigree</p>
+        <p>Fruiting = Ekarpo</p>
+        <p>Play = Ludere</p>
+        <p>Reap = Therismo</p>
+        <p>Death = Chima</p>
+        <p>Darkness = Skotad</p>
+        <p>Bottom = Apogee</p>
+        <p>Ice = Pagos</p>
+      </td>
+      <td class="center text-sm">
+        <p>First_Age = Uniting</p>
+        <p>Second_Age = Trade</p>
+        <p>Third_Age = Expansion</p>
+        <p>Fourth_Age = Magic</p>
+        <p>Fifth_Age = Wealth</p>
+        <p>Sixth_Age = War</p>
+        <p>Seventh_Age = Golden</p>
+        <p>Eight_Age = Calamity</p>
+        <p>Ninth_Age = Restoration</p>
+        <p>Tenth_Age = Industry</p>
+        <p>Eleventh_Age = Modern</p>
+        <p>Twelfth_Age = Technology</p>
+      </td>
+    </tr>
     {% else %}
     <tr>
       <td>
@@ -35,6 +68,8 @@
       </td>
     </tr>
     {% endif %}
+  </table>
+
   <div class="center" style="margin-bottom:30px;">
     <input type="button" onclick="location.href='{% url 'news:calender' %}';" value="Back to news" />
   </div>

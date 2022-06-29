@@ -3,16 +3,14 @@ from django.shortcuts import get_object_or_404, render
 from django.template.defaulttags import register
 from django.contrib import auth
 from .forms import NewsForm
-from .models import Article, Month, Era
+from .models import *
 
 # Helper functions
-def today():
-    return {
-        "Era": Era.Sixth_Age,
-        "Year": 98,
-        "Day": 1,
-        "Month": Month.Play
-    }
+Holidays = [
+    Holiday(Date(15, Month.Fruiting, 1, Era.First_Age), "Midsummer", "An Elven celebration of their Fey Heritage"),
+]
+
+today = Date(1, Month.Play, 98, Era.Sixth_Age)
 
 
 @register.filter
@@ -59,14 +57,16 @@ def text_to_html(text):
 
 # Views
 def calender(request):
-    return calender_era(request, today()['Year'], list(Era).index(today()['Era']))
+    return calender_era(request, today.Year, int(today.Era))
 
 
 def calender_year(request, year):
-    return calender_era(request, year, list(Era).index(today()['Era']))
+    return calender_era(request, year, int(today.Era))
 
 
 def calender_era(request, year, era):
+    holiday_a = Date(10, Month.Fruiting, 98, Era.Sixth_Age)
+
     if year > 100:
         year -= 100
         era += 1
@@ -83,6 +83,7 @@ def calender_era(request, year, era):
 
     for m in Month:
         current = calender_enumeration(m)
+        print(list(Era)[era])
         current_articles = Article.objects.all().filter(month=m, year=year, era=list(Era)[era])
         for article in current_articles:
             add_day(article, current)
@@ -90,7 +91,7 @@ def calender_era(request, year, era):
         months.append(current)
 
     context = {
-        'today': today(),
+        'today': today.to_dict(),
         'current_year': year,
         'previous_year': year - 1,
         'next_year': year + 1,
