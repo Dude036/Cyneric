@@ -55,6 +55,15 @@ def text_to_html(text):
     return text
 
 
+def holiday_css():
+    css = ""
+    for holi in Holidays:
+        css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + " { border-bottom: 4px solid #483D8B; position: relative; border-radius: 10px; }\n"
+        css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + "::after { content: \"" + holi.Name + ": " + holi.Description + "\"; top: 0; left: 50%; transform: translate(-50%, calc(-100% - 10px)); padding: 10px 15px; border-radius: 10px; background-color: #483D8B; color: #DCDCDC; display: none; position: absolute; z-index: 999; }\n"
+        css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + ":hover::after { display: block; }\n"
+    return css
+
+
 # Views
 def calender(request):
     return calender_era(request, today.Year, int(today.Era))
@@ -65,8 +74,6 @@ def calender_year(request, year):
 
 
 def calender_era(request, year, era):
-    holiday_a = Date(10, Month.Fruiting, 98, Era.Sixth_Age)
-
     if year > 100:
         year -= 100
         era += 1
@@ -83,7 +90,6 @@ def calender_era(request, year, era):
 
     for m in Month:
         current = calender_enumeration(m)
-        print(list(Era)[era])
         current_articles = Article.objects.all().filter(month=m, year=year, era=list(Era)[era])
         for article in current_articles:
             add_day(article, current)
@@ -99,6 +105,7 @@ def calender_era(request, year, era):
         'era_name': list(Era)[era],
         'year': months,
         'is_admin': user.is_authenticated,
+        'holiday_css': holiday_css(),
     }
     return render(request, 'news.html', context)
 
