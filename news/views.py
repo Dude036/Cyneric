@@ -175,21 +175,11 @@ def article_success(request):
 
 
 def article(request, article_id):
-    # Show certain info if the user is authenticated (i.e. logged in as admin)
-    user = auth.get_user(request)
-
     article = get_object_or_404(Article, pk=article_id)
-
-    context = {
-        'article_list': [{ 'is_admin': user.is_authenticated, 'title': article.title, 'article': text_to_html(article.article) }]
-    }
-    return render(request, 'news_list.html', context)
+    return handle_article_list(request, [article])
 
 
 def article_list(request):
-    # Show certain info if the user is authenticated (i.e. logged in as admin)
-    user = auth.get_user(request)
-
     if request.method == 'POST':
         # Receive '[#, #, etc]' or '[#]'
         all_links = request.POST['links'][1:-1]
@@ -197,28 +187,23 @@ def article_list(request):
         all_links = [int(s) for s in all_links.strip(',').split(', ') if s.isdigit()]
         print(all_links, type(all_links))
 
-        # Only one Link
-        if len(all_links) == 1:
-            return article(request, all_links[0])
-        else:
-            all_articles = [get_object_or_404(Article, pk=article_id) for article_id in all_links]
-            context = {
-                'article_list': [{ 'title': article.title, 'article': article.article } for article in all_articles],
-                'is_admin': user.is_authenticated,
-            }
-
-            return render(request, 'news_list.html', context)
+        return handle_article_list(request, [get_object_or_404(Article, pk=article_id) for article_id in all_links])
     else:
         return  HttpResponseRedirect('/news/')
 
 
 def article_latest(request):
+    latest = Article.objects.all()[::-1]
+    return handle_article_list(request, latest[:5])
+
+
+def handle_article_list(request, all_articles):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
 
-    latest = Article.objects.all()[::-1]
     context = {
+        'article_list': [{ 'title': article.title, 'article': text_to_html(article.article) } for article in all_articles],
         'is_admin': user.is_authenticated,
-        'article_list': [{ 'title': article.title, 'article': article.article } for article in latest[:5]]
     }
     return render(request, 'news_list.html', context)
+
