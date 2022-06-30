@@ -8,7 +8,13 @@ from .models import *
 # Helper functions
 Holidays = [
     Holiday(Date(15, Month.Apex, 1, Era.First_Age), "Midsummer", "An Elven celebration of their Fey Heritage"),
-    Holiday(Date(15, Month.Bottom, 1, Era.First_Age), "Dark Night", "An Outsiders Celebration of their closeness to the shadow plane"),
+    Holiday(Date(15, Month.Bottom, 1, Era.First_Age), "Festival of Risiing Spirits", "An Outsiders Celebration of their closeness to the shadow plane"),
+    Holiday(Date(26, Month.Roots, 25, Era.Sixth_Age), "Liberation", "The day the 'Converted' were freed from Cithrel's control"),
+    Holiday(Date(20, Month.Reap, 1, Era.First_Age), "Reaping", "Harvest Day"),
+    Holiday(Date(14, Month.Apex, 1, Era.First_Age), "Sunrise", "Heliod's worship of the summer solstice"),
+    Holiday(Date(14, Month.Bottom, 1, Era.First_Age), "Sunset", "Heliod's worship of the winter solstice"),
+    Holiday(Date(5, Month.Bloom, 25, Era.Sixth_Age), "Shatter Solstice", "Pale Mistress' worship of seperating the continents"),
+    Holiday(Date(10, Month.Ice, 97, Era.Sixth_Age), "Emergence", "The Emergence of the Warforged Army"),
 ]
 
 today = Date(1, Month.Play, 98, Era.Sixth_Age)
@@ -56,9 +62,15 @@ def text_to_html(text):
     return text
 
 
-def holiday_css():
+def holiday_css(year, era):
     css = ""
     for holi in Holidays:
+        if int(holi.Date.Era) > era:
+            print("Skipping " + holi.Name, int(holi.Date.Era), '>', era)
+            continue
+        elif int(holi.Date.Era) == era and holi.Date.Year >= year:
+            print("Skipping " + holi.Name, int(holi.Date.Year), '>', year)
+            continue
         css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + " { border-bottom: 4px solid #483D8B; position: relative; border-radius: 10px; }\n"
         css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + "::after { content: \"" + holi.Name + ": " + holi.Description + "\"; width: 100px; top: 0; left: 50%; transform: translate(-50%, calc(-100% - 10px)); padding: 10px 15px; border-radius: 10px; background-color: #483D8B; color: #DCDCDC; display: none; position: absolute; z-index: 999; }\n"
         css += "#" + str(holi.Date.Month) + str(holi.Date.Day) + ":hover::after { display: block;  width: 100px; }\n"
@@ -106,7 +118,7 @@ def calender_era(request, year, era):
         'era_name': list(Era)[era],
         'year': months,
         'is_admin': user.is_authenticated,
-        'holiday_css': holiday_css(),
+        'holiday_css': holiday_css(year, era),
     }
     return render(request, 'news.html', context)
 

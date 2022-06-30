@@ -142,3 +142,6 @@ class Holiday:
 		self.Date = date
 		self.Name = name
 		self.Description = desc
+
+	def __str__(self):
+		return self.Name + ": " + str(self.Date)
