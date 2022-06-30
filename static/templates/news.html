@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<style type="text/css">{{ holiday_css|safe }}</style>
+<style type="text/css">{{ holiday_css|safe }}
+{{ now_css|safe }}</style>
   <h1>
     Year {{ current_year }}, in the Era of {{ era_name }}
   </h1>
@@ -33,6 +34,10 @@
                 <td id="{{ month.name }}{{ day }}" style="background-color: dodgerblue;">
                   {{ day }}
                 </td>
+              {% elif month.name == campaign.Month and day == campaign.Day and current_year == campaign.Year %}
+                <td id="{{ month.name }}{{ day }}" style="background-color: violet;">
+                  {{ day }}
+                </td>
               {% else %}
                 <td id="{{ month.name }}{{ day }}">
                   {{ day }}
@@ -41,6 +46,16 @@
             {% else %}
               {% if month.name == today.Month and day.number == today.Day and current_year == today.Year %}
                 <td id="{{ month.name }}{{ day.number }}" style="background-color: dodgerblue;">
+                  <form action="{% url 'news:article_list' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="links" value="{{ day.links }}">
+                    <button class="calender_link" type="submit" value="{{ day.number }}">
+                      {{ day.number }}
+                    </button>
+                  </form>
+                </td>
+              {% elif month.name == campaign.Month and day == campaign.Day and current_year == campaign.Year %}
+                <td id="{{ month.name }}{{ day.number }}" style="background-color: violet;">
                   <form action="{% url 'news:article_list' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="links" value="{{ day.links }}">
