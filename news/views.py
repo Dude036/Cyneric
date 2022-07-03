@@ -18,7 +18,7 @@ Holidays = [
 ]
 
 today = Holiday(Date(1, Month.Play, 98, Era.Sixth_Age), "Jared's Campaign", "")
-campaign = Holiday(Date(25, Month.Fruiting, 98, Era.Sixth_Age), "Atticus' Campaign", "")
+campaign = Holiday(Date(26, Month.Fruiting, 98, Era.Sixth_Age), "Atticus' Campaign", "")
 
 @register.filter
 def get_item(dictionary, key):
