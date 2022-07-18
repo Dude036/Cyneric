@@ -702,7 +702,7 @@ function editor_container_monster(element, edition) {
 			var check = new URL(url);
 		} catch (_) {
 			alert("Invalid Link.")
-			return  
+			return
 		}
 
 		// Link Validated, begin POST
@@ -752,7 +752,7 @@ function editor_container_monster(element, edition) {
 				} else {
 					// We've recieved a creature, and can safely add it to the page.
 					if (DEBUG) { console.log("Successfully recieved monster, posting to UI"); }
-					update_session_storage(new_data, 'Monsters', container.id)
+					update_session_storage(new_data, 'Monsters', container.id);
 				}
 			}
 		};
@@ -2916,7 +2916,7 @@ function export_json(callback) {
 	if (DEBUG) { console.log(editor_container); }
 	for(var i = 0; i < editor_container.length; i++) {
 		// Found the container
-		if (/^S\dC/.test(editor_container[i].id)) {
+		if (/^S\d+C/.test(editor_container[i].id)) {
 			var editor_element = editor_container[i];
 			export_obj['Stores'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], true));
 		}
@@ -2927,7 +2927,7 @@ function export_json(callback) {
 	if (DEBUG) { console.log(editor_container); }
 	for(var i = 0; i < editor_container.length; i++) {
 		// Found the container
-		if (/^T\dC/.test(editor_container[i].id)) {
+		if (/^T\d+C/.test(editor_container[i].id)) {
 			var editor_element = editor_container[i];
 			export_obj['Tables'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], false));
 		}
@@ -2938,7 +2938,7 @@ function export_json(callback) {
 	if (DEBUG) { console.log(editor_container); }
 	for(var i = 0; i < editor_container.length; i++) {
 		// Found the container
-		if (/^M\dC/.test(editor_container[i].id)) {
+		if (/^M\d+C/.test(editor_container[i].id)) {
 			var editor_element = editor_container[i];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
 			export_obj['Monsters'].push(get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
@@ -2950,7 +2950,7 @@ function export_json(callback) {
 	if (DEBUG) { console.log(editor_container); }
 	for(var i = 0; i < editor_container.length; i++) {
 		// Found the container
-		if (/^H\dC/.test(editor_container[i].id)) {
+		if (/^H\d+C/.test(editor_container[i].id)) {
 			var editor_element = editor_container[i];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
 			export_obj['Hazards'].push(get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
@@ -2962,7 +2962,7 @@ function export_json(callback) {
 	if (DEBUG) { console.log(editor_container); }
 	for(var i = 0; i < editor_container.length; i++) {
 		// Found the container
-		if (/^L\dC/.test(editor_container[i].id)) {
+		if (/^L\d+C/.test(editor_container[i].id)) {
 			var editor_element = editor_container[i];
 			export_obj['Lists'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
 		}
@@ -3424,10 +3424,10 @@ function update_session_storage(data, data_type, current_id) {
 	if (data_type == "Monsters") {
 		var temp_monster = null;
 		var editor_container = document.getElementById("Monsters").childNodes;
-		for(var i = 0; i < editor_container.length; i++) {
+		for (var i = 0; i < editor_container.length; i++) {
 			// Found the container
 			if (DEBUG) { console.log("searching through containers");  }
-			if (/^M\dC/.test(editor_container[i].id)) {
+			if (/^M\d+C/.test(editor_container[i].id)) {
 				if (editor_container[i].id == current_id) {
 					// Found the creature. Save Data, and break
 					var editor_element = editor_container[i];
@@ -3461,6 +3461,24 @@ function update_session_storage(data, data_type, current_id) {
 	["Stores", "Tables", "Monsters", "Hazards", "Lists"].forEach(function(elem) {
 		document.getElementById(elem).innerHTML = "";
 	})
+
+	// Cleared page means we can resent this stuff
+	latest_store = 0;
+	latest_store_rows = 0;
+	latest_table = 0;
+	latest_table_rows = 0;
+	latest_list = 0;
+	latest_list_rows = 0;
+	latest_monster = 0;
+	latest_monster_rows = 0;
+	latest_monster_trait = 0;
+	latest_monster_spell = 0;
+	latest_monster_spell_row = 0;
+	latest_monster_spell_col = 0;
+	latest_monster_action = 0;
+	latest_hazard = 0;
+	latest_hazard_trait = 0;
+	latest_hazard_custom = 0;
 	retrieve_session_storage();
 }
 
