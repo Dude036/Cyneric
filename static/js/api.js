@@ -1,3 +1,167 @@
+/**Retreive data from foreign website, and parse it using the server's backend
+ * @param prompt_text The text to prompt the user for the URL
+ * @param edition What edition so the data gets parsed correctly
+ * @param container_id The container to update
+ */
+async function get_monster_contents(prompt_text, edition, container_id) {
+	// Get URL
+	var url = prompt(prompt_text, '');
+	if (url == null) {
+		alert("Invalid data entered.")
+		return
+	}
+
+	// Validate URL
+	try {
+		var check = new URL(url);
+	} catch (_) {
+		alert("Invalid Link.")
+		return
+	}
+
+	// Link Validated, begin POST
+	var xhr = new XMLHttpRequest();
+	var connection = window.location.href + 'parser/';
+	const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+	xhr.open("POST", connection);
+
+	xhr.setRequestHeader("Accept", "application/json");
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.setRequestHeader("X-CSRFToken", token);
+
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4) {
+			// Completed request
+			if (DEBUG) {
+				console.log("Data recieved back for " + url);
+				console.log(xhr.status);
+				console.log(xhr.responseText);
+			}
+			var new_data = JSON.parse(xhr.responseText);
+			if ('ERROR' in new_data) {
+				// Post Toast Message about failure
+				console.log("ERROR: " + new_data['ERROR']);
+				if ("EXCEPTION" in new_data) {
+					console.log("EXCEPTION: " + new_data['EXCEPTION']);
+				}
+				(async () => {
+					var toast = document.createElement('div');
+					toast.style.backgroundColor = "#E34D4D";
+					toast.style.position = "fixed";
+					toast.style.top = "40px";
+					toast.style.left = "40px";
+					toast.style.width = "250px";
+					toast.id = "toast";
+					toast.style.padding = "10px 20px";
+
+					toast.appendChild(document.createTextNode(new_data['ERROR']));
+
+					var header_img = document.getElementById("header_img");
+					header_img.appendChild(toast);
+
+					setTimeout(function(){
+						toast.parentNode.removeChild(toast);
+					}, 9000);
+				})()
+			} else {
+				// We've recieved a creature, and can safely add it to the page.
+				if (DEBUG) { console.log("Successfully recieved monster, posting to UI"); }
+				update_session_storage(new_data, 'Monsters', container_id);
+			}
+		}
+	};
+
+	data = {
+	  "Edition": edition,
+	  "Type": "Monster",
+	  "URL": url
+	};
+
+	xhr.send(JSON.stringify(data));
+}
+
+
+/**Retreive data from foreign website, and parse it using the server's backend
+ * @param prompt_text The text to prompt the user for the URL
+ * @param edition What edition so the data gets parsed correctly
+ * @param container_id The container to update
+ */
+async function get_hazard_contents(prompt_text, edition, container_id) {
+	// Get URL
+	var url = prompt(prompt_text, '');
+	if (url == null) {
+		alert("Invalid data entered.")
+		return
+	}
+
+	// Validate URL
+	try {
+		var check = new URL(url);
+	} catch (_) {
+		alert("Invalid Link.")
+		return
+	}
+
+	// Link Validated, begin POST
+	var xhr = new XMLHttpRequest();
+	var connection = window.location.href + 'parser/';
+	const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+	xhr.open("POST", connection);
+
+	xhr.setRequestHeader("Accept", "application/json");
+	xhr.setRequestHeader("Content-Type", "application/json");
+	xhr.setRequestHeader("X-CSRFToken", token);
+
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4) {
+			// Completed request
+			if (DEBUG) {
+				console.log("Data recieved back for " + url);
+				console.log(xhr.status);
+				console.log(xhr.responseText);
+			}
+			var new_data = JSON.parse(xhr.responseText);
+			if ('ERROR' in new_data) {
+				// Post Toast Message about failure
+				console.log("ERROR: " + new_data['ERROR']);
+				if ("EXCEPTION" in new_data) {
+					console.log("EXCEPTION: " + new_data['EXCEPTION']);
+				}
+				(async () => {
+					var toast = document.createElement('div');
+					toast.style.backgroundColor = "#E34D4D";
+					toast.style.position = "fixed";
+					toast.style.top = "40px";
+					toast.style.left = "40px";
+					toast.style.width = "250px";
+					toast.id = "toast";
+					toast.style.padding = "10px 20px";
+
+					toast.appendChild(document.createTextNode(new_data['ERROR']));
+
+					var header_img = document.getElementById("header_img");
+					header_img.appendChild(toast);
+
+					setTimeout(function(){
+						toast.parentNode.removeChild(toast);
+					}, 9000);
+				})()
+			} else {
+				// We've recieved a creature, and can safely add it to the page.
+				if (DEBUG) { console.log("Successfully recieved hazard data, posting to UI"); }
+				update_session_storage(new_data, 'Hazards', container_id);
+			}
+		}
+	};
+
+	data = {
+	  "Edition": edition,
+	  "Type": "Hazard",
+	  "URL": url
+	};
+
+	xhr.send(JSON.stringify(data));
+}
 
 
 /** Get data from self API

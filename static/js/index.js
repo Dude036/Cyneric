@@ -690,79 +690,7 @@ function editor_container_monster(element, edition) {
 	}
 	add_import_div.id = container.id + "_IMPORT";
 	add_import_div.onclick = function() {
-		// Get URL
-		var url = prompt(add_import_div.innerHTML, '');
-		if (url == null) {
-			alert("Invalid data entered.")
-			return
-		}
-
-		// Validate URL
-		try {
-			var check = new URL(url);
-		} catch (_) {
-			alert("Invalid Link.")
-			return
-		}
-
-		// Link Validated, begin POST
-		var xhr = new XMLHttpRequest();
-		var connection = window.location.href + 'parser/';
-		const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
-		xhr.open("POST", connection);
-
-		xhr.setRequestHeader("Accept", "application/json");
-		xhr.setRequestHeader("Content-Type", "application/json");
-		xhr.setRequestHeader("X-CSRFToken", token);
-
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4) {
-				// Completed request
-				if (DEBUG) {
-					console.log("Data recieved back for " + url);
-					console.log(xhr.status);
-					console.log(xhr.responseText);
-				}
-				var new_data = JSON.parse(xhr.responseText);
-				if ('ERROR' in new_data) {
-					// Post Toast Message about failure
-					console.log("ERROR: " + new_data['ERROR']);
-					if ("EXCEPTION" in new_data) {
-						console.log("EXCEPTION: " + new_data['EXCEPTION']);
-					}
-					(async () => {
-						var toast = document.createElement('div');
-						toast.style.backgroundColor = "#E34D4D";
-						toast.style.position = "fixed";
-						toast.style.top = "40px";
-						toast.style.left = "40px";
-						toast.style.width = "250px";
-						toast.id = "toast";
-						toast.style.padding = "10px 20px";
-
-						toast.appendChild(document.createTextNode(new_data['ERROR']));
-
-						var header_img = document.getElementById("header_img");
-						header_img.appendChild(toast);
-
-						setTimeout(function(){
-							toast.parentNode.removeChild(toast);
-						}, 9000);
-					})()
-				} else {
-					// We've recieved a creature, and can safely add it to the page.
-					if (DEBUG) { console.log("Successfully recieved monster, posting to UI"); }
-					update_session_storage(new_data, 'Monsters', container.id);
-				}
-			}
-		};
-
-		data = {
-		  "Edition": edition,
-		  "URL": url
-		};
-
-		xhr.send(JSON.stringify(data));
+		get_monster_contents(add_import_div.innerHTML, edition, container.id)
 	}
 
 	// Delete Styling
@@ -820,6 +748,26 @@ function editor_container_hazard(element, edition) {
 	}
 	add_edition_div.id = container.id + "_EDITION";
 
+	// Add import Div
+	var add_import_div = document.createElement('div');
+	add_import_div.style.float = 'right';
+	add_import_div.style.padding = '5px';
+	add_import_div.style.color = '#EFEFEF';
+	if (edition == '5') {
+		add_import_div.style.backgroundColor = '#002222';
+		add_import_div.innerHTML = "Import from 5e.tools";
+	} else if (edition == '2') {
+		add_import_div.style.backgroundColor = '#002200';
+		add_import_div.innerHTML = "Import from 2e.aonprd.com";
+	} else if (edition == '1') {
+		add_import_div.style.backgroundColor = '#000022';
+		add_import_div.innerHTML = "Import from d20pfsrd.com";
+	}
+	add_import_div.id = container.id + "_IMPORT";
+	add_import_div.onclick = function() {
+		get_hazard_contents(add_import_div.innerHTML, edition, container.id)
+	}
+
 	// Delete Styling
 	var add_delete_div = document.createElement('div');
 	add_delete_div.style.float = 'right';
@@ -840,6 +788,7 @@ function editor_container_hazard(element, edition) {
 
 	container.appendChild(add_delete_div);
 	container.appendChild(add_edition_div);
+	container.appendChild(add_import_div);
 
 	container.appendChild(element);
 	return container;
@@ -2322,6 +2271,7 @@ function get_monster_data(monster, edition) {
 
 	var monster_obj = {
 		'Edition': edition,
+		'id': monster.id + "C",
 	};
 
 	// Grab info from the first row (monster_header_content)
@@ -2452,11 +2402,11 @@ function get_hazard_data(hazard, edition) {
 
 	var hazard_obj = {
 		'Edition': edition,
+		'id': hazard.id + "C",
 	};
 
 	var hazard_header = hazard.rows[0].querySelectorAll('input');
 
-	console.log(hazard_header);
 	hazard_obj['Name'] = hazard_header[0].value;
 	hazard_obj['Cr'] = hazard_header[1].value;
 
@@ -3422,34 +3372,29 @@ function update_session_storage(data, data_type, current_id) {
 
 	// Decipher which instance to replace
 	if (data_type == "Monsters") {
-		var temp_monster = null;
-		var editor_container = document.getElementById("Monsters").childNodes;
-		for (var i = 0; i < editor_container.length; i++) {
-			// Found the container
-			if (DEBUG) { console.log("searching through containers");  }
-			if (/^M\d+C/.test(editor_container[i].id)) {
-				if (editor_container[i].id == current_id) {
-					// Found the creature. Save Data, and break
-					var editor_element = editor_container[i];
-					var edition = document.getElementById(editor_element.id + '_EDITION');
-					var temp_monster = get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]);
-					break;
-				}
+		console.log("Searching for " + current_id + " among Monsters")
+		hazard_dom = document.getElementById(current_id);
+		console.log(hazard_dom)
+		for (var i = export_obj["Monsters"].length - 1; i >= 0; i--) {
+			if (export_obj["Monsters"][i]['id'] == current_id) {
+				console.log("Found id! :: " + export_obj["Monsters"]['id']);
+				var keys = Object.keys(data);
+				keys.forEach(function(key) {
+					export_obj["Monsters"][i][key] = data[key];
+				})
 			}
 		}
-		if (temp_monster === null) {
-			if (DEBUG) { console.log("Monster ID not found. Must have been deleted.") }
-		}
-		for (var i = export_obj["Monsters"].length - 1; i >= 0; i--) {
-			if (monster_equals(temp_monster, export_obj["Monsters"][i])) {
-				if (DEBUG) { console.log("Found equivalent creature, replacing");  }
-				export_obj["Monsters"][i] = data;
-			} else {
-				if (DEBUG) { 
-					console.log(temp_monster);
-					console.log("IS NOT EQUAL TO");
-					console.log(export_obj["Monsters"][i]);
-				}
+	} else if (data_type == "Hazards") {
+		console.log("Searching for " + current_id + " among Hazards")
+		hazard_dom = document.getElementById(current_id);
+		console.log(hazard_dom)
+		for (var i = export_obj["Hazards"].length - 1; i >= 0; i--) {
+			if (export_obj["Hazards"][i]['id'] == current_id) {
+				console.log("Found id! :: " + export_obj["Hazards"]['id']);
+				var keys = Object.keys(data);
+				keys.forEach(function(key) {
+					export_obj["Hazards"][i][key] = data[key];
+				})
 			}
 		}
 	}
@@ -3480,89 +3425,6 @@ function update_session_storage(data, data_type, current_id) {
 	latest_hazard_trait = 0;
 	latest_hazard_custom = 0;
 	retrieve_session_storage();
-}
-
-
-/**Check equality of two Monster Objects
- * @oaram ma Monster 1
- * @param mb Monster 2
- * @return true if equal in all elements, else false
- */
-function monster_equals(ma, mb) {
-	// Create arrays of property names
-	var aProps = Object.getOwnPropertyNames(ma);
-	var bProps = Object.getOwnPropertyNames(mb);
-
-	// If number of properties is different, objects are not equivalent
-	if (aProps.length != bProps.length) {
-		if (DEBUG) {console.log("Monsters have different property lengths"); }
-		return false;
-	}
-	// If the attributes are different, objects are not equal
-	for (var i = 0; i < aProps.length; i++) {
-		if (aProps[i] == "Traits") {
-			if (DEBUG) {console.log("Comparing Traits"); }
-			if (ma[aProps[i]].length !== mb[aProps[i]].length) {
-				return false;
-			}
-			for (var j = ma[aProps[i]].length - 1; j >= 0; j--) {
-				if (ma[aProps[i]][j] !== mb[aProps[i]][j]) {
-					return false;
-				}
-			}
-		} else if (aProps[i] == "Spells") {
-			if (DEBUG) {console.log("Comparing Spells"); }
-			if (ma[aProps[i]].length !== mb[aProps[i]].length) {
-				return false;
-			}
-			for (var j = ma[aProps[i]].length - 1; j >= 0; j--) {
-				if (ma[aProps[i]][j]["Dc"] !== mb[aProps[i]][j]["Dc"]) {
-					if (DEBUG) {console.log("DC Difference"); }
-					return false;
-				}
-				if (ma[aProps[i]][j]["Uses"] !== mb[aProps[i]][j]["Uses"]) {
-					if (DEBUG) {console.log("Uses Difference"); }
-					return false;
-				}
-				if (ma[aProps[i]][j]["List"].length !== mb[aProps[i]][j]["List"].length) {
-					if (DEBUG) {console.log("Spell List Length Difference"); }
-					return false;
-				}
-				for (var x = 0; x < ma[aProps[i]][j]["List"].length; x++) {
-					if (!monster_equals(ma[aProps[i]][j]["List"][x], mb[aProps[i]][j]["List"][x])) {
-						return false;
-					}
-				}
-			}
-		} else if (aProps[i] == "Actions") {
-			if (DEBUG) {console.log("Comparing Actions"); }
-			if (ma[aProps[i]].length !== mb[aProps[i]].length) {
-				return false;
-			}
-			for (var j = ma[aProps[i]].length - 1; j >= 0; j--) {
-				if (!monster_equals(ma[aProps[i]][j], mb[aProps[i]][j])) {
-					return false;
-				}
-			}
-		} else if (aProps[i] == "Treasure") {
-			if (DEBUG) {console.log("Comparing Treasure"); }
-			if (ma[aProps[i]]["Data"].length !== mb[aProps[i]]["Data"].length) {
-				return false;
-			}
-			for (var j = ma[aProps[i]]["Data"].length - 1; j >= 0; j--) {
-				if (!monster_equals(ma[aProps[i]]["Data"][j], mb[aProps[i]]["Data"][j])) {
-					return false;
-				}
-			}
-		} else if (ma[aProps[i]] !== mb[aProps[i]]) {
-			if (DEBUG) {console.log("Monster inequality found; " + aProps[i]); }
-			if (DEBUG) {console.log(ma[aProps[i]] + " !== " + mb[aProps[i]]); }
-			return false;
-		}
-	}
-
-	// All options exhausted
-	return true;
 }
 
 

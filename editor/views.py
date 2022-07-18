@@ -21,31 +21,115 @@ def parser(request):
         return Http404("Unable to parse POST request")
     page_data = json.loads(request.body.decode('utf8'))
 
-    # Handle creature Parsing
     new_data = None
-    try:
-        if page_data['Edition'] == '5' and '5e.tools' in page_data['URL']:
-            new_data = parse_5etools(page_data['URL'])
-        elif page_data['Edition'] == '5' and 'donjon.bin.sh' in page_data['URL']:
-            pass
-        elif page_data['Edition'] == '2' and '2e.aonprd.com' in page_data['URL']:
-            new_data = parse_archives(page_data['URL'])
-        elif page_data['Edition'] == '1':
-            pass
-    except Exception as e:
-        print('\n!! Type: ', type(e))
-        print('!! Args: ', e.args)
-        print('!! Stack:', e, '\n')
-        return JsonResponse({
-            "ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided.",
-            "EXCEPTION": str(e)
-        }, safe=False)
+    if page_data['Type'] == "Hazard":
+        # Handle hazard Parsing
+        try:
+            if page_data['Edition'] == '5' and '5e.tools' in page_data['URL']:
+                pass
+            elif page_data['Edition'] == '5' and 'donjon.bin.sh' in page_data['URL']:
+                pass
+            elif page_data['Edition'] == '2' and '2e.aonprd.com' in page_data['URL']:
+                new_data = parse_archive_hazard(page_data['URL'])
+            elif page_data['Edition'] == '1':
+                pass
+        except Exception as e:
+            print('\n!! Type: ', type(e))
+            print('!! Args: ', e.args)
+            print('!! Stack:', e, '\n')
+            return JsonResponse({
+                "ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided.",
+                "EXCEPTION": str(e)
+            }, safe=False)
+
+    elif page_data['Type'] == "Monster":
+        # Handle creature Parsing
+        try:
+            if page_data['Edition'] == '5' and '5e.tools' in page_data['URL']:
+                new_data = parse_5etools(page_data['URL'])
+            elif page_data['Edition'] == '5' and 'donjon.bin.sh' in page_data['URL']:
+                pass
+            elif page_data['Edition'] == '2' and '2e.aonprd.com' in page_data['URL']:
+                new_data = parse_archives(page_data['URL'])
+            elif page_data['Edition'] == '1':
+                pass
+        except Exception as e:
+            print('\n!! Type: ', type(e))
+            print('!! Args: ', e.args)
+            print('!! Stack:', e, '\n')
+            return JsonResponse({
+                "ERROR": "There was a problem parsing that link. Please contact support found at the bottom of the page with the link you provided.",
+                "EXCEPTION": str(e)
+            }, safe=False)
 
     # Validate correctly configured info
     if new_data is None:
         return JsonResponse({"ERROR": "That link is not currently supported. If you wish for it to be supported, contact support found at the bottom of this page."})
 
     return JsonResponse(new_data, safe=False)
+
+
+def parse_archive_hazard(url):
+    # Make a request call to the website
+    try:
+        if 'AspxAutoDetectCookieSupport=1' not in url:
+            url += '&AspxAutoDetectCookieSupport=1'
+        file = requests.get(url)
+    except Exception as e:
+        return {
+            "ERROR": "There was a problem importing from " + url,
+            "EXCEPTION": str(e)
+        }
+
+    base = {
+        "Edition": "2",
+        "Name": '',
+        "Cr": '',
+        "Traits": [],
+        "Complexity": '',
+        "Stealth": '',
+        "Description": '',
+        "Disable": '',
+        "Custom": []
+    }
+    try:
+        soup = bs4.BeautifulSoup(file.text, 'html.parser')
+
+        # Hazard Parsing with Title
+        body = soup.find('div', class_='main')
+        name = body.find_all('h1', class_='title')
+        title = name[0].text[:name[0].text.find("Hazard")]
+        base['Name'] = title
+        cr = name[0].text[name[0].text.find("Hazard") + 6:]
+        base['Cr'] = cr
+
+        # Add Traits and split into sections
+        raw_traits = body.find_all('span', class_=['trait'])
+        base['Traits'] = [t.text for t in raw_traits]
+        sections = re.split(r'<br\s*/>|<hr\s*/>', file.text)
+
+        for s in sections:
+            if not s.startswith("<b>") or s.startswith("<b>Source"):
+                # Skip all section that don't start with <b>
+                continue
+            elif s.startswith("<b>Complexity") or s.startswith("<b>Stealth") or s.startswith("<b>Description") or s.startswith("<b>Disable"):
+                # Standard sections with every trap
+                contents = re.match(r'<b>([^\<]*)<\/b>(.*)', s)
+                base[contents.group(1)] = contents.group(2).strip()
+            elif s.startswith("<b>AC"):
+                # AC has several sections inside it. Fill out seperately
+                contents = re.findall(r'<b>([^\<]*)<\/b>([^\<]*)', s)
+                for c in contents:
+                    base['Custom'].append({c[0]: re.sub('<[^<]+?>', '', c[1].strip())})
+            else:
+                # Special cases go into custom
+                contents = re.match(r'<b>([^\<]*)<\/b>(.*)', s)
+                base['Custom'].append({contents.group(1): re.sub('<[^<]+?>', '', contents.group(2).strip())})
+                
+        return base
+    except Exception as e:
+        base['Description'] = 'ERROR! There was an error processing this Hazard. See Stack trace below\n----------------\n' + str(e) + ' \n----------------\n' + base['Description']
+        return base
 
 
 def parse_archives(url):
