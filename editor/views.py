@@ -26,13 +26,27 @@ def parser(request):
         # Handle hazard Parsing
         try:
             if page_data['Edition'] == '5' and '5e.tools' in page_data['URL']:
-                pass
+                new_data = {
+                    "ERROR": "This feature is currently in Development. Contact support via the email found on the bottom of the screen if your request is urgent.",
+                    "EXCEPTION": ""
+                }
             elif page_data['Edition'] == '5' and 'donjon.bin.sh' in page_data['URL']:
-                pass
+                new_data = {
+                    "ERROR": "This feature is currently in Development. Contact support via the email found on the bottom of the screen if your request is urgent.",
+                    "EXCEPTION": ""
+                }
             elif page_data['Edition'] == '2' and '2e.aonprd.com' in page_data['URL']:
                 new_data = parse_archive_hazard(page_data['URL'])
-            elif page_data['Edition'] == '1':
-                pass
+            elif page_data['Edition'] == '1' and 'd20pfsrd.com' in page_data['URL']:
+                new_data = {
+                    "ERROR": "This feature is currently in Development. Contact support via the email found on the bottom of the screen if your request is urgent.",
+                    "EXCEPTION": ""
+                }
+            else:
+                new_data = {
+                    "ERROR": "The link we recieved is to a site that is not supported. If you would like to request a site be added as importable, contact support using the email found on the bottom of the page.",
+                    "EXCEPTION": ""
+                }
         except Exception as e:
             print('\n!! Type: ', type(e))
             print('!! Args: ', e.args)
@@ -48,11 +62,22 @@ def parser(request):
             if page_data['Edition'] == '5' and '5e.tools' in page_data['URL']:
                 new_data = parse_5etools(page_data['URL'])
             elif page_data['Edition'] == '5' and 'donjon.bin.sh' in page_data['URL']:
-                pass
+                new_data = {
+                    "ERROR": "This feature is currently in Development. Contact support via the email found on the bottom of the screen if your request is urgent.",
+                    "EXCEPTION": ""
+                }
             elif page_data['Edition'] == '2' and '2e.aonprd.com' in page_data['URL']:
                 new_data = parse_archives(page_data['URL'])
-            elif page_data['Edition'] == '1':
-                pass
+            elif page_data['Edition'] == '1' and 'd20pfsrd.com' in page_data['URL']:
+                new_data = {
+                    "ERROR": "This feature is currently in Development. Contact support via the email found on the bottom of the screen if your request is urgent.",
+                    "EXCEPTION": ""
+                }
+            else:
+                new_data = {
+                    "ERROR": "The link we recieved is to a site that is not supported. If you would like to request a site be added as importable, contact support using the email found on the bottom of the page.",
+                    "EXCEPTION": ""
+                }
         except Exception as e:
             print('\n!! Type: ', type(e))
             print('!! Args: ', e.args)
