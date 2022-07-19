@@ -55,17 +55,16 @@ window.addEventListener('popstate', function (e) {
 	}
 }, false);
 
-
 // Add one time retrieval from storage, and then clear it, so if they reload twice, it'll go away forever.
 retrieve_session_storage();
 window.sessionStorage.setItem('state', '{"Name":"","Description":"","Monsters":[],"Stores":[],"Tables":[],"Lists":[],"Hazards":[]}');
 
 
-// Set event listener for Description and Title
-let header = document.getElementById('header');
-header.addEventListener("keypress", set_session_storage);
-let description = document.getElementById('description');
-description.addEventListener("keypress", set_session_storage);
+// Set event listener for mousedown to save the page's state
+window.addEventListener('mousedown', function () {
+	if (DEBUG) { console.log("Moused off, Updating session storage."); }
+	set_session_storage()
+});
 
 
 /**Manual saving or Deleting the page
@@ -197,7 +196,6 @@ function editor_container_table(element) {
 			new_cell.style.backgroundColor = "#FFFFFF";
 
 			var new_input = document.createElement('input');
-			new_input.addEventListener("keypress", set_session_storage);
 			new_input.type = 'text';
 			new_input.name = new_cell.id + "I";
 			new_input.id = new_cell.id + "I";
@@ -222,7 +220,6 @@ function editor_container_table(element) {
 			new_cell.style.backgroundColor = "#CFCFCF";
 
 			var new_input = document.createElement('input');
-			new_input.addEventListener("keypress", set_session_storage);
 			new_input.type = 'text';
 			new_input.name = new_cell.id + "I";
 			new_input.id = new_cell.id + "I";
@@ -403,7 +400,6 @@ function editor_container_table(element) {
 		item_descriptor_cell.id = item_row.id + "_Descriptor";
 
 		var item_descriptor = document.createElement('input');
-		item_descriptor.addEventListener("keypress", set_session_storage);
 		item_descriptor.id = item_descriptor_cell.id + "_I";
 		item_descriptor.placeholder = 'Descriptor';
 		item_descriptor_cell.appendChild(item_descriptor);
@@ -412,7 +408,6 @@ function editor_container_table(element) {
 		item_category_cell.id = item_row.id + "_Category";
 
 		var item_category = document.createElement('input');
-		item_category.addEventListener("keypress", set_session_storage);
 		item_category.id = item_category_cell.id + "_I";
 		item_category.placeholder = 'Category';
 		item_category_cell.appendChild(item_category);
@@ -422,7 +417,6 @@ function editor_container_table(element) {
 		item_data_cell.id = item_row.id + "_Data"
 
 		var item_name = document.createElement('input');
-		item_name.addEventListener("keypress", set_session_storage);
 		item_name.type = 'text';
 		item_name.name = item_row.id + "_Name";
 		item_name.id = item_row.id + "_Name";
@@ -432,7 +426,6 @@ function editor_container_table(element) {
 		item_data_cell.appendChild(document.createElement('br'));
 
 		var item_describe = document.createElement('input');
-		item_describe.addEventListener("keypress", set_session_storage);
 		item_describe.type = 'text';
 		item_describe.name = item_row.id + "_Describe";
 		item_describe.id = item_row.id + "_Describe";
@@ -474,7 +467,6 @@ function editor_container_table(element) {
 		container.appendChild(generate_owner_div);
 	}
 
-
 	container.appendChild(add_row_div);
 	container.appendChild(add_item_div);
 	
@@ -493,7 +485,6 @@ function editor_container_table(element) {
 function sub_list_element(parent, descriptor, add_id) {
 	var new_input = document.createElement('li');
 	var new_input_input = document.createElement('input');
-	new_input_input.addEventListener("keypress", set_session_storage);
 	new_input_input.id = add_id + "_" + descriptor.toUpperCase();
 	new_input_input.type = 'text';
 	new_input_input.placeholder = 'Owner ' + descriptor;
@@ -515,7 +506,6 @@ function sub_list_element(parent, descriptor, add_id) {
 function add_list_settings(parent_obj, add_id) {
 	// Bold
 	var add_bold = document.createElement('input');
-	add_bold.addEventListener("keypress", set_session_storage);
 	add_bold.type = 'checkbox';
 	add_bold.id = add_id + '_BOLD'
 	add_bold.name = add_id + '_BOLD'
@@ -529,7 +519,6 @@ function add_list_settings(parent_obj, add_id) {
 
 	// Underline
 	var add_underline = document.createElement('input');
-	add_underline.addEventListener("keypress", set_session_storage);
 	add_underline.type = 'checkbox';
 	add_underline.id = add_id + '_UNDERLINE'
 	add_underline.name = add_id + '_UNDERLINE'
@@ -590,7 +579,6 @@ function editor_container_list(element) {
 		latest_list_rows++;
 		
 		var new_row_input = document.createElement('input');
-		new_row_input.addEventListener("keypress", set_session_storage);
 		new_row_input.type = 'Text';
 		new_row_input.id = new_row.id + 'I'
 		new_row_input.placeholder = 'Text';
@@ -627,7 +615,6 @@ function editor_container_list(element) {
 	list_name_div.appendChild(document.createTextNode("List name:"));
 
 	var list_name_input = document.createElement('input');
-	list_name_input.addEventListener("keypress", set_session_storage);
 	list_name_input.type = 'Text';
 	list_name_input.style.marginLeft = '10px';
 	list_name_input.id = element.id + '_NAME';
@@ -815,7 +802,6 @@ function create_element_store(store) {
 
 	// Store Name
 	var owner_store_name = document.createElement('input');
-	owner_store_name.addEventListener("keypress", set_session_storage);
 	owner_store_name.id = owner_container.id + "_STORE";
 	owner_store_name.type = 'text';
 	owner_store_name.placeholder = 'Store Name (Type)';
@@ -833,7 +819,6 @@ function create_element_store(store) {
 
 	// Owner Name
 	var owner_name = document.createElement('input');
-	owner_name.addEventListener("keypress", set_session_storage);
 	owner_name.id = owner_container.id + "_NAME";
 	owner_name.type = 'text';
 	owner_name.placeholder = 'Owner Name';
@@ -900,7 +885,6 @@ function create_element_monster(monster, edition) {
 	// Monster Name & CR
 	var monster_name = document.createElement('div');
 	var monster_name_input = document.createElement('input');
-	monster_name_input.addEventListener("keypress", set_session_storage);
 	monster_name_input.style.fontSize = '24px';
 	monster_name_input.placeholder = 'Monster Name';
 	monster_name_input.id = monster_header.id + '_NAME'
@@ -908,7 +892,6 @@ function create_element_monster(monster, edition) {
 	monster_name.appendChild(document.createTextNode(' - CR: '));
 
 	var monster_cr_input = document.createElement('input');
-	monster_cr_input.addEventListener("keypress", set_session_storage);
 	monster_cr_input.style.fontSize = '24px';
 	monster_cr_input.placeholder = 'CR';
 	monster_cr_input.size = '3';
@@ -919,7 +902,6 @@ function create_element_monster(monster, edition) {
 
 	var monster_align = document.createElement('div');
 	var monster_align_input = document.createElement('input');
-	monster_align_input.addEventListener("keypress", set_session_storage);
 	monster_align_input.id = monster_header.id + '_ALIGN'
 	monster_align_input.placeholder = 'Alignment';
 
@@ -955,7 +937,6 @@ function create_element_monster(monster, edition) {
 			temp_trait.style.padding = '3px';
 
 			var temp_trait_input = document.createElement('input');
-			temp_trait_input.addEventListener("keypress", set_session_storage);
 			temp_trait_input.id = monster_trait_list_loc.id + '_' + latest_monster_trait;
 			latest_monster_trait++;
 			temp_trait_input.style.fontSize = '13px';
@@ -1027,7 +1008,6 @@ function create_element_monster(monster, edition) {
 	monster_info_list.style.columnCount = 2;
 	var monster_hp = document.createElement('li');
 	var monster_hp_input = document.createElement('input');
-	monster_hp_input.addEventListener("keypress", set_session_storage);
 	monster_hp_input.id = monster_header.id + '_HP';
 	monster_hp_input.placeholder = 'HP';
 	monster_hp_input.style.marginLeft = '10px';
@@ -1040,7 +1020,6 @@ function create_element_monster(monster, edition) {
 
 	var monster_speed = document.createElement('li');
 	var monster_speed_input = document.createElement('input');
-	monster_speed_input.addEventListener("keypress", set_session_storage);
 	monster_speed_input.id = monster_header.id + '_SPEED';
 	monster_speed_input.placeholder = 'Speed';
 	monster_speed_input.style.marginLeft = '10px';
@@ -1053,7 +1032,6 @@ function create_element_monster(monster, edition) {
 
 	var monster_size = document.createElement('li');
 	var monster_size_input = document.createElement('input');
-	monster_size_input.addEventListener("keypress", set_session_storage);
 	monster_size_input.id = monster_header.id + '_SIZE'
 	monster_size_input.placeholder = 'Size';
 	monster_size_input.style.marginLeft = '10px';
@@ -1066,7 +1044,6 @@ function create_element_monster(monster, edition) {
 
 	var monster_ac = document.createElement('li');
 	var monster_ac_input = document.createElement('input');
-	monster_ac_input.addEventListener("keypress", set_session_storage);
 	monster_ac_input.id = monster_header.id + '_AC';
 	monster_ac_input.placeholder = 'AC';
 	monster_ac_input.style.marginLeft = '10px';
@@ -1081,7 +1058,6 @@ function create_element_monster(monster, edition) {
 	if (edition == "1") {
 		var monster_touch_ac = document.createElement('li');
 		var monster_touch_ac_input = document.createElement('input');
-		monster_touch_ac_input.addEventListener("keypress", set_session_storage);
 		monster_touch_ac_input.id = monster_header.id + '_TOUCH_AC';
 		monster_touch_ac_input.placeholder = 'Touch AC';
 		monster_touch_ac_input.style.marginLeft = '10px';
@@ -1094,7 +1070,6 @@ function create_element_monster(monster, edition) {
 
 		var monster_flat_ac = document.createElement('li');
 		var monster_flat_ac_input = document.createElement('input');
-		monster_flat_ac_input.addEventListener("keypress", set_session_storage);
 		monster_flat_ac_input.id = monster_header.id + '_FLAT_AC';
 		monster_flat_ac_input.placeholder = 'Flat AC';
 		monster_flat_ac_input.style.marginLeft = '10px';
@@ -1107,7 +1082,6 @@ function create_element_monster(monster, edition) {
 
 		var monster_cmd = document.createElement('li');
 		var monster_cmd_input = document.createElement('input');
-		monster_cmd_input.addEventListener("keypress", set_session_storage);
 		monster_cmd_input.id = monster_header.id + '_CMD';
 		monster_cmd_input.placeholder = 'CMD';
 		monster_cmd_input.style.marginLeft = '10px';
@@ -1120,7 +1094,6 @@ function create_element_monster(monster, edition) {
 
 		var monster_cmb = document.createElement('li');
 		var monster_cmb_input = document.createElement('input');
-		monster_cmb_input.addEventListener("keypress", set_session_storage);
 		monster_cmb_input.id = monster_header.id + '_CMB';
 		monster_cmb_input.placeholder = 'CMB';
 		monster_cmb_input.style.marginLeft = '10px';
@@ -1136,7 +1109,6 @@ function create_element_monster(monster, edition) {
 	if (edition == "1" || edition == "2") {
 		var monster_fort_save = document.createElement('li');
 		var monster_fort_save_input = document.createElement('input');
-		monster_fort_save_input.addEventListener("keypress", set_session_storage);
 		monster_fort_save_input.id = monster_header.id + '_FORT_SAVE';
 		monster_fort_save_input.placeholder = 'Fortitude Save';
 		monster_fort_save_input.style.marginLeft = '10px';
@@ -1149,7 +1121,6 @@ function create_element_monster(monster, edition) {
 
 		var monster_will_save = document.createElement('li');
 		var monster_will_save_input = document.createElement('input');
-		monster_will_save_input.addEventListener("keypress", set_session_storage);
 		monster_will_save_input.id = monster_header.id + '_WILL_SAVE'
 		monster_will_save_input.placeholder = 'Will Save'
 		monster_will_save_input.style.marginLeft = '10px';
@@ -1162,7 +1133,6 @@ function create_element_monster(monster, edition) {
 
 		var monster_ref_save = document.createElement('li');
 		var monster_ref_save_input = document.createElement('input');
-		monster_ref_save_input.addEventListener("keypress", set_session_storage);
 		monster_ref_save_input.id = monster_header.id + '_REF_SAVE'
 		monster_ref_save_input.placeholder = 'Reflex Save'
 		monster_ref_save_input.style.marginLeft = '10px';
@@ -1176,7 +1146,6 @@ function create_element_monster(monster, edition) {
 		// Saves for 5e
 		var monster_save_1 = document.createElement('li');
 		var monster_str_save = document.createElement('input');
-		monster_str_save.addEventListener("keypress", set_session_storage);
 		monster_str_save.type = 'checkbox';
 		monster_str_save.id = monster_header.id  + '_STR_SAVE';
 		monster_str_save.name = monster_header.id  + '_STR_SAVE';
@@ -1189,7 +1158,6 @@ function create_element_monster(monster, edition) {
 		monster_save_1.appendChild(monster_str_save_label);
 
 		var monster_dex_save = document.createElement('input');
-		monster_dex_save.addEventListener("keypress", set_session_storage);
 		monster_dex_save.type = 'checkbox';
 		monster_dex_save.id = monster_header.id  + '_DEX_SAVE';
 		monster_dex_save.name = monster_header.id  + '_DEX_SAVE';
@@ -1205,7 +1173,6 @@ function create_element_monster(monster, edition) {
 
 		var monster_save_2 = document.createElement('li');
 		var monster_con_save = document.createElement('input');
-		monster_con_save.addEventListener("keypress", set_session_storage);
 		monster_con_save.type = 'checkbox';
 		monster_con_save.id = monster_header.id  + '_CON_SAVE';
 		monster_con_save.name = monster_header.id  + '_CON_SAVE';
@@ -1218,7 +1185,6 @@ function create_element_monster(monster, edition) {
 		monster_save_2.appendChild(monster_con_save_label);
 
 		var monster_int_save = document.createElement('input');
-		monster_int_save.addEventListener("keypress", set_session_storage);
 		monster_int_save.type = 'checkbox';
 		monster_int_save.id = monster_header.id  + '_INT_SAVE';
 		monster_int_save.name = monster_header.id  + '_INT_SAVE';
@@ -1234,7 +1200,6 @@ function create_element_monster(monster, edition) {
 
 		var monster_save_3 = document.createElement('li');
 		var monster_wis_save = document.createElement('input');
-		monster_wis_save.addEventListener("keypress", set_session_storage);
 		monster_wis_save.type = 'checkbox';
 		monster_wis_save.id = monster_header.id  + '_WIS_SAVE';
 		monster_wis_save.name = monster_header.id  + '_WIS_SAVE';
@@ -1247,7 +1212,6 @@ function create_element_monster(monster, edition) {
 		monster_save_3.appendChild(monster_wis_save_label);
 
 		var monster_cha_save = document.createElement('input');
-		monster_cha_save.addEventListener("keypress", set_session_storage);
 		monster_cha_save.type = 'checkbox';
 		monster_cha_save.id = monster_header.id  + '_CHA_SAVE';
 		monster_cha_save.name = monster_header.id  + '_CHA_SAVE';
@@ -1265,7 +1229,6 @@ function create_element_monster(monster, edition) {
 	// Skills & Recall
 	var monster_skills = document.createElement('li');
 	var monster_skills_input = document.createElement('input');
-	monster_skills_input.addEventListener("keypress", set_session_storage);
 	monster_skills_input.id = monster_header.id + '_SKILLS';
 	monster_skills_input.placeholder = 'Skills';
 	monster_skills_input.style.marginLeft = '10px';
@@ -1279,7 +1242,6 @@ function create_element_monster(monster, edition) {
 	if (edition == '2') {
 		var monster_recall = document.createElement('li');
 		var monster_recall_input = document.createElement('input');
-		monster_recall_input.addEventListener("keypress", set_session_storage);
 		monster_recall_input.id = monster_header.id + '_RECALL';
 		monster_recall_input.placeholder = 'Recall Knowledge';
 		monster_recall_input.style.marginLeft = '10px';
@@ -1294,7 +1256,6 @@ function create_element_monster(monster, edition) {
 	// Incoming damage modifiers
 	var monster_dam_immune = document.createElement('li');
 	var monster_dam_immune_input = document.createElement('input');
-	monster_dam_immune_input.addEventListener("keypress", set_session_storage);
 	monster_dam_immune_input.id = monster_header.id + '_DAM_IMMUNE';
 	monster_dam_immune_input.placeholder = 'Damage Immunities';
 	monster_dam_immune_input.style.marginLeft = '10px';
@@ -1307,7 +1268,6 @@ function create_element_monster(monster, edition) {
 
 	var monster_dam_resist = document.createElement('li');
 	var monster_dam_resist_input = document.createElement('input');
-	monster_dam_resist_input.addEventListener("keypress", set_session_storage);
 	monster_dam_resist_input.id = monster_header.id + '_DAM_RESIST';
 	monster_dam_resist_input.placeholder = 'Damage Resistances';
 	monster_dam_resist_input.style.marginLeft = '10px';
@@ -1320,7 +1280,6 @@ function create_element_monster(monster, edition) {
 
 	var monster_dam_weak = document.createElement('li');
 	var monster_dam_weak_input = document.createElement('input');
-	monster_dam_weak_input.addEventListener("keypress", set_session_storage);
 	monster_dam_weak_input.id = monster_header.id + '_DAM_WEAK';
 	monster_dam_weak_input.placeholder = 'Damage Weakness';
 	monster_dam_weak_input.style.marginLeft = '10px';
@@ -1334,7 +1293,6 @@ function create_element_monster(monster, edition) {
 	// Senses / Language
 	var monster_sense = document.createElement('li');
 	var monster_sense_input = document.createElement('input');
-	monster_sense_input.addEventListener("keypress", set_session_storage);
 	monster_sense_input.id = monster_header.id + '_SENSE';
 	monster_sense_input.placeholder = 'Senses';
 	monster_sense_input.style.marginLeft = '10px';
@@ -1347,7 +1305,6 @@ function create_element_monster(monster, edition) {
 
 	var monster_language = document.createElement('li');
 	var monster_language_input = document.createElement('input');
-	monster_language_input.addEventListener("keypress", set_session_storage);
 	monster_language_input.id = monster_header.id + '_LANGUAGE';
 	monster_language_input.placeholder = 'Languages';
 	monster_language_input.style.marginLeft = '10px';
@@ -1383,7 +1340,6 @@ function create_element_monster(monster, edition) {
 
 		var temp_td = document.createElement('td');
 		var temp_td_input = document.createElement('input');
-		temp_td_input.addEventListener("keypress", set_session_storage);
 		temp_td_input.placeholder = stats[i];
 		temp_td_input.id = monster_header.id + '_' + stats[i];
 		temp_td_input.name = monster_header.id + '_' + stats[i];
@@ -1441,7 +1397,6 @@ function create_element_monster(monster, edition) {
 		temp_action_header.style.color = '#EFEFEF';
 
 		var temp_action_header_input = document.createElement('input');
-		temp_action_header_input.addEventListener("keypress", set_session_storage);
 		temp_action_header_input.type = 'text';
 		temp_action_header_input.id = temp_action.id + '_NAME';
 		temp_action_header_input.placeholder = 'Action Name';
@@ -1449,7 +1404,6 @@ function create_element_monster(monster, edition) {
 
 		// Delete action
 		var temp_action_header_delete = document.createElement('input');
-		temp_action_header_delete.addEventListener("keypress", set_session_storage);
 		temp_action_header_delete.type = 'button';
 		temp_action_header_delete.value = 'Delete';
 		temp_action_header_delete.style.backgroundColor = '#990000'
@@ -1468,7 +1422,6 @@ function create_element_monster(monster, edition) {
 		// Legendary Action Qualifier
 		if (edition == '5') {
 			var monster_action_legend = document.createElement('input');
-			monster_action_legend.addEventListener("keypress", set_session_storage);
 			monster_action_legend.type = 'checkbox';
 			monster_action_legend.id = temp_action.id  + '_LEGEND'
 			monster_action_legend.name = temp_action.id  + '_LEGEND'
@@ -1639,7 +1592,6 @@ function create_element_monster(monster, edition) {
 			temp_spell_use.style.width = '20%';
 
 			var temp_spell_use_input = document.createElement('input');
-			temp_spell_use_input.addEventListener("keypress", set_session_storage);
 			temp_spell_use_input.size = '5';
 			temp_spell_use_input.id = temp_spell_use.id + '_INPUT'
 			var temp_spell_use_text = document.createElement('span');
@@ -1653,7 +1605,6 @@ function create_element_monster(monster, edition) {
 
 			// Input for DC
 			var temp_spell_dc_input = document.createElement('input');
-			temp_spell_dc_input.addEventListener("keypress", set_session_storage);
 			temp_spell_dc_input.size = '5';
 			temp_spell_dc_input.id = temp_spell_use.id + '_DC_INPUT'
 			var temp_spell_dc_text = document.createElement('span');
@@ -1674,7 +1625,6 @@ function create_element_monster(monster, edition) {
 			temp_spell_list_loc.style.alignItems = 'flex-start';
 
 			var temp_spell_list_add = document.createElement('input');
-			temp_spell_list_add.addEventListener("keypress", set_session_storage);
 			temp_spell_list_add.style.width = "10%";
 			temp_spell_list_add.style.float = "right";
 			temp_spell_list_add.value = 'Add Spell';
@@ -1690,21 +1640,18 @@ function create_element_monster(monster, edition) {
 				spell_cont.style.padding = '3px';
 
 				var spell_name = document.createElement('input');
-				spell_name.addEventListener("keypress", set_session_storage);
 				spell_name.type = 'text';
 				spell_name.placeholder = 'Spell Name';
 				spell_name.size = 26;
 				spell_name.id = temp_spell_list.id + '_NAME_' + latest_monster_spell_col;
 
 				var spell_link = document.createElement('input');
-				spell_link.addEventListener("keypress", set_session_storage);
 				spell_link.type = 'text';
 				spell_link.placeholder = 'Spell Link';
 				spell_link.size = 22;
 				spell_link.id = temp_spell_list.id + '_LINK_' + latest_monster_spell_col;
 
 				var spell_delete = document.createElement('input');
-				spell_delete.addEventListener("keypress", set_session_storage);
 				spell_delete.type = 'button';
 				spell_delete.value = 'X';
 				spell_delete.style.marginLeft = '2px';
@@ -1727,7 +1674,6 @@ function create_element_monster(monster, edition) {
 			}
 
 			var temp_spell_list_delete = document.createElement('input');
-			temp_spell_list_delete.addEventListener("keypress", set_session_storage);
 			temp_spell_list_delete.style.float = "right";
 			temp_spell_list_delete.value = 'Delete Spell Row';
 			temp_spell_list_delete.id = temp_spell_list.id + '_DELETE';
@@ -1844,7 +1790,6 @@ function create_element_hazard_list_item(item_text, add_id, custom, input_option
 	var hazard_list_item = document.createElement('div');
 	if (custom) {
 		var hazard_list_key_input = document.createElement('input');
-		hazard_list_key_input.addEventListener("keypress", set_session_storage);
 		hazard_list_key_input.id = add_id + '_CUSTOM_' + latest_hazard_custom;
 		hazard_list_key_input.placeholder = 'Custom Key ' + latest_hazard_custom;
 		hazard_list_item.appendChild(hazard_list_key_input);
@@ -1854,7 +1799,6 @@ function create_element_hazard_list_item(item_text, add_id, custom, input_option
 	
 	// Value
 	var hazard_list_item_input = document.createElement('input');
-	hazard_list_item_input.addEventListener("keypress", set_session_storage);
 	hazard_list_item_input.type = 'text';
 	if (custom) {
 		hazard_list_item_input.id = add_id + '_CUSTOM_' + latest_hazard_custom + '_INPUT';
@@ -1920,7 +1864,6 @@ function create_element_hazard(hazard, item) {
 	hazard_name.style.float = 'left';
 
 	var hazard_name_input = document.createElement('input');
-	hazard_name_input.addEventListener("keypress", set_session_storage);
 	hazard_name_input.type = 'text'
 	hazard_name_input.style.fontSize = '24px';
 	hazard_name_input.placeholder = 'Hazard Name';
@@ -1933,7 +1876,6 @@ function create_element_hazard(hazard, item) {
 	hazard_cr.style.float = 'right';
 
 	var hazard_cr_input = document.createElement('input');
-	hazard_cr_input.addEventListener("keypress", set_session_storage);
 	hazard_cr_input.type = 'text'
 	hazard_cr_input.style.fontSize = '24px';
 	hazard_cr_input.size = '3';
@@ -1986,7 +1928,6 @@ function create_element_hazard(hazard, item) {
 		temp_trait.style.padding = '3px';
 
 		var temp_trait_input = document.createElement('input');
-		temp_trait_input.addEventListener("keypress", set_session_storage);
 		temp_trait_input.id = hazard_trait_loc.id + '_' + latest_hazard_trait;
 		latest_hazard_trait++;
 		temp_trait_input.style.fontSize = '13px';
