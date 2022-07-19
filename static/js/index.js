@@ -62,8 +62,8 @@ window.sessionStorage.setItem('state', '{"Name":"","Description":"","Monsters":[
 
 // Set event listener for mousedown to save the page's state
 window.addEventListener('mousedown', function () {
-	if (DEBUG) { console.log("Moused off, Updating session storage."); }
-	set_session_storage()
+	if (DEBUG) { console.log("Mouse Click, Updating session storage."); }
+	set_session_storage();
 });
 
 
@@ -229,6 +229,20 @@ function editor_container_table(element) {
 		}
 		set_session_storage();
 	};
+
+	// Add Table Name
+	if (element.id.startsWith("T")) {
+		var add_title_div = document.createElement('div');
+		add_title_div.id = container.id + "_NAME";
+		add_title_div.style.backgroundColor = '#666666';
+		add_title_div.style.color = '#EFEFEF';
+		add_title_div.style.float = 'left';
+		add_title_div.style.padding = '4px';
+		var add_title_input = document.createElement('input');
+		add_title_input.id = add_title_div.id + "_I";
+		add_title_input.placeholder = 'Table Name';
+		add_title_div.appendChild(add_title_input);
+	}
 
 	// Only Delete if it is its own table.
 	if (element.id.startsWith("S") || element.id.startsWith("T")) {
@@ -469,6 +483,7 @@ function editor_container_table(element) {
 
 	container.appendChild(add_row_div);
 	container.appendChild(add_item_div);
+	container.appendChild(add_title_div);
 	
 	// Add Movement within local div?
 	container.appendChild(element);
@@ -2123,6 +2138,8 @@ function get_table_data(table, store) {
 	// Get Owner
 	if (store) {
 		table_obj['Owner'] = get_table_owner_data(table.rows[0]);
+	} else {
+		table_obj['Name'] = document.getElementById(table.id + "C_NAME_I").value;
 	}
 
 	// Loop through items
@@ -2479,7 +2496,7 @@ function export_page() {
 		if (DEBUG) { console.log("Adding Table " + i) };
 
 		// Loop through items.
-		new_doc += '<table class="inventory-table" style="width:100%">';
+		new_doc += '<h3 class="center">' + temp_store['Name'] + '</h3><table class="inventory-table" style="width:100%">';
 		for (var x = 0; x < temp_store['Data'].length; x++) {
 
 			// For Items
@@ -2989,6 +3006,7 @@ function update_page(new_json) {
 				create_element('Table');
 				latest_table--;
 				
+				set_dom_value('T' + latest_table + 'C_NAME_I', value[i]['Name']);
 				for (var j = 0; j < value[i]['Data'].length; j++) {
 					if (value[i]['Data'][j]['Type'] === 'Blank') {
 						document.getElementById('T' + latest_table + 'C_ADD').click();
@@ -3413,13 +3431,4 @@ function is_numeric(value) {
 function get_mod(stat) {
 	var val = Math.floor(parseInt(stat) / 2) - 5;
 	return (val > 0) ? '+' + val : val;
-}
-
-
-/**Parse a monster statblock from 5e.tools
- * @param html The raw HTML to be parsed
- * @returns JSON object to build a character.
- */
-function dnd_5e_import(html) {
-	
 }
