@@ -483,7 +483,10 @@ function editor_container_table(element) {
 
 	container.appendChild(add_row_div);
 	container.appendChild(add_item_div);
-	container.appendChild(add_title_div);
+
+	if (element.id.startsWith("T")) {
+		container.appendChild(add_title_div);
+	}
 	
 	// Add Movement within local div?
 	container.appendChild(element);
