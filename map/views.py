@@ -62,6 +62,7 @@ def town_info(request, town_name):
 
     context = {
         'town_name': town_name.title(),
+        'img_src': 'img/' + town_data.img_source if town_data.img_source != '' else '',
         'name': town_data.name,
         'description': town_data.description,
         'government': town_data.government,

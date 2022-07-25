@@ -227,6 +227,7 @@ class Town(models.Model):
     x_coord_min = models.IntegerField(default=0)
     y_coord_min = models.IntegerField(default=0)
     magic_phrase = models.CharField(default='', max_length=200)
+    img_source = models.CharField(default='', max_length=100, blank=True, null=True)
 
     def __str__(self):
         return self.name
