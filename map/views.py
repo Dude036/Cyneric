@@ -62,7 +62,7 @@ def town_info(request, town_name):
 
     context = {
         'town_name': town_name.title(),
-        'img_src': 'img/' + town_data.img_source if town_data.img_source != '' else '',
+        'img_src': 'img/' + town_data.img_source if town_data.img_source is not None and town_data.img_source != '' else '',
         'name': town_data.name,
         'description': town_data.description,
         'government': town_data.government,
@@ -117,7 +117,7 @@ def person_info(request, person_name):
         'town_link': town_link,
         'is_admin': user.is_authenticated,
         'admin_description': person_data.admin_description,
-        'img_src': 'img/' + person_data.img_source if person_data.img_source != '' else '',
+        'img_src': 'img/' + person_data.img_source if person_data.img_source is not None and person_data.img_source != '' else '',
     }
     return render(request, 'person.html', content)
 
