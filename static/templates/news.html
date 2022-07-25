@@ -8,7 +8,9 @@
   </h1>
   <div style="display: flex; flex-direction: row; justify-content: space-between;">
     <input type="button" value="Year {{ previous_year }}" onclick="location.href='{% url 'news:calender_era' era previous_year %}';" />
-    <input type="button" value="Now" onclick="location.href='{% url 'news:calender' %}';" />
+    <input type="button" value="Cyneric Now" onclick="location.href='{% url 'news:calender_era' cyneric_era cyneric_year %}';" />
+    <input type="button" value="Cipher Now" onclick="location.href='{% url 'news:calender_era' cipher_era cipher_year %}';" />
+    <input type="button" value="Dragon Now" onclick="location.href='{% url 'news:calender_era' dragon_era dragon_year %}';" />
     <input type="button" value="Year {{ next_year }}" onclick="location.href='{% url 'news:calender_era' era next_year %}';" />
   </div>
   <div class="calender">

@@ -19,7 +19,7 @@ Holidays = [
 
 cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Jared's Campaign", "")
 cyneric = Holiday(Date(26, Month.Fruiting, 98, Era.Sixth_Age), "Atticus' Campaign", "")
-dragon = Holiday(Date(17, Month.Roots , 98, Era.Sixth_Age), "Dragon Campaign", "")
+dragon = Holiday(Date(17, Month.Roots , 65, Era.Sixth_Age), "Dragon Campaign", "")
 
 
 @register.filter
@@ -129,6 +129,12 @@ def calender_era(request, year, era):
         'cipher': cipher.Date.to_dict(),
         'cyneric': cyneric.Date.to_dict(),
         'dragon': dragon.Date.to_dict(),
+        'cipher_year': cipher.Date.Year,
+        'cyneric_year': cyneric.Date.Year,
+        'dragon_year': dragon.Date.Year,
+        'cipher_era': int(cipher.Date.Era),
+        'cyneric_era': int(cyneric.Date.Era),
+        'dragon_era': int(dragon.Date.Era),
         'current_year': year,
         'previous_year': year - 1,
         'next_year': year + 1,
