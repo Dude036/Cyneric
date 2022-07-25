@@ -17,8 +17,10 @@ Holidays = [
     Holiday(Date(10, Month.Ice, 97, Era.Sixth_Age), "Emergence", "The Emergence of the Warforged Army"),
 ]
 
-today = Holiday(Date(20, Month.Play, 98, Era.Sixth_Age), "Jared's Campaign", "")
-campaign = Holiday(Date(26, Month.Fruiting, 98, Era.Sixth_Age), "Atticus' Campaign", "")
+cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Jared's Campaign", "")
+cyneric = Holiday(Date(26, Month.Fruiting, 98, Era.Sixth_Age), "Atticus' Campaign", "")
+dragon = Holiday(Date(17, Month.Roots , 98, Era.Sixth_Age), "Dragon Campaign", "")
+
 
 @register.filter
 def get_item(dictionary, key):
@@ -79,8 +81,8 @@ def holiday_css(year, era):
 
 def now_css(year, era):
     css = ""
-    days_colors = ['dodgerblue', 'violet']
-    days = [today, campaign]
+    days_colors = ['dodgerblue', 'violet', 'aquamarine']
+    days = [cipher, cyneric, dragon]
     for i in range(len(days)):
         if int(days[i].Date.Era) != era or days[i].Date.Year != year:
             print("Skipping " + days[i].Name + ". Era & Year doesn't match")
@@ -93,11 +95,11 @@ def now_css(year, era):
 
 # Views
 def calender(request):
-    return calender_era(request, today.Date.Year, int(today.Date.Era))
+    return calender_era(request, cipher.Date.Year, int(cipher.Date.Era))
 
 
 def calender_year(request, year):
-    return calender_era(request, year, int(today.Date.Era))
+    return calender_era(request, year, int(cipher.Date.Era))
 
 
 def calender_era(request, year, era):
@@ -124,8 +126,9 @@ def calender_era(request, year, era):
         months.append(current)
 
     context = {
-        'today': today.Date.to_dict(),
-        'campaign': campaign.Date.to_dict(),
+        'cipher': cipher.Date.to_dict(),
+        'cyneric': cyneric.Date.to_dict(),
+        'dragon': dragon.Date.to_dict(),
         'current_year': year,
         'previous_year': year - 1,
         'next_year': year + 1,
