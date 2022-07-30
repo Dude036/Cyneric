@@ -4,27 +4,36 @@
 <head>
   <meta charset="utf-8">
   <title>Editor</title>
+  <style type="text/css">
+    /* Dragula CSS */
+    .gu-mirror {
+      position: fixed!important;
+      margin: 0!important;
+      z-index: 9999!important;
+      opacity: .8
+    }
+
+    .gu-hide {
+      display: none!important
+    }
+
+    .gu-unselectable {
+      -webkit-user-select: none!important;
+      -moz-user-select: none!important;
+      -ms-user-select: none!important;
+      user-select: none!important
+    }
+
+    .gu-transit {
+      opacity: .2
+    }
+  </style>
 </head>
 <body>
   {% csrf_token %}
   <input type="text" id="header" name="header" placeholder="Town Name" style="margin: auto; display: block; font-size:32px;margin-bottom: 10px;">
   <textarea class="overflow_textarea" type="textarea" id="description" name="description" placeholder="Town description" style="width: 100%;margin-bottom: 60px;"></textarea>
-  <div class="editor">
-    <div id="Stores" style="padding-bottom: 60px;">
-
-    </div>
-    <div id="Tables" style="padding-bottom: 60px;">
-
-    </div>
-    <div id="Monsters" style="padding-bottom: 60px;">
-      
-    </div>
-    <div id="Hazards" style="padding-bottom: 60px;">
-      
-    </div>
-    <div id="Lists" style="padding-bottom: 60px;">
-      
-    </div>
+  <div id="editor" class="editor">
   </div>
   <div class="sidebar">
     <img id="sidebar_open" height="30px" style="float: right;display: block;" src="{% static 'open_editor.svg' %}" onclick="show_hide('sidebar_container');show_hide('sidebar_open');show_hide('sidebar_closed');">
@@ -76,7 +85,9 @@
     .
   </div>
 
-  <script type="text/javascript" src="{% static 'js/api.js' %}"></script>
-  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/dragula.min.js' %}"></script>
   <script type="text/javascript" src="{% static 'js/FileSaver.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/api.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/add_elements.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
 {% endblock %}

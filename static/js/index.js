@@ -20,31 +20,17 @@ let latest_hazard_custom = 0;
 let export_obj = {
 	"Name": "",
 	"Description": "",
-	"Monsters": [],
-	"Stores": [],
-	"Tables": [],
-	"Lists": [],
-	"Hazards": [],
+	"Data": [],
 }
 let export_counter = 0;
 
 
-/**Dealing with Textarea Height
- * @param element Textarea DOM element
+/** Get uuid
+ * @returns random uuid
  */
-function calcHeight(element) {
-	var numberOfLineBreaks = (element.value.match(/\n/g) || []).length;
-	// min-height + lines x line-height + padding + border
-	var newHeight = 20 + numberOfLineBreaks * 20 + 12 + 2;
-
-	element.style.height = newHeight + "px";
+function get_uuid() {
+	return crypto.randomUUID();
 }
-
-
-// Add variable height for description
-let textarea = document.getElementById("description");
-textarea.addEventListener("keyup", function() { calcHeight(textarea) });
-
 
 // Add Back button Cancel
 window.addEventListener('popstate', function (e) {
@@ -55,16 +41,23 @@ window.addEventListener('popstate', function (e) {
 	}
 }, false);
 
-// Add one time retrieval from storage, and then clear it, so if they reload twice, it'll go away forever.
-retrieve_session_storage();
-window.sessionStorage.setItem('state', '{"Name":"","Description":"","Monsters":[],"Stores":[],"Tables":[],"Lists":[],"Hazards":[]}');
-
-
-// Set event listener for mousedown to save the page's state
-window.addEventListener('mousedown', function () {
-	if (DEBUG) { console.log("Mouse Click, Updating session storage."); }
-	set_session_storage();
+// Dragula Initial Setup
+dragula([document.getElementById('editor')], {
+  moves: function (el, container, handle) {
+    return handle.classList.contains('move-handle');
+  }
 });
+
+// Add one time retrieval from storage, and then clear it, so if they reload twice, it'll go away forever.
+// retrieve_session_storage();
+// window.sessionStorage.setItem('state', '{"Name":"","Description":"","Monsters":[],"Stores":[],"Tables":[],"Lists":[],"Hazards":[]}');
+
+
+// // Set event listener for mousedown to save the page's state
+// window.addEventListener('mousedown', function () {
+// 	if (DEBUG) { console.log("Mouse Click, Updating session storage."); }
+// 	set_session_storage();
+// });
 
 
 /**Manual saving or Deleting the page
@@ -107,25 +100,6 @@ function update_page_state(state) {
 		set_session_storage();
 	}
 	if (DEBUG) { console.log("Page state updated"); }
-}
-
-
-/**Create a button for adding randomly generated content from the DMTK
- * @param text Text to be added to the InnerHTML
- * @param background Background Color
- * @param color Text color 
- * @return Flex box ready for an event listener
- */
-function add_table_flex_box(text, background, color) {
-	var add_flex_box = document.createElement('div');
-	add_flex_box.style.justifyContent = 'flex-start';
-	add_flex_box.style.margin = '3px 5px';
-	add_flex_box.style.width = '38%';
-	add_flex_box.style.padding = '3px';
-	add_flex_box.style.backgroundColor = background;
-	add_flex_box.style.color = color;
-	add_flex_box.innerHTML = text;
-	return add_flex_box;
 }
 
 
@@ -320,7 +294,7 @@ function editor_container_table(element) {
 		add_button_div.style.flexWrap = 'wrap';
 		add_button_div.style.alignItems = 'flex-start';
 
-		var add_generate_label = add_table_flex_box("Generate:", '#FFFFFF', '#000000');
+		var add_generate_label = add_api_flex_box("Generate:", '#FFFFFF', '#000000');
 		add_generate_label.style.border = '1px solid black';
 		add_generate_label.style.backgroundColor = '#FFFFFF';
 		add_generate_label.onclick = function() {
@@ -343,42 +317,42 @@ function editor_container_table(element) {
 				/* Populate with Generate functions */
 
 				// Create Random Weapon
-				var add_weapon = add_table_flex_box("Weapon", '#0CBFBF', '#000000');
+				var add_weapon = add_api_flex_box("Weapon", '#0CBFBF', '#000000');
 				add_weapon.onclick = function() { item_api_wrapper(item_row.id, 'item/weapon/json/'); }
 				add_generator_div.appendChild(add_weapon);
 
 				// Create Random Armor
-				var add_armor = add_table_flex_box("Armor", '#BF0CBF', '#EFEFEF');
+				var add_armor = add_api_flex_box("Armor", '#BF0CBF', '#EFEFEF');
 				add_armor.onclick = function() { item_api_wrapper(item_row.id, 'item/armor/json/'); }
 				add_generator_div.appendChild(add_armor);
 
 				// Create Random Firearm
-				var add_firearm = add_table_flex_box("Firearm", '#BFBF0C', '#000000');
+				var add_firearm = add_api_flex_box("Firearm", '#BFBF0C', '#000000');
 				add_firearm.onclick = function() { item_api_wrapper(item_row.id, 'item/firearm/json/'); }
 				add_generator_div.appendChild(add_firearm);
 
 				// Create Random Scroll
-				var add_scroll = add_table_flex_box("Scroll", '#0FAC0F', '#EFEFEF');
+				var add_scroll = add_api_flex_box("Scroll", '#0FAC0F', '#EFEFEF');
 				add_scroll.onclick = function() { item_api_wrapper(item_row.id, 'item/scroll/json/'); }
 				add_generator_div.appendChild(add_scroll);
 				
 				// Create Random Potion
-				var add_potion = add_table_flex_box("Potion", '#0F0FAC', '#EFEFEF');
+				var add_potion = add_api_flex_box("Potion", '#0F0FAC', '#EFEFEF');
 				add_potion.onclick = function() { item_api_wrapper(item_row.id, 'item/potion/json/'); }
 				add_generator_div.appendChild(add_potion);
 				
 				// Create Random Book
-				var add_book = add_table_flex_box("Book", '#AC5F0F', '#EFEFEF');
+				var add_book = add_api_flex_box("Book", '#AC5F0F', '#EFEFEF');
 				add_book.onclick = function() { item_api_wrapper(item_row.id, 'item/book/json/'); }
 				add_generator_div.appendChild(add_book);
 				
 				// Create Random Food
-				var add_food = add_table_flex_box("Food", '#5FAC5F', '#EFEFEF');
+				var add_food = add_api_flex_box("Food", '#5FAC5F', '#EFEFEF');
 				add_food.onclick = function() { item_api_wrapper(item_row.id, 'item/food/json/'); }
 				add_generator_div.appendChild(add_food);
 				
 				// Create Random Trinket
-				var add_trinket = add_table_flex_box("Trinket", '#AC5F5F', '#EFEFEF');
+				var add_trinket = add_api_flex_box("Trinket", '#AC5F5F', '#EFEFEF');
 				add_trinket.onclick = function() { item_api_wrapper(item_row.id, 'item/trinket/json/'); }
 				add_generator_div.appendChild(add_trinket);
 
@@ -394,7 +368,7 @@ function editor_container_table(element) {
 		add_button_div.appendChild(add_generate_label);
 
 		// Delete Row
-		var add_delete = add_table_flex_box("Delete Row", '#C00000', '#EFEFEF');
+		var add_delete = add_api_flex_box("Delete Row", '#C00000', '#EFEFEF');
 		add_button_div.appendChild(add_delete);
 
 		// Add Delete row Method
@@ -2050,58 +2024,36 @@ function create_element_hazard(hazard, item) {
 function create_element(item) {
 	if (DEBUG) { console.log("Begin Element Creation"); }
 
-	if (item == "Store") {
-		// Init
-		var store = create_element_store(document.createElement('table'));
-		
-		var parent = document.getElementById("Stores");
-		parent.appendChild(editor_container_table(store));
-	} else if (item == "Table") {
-		// Init
-		var table = document.createElement('table');
-		table.id = "T" + latest_table
-		latest_table += 1;
+	// Add header here. should always contain:
+	var container = document.createElement('div');
+	container.id = get_uuid();
+	container.style.marginBottom = '60px';
 
-		// Style
-		table.style.width = "100%";
-		table.style.borderBottom = "1px solid black";
-		table.style.marginBottom = "20px";
+	// Actions
+	var actions = document.createElement('div');
+	actions.id = container.id + '-actions';
+	actions.style.marginBottom = '5px';
 
-		// Add
-		var parent = document.getElementById("Tables");
-		parent.appendChild(editor_container_table(table));
-	} else if (item.startsWith("Monster")) {
-		// Init
-		var monster = create_element_monster(document.createElement('table'), item[item.length - 1]);
+	// Init content
+	var content = document.createElement('div');
+	content.id = container.id + '-data';
+	content.style.display = 'block';
 
-		// Add
-		var parent = document.getElementById("Monsters");
-		parent.appendChild(editor_container_monster(monster, item[item.length - 1]));
-	} else if (item == "List") {
-		// Init
-		var list = document.createElement('ul');
-		list.id = "L" + latest_list
-		latest_list += 1;
+	// Add all Actions here
+	actions.appendChild(add_header_move(container, content));
+	actions.appendChild(add_header_hide(container, content));
+	actions.appendChild(add_header_delete(container, content));
+	container.appendChild(actions);
 
-		// Style
-		list.style.width = "100%";
-		list.marginBottom = '60px';
+	// Finalize content
+	content.innerHTML = "This is an element with the id of: " + container.id; 
+	container.appendChild(content);
 
-		// Add
-		var parent = document.getElementById("Lists");
-		parent.appendChild(editor_container_list(list));
-	} else if (item.startsWith('Hazard')) {
-		var hazard = create_element_hazard(document.createElement('table'), item[item.length - 1]);
-
-		var parent = document.getElementById("Hazards");
-		parent.appendChild(editor_container_hazard(hazard, item[item.length - 1]));
-	} else {
-		alert("Invalid create_element parameter.");
-		return;
-	}
+	// Add everything here
+	var editor = document.getElementById('editor');
+	editor.appendChild(container);
 
 	if (DEBUG) { console.log("Element Creation successful."); }
-	set_session_storage();
 }
 
 
@@ -2925,7 +2877,6 @@ function update_page(new_json) {
 	// Update page information to reflect the data imported.
 	set_dom_value('header', new_json['Name']);
 	set_dom_value('description', deconvert_text(new_json['Description']));
-	calcHeight(textarea)
 
 	for (let [key, value] of Object.entries(new_json)) {
 		if (DEBUG) { console.log("Parsing Key: " + key); }
