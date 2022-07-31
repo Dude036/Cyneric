@@ -1,8 +1,8 @@
 let DEBUG = true;
 let latest_store = 0;
-let latest_store_rows = 0;
+// let latest_store_rows = 0;
 let latest_table = 0;
-let latest_table_rows = 0;
+// let latest_table_rows = 0;
 let latest_list = 0;
 let latest_list_rows = 0;
 let latest_monster = 0;
@@ -23,14 +23,6 @@ let export_obj = {
 	"Data": [],
 }
 let export_counter = 0;
-
-
-/** Get uuid
- * @returns random uuid
- */
-function get_uuid() {
-	return crypto.randomUUID();
-}
 
 // Add Back button Cancel
 window.addEventListener('popstate', function (e) {
@@ -58,6 +50,35 @@ dragula([document.getElementById('editor')], {
 // 	if (DEBUG) { console.log("Mouse Click, Updating session storage."); }
 // 	set_session_storage();
 // });
+
+
+/** Get uuid
+ * @returns random uuid
+ */
+function get_uuid() {
+	return crypto.randomUUID();
+}
+
+
+/**Incriment the counter for editor items 
+ * @param name of the thing to incriment
+ * @return number to add to ID
+ */
+function incriment_item_counter(name) {
+	if (name === 'Store') {
+		return ++latest_store;
+	} else if (name === 'Table') {
+		return ++latest_table;
+	} else if (name === 'List') {
+		return ++latest_list;
+	} else if (name === 'Monster') {
+		return ++latest_monster;
+	} else if (name === 'Hazard') {
+		return ++latest_hazard;
+	} else {
+		return NaN;
+	}
+}
 
 
 /**Manual saving or Deleting the page
@@ -100,6 +121,13 @@ function update_page_state(state) {
 		set_session_storage();
 	}
 	if (DEBUG) { console.log("Page state updated"); }
+}
+
+
+/**Add event listener for input to save JSON diff
+ */
+function save_diff_listener() {
+	// TODO (@Josh)
 }
 
 
@@ -2026,7 +2054,7 @@ function create_element(item) {
 
 	// Add header here. should always contain:
 	var container = document.createElement('div');
-	container.id = get_uuid();
+	container.id = item[0] + get_uuid();
 	container.style.marginBottom = '60px';
 
 	// Actions
@@ -2036,7 +2064,7 @@ function create_element(item) {
 
 	// Init content
 	var content = document.createElement('div');
-	content.id = container.id + '-data';
+	content.id = item[0] + incriment_item_counter(item);
 	content.style.display = 'block';
 
 	// Add all Actions here
@@ -2046,7 +2074,52 @@ function create_element(item) {
 	container.appendChild(actions);
 
 	// Finalize content
-	content.innerHTML = "This is an element with the id of: " + container.id; 
+	if (item === 'Store') {
+		// ACtions
+		actions.appendChild(add_store_action_owner(container, content));
+		actions.appendChild(add_store_action_blank_row(container, content));
+		actions.appendChild(add_store_action_item_row(container, content));
+
+		// Content
+		var store = create_element_store(document.createElement('table'));
+		content.appendChild(store);
+	} else if (item === 'Table') {
+		// ACtions
+		actions.appendChild(add_store_action_blank_row(container, content));
+		actions.appendChild(add_store_action_item_row(container, content));
+
+		// Content
+		var table = document.createElement('table');
+		table.style.width = '100%';
+		table.style.borderBottom = '1px solid black';
+		table.style.marginBottom = '20px';
+		table.id = content.id
+
+		// Add Table Name
+		var add_title_div = document.createElement('div');
+		add_title_div.id = content.id + "_NAME";
+		add_title_div.style.backgroundColor = '#666666';
+		add_title_div.style.color = '#EFEFEF';
+		add_title_div.style.float = 'right';
+		add_title_div.style.margin = '4px';
+		var add_title_input = generic_text_input(add_title_div.id + "_I");
+		add_title_input.placeholder = 'Table Name';
+		add_title_div.appendChild(add_title_input);
+
+		actions.appendChild(add_title_div)
+
+		content.appendChild(table);
+	} else if (item === 'List') {
+		// content.appendChild(editor)
+	} else if (item === 'Monster2') {
+		// content.appendChild(editor)
+	} else if (item === 'Monster1') {
+		// content.appendChild(editor)
+	} else if (item === 'Monster5') {
+		// content.appendChild(editor)
+	} else if (item === 'Hazard2') {
+		// content.appendChild(editor)
+	}
 	container.appendChild(content);
 
 	// Add everything here
@@ -2087,6 +2160,7 @@ function get_table_owner_data(row) {
 function get_table_data(table, store) {
 	if (DEBUG) { console.log("Exporting Table: " + table.id); }
 	var table_obj = {
+		'Type': 'Store',
 		'Data': []
 	};
 
@@ -2143,7 +2217,10 @@ function get_table_data(table, store) {
  */
 function get_list_data(list) {
 	if (DEBUG) { console.log("Exporting List: " + list.id); }
-	var list_obj = [];
+	var list_obj = {
+		'Type': 'Store',
+		'Data': []
+	};
 	if (DEBUG) { console.log("Traversing list elements"); }
 
 	for (var i = 0; i < list.childNodes.length; i ++) {
@@ -2152,7 +2229,7 @@ function get_list_data(list) {
 			'Bold': document.getElementById(list.childNodes[i].id + 'I_BOLD').checked,
 			'Underline': document.getElementById(list.childNodes[i].id + 'I_UNDERLINE').checked
 		}
-		list_obj.push(stuff);
+		list_obj['Data'].push(stuff);
 	}
 
 	if (DEBUG) { console.log("List successfully handled"); }
@@ -2183,6 +2260,7 @@ function get_monster_data(monster, edition) {
 	if (DEBUG) { console.log("Exporting Monster: " + monster.id); }
 
 	var monster_obj = {
+		'Type': 'Monster',
 		'Edition': edition,
 		'id': monster.id + "C",
 	};
@@ -2314,6 +2392,7 @@ function get_hazard_data(hazard, edition) {
 	if (DEBUG) { console.log("Exporting Hazard: " + hazard.id); }
 
 	var hazard_obj = {
+		'Type': 'Hazard',
 		'Edition': edition,
 		'id': hazard.id + "C",
 	};
@@ -2762,11 +2841,7 @@ function export_json(callback) {
 	export_obj = {
 		"Name": "",
 		"Description": "",
-		"Monsters": [],
-		"Stores": [],
-		"Tables": [],
-		"Lists": [],
-		"Hazards": [],
+		"Data": [],
 	}
 	export_counter = 0;
 
@@ -2775,59 +2850,44 @@ function export_json(callback) {
 	export_obj['Description'] = convert_text(document.getElementById('description').value);
 
 	// Begin exporting Stores
-	var editor_container = document.getElementById('Stores').childNodes;
-	if (DEBUG) { console.log(editor_container); }
+	var editor_container = document.getElementById('editor').childNodes;
+	if (DEBUG) { console.log("Parsing all editor objects"); }
 	for(var i = 0; i < editor_container.length; i++) {
-		// Found the container
-		if (/^S\d+C/.test(editor_container[i].id)) {
+		// Found a store container
+		if (/^S/.test(editor_container[i].id)) {
+			if (DEBUG) { console.log("Found a store container"); }
 			var editor_element = editor_container[i];
-			export_obj['Stores'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], true));
+			export_obj['Data'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], true));
 		}
-	}
 
-	// Export Tables Next
-	editor_container = document.getElementById('Tables').childNodes;
-	if (DEBUG) { console.log(editor_container); }
-	for(var i = 0; i < editor_container.length; i++) {
-		// Found the container
-		if (/^T\d+C/.test(editor_container[i].id)) {
+		// Found a table container
+		if (/^T/.test(editor_container[i].id)) {
+			if (DEBUG) { console.log("Found a table container"); }
 			var editor_element = editor_container[i];
-			export_obj['Tables'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], false));
+			export_obj['Data'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], false));
 		}
-	}
 
-	// Export Monsters Next
-	editor_container = document.getElementById('Monsters').childNodes;
-	if (DEBUG) { console.log(editor_container); }
-	for(var i = 0; i < editor_container.length; i++) {
-		// Found the container
-		if (/^M\d+C/.test(editor_container[i].id)) {
+		// Found a monster container
+		if (/^M/.test(editor_container[i].id)) {
+			if (DEBUG) { console.log("Found a monster container"); }
 			var editor_element = editor_container[i];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
-			export_obj['Monsters'].push(get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
+			export_obj['Data'].push(get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
 		}
-	}
 
-	// Export Hazards Next
-	editor_container = document.getElementById('Hazards').childNodes;
-	if (DEBUG) { console.log(editor_container); }
-	for(var i = 0; i < editor_container.length; i++) {
-		// Found the container
-		if (/^H\d+C/.test(editor_container[i].id)) {
+		// Found a hazard container
+		if (/^H/.test(editor_container[i].id)) {
+			if (DEBUG) { console.log("Found a hazard container"); }
 			var editor_element = editor_container[i];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
-			export_obj['Hazards'].push(get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
+			export_obj['Data'].push(get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
 		}
-	}
-
-	// Export Lists Next
-	editor_container = document.getElementById('Lists').childNodes;
-	if (DEBUG) { console.log(editor_container); }
-	for(var i = 0; i < editor_container.length; i++) {
-		// Found the container
-		if (/^L\d+C/.test(editor_container[i].id)) {
+	
+		// Found a list container
+		if (/^L/.test(editor_container[i].id)) {
+			if (DEBUG) { console.log("Found a list container"); }
 			var editor_element = editor_container[i];
-			export_obj['Lists'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
+			export_obj['Data'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
 		}
 	}
 
@@ -3227,18 +3287,18 @@ function update_page(new_json) {
 				latest_hazard++;
 			}
 		} else if (key === 'Lists') {
-			for (var i = 0; i < value.length; i++) {
+			for (var i = 0; i < value['Data'].length; i++) {
 				if (DEBUG) { console.log("Parsing List Data"); }
 				create_element('List');
 				latest_list--;
-				for (var j = 0; j < value[i].length; j++) {
+				for (var j = 0; j < value['Data'][i].length; j++) {
 					document.getElementById('L' + latest_table + 'C_ADD').click();
 					latest_list_rows--;
-					set_dom_value('L' + latest_table + 'R' + latest_list_rows + 'I', value[i][j]['Data'])
-					if (value[i][j]['Bold']) {
+					set_dom_value('L' + latest_table + 'R' + latest_list_rows + 'I', value['Data'][i][j]['Data'])
+					if (value['Data'][i][j]['Bold']) {
 						document.getElementById('L' + latest_table + 'R' + latest_list_rows + 'I_BOLD').checked = true
 					}
-					if (value[i][j]['Underline']) {
+					if (value['Data'][i][j]['Underline']) {
 						document.getElementById('L' + latest_table + 'R' + latest_list_rows + 'I_UNDERLINE').checked = true
 					}
 					// Finally incriment when done, to not mess with future addition
