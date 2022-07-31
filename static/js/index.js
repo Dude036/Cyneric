@@ -15,6 +15,7 @@ let latest_monster_action = 0;
 let latest_hazard = 0;
 let latest_hazard_trait = 0;
 let latest_hazard_custom = 0;
+let latest_divider = 0;
 
 // Export Variables
 let export_obj = {
@@ -75,6 +76,8 @@ function incriment_item_counter(name) {
 		return ++latest_monster;
 	} else if (name === 'Hazard') {
 		return ++latest_hazard;
+	} else if (name === 'Divider') {
+		return ++latest_divider;
 	} else {
 		return NaN;
 	}
@@ -2119,6 +2122,27 @@ function create_element(item) {
 		// content.appendChild(editor)
 	} else if (item === 'Hazard2') {
 		// content.appendChild(editor)
+	} else if (item === 'Divider') {
+		// Add name for Divider
+		var add_title_div = document.createElement('div');
+		add_title_div.id = content.id + "_NAME";
+		add_title_div.style.backgroundColor = '#666666';
+		add_title_div.style.color = '#EFEFEF';
+		add_title_div.style.float = 'right';
+		add_title_div.style.margin = '4px';
+
+		var add_title_input = generic_text_input(add_title_div.id + "_I");
+		add_title_input.placeholder = 'Divider Name';
+		add_title_input.style.lineHeight = "20px";
+		add_title_input.style.width = "400px";
+		add_title_input.style.fontSize = '24px';
+		add_title_div.appendChild(add_title_input);
+
+
+		content.style.display = 'flex';
+		content.style.justifyContent = 'center';
+
+		content.appendChild(add_title_div)
 	}
 	container.appendChild(content);
 
