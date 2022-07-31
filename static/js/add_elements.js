@@ -20,10 +20,10 @@ let latest_table_rows = 0;
  * @return Blank Delete Button
  */
 function generic_action_span(icon, title, additive, margin) {
-	var delete_button = document.createElement('span');
-	delete_button.style.margin = margin;
-	delete_button.innerHTML = '<img src="/static/' + icon + '.svg" title="' + title + '" ' + additive + ' width="30px" height="30px" >';
-	return delete_button;
+	var new_button = document.createElement('span');
+	new_button.style.margin = margin;
+	new_button.innerHTML = '<img src="/static/' + icon + '.svg" title="' + title + '" ' + additive + ' width="30px" height="30px" >';
+	return new_button;
 }
 
 
