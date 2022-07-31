@@ -11,6 +11,7 @@ let GREY_BACKGROUND = '#EFEFEF';
 
 let latest_store_rows = 0;
 let latest_table_rows = 0;
+let latest_list_rows = 0;
 
 
 /**Generic Delete Button
@@ -381,3 +382,83 @@ function add_store_action_blank_row(parent, content) {
 	return add_row;
 }
 
+
+/**Add list settings when creating a list element
+ * @param parent_obj LI container
+ * @param add_id Matching ID for a list's modifier
+ */
+function add_list_settings(parent_obj, add_id) {
+	// Bold
+	var add_bold = document.createElement('input');
+	add_bold.type = 'checkbox';
+	add_bold.id = add_id + '_BOLD'
+	add_bold.name = add_id + '_BOLD'
+
+	var add_bold_label = document.createElement('label');
+	add_bold_label.htmlFor = add_id + '_BOLD'
+	add_bold_label.innerHTML = "<b>Bold</b>"
+
+	parent_obj.appendChild(add_bold);
+	parent_obj.appendChild(add_bold_label);
+
+	// Underline
+	var add_underline = document.createElement('input');
+	add_underline.type = 'checkbox';
+	add_underline.id = add_id + '_UNDERLINE'
+	add_underline.name = add_id + '_UNDERLINE'
+
+	var add_underline_label = document.createElement('label');
+	add_underline_label.htmlFor = add_id + '_UNDERLINE'
+	add_underline_label.innerHTML = "<u>Underline</u>"
+
+	parent_obj.appendChild(add_underline);
+	parent_obj.appendChild(add_underline_label);
+
+	// Delete
+	var add_delete_div = generic_action_span('delete', 'Delete Item', '', '0 20px 0 0');;
+	add_delete_div.id = add_id + "_DELETE";
+
+	// Delete Row option
+	add_delete_div.onclick = function() {
+		if (confirm("Delete row?")) {
+			if (DEBUG) { console.log("Deleting row"); }
+			parent_obj.parentNode.removeChild(parent_obj);
+			if (DEBUG) { console.log("Row successfully deleted"); }
+		}
+		set_session_storage();
+	}
+
+	parent_obj.appendChild(add_delete_div);
+}
+
+
+/**Adds store header function: new_row
+ * @param parent DOM element containing everything
+ * @param content DOM element containg contents to be displayed
+ * @return Action for parent of type: new_row
+ */
+function add_list_action_new_row(parent, content) {
+	var new_row = generic_action_span('add', 'Add List Row', '', '0 0 0 20px');
+	new_row.style.float = 'right';
+	new_row.id = parent.id + '_ADD';
+
+	new_row.onclick = function() {
+		var new_row = document.createElement('li');
+		new_row.id = content.id + "R" + latest_list_rows;
+		latest_list_rows++;
+		
+		var new_row_input = document.createElement('input');
+		new_row_input.type = 'Text';
+		new_row_input.id = new_row.id + 'I'
+		new_row_input.placeholder = 'Text';
+
+		new_row.appendChild(new_row_input);
+
+		add_list_settings(new_row, new_row.id + 'I');
+
+		content.appendChild(new_row);
+		set_session_storage();
+	}
+
+	return new_row
+}

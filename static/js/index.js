@@ -4,7 +4,7 @@ let latest_store = 0;
 let latest_table = 0;
 // let latest_table_rows = 0;
 let latest_list = 0;
-let latest_list_rows = 0;
+// let latest_list_rows = 0;
 let latest_monster = 0;
 let latest_monster_rows = 0;
 let latest_monster_trait = 0;
@@ -117,9 +117,7 @@ function update_page_state(state) {
 			description.value = "";
 
 			// Loop through all sub elements of the editor
-			["Stores", "Tables", "Monsters", "Hazards", "Lists"].forEach(function(elem) {
-				document.getElementById(elem).innerHTML = "";
-			})
+			document.getElementById('editor').innerHTML = "";
 		}
 		set_session_storage();
 	}
@@ -519,60 +517,6 @@ function sub_list_element(parent, descriptor, add_id) {
 
 	new_input.appendChild(new_input_input);
 	parent.appendChild(new_input);
-}
-
-
-/**Add list settings when creating a list element
- * @param parent_obj LI container
- * @param add_id Matching ID for a list's modifier
- */
-function add_list_settings(parent_obj, add_id) {
-	// Bold
-	var add_bold = document.createElement('input');
-	add_bold.type = 'checkbox';
-	add_bold.id = add_id + '_BOLD'
-	add_bold.name = add_id + '_BOLD'
-
-	var add_bold_label = document.createElement('label');
-	add_bold_label.htmlFor = add_id + '_BOLD'
-	add_bold_label.innerHTML = "<b>Bold</b>"
-
-	parent_obj.appendChild(add_bold);
-	parent_obj.appendChild(add_bold_label);
-
-	// Underline
-	var add_underline = document.createElement('input');
-	add_underline.type = 'checkbox';
-	add_underline.id = add_id + '_UNDERLINE'
-	add_underline.name = add_id + '_UNDERLINE'
-
-	var add_underline_label = document.createElement('label');
-	add_underline_label.htmlFor = add_id + '_UNDERLINE'
-	add_underline_label.innerHTML = "<u>Underline</u>"
-
-	parent_obj.appendChild(add_underline);
-	parent_obj.appendChild(add_underline_label);
-
-	// Delete
-	var add_delete_div = document.createElement('span');
-	add_delete_div.style.padding = '5px';
-	add_delete_div.style.marginLeft = '15px';
-	add_delete_div.style.backgroundColor = '#C00000';
-	add_delete_div.style.color = '#EFEFEF';
-	add_delete_div.innerHTML = "Delete Row";
-	add_delete_div.id = add_id + "_DELETE";
-
-	// Delete Row option
-	add_delete_div.onclick = function() {
-		if (confirm("Delete row?")) {
-			if (DEBUG) { console.log("Deleting row"); }
-			parent_obj.parentNode.removeChild(parent_obj);
-			if (DEBUG) { console.log("Row successfully deleted"); }
-		}
-		set_session_storage();
-	}
-
-	parent_obj.appendChild(add_delete_div);
 }
 
 
@@ -2078,7 +2022,7 @@ function create_element(item) {
 
 	// Finalize content
 	if (item === 'Store') {
-		// ACtions
+		// Actions
 		actions.appendChild(add_store_action_owner(container, content));
 		actions.appendChild(add_store_action_blank_row(container, content));
 		actions.appendChild(add_store_action_item_row(container, content));
@@ -2113,7 +2057,14 @@ function create_element(item) {
 
 		content.appendChild(table);
 	} else if (item === 'List') {
-		// content.appendChild(editor)
+		// Actions
+		actions.appendChild(add_list_action_new_row(container, content));
+
+		// Content
+		var list = document.createElement('ul');
+		list.id = content.id;
+
+		content.appendChild(list);
 	} else if (item === 'Monster2') {
 		// content.appendChild(editor)
 	} else if (item === 'Monster1') {
