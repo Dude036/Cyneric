@@ -2126,9 +2126,7 @@ function create_element(item) {
 		// Add name for Divider
 		var add_title_div = document.createElement('div');
 		add_title_div.id = content.id + "_NAME";
-		add_title_div.style.backgroundColor = '#666666';
 		add_title_div.style.color = '#EFEFEF';
-		add_title_div.style.float = 'right';
 		add_title_div.style.margin = '4px';
 
 		var add_title_input = generic_text_input(add_title_div.id + "_I");
@@ -2138,9 +2136,7 @@ function create_element(item) {
 		add_title_input.style.fontSize = '24px';
 		add_title_div.appendChild(add_title_input);
 
-
-		content.style.display = 'flex';
-		content.style.justifyContent = 'center';
+		content.style.textAlign = 'center';
 
 		content.appendChild(add_title_div)
 	}
