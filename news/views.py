@@ -18,7 +18,7 @@ Holidays = [
 ]
 
 cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Jared's Campaign", "")
-cyneric = Holiday(Date(26, Month.Fruiting, 98, Era.Sixth_Age), "Atticus' Campaign", "")
+cyneric = Holiday(Date(1, Month.Play , 98, Era.Sixth_Age), "Atticus' Campaign", "")
 dragon = Holiday(Date(17, Month.Roots , 65, Era.Sixth_Age), "Dragon Campaign", "")
 
 
