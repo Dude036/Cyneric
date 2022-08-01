@@ -18,11 +18,6 @@ let latest_hazard_custom = 0;
 let latest_divider = 0;
 
 // Export Variables
-let export_obj = {
-	"Name": "",
-	"Description": "",
-	"Data": [],
-}
 let export_counter = 0;
 
 let PATHFINDER_2_STATS = ['HP', 'Speed', 'Size', 'AC', 'Fortitude Save', 'Will Save', 'Reflex Save', 'Skills', 'Recall Knowledge', 'Damage Immunities', 'Damage Resistances', 'Damage Weakness', 'Senses', 'Languages']
@@ -66,9 +61,9 @@ function incriment_item_counter(name) {
 		return ++latest_table;
 	} else if (name === 'List') {
 		return ++latest_list;
-	} else if (name === 'Monster') {
+	} else if (/Monster\d/.test(name)) {
 		return ++latest_monster;
-	} else if (name === 'Hazard') {
+	} else if (name === 'Hazard2') {
 		return ++latest_hazard;
 	} else if (name === 'Divider') {
 		return ++latest_divider;
@@ -1616,17 +1611,22 @@ function create_element(item) {
 		content.appendChild(list);
 	} else if (item.startsWith('Monster')) {
 		var import_action;
+		var edition;
 
 		// Edition selector
 		if (item.endsWith('1')) {
 			import_action = add_monster_action_import(container, content, 'pathfinder_1', 'Import from d20pfsrd.com');
+			edition_action = add_list_action_edition(container, content, 'import', 'Edition: Pathfinder 1e');
 		} else if (item.endsWith('2')) {
 			import_action = add_monster_action_import(container, content, 'pathfinder_2', 'Import from 2e.aonprd.com');
+			edition_action = add_list_action_edition(container, content, 'import', 'Edition: Pathfinder 2e');
 		} else if (item.endsWith('5')) {
 			import_action = add_monster_action_import(container, content, 'dnd_5', 'Import from 5e.tools');
+			edition_action = add_list_action_edition(container, content, 'import', 'Edition: D&D 5e');
 		}
 
 		actions.appendChild(import_action);
+		actions.appendChild(edition_action);
 
 		var monster = create_element_monster(document.createElement('table'), item[item.length - 1]);
 		content.appendChild(monster);
@@ -1684,20 +1684,22 @@ function get_table_owner_data(row) {
 
 /**Extract all table data from the div table element
  * @param table The table produced
- * @param store Bool, True if table is a store
+ * @param source Either a Store (Has Owner), Table (Has Name), or nothing
  * @return Object data for the table element
  */
-function get_table_data(table, store) {
+function get_table_data(table, source) {
 	if (DEBUG) { console.log("Exporting Table: " + table.id); }
 	var table_obj = {
-		'Type': 'Store',
+		'Type': source,
 		'Data': []
 	};
 
 	// Get Owner
-	if (store) {
+	var store = false;
+	if (source === 'Store') {
 		table_obj['Owner'] = get_table_owner_data(table.rows[0]);
-	} else {
+		store = true;
+	} else if (source === 'Table') {
 		table_obj['Name'] = document.getElementById(table.id + "_NAME_I").value;
 	}
 
@@ -1905,7 +1907,7 @@ function get_monster_data(monster, edition) {
 
 	var monster_loot = monster.rows[monster.rows.length - 1].querySelector('table');
 	if (DEBUG) { console.log(monster_loot); }
-	monster_obj['Treasure'] = get_table_data(monster_loot, false);
+	monster_obj['Treasure'] = get_table_data(monster_loot, '');
 	
 	if (DEBUG) { console.log("Monster successfully handled"); }
 	if (DEBUG) { console.log(monster_obj); }
@@ -2366,7 +2368,7 @@ function export_page() {
 function save_all_json() {
 	if (DEBUG) { console.log("Exporting containers to session storage"); }
 
-	export_state_obj = {
+	var session_state_obj = {
 		"Name": "",
 		"Description": "",
 		"Data": [],
@@ -2385,26 +2387,28 @@ function save_all_json() {
 		if (/^S/.test(editor_container[i].id)) {
 			if (DEBUG) { console.log("Found a store container"); }
 			var editor_element = editor_container[i].childNodes[1].childNodes[0];
-			var data_obj = get_table_data(editor_element, true)
-			export_state_obj['Data'].push(editor_container[1].id);
-			window.sessionStorage.setItem(editor_container[1].id, JSON.stringify(data_obj));
+			var store_data_obj = get_table_data(editor_element, 'Store')
+			session_state_obj['Data'].push(editor_container[i].id);
+			window.sessionStorage.setItem(editor_container[i].id, JSON.stringify(store_data_obj));
 		}
 
 		// Found a table container
 		if (/^T/.test(editor_container[i].id)) {
 			if (DEBUG) { console.log("Found a table container"); }
 			var editor_element = editor_container[i].childNodes[1].childNodes[0];
-			var data_obj = get_table_data(editor_element, false);
-			export_state_obj['Data'].push(editor_container[1].id);
-			window.sessionStorage.setItem(editor_container[1].id, JSON.stringify(data_obj));
+			var table_data_obj = get_table_data(editor_element, 'Table');
+			session_state_obj['Data'].push(editor_container[i].id);
+			window.sessionStorage.setItem(editor_container[i].id, JSON.stringify(table_data_obj));
 		}
 
 		// Found a monster container
 		if (/^M/.test(editor_container[i].id)) {
 			if (DEBUG) { console.log("Found a monster container"); }
-			var editor_element = editor_container[i];
+			var editor_element = editor_container[i].childNodes[1].childNodes[0];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
-			export_state_obj['Data'].push(get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
+			var monster_data_obj = get_monster_data(editor_element, edition.name[edition.name.length - 1]);
+			session_state_obj['Data'].push(editor_container[i].id);
+			window.sessionStorage.setItem(editor_container[i].id, JSON.stringify(monster_data_obj));
 		}
 
 		// Found a hazard container
@@ -2412,18 +2416,18 @@ function save_all_json() {
 			if (DEBUG) { console.log("Found a hazard container"); }
 			var editor_element = editor_container[i];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
-			export_state_obj['Data'].push(get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
+			session_state_obj['Data'].push(get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
 		}
 	
 		// Found a list container
 		if (/^L/.test(editor_container[i].id)) {
 			if (DEBUG) { console.log("Found a list container"); }
 			var editor_element = editor_container[i];
-			export_state_obj['Data'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
+			session_state_obj['Data'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
 		}
 	}
 
-	window.sessionStorage.setItem('state', JSON.stringify(export_state_obj));
+	window.sessionStorage.setItem('state', JSON.stringify(session_state_obj));
 }
 
 
@@ -2434,17 +2438,26 @@ function save_all_json() {
 function export_json(callback) {
 	if (DEBUG) { console.log("Exporting containers to JSON"); }
 	// Clear export object
-	export_state_obj = {
+	var export_state_obj = {
 		"Name": "",
 		"Description": "",
 		"Data": [],
 	}
 	export_counter = 0;
 
-	// Header Info
-	export_state_obj['Name'] = document.getElementById('header').value;
-	export_state_obj['Description'] = convert_text(document.getElementById('description').value);
+	// Save all to JSON
+	save_all_json();
+	var session_obj = JSON.parse(window.sessionStorage.getItem('state'));
+	if (DEBUG) { console.log("Session Containers:"); }
+	if (DEBUG) { console.log(session_obj['Data']); }
 
+	// Transfer to single object
+	session_obj['Data'].forEach(function(key) {
+		if (DEBUG) { console.log("Container JSON for: " + key); }
+		var session_container_obj = JSON.parse(window.sessionStorage.getItem(key));
+		if (DEBUG) { console.log(session_container_obj); }
+		export_state_obj['Data'].push(session_container_obj);
+	})
 	
 	if (DEBUG) { console.log("Final Export Data"); }
 	if (DEBUG) { console.log(export_state_obj); }

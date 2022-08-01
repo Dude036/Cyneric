@@ -488,3 +488,21 @@ function add_monster_action_import(parent, content, icon, label) {
 
 	return new_row;
 }
+
+
+/**Adds monster header function: edition
+ * @param parent DOM element containing everything
+ * @param content DOM element containg contents to be displayed
+ * @param icon Icon to use for action
+ * @param label Label to use for action
+ * @return Action for parent of type: edition
+ */
+function add_list_action_edition(parent, content, icon, label) {
+	var new_row = generic_action_span(icon, label, '', '0 0 0 20px');
+	new_row.style.float = 'right';
+	new_row.id = content.id + '_EDITION';
+	new_row.name = content.id + '_EDITION_' + label[label.length - 2];
+	new_row.style.display = 'none';
+
+	return new_row;
+}
