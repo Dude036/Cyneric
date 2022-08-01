@@ -23,7 +23,7 @@ let latest_list_rows = 0;
 function generic_action_span(icon, title, additive, margin) {
 	var new_button = document.createElement('span');
 	new_button.style.margin = margin;
-	new_button.innerHTML = '<img src="/static/' + icon + '.svg" title="' + title + '" ' + additive + ' width="30px" height="30px" >';
+	new_button.innerHTML = '<img src="/static/svg/' + icon + '.svg" title="' + title + '" ' + additive + ' width="30px" height="30px" >';
 	return new_button;
 }
 
