@@ -46,17 +46,6 @@ dragula([document.getElementById('editor')], {
   }
 });
 
-// Add one time retrieval from storage, and then clear it, so if they reload twice, it'll go away forever.
-// retrieve_session_storage();
-// window.sessionStorage.setItem('state', '{"Name":"","Description":"","Monsters":[],"Stores":[],"Tables":[],"Lists":[],"Hazards":[]}');
-
-
-// // Set event listener for mousedown to save the page's state
-// window.addEventListener('mousedown', function () {
-// 	if (DEBUG) { console.log("Mouse Click, Updating session storage."); }
-// 	set_session_storage();
-// });
-
 
 /** Get uuid
  * @returns random uuid
@@ -124,7 +113,7 @@ function update_page_state(state) {
 			// Loop through all sub elements of the editor
 			document.getElementById('editor').innerHTML = "";
 		}
-		set_session_storage();
+		sessionStorage.clear();
 	}
 	if (DEBUG) { console.log("Page state updated"); }
 }
@@ -1709,7 +1698,7 @@ function get_table_data(table, store) {
 	if (store) {
 		table_obj['Owner'] = get_table_owner_data(table.rows[0]);
 	} else {
-		table_obj['Name'] = document.getElementById(table.id + "C_NAME_I").value;
+		table_obj['Name'] = document.getElementById(table.id + "_NAME_I").value;
 	}
 
 	// Loop through items
@@ -1724,11 +1713,11 @@ function get_table_data(table, store) {
 			if (DEBUG) { console.log("Special Row Encountered"); }
 			var temp_id = table.rows[i].id + '_';
 			item['Type'] = 'Item'
-			item['Name'] = document.getElementById(temp_id + 'Name').value;
-			item['Describe'] = document.getElementById(temp_id + 'Describe').value;
-			item['Text'] = document.getElementById(temp_id + 'Text').value;
-			item['Category'] = document.getElementById(temp_id + 'Category_I').value;
-			item['Descriptor'] = document.getElementById(temp_id + 'Descriptor_I').value;
+			item['Name'] = document.getElementById(temp_id + 'NAME').value;
+			item['Describe'] = document.getElementById(temp_id + 'DESCRIBE').value;
+			item['Text'] = document.getElementById(temp_id + 'TEXT').value;
+			item['Category'] = document.getElementById(temp_id + 'CATEGORY_I').value;
+			item['Descriptor'] = document.getElementById(temp_id + 'DESCRIPTOR_I').value;
 		} else {
 			// Handle Blank Row
 			if (DEBUG) { console.log("Blank Row Encountered"); }
@@ -2372,40 +2361,42 @@ function export_page() {
 }
 
 
-/**Export data to JSON object
- * @param callback Whether or not to return or print to file
- * @return JSON data for the webpage 
+/**Trawls editor container to save all data to session storage
  */
-function export_json(callback) {
-	if (DEBUG) { console.log("Exporting JSON"); }
-	// Clear export object
-	export_obj = {
+function save_all_json() {
+	if (DEBUG) { console.log("Exporting containers to session storage"); }
+
+	export_state_obj = {
 		"Name": "",
 		"Description": "",
 		"Data": [],
 	}
 	export_counter = 0;
-
-	// Header Info
-	export_obj['Name'] = document.getElementById('header').value;
-	export_obj['Description'] = convert_text(document.getElementById('description').value);
-
-	// Begin exporting Stores
+	/**Export State Object
+	 * Name and Description is stored as strings and retrieved from header
+	 * Data is a list of strings, in order, for the Containers in the editor element
+	 *  - These strings map directly to Container IDs
+	 */
+	// Begin exporting
 	var editor_container = document.getElementById('editor').childNodes;
 	if (DEBUG) { console.log("Parsing all editor objects"); }
 	for(var i = 0; i < editor_container.length; i++) {
 		// Found a store container
 		if (/^S/.test(editor_container[i].id)) {
 			if (DEBUG) { console.log("Found a store container"); }
-			var editor_element = editor_container[i];
-			export_obj['Data'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], true));
+			var editor_element = editor_container[i].childNodes[1].childNodes[0];
+			var data_obj = get_table_data(editor_element, true)
+			export_state_obj['Data'].push(editor_container[1].id);
+			window.sessionStorage.setItem(editor_container[1].id, JSON.stringify(data_obj));
 		}
 
 		// Found a table container
 		if (/^T/.test(editor_container[i].id)) {
 			if (DEBUG) { console.log("Found a table container"); }
-			var editor_element = editor_container[i];
-			export_obj['Data'].push(get_table_data(editor_element.childNodes[editor_element.childNodes.length - 1], false));
+			var editor_element = editor_container[i].childNodes[1].childNodes[0];
+			var data_obj = get_table_data(editor_element, false);
+			export_state_obj['Data'].push(editor_container[1].id);
+			window.sessionStorage.setItem(editor_container[1].id, JSON.stringify(data_obj));
 		}
 
 		// Found a monster container
@@ -2413,7 +2404,7 @@ function export_json(callback) {
 			if (DEBUG) { console.log("Found a monster container"); }
 			var editor_element = editor_container[i];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
-			export_obj['Data'].push(get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
+			export_state_obj['Data'].push(get_monster_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
 		}
 
 		// Found a hazard container
@@ -2421,26 +2412,49 @@ function export_json(callback) {
 			if (DEBUG) { console.log("Found a hazard container"); }
 			var editor_element = editor_container[i];
 			var edition = document.getElementById(editor_element.id + '_EDITION');
-			export_obj['Data'].push(get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
+			export_state_obj['Data'].push(get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2]));
 		}
 	
 		// Found a list container
 		if (/^L/.test(editor_container[i].id)) {
 			if (DEBUG) { console.log("Found a list container"); }
 			var editor_element = editor_container[i];
-			export_obj['Data'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
+			export_state_obj['Data'].push(get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]));
 		}
 	}
 
+	window.sessionStorage.setItem('state', JSON.stringify(export_state_obj));
+}
+
+
+/**Export data to JSON object
+ * @param callback Whether or not to return or print to file
+ * @return JSON data for the webpage 
+ */
+function export_json(callback) {
+	if (DEBUG) { console.log("Exporting containers to JSON"); }
+	// Clear export object
+	export_state_obj = {
+		"Name": "",
+		"Description": "",
+		"Data": [],
+	}
+	export_counter = 0;
+
+	// Header Info
+	export_state_obj['Name'] = document.getElementById('header').value;
+	export_state_obj['Description'] = convert_text(document.getElementById('description').value);
+
+	
 	if (DEBUG) { console.log("Final Export Data"); }
-	if (DEBUG) { console.log(export_obj); }
+	if (DEBUG) { console.log(export_state_obj); }
 	if (!callback) {
 		// Save to file
 		var textFile = null
-		var new_doc_blob = new Blob([JSON.stringify(export_obj, null, 2)], {type: 'text/plain;charset=utf-8'});
+		var new_doc_blob = new Blob([JSON.stringify(export_state_obj, null, 2)], {type: 'text/plain;charset=utf-8'});
 		saveAs(new_doc_blob, document.getElementById("header").value + '.custom.json');
 	} else {
-		return export_obj;
+		return export_state_obj;
 	}
 }
 
@@ -2863,6 +2877,25 @@ function set_session_storage() {
 }
 
 
+/**Save session data as key as state
+ */
+function set_session_storage() {
+	if (DEBUG) { console.log("Saving JSON to Session"); }
+
+
+	var export_obj = export_json(true);
+	window.sessionStorage.setItem('state', JSON.stringify(export_obj));
+}
+
+
+/**Set storage value for page, for later retrieval
+ */
+function update_container_session_storage(container_id, data) {
+	if (DEBUG) { console.log("Updating JSON for container:" + container_id); }
+	var export_obj = export_json(true);
+	window.sessionStorage.setItem('state', JSON.stringify(export_obj));
+}
+
 /**Retrieve storage for page, and call Import JSON updater
  */
 function retrieve_session_storage() {
@@ -2917,9 +2950,7 @@ function update_session_storage(data, data_type, current_id) {
 	window.sessionStorage.setItem('state', JSON.stringify(export_obj));
 
 	// Clear page before reinstating data
-	["Stores", "Tables", "Monsters", "Hazards", "Lists"].forEach(function(elem) {
-		document.getElementById(elem).innerHTML = "";
-	})
+	document.getElementById('editor').innerHTML = "";
 
 	// Cleared page means we can resent this stuff
 	latest_store = 0;
