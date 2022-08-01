@@ -28,7 +28,6 @@ function generic_action_span(icon, title, additive, margin) {
 }
 
 
-
 /**Generic Input given id
  * @param id The base Id to set
  * @return Text input DOM object
@@ -259,28 +258,28 @@ function add_store_action_item_row(parent, content) {
 
 		// Add Descriptor
 		var item_descriptor_cell = item_row.insertCell(0);
-		item_descriptor_cell.id = item_row.id + "_Descriptor";
+		item_descriptor_cell.id = item_row.id + "_DESCRIPTOR";
 
 		var item_descriptor = generic_text_input(item_descriptor_cell.id + "_I");
-		item_descriptor.placeholder = 'Descriptor';
+		item_descriptor.placeholder = 'DESCRIPTOR';
 		item_descriptor_cell.appendChild(item_descriptor);
 
 		// Add Category
 		var item_category_cell = item_row.insertCell(0);
-		item_category_cell.id = item_row.id + "_Category";
+		item_category_cell.id = item_row.id + "_CATEGORY";
 
 		var item_category = generic_text_input(item_category_cell.id + "_I");
-		item_category.placeholder = 'Category';
+		item_category.placeholder = 'CATEGORY';
 		item_category_cell.appendChild(item_category);
 
 		// Add Main Data
 		var item_data_cell = item_row.insertCell(0);
-		item_data_cell.id = item_row.id + "_Data";
+		item_data_cell.id = item_row.id + "_DATA";
 
 		var item_name = document.createElement('input');
 		item_name.type = 'text';
-		item_name.name = item_row.id + "_Name";
-		item_name.id = item_row.id + "_Name";
+		item_name.name = item_row.id + "_NAME";
+		item_name.id = item_row.id + "_NAME";
 		item_name.placeholder = 'Name';
 		item_data_cell.appendChild(item_name);
 
@@ -288,16 +287,16 @@ function add_store_action_item_row(parent, content) {
 
 		var item_describe = document.createElement('input');
 		item_describe.type = 'text';
-		item_describe.name = item_row.id + "_Describe";
-		item_describe.id = item_row.id + "_Describe";
+		item_describe.name = item_row.id + "_DESCRIBE";
+		item_describe.id = item_row.id + "_DESCRIBE";
 		item_describe.placeholder = 'Description';
 		item_data_cell.appendChild(item_describe);
 
 		item_data_cell.appendChild(document.createElement('br'));
 
 		var item_text = document.createElement('textarea');
-		item_text.name = item_row.id + "_Text";
-		item_text.id = item_row.id + "_Text";
+		item_text.name = item_row.id + "_TEXT";
+		item_text.id = item_row.id + "_TEXT";
 		item_text.placeholder = 'Long Description';
 		item_text.style.lineHeight = "20px";
 		item_text.style.width = "400px";
@@ -334,9 +333,12 @@ function add_store_action_blank_row(parent, content) {
 		// Delete Row Action
 		var delete_row_td = new_row.insertCell(0);
 		delete_row_td.style.float = 'right';
+		delete_row_td.style.width = '8px';
+		delete_row_td.style.backgroundColor = '#C00000';
+		delete_row_td.style.color = '#EFEFEF';
+		delete_row_td.innerHTML = "<b>X</b>";
 
-		var delete_row_button = generic_action_span('delete', 'Delete Row', '', '0 0 0 10px');
-		delete_row_button.onclick = function() {
+		delete_row_td.onclick = function() {
 			if (confirm("Are you sure you want to delete this row?")) {
 				if (DEBUG) { console.log("Deleting Row"); }
 				new_row.parentNode.removeChild(new_row);
@@ -344,14 +346,16 @@ function add_store_action_blank_row(parent, content) {
 			}
 			set_session_storage();
 		}
-		delete_row_td.appendChild(delete_row_button);
 
 		// Add TH Action
 		var row_th = new_row.insertCell(1);
 		row_th.style.float = 'right';
+		row_th.style.width = '55px';
+		row_th.style.backgroundColor = '#500050';
+		row_th.style.color = '#EFEFEF';
+		row_th.innerHTML = "Add 'td'";
 
-		var add_th = generic_action_span('add', 'Add th', '', '0 0 0 10px');
-		add_th.onclick = function() {
+		row_th.onclick = function() {
 			var new_cell = new_row.insertCell(new_row.cells.length - 3);
 			new_cell.id = new_row.id + 'C' + (new_row.cells.length - 3);
 			new_cell.style.backgroundColor = "#FFFFFF";
@@ -360,23 +364,25 @@ function add_store_action_blank_row(parent, content) {
 			set_session_storage();
 
 		}
-		row_th.appendChild(add_th);
 
 		// Add TD Action
 		var row_td = new_row.insertCell(2);
 		row_td.style.float = 'right';
+		row_td.style.width = '55px';
+		row_td.style.backgroundColor = '#005050';
+		row_td.style.color = '#EFEFEF';
+		row_td.innerHTML = "Add 'th'";
 
-		var add_td = generic_action_span('add', 'Add td', '', '0 0 0 10px');
-		add_td.onclick = function() {
+		row_td.onclick = function() {
 			var new_cell = new_row.insertCell(new_row.cells.length - 3);
 			new_cell.id = new_row.id + 'H' + (new_row.cells.length - 3);
 			new_cell.style.backgroundColor = "#CFCFCF";
 
 			new_cell.appendChild(generic_text_input(new_cell.id + "I"))
 			set_session_storage();
-
 		}
-		row_td.appendChild(add_td);
+
+		set_session_storage();
 	}
 
 	return add_row;
@@ -387,7 +393,7 @@ function add_store_action_blank_row(parent, content) {
  * @param parent_obj LI container
  * @param add_id Matching ID for a list's modifier
  */
-function add_list_settings(parent_obj, add_id) {
+function create_list_settings(parent_obj, add_id) {
 	// Bold
 	var add_bold = document.createElement('input');
 	add_bold.type = 'checkbox';
@@ -432,7 +438,7 @@ function add_list_settings(parent_obj, add_id) {
 }
 
 
-/**Adds store header function: new_row
+/**Adds list header function: new_row
  * @param parent DOM element containing everything
  * @param content DOM element containg contents to be displayed
  * @return Action for parent of type: new_row
@@ -454,11 +460,31 @@ function add_list_action_new_row(parent, content) {
 
 		new_row.appendChild(new_row_input);
 
-		add_list_settings(new_row, new_row.id + 'I');
+		create_list_settings(new_row, new_row.id + 'I');
 
 		content.appendChild(new_row);
 		set_session_storage();
 	}
 
 	return new_row
+}
+
+
+/**Adds monster header function: import
+ * @param parent DOM element containing everything
+ * @param content DOM element containg contents to be displayed
+ * @param icon Icon to use for action
+ * @param label Label to use for action
+ * @return Action for parent of type: import
+ */
+function add_monster_action_import(parent, content, icon, label) {
+	var new_row = generic_action_span(icon, label, '', '0 0 0 20px');
+	new_row.style.float = 'right';
+	new_row.id = content.id + '_IMPORT';
+
+	new_row.onclick = function() {
+		get_monster_contents(label, icon[icon.length - 1], content.id)
+	}
+
+	return new_row;
 }

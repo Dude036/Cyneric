@@ -25,8 +25,13 @@ let export_obj = {
 }
 let export_counter = 0;
 
+let PATHFINDER_2_STATS = ['HP', 'Speed', 'Size', 'AC', 'Fortitude Save', 'Will Save', 'Reflex Save', 'Skills', 'Recall Knowledge', 'Damage Immunities', 'Damage Resistances', 'Damage Weakness', 'Senses', 'Languages']
+let PATHFINDER_1_STATS = ['HP', 'Speed', 'Size', 'AC', 'Touch AC', 'Flat AC', 'CMD', 'CMB', 'Fortitude Save', 'Will Save', 'Reflex Save', 'Skills', 'Damage Immunities', 'Damage Resistances', 'Damage Weakness', 'Senses', 'Languages']
+let DND_5_STATS = ['HP', 'Speed', 'Size', 'AC', 'STR Save', 'DEX Save', 'CON Save', 'WIS Save', 'INT Save', 'CHA Save', 'Skills', 'Damage Immunities', 'Damage Resistances', 'Damage Weakness', 'Senses', 'Languages']
+
+
 // Add Back button Cancel
-window.addEventListener('popstate', function (e) {
+window.addEventListener('popstate',	function (e) {
 	if (confirm("Are you sure you want to leave?")) {
 		window.history.back();
 	} else {
@@ -412,31 +417,30 @@ function editor_container_table(element) {
 
 		add_button_td.appendChild(add_button_div);
 
-		// Item additions
+		// Add Descriptor
 		var item_descriptor_cell = item_row.insertCell(0);
-		item_descriptor_cell.id = item_row.id + "_Descriptor";
+		item_descriptor_cell.id = item_row.id + "_DESCRIPTOR";
 
-		var item_descriptor = document.createElement('input');
-		item_descriptor.id = item_descriptor_cell.id + "_I";
-		item_descriptor.placeholder = 'Descriptor';
+		var item_descriptor = generic_text_input(item_descriptor_cell.id + "_I");
+		item_descriptor.placeholder = 'DESCRIPTOR';
 		item_descriptor_cell.appendChild(item_descriptor);
 
+		// Add Category
 		var item_category_cell = item_row.insertCell(0);
-		item_category_cell.id = item_row.id + "_Category";
+		item_category_cell.id = item_row.id + "_CATEGORY";
 
-		var item_category = document.createElement('input');
-		item_category.id = item_category_cell.id + "_I";
-		item_category.placeholder = 'Category';
+		var item_category = generic_text_input(item_category_cell.id + "_I");
+		item_category.placeholder = 'CATEGORY';
 		item_category_cell.appendChild(item_category);
 
-		// Main Item info
+		// Add Main Data
 		var item_data_cell = item_row.insertCell(0);
-		item_data_cell.id = item_row.id + "_Data"
+		item_data_cell.id = item_row.id + "_DATA";
 
 		var item_name = document.createElement('input');
 		item_name.type = 'text';
-		item_name.name = item_row.id + "_Name";
-		item_name.id = item_row.id + "_Name";
+		item_name.name = item_row.id + "_NAME";
+		item_name.id = item_row.id + "_NAME";
 		item_name.placeholder = 'Name';
 		item_data_cell.appendChild(item_name);
 
@@ -444,16 +448,16 @@ function editor_container_table(element) {
 
 		var item_describe = document.createElement('input');
 		item_describe.type = 'text';
-		item_describe.name = item_row.id + "_Describe";
-		item_describe.id = item_row.id + "_Describe";
+		item_describe.name = item_row.id + "_DESCRIBE";
+		item_describe.id = item_row.id + "_DESCRIBE";
 		item_describe.placeholder = 'Description';
 		item_data_cell.appendChild(item_describe);
 
 		item_data_cell.appendChild(document.createElement('br'));
 
 		var item_text = document.createElement('textarea');
-		item_text.name = item_row.id + "_Text";
-		item_text.id = item_row.id + "_Text";
+		item_text.name = item_row.id + "_TEXT";
+		item_text.id = item_row.id + "_TEXT";
 		item_text.placeholder = 'Long Description';
 		item_text.style.lineHeight = "20px";
 		item_text.style.width = "400px";
@@ -499,102 +503,26 @@ function editor_container_table(element) {
 
 /** Adds list item, and its input, to a parent list.
  * @param parent Parent list
+ * @param prefix Label prefix for either a monster or an owner
  * @param descriptor The descriptor for the placeholder text and id
+ * @param type Type of input
  * @param add_id The id that will be referenced during export
  * @return Sub-Element for owner information
  */
-function sub_list_element(parent, descriptor, add_id) {
+function sub_list_element(parent, prefix, descriptor, type, add_id) {
 	var new_input = document.createElement('li');
 	var new_input_input = document.createElement('input');
 	new_input_input.id = add_id + "_" + descriptor.toUpperCase();
-	new_input_input.type = 'text';
-	new_input_input.placeholder = 'Owner ' + descriptor;
+	new_input_input.type = type;
+	new_input_input.placeholder = prefix + ' ' + descriptor;
 	new_input_input.style.marginLeft = '10px';
 	var new_input_input_label = document.createElement('label');
 	new_input_input_label.id = new_input_input.id + '_LABEL'
-	new_input_input_label.innerHTML = 'Owner ' + descriptor;
+	new_input_input_label.innerHTML = prefix + ' ' + descriptor;
 	new_input.appendChild(new_input_input_label);
 
 	new_input.appendChild(new_input_input);
 	parent.appendChild(new_input);
-}
-
-
-/**Create the Parent Container for Monsters
- * @param element Primary child element, the table
- * @param edition Child Element's edition
- * @return Fully formed container for Monster Table elements
- */
-function editor_container_monster(element, edition) {
-	if (DEBUG) { console.log("Begin Monster Container Creation"); }
-
-	// Container options
-	var container = document.createElement("div");
-	container.id = element.id + "C";
-	container.width = '100%';
-
-	// Add monster information
-	var add_edition_div = document.createElement('div');
-	add_edition_div.style.float = 'right';
-	add_edition_div.style.padding = '5px';
-	add_edition_div.style.color = '#EFEFEF';
-	if (edition == '5') {
-		add_edition_div.style.backgroundColor = '#009999';
-		add_edition_div.innerHTML = "Edition: D&D 5e";
-	} else if (edition == '2') {
-		add_edition_div.style.backgroundColor = '#009900';
-		add_edition_div.innerHTML = "Edition: Pathfinder 2e";
-	} else if (edition == '1') {
-		add_edition_div.style.backgroundColor = '#000099';
-		add_edition_div.innerHTML = "Edition: Pathfinder 1e";
-	}
-	add_edition_div.id = container.id + "_EDITION";
-
-	// Add import Div
-	var add_import_div = document.createElement('div');
-	add_import_div.style.float = 'right';
-	add_import_div.style.padding = '5px';
-	add_import_div.style.color = '#EFEFEF';
-	if (edition == '5') {
-		add_import_div.style.backgroundColor = '#002222';
-		add_import_div.innerHTML = "Import from 5e.tools";
-	} else if (edition == '2') {
-		add_import_div.style.backgroundColor = '#002200';
-		add_import_div.innerHTML = "Import from 2e.aonprd.com";
-	} else if (edition == '1') {
-		add_import_div.style.backgroundColor = '#000022';
-		add_import_div.innerHTML = "Import from d20pfsrd.com";
-	}
-	add_import_div.id = container.id + "_IMPORT";
-	add_import_div.onclick = function() {
-		get_monster_contents(add_import_div.innerHTML, edition, container.id)
-	}
-
-	// Delete Styling
-	var add_delete_div = document.createElement('div');
-	add_delete_div.style.float = 'right';
-	add_delete_div.style.padding = '5px';
-	add_delete_div.style.backgroundColor = '#C00000';
-	add_delete_div.style.color = '#EFEFEF';
-	add_delete_div.innerHTML = "Delete Monster";
-	add_delete_div.id = container.id + "_DELETE";
-
-	// Delete List Function
-	add_delete_div.onclick = function() {
-		if (confirm("Delete Monster?")) {
-			if (DEBUG) { console.log("Deleting Monster"); }
-			container.parentNode.removeChild(container);
-			if (DEBUG) { console.log("Monster successfully deleted"); }
-		}
-		set_session_storage();
-	}
-
-	container.appendChild(add_delete_div);
-	container.appendChild(add_edition_div);
-	container.appendChild(add_import_div);
-
-	container.appendChild(element);
-	return container;
 }
 
 
@@ -726,11 +654,11 @@ function create_element_store(store) {
 	var owner_description = document.createElement('ul');
 
 	// Race
-	sub_list_element(owner_description, 'Race', owner_container.id);
-	sub_list_element(owner_description, 'Gender', owner_container.id);
-	sub_list_element(owner_description, 'Age', owner_container.id);
-	sub_list_element(owner_description, 'Trait_1', owner_container.id);
-	sub_list_element(owner_description, 'Trait_2', owner_container.id);
+	sub_list_element(owner_description, 'Owner', 'Race', 'text', owner_container.id);
+	sub_list_element(owner_description, 'Owner', 'Gender', 'text', owner_container.id);
+	sub_list_element(owner_description, 'Owner', 'Age', 'text', owner_container.id);
+	sub_list_element(owner_description, 'Owner', 'Trait_1', 'text', owner_container.id);
+	sub_list_element(owner_description, 'Owner', 'Trait_2', 'text', owner_container.id);
 
 	owner_container.appendChild(owner_description);
 
@@ -863,7 +791,7 @@ function create_element_monster(monster, edition) {
 		monster_trait_list_clear.onclick = function() {
 			if (confirm("Clear All Traits?")) {
 				if (DEBUG) { console.log("Deleting Traits"); }
-				hazard_trait_loc.innerHTML = '';
+				monster_trait_list_loc.innerHTML = '';
 				if (DEBUG) { console.log("Traits successfully cleared"); }
 			}
 			set_session_storage();
@@ -894,316 +822,26 @@ function create_element_monster(monster, edition) {
 	var monster_info_content = document.createElement('div');
 	
 	// Monster Base Information
+	var stat_list;
+	if (edition == '2') {
+		stat_list = PATHFINDER_2_STATS;
+	} else if (edition == '1') {
+		stat_list = PATHFINDER_1_STATS;
+	} else if (edition == '5') {
+		stat_list = DND_5_STATS;
+	}
+
 	var monster_info_list = document.createElement('ul');
 	monster_info_list.style.columnCount = 2;
-	var monster_hp = document.createElement('li');
-	var monster_hp_input = document.createElement('input');
-	monster_hp_input.id = monster_header.id + '_HP';
-	monster_hp_input.placeholder = 'HP';
-	monster_hp_input.style.marginLeft = '10px';
-	var monster_hp_label = document.createElement('label');
-	monster_hp_label.id = monster_hp_input.id + '_LABEL'
-	monster_hp_label.innerHTML = "HP";
-	monster_hp.appendChild(monster_hp_label);
-	monster_hp.appendChild(monster_hp_input);
-	monster_info_list.appendChild(monster_hp);
 
-	var monster_speed = document.createElement('li');
-	var monster_speed_input = document.createElement('input');
-	monster_speed_input.id = monster_header.id + '_SPEED';
-	monster_speed_input.placeholder = 'Speed';
-	monster_speed_input.style.marginLeft = '10px';
-	var monster_speed_label = document.createElement('label');
-	monster_speed_label.id = monster_speed_input.id + '_LABEL'
-	monster_speed_label.innerHTML = "Speed";
-	monster_speed.appendChild(monster_speed_label);
-	monster_speed.appendChild(monster_speed_input);
-	monster_info_list.appendChild(monster_speed);
-
-	var monster_size = document.createElement('li');
-	var monster_size_input = document.createElement('input');
-	monster_size_input.id = monster_header.id + '_SIZE'
-	monster_size_input.placeholder = 'Size';
-	monster_size_input.style.marginLeft = '10px';
-	var monster_size_label = document.createElement('label');
-	monster_size_label.id = monster_size_input.id + '_LABEL'
-	monster_size_label.innerHTML = "size";
-	monster_size.appendChild(monster_size_label);
-	monster_size.appendChild(monster_size_input);
-	monster_info_list.appendChild(monster_size);
-
-	var monster_ac = document.createElement('li');
-	var monster_ac_input = document.createElement('input');
-	monster_ac_input.id = monster_header.id + '_AC';
-	monster_ac_input.placeholder = 'AC';
-	monster_ac_input.style.marginLeft = '10px';
-	var monster_ac_label = document.createElement('label');
-	monster_ac_label.id = monster_ac_input.id + '_LABEL'
-	monster_ac_label.innerHTML = "AC";
-	monster_ac.appendChild(monster_ac_label);
-	monster_ac.appendChild(monster_ac_input);
-	monster_info_list.appendChild(monster_ac);
-
-	// Special AC for Pathfinder 1
-	if (edition == "1") {
-		var monster_touch_ac = document.createElement('li');
-		var monster_touch_ac_input = document.createElement('input');
-		monster_touch_ac_input.id = monster_header.id + '_TOUCH_AC';
-		monster_touch_ac_input.placeholder = 'Touch AC';
-		monster_touch_ac_input.style.marginLeft = '10px';
-		var monster_touch_ac_label = document.createElement('label');
-		monster_touch_ac_label.id = monster_touch_ac_input.id + '_LABEL'
-		monster_touch_ac_label.innerHTML = "Touch AC";
-		monster_touch_ac.appendChild(monster_touch_ac_label);
-		monster_touch_ac.appendChild(monster_touch_ac_input);
-		monster_info_list.appendChild(monster_touch_ac);
-
-		var monster_flat_ac = document.createElement('li');
-		var monster_flat_ac_input = document.createElement('input');
-		monster_flat_ac_input.id = monster_header.id + '_FLAT_AC';
-		monster_flat_ac_input.placeholder = 'Flat AC';
-		monster_flat_ac_input.style.marginLeft = '10px';
-		var monster_flat_ac_label = document.createElement('label');
-		monster_flat_ac_label.id = monster_flat_ac_input.id + '_LABEL'
-		monster_flat_ac_label.innerHTML = "Flat AC";
-		monster_flat_ac.appendChild(monster_flat_ac_label);
-		monster_flat_ac.appendChild(monster_flat_ac_input);
-		monster_info_list.appendChild(monster_flat_ac);
-
-		var monster_cmd = document.createElement('li');
-		var monster_cmd_input = document.createElement('input');
-		monster_cmd_input.id = monster_header.id + '_CMD';
-		monster_cmd_input.placeholder = 'CMD';
-		monster_cmd_input.style.marginLeft = '10px';
-		var monster_cmd_label = document.createElement('label');
-		monster_cmd_label.id = monster_cmd_input.id + '_LABEL'
-		monster_cmd_label.innerHTML = "CMD";
-		monster_cmd.appendChild(monster_cmd_label);
-		monster_cmd.appendChild(monster_cmd_input);
-		monster_info_list.appendChild(monster_cmd);
-
-		var monster_cmb = document.createElement('li');
-		var monster_cmb_input = document.createElement('input');
-		monster_cmb_input.id = monster_header.id + '_CMB';
-		monster_cmb_input.placeholder = 'CMB';
-		monster_cmb_input.style.marginLeft = '10px';
-		var monster_cmb_label = document.createElement('label');
-		monster_cmb_label.id = monster_cmb_input.id + '_LABEL'
-		monster_cmb_label.innerHTML = "CMB";
-		monster_cmb.appendChild(monster_cmb_label);
-		monster_cmb.appendChild(monster_cmb_input);
-		monster_info_list.appendChild(monster_cmb);
+	for (var i = 0; i < stat_list.length; i++) {
+		// 5e Saves are checkboxes
+		if (/[A-Z]{3} Save/.test(stat_list[i])) {
+			sub_list_element(monster_info_list, '', stat_list[i], 'checkbox', monster_info.id);
+		} else {
+			sub_list_element(monster_info_list, '', stat_list[i], 'text', monster_info.id);
+		}
 	}
-	
-	//  Pathfinder Saves
-	if (edition == "1" || edition == "2") {
-		var monster_fort_save = document.createElement('li');
-		var monster_fort_save_input = document.createElement('input');
-		monster_fort_save_input.id = monster_header.id + '_FORT_SAVE';
-		monster_fort_save_input.placeholder = 'Fortitude Save';
-		monster_fort_save_input.style.marginLeft = '10px';
-		var monster_fort_save_label = document.createElement('label');
-		monster_fort_save_label.id = monster_fort_save_input.id + '_LABEL'
-		monster_fort_save_label.innerHTML = "Fortitude Save";
-		monster_fort_save.appendChild(monster_fort_save_label);
-		monster_fort_save.appendChild(monster_fort_save_input);
-		monster_info_list.appendChild(monster_fort_save);
-
-		var monster_will_save = document.createElement('li');
-		var monster_will_save_input = document.createElement('input');
-		monster_will_save_input.id = monster_header.id + '_WILL_SAVE'
-		monster_will_save_input.placeholder = 'Will Save'
-		monster_will_save_input.style.marginLeft = '10px';
-		var monster_will_save_label = document.createElement('label');
-		monster_will_save_label.id = monster_will_save_input.id + '_LABEL'
-		monster_will_save_label.innerHTML = "Will Save";
-		monster_will_save.appendChild(monster_will_save_label);
-		monster_will_save.appendChild(monster_will_save_input);
-		monster_info_list.appendChild(monster_will_save);
-
-		var monster_ref_save = document.createElement('li');
-		var monster_ref_save_input = document.createElement('input');
-		monster_ref_save_input.id = monster_header.id + '_REF_SAVE'
-		monster_ref_save_input.placeholder = 'Reflex Save'
-		monster_ref_save_input.style.marginLeft = '10px';
-		var monster_ref_save_label = document.createElement('label');
-		monster_ref_save_label.id = monster_ref_save_input.id + '_LABEL'
-		monster_ref_save_label.innerHTML = "Reflex Save";
-		monster_ref_save.appendChild(monster_ref_save_label);
-		monster_ref_save.appendChild(monster_ref_save_input);
-		monster_info_list.appendChild(monster_ref_save);
-	} else if (edition == '5') {
-		// Saves for 5e
-		var monster_save_1 = document.createElement('li');
-		var monster_str_save = document.createElement('input');
-		monster_str_save.type = 'checkbox';
-		monster_str_save.id = monster_header.id  + '_STR_SAVE';
-		monster_str_save.name = monster_header.id  + '_STR_SAVE';
-
-		var monster_str_save_label = document.createElement('label');
-		monster_str_save_label.htmlFor = monster_header.id  + '_STR_SAVE_LABEL';
-		monster_str_save_label.innerHTML = "<b>STR Save</b>";
-
-		monster_save_1.appendChild(monster_str_save);
-		monster_save_1.appendChild(monster_str_save_label);
-
-		var monster_dex_save = document.createElement('input');
-		monster_dex_save.type = 'checkbox';
-		monster_dex_save.id = monster_header.id  + '_DEX_SAVE';
-		monster_dex_save.name = monster_header.id  + '_DEX_SAVE';
-
-		var monster_dex_save_label = document.createElement('label');
-		monster_dex_save_label.htmlFor = monster_header.id  + '_DEX_SAVE_LABEL';
-		monster_dex_save_label.innerHTML = "<b>DEX Save</b>";
-
-		monster_save_1.appendChild(monster_dex_save);
-		monster_save_1.appendChild(monster_dex_save_label);
-
-		monster_info_list.appendChild(monster_save_1);
-
-		var monster_save_2 = document.createElement('li');
-		var monster_con_save = document.createElement('input');
-		monster_con_save.type = 'checkbox';
-		monster_con_save.id = monster_header.id  + '_CON_SAVE';
-		monster_con_save.name = monster_header.id  + '_CON_SAVE';
-
-		var monster_con_save_label = document.createElement('label');
-		monster_con_save_label.htmlFor = monster_header.id  + '_CON_SAVE_LABEL';
-		monster_con_save_label.innerHTML = "<b>CON Save</b>";
-
-		monster_save_2.appendChild(monster_con_save);
-		monster_save_2.appendChild(monster_con_save_label);
-
-		var monster_int_save = document.createElement('input');
-		monster_int_save.type = 'checkbox';
-		monster_int_save.id = monster_header.id  + '_INT_SAVE';
-		monster_int_save.name = monster_header.id  + '_INT_SAVE';
-
-		var monster_int_save_label = document.createElement('label');
-		monster_int_save_label.htmlFor = monster_header.id  + '_INT_SAVE_LABEL';
-		monster_int_save_label.innerHTML = "<b>INT Save</b>";
-
-		monster_save_2.appendChild(monster_int_save);
-		monster_save_2.appendChild(monster_int_save_label);
-
-		monster_info_list.appendChild(monster_save_2);
-
-		var monster_save_3 = document.createElement('li');
-		var monster_wis_save = document.createElement('input');
-		monster_wis_save.type = 'checkbox';
-		monster_wis_save.id = monster_header.id  + '_WIS_SAVE';
-		monster_wis_save.name = monster_header.id  + '_WIS_SAVE';
-
-		var monster_wis_save_label = document.createElement('label');
-		monster_wis_save_label.htmlFor = monster_header.id  + '_WIS_SAVE_LABEL';
-		monster_wis_save_label.innerHTML = "<b>WIS Save</b>";
-
-		monster_save_3.appendChild(monster_wis_save);
-		monster_save_3.appendChild(monster_wis_save_label);
-
-		var monster_cha_save = document.createElement('input');
-		monster_cha_save.type = 'checkbox';
-		monster_cha_save.id = monster_header.id  + '_CHA_SAVE';
-		monster_cha_save.name = monster_header.id  + '_CHA_SAVE';
-
-		var monster_cha_save_label = document.createElement('label');
-		monster_cha_save_label.htmlFor = monster_header.id  + '_CHA_SAVE_LABEL';
-		monster_cha_save_label.innerHTML = "<b>CHA Save</b>";
-
-		monster_save_3.appendChild(monster_cha_save);
-		monster_save_3.appendChild(monster_cha_save_label);
-
-		monster_info_list.appendChild(monster_save_3);
-	}
-
-	// Skills & Recall
-	var monster_skills = document.createElement('li');
-	var monster_skills_input = document.createElement('input');
-	monster_skills_input.id = monster_header.id + '_SKILLS';
-	monster_skills_input.placeholder = 'Skills';
-	monster_skills_input.style.marginLeft = '10px';
-	var monster_skills_label = document.createElement('label');
-	monster_skills_label.id = monster_skills_input.id + '_LABEL'
-	monster_skills_label.innerHTML = "Skills";
-	monster_skills.appendChild(monster_skills_label);
-	monster_skills.appendChild(monster_skills_input);
-	monster_info_list.appendChild(monster_skills);
-
-	if (edition == '2') {
-		var monster_recall = document.createElement('li');
-		var monster_recall_input = document.createElement('input');
-		monster_recall_input.id = monster_header.id + '_RECALL';
-		monster_recall_input.placeholder = 'Recall Knowledge';
-		monster_recall_input.style.marginLeft = '10px';
-		var monster_recall_label = document.createElement('label');
-		monster_recall_label.id = monster_recall_input.id + '_LABEL'
-		monster_recall_label.innerHTML = "Recall Knowledge";
-		monster_recall.appendChild(monster_recall_label);
-		monster_recall.appendChild(monster_recall_input);
-		monster_info_list.appendChild(monster_recall);
-	}
-
-	// Incoming damage modifiers
-	var monster_dam_immune = document.createElement('li');
-	var monster_dam_immune_input = document.createElement('input');
-	monster_dam_immune_input.id = monster_header.id + '_DAM_IMMUNE';
-	monster_dam_immune_input.placeholder = 'Damage Immunities';
-	monster_dam_immune_input.style.marginLeft = '10px';
-	var monster_dam_immune_label = document.createElement('label');
-	monster_dam_immune_label.id = monster_dam_immune_input.id + '_LABEL'
-	monster_dam_immune_label.innerHTML = 'Damage Immunities';
-	monster_dam_immune.appendChild(monster_dam_immune_label);
-	monster_dam_immune.appendChild(monster_dam_immune_input);
-	monster_info_list.appendChild(monster_dam_immune);
-
-	var monster_dam_resist = document.createElement('li');
-	var monster_dam_resist_input = document.createElement('input');
-	monster_dam_resist_input.id = monster_header.id + '_DAM_RESIST';
-	monster_dam_resist_input.placeholder = 'Damage Resistances';
-	monster_dam_resist_input.style.marginLeft = '10px';
-	var monster_dam_resist_label = document.createElement('label');
-	monster_dam_resist_label.id = monster_dam_resist_input.id + '_LABEL'
-	monster_dam_resist_label.innerHTML = 'Damage Resistances';
-	monster_dam_resist.appendChild(monster_dam_resist_label);
-	monster_dam_resist.appendChild(monster_dam_resist_input);
-	monster_info_list.appendChild(monster_dam_resist);
-
-	var monster_dam_weak = document.createElement('li');
-	var monster_dam_weak_input = document.createElement('input');
-	monster_dam_weak_input.id = monster_header.id + '_DAM_WEAK';
-	monster_dam_weak_input.placeholder = 'Damage Weakness';
-	monster_dam_weak_input.style.marginLeft = '10px';
-	var monster_dam_weak_label = document.createElement('label');
-	monster_dam_weak_label.id = monster_dam_weak_input.id + '_LABEL'
-	monster_dam_weak_label.innerHTML = 'Damage Weakness';
-	monster_dam_weak.appendChild(monster_dam_weak_label);
-	monster_dam_weak.appendChild(monster_dam_weak_input);
-	monster_info_list.appendChild(monster_dam_weak);
-
-	// Senses / Language
-	var monster_sense = document.createElement('li');
-	var monster_sense_input = document.createElement('input');
-	monster_sense_input.id = monster_header.id + '_SENSE';
-	monster_sense_input.placeholder = 'Senses';
-	monster_sense_input.style.marginLeft = '10px';
-	var monster_sense_label = document.createElement('label');
-	monster_sense_label.id = monster_sense_input.id + '_LABEL'
-	monster_sense_label.innerHTML = 'Senses';
-	monster_sense.appendChild(monster_sense_label);
-	monster_sense.appendChild(monster_sense_input);
-	monster_info_list.appendChild(monster_sense);
-
-	var monster_language = document.createElement('li');
-	var monster_language_input = document.createElement('input');
-	monster_language_input.id = monster_header.id + '_LANGUAGE';
-	monster_language_input.placeholder = 'Languages';
-	monster_language_input.style.marginLeft = '10px';
-	var monster_language_label = document.createElement('label');
-	monster_language_label.id = monster_language_input.id + '_LABEL'
-	monster_language_label.innerHTML = 'Languages';
-	monster_language.appendChild(monster_language_label);
-	monster_language.appendChild(monster_language_input);
-	monster_info_list.appendChild(monster_language);
 
 	// Add all above info into the Header
 	monster_info_content.appendChild(monster_info_list);
@@ -1374,7 +1012,6 @@ function create_element_monster(monster, edition) {
 		monster_action_container.appendChild(temp_action);
 		set_session_storage();
 	}
-
 
 	var monster_action_clear = document.createElement('div');
 	monster_action_clear.style.backgroundColor = '#C00000';
@@ -1988,12 +1625,22 @@ function create_element(item) {
 		list.id = content.id;
 
 		content.appendChild(list);
-	} else if (item === 'Monster2') {
-		// content.appendChild(editor)
-	} else if (item === 'Monster1') {
-		// content.appendChild(editor)
-	} else if (item === 'Monster5') {
-		// content.appendChild(editor)
+	} else if (item.startsWith('Monster')) {
+		var import_action;
+
+		// Edition selector
+		if (item.endsWith('1')) {
+			import_action = add_monster_action_import(container, content, 'pathfinder_1', 'Import from d20pfsrd.com');
+		} else if (item.endsWith('2')) {
+			import_action = add_monster_action_import(container, content, 'pathfinder_2', 'Import from 2e.aonprd.com');
+		} else if (item.endsWith('5')) {
+			import_action = add_monster_action_import(container, content, 'dnd_5', 'Import from 5e.tools');
+		}
+
+		actions.appendChild(import_action);
+
+		var monster = create_element_monster(document.createElement('table'), item[item.length - 1]);
+		content.appendChild(monster);
 	} else if (item === 'Hazard2') {
 		// content.appendChild(editor)
 	} else if (item === 'Divider') {
@@ -2894,11 +2541,11 @@ function update_page(new_json) {
 						document.getElementById('S' + latest_store + 'C_SPECIAL').click();
 						latest_store_rows--;
 						
-						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Name', value[i]['Data'][j]['Name']);
-						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Describe', value[i]['Data'][j]['Describe']);
-						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Text', value[i]['Data'][j]['Text']);
-						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Category_I', value[i]['Data'][j]['Category']);
-						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_Descriptor_I', value[i]['Data'][j]['Descriptor']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_NAME', value[i]['Data'][j]['Name']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_DESCRIBE', value[i]['Data'][j]['Describe']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_TEXT', value[i]['Data'][j]['Text']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_CATEGORY_I', value[i]['Data'][j]['Category']);
+						set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_DESCRIPTOR_I', value[i]['Data'][j]['Descriptor']);
 
 						// Finally incriment when done, to not mess with future addition
 						latest_store_rows++;
@@ -2955,11 +2602,11 @@ function update_page(new_json) {
 						document.getElementById('T' + latest_table + 'C_SPECIAL').click();
 						latest_table_rows--;
 						
-						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Name', value[i]['Data'][j]['Name']);
-						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Describe', value[i]['Data'][j]['Describe']);
-						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Text', value[i]['Data'][j]['Text']);
-						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Category_I', value[i]['Data'][j]['Category']);
-						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_Descriptor_I', value[i]['Data'][j]['Descriptor']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_NAME', value[i]['Data'][j]['Name']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_DESCRIBE', value[i]['Data'][j]['Describe']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_TEXT', value[i]['Data'][j]['Text']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_CATEGORY_I', value[i]['Data'][j]['Category']);
+						set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_DESCRIPTOR_I', value[i]['Data'][j]['Descriptor']);
 
 						// Finally incriment when done, to not mess with future addition
 						latest_table_rows++;
@@ -3127,11 +2774,11 @@ function update_page(new_json) {
 						document.getElementById('MT' + latest_table + 'C_SPECIAL').click();
 						latest_table_rows--;
 						
-						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Name', loot_table['Data'][j]['Name']);
-						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Describe', loot_table['Data'][j]['Describe']);
-						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Text', loot_table['Data'][j]['Text']);
-						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Category_I', loot_table['Data'][j]['Category']);
-						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_Descriptor_I', loot_table['Data'][j]['Descriptor']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_NAME', loot_table['Data'][j]['Name']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_DESCRIBE', loot_table['Data'][j]['Describe']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_TEXT', loot_table['Data'][j]['Text']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_CATEGORY_I', loot_table['Data'][j]['Category']);
+						set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_DESCRIPTOR_I', loot_table['Data'][j]['Descriptor']);
 
 						// Finally incriment when done, to not mess with future addition
 						latest_table_rows++;
