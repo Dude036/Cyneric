@@ -1,6 +1,5 @@
 from django.shortcuts import render
-from django.http import JsonResponse
-from django.http import Http404
+from django.http import JsonResponse, Http404, HttpResponseRedirect
 from django.contrib import auth
 import simplejson as json
 import bs4
@@ -10,6 +9,35 @@ from .parse_tools import *
 
 
 # Create your views here.
+def admin_view(request):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+    if user.is_authenticated:
+        return render(request, 'editor_admin.html', {'is_admin': user.is_authenticated})
+    else:
+        HttpResponseRedirect('/editor/')
+
+
+def admin_action(request, action):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+    if not user.is_authenticated:
+        HttpResponseRedirect('/editor/')
+
+    if request.method != 'POST':
+        return Http404("Unable to parse POST request")
+
+    page_data = json.loads(request.body.decode('utf8'))
+
+    if action == 1:
+        print("FLUSHING 5E.TOOLS CACHE FROM LOCAL")
+
+        cache_results = cache_5etools_json(force=True)
+        return JsonResponse(cache_results, safe=False)
+    else:
+        return JsonResponse({'ERROR': 'Unknown Action Requested!'}, safe=False)
+
+
 def editor(request):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
@@ -286,144 +314,156 @@ def parse_donjon(url):
 def parse_5etools(url):
     print("Parsing '", url, "' from 5e/tools")
     source_book = url[url.rfind('_')+1:]
-    if source_book not in sources_5etools.keys():
-        return {'ERROR': "This book is current;y not supported. Please contact support via email below."}
+    special_book_list = {x.lower():x for x in sources_5etools.keys()}
+    if source_book not in special_book_list.keys():
+        return {'ERROR': "This book is currently not supported. Please contact support via email below."}
     try:
-        file = requests.get(sources_5etools[source_book])
+        print(special_book_list[source_book])
+        with open(os.path.join(os.getcwd(), 'static', 'cache', sources_5etools[special_book_list[source_book]]), 'r') as inf:
+            file = inf.read()
     except Exception as e:
         return {
             "ERROR": "There was a problem importing from " + url,
             "EXCEPTION": str(e)
         }
-    data = json.loads(file.text)
+    data = json.loads(file)
     unparsed_name = parse.unquote_plus(url[url.find('#')+1 : url.rfind('_')])
     name = modify_title(unparsed_name.title())
+    target = {}
 
-    # Query for creature in received JSON
-    creature = None
-    for c in data['monster']:
-        if c['name'] == name:
-            creature = c
-    if creature is None:
-        return {"ERROR": "Unable to locate creature from 5e.tools"}
-
-    # Validate if the creature is a copy
-    while '_copy' in creature.keys():
-        name = modify_title(creature['_copy']['name'])
-        source = creature['_copy']['source']
-        file = requests.get(sources_5etools[source.lower()])
-        data = json.loads(file.text)
-        old_creature = creature
+    try:
+        # Query for creature in received JSON
         creature = None
         for c in data['monster']:
             if c['name'] == name:
                 creature = c
         if creature is None:
             return {"ERROR": "Unable to locate creature from 5e.tools"}
-        creature = fix_dict_diff(old_creature, creature)
 
-    resist = ''
-    if 'resist' in creature.keys():
-        for point in creature['resist']:
-            if isinstance(point, str):
-                resist += point + ', '
-            elif isinstance(point, dict):
-                if 'resist' in point.keys() and 'note' in point.keys():
-                    resist += de_list(point['resist']) + ' ' + point['note']
-                elif 'special' in point.keys():
-                    resist += point['special'] + ', '
-    immune = ''
-    if 'conditionImmune' in creature.keys():
-        for p in creature['conditionImmune']:
-            if isinstance(p, str):
-                immune += p + ', '
-            if isinstance(p, dict):
-                immune += de_dict(p) + ', '
-    if 'immune' in creature.keys() and creature['immune'] is not None:
-        for p in creature['immune']:
-            if isinstance(p, str):
-                immune += p + ', '
-            if isinstance(p, dict):
-                immune += de_dict(p) + ', '
+        # Validate if the creature is a copy
+        while '_copy' in creature.keys():
+            name = modify_title(creature['_copy']['name'])
+            source = creature['_copy']['source']
+            file = requests.get(sources_5etools[source.lower()])
+            data = json.loads(file.text)
+            old_creature = creature
+            creature = None
+            for c in data['monster']:
+                if c['name'] == name:
+                    creature = c
+            if creature is None:
+                return {"ERROR": "Unable to locate creature from 5e.tools"}
+            creature = fix_dict_diff(old_creature, creature)
 
-    vulnerable = ''
-    if 'vulnerable' in creature.keys() and creature['vulnerable'] is not None:
-        for p in creature['vulnerable']:
-            if isinstance(p, str):
-                vulnerable += p + ', '
-            if isinstance(p, dict):
-                vulnerable += de_dict(p) + ', '
+        # Creature Established, building JSON
+        resist = ''
+        if 'resist' in creature.keys():
+            for point in creature['resist']:
+                if isinstance(point, str):
+                    resist += point + ', '
+                elif isinstance(point, dict):
+                    if 'resist' in point.keys() and 'note' in point.keys():
+                        resist += de_list(point['resist']) + ' ' + point['note']
+                    elif 'special' in point.keys():
+                        resist += point['special'] + ', '
+        immune = ''
+        if 'conditionImmune' in creature.keys():
+            for p in creature['conditionImmune']:
+                if isinstance(p, str):
+                    immune += p + ', '
+                if isinstance(p, dict):
+                    immune += de_dict(p) + ', '
+        if 'immune' in creature.keys() and creature['immune'] is not None:
+            for p in creature['immune']:
+                if isinstance(p, str):
+                    immune += p + ', '
+                if isinstance(p, dict):
+                    immune += de_dict(p) + ', '
 
-    ac = ''
-    if isinstance(creature['ac'][0], int):
-        ac = str(creature['ac'][0])
-    elif isinstance(creature['ac'][0], dict):
-        if 'special' in creature['ac'][0].keys():
-            ac = creature['ac'][0]['special']
-        else:
-            ac = str(creature['ac'][0]['ac'])
-            if 'from' in creature['ac'][0].keys():
-                ac += ' (' + str(creature['ac'][0]['from']) + ')'
+        vulnerable = ''
+        if 'vulnerable' in creature.keys() and creature['vulnerable'] is not None:
+            for p in creature['vulnerable']:
+                if isinstance(p, str):
+                    vulnerable += p + ', '
+                if isinstance(p, dict):
+                    vulnerable += de_dict(p) + ', '
 
-    actions = []
-    if 'action' in creature.keys() and creature['action'] is not None:
-        actions += process_actions_5etools(creature['action'], False)
-    if 'trait' in creature.keys() and creature['trait'] is not None:
-        actions += process_actions_5etools(creature['trait'], False)
-    if 'legendary' in creature.keys() and creature['legendary'] is not None:
-        actions += process_actions_5etools(creature['legendary'], True)
+        ac = ''
+        if isinstance(creature['ac'][0], int):
+            ac = str(creature['ac'][0])
+        elif isinstance(creature['ac'][0], dict):
+            if 'special' in creature['ac'][0].keys():
+                ac = creature['ac'][0]['special']
+            else:
+                ac = str(creature['ac'][0]['ac'])
+                if 'from' in creature['ac'][0].keys():
+                    ac += ' (' + str(creature['ac'][0]['from']) + ')'
 
-    spells = []
-    if 'spellcasting' in creature.keys() and creature['spellcasting'] is not None:
-        spells = process_spells_5etools(creature['spellcasting'][0])
+        actions = []
+        if 'action' in creature.keys() and creature['action'] is not None:
+            actions += process_actions_5etools(creature['action'], False)
+        if 'trait' in creature.keys() and creature['trait'] is not None:
+            actions += process_actions_5etools(creature['trait'], False)
+        if 'legendary' in creature.keys() and creature['legendary'] is not None:
+            actions += process_actions_5etools(creature['legendary'], True)
 
-    align = ''
-    if 'alignment' not in creature.keys():
+        spells = []
+        if 'spellcasting' in creature.keys() and creature['spellcasting'] is not None:
+            spells = process_spells_5etools(creature['spellcasting'][0])
+
         align = ''
-    elif isinstance(creature['alignment'][0], str):
-        align = ''.join(creature['alignment']) 
-    else:
-        align = str(creature['alignment'])
+        if 'alignment' not in creature.keys():
+            align = ''
+        elif isinstance(creature['alignment'][0], str):
+            align = ''.join(creature['alignment']) 
+        else:
+            align = str(creature['alignment'])
 
-    hp_info = ''
-    if 'special' in creature['hp'].keys():
-        hp_info += str(creature['hp']['special'])
-    else: 
-        hp_info += str(creature['hp']['average'])
-        if 'formula' in creature['hp'].keys():
-            hp_info += ' (' + creature['hp']['formula'] + ')'
+        hp_info = ''
+        if 'special' in creature['hp'].keys():
+            hp_info += str(creature['hp']['special'])
+        else: 
+            hp_info += str(creature['hp']['average'])
+            if 'formula' in creature['hp'].keys():
+                hp_info += ' (' + creature['hp']['formula'] + ')'
 
-    target = {
-        "Ac": ac,
-        "Actions": actions,
-        "Alignment": align,
-        "Cha": creature['cha'],
-        "ChaSave": True if 'save' in creature.keys() and 'cha' in creature['save'] else False,
-        "Con": creature['con'],
-        "ConSave": True if 'save' in creature.keys() and 'con' in creature['save'] else False,
-        "Cr": creature['cr'] if 'cr' in creature.keys() else '',
-        "DamImmune": immune,
-        "DamResist": resist,
-        "DamWeak": vulnerable,
-        "Description": "<p></p>",
-        "Dex": creature['dex'],
-        "DexSave": True if 'save' in creature.keys() and 'dex' in creature['save'] else False,
-        "Edition": "5",
-        "Hp": hp_info,
-        "Int": creature['int'],
-        "IntSave": True if 'save' in creature.keys() and 'int' in creature['save'] else False,
-        "Language": de_list(creature['languages']) if 'languages' in creature.keys() and creature['languages'] is not None else '',
-        "Name": modify_title(unparsed_name.title()),
-        "Sense": de_list(creature['senses']) if 'senses' in creature.keys() and creature['senses'] is not None else '',
-        "Size": creature['size'],
-        "Skills": de_dict(creature['skill']) if 'skill' in creature.keys() else '',
-        "Speed": de_dict(creature['speed']),
-        "Spells": spells,
-        "Str": creature['str'],
-        "StrSave": True if 'save' in creature.keys() and 'str' in creature['save'] else False,
-        "Treasure": {"Data": []},
-        "Wis": creature['wis'],
-        "WisSave": True if 'save' in creature.keys() and 'wis' in creature['save'] else False,
-    }
-    
-    return target
+        target = {
+            "Ac": ac,
+            "Actions": actions,
+            "Alignment": align,
+            "Cha": creature['cha'],
+            "ChaSave": True if 'save' in creature.keys() and 'cha' in creature['save'] else False,
+            "Con": creature['con'],
+            "ConSave": True if 'save' in creature.keys() and 'con' in creature['save'] else False,
+            "Cr": creature['cr'] if 'cr' in creature.keys() else '',
+            "DamImmune": immune,
+            "DamResist": resist,
+            "DamWeak": vulnerable,
+            "Description": "<p></p>",
+            "Dex": creature['dex'],
+            "DexSave": True if 'save' in creature.keys() and 'dex' in creature['save'] else False,
+            "Edition": "5",
+            "Hp": hp_info,
+            "Int": creature['int'],
+            "IntSave": True if 'save' in creature.keys() and 'int' in creature['save'] else False,
+            "Language": de_list(creature['languages']) if 'languages' in creature.keys() and creature['languages'] is not None else '',
+            "Name": modify_title(unparsed_name.title()),
+            "Sense": de_list(creature['senses']) if 'senses' in creature.keys() and creature['senses'] is not None else '',
+            "Size": creature['size'],
+            "Skills": de_dict(creature['skill']) if 'skill' in creature.keys() else '',
+            "Speed": de_dict(creature['speed']),
+            "Spells": spells,
+            "Str": creature['str'],
+            "StrSave": True if 'save' in creature.keys() and 'str' in creature['save'] else False,
+            "Treasure": {"Data": []},
+            "Wis": creature['wis'],
+            "WisSave": True if 'save' in creature.keys() and 'wis' in creature['save'] else False,
+        }    
+
+    except Exception as e:
+        target['EXCEPTION'] = e 
+        print("Error while parsing: " + url)
+        print(e)
+        print('-------------------------')
+    finally:
+        return target

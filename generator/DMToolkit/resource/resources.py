@@ -1118,49 +1118,49 @@ Drink_d2 = [
 ''' Spell Content Update
 '''
 if SpellSource == 'D&D 5' or SpellSource == 'All':
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_spells.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_spells.json'))
     MasterSpells.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_spells.json'), 'r'), encoding='utf-8'))
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_wondrous.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_wondrous.json'))
     MasterWondrous.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_wondrous.json'), 'r'), encoding='utf-8'))
 if SpellSource == 'Pathfinder 1' or SpellSource == 'All':
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'spells.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'spells.json'))
     MasterSpells.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'spells.json'), 'r'), encoding='utf-8'))
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'wondrous.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'wondrous.json'))
     MasterWondrous.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'wondrous.json'), 'r'), encoding='utf-8'))
 
 ''' Beast Content Update
 '''
 if BeastSource == 'D&D 5' or BeastSource == 'All':
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_beasts.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_beasts.json'))
     Beasts.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
 if BeastSource == 'Pathfinder 1' or BeastSource == 'All':
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'beasts.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'beasts.json'))
     Beasts.update(json.load(open(path.join('generator', 'DMToolkit', 'resource', 'beasts.json'), 'r', encoding='utf-8'), encoding='utf-8'))
 
 if AllowPokemon:
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'pokemon.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'pokemon.json'))
     with open(path.join('generator', 'DMToolkit', 'resource', 'pokemon.json'), 'r') as inf:
         Beasts.update(json.load(inf, encoding='utf-8'))
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'pokemon_moves.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'pokemon_moves.json'))
     with open(path.join('generator', 'DMToolkit', 'resource', 'pokemon_moves.json'), 'r') as inf:
         Poke_moves = json.load(inf, encoding='utf-8')
 
 ''' Special Item Content Update
 '''
 if SpellSource == 'D&D 5' or SpellSource == 'All':
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_items.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '5e_items.json'))
     contents = json.load(open(path.join('generator', 'DMToolkit', 'resource', '5e_items.json'), 'r', encoding='utf-8'))
     MasterItems['Weapon'].update(contents['Weapon'], encoding='utf-8')
     MasterItems['Armor'].update(contents['Armor'], encoding='utf-8')
     MasterItems['Equipment'].update(contents['Equipment'], encoding='utf-8')
 if SpellSource == 'Pathfinder 1' or SpellSource == 'All':
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'items.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', 'items.json'))
     contents = json.load(open(path.join('generator', 'DMToolkit', 'resource', 'items.json'), 'r', encoding='utf-8'))
     MasterItems['Weapon'].update(contents['Weapon'], encoding='utf-8')
     MasterItems['Armor'].update(contents['Armor'], encoding='utf-8')
     MasterItems['Equipment'].update(contents['Equipment'], encoding='utf-8')
 if SpellSource == 'Pathfinder 2' or SpellSource == 'All':
-    print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '2e_items.json'))
+    # print(path.join(path.abspath(getcwd()), 'generator', 'DMToolkit', 'resource', '2e_items.json'))
     contents = json.load(open(path.join('generator', 'DMToolkit', 'resource', '2e_items.json'), 'r', encoding='utf-8'))
     MasterItems['Weapon'].update(contents['Weapon'], encoding='utf-8')
     MasterItems['Armor'].update(contents['Armor'], encoding='utf-8')
