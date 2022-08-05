@@ -93,13 +93,6 @@ function update_page_state(state) {
 }
 
 
-/**Add event listener for input to save JSON diff
- */
-function save_diff_listener() {
-  // TODO (@Josh)
-}
-
-
 /**Create the Parent Container for Tables
  * @param element Primary child element, the table
  * @return Fully formed container for Table elements
@@ -1581,12 +1574,12 @@ function create_element(item) {
 
     content.appendChild(table);
   } else if (item === 'List') {
-    // Actions
-    actions.appendChild(add_list_action_new_row(container, content));
-
     // Content
     var list = document.createElement('ul');
     list.id = content.id;
+
+    // Actions
+    actions.appendChild(add_list_action_new_row(container, list));
 
     content.appendChild(list);
   } else if (item.startsWith('Monster')) {
@@ -1735,7 +1728,7 @@ function get_table_data(table, source) {
 function get_list_data(list) {
   if (DEBUG) { console.log("Exporting List: " + list.id); }
   var list_obj = {
-    'Type': 'Store',
+    'Type': 'List',
     'Data': []
   };
   if (DEBUG) { console.log("Traversing list elements"); }
@@ -1751,21 +1744,6 @@ function get_list_data(list) {
 
   if (DEBUG) { console.log("List successfully handled"); }
   return list_obj;
-}
-
-
-/**Convert special ID string to object usable strings
- * @param special Special string to convert
- * @return ID usable strings
- */
-function convert_special_to_id(special) {
-  var new_str = '';
-  special = special.slice(special.indexOf('_') + 1);
-  special.split('_').forEach(function(sub) {
-    new_str += sub[0] + sub.substring(1).toLowerCase();
-  });
-
-  return new_str;
 }
 
 
@@ -1999,8 +1977,8 @@ function save_container_as_json(container) {
   // Found a list container
   if (/^L/.test(container.id)) {
     if (DEBUG) { console.log("Found a list container"); }
-    var editor_element = container;
-    var list_data_obj = get_list_data(editor_element.childNodes[editor_element.childNodes.length - 1]);
+    var editor_element = container.lastElementChild.firstElementChild;
+    var list_data_obj = get_list_data(editor_element);
     window.sessionStorage.setItem(container.id, JSON.stringify(list_data_obj));
   }
 

@@ -59,11 +59,6 @@ function update_page(new_json) {
 }
 
 
-function update_container(container_id) {
-  
-}
-
-
 /**Updates a Small section of the webpage
  * @param new_json JSON object to update
  * @param container_id ID of the container as retrieved from storage
@@ -289,4 +284,16 @@ function update_hazard_container(new_json, container_id) {
 function update_list_container(new_json, container_id) {
   if (DEBUG) { console.log("Updating List: " + container_id); }
   
+  var add_row_button = document.getElementById(container_id + '_ADD');
+  var content = document.getElementById(container_id).lastElementChild.firstElementChild;
+  new_json['Data'].forEach(function(line_obj) {
+    add_row_button.click();
+    set_dom_value(content.lastElementChild.id + 'I', line_obj['Data']);
+    if (line_obj['Bold']) {
+        document.getElementById(content.lastElementChild.id + 'I_BOLD').checked = true;
+    }
+    if (line_obj['Underline']) {
+        document.getElementById(content.lastElementChild.id + 'I_UNDERLINE').checked = true;
+    }
+  })
 }
