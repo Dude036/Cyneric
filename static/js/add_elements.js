@@ -106,6 +106,7 @@ function add_header_delete(parent, content) {
       if (DEBUG) { console.log("Deleting Item"); }
       parent.parentNode.removeChild(parent);
       if (DEBUG) { console.log("Item successfully deleted"); }
+      delete_container_session_storage(parent.id)
     }
   }
 

@@ -1,14 +1,5 @@
 
 
-// Add Back button Cancel
-window.addEventListener('popstate', function (e) {
-  if (confirm("Are you sure you want to leave?")) {
-    window.history.back();
-  } else {
-    window.history.pushState(null, null, window.location.pathname);
-  }
-}, false);
-
 // Dragula Initial Setup
 dragula([document.getElementById('editor')], {
   moves: function (el, container, handle) {
@@ -58,7 +49,8 @@ function incriment_item_counter(name) {
 function update_page_state(state) {
   if (DEBUG) { console.log("Updating page state"); }
   if (state === "Save") {
-    save_all_json();
+    refresh_page_json()
+    save_json_from_page();
     (async () => {
       // Toast Message
       var toast = document.createElement('div');
@@ -86,6 +78,17 @@ function update_page_state(state) {
 
       // Delete contents of editor and session
       document.getElementById('editor').innerHTML = "";
+      sessionStorage.clear();
+    }
+  } else if (state === "Load") {
+    if (confirm("Loading will Current Page contents. Are you sure you want to Load from Storage?")) {
+      header.value = "";
+      description.value = "";
+
+      // Delete contents of editor and session
+      document.getElementById('editor').innerHTML = "";
+      var json_from_storage = export_session_json();
+      update_page(json_from_storage);
       sessionStorage.clear();
     }
   }
@@ -141,7 +144,6 @@ function editor_container_table(element) {
         new_row.parentNode.removeChild(new_row);
         if (DEBUG) { console.log("Row Successfully Deleted"); }
       }
-      set_session_storage();
     }
 
     // Detail Style
@@ -165,7 +167,6 @@ function editor_container_table(element) {
       new_input.id = new_cell.id + "I";
 
       new_cell.appendChild(new_input);
-      set_session_storage();
     }
 
     var add_header = new_row.insertCell(2);
@@ -225,7 +226,6 @@ function editor_container_table(element) {
         container.parentNode.removeChild(container);
         if (DEBUG) { console.log("Table successfully deleted"); }
       }
-      set_session_storage();
     }
 
     container.appendChild(add_delete_div);
@@ -246,7 +246,6 @@ function editor_container_table(element) {
         element.innerHTML = '';
         if (DEBUG) { console.log("Table successfully Cleared"); }
       }
-      set_session_storage();
     }
 
     container.appendChild(add_delete_div);
@@ -367,7 +366,6 @@ function editor_container_table(element) {
         item_row.parentNode.removeChild(item_row);
         if (DEBUG) { console.log("Row Successfully Deleted"); }
       }
-      set_session_storage();
     }
 
     add_button_td.appendChild(add_button_div);
@@ -417,7 +415,6 @@ function editor_container_table(element) {
     item_text.style.lineHeight = "20px";
     item_text.style.width = "400px";
     item_data_cell.appendChild(item_text);
-    set_session_storage();
   }
 
   if (element.id.startsWith("S")) {
@@ -436,7 +433,6 @@ function editor_container_table(element) {
       var base_id = element.id + "_OWNER";
       if (confirm("Overwrite Owner Content?")) {
         owner_api_wrapper(base_id, 'npc/json');
-        set_session_storage();
       }
     }
 
@@ -725,14 +721,12 @@ function create_element_monster(monster, edition) {
           temp_trait.parentNode.removeChild(temp_trait);
           if (DEBUG) { console.log("Trait successfully deleted"); }
         }
-        set_session_storage();
       }
 
       temp_trait.appendChild(temp_trait_input);
       temp_trait.appendChild(temp_trait_delete);
 
       monster_trait_list_loc.appendChild(temp_trait);
-      set_session_storage();
     }
 
     var monster_trait_list_clear = document.createElement('div');
@@ -749,7 +743,6 @@ function create_element_monster(monster, edition) {
         monster_trait_list_loc.innerHTML = '';
         if (DEBUG) { console.log("Traits successfully cleared"); }
       }
-      set_session_storage();
     }
 
     monster_header_content.appendChild(monster_trait_list_clear);
@@ -898,7 +891,6 @@ function create_element_monster(monster, edition) {
         temp_action.parentNode.removeChild(temp_action);
         if (DEBUG) { console.log("Action successfully deleted"); }
       }
-      set_session_storage();
     }
     temp_action_header.appendChild(temp_action_header_delete);
 
@@ -965,7 +957,6 @@ function create_element_monster(monster, edition) {
     temp_action.appendChild(temp_action_header);
     temp_action.appendChild(temp_action_info);
     monster_action_container.appendChild(temp_action);
-    set_session_storage();
   }
 
   var monster_action_clear = document.createElement('div');
@@ -1146,7 +1137,6 @@ function create_element_monster(monster, edition) {
             spell_cont.parentNode.removeChild(spell_cont);
             if (DEBUG) { console.log("Spell Tables successfully Deleted"); }
           }
-          set_session_storage();
         }
 
         latest_monster_spell_col++;
@@ -1169,7 +1159,6 @@ function create_element_monster(monster, edition) {
           temp_row.parentNode.removeChild(temp_row);
           if (DEBUG) { console.log("Spell Row successfully Deleted"); }
         }
-        set_session_storage();
       }
 
       temp_spell_list.appendChild(temp_spell_list_loc);
@@ -1178,7 +1167,6 @@ function create_element_monster(monster, edition) {
       temp_row.appendChild(temp_spell_use);
       temp_row.appendChild(temp_spell_list);
       monster_spell_table.appendChild(temp_row)
-      set_session_storage();
     }
 
     var monster_spell_row_delete = document.createElement('div');
@@ -1200,7 +1188,6 @@ function create_element_monster(monster, edition) {
         monster_spell_add.style.display = 'block';
         monster_spell_clear.style.display = 'none';
       }
-      set_session_storage();
     }
     // Finalize
     monster_spell_table_container.appendChild(monster_spell_row_delete);
@@ -1210,7 +1197,6 @@ function create_element_monster(monster, edition) {
 
     monster_spell_add.style.display = 'none';
     monster_spell_clear.style.display = 'block';
-    set_session_storage();
   }
 
   // Delete Table option
@@ -1222,7 +1208,6 @@ function create_element_monster(monster, edition) {
     }
     monster_spell_add.style.display = 'block';
     monster_spell_clear.style.display = 'none';
-    set_session_storage();
   }
 
   monster_spell.appendChild(monster_spell_clear);
@@ -1516,6 +1501,11 @@ function create_element(item) {
   var container = document.createElement('div');
   container.id = item[0] + get_uuid();
   container.style.marginBottom = '60px';
+
+  // Generic update function for all bits of data within a form.
+  container.addEventListener('change', function() {
+    save_container_as_json(container);
+  });
 
   // Actions
   var actions = document.createElement('div');
@@ -1997,15 +1987,21 @@ function save_container_as_json(container) {
 }
 
 
+/**Deletes all session data
+ */
+function refresh_page_json() {
+  window.sessionStorage.clear();
+}
+
+
 /**Trawls editor container to save all data to session storage
  */
-function save_all_json() {
+function save_json_from_page() {
   if (DEBUG) { console.log("Exporting containers to session storage"); }
-  window.sessionStorage.clear();
 
   var session_state_obj = {
-    "Name": "",
-    "Description": "",
+    "Name": document.getElementById('header').value,
+    "Description": document.getElementById('description').value,
     "Data": [],
   }
   export_counter = 0;
@@ -2029,8 +2025,17 @@ function save_all_json() {
 /**Set storage value for page, for later retrieval
  */
 function save_container_session_storage(container_id) {
-  if (DEBUG) { console.log("Updating JSON for container:" + container_id); }
+  if (DEBUG) { console.log("Updating JSON for container: " + container_id); }
   var export_obj = save_container_as_json(document.getElementById(container_id));
+}
+
+
+/**Remove container from storage
+ */
+function delete_container_session_storage(container_id) {
+  if (DEBUG) { console.log("Deleting JSON for container: " + container_id); }
+  window.sessionStorage.removeItem(container_id);
+  save_json_from_page();
 }
 
 
@@ -2437,7 +2442,7 @@ function export_page() {
  */
 function export_json(callback) {
   if (DEBUG) { console.log("Exporting containers to JSON"); }
-  // Clear export object
+  // Clear export objects
   var export_state_obj = {
     "Name": document.getElementById('header').value,
     "Description": convert_text(document.getElementById('description').value),
@@ -2446,7 +2451,8 @@ function export_json(callback) {
   export_counter = 0;
 
   // Save all to JSON
-  save_all_json();
+  refresh_page_json();
+  save_json_from_page();
   var session_obj = JSON.parse(window.sessionStorage.getItem('state'));
   if (DEBUG) { console.log("Session Containers:"); }
   if (DEBUG) { console.log(session_obj['Data']); }
@@ -2457,7 +2463,7 @@ function export_json(callback) {
     var session_container_obj = JSON.parse(window.sessionStorage.getItem(key));
     if (DEBUG) { console.log(session_container_obj); }
     export_state_obj['Data'].push(session_container_obj);
-  })
+  });
   
   if (DEBUG) { console.log("Final Export Data"); }
   if (DEBUG) { console.log(export_state_obj); }
@@ -2469,6 +2475,54 @@ function export_json(callback) {
   } else {
     return export_state_obj;
   }
+}
+
+
+/**Get all data from session in a single JSON object
+ * @return Exportable JSON from session storage
+ */
+function export_session_json() {
+  if (!window.sessionStorage.getItem('state')) {
+    (async () => {
+      // Toast Message
+      var toast = document.createElement('div');
+      toast.style.backgroundColor = "#E34D4D";
+      toast.style.position = "fixed";
+      toast.style.top = "40px";
+      toast.style.left = "40px";
+      toast.style.width = "250px";
+      toast.id = "toast";
+      toast.style.padding = "10px 20px";
+
+      toast.appendChild(document.createTextNode("Unable to load from Storage"));
+
+      var header_img = document.getElementById("header_img");
+      header_img.appendChild(toast);
+
+      setTimeout(function(){
+        toast.parentNode.removeChild(toast);
+      }, 5000);
+    })()
+    return null;
+  }
+  if (DEBUG) { console.log("Exporting JSON from storage"); }
+  var session_obj = JSON.parse(window.sessionStorage.getItem('state'));
+
+  var export_state_obj = {
+    "Name": session_obj['Name'],
+    "Description": convert_text(session_obj['Description']),
+    "Data": [],
+  }
+
+  // Get all keys and remove data from 
+  var all_keys = Object.keys(window.sessionStorage);
+  all_keys.splice(all_keys.indexOf('state'), 1);
+
+  for (var i = 0; i < all_keys.length; i++) {
+    export_state_obj['Data'].push(JSON.parse(window.sessionStorage.getItem(all_keys[i])));
+  }
+
+  return export_state_obj;
 }
 
 
@@ -2494,113 +2548,6 @@ function import_page() {
 
   if (DEBUG) { console.log("JSON String validated. Beginning Document Change"); }
   update_page(new_json);
-  set_session_storage();
+  save_json_from_page();
 }
 
-
-/**Update Session storage for page with imported data
- * @param data Imported Data
- * @param data_type Location in Session Storage
- * @param current_id The Id requesting an import. Update this one.
- */
-function update_session_storage(data, data_type, current_id) {
-  if (DEBUG) { console.log("Updating Session JSON with imported info"); }
-  // Get the data as if to save to local storage
-  var export_obj = export_json(true);
-
-  // Decipher which instance to replace
-  if (data_type == "Monsters") {
-    console.log("Searching for " + current_id + " among Monsters")
-    hazard_dom = document.getElementById(current_id);
-    console.log(hazard_dom)
-    for (var i = export_obj["Monsters"].length - 1; i >= 0; i--) {
-      if (export_obj["Monsters"][i]['id'] == current_id) {
-        console.log("Found id! :: " + export_obj["Monsters"]['id']);
-        var keys = Object.keys(data);
-        keys.forEach(function(key) {
-          export_obj["Monsters"][i][key] = data[key];
-        })
-      }
-    }
-  } else if (data_type == "Hazards") {
-    console.log("Searching for " + current_id + " among Hazards")
-    hazard_dom = document.getElementById(current_id);
-    console.log(hazard_dom)
-    for (var i = export_obj["Hazards"].length - 1; i >= 0; i--) {
-      if (export_obj["Hazards"][i]['id'] == current_id) {
-        console.log("Found id! :: " + export_obj["Hazards"]['id']);
-        var keys = Object.keys(data);
-        keys.forEach(function(key) {
-          export_obj["Hazards"][i][key] = data[key];
-        })
-      }
-    }
-  }
-
-  // Update the local storage
-  window.sessionStorage.setItem('state', JSON.stringify(export_obj));
-
-  // Clear page before reinstating data
-  document.getElementById('editor').innerHTML = "";
-
-  // Cleared page means we can resent this stuff
-  latest_store = 0;
-  latest_store_rows = 0;
-  latest_table = 0;
-  latest_table_rows = 0;
-  latest_list = 0;
-  latest_list_rows = 0;
-  latest_monster = 0;
-  latest_monster_rows = 0;
-  latest_monster_trait = 0;
-  latest_monster_spell = 0;
-  latest_monster_spell_row = 0;
-  latest_monster_spell_col = 0;
-  latest_monster_action = 0;
-  latest_hazard = 0;
-  latest_hazard_trait = 0;
-  latest_hazard_custom = 0;
-  retrieve_session_storage();
-}
-
-
-/*******************************************************************************************************/
-/* HELPER FUNCTIONS ************************************************************************************/
-/*******************************************************************************************************/
-
-
-/**Convert Text to paragraphed HTML
- * @param text The text to HTMLify
- * @return HTMLified text
- */
-function convert_text(text) {
-  return '<p>' + text.split('\n').join('</p><p>') + '</p>'
-}
-
-
-/**Reavers the convert text function into paragraphs
- * @param text The text to normalize
- * @return Normal text
- */
-function deconvert_text(text) {
-  return text.substring(3, text.length - 4).split('</p><p>').join('\n');
-}
-
-
-/**Validate id string passed in is Numeric
- * @param value Number
- * @return True if a number
- */
-function is_numeric(value) {
-  return /^-?\d+$/.test(value);
-}
-
-
-/**Convert Stat to modifier
- * @param stat Stat
- * @return Modifier
- */
-function get_mod(stat) {
-  var val = Math.floor(parseInt(stat) / 2) - 5;
-  return (val > 0) ? '+' + val : val;
-}

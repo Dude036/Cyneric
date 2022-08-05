@@ -46,7 +46,7 @@ function update_page(new_json) {
       create_element('List');
     } else if (data_obj['Type'].startsWith('Monster')) {
       create_element('Monster' + data_obj['Edition']);
-    } else if (data_obj['Type'] === 'Hazard2') {
+    } else if (data_obj['Type'].startsWith('Hazard')) {
       create_element('Hazard2');
     } else if (data_obj['Type'] === 'Divider') {
       create_element('Divider');

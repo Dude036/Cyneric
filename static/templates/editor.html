@@ -33,7 +33,7 @@
   {% csrf_token %}
   <input type="text" id="header" name="header" placeholder="Town Name" style="margin: auto; display: block; font-size:32px;margin-bottom: 10px;">
   <textarea class="overflow_textarea" type="textarea" id="description" name="description" placeholder="Town description" style="width: 100%;margin-bottom: 60px;"></textarea>
-  <div id="editor" class="editor">
+  <div id="editor" class="editor" onbeforeunload="save_json_from_page()">
   </div>
   <div class="sidebar">
     <img id="sidebar_open" height="30px" style="float: right;display: block;" src="{% static 'svg/open_editor.svg' %}" onclick="show_hide('sidebar_container');show_hide('sidebar_open');show_hide('sidebar_closed');">
@@ -74,6 +74,9 @@
       </div>
       <div class="green sidebar_object" onclick="update_page_state('Save');">
         Save Page
+      </div>
+      <div class="orange sidebar_object" onclick="update_page_state('Load');">
+        Load Page From Storage
       </div>
       <div class="red sidebar_object" onclick="update_page_state('Delete');">
         Delete Page
