@@ -485,6 +485,26 @@ function add_monster_action_import(parent, content, icon, label) {
 }
 
 
+/**Adds hazard header function: import
+ * @param parent DOM element containing everything
+ * @param content DOM element containg contents to be displayed
+ * @param icon Icon to use for action
+ * @param label Label to use for action
+ * @return Action for parent of type: import
+ */
+function add_hazard_action_import(parent, content, icon, label) {
+  var new_row = generic_action_span(icon, label, '', '0 0 0 20px');
+  new_row.style.float = 'right';
+  new_row.id = content.id + '_IMPORT';
+
+  new_row.onclick = function() {
+    get_hazard_contents(label, icon[icon.length - 1], content.id)
+  }
+
+  return new_row;
+}
+
+
 /**Adds monster header function: edition
  * @param parent DOM element containing everything
  * @param content DOM element containg contents to be displayed

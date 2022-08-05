@@ -33,29 +33,29 @@ function update_page(new_json) {
   // Update page information to reflect the data imported.
   set_dom_value('header', new_json['Name']);
   set_dom_value('description', deconvert_text(new_json['Description']))
-  for (var data_obj in new_json['Data']) {
+  new_json['Data'].forEach(function(data_obj) {
     // Null check
-    if (data_obj === null) {continue;}
+    if (data_obj === null) {return;}
 
     // Check type for button check, and create object
-    if (item === 'Store') {
+    if (data_obj['Type'] === 'Store') {
       create_element('Store');
-    } else if (item === 'Table') {
+    } else if (data_obj['Type'] === 'Table') {
       create_element('Table');
-    } else if (item === 'List') {
+    } else if (data_obj['Type'] === 'List') {
       create_element('List');
-    } else if (item.startsWith('Monster')) {
+    } else if (data_obj['Type'].startsWith('Monster')) {
       create_element('Monster' + data_obj['Edition']);
-    } else if (item === 'Hazard2') {
+    } else if (data_obj['Type'] === 'Hazard2') {
       create_element('Hazard2');
-    } else if (item === 'Divider') {
+    } else if (data_obj['Type'] === 'Divider') {
       create_element('Divider');
     }
 
     // Get the last item in the editor and update container from there
     var editor_container = document.getElementById('editor').lastElementChild;
-    update_container(data_obj, container_id)
-  }
+    update_container(data_obj, editor_container.id)
+  });
 }
 
 
@@ -77,9 +77,14 @@ function update_container(new_json, container_id) {
   } else if (container_id.startsWith('T')) {
     var table = document.getElementById(container_id).childNodes[1].childNodes[0]
     set_dom_value(table.id + "_NAME_I", new_json['Name']);
-    update_table_container(new_json, container_id);
+
+    var content = document.getElementById(container_id).childNodes[1]
+    var add_special = document.getElementById(container_id + '_SPECIAL')
+    var add_blank = document.getElementById(container_id + '_BLANK')
+    update_table_container(new_json, content.id, add_blank, add_special);
   } else if (container_id.startsWith('H')) {
-    update_hazard_container(new_json, container_id);
+    var content = document.getElementById(container_id).childNodes[1]
+    update_hazard_container(new_json, content.id);
   } else if (container_id.startsWith('L')) {
     update_list_container(new_json, container_id);
   } else if (container_id.startsWith('D')) {
@@ -126,7 +131,6 @@ function update_monster_container(new_json, container_id) {
       document.getElementById(container_id + 'R1_TRAIT_ADD').click();
       set_dom_value(trait_list.lastElementChild.childNodes[0].id, new_json['Traits'][i])
     }
-    set_dom_value(container_id + 'R1_RECALL', new_json['Recall']);
   }
 
   /************************************************************************************************/
@@ -273,7 +277,33 @@ function update_table_container(new_json, container_id, blank_button, special_bu
  */
 function update_hazard_container(new_json, container_id) {
   if (DEBUG) { console.log("Updating Hazard: " + container_id); }
-  
+  var hazard_table = document.querySelector('table#' + container_id);
+
+  // Standard List
+  set_dom_value(container_id + 'R1_NAME', new_json['Name']);
+  set_dom_value(container_id + 'R1_CR', new_json['Cr']);
+  set_dom_value(container_id + 'R4_COMPLEXITY', new_json['Complexity']);
+  set_dom_value(container_id + 'R4_STEALTH', new_json['Stealth']);
+  set_dom_value(container_id + 'R4_DESCRIPTION', new_json['Description']);
+  set_dom_value(container_id + 'R4_DISABLE', new_json['Disable']);
+
+  // Trait List
+  var trait_list = document.getElementById(container_id + 'R2_TRAITS');
+  for (var x = 0; x < new_json['Traits'].length; x++) {
+    document.getElementById(container_id + 'R3_TRAIT_ADD').click()
+    set_dom_value(trait_list.lastElementChild.firstElementChild.id, new_json['Traits'][x]);
+  }
+
+  // Custom
+  var custom_list = document.getElementById(container_id + 'R5_CUSTOM_LIST');
+  new_json['Custom'].forEach(function(custom_obj) {
+    var key = Object.keys(custom_obj)[0];
+
+    document.getElementById(container_id + 'R5_CUSTOM_ADD').click();
+    var custom_inputs = custom_list.lastElementChild.querySelectorAll('input');
+    set_dom_value(custom_inputs[0].id, key);
+    set_dom_value(custom_inputs[1].id, custom_obj[key]);
+  });
 }
 
 

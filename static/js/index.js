@@ -1312,7 +1312,6 @@ function create_element_hazard_list_item(item_text, add_id, custom, input_option
         hazard_list_item.parentNode.removeChild(hazard_list_item);
         if (DEBUG) { console.log("Custom Field successfully deleted"); }
       }
-      set_session_storage();
     }
 
     hazard_list_item.appendChild(hazard_list_button);
@@ -1427,14 +1426,12 @@ function create_element_hazard(hazard, item) {
         temp_trait.parentNode.removeChild(temp_trait);
         if (DEBUG) { console.log("Trait successfully deleted"); }
       }
-      set_session_storage();
     }
 
     temp_trait.appendChild(temp_trait_input);
     temp_trait.appendChild(temp_trait_delete);
 
     hazard_trait_loc.appendChild(temp_trait);
-    set_session_storage();
   }
 
   var hazard_trait_clear = document.createElement('div');
@@ -1451,7 +1448,6 @@ function create_element_hazard(hazard, item) {
       hazard_trait_loc.innerHTML = '';
       if (DEBUG) { console.log("Traits successfully cleared"); }
     }
-    set_session_storage();
   }
 
   // Add
@@ -1493,12 +1489,12 @@ function create_element_hazard(hazard, item) {
 
   hazard_custom_add.onclick = function() {
     hazard_custom_loc.appendChild(create_element_hazard_list_item('', hazard_custom.id, true, {'size': '70'}))
-    set_session_storage();
   }
 
   hazard_custom_content.appendChild(hazard_custom_add);
 
   var hazard_custom_loc = document.createElement('div')
+  hazard_custom_loc.id = hazard_custom.id + '_CUSTOM_LIST'
   hazard_custom_content.appendChild(hazard_custom_loc);
 
   hazard_custom.appendChild(hazard_custom_content);
@@ -1604,7 +1600,14 @@ function create_element(item) {
     var monster = create_element_monster(document.createElement('table'), item[item.length - 1]);
     content.appendChild(monster);
   } else if (item === 'Hazard2') {
-    // content.appendChild(editor)
+      var import_action = add_hazard_action_import(container, content, 'pathfinder_2', 'Import from 2e.aonprd.com');
+      var edition_action = add_list_action_edition(container, content, 'import', 'Edition: Pathfinder 2e');
+
+
+    actions.appendChild(import_action);
+    actions.appendChild(edition_action);
+    var hazard = create_element_hazard(document.createElement('table'), item[item.length - 1]);
+    content.appendChild(hazard);
   } else if (item === 'Divider') {
     // Add name for Divider
     var add_title_div = document.createElement('div');
@@ -1967,11 +1970,10 @@ function save_container_as_json(container) {
   // Found a hazard container
   if (/^H/.test(container.id)) {
     if (DEBUG) { console.log("Found a hazard container"); }
-    var editor_element = container;
+    var editor_element = container.childNodes[1].childNodes[0];
     var edition = document.getElementById(editor_element.id + '_EDITION');
-    var hazard_data_obj = get_hazard_data(editor_element.childNodes[editor_element.childNodes.length - 1], edition.innerHTML[edition.innerHTML.length - 2])
+    var hazard_data_obj = get_hazard_data(editor_element, edition.name[edition.name.length - 1])
     window.sessionStorage.setItem(container.id, JSON.stringify(hazard_data_obj));
-    ;
   }
 
   // Found a list container
@@ -2437,8 +2439,8 @@ function export_json(callback) {
   if (DEBUG) { console.log("Exporting containers to JSON"); }
   // Clear export object
   var export_state_obj = {
-    "Name": "",
-    "Description": "",
+    "Name": document.getElementById('header').value,
+    "Description": convert_text(document.getElementById('description').value),
     "Data": [],
   }
   export_counter = 0;
@@ -2493,389 +2495,6 @@ function import_page() {
   if (DEBUG) { console.log("JSON String validated. Beginning Document Change"); }
   update_page(new_json);
   set_session_storage();
-}
-
-
-/**Update Page with given JSON object
- * @param new_json JSON object to update from
- */
-function update_page(new_json) {
-  // Update page information to reflect the data imported.
-  set_dom_value('header', new_json['Name']);
-  set_dom_value('description', deconvert_text(new_json['Description']));
-
-  for (let [key, value] of Object.entries(new_json)) {
-    if (DEBUG) { console.log("Parsing Key: " + key); }
-    if (DEBUG) { console.log(value); }
-
-    if (key === 'Stores') {
-      for (var i = 0; i < value.length; i++) {
-        if (DEBUG) { console.log("Parsing Store Owner"); }
-        create_element('Store');
-        latest_store--;
-        
-        // Set Owner Elements
-        set_dom_value('S' + latest_store + '_OWNER_STORE', value[i]['Owner']['Store Name']);
-        set_dom_value('S' + latest_store + '_OWNER_NAME', value[i]['Owner']['Name']);
-        set_dom_value('S' + latest_store + '_OWNER_DESCRIBE', deconvert_text(value[i]['Owner']['Description']));
-        set_dom_value('S' + latest_store + '_OWNER_RACE', value[i]['Owner']['Race']);
-        set_dom_value('S' + latest_store + '_OWNER_GENDER', value[i]['Owner']['Gender']);
-        set_dom_value('S' + latest_store + '_OWNER_AGE', value[i]['Owner']['Age']);
-        set_dom_value('S' + latest_store + '_OWNER_TRAIT_1', value[i]['Owner']['Trait 1']);
-        set_dom_value('S' + latest_store + '_OWNER_TRAIT_2', value[i]['Owner']['Trait 2']);
-
-        // Set Item Elements
-        if (DEBUG) { console.log("Parsing Store Data"); }
-        for (var j = 0; j < value[i]['Data'].length; j++) {
-          if (value[i]['Data'][j]['Type'] === 'Blank') {
-            document.getElementById('S' + latest_store + 'C_ADD').click();
-            latest_store_rows--;
-            
-            var add_th = '';
-            var add_td = '';
-
-            // Since there's no Id's to follow, grab childNodes and select the one's that don't have Id's
-            var buttons = document.getElementById('S' + latest_store + 'R' + latest_store_rows).childNodes;
-            for (var x = buttons.length - 1; x >= 0; x--) {
-              if (add_th !== '' && add_td !== '') {
-                break;
-              }
-              if (buttons[x].innerHTML === "Add 'td'") {
-                add_td = buttons[x];
-              } else if (buttons[x].innerHTML === "Add 'th'") {
-                add_th = buttons[x];
-              }
-            }
-
-            // Loop through objects and hit buttons as needed.
-            Object.keys(value[i]['Data'][j]).forEach(function(key) {
-              var val = value[i]['Data'][j][key]
-              var add = key.split("").reverse().join("");
-              if (key.endsWith('H')) {
-                add_th.click();
-                set_dom_value('S' + latest_store + 'R' + latest_store_rows + key.split("").reverse().join("") + 'I', val)
-              } else if (key.endsWith('C')) {
-                add_td.click();
-                set_dom_value('S' + latest_store + 'R' + latest_store_rows + key.split("").reverse().join("") + 'I', val)
-              }
-            });
-
-            // Finally incriment when done, to not mess with future addition
-            latest_store_rows++;
-          } else {
-            document.getElementById('S' + latest_store + 'C_SPECIAL').click();
-            latest_store_rows--;
-            
-            set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_NAME', value[i]['Data'][j]['Name']);
-            set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_DESCRIBE', value[i]['Data'][j]['Describe']);
-            set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_TEXT', value[i]['Data'][j]['Text']);
-            set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_CATEGORY_I', value[i]['Data'][j]['Category']);
-            set_dom_value('S' + latest_store + 'R' + latest_store_rows + '_DESCRIPTOR_I', value[i]['Data'][j]['Descriptor']);
-
-            // Finally incriment when done, to not mess with future addition
-            latest_store_rows++;
-          }
-        }
-
-        // Finally incriment when done, to not mess with future addition
-        latest_store++;
-      }
-    } else if (key === 'Tables') {
-      for (var i = 0; i < value.length; i++) {
-        if (DEBUG) { console.log("Parsing Table Data"); }
-        create_element('Table');
-        latest_table--;
-        
-        set_dom_value('T' + latest_table + 'C_NAME_I', value[i]['Name']);
-        for (var j = 0; j < value[i]['Data'].length; j++) {
-          if (value[i]['Data'][j]['Type'] === 'Blank') {
-            document.getElementById('T' + latest_table + 'C_ADD').click();
-            latest_table_rows--;
-            
-            var add_th = '';
-            var add_td = '';
-
-            // Since there's no Id's to follow, grab childNodes and select the one's that don't have Id's
-            var buttons = document.getElementById('T' + latest_table + 'R' + latest_table_rows).childNodes;
-            for (var x = buttons.length - 1; x >= 0; x--) {
-              if (add_th !== '' && add_td !== '') {
-                break;
-              }
-              if (buttons[x].innerHTML === "Add 'td'") {
-                add_td = buttons[x];
-              } else if (buttons[x].innerHTML === "Add 'th'") {
-                add_th = buttons[x];
-              }
-            }
-
-            // Loop through objects and hit buttons as needed.
-            Object.keys(value[i]['Data'][j]).forEach(function(key) {
-              var val = value[i]['Data'][j][key]
-              var add = key.split("").reverse().join("");
-              if (key.endsWith('H')) {
-                add_th.click();
-                set_dom_value('T' + latest_table + 'R' + latest_table_rows + key.split("").reverse().join("") + 'I', val)
-              } else if (key.endsWith('C')) {
-                add_td.click();
-                set_dom_value('T' + latest_table + 'R' + latest_table_rows + key.split("").reverse().join("") + 'I', val)
-              }
-            });
-
-            // Finally incriment when done, to not mess with future addition
-            latest_table_rows++;
-          } else {
-            document.getElementById('T' + latest_table + 'C_SPECIAL').click();
-            latest_table_rows--;
-            
-            set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_NAME', value[i]['Data'][j]['Name']);
-            set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_DESCRIBE', value[i]['Data'][j]['Describe']);
-            set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_TEXT', value[i]['Data'][j]['Text']);
-            set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_CATEGORY_I', value[i]['Data'][j]['Category']);
-            set_dom_value('T' + latest_table + 'R' + latest_table_rows + '_DESCRIPTOR_I', value[i]['Data'][j]['Descriptor']);
-
-            // Finally incriment when done, to not mess with future addition
-            latest_table_rows++;
-          }
-        }
-
-        // Finally incriment when done, to not mess with future addition
-        latest_table++;
-      }
-    } else if (key.startsWith('Monster')) {
-      for (var i = 0; i < value.length; i++) {
-        if (DEBUG) { console.log("Parsing Monster Data"); }
-        if (DEBUG) { console.log("Edition: " + value[i]['Edition']); }
-        create_element('Monster' + value[i]['Edition']);
-        latest_monster--;
-        if (DEBUG) { console.log(value[i]); }
-
-        // Begin Header section
-        set_dom_value('M' + latest_monster + 'R1_NAME', value[i]['Name']);
-        set_dom_value('M' + latest_monster + 'R1_CR', value[i]['Cr']);
-        set_dom_value('M' + latest_monster + 'R1_ALIGN', value[i]['Alignment']);
-        set_dom_value('M' + latest_monster + 'R1_DESCRIBE', deconvert_text(value[i]['Description']));
-
-        // Pathfinder 2e Traits
-        if (value[i]['Edition'] === '2') {
-          for (var j = 0; j < value[i]['Traits'].length; j++) {
-            document.getElementById('M' + latest_monster + 'R1_TRAIT_ADD').click();
-            latest_monster_trait--;
-
-            set_dom_value('M' + latest_monster + 'R1_TRAITS_' + latest_monster_trait, value[i]['Traits'][j]);
-
-            latest_monster_trait++;
-          }
-          set_dom_value('M' + latest_monster + 'R1_RECALL', value[i]['Recall']);
-        }
-
-        // Begin Info section
-        set_dom_value('M' + latest_monster + 'R1_HP', value[i]['Hp']);
-        set_dom_value('M' + latest_monster + 'R1_SPEED', value[i]['Speed']);
-        set_dom_value('M' + latest_monster + 'R1_AC', value[i]['Ac']);
-        set_dom_value('M' + latest_monster + 'R1_SIZE', value[i]['Size']);
-        set_dom_value('M' + latest_monster + 'R1_SKILLS', value[i]['Skills']);
-        set_dom_value('M' + latest_monster + 'R1_DAM_IMMUNE', value[i]['DamImmune']);
-        set_dom_value('M' + latest_monster + 'R1_DAM_RESIST', value[i]['DamResist']);
-        set_dom_value('M' + latest_monster + 'R1_DAM_WEAK', value[i]['DamWeak']);
-        set_dom_value('M' + latest_monster + 'R1_SENSE', value[i]['Sense']);
-        set_dom_value('M' + latest_monster + 'R1_LANGUAGE', value[i]['Language']);
-
-        // 5e Saves vs Pathfinder Saves
-        if (value[i]['Edition'] === '5') {
-          ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'].forEach(function(save) {
-            if (value[i][save + 'Save']) {
-              document.getElementById('M' + latest_monster + 'R1_' + save.toUpperCase() + '_SAVE').checked = true;
-            }
-          });
-        } else if (value[i]['Edition'] === '1' || value[i]['Edition'] === '2') {
-          set_dom_value('M' + latest_monster + 'R1_FORT_SAVE', value[i]['FortSave']);
-          set_dom_value('M' + latest_monster + 'R1_REF_SAVE', value[i]['RefSave']);
-          set_dom_value('M' + latest_monster + 'R1_WILL_SAVE', value[i]['WillSave']);
-        }
-        // New AC and Combat Maneuver
-        if (value[i]['Edition'] === '1') {
-          set_dom_value('M' + latest_monster + 'R1_TOUCH_AC', value[i]['TouchAc']);
-          set_dom_value('M' + latest_monster + 'R1_FLAT_AC', value[i]['FlatAc']);
-          set_dom_value('M' + latest_monster + 'R1_CMB', value[i]['Cmb']);
-          set_dom_value('M' + latest_monster + 'R1_CMD', value[i]['Cmd']);
-
-        }
-
-        // Begin Stats section
-        set_dom_value('M' + latest_monster + 'R1_STR', value[i]['Str']);
-        set_dom_value('M' + latest_monster + 'R1_DEX', value[i]['Dex']);
-        set_dom_value('M' + latest_monster + 'R1_CON', value[i]['Con']);
-        set_dom_value('M' + latest_monster + 'R1_INT', value[i]['Int']);
-        set_dom_value('M' + latest_monster + 'R1_WIS', value[i]['Wis']);
-        set_dom_value('M' + latest_monster + 'R1_CHA', value[i]['Cha']);
-
-        // Begin Actions section (universal for monsters)
-        for (var j = 0; j < value[i]['Actions'].length; j++) {
-          var temp_action = value[i]['Actions'][j];
-          document.getElementById('M' + latest_monster + 'R1_ACTION_ADD').click();
-          latest_monster_action--;
-          set_dom_value('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_NAME', temp_action['Name']);
-          set_dom_value('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_TEXT', deconvert_text(temp_action['Text']));
-
-          // Legendary Action for 5th edition
-          if (value[i]['Edition'] === '5') {
-            if (temp_action['Legendary']) {
-              document.getElementById('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_LEGEND').checked = true;
-            }
-          }
-          if (value[i]['Edition'] === '2') {
-            set_dom_value('M' + latest_monster + 'R1_ACTIONS' + latest_monster_action + '_COST', temp_action['Cost']);
-          }
-
-          // Incriment again
-          latest_monster_action++;
-        }
-
-        // Begin Spell section
-        if (value[i]['Spells'].length > 0) {
-          document.getElementById('M' + latest_monster + 'R5_SPELL_ADD').click();
-        }
-        for (var j = 0; j < value[i]['Spells'].length; j++) {
-          latest_monster_spell--;
-          var temp_spell_row = value[i]['Spells'][j];
-          document.getElementById('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + '_ROW_ADD').click();
-          latest_monster_spell_row--;
-
-          set_dom_value('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_USES_DC_INPUT', temp_spell_row['Dc']);
-          set_dom_value('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_USES_INPUT', temp_spell_row['Uses']);
-          for (var col = 0; col < temp_spell_row['List'].length; col++) {
-            document.getElementById('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_LIST_ADD').click();
-            latest_monster_spell_col--;
-            set_dom_value('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_LIST_NAME_' + latest_monster_spell_col, temp_spell_row['List'][col]['Name']);
-            set_dom_value('M' + latest_monster + 'R5_LOC_MS' + latest_monster_spell + 'R' + latest_monster_spell_row + '_LIST_LINK_' + latest_monster_spell_col, temp_spell_row['List'][col]['Link']);
-            latest_monster_spell_col++;
-          }
-
-          latest_monster_spell_row++;
-          latest_monster_spell++;
-        }
-
-        // Add Monster Treasure Import
-        var loot_table = value[i]['Treasure']
-        latest_table--;
-
-        for (var j = 0; j < loot_table['Data'].length; j++) {
-          if (loot_table['Data'][j]['Type'] === 'Blank') {
-            document.getElementById('MT' + latest_table + 'C_ADD').click();
-            latest_table_rows--;
-            
-            var add_th = '';
-            var add_td = '';
-
-            // Since there's no Id's to follow, grab childNodes and select the one's that don't have Id's
-            var buttons = document.getElementById('MT' + latest_table + 'R' + latest_table_rows).childNodes;
-            for (var x = buttons.length - 1; x >= 0; x--) {
-              if (add_th !== '' && add_td !== '') {
-                break;
-              }
-              if (buttons[x].innerHTML === "Add 'td'") {
-                add_td = buttons[x];
-              } else if (buttons[x].innerHTML === "Add 'th'") {
-                add_th = buttons[x];
-              }
-            }
-
-            // Loop through objects and hit buttons as needed.
-            Object.keys(loot_table['Data'][j]).forEach(function(key) {
-              var val = loot_table['Data'][j][key]
-              var add = key.split("").reverse().join("");
-              if (key.endsWith('H')) {
-                add_th.click();
-                set_dom_value('MT' + latest_table + 'R' + latest_table_rows + key.split("").reverse().join("") + 'I', val)
-              } else if (key.endsWith('C')) {
-                add_td.click();
-                set_dom_value('MT' + latest_table + 'R' + latest_table_rows + key.split("").reverse().join("") + 'I', val)
-              }
-            });
-
-            // Finally incriment when done, to not mess with future addition
-            latest_table_rows++;
-          } else {
-            document.getElementById('MT' + latest_table + 'C_SPECIAL').click();
-            latest_table_rows--;
-            
-            set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_NAME', loot_table['Data'][j]['Name']);
-            set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_DESCRIBE', loot_table['Data'][j]['Describe']);
-            set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_TEXT', loot_table['Data'][j]['Text']);
-            set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_CATEGORY_I', loot_table['Data'][j]['Category']);
-            set_dom_value('MT' + latest_table + 'R' + latest_table_rows + '_DESCRIPTOR_I', loot_table['Data'][j]['Descriptor']);
-
-            // Finally incriment when done, to not mess with future addition
-            latest_table_rows++;
-          }
-        }
-
-        // Incriment again
-        latest_monster++;
-        latest_table++;
-      }
-    } else if (key === 'Hazards') {
-      for (var i = 0; i < value.length; i++) {
-        if (DEBUG) { console.log("Parsing Hazard Data"); }
-        console.log(value[i]['Edition'])
-        create_element('Hazard' + value[i]['Edition']);
-        latest_hazard--;
-        console.log(value[i]);
-
-        // Standard Entries rendered
-        set_dom_value('H' + latest_hazard + 'R1_NAME', value[i]['Name']);
-        set_dom_value('H' + latest_hazard + 'R1_CR', value[i]['Cr']);
-        set_dom_value('H' + latest_hazard + 'R4_COMPLEXITY', value[i]['Complexity']);
-        set_dom_value('H' + latest_hazard + 'R4_STEALTH', value[i]['Stealth']);
-        set_dom_value('H' + latest_hazard + 'R4_DESCRIPTION', value[i]['Description']);
-        set_dom_value('H' + latest_hazard + 'R4_DISABLE', value[i]['Disable']);
-
-        // Traits
-        for (var x = 0; x < value[i]['Traits'].length; x++) {
-          document.getElementById('H' + latest_hazard + 'R3_TRAIT_ADD').click()
-          latest_hazard_trait--;
-          set_dom_value('H' + latest_hazard + 'R2_TRAITS_' + latest_hazard_trait, value[i]['Traits'][x]);
-          latest_hazard_trait++;
-        }
-
-        // Custom
-        for (var x = 0; x < value[i]['Custom'].length; x++) {
-          document.getElementById('H' + latest_hazard + 'R5_CUSTOM_ADD').click()
-          latest_hazard_custom--;
-          var temp_custom = value[i]['Custom'][x];
-
-          set_dom_value('H' + latest_hazard + 'R5_CUSTOM_' + latest_hazard_custom, Object.keys(temp_custom)[0]);
-          set_dom_value('H' + latest_hazard + 'R5_CUSTOM_' + latest_hazard_custom + '_INPUT', Object.values(temp_custom)[0]);
-
-          latest_hazard_custom++;
-        }
-
-        latest_hazard++;
-      }
-    } else if (key === 'Lists') {
-      for (var i = 0; i < value['Data'].length; i++) {
-        if (DEBUG) { console.log("Parsing List Data"); }
-        create_element('List');
-        latest_list--;
-        for (var j = 0; j < value['Data'][i].length; j++) {
-          document.getElementById('L' + latest_table + 'C_ADD').click();
-          latest_list_rows--;
-          set_dom_value('L' + latest_table + 'R' + latest_list_rows + 'I', value['Data'][i][j]['Data'])
-          if (value['Data'][i][j]['Bold']) {
-            document.getElementById('L' + latest_table + 'R' + latest_list_rows + 'I_BOLD').checked = true
-          }
-          if (value['Data'][i][j]['Underline']) {
-            document.getElementById('L' + latest_table + 'R' + latest_list_rows + 'I_UNDERLINE').checked = true
-          }
-          // Finally incriment when done, to not mess with future addition
-          latest_list_rows++;     
-        }
-
-        // Finally incriment when done, to not mess with future addition
-        latest_list++;
-      }
-    }
-  }
 }
 
 
