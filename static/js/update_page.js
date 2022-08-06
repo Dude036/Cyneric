@@ -181,7 +181,7 @@ function update_monster_container(new_json, container_id) {
     }
 
     set_dom_value(action_table_id + '_NAME', action_obj['Name'])
-    set_dom_value(action_table_id + '_TEXT', deconvert_text(action_obj['Text']))
+    set_dom_value(action_table_id + '_TEXT', action_obj['Text'])
   })
 
   /************************************************************************************************/

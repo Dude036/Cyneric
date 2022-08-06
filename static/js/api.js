@@ -66,7 +66,7 @@ async function get_monster_contents(prompt_text, edition, container_id) {
 			} else {
 				// We've recieved a creature, and can safely add it to the page.
 				if (DEBUG) { console.log("Successfully recieved monster, posting to UI"); }
-				update_session_storage(new_data, 'Monsters', container_id);
+				update_container(new_data, container_id);
 			}
 		}
 	};
@@ -149,7 +149,7 @@ async function get_hazard_contents(prompt_text, edition, container_id) {
 			} else {
 				// We've recieved a creature, and can safely add it to the page.
 				if (DEBUG) { console.log("Successfully recieved hazard data, posting to UI"); }
-				update_session_storage(new_data, 'Hazards', container_id);
+				update_container(new_data, container_id);
 			}
 		}
 	};

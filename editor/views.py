@@ -6,6 +6,7 @@ import bs4
 import re
 import requests
 from .parse_tools import *
+from pprint import pprint
 
 
 # Create your views here.
@@ -271,35 +272,37 @@ def parse_archives(url):
 
     print(monster.get_dict())
     base = {
+        "Type": "Monster",
         "Edition": "2",
         "Name": monster.Name,
         "Cr": monster.Cr,
         "Description": '<p>' + monster.Description + '</p>',
         "Alignment": monster.Alignment,
         "Traits": monster.Traits,
-        "Hp": monster.Hp,
+        "HP": monster.Hp,
         "Speed": monster.Speed,
         "Size": monster.Size,
-        "Ac": monster.Ac,
-        "FortSave": monster.Fort,
-        "WillSave": monster.Will,
-        "RefSave": monster.Ref,
+        "AC": monster.Ac,
+        "Fortitude Save": monster.Fort,
+        "Will Save": monster.Will,
+        "Reflex Save": monster.Ref,
         "Skills": de_dict(monster.Skills),
-        "Recall": monster.Recall,
-        "DamImmune": monster.Immune,
-        "DamResist": monster.Resist,
-        "DamWeak": monster.Weak,
-        "Sense": monster.Perception,
-        "Language": str(monster.Languages)[1:-1],
-        "Str": monster.Str,
-        "Dex": monster.Dex,
-        "Con": monster.Con,
-        "Int": monster.Int,
-        "Wis": monster.Wis,
-        "Cha": monster.Cha,
+        "Recall Knowledge": monster.Recall,
+        "Damage Immunities": monster.Immune,
+        "Damage Resistances": monster.Resist,
+        "Damage Weakness": monster.Weak,
+        "Senses": monster.Perception,
+        "Languages": str(monster.Languages)[1:-1],
+        "STR": monster.Str,
+        "DEX": monster.Dex,
+        "CON": monster.Con,
+        "INT": monster.Int,
+        "WIS": monster.Wis,
+        "CHA": monster.Cha,
         "Actions": monster.Actions,
         "Spells": monster.Spells,
         "Treasure": {
+            "Type": "",
             "Data": []
         }
     }
@@ -329,7 +332,15 @@ def parse_5etools(url):
     data = json.loads(file)
     unparsed_name = parse.unquote_plus(url[url.find('#')+1 : url.rfind('_')])
     name = modify_title(unparsed_name.title())
-    target = {}
+    target = {
+        'Type': 'Monster',
+        'Edition': '5',
+        'Description': '<p></p>',
+        "Treasure": {
+            "Type": "",
+            "Data": []
+        }
+    }
 
     try:
         # Query for creature in received JSON
@@ -356,6 +367,28 @@ def parse_5etools(url):
             creature = fix_dict_diff(old_creature, creature)
 
         # Creature Established, building JSON
+        # Static Elements First
+        target["CHA"] = creature['cha']
+        target["CHA Save"] = True if 'save' in creature.keys() and 'cha' in creature['save'] else False
+        target["CON"] = creature['con']
+        target["CON Save"] = True if 'save' in creature.keys() and 'con' in creature['save'] else False
+        target["Cr"] = creature['cr'] if 'cr' in creature.keys() else ''
+        target["DEX"] = creature['dex']
+        target["DEX Save"] = True if 'save' in creature.keys() and 'dex' in creature['save'] else False
+        target["INT"] = creature['int']
+        target["INT Save"] = True if 'save' in creature.keys() and 'int' in creature['save'] else False
+        target["Language"] = de_list(creature['languages']) if 'languages' in creature.keys() and creature['languages'] is not None else ''
+        target["Name"] = modify_title(unparsed_name.title())
+        target["Sense"] = de_list(creature['senses']) if 'senses' in creature.keys() and creature['senses'] is not None else ''
+        target["Size"] = creature['size']
+        target["Skills"] = de_dict(creature['skill']) if 'skill' in creature.keys() else ''
+        target["Speed"] = de_dict(creature['speed'])
+        target["STR"] = creature['str']
+        target["STR Save"] = True if 'save' in creature.keys() and 'str' in creature['save'] else False
+        target["WIS"] = creature['wis']
+        target["WIS Save"] = True if 'save' in creature.keys() and 'wis' in creature['save'] else False
+
+        # Potential mixup could kill the following.
         resist = ''
         if 'resist' in creature.keys():
             for point in creature['resist']:
@@ -366,6 +399,8 @@ def parse_5etools(url):
                         resist += de_list(point['resist']) + ' ' + point['note']
                     elif 'special' in point.keys():
                         resist += point['special'] + ', '
+        target['Damage Resistances'] = resist
+
         immune = ''
         if 'conditionImmune' in creature.keys():
             for p in creature['conditionImmune']:
@@ -379,7 +414,8 @@ def parse_5etools(url):
                     immune += p + ', '
                 if isinstance(p, dict):
                     immune += de_dict(p) + ', '
-
+        target['Damage Immunities'] = immune
+        
         vulnerable = ''
         if 'vulnerable' in creature.keys() and creature['vulnerable'] is not None:
             for p in creature['vulnerable']:
@@ -387,6 +423,7 @@ def parse_5etools(url):
                     vulnerable += p + ', '
                 if isinstance(p, dict):
                     vulnerable += de_dict(p) + ', '
+        target['Damage Weakness'] = vulnerable
 
         ac = ''
         if isinstance(creature['ac'][0], int):
@@ -398,6 +435,7 @@ def parse_5etools(url):
                 ac = str(creature['ac'][0]['ac'])
                 if 'from' in creature['ac'][0].keys():
                     ac += ' (' + str(creature['ac'][0]['from']) + ')'
+        target['AC'] = ac
 
         actions = []
         if 'action' in creature.keys() and creature['action'] is not None:
@@ -406,10 +444,13 @@ def parse_5etools(url):
             actions += process_actions_5etools(creature['trait'], False)
         if 'legendary' in creature.keys() and creature['legendary'] is not None:
             actions += process_actions_5etools(creature['legendary'], True)
+        target['Actions'] = actions
 
         spells = []
         if 'spellcasting' in creature.keys() and creature['spellcasting'] is not None:
             spells = process_spells_5etools(creature['spellcasting'][0])
+        target['Spells'] = spells
+
 
         align = ''
         if 'alignment' not in creature.keys():
@@ -418,6 +459,7 @@ def parse_5etools(url):
             align = ''.join(creature['alignment']) 
         else:
             align = str(creature['alignment'])
+        target['Alignment'] = align
 
         hp_info = ''
         if 'special' in creature['hp'].keys():
@@ -426,39 +468,7 @@ def parse_5etools(url):
             hp_info += str(creature['hp']['average'])
             if 'formula' in creature['hp'].keys():
                 hp_info += ' (' + creature['hp']['formula'] + ')'
-
-        target = {
-            "Ac": ac,
-            "Actions": actions,
-            "Alignment": align,
-            "Cha": creature['cha'],
-            "ChaSave": True if 'save' in creature.keys() and 'cha' in creature['save'] else False,
-            "Con": creature['con'],
-            "ConSave": True if 'save' in creature.keys() and 'con' in creature['save'] else False,
-            "Cr": creature['cr'] if 'cr' in creature.keys() else '',
-            "DamImmune": immune,
-            "DamResist": resist,
-            "DamWeak": vulnerable,
-            "Description": "<p></p>",
-            "Dex": creature['dex'],
-            "DexSave": True if 'save' in creature.keys() and 'dex' in creature['save'] else False,
-            "Edition": "5",
-            "Hp": hp_info,
-            "Int": creature['int'],
-            "IntSave": True if 'save' in creature.keys() and 'int' in creature['save'] else False,
-            "Language": de_list(creature['languages']) if 'languages' in creature.keys() and creature['languages'] is not None else '',
-            "Name": modify_title(unparsed_name.title()),
-            "Sense": de_list(creature['senses']) if 'senses' in creature.keys() and creature['senses'] is not None else '',
-            "Size": creature['size'],
-            "Skills": de_dict(creature['skill']) if 'skill' in creature.keys() else '',
-            "Speed": de_dict(creature['speed']),
-            "Spells": spells,
-            "Str": creature['str'],
-            "StrSave": True if 'save' in creature.keys() and 'str' in creature['save'] else False,
-            "Treasure": {"Data": []},
-            "Wis": creature['wis'],
-            "WisSave": True if 'save' in creature.keys() and 'wis' in creature['save'] else False,
-        }    
+        target['HP'] = hp_info
 
     except Exception as e:
         target['EXCEPTION'] = e 

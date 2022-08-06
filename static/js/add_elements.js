@@ -479,7 +479,7 @@ function add_monster_action_import(parent, content, icon, label) {
   new_row.id = content.id + '_IMPORT';
 
   new_row.onclick = function() {
-    get_monster_contents(label, icon[icon.length - 1], content.id)
+    get_monster_contents(label, icon[icon.length - 1], parent.id)
   }
 
   return new_row;
