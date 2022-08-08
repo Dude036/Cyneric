@@ -218,7 +218,7 @@ function export_monster_html(temp_monster) {
 
   // Stat Table
   monster_str += '<tr><td><table class="inventory-table"><tr><th>STR</th><th>DEX</th><th>CON</th><th>INT</th><th>WIS</th><th>CHA</th></tr><tr>';
-  ['Str', 'Dex', 'Con', 'Int', 'Wis', 'Cha'].forEach(function(stat) {
+  ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'].forEach(function(stat) {
     monster_str += '<td>';
     if (is_numeric(temp_monster[stat])) {
       monster_str += temp_monster[stat] + ' (' + get_mod(temp_monster[stat]) + ')';

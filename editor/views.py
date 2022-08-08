@@ -6,7 +6,6 @@ import bs4
 import re
 import requests
 from .parse_tools import *
-from pprint import pprint
 
 
 # Create your views here.
