@@ -32,7 +32,7 @@
 <body>
   {% csrf_token %}
   <input type="text" id="header" name="header" placeholder="Town Name" style="margin: auto; display: block; font-size:32px;margin-bottom: 10px;">
-  <textarea class="overflow_textarea" type="textarea" id="description" name="description" placeholder="Town description" style="width: 100%;margin-bottom: 60px;"></textarea>
+  <textarea class="overflow_textarea" type="textarea" id="description" name="description" placeholder="Town description" style="width: 100%;margin-bottom: 60px; resize: vertical;"></textarea>
   <div id="editor" class="editor" onbeforeunload="save_json_from_page()">
   </div>
   <div class="sidebar">

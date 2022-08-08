@@ -414,6 +414,7 @@ function editor_container_table(element) {
     item_text.placeholder = 'Long Description';
     item_text.style.lineHeight = "20px";
     item_text.style.width = "400px";
+    item_text.style.resize = 'vertical';
     item_data_cell.appendChild(item_text);
   }
 
@@ -618,6 +619,7 @@ function create_element_store(store) {
   owner_description_text.placeholder = 'Owner Description'
   owner_description_text.style.width = '90%';
   owner_description_text.style.lineHeight = "20px";
+  owner_description_text.style.resize = 'vertical';
   owner_description_text.id = owner_container.id + "_DESCRIBE";
 
   owner_container.appendChild(owner_description_text)
@@ -757,6 +759,7 @@ function create_element_monster(monster, edition) {
   monster_description_input.placeholder = 'Monster Description';
   monster_description_input.style.width = '50%';
   monster_description_input.style.lineHeight = "20px";
+  monster_description_input.style.resize = 'vertical';
   monster_description.appendChild(monster_description_input);
 
   monster_header_content.appendChild(monster_description);
@@ -952,6 +955,7 @@ function create_element_monster(monster, edition) {
     temp_action_info_input.placeholder = 'Action Details';
     temp_action_info_input.style.width = '90%';
     temp_action_info_input.style.lineHeight = "20px";
+    temp_action_info_input.style.resize = 'vertical';
     temp_action_info.appendChild(temp_action_info_input);
 
     temp_action.appendChild(temp_action_header);
@@ -1626,6 +1630,7 @@ function create_element(item) {
     var add_paragraph_input = generic_textarea(add_paragraph_div.id + "_I");
     add_paragraph_input.placeholder = 'Type Text Here';
     add_paragraph_input.style.width = '100%';
+    add_paragraph_input.style.resize = 'vertical';
     add_paragraph_div.appendChild(add_paragraph_input);
 
     content.style.textAlign = 'center';
