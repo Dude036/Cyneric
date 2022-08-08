@@ -205,29 +205,27 @@ async function get_api_content(link_suffix) {
  */
 async function item_api_wrapper(base_id, link_suffix) {
 	// Clear Item Content
-	['_Category_I', '_Descriptor_I', '_Name', '_Text', '_Describe'].forEach(s => document.getElementById(base_id + s).value = '');
+	['_CATEGORY_I', '_DESCRIPTOR_I', '_NAME', '_TEXT', '_DESCRIBE'].forEach(s => document.getElementById(base_id + s).value = '');
 
 	// Get from API
 	var content = await get_api_content(link_suffix);
 
 	// Setup applicator
 	var applicator = {
-		'_Descriptor_I': 'Category',
-		'_Name': 'Title'
+		'_DESCRIPTOR_I': 'CATEGORY',
+		'_NAME': 'TITLE'
 	};
 	if (content['Expandable']) {
-		applicator['_Text'] = 'Description';
+		applicator['_TEXT'] = 'Description';
 	} else {
-		applicator['_Describe'] = 'Description';
+		applicator['_DESCRIBE'] = 'Description';
 	}
 
 	// Run it back
 	Object.keys(applicator).forEach(key => {
 		document.getElementById(base_id + key).value = content[applicator[key]];
 	})
-	document.getElementById(base_id + "_Category_I").value = content['Cost'] + ' gp';
-
-	set_session_storage();
+	document.getElementById(base_id + "_CATEGORY_I").value = content['Cost'] + ' gp';
 }
 
 
@@ -258,6 +256,4 @@ async function owner_api_wrapper(base_id, link_suffix) {
 	document.getElementById(base_id + "_TRAIT_1").value = content['Traits'][0];
 	document.getElementById(base_id + "_TRAIT_2").value = content['Traits'][1];
 	document.getElementById(base_id + "_DESCRIBE").value = content['Story'][0];
-
-	set_session_storage();
 }
