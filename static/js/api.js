@@ -212,8 +212,8 @@ async function item_api_wrapper(base_id, link_suffix) {
 
 	// Setup applicator
 	var applicator = {
-		'_DESCRIPTOR_I': 'CATEGORY',
-		'_NAME': 'TITLE'
+		'_DESCRIPTOR_I': 'Category',
+		'_NAME': 'Title'
 	};
 	if (content['Expandable']) {
 		applicator['_TEXT'] = 'Description';
