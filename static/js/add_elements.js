@@ -42,6 +42,20 @@ function generic_text_input(id) {
 }
 
 
+/**Generic Input given id
+ * @param id The base Id to set
+ * @return Text input DOM object
+ */
+function generic_textarea(id) {
+  var new_input = document.createElement("textarea");;
+  new_input.appendChild(document.createTextNode("Type Text Here"));
+  new_input.name = id;
+  new_input.id = id;
+
+  return new_input;
+}
+
+
 /**Create a button for adding randomly generated content from the DMTK
  * @param text Text to be added to the InnerHTML
  * @param background Background Color

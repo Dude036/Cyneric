@@ -34,6 +34,8 @@ function export_page() {
       new_doc += export_hazard_html(data_obj);
     } else if (data_obj['Type'] === 'Divider') {
       new_doc += export_divider_html(data_obj);
+    } else if (data_obj['Type'] === 'Paragraph') {
+      new_doc += export_paragraph_html(data_obj);
     }
   });
 
@@ -336,5 +338,19 @@ function export_divider_html(temp_divider) {
   divider_str += temp_divider['Name'];
   divider_str += '</div>';
   return divider_str;
+}
+
+
+/**Convert Page JSON data to html for a paragraph
+ * @param data_obj JSON object from storage
+ * @return HTML string
+ */
+function export_paragraph_html(temp_paragraph) {
+  if (DEBUG) { console.log("Adding paragraph") };
+
+  var paragraph_str = '<p style="margin-bottom: 60px;">';
+  paragraph_str += temp_paragraph['Text'];
+  paragraph_str += '</p>';
+  return paragraph_str;
 }
 

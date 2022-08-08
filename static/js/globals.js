@@ -1,10 +1,7 @@
 let DEBUG = true;
 let latest_store = 0;
-// let latest_store_rows = 0;
 let latest_table = 0;
-// let latest_table_rows = 0;
 let latest_list = 0;
-// let latest_list_rows = 0;
 let latest_monster = 0;
 let latest_monster_rows = 0;
 let latest_monster_trait = 0;

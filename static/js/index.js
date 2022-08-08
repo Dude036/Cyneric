@@ -1615,6 +1615,22 @@ function create_element(item) {
     content.style.textAlign = 'center';
 
     content.appendChild(add_title_div)
+  } else if (item === 'Paragraph') {
+    // Add name for Divider
+    var add_paragraph_div = document.createElement('div');
+    add_paragraph_div.id = content.id + "_TEXT";
+    add_paragraph_div.style.color = '#EFEFEF';
+    add_paragraph_div.style.margin = '4px';
+    add_paragraph_div.style.padding = '10px';
+
+    var add_paragraph_input = generic_textarea(add_paragraph_div.id + "_I");
+    add_paragraph_input.placeholder = 'Type Text Here';
+    add_paragraph_input.style.width = '100%';
+    add_paragraph_div.appendChild(add_paragraph_input);
+
+    content.style.textAlign = 'center';
+
+    content.appendChild(add_paragraph_div)
   }
   container.appendChild(content);
 
@@ -1981,6 +1997,17 @@ function save_container_as_json(container) {
     var divider_obj = {
       'Type': 'Divider',
       'Name': document.getElementById(editor_element.id + '_NAME_I').value,
+    };
+    window.sessionStorage.setItem(container.id, JSON.stringify(divider_obj));
+  }
+
+  // Found a divider container
+  if (/^P/.test(container.id)) {
+    if (DEBUG) { console.log("Found a paragraph container"); }
+    var editor_element = container.childNodes[1];
+    var divider_obj = {
+      'Type': 'Paragraph',
+      'Text': document.getElementById(editor_element.id + '_TEXT_I').value,
     };
     window.sessionStorage.setItem(container.id, JSON.stringify(divider_obj));
   }
