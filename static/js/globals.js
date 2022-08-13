@@ -63,3 +63,34 @@ function get_mod(stat) {
   var val = Math.floor(parseInt(stat) / 2) - 5;
   return (val > 0) ? '+' + val : val;
 }
+
+
+/** Get uuid
+ * @returns random uuid
+ */
+function get_uuid() {
+  return crypto.randomUUID();
+}
+
+
+/**Incriment the counter for editor items 
+ * @param name of the thing to incriment
+ * @return number to add to ID
+ */
+function incriment_item_counter(name) {
+  if (name === 'Store') {
+    return ++latest_store;
+  } else if (name === 'Table') {
+    return ++latest_table;
+  } else if (name === 'List') {
+    return ++latest_list;
+  } else if (/Monster\d/.test(name)) {
+    return ++latest_monster;
+  } else if (name === 'Hazard2') {
+    return ++latest_hazard;
+  } else if (name === 'Divider') {
+    return ++latest_divider;
+  } else {
+    return NaN;
+  }
+}

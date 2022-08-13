@@ -66,7 +66,7 @@ function add_api_flex_box(text, background, color) {
   var add_flex_box = document.createElement('div');
   add_flex_box.style.justifyContent = 'flex-start';
   add_flex_box.style.margin = '3px 5px';
-  add_flex_box.style.width = '38%';
+  add_flex_box.style.width = 'auto';
   add_flex_box.style.padding = '3px';
   add_flex_box.style.backgroundColor = background;
   add_flex_box.style.color = color;

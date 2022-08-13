@@ -1,46 +1,21 @@
-
-
-// Dragula Initial Setup
-dragula([document.getElementById('editor')], {
-  moves: function (el, container, handle) {
-    return handle.classList.contains('move-handle');
-  }
-});
-
 /*******************************************************************************************************/
 /* DYNAMIC ELEMENT CREATION ****************************************************************************/
 /*******************************************************************************************************/
 
-
-/** Get uuid
- * @returns random uuid
- */
-function get_uuid() {
-  return crypto.randomUUID();
-}
-
-
-/**Incriment the counter for editor items 
- * @param name of the thing to incriment
- * @return number to add to ID
- */
-function incriment_item_counter(name) {
-  if (name === 'Store') {
-    return ++latest_store;
-  } else if (name === 'Table') {
-    return ++latest_table;
-  } else if (name === 'List') {
-    return ++latest_list;
-  } else if (/Monster\d/.test(name)) {
-    return ++latest_monster;
-  } else if (name === 'Hazard2') {
-    return ++latest_hazard;
-  } else if (name === 'Divider') {
-    return ++latest_divider;
-  } else {
-    return NaN;
+// Dragula Initial Setup
+let drake = dragula([document.getElementById('editor')], {
+  revertOnSpill: true,
+  direction: 'vertical',
+  moves: function (el, container, handle) {
+    // Elements that contain the move-handle class can be moved.
+    return handle.classList.contains('move-handle');
+  },
+  accepts: function (el, target, source, sibling) {
+    // Accept dragged container only if the drop target is the same
+    // as the source container the element came from
+    return target == source;
   }
-}
+});
 
 
 /**Manual saving or Deleting the page
@@ -103,6 +78,9 @@ function update_page_state(state) {
 function editor_container_table(element) {
   if (DEBUG) { console.log("Begin Table Container Creation"); }
 
+    // Dragula Add
+    drake.containers.push(element.firstChild);
+
   var container = document.createElement("div");
   container.id = element.id + "C";
   container.width = '100%';
@@ -129,36 +107,35 @@ function editor_container_table(element) {
       latest_table_rows++;
     }
 
-    // Delete Row
-    var add_delete = new_row.insertCell(0);
-    add_delete.style.float = 'right';
-    add_delete.style.width = '8px';
-    add_delete.style.backgroundColor = '#C00000';
-    add_delete.style.color = '#EFEFEF';
-    add_delete.innerHTML = "<b>X</b>";
+    // Move Handle
+    var add_move_handle = document.createElement('img');
+    add_move_handle.src = "/static/svg/move_vertical.svg";
+    add_move_handle.title = "Move Row";
+    add_move_handle.className = "move-handle";
+    add_move_handle.width = 30;
+    add_move_handle.height = 30;
+    add_move_handle.style.float = "left";
+    add_move_handle.style.margin = "10px";
+    new_row.appendChild(add_move_handle);
 
-    // Add Delete row Method
-    add_delete.onclick = function() {
-      if (confirm("Are you sure you want to delete this row?")) {
-        if (DEBUG) { console.log("Deleting Row"); }
-        new_row.parentNode.removeChild(new_row);
-        if (DEBUG) { console.log("Row Successfully Deleted"); }
-      }
-    }
+    // Contents
+    var add_contents_td = new_row.insertCell(0);
+    var add_contents_div = document.createElement('div');
+    add_contents_div.style.padding = '5px 2px';
+    add_contents_div.style.width = '100%';
+    add_contents_div.style.margin = '5px 8px';
+    add_contents_div.style.display = 'flex';
+    add_contents_div.style.flexWrap = 'wrap';
+    add_contents_div.style.alignItems = 'flex-start';
 
     // Detail Style
-    var add_detail = new_row.insertCell(1);
-    add_detail.style.float = 'right';
-    add_detail.style.width = '55px';
-    add_detail.style.backgroundColor = '#500050';
-    add_detail.style.color = '#EFEFEF';
-    add_detail.innerHTML = "Add 'td'";
+    var add_detail = add_api_flex_box("Add 'td'", '#500050', '#EFEFEF');
     add_detail.id = new_row.id + '_TD';
 
     // Setup function for adding td Cell
     add_detail.onclick = function() {
-      var new_cell = new_row.insertCell(new_row.cells.length-3);
-      new_cell.id = new_row.id + 'C' + (new_row.cells.length - 3);
+      var new_cell = new_row.insertCell(new_row.cells.length - 1);
+      new_cell.id = new_row.id + 'C' + (new_row.cells.length - 1);
       new_cell.style.backgroundColor = "#FFFFFF";
 
       var new_input = document.createElement('input');
@@ -168,21 +145,16 @@ function editor_container_table(element) {
 
       new_cell.appendChild(new_input);
     }
-
-    var add_header = new_row.insertCell(2);
+    add_contents_div.appendChild(add_detail)
 
     // Header Style
-    add_header.style.float = 'right';
-    add_header.style.width = '55px';
-    add_header.style.backgroundColor = '#005050';
-    add_header.style.color = '#EFEFEF';
-    add_header.innerHTML = "Add 'th'";
+    var add_header = add_api_flex_box("Add 'th'", '#005050', '#EFEFEF');
     add_header.id = new_row.id + '_TH';
 
     // Setup function for adding th Cell
     add_header.onclick = function() {
-      var new_cell = new_row.insertCell(new_row.cells.length-3);
-      new_cell.id = new_row.id + 'H' + (new_row.cells.length - 3);
+      var new_cell = new_row.insertCell(new_row.cells.length - 1);
+      new_cell.id = new_row.id + 'H' + (new_row.cells.length - 1);
       new_cell.style.backgroundColor = "#CFCFCF";
 
       var new_input = document.createElement('input');
@@ -192,6 +164,20 @@ function editor_container_table(element) {
 
       new_cell.appendChild(new_input);
     }
+    add_contents_div.appendChild(add_header);
+
+    // Delete Row
+    var add_delete = add_api_flex_box("Delete Row", '#C00000', '#EFEFEF');
+    // Add Delete row Method
+    add_delete.onclick = function() {
+      if (confirm("Are you sure you want to delete this row?")) {
+        if (DEBUG) { console.log("Deleting Row"); }
+        new_row.parentNode.removeChild(new_row);
+        if (DEBUG) { console.log("Row Successfully Deleted"); }
+      }
+    }
+    add_contents_div.appendChild(add_delete)
+    add_contents_td.appendChild(add_contents_div);
   };
 
   // Add Table Name
@@ -271,6 +257,17 @@ function editor_container_table(element) {
       item_row.id = element.id + "R" + latest_table_rows;
       latest_table_rows++;
     }
+
+    // Move Handle
+    var add_move_handle = document.createElement('img');
+    add_move_handle.src = "/static/svg/move_vertical.svg";
+    add_move_handle.title = "Move Row";
+    add_move_handle.className = "move-handle";
+    add_move_handle.width = 30;
+    add_move_handle.height = 30;
+    add_move_handle.style.float = "left";
+    add_move_handle.style.margin = "10px";
+    item_row.appendChild(add_move_handle);
 
     // Add custom buttons for generated content
     var add_button_td = item_row.insertCell(0);
@@ -1225,6 +1222,7 @@ function create_element_monster(monster, edition) {
 
   var monster_loot = document.createElement('tr');
   var monster_loot_table = document.createElement('table');
+  monster_loot_table.appendChild(document.createElement('tbody'))
 
   monster_loot_table.id = "MT" + latest_table
   latest_table += 1;
@@ -1235,7 +1233,6 @@ function create_element_monster(monster, edition) {
   monster_loot_table.style.marginBottom = "20px";
 
   var monster_loot_container = editor_container_table(monster_loot_table);
-
   monster_loot.id = monster.id + 'R7';
 
   // Finalize
