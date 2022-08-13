@@ -171,6 +171,17 @@ function add_store_action_item_row(parent, content) {
       latest_table_rows++;
     }
 
+    // Move Handle
+    var add_move_handle = document.createElement('img');
+    add_move_handle.src = "/static/svg/move_vertical.svg";
+    add_move_handle.title = "Move Row";
+    add_move_handle.className = "move-handle";
+    add_move_handle.width = 30;
+    add_move_handle.height = 30;
+    add_move_handle.style.float = "left";
+    add_move_handle.style.margin = "10px";
+    item_row.appendChild(add_move_handle);
+
     // Add custom buttons for generated content
     var add_button_td = item_row.insertCell(0);
     var add_button_div = document.createElement('div');
@@ -343,57 +354,78 @@ function add_store_action_blank_row(parent, content) {
       new_row.id = element.id + "R" + latest_table_rows;
       latest_table_rows++;
     }
+    
+    // Move Handle
+    var add_move_handle = document.createElement('img');
+    add_move_handle.src = "/static/svg/move_vertical.svg";
+    add_move_handle.title = "Move Row";
+    add_move_handle.className = "move-handle";
+    add_move_handle.width = 30;
+    add_move_handle.height = 30;
+    add_move_handle.style.float = "left";
+    add_move_handle.style.margin = "10px";
+    new_row.appendChild(add_move_handle);
 
-    // Delete Row Action
-    var delete_row_td = new_row.insertCell(0);
-    delete_row_td.style.float = 'right';
-    delete_row_td.style.width = '8px';
-    delete_row_td.style.backgroundColor = '#C00000';
-    delete_row_td.style.color = '#EFEFEF';
-    delete_row_td.innerHTML = "<b>X</b>";
+    // Contents
+    var add_contents_td = new_row.insertCell(0);
+    var add_contents_div = document.createElement('div');
+    add_contents_div.style.padding = '5px 2px';
+    add_contents_div.style.width = '100%';
+    add_contents_div.style.margin = '5px 8px';
+    add_contents_div.style.display = 'flex';
+    add_contents_div.style.flexWrap = 'wrap';
+    add_contents_div.style.alignItems = 'flex-start';
 
-    delete_row_td.onclick = function() {
+    // Detail Style
+    var add_detail = add_api_flex_box("Add 'td'", '#500050', '#EFEFEF');
+    add_detail.id = new_row.id + '_TD';
+
+    // Setup function for adding td Cell
+    add_detail.onclick = function() {
+      var new_cell = new_row.insertCell(new_row.cells.length - 1);
+      new_cell.id = new_row.id + 'C' + (new_row.cells.length - 1);
+      new_cell.style.backgroundColor = "#FFFFFF";
+
+      var new_input = document.createElement('input');
+      new_input.type = 'text';
+      new_input.name = new_cell.id + "I";
+      new_input.id = new_cell.id + "I";
+
+      new_cell.appendChild(new_input);
+    }
+    add_contents_div.appendChild(add_detail)
+
+    // Header Style
+    var add_header = add_api_flex_box("Add 'th'", '#005050', '#EFEFEF');
+    add_header.id = new_row.id + '_TH';
+
+    // Setup function for adding th Cell
+    add_header.onclick = function() {
+      var new_cell = new_row.insertCell(new_row.cells.length - 1);
+      new_cell.id = new_row.id + 'H' + (new_row.cells.length - 1);
+      new_cell.style.backgroundColor = "#CFCFCF";
+
+      var new_input = document.createElement('input');
+      new_input.type = 'text';
+      new_input.name = new_cell.id + "I";
+      new_input.id = new_cell.id + "I";
+
+      new_cell.appendChild(new_input);
+    }
+    add_contents_div.appendChild(add_header);
+
+    // Delete Row
+    var add_delete = add_api_flex_box("Delete Row", '#C00000', '#EFEFEF');
+    // Add Delete row Method
+    add_delete.onclick = function() {
       if (confirm("Are you sure you want to delete this row?")) {
         if (DEBUG) { console.log("Deleting Row"); }
         new_row.parentNode.removeChild(new_row);
         if (DEBUG) { console.log("Row Successfully Deleted"); }
       }
     }
-
-    // Add TH Action
-    var row_td = new_row.insertCell(1);
-    row_td.style.float = 'right';
-    row_td.style.width = '55px';
-    row_td.style.backgroundColor = '#500050';
-    row_td.style.color = '#EFEFEF';
-    row_td.innerHTML = "Add 'td'";
-    row_td.id = new_row.id + '_TD';
-
-    row_td.onclick = function() {
-      var new_cell = new_row.insertCell(new_row.cells.length - 3);
-      new_cell.id = new_row.id + 'C' + (new_row.cells.length - 3);
-      new_cell.style.backgroundColor = "#FFFFFF";
-
-      new_cell.appendChild(generic_text_input(new_cell.id + "I"))
-
-    }
-
-    // Add TD Action
-    var row_th = new_row.insertCell(2);
-    row_th.style.float = 'right';
-    row_th.style.width = '55px';
-    row_th.style.backgroundColor = '#005050';
-    row_th.style.color = '#EFEFEF';
-    row_th.innerHTML = "Add 'th'";
-    row_th.id = new_row.id + '_TH';
-
-    row_th.onclick = function() {
-      var new_cell = new_row.insertCell(new_row.cells.length - 3);
-      new_cell.id = new_row.id + 'H' + (new_row.cells.length - 3);
-      new_cell.style.backgroundColor = "#CFCFCF";
-
-      new_cell.appendChild(generic_text_input(new_cell.id + "I"))
-    }
+    add_contents_div.appendChild(add_delete)
+    add_contents_td.appendChild(add_contents_div);
   }
 
   return add_row;

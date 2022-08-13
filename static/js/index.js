@@ -11,6 +11,16 @@ let drake = dragula([document.getElementById('editor')], {
     return handle.classList.contains('move-handle');
   },
   accepts: function (el, target, source, sibling) {
+    // If we're working with a store, don't swap the OWNER element
+    if (target != null) {
+      if (target.firstChild != null) {
+        if (target.firstChild.id != null) {
+          if (!target.firstChild.id.endsWith('_OWNER')) {
+            return false;
+          }
+        }
+      }
+    }
     // Accept dragged container only if the drop target is the same
     // as the source container the element came from
     return target == source;
@@ -78,8 +88,8 @@ function update_page_state(state) {
 function editor_container_table(element) {
   if (DEBUG) { console.log("Begin Table Container Creation"); }
 
-    // Dragula Add
-    drake.containers.push(element.firstChild);
+  // Dragula Add
+  drake.containers.push(element.firstChild);
 
   var container = document.createElement("div");
   container.id = element.id + "C";
@@ -556,6 +566,9 @@ function editor_container_hazard(element, edition) {
 function create_element_store(store) {
   store.id = "S" + latest_store
   latest_store += 1;
+  
+  // Dragula Add
+  drake.containers.push(store.firstChild);
 
   // Style
   store.style.width = "100%";
@@ -564,7 +577,10 @@ function create_element_store(store) {
   // store.style.padding = '5px'
 
   // Add sub elements for Store
-  var owner_container = document.createElement('tr');
+  var owner_row = store.insertRow(store.rows.length);
+  owner_row.id = store.id + "_OWNER";
+  var owner_container = owner_row.insertCell();
+  owner_container.setAttribute("colspan", '100%');
   owner_container.id = store.id + "_OWNER";
 
   // Store Name
@@ -620,9 +636,6 @@ function create_element_store(store) {
   owner_description_text.id = owner_container.id + "_DESCRIBE";
 
   owner_container.appendChild(owner_description_text)
-
-  // Add
-  store.appendChild(owner_container);
 
   return store;
 }
@@ -1532,7 +1545,9 @@ function create_element(item) {
     actions.appendChild(add_store_action_item_row(container, content));
 
     // Content
-    var store = create_element_store(document.createElement('table'));
+    var store_element = document.createElement('table')
+    store_element.appendChild(document.createElement('tbody'))
+    var store = create_element_store(store_element);
     content.appendChild(store);
   } else if (item === 'Table') {
     // ACtions
@@ -1699,7 +1714,7 @@ function get_table_data(table, source) {
     var item = {};
 
     // Split handling depending on how created
-    if (table.rows[i].childNodes[0].id.includes('_')) {
+    if (table.rows[i].childNodes[1].id.includes('_')) {
       // Handle Special Row
       if (DEBUG) { console.log("Special Row Encountered"); }
       var temp_id = table.rows[i].id + '_';
