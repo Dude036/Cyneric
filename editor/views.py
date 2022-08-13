@@ -15,7 +15,7 @@ def admin_view(request):
     if user.is_authenticated:
         return render(request, 'editor_admin.html', {'is_admin': user.is_authenticated})
     else:
-        HttpResponseRedirect('/editor/')
+        return HttpResponseRedirect('/editor/')
 
 
 def admin_action(request, action):
