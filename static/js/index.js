@@ -12,10 +12,10 @@ let drake = dragula([document.getElementById('editor')], {
   },
   accepts: function (el, target, source, sibling) {
     // If we're working with a store, don't swap the OWNER element
-    if (target != null) {
+    if (target !== null) {
       if (target.firstChild != null) {
         if (target.firstChild.id != null) {
-          if (!target.firstChild.id.endsWith('_OWNER')) {
+          if (target.firstChild.id.startsWith('S') && !target.firstChild.id.endsWith('_OWNER')) {
             return false;
           }
         }
