@@ -485,80 +485,6 @@ function sub_list_element(parent, prefix, descriptor, type, add_id) {
 }
 
 
-/**Create the Parent container for Hazard
- * @param element Primary Child element, the table
- * @param edition Child element's edition
- * @return Fully formed chontainer for Hazard table elements
- */
-function editor_container_hazard(element, edition) {
-  var container = document.createElement("div");
-  container.id = element.id + "C";
-  container.width = '100%';
-
-  // Add hazard information
-  var add_edition_div = document.createElement('div');
-  add_edition_div.style.float = 'right';
-  add_edition_div.style.padding = '5px';
-  add_edition_div.style.color = '#EFEFEF';
-  if (edition == '5') {
-    add_edition_div.style.backgroundColor = '#009999';
-    add_edition_div.innerHTML = "Edition: D&D 5e";
-  } else if (edition == '2') {
-    add_edition_div.style.backgroundColor = '#009900';
-    add_edition_div.innerHTML = "Edition: Pathfinder 2e";
-  } else if (edition == '1') {
-    add_edition_div.style.backgroundColor = '#000099';
-    add_edition_div.innerHTML = "Edition: Pathfinder 1e";
-  }
-  add_edition_div.id = container.id + "_EDITION";
-
-  // Add import Div
-  var add_import_div = document.createElement('div');
-  add_import_div.style.float = 'right';
-  add_import_div.style.padding = '5px';
-  add_import_div.style.color = '#EFEFEF';
-  if (edition == '5') {
-    add_import_div.style.backgroundColor = '#002222';
-    add_import_div.innerHTML = "Import from 5e.tools";
-  } else if (edition == '2') {
-    add_import_div.style.backgroundColor = '#002200';
-    add_import_div.innerHTML = "Import from 2e.aonprd.com";
-  } else if (edition == '1') {
-    add_import_div.style.backgroundColor = '#000022';
-    add_import_div.innerHTML = "Import from d20pfsrd.com";
-  }
-  add_import_div.id = container.id + "_IMPORT";
-  add_import_div.onclick = function() {
-    get_hazard_contents(add_import_div.innerHTML, edition, container.id)
-  }
-
-  // Delete Styling
-  var add_delete_div = document.createElement('div');
-  add_delete_div.style.float = 'right';
-  add_delete_div.style.padding = '5px';
-  add_delete_div.style.backgroundColor = '#C00000';
-  add_delete_div.style.color = '#EFEFEF';
-  add_delete_div.innerHTML = "Delete Hazard";
-  add_delete_div.id = container.id + "_DELETE";
-
-  // Delete List Function
-  add_delete_div.onclick = function() {
-    if (confirm("Delete Hazard?")) {
-      if (DEBUG) { console.log("Deleting Hazard"); }
-      container.parentNode.removeChild(container);
-      if (DEBUG) { console.log("Hazard successfully deleted"); }
-    }
-  }
-
-  container.appendChild(add_delete_div);
-  container.appendChild(add_edition_div);
-  container.appendChild(add_import_div);
-
-  container.appendChild(element);
-  return container;
-}
-
-
 /**Create Store element
  * @param store Primary element to modify
  * @return Full formed store DOM object
@@ -1271,7 +1197,19 @@ function create_element_monster(monster, edition) {
 function create_element_hazard_list_item(item_text, add_id, custom, input_options) {
   // Key
   var hazard_list_item = document.createElement('div');
+  hazard_list_item.style.margin = '0 0 5px 0';
   if (custom) {
+    // Dragula Handle
+    var add_move_handle = document.createElement('img');
+    add_move_handle.src = "/static/svg/move_vertical.svg";
+    add_move_handle.title = "Move Row";
+    add_move_handle.className = "move-handle";
+    add_move_handle.width = 20;
+    add_move_handle.height = 20;
+    add_move_handle.style.float = "left";
+    add_move_handle.style.margin = "3px";
+    hazard_list_item.appendChild(add_move_handle);
+
     var hazard_list_key_input = document.createElement('input');
     hazard_list_key_input.id = add_id + '_CUSTOM_' + latest_hazard_custom;
     hazard_list_key_input.placeholder = 'Custom Key ' + latest_hazard_custom;
@@ -1494,6 +1432,7 @@ function create_element_hazard(hazard, item) {
 
   var hazard_custom_loc = document.createElement('div')
   hazard_custom_loc.id = hazard_custom.id + '_CUSTOM_LIST'
+  drake.containers.push(hazard_custom_loc)
   hazard_custom_content.appendChild(hazard_custom_loc);
 
   hazard_custom.appendChild(hazard_custom_content);
@@ -1556,6 +1495,8 @@ function create_element(item) {
 
     // Content
     var table = document.createElement('table');
+    table.appendChild(document.createElement('tbody'))
+    drake.containers.push(table.firstChild);
     table.style.width = '100%';
     table.style.borderBottom = '1px solid black';
     table.style.marginBottom = '20px';
