@@ -22,6 +22,7 @@ function export_page() {
 
   // loop through all Objects
   export_obj['Data'].forEach(function(data_obj) {
+    if (data_obj == null) { return; }
     if (data_obj['Type'] === 'Store') {
       new_doc += export_store_html(data_obj);
     } else if (data_obj['Type'] === 'Table') {
