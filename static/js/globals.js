@@ -13,6 +13,7 @@ let latest_hazard = 0;
 let latest_hazard_trait = 0;
 let latest_hazard_custom = 0;
 let latest_divider = 0;
+let latest_paragraph = 0;
 
 // Export Variables
 let export_counter = 0;
@@ -90,6 +91,8 @@ function incriment_item_counter(name) {
     return ++latest_hazard;
   } else if (name === 'Divider') {
     return ++latest_divider;
+  } else if (name === 'Paragraph') {
+    return ++latest_paragraph;
   } else {
     return NaN;
   }

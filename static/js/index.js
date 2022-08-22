@@ -1673,7 +1673,7 @@ function get_table_data(table, source) {
       var children = table.rows[i].childNodes;
       for (var x = 0; x < children.length; x++) {
         if (children[x].querySelector('input')) {
-          item[(x + 1).toString() + children[x].id[children[x].id.length - 2]] = document.getElementById(children[x].id + 'I').value
+          item[(x).toString() + children[x].id[children[x].id.length - 2]] = document.getElementById(children[x].id + 'I').value
         }
       }
     }

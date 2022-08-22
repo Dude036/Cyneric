@@ -50,6 +50,8 @@ function update_page(new_json) {
       create_element('Hazard2');
     } else if (data_obj['Type'] === 'Divider') {
       create_element('Divider');
+    } else if (data_obj['Type'] === 'Paragraph') {
+      create_element('Paragraph');
     }
 
     // Get the last item in the editor and update container from there
@@ -90,6 +92,9 @@ function update_container(new_json, container_id) {
   } else if (container_id.startsWith('D')) {
     var name = document.getElementById(container_id).childNodes[1]
     set_dom_value(name.id + "_NAME_I", new_json['Name']);
+  } else if (container_id.startsWith('P')) {
+    var name = document.getElementById(container_id).childNodes[1]
+    set_dom_value(name.id + "_TEXT_I", new_json['Text']);
   }
 }
 

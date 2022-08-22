@@ -58,7 +58,7 @@ def cache_5etools_json(force=False):
 
     # Check last update. If the update is more than 3 days ago, 
     last_update = datetime.fromtimestamp(os.path.getmtime(os.path.join(os.getcwd(), 'static', 'cache', 'bestiary-phb.json')))
-    if datetime.now() - timedelta(days=3) > last_update:
+    if datetime.now() - timedelta(days=30) > last_update:
         return remake_cache()
 
     return {}
