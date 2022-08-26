@@ -11,6 +11,7 @@
     <input type="button" value="Cyneric Now" onclick="location.href='{% url 'news:calender_era' cyneric_era cyneric_year %}';" />
     <input type="button" value="Cipher Now" onclick="location.href='{% url 'news:calender_era' cipher_era cipher_year %}';" />
     <input type="button" value="Dragon Now" onclick="location.href='{% url 'news:calender_era' dragon_era dragon_year %}';" />
+    <input type="button" value="Calamity Now" onclick="location.href='{% url 'news:calender_era' calamity_era calamity_year %}';" />
     <input type="button" value="Year {{ next_year }}" onclick="location.href='{% url 'news:calender_era' era next_year %}';" />
   </div>
   <div class="calender">
@@ -32,16 +33,20 @@
         <tr>
           {% for day in week %}
             {% if day|is_int %}
-              {% if month.name == cipher.Month and day == cipher.Day and current_year == cipher.Year %}
+              {% if month.name == cipher.Month and day == cipher.Day and current_year == cipher.Year and era == cipher_era %}
                 <td id="{{ month.name }}{{ day }}" style="background-color: dodgerblue;">
                   {{ day }}
                 </td>
-              {% elif month.name == cyneric.Month and day == cyneric.Day and current_year == cyneric.Year %}
+              {% elif month.name == cyneric.Month and day == cyneric.Day and current_year == cyneric.Year and era == cyneric_era %}
                 <td id="{{ month.name }}{{ day }}" style="background-color: violet;">
                   {{ day }}
                 </td>
-              {% elif month.name == dragon.Month and day == dragon.Day and current_year == dragon.Year %}
+              {% elif month.name == dragon.Month and day == dragon.Day and current_year == dragon.Year and era == dragon_era %}
                 <td id="{{ month.name }}{{ day }}" style="background-color: aquamarine;">
+                  {{ day }}
+                </td>
+              {% elif month.name == calamity.Month and day == calamity.Day and current_year == calamity.Year and era == calamity_era %}
+                <td id="{{ month.name }}{{ day }}" style="background-color: lightgreen;">
                   {{ day }}
                 </td>
               {% else %}
@@ -50,7 +55,7 @@
                 </td>
               {% endif %}
             {% else %}
-              {% if month.name == cipher.Month and day.number == cipher.Day and current_year == cipher.Year %}
+              {% if month.name == cipher.Month and day.number == cipher.Day and current_year == cipher.Year and era == cipher_era %}
                 <td id="{{ month.name }}{{ day.number }}" style="background-color: dodgerblue;">
                   <form action="{% url 'news:article_list' %}" method="post">
                     {% csrf_token %}
@@ -60,7 +65,7 @@
                     </button>
                   </form>
                 </td>
-              {% elif month.name == cyneric.Month and day == cyneric.Day and current_year == cyneric.Year %}
+              {% elif month.name == cyneric.Month and day == cyneric.Day and current_year == cyneric.Year and era == cyneric_era %}
                 <td id="{{ month.name }}{{ day.number }}" style="background-color: violet;">
                   <form action="{% url 'news:article_list' %}" method="post">
                     {% csrf_token %}
@@ -70,8 +75,18 @@
                     </button>
                   </form>
                 </td>
-              {% elif month.name == dragon.Month and day == dragon.Day and current_year == dragon.Year %}
+              {% elif month.name == dragon.Month and day == dragon.Day and current_year == dragon.Year and era == dragon_era %}
                 <td id="{{ month.name }}{{ day.number }}" style="background-color: aquamarine;">
+                  <form action="{% url 'news:article_list' %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="links" value="{{ day.links }}">
+                    <button class="calender_link" type="submit" value="{{ day.number }}">
+                      {{ day.number }}
+                    </button>
+                  </form>
+                </td>
+              {% elif month.name == calamity.Month and day == calamity.Day and current_year == calamity.Year and era == calamity_era %}
+                <td id="{{ month.name }}{{ day.number }}" style="background-color: lightgreen;">
                   <form action="{% url 'news:article_list' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="links" value="{{ day.links }}">
