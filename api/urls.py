@@ -83,4 +83,5 @@ urlpatterns = [
     # Existing Item Content
     path('item/existing/<str:item>/', views.existing_item, name='existing_item'),
     path('item/existing/<str:item>/json/', views.existing_item_json, name='existing_item_json'),
+    # Setup API client to https://api.pathfinder2.fr/doc
 ]
