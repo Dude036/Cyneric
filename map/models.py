@@ -231,3 +231,13 @@ class Town(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class InitEntry(models.Model):
+    name = models.CharField(default='', max_length=200)
+    ac = models.IntegerField(default=0)
+    hp = models.IntegerField(default=0)
+    initiative = models.IntegerField(default=0)
+
+    def __str__(self):
+        return str(self.initiative) + " - " + self.name

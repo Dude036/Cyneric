@@ -13,5 +13,7 @@ urlpatterns = [
     path('search/', views.town_search, name='town_search'),
     path('admin/', views.admin_redirect, name='admin_redirect'),
     path('phrases/', views.magic_phrases, name='magic_phrases'),
+    path('init/', views.initiative, name='initiative'),
+    path('init/request/', views.initiative_request, name='initiative_request'),
     path('<str:town_name>/', views.town_info, name='town'),
 ]
