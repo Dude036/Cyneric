@@ -350,7 +350,9 @@ function export_paragraph_html(temp_paragraph) {
   if (DEBUG) { console.log("Adding paragraph") };
 
   var paragraph_str = '<p style="margin-bottom: 60px;">';
-  paragraph_str += temp_paragraph['Text'];
+
+  // Double enter should result in a new paragraph
+  paragraph_str += temp_paragraph['Text'].replace(/(\n\n|\r\n\r\n)/g, '</p><p style="margin-bottom: 60px;">');
   paragraph_str += '</p>';
   return paragraph_str;
 }

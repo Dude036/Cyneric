@@ -324,6 +324,7 @@ function add_store_action_item_row(parent, content) {
     item_text.placeholder = 'Long Description';
     item_text.style.lineHeight = "20px";
     item_text.style.width = "400px";
+    item_text.style.resize = 'vertical';
     item_data_cell.appendChild(item_text);
     save_container_as_json(parent);
   }
