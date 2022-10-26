@@ -1,0 +1,258 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% csrf_token %}
+  <h1>
+    Initiative Tracker
+  </h1>
+  <table id="init_box" class="wrapper-box"></table>
+
+
+  {% if is_admin %}
+  <div id="error_message" style="color: red; text-decoration: underline;"></div>
+  <ul style="column-count: 2; width: 25%; list-style: none; margin: 0; padding: 0;">
+    <li>
+      <label for="name">Name</label>
+    </li>
+    <li>
+      <label for="init">Initiative</label>
+    </li>
+    <li>
+      <label for="ac">AC</label>
+    </li>
+    <li>
+      <label for="hp">HP</label>
+    </li>
+    <li>
+      <input id="name" type="text" name="name" placeholder="Name">
+    </li>
+    <li>
+      <input id="init" type="number" name="init" min="0" placeholder="Initiative">
+    </li>
+    <li>
+      <input id="ac" type="number" name="ac" min="0" placeholder="AC">
+    </li>
+    <li>
+      <input id="hp" type="number" name="hp" min="0" placeholder="HP">
+    </li>
+  </ul>
+  <input id="add_entry" type="button" value="Send">
+  {% endif %}
+
+  <script type="text/javascript">
+    // Pseudo-Socket since PythonAnywhere doesn't allow sockets
+    let initiative_data = [];
+    let previous_data = [];
+
+    async function request(request_type, func, data) {
+      var xhr = new XMLHttpRequest();
+      var connection = window.location.href + 'request/';
+      const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      xhr.open(request_type, connection);
+
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("X-CSRFToken", token);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          // Completed request
+          initiative_data = JSON.parse(xhr.responseText);
+        }
+      };
+
+      data = {
+        "function": func,
+        "data": data
+      };
+
+      xhr.send(JSON.stringify(data));
+    }
+
+    async function update_page() {
+      // Refresh Data on the page
+      await request("GET", "read", {})
+
+      // If an update is needed, do it here
+      var init_table = document.querySelector('#init_box');
+      if (JSON.stringify(previous_data) !== JSON.stringify(initiative_data) || init_table.innerHTML == '') {
+        previous_data = initiative_data;
+        init_table.innerHTML = '';
+
+        // Add Header
+        var header_row = init_table.insertRow(0);
+        var initiative_cell = header_row.insertCell(0);
+        initiative_cell.style.backgroundColor = 'gray';
+        initiative_cell.style.color = 'white';
+        initiative_cell.style.padding = '5 px';
+        initiative_cell.innerHTML = 'Initiative';
+        // Make this an input with a submit button
+
+        var name_cell = header_row.insertCell(1);
+        name_cell.style.backgroundColor = 'gray';
+        name_cell.style.color = 'white';
+        name_cell.style.padding = '5 px';
+        name_cell.innerHTML = 'Name';
+        var ac_cell = header_row.insertCell(2);
+        ac_cell.style.backgroundColor = 'gray';
+        ac_cell.style.color = 'white';
+        ac_cell.style.padding = '5 px';
+        ac_cell.innerHTML = 'AC';
+        var hp_cell = header_row.insertCell(3);
+        hp_cell.style.backgroundColor = 'gray';
+        hp_cell.style.color = 'white';
+        hp_cell.style.padding = '5 px';
+        hp_cell.innerHTML = 'HP';
+        var action_cell = header_row.insertCell(4);
+        action_cell.style.backgroundColor = 'gray';
+        action_cell.style.color = 'white';
+        action_cell.style.padding = '5 px';
+        action_cell.innerHTML = 'Actions';
+        
+        // Insert all entries
+        initiative_data.forEach(function(data_point) {
+          var temp_row = init_table.insertRow(-1);
+          var temp_init = temp_row.insertCell(0);
+          temp_init_input = document.createElement('input')
+          temp_init_input.setAttribute("type", "number");
+          temp_init_input.value = data_point['Init'];
+          temp_init_input.id = data_point['Init'] + '_Init';
+
+{% if is_admin %}
+          temp_init_input.onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+              outgoing = {"Name": data_point['Name'], "Init": parseInt(temp_init_input.value)}
+              request("POST", 'update', outgoing);
+            }
+          };
+{% else %}
+          temp_init_input.readOnly = true;
+{% endif %}
+          temp_init.appendChild(temp_init_input);
+
+          var temp_name = temp_row.insertCell(1);
+          temp_name.innerHTML = data_point['Name'];
+
+{% if is_admin %}
+          var temp_ac = temp_row.insertCell(2);
+          temp_ac_input = document.createElement('input')
+          temp_ac_input.setAttribute("type", "number");
+          temp_ac_input.value = data_point['AC'];
+          temp_ac_input.id = data_point['AC'] + '_AC';
+
+          temp_ac_input.onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+              outgoing = {"Name": data_point['Name'], "AC": parseInt(temp_init_input.value)}
+              request("POST", 'update', outgoing);
+            }
+          };
+          temp_ac.appendChild(temp_ac_input);
+
+          var temp_hp = temp_row.insertCell(3);
+          temp_hp_input = document.createElement('input')
+          temp_hp_input.setAttribute("type", "number");
+          temp_hp_input.value = data_point['HP'];
+          temp_hp_input.id = data_point['HP'] + '_HP';
+
+          temp_hp_input.onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+              outgoing = {"Name": data_point['Name'], "HP": parseInt(temp_init_input.value)}
+              request("POST", 'update', outgoing);
+            }
+          };
+          temp_hp.appendChild(temp_hp_input);
+          
+          // Setup Actions to delete
+          var temp_actions = temp_row.insertCell(4);
+          var delete_button = document.createElement("INPUT");
+          delete_button.setAttribute("type", "button");
+          delete_button.value = "Delete Entry";
+          delete_button.onclick = function() {
+            var name = data_point['Name'];
+            if (confirm("Are you sure you want to remove " + name + " from the Initiative tracker?")) {
+              outgoing = {"Name": data_point['Name']}
+              request("POST", 'remove', outgoing);
+            }
+          }
+          temp_actions.appendChild(delete_button);
+{% endif %}
+        });
+      }
+
+      // We want this to run every few seconds
+      setTimeout(update_page, 1000);
+    };
+
+
+{% if is_admin %}
+    // Page Update Code
+    function validate_form() {
+      var error_code = document.querySelector('#error_message');
+      error_code.innerHTML = '';
+      if (document.querySelector('#name').value === '') {
+        error_code.innerHTML += "Name cannot be Empty<br>";
+        return false;
+      }
+      if (document.querySelector('#init').value === '') {
+        error_code.innerHTML += "Initiative cannot be Empty<br>";
+        return false;
+      }
+      if (document.querySelector('#ac').value === '') {
+        error_code.innerHTML += "AC cannot be Empty<br>";
+        return false;
+      }
+      if (document.querySelector('#hp').value === '') {
+        error_code.innerHTML += "HP cannot be Empty<br>";
+        return false;
+      }
+      return true;
+    }
+
+    function clear_form() {
+        document.querySelector('#name').value = '';
+        document.querySelector('#ac').value = '';
+        document.querySelector('#hp').value = '';
+        document.querySelector('#init').value = '';
+    }
+
+    // Submit button for new entry
+    document.querySelector('#add_entry').onclick = function(e) {
+      if (validate_form()) {
+        outgoing = {
+          'Name': document.querySelector('#name').value,
+          'Init': parseInt(document.querySelector('#init').value),
+          'AC': parseInt(document.querySelector('#ac').value),
+          'HP': parseInt(document.querySelector('#hp').value)
+        }
+        request("POST", 'add', outgoing);
+        clear_form();
+      }
+    };
+
+    // Hitting Enter on form submits it
+    document.querySelector('#name').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#add_entry').click();
+      }
+    };
+    document.querySelector('#init').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#add_entry').click();
+      }
+    };
+    document.querySelector('#ac').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#add_entry').click();
+      }
+    };
+    document.querySelector('#hp').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#add_entry').click();
+      }
+    };
+{% endif %}
+
+    // Start updating the page
+    update_page();
+  </script>
+{% endblock %}
