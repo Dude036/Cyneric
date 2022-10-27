@@ -113,10 +113,11 @@
         initiative_data.forEach(function(data_point) {
           var temp_row = init_table.insertRow(-1);
           var temp_init = temp_row.insertCell(0);
-          temp_init_input = document.createElement('input')
+          var temp_init_input = document.createElement('input')
           temp_init_input.setAttribute("type", "number");
           temp_init_input.value = data_point['Init'];
           temp_init_input.id = data_point['Init'] + '_Init';
+          temp_init_input.style.width = '80px';
 
 {% if is_admin %}
           temp_init_input.onkeyup = function(e) {
@@ -124,6 +125,10 @@
               outgoing = {"Name": data_point['Name'], "Init": parseInt(temp_init_input.value)}
               request("POST", 'update', outgoing);
             }
+          };
+          temp_init_input.onblur = function(e) {
+            outgoing = {"Name": data_point['Name'], "Init": parseInt(temp_init_input.value)}
+            request("POST", 'update', outgoing);
           };
 {% else %}
           temp_init_input.readOnly = true;
@@ -135,36 +140,78 @@
 
 {% if is_admin %}
           var temp_ac = temp_row.insertCell(2);
-          temp_ac_input = document.createElement('input')
+          var temp_ac_input = document.createElement('input')
           temp_ac_input.setAttribute("type", "number");
           temp_ac_input.value = data_point['AC'];
-          temp_ac_input.id = data_point['AC'] + '_AC';
+          temp_ac_input.id = data_point['Name'] + '_AC';
+          temp_ac_input.style.width = '80px';
 
+          temp_ac_input.onblur = function(e) {
+            outgoing = {"Name": data_point['Name'], "AC": parseInt(temp_ac_input.value)}
+            request("POST", 'update', outgoing);
+          };
           temp_ac_input.onkeyup = function(e) {
             if (e.keyCode === 13) {  // enter, return
-              outgoing = {"Name": data_point['Name'], "AC": parseInt(temp_init_input.value)}
+              outgoing = {"Name": data_point['Name'], "AC": parseInt(temp_ac_input.value)}
               request("POST", 'update', outgoing);
             }
           };
           temp_ac.appendChild(temp_ac_input);
 
           var temp_hp = temp_row.insertCell(3);
-          temp_hp_input = document.createElement('input')
+          var temp_hp_input = document.createElement('input')
           temp_hp_input.setAttribute("type", "number");
           temp_hp_input.value = data_point['HP'];
-          temp_hp_input.id = data_point['HP'] + '_HP';
+          temp_hp_input.id = data_point['Name'] + '_HP';
+          temp_hp_input.style.width = '80px';
 
+          temp_hp_input.onblur = function(e) {
+            outgoing = {"Name": data_point['Name'], "HP": parseInt(temp_hp_input.value)}
+            request("POST", 'update', outgoing);
+          };
           temp_hp_input.onkeyup = function(e) {
             if (e.keyCode === 13) {  // enter, return
-              outgoing = {"Name": data_point['Name'], "HP": parseInt(temp_init_input.value)}
+              outgoing = {"Name": data_point['Name'], "HP": parseInt(temp_hp_input.value)}
               request("POST", 'update', outgoing);
             }
           };
           temp_hp.appendChild(temp_hp_input);
+
+          // Incriment HP
+          var add_hp_button = document.createElement("input");
+          add_hp_button.setAttribute("type", "button");
+          add_hp_button.value = "+";
+          add_hp_button.style.marginLeft = '15px'
+          add_hp_button.onclick = function(e) {
+            var new_hp = parseInt(temp_hp_input.value) + parseInt(incriment_hp_input.value)
+            outgoing = {"Name": data_point['Name'], "HP": new_hp}
+            request("POST", 'update', outgoing);
+            incriment_hp_input.value = '';
+          }
+          temp_hp.appendChild(add_hp_button);
+
+          // HP entry
+          var incriment_hp_input = document.createElement('input')
+          incriment_hp_input.setAttribute("type", "number");
+          incriment_hp_input.style.width = '80px';
+          incriment_hp_input.value = '0';
+          temp_hp.appendChild(incriment_hp_input);
+
+          // Decriment HP
+          var sub_hp_button = document.createElement("input");
+          sub_hp_button.setAttribute("type", "button");
+          sub_hp_button.value = "-";
+          sub_hp_button.onclick = function(e) {
+            var new_hp = parseInt(temp_hp_input.value) - parseInt(incriment_hp_input.value)
+            outgoing = {"Name": data_point['Name'], "HP": new_hp}
+            request("POST", 'update', outgoing);
+            incriment_hp_input.value = '';
+          }
+          temp_hp.appendChild(sub_hp_button);
           
           // Setup Actions to delete
           var temp_actions = temp_row.insertCell(4);
-          var delete_button = document.createElement("INPUT");
+          var delete_button = document.createElement("input");
           delete_button.setAttribute("type", "button");
           delete_button.value = "Delete Entry";
           delete_button.onclick = function() {
