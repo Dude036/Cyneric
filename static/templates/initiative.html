@@ -9,34 +9,47 @@
 
 
   {% if is_admin %}
-  <div id="error_message" style="color: red; text-decoration: underline;"></div>
-  <ul style="column-count: 2; width: 25%; list-style: none; margin: 0; padding: 0;">
-    <li>
-      <label for="name">Name</label>
-    </li>
-    <li>
-      <label for="init">Initiative</label>
-    </li>
-    <li>
-      <label for="ac">AC</label>
-    </li>
-    <li>
-      <label for="hp">HP</label>
-    </li>
-    <li>
-      <input id="name" type="text" name="name" placeholder="Name">
-    </li>
-    <li>
-      <input id="init" type="number" name="init" min="0" placeholder="Initiative">
-    </li>
-    <li>
-      <input id="ac" type="number" name="ac" min="0" placeholder="AC">
-    </li>
-    <li>
-      <input id="hp" type="number" name="hp" min="0" placeholder="HP">
-    </li>
-  </ul>
-  <input id="add_entry" type="button" value="Send">
+  <div id="admin_area" style="display: flex; justify-content: space-between;">
+    <div id="init_entry" style="width: 45%;">
+      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Add Initiative Entry</div>
+      <div id="error_message" style="color: red; text-decoration: underline;"></div>
+      <table style="margin-bottom: 20px; width: 100%;">
+        <tr>
+          <th>
+            <label for="name">Name</label>
+          </th>
+          <td>
+            <input id="name" type="text" name="name" placeholder="Name">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="init">Initiative</label>
+          </th>
+          <td>
+            <input id="init" type="number" name="init" min="0" placeholder="Initiative">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="ac">AC</label>
+          </th>
+          <td>
+            <input id="ac" type="number" name="ac" min="0" placeholder="AC">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="hp">HP</label>
+          </th>
+          <td>
+            <input id="hp" type="number" name="hp" min="0" placeholder="HP">
+          </td>
+        </tr>
+      </table>
+      <input id="add_entry" type="button" value="Send">
+    </div>
+  </div>
   {% endif %}
 
   <script type="text/javascript">
@@ -93,6 +106,8 @@
         name_cell.style.color = 'white';
         name_cell.style.padding = '5 px';
         name_cell.innerHTML = 'Name';
+
+{% if is_admin %}
         var ac_cell = header_row.insertCell(2);
         ac_cell.style.backgroundColor = 'gray';
         ac_cell.style.color = 'white';
@@ -108,6 +123,7 @@
         action_cell.style.color = 'white';
         action_cell.style.padding = '5 px';
         action_cell.innerHTML = 'Actions';
+{% endif %}
         
         // Insert all entries
         initiative_data.forEach(function(data_point) {
