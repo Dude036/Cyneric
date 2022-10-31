@@ -174,7 +174,8 @@ function export_monster_html(temp_monster) {
   if (DEBUG) { console.log("Adding monster: " + temp_monster['Name']) };
   var monster_str = '<table class="wrapper-box" style="margin-bottom: 60px;"><tr><td>';
   monster_str += '<span class="text-lg bold">' + temp_monster['Name']
-  monster_str += '</span> - <span class="text-md bold">CR: ' + temp_monster['Cr'] + '</span><br>'
+  monster_str += '</span> - <span class="text-md bold">CR: ' + temp_monster['Cr'] + '</span>'
+  monster_str += '<span style="float: right;" class="text-md bold">XP: ' + temp_monster['Xp'] + '</span><br>'
   
   // Traits if Second edition
   if (temp_monster['Edition'] === '2') {

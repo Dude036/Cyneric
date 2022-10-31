@@ -164,6 +164,67 @@ def de_list(l):
     return s[:-2]
 
 
+def xp_by_cr(cr):
+    levels = {
+        '0': 0,
+        '1/8': 25,
+        '1/4': 50,
+        '1/2': 100,
+        '1': 200,
+        '2': 450,
+        '3':700,
+        '4': 1100,
+        '5': 1800,
+        '6': 2300,
+        '7': 2900,
+        '8': 3900,
+        '9': 5000,
+        '10': 5600,
+        '11': 7200,
+        '12': 8400,
+        '13': 10000,
+        '14': 11500,
+        '15': 13000,
+        '16': 15000,
+        '17': 18000,
+        '18': 20000,
+        '19': 22000,
+        '20': 25000,
+        '21': 33000,
+        '22': 41000,
+        '23': 50000,
+        '24': 62000,
+        '25': 75000,
+        '26': 90000,
+        '27': 105000,
+        '28': 120000,
+        '29': 135000,
+        '30': 155000,
+    }
+    if cr not in levels.keys():
+        return 0
+    return levels[cr]
+
+
+def elongate_size(letter):
+    if isinstance(letter, list):
+        letter = letter[0]
+    if letter == 'T':
+        return 'Tiny'
+    elif letter == 'S':
+        return 'Small'
+    elif letter == 'S':
+        return 'Medium'
+    elif letter == 'M':
+        return 'Large'
+    elif letter == 'L':
+        return 'Huge'
+    elif letter == 'G':
+        return 'Gargantuan'
+    else:
+        return letter
+
+
 class Creature:
     def __init__(self, name, link):
         self.Name = name

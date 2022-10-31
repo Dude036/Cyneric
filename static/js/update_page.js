@@ -126,6 +126,7 @@ function update_monster_container(new_json, container_id) {
 
   set_dom_value(container_id + 'R1_NAME', new_json['Name']);
   set_dom_value(container_id + 'R1_CR', new_json['Cr']);
+  set_dom_value(container_id + 'R1_XP', new_json['Xp']);
   set_dom_value(container_id + 'R1_ALIGN', new_json['Alignment']);
   set_dom_value(container_id + 'R1_DESCRIBE', deconvert_text(new_json['Description']));
 

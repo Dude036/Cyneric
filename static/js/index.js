@@ -605,6 +605,14 @@ function create_element_monster(monster, edition) {
   monster_cr_input.id = monster_header.id + '_CR'
   monster_name.appendChild(monster_cr_input);
 
+  var monster_xp_input = document.createElement('input');
+  monster_xp_input.style.fontSize = '24px';
+  monster_xp_input.style.float = 'right';
+  monster_xp_input.placeholder = 'XP';
+  monster_xp_input.size = '3';
+  monster_xp_input.id = monster_header.id + '_XP'
+  monster_name.appendChild(monster_xp_input);
+
   monster_header_content.appendChild(monster_name);
 
   var monster_align = document.createElement('div');
@@ -1732,6 +1740,7 @@ function get_monster_data(monster, edition) {
 
   monster_obj['Name'] = document.getElementById(monster_header.id + '_NAME').value;
   monster_obj['Cr'] = document.getElementById(monster_header.id + '_CR').value;
+  monster_obj['Xp'] = document.getElementById(monster_header.id + '_XP').value;
   monster_obj['Description'] = convert_text(document.getElementById(monster_header.id + '_DESCRIBE').value);
   monster_obj['Alignment'] = document.getElementById(monster_header.id + '_ALIGN').value;
 

@@ -275,6 +275,7 @@ def parse_archives(url):
         "Edition": "2",
         "Name": monster.Name,
         "Cr": monster.Cr,
+        "Xp": '',
         "Description": '<p>' + monster.Description + '</p>',
         "Alignment": monster.Alignment,
         "Traits": monster.Traits,
@@ -379,13 +380,14 @@ def parse_5etools(url):
         target["Language"] = de_list(creature['languages']) if 'languages' in creature.keys() and creature['languages'] is not None else ''
         target["Name"] = modify_title(unparsed_name.title())
         target["Sense"] = de_list(creature['senses']) if 'senses' in creature.keys() and creature['senses'] is not None else ''
-        target["Size"] = creature['size']
+        target["Size"] = elongate_size(creature['size'])
         target["Skills"] = de_dict(creature['skill']) if 'skill' in creature.keys() else ''
         target["Speed"] = de_dict(creature['speed'])
         target["STR"] = creature['str']
         target["STR Save"] = True if 'save' in creature.keys() and 'str' in creature['save'] else False
         target["WIS"] = creature['wis']
         target["WIS Save"] = True if 'save' in creature.keys() and 'wis' in creature['save'] else False
+        target["Xp"] = xp_by_cr(creature['cr'])
 
         # Potential mixup could kill the following.
         resist = ''
