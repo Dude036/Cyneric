@@ -5,6 +5,8 @@ from .forms import CritForm
 from django.contrib import auth
 from os import path
 import simplejson as json
+from generator.DMToolkit.beasts.beastiary import roll_hp
+from numpy.random import randint
 
 
 def __list_town_data():
@@ -244,6 +246,25 @@ def initiative_data_form_validate(incoming):
     return True
 
 
+def bulk_initiative_data_form_validate(incoming):
+    for num in ['Init', 'AC', 'Quantity']:
+        if num not in incoming['data'].keys():
+            print(num + " missing from form.")
+            return False
+        elif not isinstance(incoming['data'][num], int):
+            print(num + " is not an integer.")
+            return False
+
+    if 'HD' not in incoming['data'].keys():
+        print("HD missing from form.")
+        return False
+    elif not isinstance(incoming['data']['HD'], str):
+        print("HD is not a string")
+        return False
+
+    return True
+
+
 def initiative_request(request):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
@@ -262,6 +283,16 @@ def initiative_request(request):
             initiative_data_form_validate(incoming)
             new_entry = InitEntry(name=incoming['data']['Name'], initiative=incoming['data']['Init'], ac=incoming['data']['AC'], hp=incoming['data']['HP'])
             new_entry.save()
+
+        # Bulk funtionality
+        if incoming['function'] == 'bulk' and user.is_authenticated:
+            print("Adding " + incoming['data']['Name'] + " to the initiative tracker")
+            bulk_initiative_data_form_validate(incoming)
+            for i in range(1, incoming['data']['Quantity'] + 1):
+                hp = roll_hp(incoming['data']['HD'])
+                init = randint(1, 21) + incoming['data']['Init']
+                new_entry = InitEntry(name=incoming['data']['Name'] + ' (' + str(i) + ')', initiative=init, ac=incoming['data']['AC'], hp=hp)
+                new_entry.save()
 
         # Update Database entry
         elif incoming['function'] == 'update' and user.is_authenticated:
@@ -286,6 +317,11 @@ def initiative_request(request):
             to_delete = InitEntry.objects.filter(name=incoming['data']['Name'])
             print("Deleting ", to_delete[0].name, " from the initiative tracker")
             InitEntry.objects.filter(id=to_delete[0].id).delete()
+
+        # Clear table
+        elif incoming['function'] == 'clear' and user.is_authenticated:
+            for entry in InitEntry.objects.all():
+                InitEntry.objects.filter(id=entry.id).delete()
 
     # Read from database
     return JsonResponse(format_initiative_tracker(user), safe=False)

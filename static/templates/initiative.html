@@ -9,7 +9,7 @@
 
 
   {% if is_admin %}
-  <div id="admin_area" style="display: flex; justify-content: space-between;">
+  <div id="admin_area" style="display: flex; justify-content: space-between; flex-wrap: wrap;">
     <div id="init_entry" style="width: 45%;">
       <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Add Initiative Entry</div>
       <div id="error_message" style="color: red; text-decoration: underline;"></div>
@@ -48,6 +48,62 @@
         </tr>
       </table>
       <input id="add_entry" type="button" value="Send">
+    </div>
+    <div id="bulk_add" style="width: 45%;">
+      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Bulk Initiative Entry</div>
+      <div id="bulk_error_message" style="color: red; text-decoration: underline;"></div>
+      <table style="margin-bottom: 20px; width: 100%;">
+        <tr>
+          <th>
+            <label for="bulk_name">Base Name</label>
+          </th>
+          <td>
+            <input id="bulk_name" type="text" name="bulk_name" placeholder="Base Name">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="bulk_quantity">Quantity</label>
+          </th>
+          <td>
+            <input id="bulk_quantity" type="number" name="bulk_quantity" min="0" placeholder="Quantity">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="bulk_init">Initiative Modifier</label>
+          </th>
+          <td>
+            <input id="bulk_init" type="number" name="bulk_init" min="0" placeholder="Initiative Modifier">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="bulk_ac">AC</label>
+          </th>
+          <td>
+            <input id="bulk_ac" type="number" name="bulk_ac" min="0" placeholder="AC">
+          </td>
+        </tr>
+        <tr>
+          <th>
+            <label for="bulk_hd">Hit Dice</label>
+          </th>
+          <td>
+            <input id="bulk_hd" type="text" name="bulk_hd" min="0" placeholder="Hit Dice">
+          </td>
+        </tr>
+      </table>
+      <input id="bulk_entry" type="button" value="Send">
+    </div>
+    <div id="clear_all" style="width: 45%;">
+      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Clear Initiative Tracker</div>
+      <p style="color: red;">
+        <b>WARNING:</b> This action is irreversible.
+      </p>
+      <div style="display: flex; justify-content: center; border: 1px solid black; padding: 15px;">
+        <input id="clear_all" type="button" value="Clear Initiative Tracker" onclick="if (confirm('Are you sure you want to clear the Initiative tracker?')) { request('POST', 'clear', {'Name': 'All'}); }">
+      </div>
     </div>
   </div>
   {% endif %}
@@ -313,6 +369,84 @@
         document.querySelector('#add_entry').click();
       }
     };
+
+    // Copy for Bulk update
+    function validate_bulk_form() {
+      var error_code = document.querySelector('#bulk_error_message');
+      error_code.innerHTML = '';
+      if (document.querySelector('#bulk_name').value === '') {
+        error_code.innerHTML += "Name cannot be Empty<br>";
+        return false;
+      }
+      if (document.querySelector('#bulk_quantity').value === '') {
+        error_code.innerHTML += "Quantity cannot be Empty<br>";
+        return false;
+      }
+      if (document.querySelector('#bulk_init').value === '') {
+        error_code.innerHTML += "Initiative cannot be Empty<br>";
+        return false;
+      }
+      if (document.querySelector('#bulk_ac').value === '') {
+        error_code.innerHTML += "AC cannot be Empty<br>";
+        return false;
+      }
+      if (document.querySelector('#bulk_hd').value === '') {
+        error_code.innerHTML += "Hit Dice cannot be Empty<br>";
+        return false;
+      }
+      return true;
+    }
+
+    function clear_bulk_form() {
+        document.querySelector('#bulk_name').value = '';
+        document.querySelector('#bulk_quantity').value = '';
+        document.querySelector('#bulk_ac').value = '';
+        document.querySelector('#bulk_hd').value = '';
+        document.querySelector('#bulk_init').value = '';
+    }
+
+    // Submit button for new entry
+    document.querySelector('#bulk_entry').onclick = function(e) {
+      if (validate_bulk_form()) {
+        outgoing = {
+          'Name': document.querySelector('#bulk_name').value,
+          'Quantity': parseInt(document.querySelector('#bulk_quantity').value),
+          'Init': parseInt(document.querySelector('#bulk_init').value),
+          'AC': parseInt(document.querySelector('#bulk_ac').value),
+          'HD': document.querySelector('#bulk_hd').value
+        }
+        request("POST", 'bulk', outgoing);
+        clear_bulk_form();
+      }
+    };
+
+    // Hitting Enter on form submits it
+    document.querySelector('#bulk_name').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#bulk_entry').click();
+      }
+    };
+    document.querySelector('#bulk_quantity').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#bulk_entry').click();
+      }
+    };
+    document.querySelector('#bulk_init').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#bulk_entry').click();
+      }
+    };
+    document.querySelector('#bulk_ac').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#bulk_entry').click();
+      }
+    };
+    document.querySelector('#bulk_hd').onkeyup = function(e) {
+      if (e.keyCode === 13) {  // enter, return
+        document.querySelector('#bulk_entry').click();
+      }
+    };
+
 {% endif %}
 
     // Start updating the page
