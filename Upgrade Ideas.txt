@@ -1,0 +1,23 @@
+Editor Page:
+
+	NPC Entry:
+		Reuse the Store functions to make an NPC generate-able
+		Add a way to add a bunch of paragraph sections to fill in specific info for Quests?
+
+	Quest Section:
+		??? What should I put here?
+
+	Section Identifiers when minimized:
+		Right now when shit is minimized, the only way to tell what a section is by the override buttons.
+		Put an identifier there for
+
+	Export Preview:
+		Have a button to open a new tab with parsed page, and not force download.
+		This way you can check before exporting
+
+	List Section:
+		Make the main line take up a wide chunk of the page
+		Lists should have titles like tables
+		Lists should also have sublists using text areas
+		Lists should be configurable with dragula
+
