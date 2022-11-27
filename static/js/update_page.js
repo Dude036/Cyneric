@@ -195,7 +195,8 @@ function update_monster_container(new_json, container_id) {
   if (new_json['Spells'].length !== 0) {
     // Add a spell list container
     document.getElementById(container_id + 'R5_SPELL_ADD').click();
-    var add_spell_row_button = document.querySelector('div[id$=_ROW_ADD]');
+    var all_spell_row_buttons = document.querySelectorAll('div[id$=_ROW_ADD]');
+    var add_spell_row_button = all_spell_row_buttons[all_spell_row_buttons.length - 1];
     var spell_table = document.querySelector('table[id^=' + container_id + 'R5_LOC]');
 
     // Add spell list
