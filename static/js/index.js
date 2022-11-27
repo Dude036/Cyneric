@@ -1758,10 +1758,10 @@ function get_monster_data(monster, edition) {
   /*******************************************************************************************************/
 
   var monster_info_list = monster.rows[1].childNodes[0].childNodes[0].childNodes;
+  var attrib = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
   for (var i = 0; i < monster_info_list.length; i++) {
-    var new_key = document.getElementById(monster_info_list[i].firstChild.id).innerText
+    var new_key = document.getElementById(monster_info_list[i].firstChild.id).innerText.trim()
     
-    var attrib = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
     if (attrib.includes(new_key.substring(0, 3))) {
       monster_obj[new_key] = monster_info_list[i].lastChild.checked;
     } else {
@@ -1774,7 +1774,6 @@ function get_monster_data(monster, edition) {
   var monster_stats = monster.rows[2].childNodes[0];
   var monster_stats_inputs = monster_stats.querySelectorAll('input');
   if (DEBUG) { console.log(monster_stats_inputs); }
-  var attrib = ['STR', 'DEX', 'CON', 'INT', 'WIS', 'CHA'];
   for (var i = 0; i < monster_stats_inputs.length; i++) {
     monster_obj[attrib[i]] = monster_stats_inputs[i].value;
   }
