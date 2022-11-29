@@ -2006,7 +2006,7 @@ function save_json_from_page() {
   // Begin exporting
   var editor_container = document.getElementById('editor').childNodes;
   if (DEBUG) { console.log("Parsing all editor objects"); }
-  for(var i = 0; i < editor_container.length; i++) {
+  for(var i = 1; i < editor_container.length; i++) {
     session_state_obj['Data'].push(editor_container[i].id);
     save_container_as_json(editor_container[i]);
   }
