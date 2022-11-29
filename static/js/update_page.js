@@ -31,8 +31,12 @@ function remove_table_rows(table_id, skip) {
  */
 function update_page(new_json) {
   // Update page information to reflect the data imported.
-  set_dom_value('header', new_json['Name']);
-  set_dom_value('description', deconvert_text(new_json['Description']))
+  if ('Name' in new_json) {
+    set_dom_value('header', new_json['Name']);
+  }
+  if ('Description' in new_json) {
+    set_dom_value('description', deconvert_text(new_json['Description']))
+  }
   new_json['Data'].forEach(function(data_obj) {
     // Null check
     if (data_obj === null) {return;}
@@ -327,10 +331,10 @@ function update_list_container(new_json, container_id) {
     add_row_button.click();
     set_dom_value(content.lastElementChild.id + 'I', line_obj['Data']);
     if (line_obj['Bold']) {
-        document.getElementById(content.lastElementChild.id + 'I_BOLD').checked = true;
+        document.getElementById(content.lastElementChild.id + 'I_BOLD').click();
     }
     if (line_obj['Underline']) {
-        document.getElementById(content.lastElementChild.id + 'I_UNDERLINE').checked = true;
+        document.getElementById(content.lastElementChild.id + 'I_UNDERLINE').click();
     }
   })
 }

@@ -1711,8 +1711,8 @@ function get_list_data(list) {
   for (var i = 0; i < list.childNodes.length; i ++) {
     var stuff = {
       'Data': document.getElementById(list.childNodes[i].id + 'I').value,
-      'Bold': document.getElementById(list.childNodes[i].id + 'I_BOLD').checked,
-      'Underline': document.getElementById(list.childNodes[i].id + 'I_UNDERLINE').checked
+      'Bold': document.getElementById(list.childNodes[i].id + 'I_BOLD').innerHTML.includes('black'),
+      'Underline': document.getElementById(list.childNodes[i].id + 'I_UNDERLINE').innerHTML.includes('black')
     }
     list_obj['Data'].push(stuff);
   }

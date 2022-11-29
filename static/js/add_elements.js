@@ -440,33 +440,64 @@ function add_store_action_blank_row(parent, content) {
  */
 function create_list_settings(parent_obj, add_id) {
   // Bold
-  var add_bold = document.createElement('input');
-  add_bold.type = 'checkbox';
+  var add_bold = generic_action_span('bold_white', 'Bold Line', '', '0 20px 0 20px');
   add_bold.id = add_id + '_BOLD'
-  add_bold.name = add_id + '_BOLD'
-
-  var add_bold_label = document.createElement('label');
-  add_bold_label.htmlFor = add_id + '_BOLD'
-  add_bold_label.innerHTML = "<b>Bold</b>"
+  add_bold.addEventListener('click', function() {
+    var a = document.getElementById(this.id);
+    if (this.innerHTML.includes('white')) {
+      this.innerHTML = '<img src="/static/svg/bold_black.svg" title="Remove Bold" width="30px" height="30px">';
+    } else {
+      this.innerHTML = '<img src="/static/svg/bold_white.svg" title="Bold Line" width="30px" height="30px">';
+    }
+  });
 
   parent_obj.appendChild(add_bold);
-  parent_obj.appendChild(add_bold_label);
 
   // Underline
-  var add_underline = document.createElement('input');
-  add_underline.type = 'checkbox';
-  add_underline.id = add_id + '_UNDERLINE'
-  add_underline.name = add_id + '_UNDERLINE'
-
-  var add_underline_label = document.createElement('label');
-  add_underline_label.htmlFor = add_id + '_UNDERLINE'
-  add_underline_label.innerHTML = "<u>Underline</u>"
+  var add_underline = generic_action_span('underline_white', 'Underline Line', '', '0 20px 0 0');
+  add_underline.id = add_id + "_UNDERLINE";
+  add_underline.addEventListener('click', function() {
+    var a = document.getElementById(this.id);
+    if (this.innerHTML.includes('white')) {
+      this.innerHTML = '<img src="/static/svg/underline_black.svg" title="Remove Underline" width="30px" height="30px">';
+    } else {
+      this.innerHTML = '<img src="/static/svg/underline_white.svg" title="Underline Line" width="30px" height="30px">';
+    }
+  });
 
   parent_obj.appendChild(add_underline);
-  parent_obj.appendChild(add_underline_label);
+
+  // Sublist - Tentative?
+  /*
+  var add_row = generic_action_span('new_list', 'Add Sublist', '', '0 20px 0 0');
+  add_row.id = add_id + "_UNDERLINE";
+  add_row.addEventListener('click', function() {
+    var parent = document.getElementById(this.id).parentElement;
+    var new_line = document.createElement('ul');
+    new_line.id = add_id + "_";
+
+    var new_element = document.createElement('li');
+    new_element.id = new_line.id + latest_list_rows;
+    latest_list_rows++;
+
+    var new_element_input = document.createElement('textarea');
+    new_element_input.id = new_element.id + 'I'
+    new_element_input.placeholder = 'Text';
+
+
+    new_element.appendChild(new_element_input)
+    new_line.appendChild(new_element)
+
+    create_list_settings(new_element, new_element.id + 'I');
+
+    parent.appendChild(new_line);
+  })
+
+  parent_obj.appendChild(add_row);
+  */
 
   // Delete
-  var add_delete_div = generic_action_span('delete', 'Delete Item', '', '0 20px 0 0');;
+  var add_delete_div = generic_action_span('delete', 'Delete Item', '', '0 20px 0 0');
   add_delete_div.id = add_id + "_DELETE";
 
   // Delete Row option
@@ -498,13 +529,12 @@ function add_list_action_new_row(parent, content) {
     latest_list_rows++;
     
     var new_row_input = document.createElement('textarea');
-    new_row_input.style.resize = 'vertical';
     new_row_input.id = new_row.id + 'I'
     new_row_input.placeholder = 'Text';
 
     new_row.appendChild(new_row_input);
 
-    create_list_settings(new_row, new_row.id + 'I');
+    create_list_settings(new_row, new_row_input.id);
 
     content.appendChild(new_row);
     save_container_as_json(parent);
