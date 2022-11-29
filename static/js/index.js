@@ -1529,8 +1529,19 @@ function create_element(item) {
     var list = document.createElement('ul');
     list.id = content.id;
 
+    var add_title_div = document.createElement('div');
+    add_title_div.id = content.id + "_NAME";
+    add_title_div.style.backgroundColor = '#666666';
+    add_title_div.style.color = '#EFEFEF';
+    add_title_div.style.float = 'right';
+    add_title_div.style.margin = '4px';
+    var add_title_input = generic_text_input(add_title_div.id + "_I");
+    add_title_input.placeholder = 'List Name';
+    add_title_div.appendChild(add_title_input);
+
     // Actions
     actions.appendChild(add_list_action_new_row(container, list));
+    actions.appendChild(add_title_div)
 
     content.appendChild(list);
   } else if (item.startsWith('Monster')) {
@@ -1704,6 +1715,7 @@ function get_list_data(list) {
   if (DEBUG) { console.log("Exporting List: " + list.id); }
   var list_obj = {
     'Type': 'List',
+    'Title': list['Name'] = document.getElementById(list.id + "_NAME_I").value,
     'Data': []
   };
   if (DEBUG) { console.log("Traversing list elements"); }

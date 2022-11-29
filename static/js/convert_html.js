@@ -150,7 +150,11 @@ function export_table_html(temp_table) {
 function export_list_html(temp_list) {
   if (DEBUG) { console.log("Adding list: " + temp_list['Name']) };
 
-  var list_str = '<ul>'
+  var list_str = '';
+  if (temp_list['Title'] != '') {
+    list_str = '<div class="text-md bold">' + temp_list['Title'] +  '</div>';
+  }
+  list_str += '<ul>'
   for (var x = 0; x < temp_list['Data'].length; x++) {
     list_str += '<li>';
     list_str += temp_list['Data'][x]['Bold'] ? '<b>' : '';
