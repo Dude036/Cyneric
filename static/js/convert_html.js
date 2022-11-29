@@ -151,13 +151,13 @@ function export_list_html(temp_list) {
   if (DEBUG) { console.log("Adding list: " + temp_list['Name']) };
 
   var list_str = '<ul>'
-  for (var x = 0; x < temp_list.length; x++) {
+  for (var x = 0; x < temp_list['Data'].length; x++) {
     list_str += '<li>';
-    list_str += temp_list[x]['Bold'] ? '<b>' : '';
-    list_str += temp_list[x]['Underline'] ? '<u>' : '';
-    list_str += temp_list[x]['Data'];
-    list_str += temp_list[x]['Underline'] ? '</u>' : '';
-    list_str += temp_list[x]['Bold'] ? '</b>' : '';
+    list_str += temp_list['Data'][x]['Bold'] ? '<b>' : '';
+    list_str += temp_list['Data'][x]['Underline'] ? '<u>' : '';
+    list_str += temp_list['Data'][x]['Data'];
+    list_str += temp_list['Data'][x]['Underline'] ? '</u>' : '';
+    list_str += temp_list['Data'][x]['Bold'] ? '</b>' : '';
     list_str += '</li>'
   }
   list_str += '</ul>'

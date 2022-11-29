@@ -16,7 +16,6 @@ Editor Page:
 		This way you can check before exporting
 
 	List Section:
-		Make the main line take up a wide chunk of the page
 		Lists should have titles like tables
 		Lists should also have sublists using text areas
 		Lists should be configurable with dragula
