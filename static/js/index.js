@@ -148,8 +148,8 @@ function editor_container_table(element) {
       new_cell.id = new_row.id + 'C' + (new_row.cells.length - 1);
       new_cell.style.backgroundColor = "#FFFFFF";
 
-      var new_input = document.createElement('input');
-      new_input.type = 'text';
+      var new_input = document.createElement('textarea');
+      new_input.style.resize = 'vertical';
       new_input.name = new_cell.id + "I";
       new_input.id = new_cell.id + "I";
 
@@ -167,8 +167,8 @@ function editor_container_table(element) {
       new_cell.id = new_row.id + 'H' + (new_row.cells.length - 1);
       new_cell.style.backgroundColor = "#CFCFCF";
 
-      var new_input = document.createElement('input');
-      new_input.type = 'text';
+      var new_input = document.createElement('textarea');
+      new_input.style.resize = 'vertical';
       new_input.name = new_cell.id + "I";
       new_input.id = new_cell.id + "I";
 
@@ -1680,7 +1680,7 @@ function get_table_data(table, source) {
 
       var children = table.rows[i].childNodes;
       for (var x = 0; x < children.length; x++) {
-        if (children[x].querySelector('input')) {
+        if (children[x].querySelector('textarea')) {
           item[(x).toString() + children[x].id[children[x].id.length - 2]] = document.getElementById(children[x].id + 'I').value
         }
       }

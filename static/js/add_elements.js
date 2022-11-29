@@ -51,6 +51,7 @@ function generic_textarea(id) {
   new_input.appendChild(document.createTextNode("Type Text Here"));
   new_input.name = id;
   new_input.id = id;
+  new_input.style.resize = 'vertical';
 
   return new_input;
 }
@@ -387,8 +388,8 @@ function add_store_action_blank_row(parent, content) {
       new_cell.id = new_row.id + 'C' + (new_row.cells.length - 1);
       new_cell.style.backgroundColor = "#FFFFFF";
 
-      var new_input = document.createElement('input');
-      new_input.type = 'text';
+      var new_input = document.createElement('textarea');
+      new_input.style.resize = 'vertical';
       new_input.name = new_cell.id + "I";
       new_input.id = new_cell.id + "I";
 
@@ -406,8 +407,8 @@ function add_store_action_blank_row(parent, content) {
       new_cell.id = new_row.id + 'H' + (new_row.cells.length - 1);
       new_cell.style.backgroundColor = "#CFCFCF";
 
-      var new_input = document.createElement('input');
-      new_input.type = 'text';
+      var new_input = document.createElement('textarea');
+      new_input.style.resize = 'vertical';
       new_input.name = new_cell.id + "I";
       new_input.id = new_cell.id + "I";
 
@@ -496,8 +497,8 @@ function add_list_action_new_row(parent, content) {
     new_row.id = content.id + "R" + latest_list_rows;
     latest_list_rows++;
     
-    var new_row_input = document.createElement('input');
-    new_row_input.type = 'Text';
+    var new_row_input = document.createElement('textarea');
+    new_row_input.style.resize = 'vertical';
     new_row_input.id = new_row.id + 'I'
     new_row_input.placeholder = 'Text';
 
