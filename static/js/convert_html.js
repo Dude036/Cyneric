@@ -5,6 +5,25 @@
 /**Export everything into an object, then turn the object data into a usable html file
  */
 function export_page() {
+  // Get String of file
+  new_doc = convert_to_html();
+
+  // Parse to a DOM Document
+  if (DEBUG) { console.log('Attempting to convert to a DOM object'); }
+  var new_dom = new DOMParser().parseFromString(new_doc, "text/html");
+  if (DEBUG) { console.log(new_dom); }
+
+  // Save to file
+  var textFile = null
+  var new_doc_blob = new Blob([new_doc], {type: 'text/html;charset=utf-8'});
+  saveAs(new_doc_blob, document.getElementById("header").value + '.custom.html');
+}
+
+
+/**Export everything into an HTML String
+ * @return HTML text of page
+ */
+function convert_to_html() {
   if (DEBUG) { console.log("Exporting Page"); }
   // Clear export object
   export_obj = export_json(true);
@@ -49,16 +68,17 @@ function export_page() {
 
   if (DEBUG) { console.log('RAW String'); }
   if (DEBUG) { console.log(new_doc); }
+  return new_doc;
+}
 
-  // Parse to a DOM Document
-  if (DEBUG) { console.log('Attempting to convert to a DOM object'); }
-  var new_dom = new DOMParser().parseFromString(new_doc, "text/html");
-  if (DEBUG) { console.log(new_dom); }
 
-  // Save to file
-  var textFile = null
-  var new_doc_blob = new Blob([new_doc], {type: 'text/html;charset=utf-8'});
-  saveAs(new_doc_blob, document.getElementById("header").value + '.custom.html');
+/** Setup a preview of an exported page.
+ */
+function export_preview() {
+    refresh_page_json()
+    save_json_from_page();
+    var new_window = window.open("", "_blank");
+    new_window.document.write(convert_to_html());
 }
 
 

@@ -11,17 +11,10 @@ Editor Page:
 		Right now when shit is minimized, the only way to tell what a section is by the override buttons.
 		Put an identifier there for
 
-	Export Preview:
-		Have a button to open a new tab with parsed page, and not force download.
-		This way you can check before exporting
-
 	List Section:
-		Lists should have titles like tables
 		Lists should also have sublists using text areas
+		 - or -
 		Lists should be configurable with dragula
 
 	Table Row Span All:
 		I want to add a table row that spans all the rows that's just a large text area
-
-	Remove Null!
-		I hate that Null shows up in the JSON export
