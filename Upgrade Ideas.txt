@@ -15,6 +15,3 @@ Editor Page:
 		Lists should also have sublists using text areas
 		 - or -
 		Lists should be configurable with dragula
-
-	Table Row Span All:
-		I want to add a table row that spans all the rows that's just a large text area
