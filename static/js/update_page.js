@@ -76,7 +76,8 @@ function update_container(new_json, container_id) {
 
     var add_special = document.getElementById(container_id + '_SPECIAL')
     var add_blank = document.getElementById(container_id + '_BLANK')
-    update_table_container(new_json, content.id, add_blank, add_special);
+    var add_paragraph = document.getElementById(container_id + '_WIDE')
+    update_table_container(new_json, content.id, add_blank, add_special, add_paragraph);
   } else if (container_id.startsWith('M')) {
     var content = document.getElementById(container_id).childNodes[1]
     update_monster_container(new_json, content.id);
@@ -87,7 +88,8 @@ function update_container(new_json, container_id) {
     var content = document.getElementById(container_id).childNodes[1]
     var add_special = document.getElementById(container_id + '_SPECIAL')
     var add_blank = document.getElementById(container_id + '_BLANK')
-    update_table_container(new_json, content.id, add_blank, add_special);
+    var add_paragraph = document.getElementById(container_id + '_WIDE')
+    update_table_container(new_json, content.id, add_blank, add_special, add_paragraph);
   } else if (container_id.startsWith('H')) {
     var content = document.getElementById(container_id).childNodes[1]
     update_hazard_container(new_json, content.id);
@@ -237,8 +239,9 @@ function update_monster_container(new_json, container_id) {
 
   var treasure_blank_button = document.getElementById(treasure_table.id + 'C_BLANK');
   var treasure_special_button = document.getElementById(treasure_table.id + 'C_SPECIAL');
+  var treasure_wide_button = document.getElementById(treasure_table.id + 'C_WIDE');
 
-  update_table_container(new_json['Treasure'], treasure_table.id, treasure_blank_button, treasure_special_button);
+  update_table_container(new_json['Treasure'], treasure_table.id, treasure_blank_button, treasure_special_button, treasure_wide_button);
 }
 
 
@@ -248,7 +251,7 @@ function update_monster_container(new_json, container_id) {
  * @param blank_button Button to click when adding a blank row
  * @param special_button Button to click when adding a special row
  */
-function update_table_container(new_json, container_id, blank_button, special_button) {
+function update_table_container(new_json, container_id, blank_button, special_button, wide_button) {
   if (DEBUG) { console.log("Updating Table: " + container_id); }
   new_json['Data'].forEach(function (row) {
     if (row['Type'] === 'Blank') {
@@ -277,6 +280,12 @@ function update_table_container(new_json, container_id, blank_button, special_bu
       set_dom_value(last_row.id + '_TEXT', row['Text']);
       set_dom_value(last_row.id + '_CATEGORY_I', row['Category']);
       set_dom_value(last_row.id + '_DESCRIPTOR_I', row['Descriptor']);
+    } else if (row['Type'] === 'Wide') {
+      wide_button.click();
+      var table = document.querySelector('table#' + container_id);
+      var last_row = table.rows[ table.rows.length - 1 ];
+      var textarea = last_row.querySelector('textarea');
+      textarea.value = row['Data'];
     }
   })
 }

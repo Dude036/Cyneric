@@ -428,6 +428,84 @@ function add_store_action_blank_row(parent, content) {
     }
     add_contents_div.appendChild(add_delete)
     add_contents_td.appendChild(add_contents_div);
+    save_container_as_json(parent);
+  }
+
+  return add_row;
+}
+
+
+/**Adds store header function: blank_row
+ * @param parent DOM element containing everything
+ * @param content DOM element containg contents to be displayed
+ * @return Action for parent of type: blank_row
+ */
+function add_store_action_blank_wide_row(parent, content) {
+  var add_row = generic_action_span('paragraph', 'Add Spanning Row', '', '0 0 0 20px');
+  add_row.style.float = 'right';
+  add_row.id = parent.id + '_WIDE';
+
+  add_row.onclick = function() {
+    var element = document.querySelector('table#' + content.id);
+
+    // Row Setup
+    var new_row = element.insertRow(element.rows.length);
+    if (element.id.startsWith("S")) {
+      new_row.id = element.id + "P" + latest_store_rows;
+      latest_store_rows++;
+    } else {
+      new_row.id = element.id + "P" + latest_table_rows;
+      latest_table_rows++;
+    }
+    
+    // Move Handle
+    var add_move_handle = document.createElement('img');
+    add_move_handle.src = "/static/svg/move_vertical.svg";
+    add_move_handle.title = "Move Row";
+    add_move_handle.className = "move-handle";
+    add_move_handle.width = 30;
+    add_move_handle.height = 30;
+    add_move_handle.style.float = "left";
+    add_move_handle.style.margin = "10px";
+    new_row.appendChild(add_move_handle);
+
+    // Contents
+    var add_contents_td = new_row.insertCell(0);
+    add_contents_td.style
+    var add_contents_div = document.createElement('div');
+    add_contents_div.style.padding = '5px 2px';
+    add_contents_div.style.width = '100%';
+    add_contents_div.style.margin = '5px 8px';
+    add_contents_div.style.display = 'flex';
+    add_contents_div.style.flexWrap = 'wrap';
+    add_contents_div.style.alignItems = 'flex-start';
+
+    // Delete Row
+    var add_delete = add_api_flex_box("Delete Row", '#C00000', '#EFEFEF');
+    // Add Delete row Method
+    add_delete.onclick = function() {
+      if (confirm("Are you sure you want to delete this row?")) {
+        if (DEBUG) { console.log("Deleting Row"); }
+        new_row.parentNode.removeChild(new_row);
+        if (DEBUG) { console.log("Row Successfully Deleted"); }
+      }
+    }
+    add_contents_div.appendChild(add_delete)
+    add_contents_td.appendChild(add_contents_div);
+
+    var wide_cell = new_row.insertCell(new_row.cells.length - 1);
+    wide_cell.id = new_row.id + 'W' + (new_row.cells.length - 1);
+    wide_cell.style.backgroundColor = "#FFFFFF";
+    wide_cell.colSpan = 3;
+
+    var new_input = document.createElement('textarea');
+    new_input.style.resize = 'vertical';
+    new_input.style.width = '100%';
+    new_input.name = wide_cell.id + "I";
+    new_input.id = wide_cell.id + "I";
+
+    wide_cell.appendChild(new_input);
+    save_container_as_json(parent);
   }
 
   return add_row;

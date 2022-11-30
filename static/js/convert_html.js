@@ -142,6 +142,9 @@ function export_table_html(temp_table) {
         table_str += temp_table['Data'][x]['Describe'] + '<p>' + temp_table['Data'][x]['Text'] + '</p></span></td><td>';
         table_str += temp_table['Data'][x]['Category'] + '</td><td>' + temp_table['Data'][x]['Descriptor'] + '</td>';
       }
+    } else if (temp_table['Data'][x]['Type'] == 'Wide') {
+      // For Paragraphs
+      table_str += '<td colspan="3"><p>' + temp_table['Data'][x]['Data'] + '</p></td>'
     } else {
       // For Blanks
       if (DEBUG) { console.log("Blank row found"); }

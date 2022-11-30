@@ -1489,6 +1489,7 @@ function create_element(item) {
     // Actions
     actions.appendChild(add_store_action_owner(container, content));
     actions.appendChild(add_store_action_blank_row(container, content));
+    actions.appendChild(add_store_action_blank_wide_row(container, content));
     actions.appendChild(add_store_action_item_row(container, content));
 
     // Content
@@ -1499,6 +1500,7 @@ function create_element(item) {
   } else if (item === 'Table') {
     // ACtions
     actions.appendChild(add_store_action_blank_row(container, content));
+    actions.appendChild(add_store_action_blank_wide_row(container, content));
     actions.appendChild(add_store_action_item_row(container, content));
 
     // Content
@@ -1684,6 +1686,11 @@ function get_table_data(table, source) {
       item['Text'] = document.getElementById(temp_id + 'TEXT').value;
       item['Category'] = document.getElementById(temp_id + 'CATEGORY_I').value;
       item['Descriptor'] = document.getElementById(temp_id + 'DESCRIPTOR_I').value;
+    } else if (table.rows[i].childNodes[1].id.includes('P')) {
+      // Handle Paragraph Row
+      if (DEBUG) { console.log("Paragraph Row Encountered"); }
+      item['Type'] = 'Wide';
+      item['Data'] = document.getElementById(table.rows[i].childNodes[1].id + 'I').value
     } else {
       // Handle Blank Row
       if (DEBUG) { console.log("Blank Row Encountered"); }
