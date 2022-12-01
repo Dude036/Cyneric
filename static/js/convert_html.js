@@ -144,7 +144,7 @@ function export_table_html(temp_table) {
       }
     } else if (temp_table['Data'][x]['Type'] == 'Wide') {
       // For Paragraphs
-      table_str += '<td colspan="3"><p>' + temp_table['Data'][x]['Data'] + '</p></td>'
+      table_str += '<td colspan="3"><p>' + temp_table['Data'][x]['Data'].replace(/(\n\n|\r\n\r\n)/g, '</p><p>'); + '</p></td>'
     } else {
       // For Blanks
       if (DEBUG) { console.log("Blank row found"); }
