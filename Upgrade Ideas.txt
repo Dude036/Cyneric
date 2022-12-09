@@ -1,12 +1,5 @@
 Editor Page:
 
-	NPC Entry:
-		Reuse the Store functions to make an NPC generate-able
-		Add a way to add a bunch of paragraph sections to fill in specific info for Quests?
-
-	Quest Section:
-		??? What should I put here?
-
 	Section Identifiers when minimized:
 		Right now when shit is minimized, the only way to tell what a section is by the override buttons.
 		Put an identifier there for
