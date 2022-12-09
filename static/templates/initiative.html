@@ -105,6 +105,64 @@
         <input id="clear_all" type="button" value="Clear Initiative Tracker" onclick="if (confirm('Are you sure you want to clear the Initiative tracker?')) { request('POST', 'clear', {'Name': 'All'}); }">
       </div>
     </div>
+    <div id="calamity_presets" style="width: 45%;">
+      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Era of Calamity Preset</div>
+      <p style="color: red;">
+        <b>WARNING:</b> This action is irreversible.
+      </p>
+      <table style="margin-bottom: 20px; width: 100%;">
+        <tr>
+         <th>
+           <span style="font-weight: bold; font-size: larger;">Calamity Campaign Characters</span>
+         </th> 
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              <li>Sticky Willy</li>
+              <li>Amelia Airheart</li>
+              <li>Blackheart of the Dark Inferno</li>
+              <li>Dr. Phineas T. Thromby</li>
+              <li>Melawesh</li>
+              <li>Jasper Longpaw</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="display: flex; justify-content: center;">
+            <input id="clear_all" type="button" value="Apply Calamity Preset" onclick="if (confirm('Are you sure you want to use the Calamity Preset?')) {calamity_preset()}">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="dragon_presets" style="width: 45%;">
+      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Dragons Preset</div>
+      <p style="color: red;">
+        <b>WARNING:</b> This action is irreversible.
+      </p>
+      <table style="margin-bottom: 20px; width: 100%;">
+        <tr>
+         <th>
+           <span style="font-weight: bold; font-size: larger;">Dragon Campaign Characters</span>
+         </th> 
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              <li>Elveri</li>
+              <li>Kozgor</li>
+              <li>Kiirion</li>
+              <li>Puddles</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="display: flex; justify-content: center;">
+            <input id="clear_all" type="button" value="Apply Dragon Preset" onclick="if (confirm('Are you sure you want to use the Calamity Preset?')) {dragon_preset()}">
+          </td>
+        </tr>
+      </table>
+    </div>
   </div>
   {% endif %}
 
@@ -446,6 +504,92 @@
         document.querySelector('#bulk_entry').click();
       }
     };
+
+    function dragon_preset() {
+      var players = [
+        { 
+          'Name': 'Elveri',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Kiirion',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Kozgor',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Puddles',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+      ]
+
+      request('POST', 'clear', {'Name': 'All'});
+      
+      setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
+
+      for (var i = 0; i < players.length; i++) {
+        request("POST", 'add', players[i]);
+      }
+    }
+
+    function calamity_preset() {
+      var players = [
+        { 
+          'Name': 'Sticky Willy',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Amelia Airheart',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Blackheart of the Dark Inferno',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Dr. Phineas T. Thromby',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Melawesh',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Jasper Longpaw',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+      ]
+
+      request('POST', 'clear', {'Name': 'All'});
+      
+      setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
+
+      for (var i = 0; i < players.length; i++) {
+        request("POST", 'add', players[i]);
+      }
+    }
 
 {% endif %}
 
