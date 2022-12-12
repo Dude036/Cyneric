@@ -8,7 +8,6 @@
   </h1>
   <div style="display: flex; flex-direction: row; justify-content: space-between;">
     <input type="button" value="Year {{ previous_year }}" onclick="location.href='{% url 'news:calender_era' era previous_year %}';" />
-    <input type="button" value="Cyneric Now" onclick="location.href='{% url 'news:calender_era' cyneric_era cyneric_year %}';" />
     <input type="button" value="Cipher Now" onclick="location.href='{% url 'news:calender_era' cipher_era cipher_year %}';" />
     <input type="button" value="Dragon Now" onclick="location.href='{% url 'news:calender_era' dragon_era dragon_year %}';" />
     <input type="button" value="Calamity Now" onclick="location.href='{% url 'news:calender_era' calamity_era calamity_year %}';" />
@@ -37,10 +36,6 @@
                 <td id="{{ month.name }}{{ day }}" style="background-color: dodgerblue;">
                   {{ day }}
                 </td>
-              {% elif month.name == cyneric.Month and day == cyneric.Day and current_year == cyneric.Year and era == cyneric_era %}
-                <td id="{{ month.name }}{{ day }}" style="background-color: violet;">
-                  {{ day }}
-                </td>
               {% elif month.name == dragon.Month and day == dragon.Day and current_year == dragon.Year and era == dragon_era %}
                 <td id="{{ month.name }}{{ day }}" style="background-color: aquamarine;">
                   {{ day }}
@@ -57,16 +52,6 @@
             {% else %}
               {% if month.name == cipher.Month and day.number == cipher.Day and current_year == cipher.Year and era == cipher_era %}
                 <td id="{{ month.name }}{{ day.number }}" style="background-color: dodgerblue;">
-                  <form action="{% url 'news:article_list' %}" method="post">
-                    {% csrf_token %}
-                    <input type="hidden" name="links" value="{{ day.links }}">
-                    <button class="calender_link" type="submit" value="{{ day.number }}">
-                      {{ day.number }}
-                    </button>
-                  </form>
-                </td>
-              {% elif month.name == cyneric.Month and day == cyneric.Day and current_year == cyneric.Year and era == cyneric_era %}
-                <td id="{{ month.name }}{{ day.number }}" style="background-color: violet;">
                   <form action="{% url 'news:article_list' %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="links" value="{{ day.links }}">

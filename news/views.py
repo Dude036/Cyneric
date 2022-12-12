@@ -15,12 +15,12 @@ Holidays = [
     Holiday(Date(14, Month.Bottom, 1, Era.First_Age), "Sunset", "Heliod's worship of the winter solstice"),
     Holiday(Date(5, Month.Bloom, 25, Era.Sixth_Age), "Shatter Solstice", "Pale Mistress' worship of seperating the continents"),
     Holiday(Date(10, Month.Ice, 97, Era.Sixth_Age), "Emergence", "The Emergence of the Warforged Army"),
+    Holiday(Date(2, Month.Play, 98, Era.Sixth_Age), "Cyneric Remembrance Day", "The destruction of the Cyneric continent and its people"),
 ]
 
-cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Jared's Campaign", "")
-cyneric = Holiday(Date(2, Month.Play , 98, Era.Sixth_Age), "Atticus' Campaign", "")
-dragon = Holiday(Date(8, Month.Bloom , 65, Era.Sixth_Age), "Dragon Campaign", "")
-calamity = Holiday(Date(1, Month.Birth , 1, Era.Eight_Age), "Calamity Campaign", "")
+cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Cipher Campaign", "")
+dragon = Holiday(Date(9, Month.Bloom , 65, Era.Sixth_Age), "Dragon Campaign", "")
+calamity = Holiday(Date(16, Month.Birth , 1, Era.Eight_Age), "Calamity Campaign", "")
 
 
 @register.filter
@@ -82,8 +82,8 @@ def holiday_css(year, era):
 
 def now_css(year, era):
     css = ""
-    days_colors = ['dodgerblue', 'violet', 'aquamarine', 'lightgreen']
-    days = [cipher, cyneric, dragon, calamity]
+    days_colors = ['dodgerblue', 'aquamarine', 'lightgreen']
+    days = [cipher, dragon, calamity]
     for i in range(len(days)):
         if int(days[i].Date.Era) != era or days[i].Date.Year != year:
             print("Skipping " + days[i].Name + ". Era & Year doesn't match")
@@ -128,15 +128,12 @@ def calender_era(request, year, era):
 
     context = {
         'cipher': cipher.Date.to_dict(),
-        'cyneric': cyneric.Date.to_dict(),
         'dragon': dragon.Date.to_dict(),
         'calamity': calamity.Date.to_dict(),
         'cipher_year': cipher.Date.Year,
-        'cyneric_year': cyneric.Date.Year,
         'dragon_year': dragon.Date.Year,
         'calamity_year': calamity.Date.Year,
         'cipher_era': int(cipher.Date.Era),
-        'cyneric_era': int(cyneric.Date.Era),
         'dragon_era': int(dragon.Date.Era),
         'calamity_era': int(calamity.Date.Era),
         'current_year': year,
