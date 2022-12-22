@@ -18,6 +18,7 @@ Holidays = [
     Holiday(Date(2, Month.Play, 98, Era.Sixth_Age), "Cyneric Remembrance Day", "The destruction of the Cyneric continent and its people"),
 ]
 
+magic = Holiday(Date(11, Month.Apex , 25, Era.Fourth_Age), "Magic Campaign", "")
 cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Cipher Campaign", "")
 dragon = Holiday(Date(9, Month.Bloom , 65, Era.Sixth_Age), "Dragon Campaign", "")
 calamity = Holiday(Date(16, Month.Birth , 1, Era.Eight_Age), "Calamity Campaign", "")
@@ -82,8 +83,8 @@ def holiday_css(year, era):
 
 def now_css(year, era):
     css = ""
-    days_colors = ['dodgerblue', 'aquamarine', 'lightgreen']
-    days = [cipher, dragon, calamity]
+    days_colors = ['lavender', 'dodgerblue', 'aquamarine', 'lightgreen',]
+    days = [magic, cipher, dragon, calamity]
     for i in range(len(days)):
         if int(days[i].Date.Era) != era or days[i].Date.Year != year:
             print("Skipping " + days[i].Name + ". Era & Year doesn't match")
@@ -128,12 +129,15 @@ def calender_era(request, year, era):
 
     context = {
         'cipher': cipher.Date.to_dict(),
+        'magic': magic.Date.to_dict(),
         'dragon': dragon.Date.to_dict(),
         'calamity': calamity.Date.to_dict(),
         'cipher_year': cipher.Date.Year,
+        'magic_year': magic.Date.Year,
         'dragon_year': dragon.Date.Year,
         'calamity_year': calamity.Date.Year,
         'cipher_era': int(cipher.Date.Era),
+        'magic_era': int(magic.Date.Era),
         'dragon_era': int(dragon.Date.Era),
         'calamity_era': int(calamity.Date.Era),
         'current_year': year,
