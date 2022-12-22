@@ -96,11 +96,11 @@ def now_css(year, era):
 
 # Views
 def calender(request):
-    return calender_era(request, cipher.Date.Year, int(cipher.Date.Era))
+    return calender_era(request, calamity.Date.Year, int(calamity.Date.Era))
 
 
 def calender_year(request, year):
-    return calender_era(request, year, int(cipher.Date.Era))
+    return calender_era(request, year, int(calamity.Date.Era))
 
 
 def calender_era(request, year, era):
