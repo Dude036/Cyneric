@@ -2171,3 +2171,54 @@ function import_page() {
   save_json_from_page();
 }
 
+
+/**Import everything from file
+ */
+function import_file() {
+  // Make invisible button to import a file
+  var invisible_button = document.createElement('input');
+
+  invisible_button.type = 'file';
+  invisible_button.id = 'file_import';
+  invisible_button.name = 'file_import';
+  invisible_button.accept = '.json';
+
+  // Import function for invisible button
+  invisible_button.addEventListener('change', function() {
+    const file_list = invisible_button.files;
+
+    // Check file existence
+    if (file_list.length === 0) {
+      alert("No file selected");
+      return
+    }
+
+    // Extract String from file object
+    if (DEBUG) { console.log("Raw Imported Files"); }
+    if (DEBUG) { console.log(file_list); }
+    var import_file = file_list[0];
+    let import_promise = import_file.text();
+
+    import_promise.then((import_text) => {
+      if (DEBUG) { console.log("Text Imported"); }
+      if (DEBUG) { console.log(import_text); };
+
+      // Test whether the imported string is valid
+      var new_json = {};
+      try {
+        new_json = JSON.parse(import_text);
+      } catch (e) {
+        alert('Invalid JSON Import!')
+        return
+      }
+
+      if (DEBUG) { console.log("JSON String validated. Beginning Document Change"); }
+      update_page(new_json);
+      save_json_from_page();
+    });
+
+  });
+
+  // Click
+  invisible_button.click()
+}
