@@ -76,6 +76,12 @@
       xhr.send(JSON.stringify(data));
     }
   </script>
+  <style type="text/css">
+    .admin_button {
+       margin: 10px;
+       padding: 20px;
+    }
+  </style>
 </head>
 <body>
   {% csrf_token %}
@@ -83,7 +89,7 @@
   <p>
     This is a page exclusively for Admins to this site. Here are the following actions that have been authorized for your user
   </p>
-  <div onclick="send_request('1')" style="background-color: #e64d00; margin: 10px; padding: 20px;">
+  <div onclick="send_request('1')" class="red admin_button">
 	  Update 5e.tools local JSON repo.
   </div>
   <hr>
