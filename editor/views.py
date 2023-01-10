@@ -33,6 +33,7 @@ def admin_action(request, action):
         print("FLUSHING 5E.TOOLS CACHE FROM LOCAL")
 
         cache_results = cache_5etools_json(force=True)
+        populate_5e_json_helpers()
         return JsonResponse(cache_results, safe=False)
     else:
         return JsonResponse({'ERROR': 'Unknown Action Requested!'}, safe=False)
