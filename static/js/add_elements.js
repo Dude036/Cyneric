@@ -609,6 +609,7 @@ function add_list_action_new_row(parent, content) {
     var new_row_input = document.createElement('textarea');
     new_row_input.id = new_row.id + 'I'
     new_row_input.placeholder = 'Text';
+    new_row_input.style.width = '600px';
 
     new_row.appendChild(new_row_input);
 

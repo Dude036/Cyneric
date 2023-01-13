@@ -8,3 +8,7 @@ Editor Page:
 		Lists should also have sublists using text areas
 		 - or -
 		Lists should be configurable with dragula
+
+	Chase Sequences
+		Set Obstacles, with sublist of options to avoid
+

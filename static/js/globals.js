@@ -97,3 +97,13 @@ function incriment_item_counter(name) {
     return NaN;
   }
 }
+
+
+/**Comparitor for JSON objects in the Editor
+ * @param left
+ * @param right
+ * @return Difference in left and right
+ */
+function compare_editor_objects(left, right) {
+  return left.position - right.position;
+}
