@@ -15,7 +15,23 @@
       </tr>
     </table>
   {% endfor %}
-  <div class="center" style="margin-bottom:30px;">
-    <input type="button" onclick="location.href='{% url 'news:calender' %}';" value="Back to news" />
+  <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 60px;">
+    <div>
+      <a href="{% url 'news:article_latest' %}" style="background-color: darkblue; color: white; padding: 10px;">
+        See latest articles here
+      </a>
+    </div>
+    <div>
+      <a href="{% url 'news:calender' %}" style="background-color: darkblue; color: white; padding: 10px;">
+        Back to news
+      </a>
+    </div>
+    {% if is_admin %}
+      <div>
+        <a href="{% url 'news:create_article' %}" style="background-color: darkblue; color: white; padding: 10px;">
+          Add news article
+        </a>
+      </div>
+    {% endif %}
   </div>
 {% endblock %}
