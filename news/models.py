@@ -29,6 +29,35 @@ class Month(Enum):
 		return [x.value for x in Month].index(self.value) + 1
 
 	@classmethod
+	def from_str(self, label):
+		if label in ('Birth', 'Genysi', 'Birth'.lower(), 'Genysi'.lower()):
+			return self.Birth
+		if label in ('Melting', 'Tixyl', 'Melting'.lower(), 'Tixyl'.lower()):
+			return self.Melting
+		if label in ('Roots', 'Rysumas', 'Roots'.lower(), 'Rysumas'.lower()):
+			return self.Roots
+		if label in ('Bloom', 'Anthys', 'Bloom'.lower(), 'Anthys'.lower()):
+			return self.Bloom
+		if label in ('Apex', 'Perigree', 'Apex'.lower(), 'Perigree'.lower()):
+			return self.Apex
+		if label in ('Fruiting', 'Ekarpo', 'Fruiting'.lower(), 'Ekarpo'.lower()):
+			return self.Fruiting
+		if label in ('Play', 'Ludere', 'Play'.lower(), 'Ludere'.lower()):
+			return self.Play
+		if label in ('Reap', 'Therismo', 'Reap'.lower(), 'Therismo'.lower()):
+			return self.Reap
+		if label in ('Death', 'Chima', 'Death'.lower(), 'Chima'.lower()):
+			return self.Death
+		if label in ('Darkness', 'Skotad', 'Darkness'.lower(), 'Skotad'.lower()):
+			return self.Darkness
+		if label in ('Bottom', 'Apogee', 'Bottom'.lower(), 'Apogee'.lower()):
+			return self.Bottom
+		if label in ('Ice', 'Pagos', 'Ice'.lower(), 'Pagos'.lower()):
+			return self.Ice
+		else:
+			raise NotImplementedError
+
+	@classmethod
 	def choices(self):
 		return [(x.value, x.name) for x in self]
 
@@ -86,10 +115,14 @@ class Date:
 			self.Day = day
 		if isinstance(month, Month):
 			self.Month = month
+		elif isinstance(month, int) and month >= 1 and month <= 12:
+			self.Month = list(Month)[month]
 		if year >= 1 and year <= 100:
 			self.Year = year
 		if isinstance(era, Era):
 			self.Era = era
+		elif isinstance(era, int) and month >= 1 and month <= 12:
+			self.Era = list(Era)[era]
 
 	def __str__(self):
 		return str(self.Day) + '/' + str(int(self.Month)) + '/' + str(self.Year) + ' Era of ' + str(self.Era)

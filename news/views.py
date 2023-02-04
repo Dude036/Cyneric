@@ -193,6 +193,75 @@ def article(request, article_id):
     return handle_article_list(request, [article])
 
 
+def article_day(request, era, year, month, day):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    context = {}
+    if isinstance(era, int) and (era <= 0 or era > 12):
+        context = {
+            'article_list': [{ 'title': 'Date out of Bounds', 'article': "Unable to render due to the follow error: Era out of bounds"}],
+            'is_admin': user.is_authenticated,
+        }
+
+    elif isinstance(era, str) and era.lower() not in [e.value.lower() for e in list(Era)]:
+        print([e.value.lower() for e in list(Era)])
+        context = {
+            'article_list': [{ 'title': 'Date out of Bounds', 'article': "Unable to render due to the follow error: Era not valid."}],
+            'is_admin': user.is_authenticated,
+        }
+
+    elif year <= 0 or year > 100:
+        context = {
+            'article_list': [{ 'title': 'Date out of Bounds', 'article': "Unable to Render due to the follow error: Year out of bounds"}],
+            'is_admin': user.is_authenticated,
+        }
+
+    elif isinstance(month, int) and (month <= 0 or month > 12):
+        context = {
+            'article_list': [{ 'title': 'Date out of Bounds', 'article': "Unable to Render due to the follow error: Month out of bounds"}],
+            'is_admin': user.is_authenticated,
+        }
+
+    elif isinstance(month, str) and month.lower() not in [m.value.lower() for m in list(Month)]:
+        print([m.value.lower() for m in list(Month)])
+        context = {
+            'article_list': [{ 'title': 'Date out of Bounds', 'article': "Unable to Render due to the follow error: Month out of bounds"}],
+            'is_admin': user.is_authenticated,
+        }
+
+    elif day <= 0 or day > 28:
+        context = {
+            'article_list': [{ 'title': 'Date out of Bounds', 'article': "Unable to Render due to the follow error: Day out of bounds"}],
+            'is_admin': user.is_authenticated,
+        }
+
+    else:
+        if isinstance(month, int):
+            # Subtracting here, since it's 0 indexed
+            month_as_enum = list(Month)[month - 1]
+        else:
+            month_as_enum = Month.from_str(month.title())
+
+        if isinstance(era, int):
+            era_as_enum = list(Era)[era]
+        else:
+            era_as_enum = Era.from_str(era.title())
+
+        all_articles = Article.objects.filter(day=day, year=year, month=month_as_enum, era=era_as_enum)
+
+        # If there are no articles print an error message
+        if len(all_articles) > 0:
+            return handle_article_list(request, all_articles)
+        else:
+            context = {
+                'article_list': [{ 'title': repr(Date(day, month_as_enum, year, era_as_enum)), 'article': "No news articles for today"}],
+                'is_admin': user.is_authenticated,
+            }
+
+    return render(request, 'news_list.html', context)
+
+
 def article_list(request):
     if request.method == 'POST':
         # Receive '[#, #, etc]' or '[#]'
@@ -203,7 +272,7 @@ def article_list(request):
 
         return handle_article_list(request, [get_object_or_404(Article, pk=article_id) for article_id in all_links])
     else:
-        return  HttpResponseRedirect('/news/')
+        return HttpResponseRedirect('/news/')
 
 
 def article_latest(request):

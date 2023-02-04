@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<style type="text/css">{{ holiday_css|safe }}
-{{ now_css|safe }}</style>
+<style type="text/css">
+{{ holiday_css|safe }}
+{{ now_css|safe }}
+</style>
   <h1>
     Year {{ current_year }}, in the Era of {{ era_name }}
   </h1>
