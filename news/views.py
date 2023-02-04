@@ -37,6 +37,7 @@ def is_int(thing):
 def calender_enumeration(name):
     month = {}
     month['name'] = name
+    month['number'] = int(name)
     month['days'] = []
     for week in range(4):
         new_week = []

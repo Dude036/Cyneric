@@ -330,6 +330,28 @@
         a.style.display = 'none';
       }
     }
+
+    function make_toast(words) {
+      (async () => {
+        // Toast Message
+        var toast = document.createElement('div');
+        toast.style.backgroundColor = "#8DE09F";
+        toast.style.position = "fixed";
+        toast.style.top = "40px";
+        toast.style.left = "40px";
+        toast.id = "toast";
+        toast.style.padding = "10px 20px";
+
+        toast.appendChild(document.createTextNode(words));
+
+        var header_img = document.getElementById("header_img");
+        header_img.appendChild(toast);
+
+        setTimeout(function(){
+          toast.parentNode.removeChild(toast);
+        }, 5000);
+      })()
+    }
   </script>
 </head>
 <body>

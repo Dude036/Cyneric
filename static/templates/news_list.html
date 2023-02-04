@@ -13,6 +13,15 @@
           {{ article.article|safe }}
         </td>
       </tr>
+      <tr>
+        <td>
+          <div class="center" style="margin-bottom:10px;">
+            <button style="background-color: darkblue; color: white; padding: 10px;" onclick="navigator.clipboard.writeText(document.URL);make_toast('Copied to Clipboard');">
+              Share this Article! 
+            </button>
+          </div>
+        </td>
+      </tr>
     </table>
   {% endfor %}
   <div style="display: flex; flex-direction: row; justify-content: space-between; margin-bottom: 60px;">
