@@ -6,6 +6,7 @@ import bs4
 import re
 import requests
 from .parse_tools import *
+from .update_db import *
 
 
 # Create your views here.
@@ -35,6 +36,11 @@ def admin_action(request, action):
         cache_results = cache_5etools_json(force=True)
         populate_5e_json_helpers()
         return JsonResponse(cache_results, safe=False)
+    if action == 2:
+        print("UPDATING LOCAL PATHFINDER 2E WEAPON DB")
+
+        results = update_pf2e_db('Weapons')
+        return JsonResponse(results, safe=False)
     else:
         return JsonResponse({'ERROR': 'Unknown Action Requested!'}, safe=False)
 

@@ -206,7 +206,6 @@ def existing_item(request, item):
 def existing_item_json(request, item):
     content = {}
     item_json = existing_item_create(item, content=content, json=True)
-    # return JsonResponse(dmk.store.items.get_all_armors())
     return JsonResponse(item_json)
 
 
