@@ -116,3 +116,6 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+# Project specific
+pf2.api.key
