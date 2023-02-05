@@ -30,6 +30,13 @@ def admin_action(request, action):
 
     page_data = json.loads(request.body.decode('utf8'))
 
+    # Determine if local, or on Python Anywhere
+    local = '127.0.0.1' in request.build_absolute_uri() or 'localhost' in request.build_absolute_uri()
+    if local:
+        print("EXECUTING LOCAL PATH")
+    else:
+        print("EXECUTING PYTHON ANYWHERE PATH")
+
     if action == 1:
         print("FLUSHING 5E.TOOLS CACHE FROM LOCAL")
 
@@ -39,7 +46,7 @@ def admin_action(request, action):
     if action == 2:
         print("UPDATING LOCAL PATHFINDER 2E WEAPON DB")
 
-        results = update_pf2e_db('Weapons')
+        results = update_pf2e_db('Weapons', local)
         return JsonResponse(results, safe=False)
     else:
         return JsonResponse({'ERROR': 'Unknown Action Requested!'}, safe=False)

@@ -4,9 +4,12 @@ import sqlite3
 import os
 
 
-def update_pf2e_db(table):
+def update_pf2e_db(table, local=True):
 	# Initial setup to use the database
-	connection = sqlite3.connect(os.path.join(os.getcwd(), '2e_items.sqlite3'))
+	if local:
+		connection = sqlite3.connect(os.path.join(os.getcwd(), '2e_items.sqlite3'))
+	else:
+		connection = sqlite3.connect(os.path.join(os.getcwd(), 'Cyneric', '2e_items.sqlite3'))
 	cursor = connection.cursor()
 	
 	if table == 'Weapons':
@@ -21,7 +24,10 @@ def update_pf2e_db(table):
 		connection.commit()
 
 		# Rebuild from JSON
-		Weapons = json.load(open(os.path.join(os.getcwd(), 'generator', 'DMToolkit', 'resource', '2e_base_weapons.json'), 'r'), encoding='utf-8')
+		if local:
+			Weapons = json.load(open(os.path.join(os.getcwd(), 'generator', 'DMToolkit', 'resource', '2e_base_weapons.json'), 'r'), encoding='utf-8')
+		else:
+			Weapons = json.load(open(os.path.join(os.getcwd(), 'Cyneric', 'generator', 'DMToolkit', 'resource', '2e_base_weapons.json'), 'r'), encoding='utf-8')
 		for key, val in Weapons.items():
 			value_statement = (key, val['Bulk'], val['Category'], val['Cost'], val['Hands'], val['Level'], val['Link'], val['Rarity'], str(val['Traits']),)
 
