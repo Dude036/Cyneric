@@ -215,6 +215,7 @@ def format_initiative_tracker(user):
         if user.is_authenticated:
             data_point['AC'] = entry.ac
             data_point['HP'] = entry.hp
+            data_point['Conditions'] = entry.conditions
         outgoing.append(data_point)
     return outgoing
 
@@ -310,6 +311,10 @@ def initiative_request(request):
             if 'Init' in incoming['data'].keys() and isinstance(incoming['data']['Init'], int):
                 to_update.initiative = incoming['data']['Init']
                 to_update.save(update_fields=['initiative'])
+
+            if 'Conditions' in incoming['data'].keys() and isinstance(incoming['data']['Conditions'], str):
+                to_update.conditions = incoming['data']['Conditions']
+                to_update.save(update_fields=['conditions'])
 
 
         # Remove an entry

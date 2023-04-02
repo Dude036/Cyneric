@@ -238,6 +238,7 @@ class InitEntry(models.Model):
     ac = models.IntegerField(default=0)
     hp = models.IntegerField(default=0)
     initiative = models.IntegerField(default=0)
+    conditions = models.TextField(default='', blank=True)
 
     def __str__(self):
         return str(self.initiative) + " - " + self.name
