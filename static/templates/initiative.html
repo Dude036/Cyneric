@@ -121,8 +121,8 @@
             <ul>
               <li>Sticky Willy</li>
               <li>Amelia Airheart</li>
-              <li>Blackheart of the Dark Inferno</li>
-              <li>Dr. Phineas T. Thromby</li>
+              <li>Stitch</li>
+              <li>Admiral Zavala "Stone" Reddick</li>
               <li>Melawesh</li>
               <li>Jasper Longpaw</li>
             </ul>
@@ -153,12 +153,41 @@
               <li>Kozgor</li>
               <li>Kiirion</li>
               <li>Puddles</li>
+              <li>Whisker</li>
             </ul>
           </td>
         </tr>
         <tr>
           <td style="display: flex; justify-content: center;">
             <input id="clear_all" type="button" value="Apply Dragon Preset" onclick="if (confirm('Are you sure you want to use the Calamity Preset?')) {dragon_preset()}">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="magic_presets" style="width: 45%;">
+      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Magic Preset</div>
+      <p style="color: red;">
+        <b>WARNING:</b> This action is irreversible.
+      </p>
+      <table style="margin-bottom: 20px; width: 100%;">
+        <tr>
+         <th>
+           <span style="font-weight: bold; font-size: larger;">Magic Campaign Characters</span>
+         </th> 
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              <li>Gimli</li>
+              <li>Duradel</li>
+              <li>Vesstan</li>
+              <li>Hayden</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="display: flex; justify-content: center;">
+            <input id="clear_all" type="button" value="Apply Dragon Preset" onclick="if (confirm('Are you sure you want to use the Magic Preset?')) {magic_preset()}">
           </td>
         </tr>
       </table>
@@ -548,6 +577,43 @@
       }
     }
 
+    function magic_preset() {
+      var players = [
+        { 
+          'Name': 'Gimli',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Duradel',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Vesstan',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        { 
+          'Name': 'Hayden',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+      ]
+
+      request('POST', 'clear', {'Name': 'All'});
+      
+      setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
+
+      for (var i = 0; i < players.length; i++) {
+        request("POST", 'add', players[i]);
+      }
+    }
+
     function calamity_preset() {
       var players = [
         { 
@@ -563,13 +629,13 @@
           'HP': 0
         },
         { 
-          'Name': 'Blackheart of the Dark Inferno',
+          'Name': 'Stitch',
           'Init': 0,
           'AC': 0,
           'HP': 0
         },
         { 
-          'Name': 'Dr. Phineas Thromby',
+          'Name': 'Admiral Zavala "Stone" Reddick',
           'Init': 0,
           'AC': 0,
           'HP': 0
