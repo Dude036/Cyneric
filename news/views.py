@@ -16,12 +16,13 @@ Holidays = [
     Holiday(Date(5, Month.Bloom, 25, Era.Sixth_Age), "Shatter Solstice", "Pale Mistress' worship of seperating the continents"),
     Holiday(Date(10, Month.Ice, 97, Era.Sixth_Age), "Emergence", "The Emergence of the Warforged Army"),
     Holiday(Date(2, Month.Play, 98, Era.Sixth_Age), "Cyneric Remembrance Day", "The destruction of the Cyneric continent and its people"),
+    Holiday(Date(1, Month.Birth , 2, Era.Eight_Age), "Calamity Remembrance Day", "The destruction of magic as we know it"),
 ]
 
 magic = Holiday(Date(11, Month.Apex , 25, Era.Fourth_Age), "Magic Campaign", "")
 cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Cipher Campaign", "")
 dragon = Holiday(Date(19, Month.Bloom , 65, Era.Sixth_Age), "Dragon Campaign", "")
-calamity = Holiday(Date(16, Month.Birth , 1, Era.Eight_Age), "Calamity Campaign", "")
+calamity = Holiday(Date(16, Month.Melting , 1, Era.Eight_Age), "Calamity Campaign", "")
 
 
 @register.filter
