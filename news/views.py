@@ -22,7 +22,7 @@ Holidays = [
 magic = Holiday(Date(11, Month.Apex , 25, Era.Fourth_Age), "Magic Campaign", "")
 cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Cipher Campaign", "")
 dragon = Holiday(Date(19, Month.Bloom , 65, Era.Sixth_Age), "Dragon Campaign", "")
-calamity = Holiday(Date(16, Month.Melting , 1, Era.Eight_Age), "Calamity Campaign", "")
+calamity = Holiday(Date(18, Month.Melting , 1, Era.Eight_Age), "Calamity Campaign", "")
 
 
 @register.filter

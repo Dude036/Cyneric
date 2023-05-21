@@ -210,12 +210,12 @@ def format_initiative_tracker(user):
     for entry in InitEntry.objects.all().order_by('-initiative'):
         data_point = {
             'Name': entry.name,
-            'Init': entry.initiative
+            'Init': entry.initiative,
+            'Conditions': entry.conditions
         }
         if user.is_authenticated:
             data_point['AC'] = entry.ac
             data_point['HP'] = entry.hp
-            data_point['Conditions'] = entry.conditions
         outgoing.append(data_point)
     return outgoing
 

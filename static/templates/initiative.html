@@ -121,7 +121,7 @@
             <ul>
               <li>Sticky Willy</li>
               <li>Amelia Airheart</li>
-              <li>Stitch</li>
+              <li>Cedric Storm</li>
               <li>Admiral Zavala "Stone" Reddick</li>
               <li>Melawesh</li>
               <li>Jasper Longpaw</li>
@@ -181,7 +181,7 @@
               <li>Gimli</li>
               <li>Duradel</li>
               <li>Vesstan</li>
-              <li>Hayden</li>
+              <li>Arthur White</li>
             </ul>
           </td>
         </tr>
@@ -261,11 +261,17 @@
         hp_cell.style.color = 'white';
         hp_cell.style.padding = '5 px';
         hp_cell.innerHTML = 'HP';
+{% endif %}        
+{% if is_admin %}
         var action_cell = header_row.insertCell(4);
+{% else %}
+        var action_cell = header_row.insertCell(2);
+{% endif %}
         action_cell.style.backgroundColor = 'gray';
         action_cell.style.color = 'white';
         action_cell.style.padding = '5 px';
         action_cell.innerHTML = 'Conditions';
+{% if is_admin %}
         var action_cell = header_row.insertCell(5);
         action_cell.style.backgroundColor = 'gray';
         action_cell.style.color = 'white';
@@ -373,6 +379,9 @@
           }
           temp_hp.appendChild(sub_hp_button);
 
+{% endif %}
+
+{% if is_admin %}
           // Setup Conditions
           var temp_condition = temp_row.insertCell(4);
           var condition_textarea = document.createElement("textarea");
@@ -389,6 +398,13 @@
           };
           temp_condition.appendChild(condition_textarea);
 
+{% else %}
+          // Setup view only Conditions
+          var temp_condition = temp_row.insertCell(2);
+          temp_condition.innerHTML = data_point['Conditions'];
+{% endif %}
+
+{% if is_admin %}
           // Setup Actions to delete
           var temp_actions = temp_row.insertCell(5);
           var delete_button = document.createElement("input");
@@ -619,7 +635,7 @@
           'HP': 0
         },
         { 
-          'Name': 'Hayden',
+          'Name': 'Arthur',
           'Init': 0,
           'AC': 0,
           'HP': 0
@@ -650,13 +666,13 @@
           'HP': 0
         },
         { 
-          'Name': 'Stitch',
+          'Name': 'Cedric Storm',
           'Init': 0,
           'AC': 0,
           'HP': 0
         },
         { 
-          'Name': 'Admiral Zavala "Stone" Reddick',
+          'Name': 'Admiral Stone',
           'Init': 0,
           'AC': 0,
           'HP': 0
