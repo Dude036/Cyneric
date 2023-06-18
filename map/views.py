@@ -313,7 +313,7 @@ def initiative_request(request):
                 to_update.save(update_fields=['initiative'])
 
             if 'Conditions' in incoming['data'].keys() and isinstance(incoming['data']['Conditions'], str):
-                to_update.conditions = incoming['data']['Conditions']
+                to_update.conditions = incoming['data']['Conditions'].strip()
                 to_update.save(update_fields=['conditions'])
 
 
