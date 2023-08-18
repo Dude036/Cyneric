@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if is_admin %}
+<script>
+  let option_list_counter = 0;
+
+  function add_new_row() {
+    var option_list = document.getElementById("option_list");
+
+    // Container
+    var new_text_div = document.createElement('div');
+    new_text_div.id = 'div_' + option_list_counter;
+    new_text_div.name = 'div_' + option_list_counter;
+    new_text_div.style.paddingTop = '10px';
+    new_text_div.style.paddingBottom = '10px';
+
+    // Text input
+    var new_text_input = document.createElement('input');
+    new_text_input.type = 'text';
+    new_text_input.id = 'option_' + option_list_counter;
+    new_text_input.name = 'option_' + option_list_counter;
+    new_text_input.style.width = '30%';
+    new_text_input.style.marginRight = '30px';
+    new_text_div.appendChild(new_text_input);
+
+    // Delete entry button
+    var new_text_delete = document.createElement('button');
+    new_text_delete.type = 'button';
+    new_text_delete.innerHTML = 'Delete'
+    new_text_delete.onclick = function () {
+      if (confirm("Really delete entry?")) {
+        new_text_div.parentNode.removeChild(new_text_div);
+      }
+    }
+    new_text_div.appendChild(new_text_delete);
+
+    // Add to option list
+    option_list.appendChild(new_text_div)
+    option_list_counter++;
+  }
+</script>
+<h1>
+  Create Scheduling Question
+</h1>
+<form action="/schedule/create/" method="post">
+  {% csrf_token %}
+  <br>
+  <div style="margin: auto;">
+    <label for="question">Enter Name:</label>
+    <input type="text" id="question" name="question" placeholder="Question" style="width: 50%;" required>
+  </div>
+  <div>
+    <p>
+      Schedule Options -
+
+      <button onclick="add_new_row();" type="button">
+        Add Entry
+      </button>
+    </p>
+    <br/>
+    <div id="option_list"></div>
+  </div>
+  <br/>
+
+  <input type="submit" value="Submit" style="padding: 5px 10px;">
+</form>
+{% else %}
+  <h1 style="color: red;">403: Forbidden</h1>
+
+  <div class="center" style="margin-bottom:30px;">
+    <input type="button" onclick="location.href='{% url 'map:schedule' %}';" value="Back to Schedule" />
+  </div>
+{% endif %}
+{% endblock %}

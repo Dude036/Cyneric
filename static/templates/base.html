@@ -308,7 +308,25 @@
       background-color: rgba(0, 0, 139, 0.3);
     }
 
+    .schedule_table {
+        width: 100%;
+    }
+    .schedule_table tr:first-child td {
+        background-color: #81daf5;
+    }
+
+    .table-striped tr:nth-child(odd) td {
+      background-color: #7c7c7c;
+    }
+
+    .table-striped tr:nth-child(even) td {
+      background-color: #efefef;
+    }
+
     @media only screen and (max-width: 600px) {
+      body {
+        margin-top: 60px;
+      }
       .header a {
         float: none;
         display: block;
@@ -390,6 +408,9 @@
       </li>
       <li>
         <a href="{% url 'map:crit' %}">Critical Table</a>
+      </li>
+      <li>
+        <a href="{% url 'map:schedule' %}">Schedule Session</a>
       </li>
       <li>
         <a href="{% url 'map:initiative' %}">Initiative Tracker</a>

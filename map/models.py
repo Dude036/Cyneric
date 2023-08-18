@@ -1,5 +1,8 @@
+import uuid
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from django.utils import timezone
+from enum import Enum, auto
 
 
 # Create your models here.
@@ -242,3 +245,39 @@ class InitEntry(models.Model):
 
     def __str__(self):
         return str(self.initiative) + " - " + self.name
+
+
+class Schedule(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    question_text = models.CharField(max_length=200)
+    pub_date = models.DateTimeField("date published", default=timezone.now)
+    # This will be a list of date strings
+    date_options = models.JSONField()
+
+    def __str__(self):
+        return str(self.id) + ' (' + str(self.question_text) + ')'
+
+    def __repr__(self):
+        return str(self.id) + ' (' + str(self.question_text) + ')'
+
+
+class Choice(models.Model):
+    class Options(Enum):
+        Yes = auto()
+        Maybe = auto()
+        No = auto()
+
+        @staticmethod
+        def is_valid(op):
+            return op in set(item.name for item in Choice.Options) or op in set(item.value for item in Choice.Options)
+
+    question = models.ForeignKey(Schedule, on_delete=models.CASCADE)
+    # This will be a dictionary of date keys, and availability
+    available_dates = models.JSONField()
+    submitter = models.CharField(max_length=100)
+
+    def __str__(self):
+        return str(self.submitter) + ' (' + str(self.question) + ')'
+
+    def __repr__(self):
+        return str(self.submitter) + ' (' + str(self.question) + ')'
