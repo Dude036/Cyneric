@@ -473,3 +473,7 @@ def schedule_create(request):
             return HttpResponse('The content was malformed, and unable to be processed. Please verify your submission is valid, and try again.')
 
     return render(request, 'schedule_create.html', {'is_admin': user.is_authenticated})
+
+
+def cast_list(request):
+    return render(request, 'cast.html', {})

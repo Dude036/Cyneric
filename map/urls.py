@@ -20,5 +20,6 @@ urlpatterns = [
     path('schedule/create/', views.schedule_create, name='schedule_create'),
     path('schedule/form/', views.schedule_form, name='schedule_form'),
     path('schedule/form/success/', views.schedule_success, name='schedule_success'),
+    path('cast/', views.cast_list, name='cast_list'),
     path('<str:town_name>/', views.town_info, name='town'),
 ]
