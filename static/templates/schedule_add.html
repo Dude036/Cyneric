@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h1>
+  {{ question_text }}
+</h1>
+
+<p style="margin-bottom: 30px;">
+  <b>Note:</b> Here is what each response means to me, the Game Master:
+  <ul>
+    <li>
+      Yes, means I'll be available on this date.
+    </li>
+    <li>
+      Maybe, means I could possibly join, but it'd be difficult or inconvenient.
+    </li>
+    <li>
+      No, means I will not be available at all.
+    </li>
+  </ul>
+</p>
+<form action="/schedule/form/" method="post">
+  {% csrf_token %}
+  <table class="schedule_table" style="table-layout: fixed;">
+    <tr>
+      <th>Date</th>
+      <th>Yes</th>
+      <th>Maybe</th>
+      <th>No</th>
+    </tr>
+    {% for date in dates %}
+      <tr>
+        <td>
+          {{ date }}
+        </td>
+        <td>
+          <input class="center" type="radio" id="{{ date }}_Yes" name="{{ date }}" value="Yes" required>
+        </td>
+        <td>
+          <input type="radio" id="{{ date }}_Maybe" name="{{ date }}" value="Maybe" required>
+        </td>
+        <td>
+          <input type="radio" id="{{ date }}_No" name="{{ date }}" value="No" required>
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+  <br>
+  <div style="margin: auto;">
+    <label for="submitter">Enter Name:</label>
+    <input type="text" id="submitter" name="submitter" placeholder="Your Name Here" required>
+  </div>
+  <br/>
+  <input type="submit" value="Submit" style="padding: 5px 10px;">
+</form>
+
+{% endblock %}

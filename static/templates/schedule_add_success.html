@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h1>
+    Thanks!
+  </h1>
+  <p>
+    Your submission was successful. To review your submission return to the Schedule.
+  </p>
+  <div class="center" style="margin-bottom:30px;">
+    <input type="button" onclick="location.href='{% url 'map:schedule' %}';" value="Back to Schedule" />
+  </div>
+{% endblock %}

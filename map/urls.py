@@ -15,5 +15,10 @@ urlpatterns = [
     path('phrases/', views.magic_phrases, name='magic_phrases'),
     path('init/', views.initiative, name='initiative'),
     path('init/request/', views.initiative_request, name='initiative_request'),
+    path('schedule/', views.schedule, name='schedule'),
+    path('schedule/update/', views.schedule_update, name='schedule_update'),
+    path('schedule/create/', views.schedule_create, name='schedule_create'),
+    path('schedule/form/', views.schedule_form, name='schedule_form'),
+    path('schedule/form/success/', views.schedule_success, name='schedule_success'),
     path('<str:town_name>/', views.town_info, name='town'),
 ]
