@@ -38,12 +38,12 @@
                 </td>
             {% endfor %}
             {% if is_admin %}
-                {% if row.0 != "Submitter" %}
+                {% if forloop.first %}
+                    <td></td>
+                {% else %}
                     <td>
                         <input id="delete" type="button" value="Delete" onclick="if (confirm('Are you sure you want to delete this entry?')) { delete_entry('{{ row.0 }}'); }">
                     </td>
-                {% else %}
-                    <td></td>
                 {% endif %}
             {% endif %}
         </tr>
