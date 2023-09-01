@@ -281,3 +281,69 @@ class Choice(models.Model):
 
     def __repr__(self):
         return str(self.submitter) + ' (' + str(self.question) + ')'
+
+
+class VehicleEntity(Enum):
+    Train = "Murder Train (Engine)"
+    Lab = "Murder Train (Lab)"
+    Sleeper = "Murder Train (Passenger Car)"
+    Planar_Skiff = "Icarus"
+    Mobile_Inn = "Murder Bus"
+    Speedster_1 = "Magicycle 1"
+    Speedster_2 = "Magicycle 2"
+
+    @staticmethod
+    def get_name(entity):
+        if entity == 'Train':
+            return VehicleEntity.Train
+        if entity == 'Lab':
+            return VehicleEntity.Lab
+        if entity == 'Sleeper':
+            return VehicleEntity.Sleeper
+        if entity == 'Planar_Skiff':
+            return VehicleEntity.Planar_Skiff
+        if entity == 'Mobile_Inn':
+            return VehicleEntity.Mobile_Inn
+        if entity == 'Speedster_1':
+            return VehicleEntity.Speedster_1
+        if entity == 'Speedster_2':
+            return VehicleEntity.Speedster_2
+
+    @staticmethod
+    def choices():
+        return [[ve.name, ve.value] for ve in list(VehicleEntity)]
+
+
+class VehicleEntry(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    entity = models.CharField(max_length=20, null=True, choices=VehicleEntity.choices(), default=None)
+    deleted = models.BooleanField(default=False)
+    title = models.CharField(default='', max_length=1000)
+    content = models.TextField(default='', blank=True)
+    modified_on = models.DateTimeField(auto_now=True)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+    def __lt__(self, other):
+        return self.modified_on < other.modified_on
+
+    def __gt__(self, other):
+        return self.modified_on > other.modified_on
+
+    def __eq__(self, other):
+        return self.modified_on == other.modified_on
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'entity': self.entity,
+            'deleted': self.deleted,
+            'title': self.title,
+            'content': self.content,
+            'modified_on': self.modified_on,
+            'created_on': self.created_on,
+        }
+
+    @staticmethod
+    def from_dict(incoming):
+        entry, created = VehicleEntry.objects.get_or_create(entity=incoming['entity'], title=incoming['title'], content=incoming['content'])
+        return entry

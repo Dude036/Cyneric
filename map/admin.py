@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Town, Person, GeneratorShop, Critical, Schedule, Choice
+from .models import Town, Person, GeneratorShop, Critical, Schedule, Choice, VehicleEntry
 
 
 class TownAdmin(admin.ModelAdmin):
@@ -30,6 +30,10 @@ class GeneratorAdmin(admin.ModelAdmin):
     )
 
 
+class VehiclesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'entity', 'title', 'modified_on', 'deleted')
+
+
 # Register your models here.
 admin.site.register(Town, TownAdmin)
 admin.site.register(Person, PersonAdmin)
@@ -37,3 +41,4 @@ admin.site.register(GeneratorShop, GeneratorAdmin)
 admin.site.register(Critical, CriticalAdmin)
 admin.site.register(Schedule, ScheduleAdmin)
 admin.site.register(Choice, ChoiceAdmin)
+admin.site.register(VehicleEntry, VehiclesAdmin)
