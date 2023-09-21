@@ -1,0 +1,238 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% csrf_token %}
+    <h1>
+        Current Vehicle Inventory
+    </h1>
+    <hr>
+    <h2>Murder Train (Engine)</h2>
+    <div id="Train" class="vehicle_container">
+    </div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+    <h2>Murder Train (Lab)</h2>
+    <div id="Lab" class="vehicle_container">
+    </div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+    <h2>Murder Train (Passenger Car)</h2>
+    <div id="Sleeper" class="vehicle_container">
+    </div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+    <h2>Icarus</h2>
+    <div id="Planar_Skiff" class="vehicle_container">
+    </div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+    <h2>Murder Bus</h2>
+    <div id="Mobile_Inn" class="vehicle_container">
+    </div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+    <h2>Magicycle 1</h2>
+    <div id="Speedster_1" class="vehicle_container">
+    </div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+    <h2>Magicycle 2</h2>
+    <div id="Speedster_2" class="vehicle_container">
+    </div>
+
+<!--------------------------------------------------------------------------------------------------------------------->
+
+    <h2>Party Inventory</h2>
+    <div id="Inventory" class="vehicle_container">
+    </div>
+
+    <div style="position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#646464; border-radius:50px; text-align:center;" onclick="create_new_element()">
+        <span class="bold" style="margin-top: 22px; color: white; font-size: xxx-large;">+</span>
+    </div>
+
+  <script type="text/javascript" src="{% static 'js/dragula.min.js' %}"></script>
+  <script type="text/javascript">
+    // Dragula Initial Setup
+    let drake_fields = [
+        document.getElementById("Train"),
+        document.getElementById("Lab"),
+        document.getElementById("Sleeper"),
+        document.getElementById("Planar_Skiff"),
+        document.getElementById("Mobile_Inn"),
+        document.getElementById("Speedster_1"),
+        document.getElementById("Speedster_2"),
+        document.getElementById("Inventory"),
+    ]
+    let drake = dragula(drake_fields, {
+      revertOnSpill: true,
+      direction: 'vertical',
+      moves: function (el, container, handle) {
+        // Elements that contain the move-handle class can be moved.
+        return handle.classList.contains('move-handle');
+      }
+    });
+
+    // Pseudo-Socket since PythonAnywhere doesn't allow sockets
+    let queried_data = { "Train": [], "Lab": [], "Sleeper": [], "Planar_Skiff": [], "Mobile_Inn": [], "Speedster_1": [], "Speedster_2": [], "Inventory": [] };
+    let previous_data = { "Train": [], "Lab": [], "Sleeper": [], "Planar_Skiff": [], "Mobile_Inn": [], "Speedster_1": [], "Speedster_2": [], "Inventory": [] };
+    let initial = true;
+
+
+    async function request(request_type, func, data) {
+      var xhr = new XMLHttpRequest();
+      var connection = window.location.href + 'request/';
+      const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+      xhr.open(request_type, connection);
+
+      xhr.setRequestHeader("Accept", "application/json");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("X-CSRFToken", token);
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          // Completed request
+          queried_data = JSON.parse(xhr.responseText);
+        }
+      };
+
+      data = {
+        "function": func,
+        "data": data
+      };
+
+      xhr.send(JSON.stringify(data));
+    }
+
+
+    /**Insert new Element
+     *
+     */
+    function create_new_element() {
+      request('POST', 'add', {})
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+
+    /**Create a DOM element to be added
+     * @returns Element Element to be added to page
+     */
+    function create_element(entry) {
+      // Flex Object
+      var container = document.createElement('div');
+      container.id = entry['id'];
+      container.style.border = '1px';
+      container.style.display = 'flex';
+      container.style.flexFlow = 'row nowrap';
+      container.style.justifyContent = 'flex-start';
+      container.style.alignItems = 'center';
+
+      // Move handle
+      var move_handle = document.createElement('img');
+      move_handle.src = "/static/svg/move_vertical.svg";
+      move_handle.title = "Move Item";
+      move_handle.className = "move-handle";
+      move_handle.width = 30;
+      move_handle.height = 30;
+      move_handle.style.float = "left";
+      move_handle.style.margin = "10px";
+      container.appendChild(move_handle);
+
+      // Title
+      var title_input = document.createElement('input');
+      title_input.id = container.id + '_title'
+      title_input.type = 'text';
+      title_input.value = entry['title'];
+      title_input.style.margin = "10px";
+      container.appendChild(title_input);
+
+      // Content
+      var content_input = document.createElement('textarea')
+      content_input.id = container.id + '_content'
+      content_input.style.resize = 'vertical';
+      content_input.value = entry['content'];
+      content_input.style.margin = "10px";
+      content_input.style.width = '300px';
+      container.appendChild(content_input);
+
+      // Update functions
+      title_input.onblur = function () {
+        var data = {
+          'id': container.id,
+          'title': document.getElementById(container.id + '_title').value,
+          'content': document.getElementById(container.id + '_content').value,
+        }
+        request('POST', 'update', data)
+      }
+
+      content_input.onblur = function () {
+        var data = {
+          'id': container.id,
+          'title': document.getElementById(container.id + '_title').value,
+          'content': document.getElementById(container.id + '_content').value,
+        }
+        request('POST', 'update', data)
+      }
+
+
+      // Delete
+      var delete_input = document.createElement('input')
+      delete_input.type = 'button'
+      delete_input.value = 'Delete'
+      delete_input.onclick = function () {
+        if (confirm("Are you sure you want to delete his entry?")) {
+          request('POST', 'remove', {'id': entry['id']})
+        }
+      }
+
+      container.appendChild(delete_input);
+
+      // Add dragula listeners
+      // https://github.com/bevacqua/dragula#drakeon-events
+      drake.on('drop', function (el, target, source, sibling) {
+        var data = {
+          'id': el.id,
+          'entity': target.id
+        }
+        request('POST', 'move', data)
+      })
+
+      return container
+    }
+
+    async function update_page() {
+      // Refresh Data on the page
+      await request("GET", "read", {})
+
+      // If an update is needed, do it here
+      if (JSON.stringify(previous_data) !== JSON.stringify(queried_data) || initial) {
+        initial = false;
+        previous_data = queried_data;
+
+        // Update sections of page
+        ["Train", "Lab", "Sleeper", "Planar_Skiff", "Mobile_Inn", "Speedster_1", "Speedster_2", "Inventory"].forEach(section => {
+          var div_section = document.getElementById(section);
+          div_section.innerHTML = ''
+
+          for (const i in queried_data[section]) {
+            var new_element = create_element(queried_data[section][i]);
+            div_section.appendChild(new_element);
+          }
+        })
+      }
+
+
+      // We want this to run every second
+      setTimeout(update_page, 1000);
+    }
+
+    // Start updating the page
+    update_page();
+  </script>
+{% endblock %}
