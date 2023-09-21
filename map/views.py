@@ -1,5 +1,6 @@
 from django.http import JsonResponse, HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
+from django.core.exceptions import ObjectDoesNotExist
 from .models import Town, Person, Critical, InitEntry, Schedule, Choice
 from .forms import CritForm, ChoiceForm, ScheduleForm
 from django.contrib import auth
@@ -363,6 +364,7 @@ def schedule(request):
 
     print(calendar)
     context['calendar'] = calendar
+    context['question_id'] = most_recent_poll.id
 
     return render(request, 'schedule.html', context)
 
@@ -393,6 +395,34 @@ def schedule_update(request):
     return JsonResponse(response)
 
 
+def schedule_edit(request, question_id, submitter):
+    # Show certain info if the user is authenticated (i.e. logged in as admin)
+    user = auth.get_user(request)
+
+    # Check poll exists
+    try:
+        most_recent_poll = Schedule.objects.get(id=question_id)
+    except ObjectDoesNotExist as e:
+        return HttpResponseRedirect('/schedule/')
+
+    # Check user exists for poll
+    try:
+        choice = Choice.objects.get(question=most_recent_poll.id, submitter=submitter)
+    except ObjectDoesNotExist as e:
+        return HttpResponseRedirect('/schedule/')
+
+    # Redirect with
+
+    context = {
+        'question_text': most_recent_poll.question_text,
+        'dates': most_recent_poll.date_options,
+        'options': json.dumps(choice.available_dates),
+        'is_admin': user.is_authenticated
+    }
+
+    return render(request, 'schedule_add.html', context)
+
+
 def schedule_form(request):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
@@ -414,7 +444,8 @@ def schedule_form(request):
 
         # check whether it's valid:
         if form.is_valid():
-            new_entry = Choice(question=most_recent_poll, available_dates=available, submitter=form.submitter)
+            new_entry, created = Choice.objects.get_or_create(question=most_recent_poll, submitter=form.submitter)
+            new_entry.available_dates = available
 
             new_entry.save()
 

@@ -263,6 +263,8 @@ class Schedule(models.Model):
 
 class Choice(models.Model):
     class Options(Enum):
+        Yes_Remote = auto()
+        Maybe_Remote = auto()
         Yes = auto()
         Maybe = auto()
         No = auto()

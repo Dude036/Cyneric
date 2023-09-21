@@ -9,10 +9,16 @@
   <b>Note:</b> Here is what each response means to me, the Game Master:
   <ul>
     <li>
-      Yes, means I'll be available on this date.
+      Yes (Remote), means I'll be available on this date to attend remotely.
     </li>
     <li>
-      Maybe, means I could possibly join, but it'd be difficult or inconvenient.
+      Maybe (Remote), means I could possibly join remotely, but it'd be difficult or inconvenient.
+    </li>
+    <li>
+      Yes, means I'll be available on this date to attend in person.
+    </li>
+    <li>
+      Maybe, means I could possibly join in person, but it'd be difficult or inconvenient.
     </li>
     <li>
       No, means I will not be available at all.
@@ -24,6 +30,8 @@
   <table class="schedule_table" style="table-layout: fixed;">
     <tr>
       <th>Date</th>
+      <th>Yes, Remote</th>
+      <th>Maybe, Remote</th>
       <th>Yes</th>
       <th>Maybe</th>
       <th>No</th>
@@ -32,6 +40,12 @@
       <tr>
         <td>
           {{ date }}
+        </td>
+        <td>
+          <input class="center" type="radio" id="{{ date }}_Yes_Remote" name="{{ date }}" value="Yes_Remote" required>
+        </td>
+        <td>
+          <input type="radio" id="{{ date }}_Maybe_Remote" name="{{ date }}" value="Maybe_Remote" required>
         </td>
         <td>
           <input class="center" type="radio" id="{{ date }}_Yes" name="{{ date }}" value="Yes" required>
@@ -53,5 +67,29 @@
   <br/>
   <input type="submit" value="Submit" style="padding: 5px 10px;">
 </form>
+
+<script type="text/javascript">
+  // Setup event listener to update cookie
+  let submitter_input = document.getElementById("submitter");
+  submitter_input.addEventListener("change", function (event) {
+    if (submitter_input.value !== '') {
+      window.localStorage.setItem("schedule_token", submitter_input.value);
+    }
+  })
+
+  // Check for existing cookie, and autofill name
+  if (window.localStorage.getItem("schedule_token")) {
+    submitter_input.value = window.localStorage.getItem("schedule_token");
+  }
+  {% if options %}
+    {% autoescape off %}
+      let pre_selected = {{ options }};
+    {% endautoescape %}
+    for (const [key, value] of Object.entries(pre_selected)) {
+      console.log(`${key}: ${value}`);
+      document.getElementById(key + '_' + value).click();
+    }
+  {% endif %}
+</script>
 
 {% endblock %}
