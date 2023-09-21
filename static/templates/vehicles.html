@@ -171,6 +171,16 @@
         request('POST', 'update', data)
       }
 
+      content_input.onblur = function () {
+        var data = {
+          'id': container.id,
+          'title': document.getElementById(container.id + '_title').value,
+          'content': document.getElementById(container.id + '_content').value,
+        }
+        request('POST', 'update', data)
+      }
+
+
       // Delete
       var delete_input = document.createElement('input')
       delete_input.type = 'button'
