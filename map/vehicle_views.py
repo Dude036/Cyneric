@@ -17,7 +17,7 @@ def format_vehicle_data():
     # Populate Items into lists
     for entry in VehicleEntry.objects.all().order_by('modified_on'):
         if not entry.deleted:
-            outgoing[entry.entity].append(entry.to_dict())
+            outgoing[str(entry.entity)].append(entry.to_dict())
     return outgoing
 
 
@@ -38,20 +38,28 @@ def vehicles_request(request):
             return JsonResponse(format_vehicle_data(), safe=False)
 
         # Add to Database
-        if incoming['function'] == 'add' and user.is_authenticated:
-            pass
+        if incoming['function'] == 'add':
+            to_add = VehicleEntry(entity=VehicleEntity.Inventory.name)
+            to_add.save()
+
+        # Move Database entry to different vehicle
+        elif incoming['function'] == 'move':
+            to_move = VehicleEntry.objects.get(id=incoming['data']['id'])
+            to_move.entity = incoming['data']['entity']
+            to_move.save()
 
         # Update Database entry
-        elif incoming['function'] == 'update' and user.is_authenticated:
-            pass
+        elif incoming['function'] == 'update':
+            to_update = VehicleEntry.objects.get(id=incoming['data']['id'])
+            to_update.title = incoming['data']['title']
+            to_update.content = incoming['data']['content']
+            to_update.save()
 
         # Remove an entry
-        elif incoming['function'] == 'remove' and user.is_authenticated:
-            pass
-
-        # Clear table
-        elif incoming['function'] == 'clear' and user.is_authenticated:
-            pass
+        elif incoming['function'] == 'remove':
+            to_delete = VehicleEntry.objects.get(id=incoming['data']['id'])
+            to_delete.deleted = True
+            to_delete.save()
 
     # Read from database
     return JsonResponse(format_vehicle_data(), safe=False)

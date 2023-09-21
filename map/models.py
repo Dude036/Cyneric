@@ -291,23 +291,26 @@ class VehicleEntity(Enum):
     Mobile_Inn = "Murder Bus"
     Speedster_1 = "Magicycle 1"
     Speedster_2 = "Magicycle 2"
+    Inventory = "Inventory"
 
     @staticmethod
     def get_name(entity):
         if entity == 'Train':
             return VehicleEntity.Train
-        if entity == 'Lab':
+        elif entity == 'Lab':
             return VehicleEntity.Lab
-        if entity == 'Sleeper':
+        elif entity == 'Sleeper':
             return VehicleEntity.Sleeper
-        if entity == 'Planar_Skiff':
+        elif entity == 'Planar_Skiff':
             return VehicleEntity.Planar_Skiff
-        if entity == 'Mobile_Inn':
+        elif entity == 'Mobile_Inn':
             return VehicleEntity.Mobile_Inn
-        if entity == 'Speedster_1':
+        elif entity == 'Speedster_1':
             return VehicleEntity.Speedster_1
-        if entity == 'Speedster_2':
+        elif entity == 'Speedster_2':
             return VehicleEntity.Speedster_2
+        elif entity == 'Inventory':
+            return VehicleEntity.Inventory
 
     @staticmethod
     def choices():
@@ -318,7 +321,7 @@ class VehicleEntry(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     entity = models.CharField(max_length=20, null=True, choices=VehicleEntity.choices(), default=None)
     deleted = models.BooleanField(default=False)
-    title = models.CharField(default='', max_length=1000)
+    title = models.CharField(default='', max_length=1000, blank=True)
     content = models.TextField(default='', blank=True)
     modified_on = models.DateTimeField(auto_now=True)
     created_on = models.DateTimeField(auto_now_add=True)
@@ -331,6 +334,9 @@ class VehicleEntry(models.Model):
 
     def __eq__(self, other):
         return self.modified_on == other.modified_on
+
+    def __hash__(self):
+        return super().__hash__()
 
     def to_dict(self):
         return {

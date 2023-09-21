@@ -47,6 +47,16 @@
     <div id="Speedster_2" class="vehicle_container">
     </div>
 
+<!--------------------------------------------------------------------------------------------------------------------->
+
+    <h2>Party Inventory</h2>
+    <div id="Inventory" class="vehicle_container">
+    </div>
+
+    <div style="position:fixed; width:60px; height:60px; bottom:40px; right:40px; background-color:#646464; border-radius:50px; text-align:center;" onclick="create_new_element()">
+        <span class="bold" style="margin-top: 22px; color: white; font-size: xxx-large;">+</span>
+    </div>
+
   <script type="text/javascript" src="{% static 'js/dragula.min.js' %}"></script>
   <script type="text/javascript">
     // Dragula Initial Setup
@@ -58,6 +68,7 @@
         document.getElementById("Mobile_Inn"),
         document.getElementById("Speedster_1"),
         document.getElementById("Speedster_2"),
+        document.getElementById("Inventory"),
     ]
     let drake = dragula(drake_fields, {
       revertOnSpill: true,
@@ -69,8 +80,8 @@
     });
 
     // Pseudo-Socket since PythonAnywhere doesn't allow sockets
-    let queried_data = { "Train": [], "Lab": [], "Sleeper": [], "Planar_Skiff": [], "Mobile_Inn": [], "Speedster_1": [], "Speedster_2": [] };
-    let previous_data = { "Train": [], "Lab": [], "Sleeper": [], "Planar_Skiff": [], "Mobile_Inn": [], "Speedster_1": [], "Speedster_2": [] };
+    let queried_data = { "Train": [], "Lab": [], "Sleeper": [], "Planar_Skiff": [], "Mobile_Inn": [], "Speedster_1": [], "Speedster_2": [], "Inventory": [] };
+    let previous_data = { "Train": [], "Lab": [], "Sleeper": [], "Planar_Skiff": [], "Mobile_Inn": [], "Speedster_1": [], "Speedster_2": [], "Inventory": [] };
     let initial = true;
 
 
@@ -99,14 +110,28 @@
       xhr.send(JSON.stringify(data));
     }
 
+
+    /**Insert new Element
+     *
+     */
+    function create_new_element() {
+      request('POST', 'add', {})
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
+
     /**Create a DOM element to be added
      * @returns Element Element to be added to page
      */
     function create_element(entry) {
       // Flex Object
       var container = document.createElement('div');
-      container.id = entry['id']
-      container.style.border = '1px '
+      container.id = entry['id'];
+      container.style.border = '1px';
+      container.style.display = 'flex';
+      container.style.flexFlow = 'row nowrap';
+      container.style.justifyContent = 'flex-start';
+      container.style.alignItems = 'center';
 
       // Move handle
       var move_handle = document.createElement('img');
@@ -121,15 +146,52 @@
 
       // Title
       var title_input = document.createElement('input');
+      title_input.id = container.id + '_title'
       title_input.type = 'text';
-      title_input.value = entry['title']
+      title_input.value = entry['title'];
+      title_input.style.margin = "10px";
       container.appendChild(title_input);
 
       // Content
       var content_input = document.createElement('textarea')
+      content_input.id = container.id + '_content'
       content_input.style.resize = 'vertical';
-      content_input.value = entry['content']
+      content_input.value = entry['content'];
+      content_input.style.margin = "10px";
+      content_input.style.width = '300px';
       container.appendChild(content_input);
+
+      // Update functions
+      title_input.onblur = function () {
+        var data = {
+          'id': container.id,
+          'title': document.getElementById(container.id + '_title').value,
+          'content': document.getElementById(container.id + '_content').value,
+        }
+        request('POST', 'update', data)
+      }
+
+      // Delete
+      var delete_input = document.createElement('input')
+      delete_input.type = 'button'
+      delete_input.value = 'Delete'
+      delete_input.onclick = function () {
+        if (confirm("Are you sure you want to delete his entry?")) {
+          request('POST', 'remove', {'id': entry['id']})
+        }
+      }
+
+      container.appendChild(delete_input);
+
+      // Add dragula listeners
+      // https://github.com/bevacqua/dragula#drakeon-events
+      drake.on('drop', function (el, target, source, sibling) {
+        var data = {
+          'id': el.id,
+          'entity': target.id
+        }
+        request('POST', 'move', data)
+      })
 
       return container
     }
@@ -144,7 +206,7 @@
         previous_data = queried_data;
 
         // Update sections of page
-        ["Train", "Lab", "Sleeper", "Planar_Skiff", "Mobile_Inn", "Speedster_1", "Speedster_2"].forEach(section => {
+        ["Train", "Lab", "Sleeper", "Planar_Skiff", "Mobile_Inn", "Speedster_1", "Speedster_2", "Inventory"].forEach(section => {
           var div_section = document.getElementById(section);
           div_section.innerHTML = ''
 
