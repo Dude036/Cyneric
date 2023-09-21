@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Town, Person, GeneratorShop, Critical, Schedule, Choice, VehicleEntry
+from .models import Town, Person, GeneratorShop, Schedule, Choice, VehicleEntry
 
 
 class TownAdmin(admin.ModelAdmin):
@@ -8,10 +8,6 @@ class TownAdmin(admin.ModelAdmin):
 
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('name', 'title')
-
-
-class CriticalAdmin(admin.ModelAdmin):
-    list_display = ('flavor_text', 'category', 'severity', 'success')
 
 
 class ScheduleAdmin(admin.ModelAdmin):
@@ -38,7 +34,6 @@ class VehiclesAdmin(admin.ModelAdmin):
 admin.site.register(Town, TownAdmin)
 admin.site.register(Person, PersonAdmin)
 admin.site.register(GeneratorShop, GeneratorAdmin)
-admin.site.register(Critical, CriticalAdmin)
 admin.site.register(Schedule, ScheduleAdmin)
 admin.site.register(Choice, ChoiceAdmin)
 admin.site.register(VehicleEntry, VehiclesAdmin)

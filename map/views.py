@@ -1,8 +1,8 @@
 from django.http import JsonResponse, HttpResponse, Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
-from .models import Town, Person, Critical, Schedule, Choice, VehicleEntry
-from .forms import CritForm, ChoiceForm, ScheduleForm
+from .models import Town, Person, Schedule, Choice
+from .forms import ChoiceForm, ScheduleForm
 from django.contrib import auth
 import simplejson as json
 
@@ -141,49 +141,6 @@ def person_search(request):
     return render(request, 'person_search.html', {'names': names, 'name_dict': all_names, 'sorted_names': sorted_names, 'is_admin': user.is_authenticated})
 
 
-def crit(request):
-    # Show certain info if the user is authenticated (i.e. logged in as admin)
-    user = auth.get_user(request)
-
-    return render(request, 'crit.html', {'is_admin': user.is_authenticated})
-
-
-def add_crit(request):
-    # Show certain info if the user is authenticated (i.e. logged in as admin)
-    user = auth.get_user(request)
-
-    if request.method == 'POST':
-        # create a form instance and populate it with data from the request:
-        form = CritForm(request.POST)
-        # check whether it's valid:
-        if form.is_valid():
-            success_bool = True if form.data['success'] == 'Success' else False
-
-            new_crit = Critical(
-                category=form.data['category'],
-                severity=form.data['severity'],
-                success=success_bool,
-                flavor_text=form.data['flavor_text']
-            )
-            new_crit.save()
-            # redirect to a new URL:
-            return HttpResponseRedirect('/crit/form/success/')
-        else:
-            return HttpResponse('The content was malformed, and unable to be processed. Please verify your submission is valid, and try again.')
-
-    # if a GET (or any other method) we'll create a blank form
-    else:
-        form = CritForm()
-    return render(request, 'add_crit.html', {'form': form, 'is_admin': user.is_authenticated})
-
-
-def add_crit_success(request):
-    # Show certain info if the user is authenticated (i.e. logged in as admin)
-    user = auth.get_user(request)
-
-    return render(request, 'add_crit_success.html', {'is_admin': user.is_authenticated})
-
-
 def admin_redirect(request):
     return HttpResponseRedirect('/admin/')
 
@@ -193,6 +150,7 @@ def magic_phrases(request):
     user = auth.get_user(request)
 
     return render(request, 'phrases.html', {'is_admin': user.is_authenticated})
+
 
 def schedule(request):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
