@@ -152,7 +152,7 @@ def magic_phrases(request):
     return render(request, 'phrases.html', {'is_admin': user.is_authenticated})
 
 
-def schedule(request):
+def schedule(request, question_id=None):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
 
@@ -160,6 +160,12 @@ def schedule(request):
         most_recent_poll = Schedule.objects.order_by("-pub_date")[0]
     except IndexError:
         most_recent_poll = None
+
+    if question_id is not None:
+        try:
+            most_recent_poll = Schedule.objects.get(id=question_id)
+        except ObjectDoesNotExist:
+            print("Question '" + question_id + "' not found. Defaulting")
 
     if most_recent_poll is None:
         return HttpResponse('No polls currently available')
@@ -242,11 +248,11 @@ def schedule_edit(request, question_id, submitter):
     return render(request, 'schedule_add.html', context)
 
 
-def schedule_form(request):
+def schedule_form(request, question_id):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
     try:
-        most_recent_poll = Schedule.objects.order_by("-pub_date")[0]
+        most_recent_poll = Schedule.objects.get(id=question_id)
     except IndexError:
         most_recent_poll = None
 
