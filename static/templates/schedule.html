@@ -74,6 +74,19 @@
 </div>
 {% endif %}
 
+<div id="previous_polls">
+<h3>
+    Open Polls
+</h3>
+<ul>
+{% for poll_id, question_text in poll_list.items %}
+    <li>
+        <a href="{% url 'map:schedule_specific' poll_id %}">{{ question_text }}</a>
+    </li>
+{% endfor %}
+</ul>
+</div>
+
 {% if is_admin == False %}
     <script type="text/javascript">
       // If there's a token, allow them to edit it.

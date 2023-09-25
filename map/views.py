@@ -187,9 +187,14 @@ def schedule(request, question_id=None):
             row.append(sub.available_dates[date])
         calendar.append(row)
 
-    print(calendar)
     context['calendar'] = calendar
     context['question_id'] = most_recent_poll.id
+
+    open_polls = {}
+    for poll in Schedule.objects.order_by("-pub_date"):
+        if not poll.closed:
+            open_polls[str(poll.id)] = poll.question_text
+    context['poll_list'] = open_polls
 
     return render(request, 'schedule.html', context)
 

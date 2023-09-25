@@ -236,6 +236,7 @@ class Schedule(models.Model):
     pub_date = models.DateTimeField("date published", default=timezone.now)
     # This will be a list of date strings
     date_options = models.JSONField()
+    closed = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.id) + ' (' + str(self.question_text) + ')'
