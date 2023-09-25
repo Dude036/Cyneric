@@ -25,7 +25,7 @@
     </li>
   </ul>
 </p>
-<form action="/schedule/form/" method="post">
+<form action="/schedule/form/{{ poll_id }}/" method="post">
   {% csrf_token %}
   <table class="schedule_table" style="table-layout: fixed;">
     <tr>

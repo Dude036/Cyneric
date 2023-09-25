@@ -253,11 +253,14 @@ def schedule_edit(request, question_id, submitter):
     return render(request, 'schedule_add.html', context)
 
 
-def schedule_form(request, question_id):
+def schedule_form(request, question_id=None):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
     try:
-        most_recent_poll = Schedule.objects.get(id=question_id)
+        if question_id is None:
+            most_recent_poll = Schedule.objects.order_by("-pub_date")[0]
+        else:
+            most_recent_poll = Schedule.objects.get(id=question_id)
     except IndexError:
         most_recent_poll = None
 
@@ -286,6 +289,7 @@ def schedule_form(request, question_id):
 
     context = {
         'question_text': most_recent_poll.question_text,
+        'poll_id': most_recent_poll.id,
         'dates': most_recent_poll.date_options,
         'is_admin': user.is_authenticated
     }
