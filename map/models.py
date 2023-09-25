@@ -259,7 +259,7 @@ class Choice(models.Model):
 
     question = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     # This will be a dictionary of date keys, and availability
-    available_dates = models.JSONField()
+    available_dates = models.JSONField(default=dict, blank=True)
     submitter = models.CharField(max_length=100)
 
     def __str__(self):
