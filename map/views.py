@@ -152,34 +152,37 @@ def magic_phrases(request):
     return render(request, 'phrases.html', {'is_admin': user.is_authenticated})
 
 
-def schedule(request, question_id=None):
+def schedule_reroute(request):
+    try:
+        most_recent_poll = Schedule.objects.order_by("-pub_date")[0]
+        return HttpResponseRedirect('/schedule/' + str(most_recent_poll.id) + '/')
+    except IndexError:
+        return HttpResponseRedirect('/schedule/create/')
+
+
+def schedule(request, question_id):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
 
-    try:
-        most_recent_poll = Schedule.objects.order_by("-pub_date")[0]
-    except IndexError:
-        most_recent_poll = None
-
     if question_id is not None:
         try:
-            most_recent_poll = Schedule.objects.get(id=question_id)
+            recent_poll = Schedule.objects.get(id=question_id)
         except ObjectDoesNotExist:
-            print("Question '" + question_id + "' not found. Defaulting")
+            print("Question '" + question_id + "' not found, Printing failure message")
 
-    if most_recent_poll is None:
-        return HttpResponse('No polls currently available')
+    if recent_poll is None:
+        return Http404('Invalid Pill ID')
 
     context = {'is_admin': user.is_authenticated}
-    date_options = most_recent_poll.date_options
+    date_options = recent_poll.date_options
 
-    context['question'] = most_recent_poll.question_text
+    context['question'] = recent_poll.question_text
 
     calendar = [['Submitter', ], ]
     for op in date_options:
         calendar[0].append(op)
 
-    submissions = Choice.objects.filter(question=most_recent_poll.id)
+    submissions = Choice.objects.filter(question=recent_poll.id)
 
     for sub in submissions:
         row = [sub.submitter, ]
@@ -188,7 +191,7 @@ def schedule(request, question_id=None):
         calendar.append(row)
 
     context['calendar'] = calendar
-    context['question_id'] = most_recent_poll.id
+    context['question_id'] = recent_poll.id
 
     open_polls = {}
     for poll in Schedule.objects.order_by("-pub_date"):
@@ -199,23 +202,23 @@ def schedule(request, question_id=None):
     return render(request, 'schedule.html', context)
 
 
-def schedule_update(request):
+def schedule_delete(request, question_id):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
 
     try:
-        most_recent_poll = Schedule.objects.order_by("-pub_date")[0]
+        recent_poll = Schedule.objects.get(id=question_id)
     except IndexError:
-        most_recent_poll = None
+        recent_poll = None
 
-    if most_recent_poll is None:
+    if recent_poll is None:
         return HttpResponse("You must have a Schedule created before you can query for responses")
 
     if request.method == 'POST':
         if user.is_authenticated:
             incoming = json.loads(request.body.decode('utf8'))
             if 'DELETE' == incoming['action']:
-                entry = Choice.objects.get(question=most_recent_poll, submitter=incoming['name'])
+                entry = Choice.objects.get(question=recent_poll, submitter=incoming['name'])
                 entry.delete()
     else:
         return HttpResponseRedirect('/schedule/')
@@ -231,21 +234,21 @@ def schedule_edit(request, question_id, submitter):
 
     # Check poll exists
     try:
-        most_recent_poll = Schedule.objects.get(id=question_id)
+        recent_poll = Schedule.objects.get(id=question_id)
     except ObjectDoesNotExist as e:
         return HttpResponseRedirect('/schedule/')
 
     # Check user exists for poll
     try:
-        choice = Choice.objects.get(question=most_recent_poll.id, submitter=submitter)
+        choice = Choice.objects.get(question=recent_poll.id, submitter=submitter)
     except ObjectDoesNotExist as e:
         return HttpResponseRedirect('/schedule/')
 
     # Redirect with
-
     context = {
-        'question_text': most_recent_poll.question_text,
-        'dates': most_recent_poll.date_options,
+        'question_text': recent_poll.question_text,
+        'poll_id': recent_poll.id,
+        'dates': recent_poll.date_options,
         'options': json.dumps(choice.available_dates),
         'is_admin': user.is_authenticated
     }
@@ -253,31 +256,28 @@ def schedule_edit(request, question_id, submitter):
     return render(request, 'schedule_add.html', context)
 
 
-def schedule_form(request, question_id=None):
+def schedule_form(request, question_id):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
     try:
-        if question_id is None:
-            most_recent_poll = Schedule.objects.order_by("-pub_date")[0]
-        else:
-            most_recent_poll = Schedule.objects.get(id=question_id)
+        recent_poll = Schedule.objects.get(id=question_id)
     except IndexError:
-        most_recent_poll = None
+        recent_poll = None
 
-    if most_recent_poll is None:
+    if recent_poll is None:
         return HttpResponse("You must have a Schedule created before you can query for responses")
 
     if request.method == 'POST':
         # Parse available dates here
         available = {}
-        for date in most_recent_poll.date_options:
+        for date in recent_poll.date_options:
             available[date] = request.POST[date]
 
-        form = ChoiceForm(question_id=most_recent_poll.id, available_dates=available, submitter=request.POST['submitter'])
+        form = ChoiceForm(question_id=recent_poll.id, available_dates=available, submitter=request.POST['submitter'])
 
         # check whether it's valid:
         if form.is_valid():
-            new_entry, created = Choice.objects.get_or_create(question=most_recent_poll, submitter=form.submitter)
+            new_entry, created = Choice.objects.get_or_create(question=recent_poll, submitter=form.submitter)
             new_entry.available_dates = available
 
             new_entry.save()
@@ -288,9 +288,9 @@ def schedule_form(request, question_id=None):
             return HttpResponse('The content was malformed, and unable to be processed. Please verify your submission is valid, and try again.')
 
     context = {
-        'question_text': most_recent_poll.question_text,
-        'poll_id': most_recent_poll.id,
-        'dates': most_recent_poll.date_options,
+        'question_text': recent_poll.question_text,
+        'poll_id': recent_poll.id,
+        'dates': recent_poll.date_options,
         'is_admin': user.is_authenticated
     }
 
@@ -307,14 +307,8 @@ def schedule_success(request):
 def schedule_create(request):
     # Show certain info if the user is authenticated (i.e. logged in as admin)
     user = auth.get_user(request)
-    try:
-        most_recent_poll = Schedule.objects.order_by("-pub_date")[0]
-    except IndexError:
-        most_recent_poll = None
 
-    if most_recent_poll is None:
-        return HttpResponse("You must have a Schedule created before you can query for responses")
-
+    # Create Schedule Form
     if request.method == 'POST':
         print(request.POST)
 
@@ -337,7 +331,9 @@ def schedule_create(request):
         else:
             return HttpResponse('The content was malformed, and unable to be processed. Please verify your submission is valid, and try again.')
 
-    return render(request, 'schedule_create.html', {'is_admin': user.is_authenticated})
+    # Get form to fill out
+    else:
+        return render(request, 'schedule_create.html', {'is_admin': user.is_authenticated})
 
 
 def cast_list(request):

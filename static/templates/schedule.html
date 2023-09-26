@@ -4,7 +4,7 @@
 <script>
     function delete_entry(user_name) {
         var xhr = new XMLHttpRequest();
-        var connection = window.location.href + 'update/';
+        var connection = window.location.href + 'delete/';
         const token = document.querySelector('[name=csrfmiddlewaretoken]').value;
         xhr.open("POST", connection);
 
