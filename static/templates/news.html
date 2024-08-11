@@ -11,7 +11,6 @@
   <div style="display: flex; flex-direction: row; justify-content: space-between;">
     <input type="button" value="Year {{ previous_year }}" onclick="location.href='{% url 'news:calender_era' era previous_year %}';" />
     <input type="button" style="background-color: lavender;" value="Magic Now" onclick="location.href='{% url 'news:calender_era' magic_era magic_year %}';" />
-    <input type="button" style="background-color: aquamarine;" value="Dragon Now" onclick="location.href='{% url 'news:calender_era' dragon_era dragon_year %}';" />
     <input type="button" style="background-color: dodgerblue;" value="Cipher Now" onclick="location.href='{% url 'news:calender_era' cipher_era cipher_year %}';" />
     <input type="button" style="background-color: lightgreen;" value="Calamity Now" onclick="location.href='{% url 'news:calender_era' calamity_era calamity_year %}';" />
     <input type="button" value="Year {{ next_year }}" onclick="location.href='{% url 'news:calender_era' era next_year %}';" />

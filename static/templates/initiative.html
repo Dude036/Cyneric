@@ -121,9 +121,10 @@
             <ul>
               <li>Sticky Willy</li>
               <li>Amelia Airheart</li>
+              <li>Jimmy Wright</li>
               <li>Cedric Storm</li>
-              <li>Admiral Zavala "Stone" Reddick</li>
-              <li>Melawesh</li>
+              <li>Crallen Fallblossom</li>
+              <li>Phogra</li>
               <li>Skipper</li>
               <li>Humma, of the Stone Scale Tribe</li>
             </ul>
@@ -132,35 +133,6 @@
         <tr>
           <td style="display: flex; justify-content: center;">
             <input id="calamity_clear_all" type="button" value="Apply Calamity Preset" onclick="if (confirm('Are you sure you want to use the Calamity Preset?')) {calamity_preset()}">
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div id="dragon_presets" style="width: 45%;">
-      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Dragons Preset</div>
-      <p style="color: red;">
-        <b>WARNING:</b> This action is irreversible.
-      </p>
-      <table style="margin-bottom: 20px; width: 100%;">
-        <tr>
-         <th>
-           <span style="font-weight: bold; font-size: larger;">Dragon Campaign Characters</span>
-         </th> 
-        </tr>
-        <tr>
-          <td>
-            <ul>
-              <li>Elveri</li>
-              <li>Kozgor</li>
-              <li>Kiirion</li>
-              <li>Puddles</li>
-              <li>Whisker</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td style="display: flex; justify-content: center;">
-            <input id="dragon_clear_all" type="button" value="Apply Dragon Preset" onclick="if (confirm('Are you sure you want to use the Calamity Preset?')) {dragon_preset()}">
           </td>
         </tr>
       </table>
@@ -189,6 +161,35 @@
         <tr>
           <td style="display: flex; justify-content: center;">
             <input id="magic_clear_all" type="button" value="Apply Magic Preset" onclick="if (confirm('Are you sure you want to use the Magic Preset?')) {magic_preset()}">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="tyrant_presets" style="width: 45%;">
+      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Tyrant's Grasp Preset</div>
+      <p style="color: red;">
+        <b>WARNING:</b> This action is irreversible.
+      </p>
+      <table style="margin-bottom: 20px; width: 100%;">
+        <tr>
+         <th>
+           <span style="font-weight: bold; font-size: larger;">Tyrant's Grasp Campaign Characters</span>
+         </th>
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              <li>Terra</li>
+              <li>Jon</li>
+              <li>Xander</li>
+              <li>Mike</li>
+              <li>Riley</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="display: flex; justify-content: center;">
+            <input id="tyrant_clear_all" type="button" value="Apply Dragon Preset" onclick="if (confirm('Are you sure you want to use the Calamity Preset?')) {tyrant_preset()}">
           </td>
         </tr>
       </table>
@@ -572,49 +573,6 @@
       }
     };
 
-    function dragon_preset() {
-      var players = [
-        { 
-          'Name': 'Elveri',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Kiirion',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Kozgor',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Puddles',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Whisker',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-      ]
-
-      request('POST', 'clear', {'Name': 'All'});
-      
-      setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
-
-      for (var i = 0; i < players.length; i++) {
-        request("POST", 'add', players[i]);
-      }
-    }
-
     function magic_preset() {
       var players = [
         { 
@@ -666,6 +624,12 @@
           'AC': 0,
           'HP': 0
         },
+        {
+          'Name': 'Jimmy Wright',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
         { 
           'Name': 'Cedric Storm',
           'Init': 0,
@@ -673,13 +637,13 @@
           'HP': 0
         },
         { 
-          'Name': 'Admiral Stone',
+          'Name': 'Crallen Fallblossom',
           'Init': 0,
           'AC': 0,
           'HP': 0
         },
         { 
-          'Name': 'Melawesh',
+          'Name': 'Phogra',
           'Init': 0,
           'AC': 0,
           'HP': 0
@@ -700,6 +664,49 @@
 
       request('POST', 'clear', {'Name': 'All'});
       
+      setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
+
+      for (var i = 0; i < players.length; i++) {
+        request("POST", 'add', players[i]);
+      }
+    }
+
+    function tyrant_preset() {
+      var players = [
+        {
+          'Name': 'Terra',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Jon',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Xander',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Mike',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Riley',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+      ]
+
+      request('POST', 'clear', {'Name': 'All'});
+
       setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
 
       for (var i = 0; i < players.length; i++) {

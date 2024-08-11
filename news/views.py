@@ -16,13 +16,12 @@ Holidays = [
     Holiday(Date(5, Month.Bloom, 25, Era.Sixth_Age), "Shatter Solstice", "Pale Mistress' worship of seperating the continents"),
     Holiday(Date(10, Month.Ice, 97, Era.Sixth_Age), "Emergence", "The Emergence of the Warforged Army"),
     Holiday(Date(2, Month.Play, 98, Era.Sixth_Age), "Cyneric Remembrance Day", "The destruction of the Cyneric continent and its people"),
-    Holiday(Date(1, Month.Birth , 2, Era.Eight_Age), "Calamity Remembrance Day", "The destruction of magic as we know it"),
+    Holiday(Date(1, Month.Birth, 1, Era.Eight_Age), "Calamity Remembrance Day", "The destruction of magic as we know it"),
 ]
 
-magic = Holiday(Date(11, Month.Apex , 25, Era.Fourth_Age), "Magic Campaign", "")
+magic = Holiday(Date(11, Month.Apex, 25, Era.Fourth_Age), "Magic Campaign", "")
 cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Cipher Campaign", "")
-dragon = Holiday(Date(19, Month.Bloom , 65, Era.Sixth_Age), "Dragon Campaign", "")
-calamity = Holiday(Date(18, Month.Melting , 1, Era.Eight_Age), "Calamity Campaign", "")
+calamity = Holiday(Date(15, Month.Roots, 1, Era.Eight_Age), "Calamity Campaign", "")
 
 
 @register.filter
@@ -36,10 +35,7 @@ def is_int(thing):
 
 
 def calender_enumeration(name):
-    month = {}
-    month['name'] = name
-    month['number'] = int(name)
-    month['days'] = []
+    month = {'name': name, 'number': int(name), 'days': []}
     for week in range(4):
         new_week = []
         for day in range(7):
@@ -86,7 +82,7 @@ def holiday_css(year, era):
 def now_css(year, era):
     css = ""
     days_colors = ['lavender', 'dodgerblue', 'aquamarine', 'lightgreen',]
-    days = [magic, cipher, dragon, calamity]
+    days = [magic, cipher, calamity]
     for i in range(len(days)):
         if int(days[i].Date.Era) != era or days[i].Date.Year != year:
             print("Skipping " + days[i].Name + ". Era & Year doesn't match")
@@ -132,15 +128,12 @@ def calender_era(request, year, era):
     context = {
         'cipher': cipher.Date.to_dict(),
         'magic': magic.Date.to_dict(),
-        'dragon': dragon.Date.to_dict(),
         'calamity': calamity.Date.to_dict(),
         'cipher_year': cipher.Date.Year,
         'magic_year': magic.Date.Year,
-        'dragon_year': dragon.Date.Year,
         'calamity_year': calamity.Date.Year,
         'cipher_era': int(cipher.Date.Era),
         'magic_era': int(magic.Date.Era),
-        'dragon_era': int(dragon.Date.Era),
         'calamity_era': int(calamity.Date.Era),
         'current_year': year,
         'previous_year': year - 1,
