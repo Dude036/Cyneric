@@ -14,6 +14,12 @@
             <a href="{% url 'map:initiative' %}"><b>Initiative Tracker</b></a>
             <p>Description of the element</p>
         </li>
+        {% if is_admin %}
+            <li>
+                <a href="{% url 'initiative:index' %}"><b>New Initiative Tracker</b></a>
+                <p>This is Currently in development. Enter at your own peril.</p>
+            </li>
+        {% endif %}
     </ul>
 </div>
 {% endblock %}

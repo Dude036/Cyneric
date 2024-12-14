@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% csrf_token %}
+
+<div id="tracker-table" class="container-xl">
+</div>
+
+<script>
+    const init_socket = new WebSocket(
+        'ws://'
+        + window.location.host
+        + '/ws/initiative/'
+    )
+
+    init_socket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+
+        console.log("Returned data")
+        console.log(data)
+        console.log()
+        if (data.hasOwnProperty('error')) {
+            make_toast(data['message'])
+        } else {
+            populate_from_fresh(data)
+        }
+    };
+
+    init_socket.onclose = function(e) {
+        make_toast('Connection to server closed unexpectedly. Please Refresh the page.')
+        console.error('Chat socket closed unexpectedly');
+    };
+
+    init_socket.onopen = function (e) {
+        init_socket.send('{"action": "init"}')
+    }
+
+    function populate_from_fresh(entries) {
+        for (const [id, entry] of Object.entries(entries)) {
+            console.log(entry.name)
+
+            
+        }
+    }
+</script>
+
+{% endblock %}

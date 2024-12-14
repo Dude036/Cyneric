@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('news/', include(('news.urls', 'v'), namespace='news')),
     path('', include(('map.urls', 'map'), namespace='map')),
+    path('initiative/', include(('initiative.urls', 'initiative'), namespace='initiative')),
     path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url("favicon.ico"))),
 ]

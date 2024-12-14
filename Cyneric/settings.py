@@ -41,9 +41,10 @@ CORS_ORIGIN_WHITELIST = (
 )
 
 # Application definition
-
 INSTALLED_APPS = [
+    'daphne',
     'map.apps.MapConfig',
+    'initiative.apps.InitiativeConfig',
     'news.apps.NewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -85,6 +86,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'Cyneric.wsgi.application'
+ASGI_APPLICATION = 'Cyneric.asgi.application'
 
 
 # Database
