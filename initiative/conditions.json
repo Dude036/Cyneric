@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Blinded",
+    "description": "You can't see. All normal terrain is difficult terrain to you. You can't detect anything using vision. You automatically critically fail Perception checks that require you to be able to see, and if vision is your only precise sense, you take a –4 status penalty to Perception checks. You are immune to visual effects. Blinded overrides dazzled.",
+    "has_value": false,
+    "ac_mod": 0,
+    "hp_mod": 0,
+    "will_mod": 0,
+    "fortitude_mod": 0,
+    "reflex_mod": 0,
+    "perception_mod": -4
+  }
+]

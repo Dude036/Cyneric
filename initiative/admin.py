@@ -1,11 +1,24 @@
+import os
+import simplejson as json
 from django.contrib import admin, messages
 from .models import InitEntry, ConditionOption
 
 
-# TODO: Populate Conditions as an admin action
+# TODO: Add the rest of the conditions to the JSON file
 @admin.action(description='Update Conditions from saved JSON')
 def hydrate_conditions(modeladmin, request, queryset):
-    messages.add_message(request, messages.ERROR, "Action not currently supported.")
+    conditions = []
+    with open(os.path.join(os.getcwd(), 'initiative', 'conditions.json'), 'r') as conditions_file:
+        conditions = json.load(conditions_file)
+
+    if not conditions:
+        messages.add_message(request, messages.ERROR, 'No conditions found.')
+
+    for condition in conditions:
+        new_cond, _ = ConditionOption.objects.get_or_create(**condition)
+        new_cond.save()
+
+    messages.add_message(request, messages.SUCCESS, "Rehydrated Condition Options list.")
 
 
 class InitiativeAdmin(admin.ModelAdmin):
