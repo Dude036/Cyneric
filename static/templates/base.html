@@ -414,30 +414,11 @@
 <body>
   {% block content %}
   {% endblock %}
-  <div id="header_img" class="header" onclick="show_hide('header1');show_hide('header2');show_hide('header3');">
+  <div id="header_img" class="header" onclick="show_hide('header1');show_hide('header2');">
     <img src="{% static 'sidebar.png' %}">
     <ul id="header1" style="display: none;">
       <li>
         <a href="{% url 'map:index' %}" style="width: 70%; text-align: left;">Home</a>
-      </li>
-      <li>
-        <ul id="header2" style="display: none;">
-          <li>
-            <a href="{% url 'map:map_info' 'political' %}">Political Map</a>
-          </li>
-          <li>
-            <a href="{% url 'map:map_info' 'transit' %}">Transit Map</a>
-          </li>
-          <li>
-            <a href="{% url 'map:map_info' 'generic' %}">Generic Map</a>
-          </li>
-        </ul>
-      </li>
-      <li>
-        <a href="{% url 'map:person_search' %}">Person Search</a>
-      </li>
-      <li>
-        <a href="{% url 'map:town_search' %}">Town Search</a>
       </li>
       <li>
         <a href="{% url 'map:magic_phrases' %}">Magic Circle</a>
@@ -452,13 +433,13 @@
         <a href="{% url 'map:initiative' %}">Initiative Tracker</a>
       </li>
       <li>
-        <a href="{% url 'map:vehicles' %}">Vehicle Tracker</a>
+        <a href="{% url 'map:vehicles' %}">Party Inventory</a>
       </li>
       <li>
         <a href="{% url 'map:cast_list' %}" style="width: 70%; text-align: left;">Cast List</a>
       </li>
       <li>
-        <ul id="header3" style="display: none;">
+        <ul id="header2" style="display: none;">
           <li>
             <a href="{% url 'map:cast_list' %}#Calamity" style="width: 90%; text-align: left;">Era of Calamity</a>
           </li>
@@ -483,21 +464,12 @@
         </ul>
       </li>
       <li>
-        <a href="{% url 'generator:dummy' %}">Generate Town</a>
-      </li>
-      <li>
-        <a href="{% url 'editor:editor' %}">Custom HTML Editor</a>
-      </li>
-      <li>
-        <a href="{% url 'api:api' %}">DMToolKit API</a>
-      </li>
-      <li>
         <a href="https://dude036.github.io/Homebrew-Content/">Homebrew Content</a>
       </li>
 	    {% if is_admin %}
-      <li>
-	    <a href="{% url 'map:admin_redirect' %}">Admin</a>
-      </li>
+          <li>
+            <a href="{% url 'map:admin_redirect' %}">Admin</a>
+          </li>
 	    {% endif %}
     </ul>
   </div>

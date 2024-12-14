@@ -1,14 +1,19 @@
-Editor Page:
+Overall:
+    Initiative Tracker
+    Cast List
+    Session Scheduler
+    Party Inventory
+    Homebrew Content
+        - External link
 
-	Section Identifiers when minimized:
-		Right now when shit is minimized, the only way to tell what a section is by the override buttons.
-		Put an identifier there for
-
-	List Section:
-		Lists should also have sublists using text areas
-		 - or -
-		Lists should be configurable with dragula
-
-	Chase Sequences
-		Set Obstacles, with sublist of options to avoid
-
+Initiative Page:
+    Use Elastic Search API from AoN to get RAW data
+        Data needed
+            Perception
+            Skills
+            HP
+            Fortitude Save
+            Reflex Save
+            Will Save
+            AC
+            Link to external (optional)

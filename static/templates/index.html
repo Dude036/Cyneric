@@ -1,65 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<style type="text/css">body{max-width: 100%; padding-left: 0px; padding-right: 0px;} .container{cursor: grab;}</style>
 <div id="container" class="container">
-  {% if map_type == 'political' %}
-  <img id="World_Map" src="{% static 'Political World Map.png' %}" alt="World Map" usemap="#worldmap">
-  <map name="worldmap">
-    {% for town in towns %}
-      <area shape="rect" coords="{{ town.coords }}" alt="{{ town.name }}" href="{{ town.link }}">
-    {% endfor %}
-  </map>
-  {% elif map_type == 'transit' %}
-  <img id="World_Map" src="{% static 'Transit World Map.png' %}" alt="World Map">
-  {% else %}
-  <img id="World_Map" src="{% static 'Relevant World Map.png' %}" alt="World Map">
-  {% endif %}
+    <h1>
+        Cyneric Toolset
+    </h1>
+    <p>
+        Explain the updates and link to the useful places
+    </p>
+    <h4>Useful links</h4>
+    <ul>
+        <li>
+            <a href="{% url 'map:initiative' %}"><b>Initiative Tracker</b></a>
+            <p>Description of the element</p>
+        </li>
+    </ul>
 </div>
-<script type="text/javascript">
-  let down = false;
-  let element = document.getElementById('container');
-
-  let pos = {
-    x: 0,
-    y: 0,
-    s_x: 0,
-    s_y: 0,
-  };
-
-  function click_down(e) {
-    element.style.cursor = 'grabbing';
-    down = true;
-    pos = {
-      x: e.offsetX,
-      y: e.offsetY,
-      s_x: document.documentElement.scrollLeft,
-      s_y: document.documentElement.scrollTop,
-    }
-  }
-  function click_up(e) {
-    element.style.cursor = 'grab';
-    down = false;
-  }
-  function click_leave(e) {
-    element.style.cursor = 'grab';
-    down = false;
-  }
-
-  function click_drag(e) {
-    if (!down) { return; }
-    e.preventDefault();
-    var d_x = e.offsetX - pos.x;
-    var d_y = e.offsetY - pos.y;
-
-    document.documentElement.scrollLeft = pos.s_x - d_x;
-    document.documentElement.scrollTop = pos.s_y - d_y;
-  }
-
-  document.getElementById('container').addEventListener('mousedown', click_down);
-  document.getElementById('container').addEventListener('mouseup', click_up);
-  document.getElementById('container').addEventListener('mouseleave', click_leave);
-  document.getElementById('container').addEventListener('mousemove', click_drag);
-</script>
-
 {% endblock %}

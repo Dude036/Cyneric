@@ -3,9 +3,26 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 from .models import InitEntry
-from generator.DMToolkit.beasts.beastiary import roll_hp
 from numpy.random import randint
+import re
 import simplejson as json
+
+
+def roll_hp(dice: str):
+    if '+' in dice:
+        m = re.match(r'(\d+)d(\d+)\s?\+\s?(\d+)', dice)
+    elif '-' in dice:
+        m = re.match(r'(\d+)d(\d+)(\s?-\s?\d+)', dice)
+    else:
+        m = re.match(r'(\d+)d(\d+)', dice)
+    total = 0
+    if m is None:
+        return dice
+    for _ in range(int(m.group(1))):
+        total += randint(int(m.group(2))) + 1
+    if len(m.groups()) == 3:
+        total += int(''.join(m.group(3).split(' ')))
+    return str(total)
 
 
 def initiative(request):
