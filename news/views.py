@@ -7,8 +7,9 @@ from .models import *
 
 # Helper functions
 Holidays = [
+               # Day, Month, Year, Era
     Holiday(Date(15, Month.Apex, 1, Era.First_Age), "Midsummer", "An Elven celebration of their Fey Heritage"),
-    Holiday(Date(15, Month.Bottom, 1, Era.First_Age), "Festival of Risiing Spirits", "An Outsiders Celebration of their closeness to the shadow plane"),
+    Holiday(Date(15, Month.Bottom, 1, Era.First_Age), "Festival of Rising Spirits", "An Outsiders Celebration of their closeness to the shadow plane"),
     Holiday(Date(26, Month.Roots, 25, Era.Sixth_Age), "Liberation", "The day the 'Converted' were freed from Cithrel's control"),
     Holiday(Date(20, Month.Reap, 1, Era.First_Age), "Reaping", "Harvest Day"),
     Holiday(Date(14, Month.Apex, 1, Era.First_Age), "Sunrise", "Heliod's worship of the summer solstice"),
@@ -16,12 +17,11 @@ Holidays = [
     Holiday(Date(5, Month.Bloom, 25, Era.Sixth_Age), "Shatter Solstice", "Pale Mistress' worship of seperating the continents"),
     Holiday(Date(10, Month.Ice, 97, Era.Sixth_Age), "Emergence", "The Emergence of the Warforged Army"),
     Holiday(Date(2, Month.Play, 98, Era.Sixth_Age), "Cyneric Remembrance Day", "The destruction of the Cyneric continent and its people"),
-    Holiday(Date(1, Month.Birth, 1, Era.Eight_Age), "Calamity Remembrance Day", "The destruction of magic as we know it"),
+    Holiday(Date(1, Month.Birth, 1, Era.Eight_Age), "Calamity Remembrance Day", "The destruction of magic as we knew it"),
+    Holiday(Date(20, Month.Roots, 1, Era.Eight_Age), "Moonacre Remembrance Day", "The destruction of Moonacre and its people"),
 ]
 
-magic = Holiday(Date(11, Month.Apex, 25, Era.Fourth_Age), "Magic Campaign", "")
-cipher = Holiday(Date(16, Month.Play, 98, Era.Sixth_Age), "Cipher Campaign", "")
-calamity = Holiday(Date(15, Month.Roots, 1, Era.Eight_Age), "Calamity Campaign", "")
+dream = Holiday(Date(15, Month.Roots, 23, Era.Eight_Age), "Descent of the Dream Haze Campaign", "")
 
 
 @register.filter
@@ -82,7 +82,7 @@ def holiday_css(year, era):
 def now_css(year, era):
     css = ""
     days_colors = ['lavender', 'dodgerblue', 'aquamarine', 'lightgreen',]
-    days = [magic, cipher, calamity]
+    days = [dream]
     for i in range(len(days)):
         if int(days[i].Date.Era) != era or days[i].Date.Year != year:
             print("Skipping " + days[i].Name + ". Era & Year doesn't match")
@@ -95,11 +95,11 @@ def now_css(year, era):
 
 # Views
 def calender(request):
-    return calender_era(request, calamity.Date.Year, int(calamity.Date.Era))
+    return calender_era(request, dream.Date.Year, int(dream.Date.Era))
 
 
 def calender_year(request, year):
-    return calender_era(request, year, int(calamity.Date.Era))
+    return calender_era(request, year, int(dream.Date.Era))
 
 
 def calender_era(request, year, era):
@@ -126,15 +126,9 @@ def calender_era(request, year, era):
         months.append(current)
 
     context = {
-        'cipher': cipher.Date.to_dict(),
-        'magic': magic.Date.to_dict(),
-        'calamity': calamity.Date.to_dict(),
-        'cipher_year': cipher.Date.Year,
-        'magic_year': magic.Date.Year,
-        'calamity_year': calamity.Date.Year,
-        'cipher_era': int(cipher.Date.Era),
-        'magic_era': int(magic.Date.Era),
-        'calamity_era': int(calamity.Date.Era),
+        'dream': dream.Date.to_dict(),
+        'dream_year': dream.Date.Year,
+        'dream_era': int(dream.Date.Era),
         'current_year': year,
         'previous_year': year - 1,
         'next_year': year + 1,

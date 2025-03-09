@@ -105,66 +105,6 @@
         <input id="clear_all_button" type="button" value="Clear Initiative Tracker" onclick="if (confirm('Are you sure you want to clear the Initiative tracker?')) { request('POST', 'clear', {'Name': 'All'}); }">
       </div>
     </div>
-    <div id="calamity_presets" style="width: 45%;">
-      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Era of Calamity Preset</div>
-      <p style="color: red;">
-        <b>WARNING:</b> This action is irreversible.
-      </p>
-      <table style="margin-bottom: 20px; width: 100%;">
-        <tr>
-         <th>
-           <span style="font-weight: bold; font-size: larger;">Calamity Campaign Characters</span>
-         </th> 
-        </tr>
-        <tr>
-          <td>
-            <ul>
-              <li>Sticky Willy</li>
-              <li>Amelia Airheart</li>
-              <li>Jimmy Wright</li>
-              <li>Cedric Storm</li>
-              <li>Crallen Fallblossom</li>
-              <li>Phogra</li>
-              <li>Skipper</li>
-              <li>Humma, of the Stone Scale Tribe</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td style="display: flex; justify-content: center;">
-            <input id="calamity_clear_all" type="button" value="Apply Calamity Preset" onclick="if (confirm('Are you sure you want to use the Calamity Preset?')) {calamity_preset()}">
-          </td>
-        </tr>
-      </table>
-    </div>
-    <div id="magic_presets" style="width: 45%;">
-      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Magic Preset</div>
-      <p style="color: red;">
-        <b>WARNING:</b> This action is irreversible.
-      </p>
-      <table style="margin-bottom: 20px; width: 100%;">
-        <tr>
-         <th>
-           <span style="font-weight: bold; font-size: larger;">Magic Campaign Characters</span>
-         </th> 
-        </tr>
-        <tr>
-          <td>
-            <ul>
-              <li>Gimli</li>
-              <li>Duradel</li>
-              <li>Vesstan</li>
-              <li>Arthur White</li>
-            </ul>
-          </td>
-        </tr>
-        <tr>
-          <td style="display: flex; justify-content: center;">
-            <input id="magic_clear_all" type="button" value="Apply Magic Preset" onclick="if (confirm('Are you sure you want to use the Magic Preset?')) {magic_preset()}">
-          </td>
-        </tr>
-      </table>
-    </div>
     <div id="tyrant_presets" style="width: 45%;">
       <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Tyrant's Grasp Preset</div>
       <p style="color: red;">
@@ -189,6 +129,35 @@
         <tr>
           <td style="display: flex; justify-content: center;">
             <input id="tyrant_clear_all" type="button" value="Apply Tyrant Preset" onclick="if (confirm('Are you sure you want to use the Tyrant\'s Grasp Preset?')) {tyrant_preset()}">
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div id="dream_presets" style="width: 45%;">
+      <div style="text-align: center; font-weight: bold; font-size: larger; margin-bottom: 20px;">Magic Preset</div>
+      <p style="color: red;">
+        <b>WARNING:</b> This action is irreversible.
+      </p>
+      <table style="margin-bottom: 20px; width: 100%;">
+        <tr>
+         <th>
+           <span style="font-weight: bold; font-size: larger;">Magic Campaign Characters</span>
+         </th> 
+        </tr>
+        <tr>
+          <td>
+            <ul>
+              <li>Sarah</li>
+              <li>Josh</li>
+              <li>Terra</li>
+              <li>Atticus</li>
+              <li>Riley</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td style="display: flex; justify-content: center;">
+            <input id="dream_clear_all" type="button" value="Apply Dream Preset" onclick="if (confirm('Are you sure you want to use the Dream Preset?')) {dream_preset()}">
           </td>
         </tr>
       </table>
@@ -572,103 +541,6 @@
       }
     };
 
-    function magic_preset() {
-      var players = [
-        { 
-          'Name': 'Gimli',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Duradel',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Vesstan',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Arthur',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-      ]
-
-      request('POST', 'clear', {'Name': 'All'});
-      
-      setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
-
-      for (var i = 0; i < players.length; i++) {
-        request("POST", 'add', players[i]);
-      }
-    }
-
-    function calamity_preset() {
-      var players = [
-        { 
-          'Name': 'Sticky Willy',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Amelia Airheart',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        {
-          'Name': 'Jimmy Wright',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Cedric Storm',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Crallen Fallblossom',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Phogra',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Skipper',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-        { 
-          'Name': 'Huuma',
-          'Init': 0,
-          'AC': 0,
-          'HP': 0
-        },
-      ]
-
-      request('POST', 'clear', {'Name': 'All'});
-      
-      setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
-
-      for (var i = 0; i < players.length; i++) {
-        request("POST", 'add', players[i]);
-      }
-    }
 
     function tyrant_preset() {
       var players = [
@@ -692,6 +564,56 @@
         },
         {
           'Name': 'Zoranna',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Posara',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+      ]
+
+      request('POST', 'clear', {'Name': 'All'});
+
+      setTimeout(function() { console.log("Form Cleared. Submitting preset."); }, 1000);
+
+      for (var i = 0; i < players.length; i++) {
+        request("POST", 'add', players[i]);
+      }
+    }
+
+
+    function dream_preset() {
+      var players = [
+        {
+          'Name': 'Sarah',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Josh',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Terra',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Atticus',
+          'Init': 0,
+          'AC': 0,
+          'HP': 0
+        },
+        {
+          'Name': 'Riley',
           'Init': 0,
           'AC': 0,
           'HP': 0

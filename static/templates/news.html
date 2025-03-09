@@ -10,9 +10,8 @@
   </h1>
   <div style="display: flex; flex-direction: row; justify-content: space-between;">
     <input type="button" value="Year {{ previous_year }}" onclick="location.href='{% url 'news:calender_era' era previous_year %}';" />
-    <input type="button" style="background-color: lavender;" value="Magic Now" onclick="location.href='{% url 'news:calender_era' magic_era magic_year %}';" />
-    <input type="button" style="background-color: dodgerblue;" value="Cipher Now" onclick="location.href='{% url 'news:calender_era' cipher_era cipher_year %}';" />
-    <input type="button" style="background-color: lightgreen;" value="Calamity Now" onclick="location.href='{% url 'news:calender_era' calamity_era calamity_year %}';" />
+    <input type="button" style="background-color: lavender;" value="Descent of the Dream Haze Now" onclick="location.href='{% url 'news:calender_era' dream_era dream_year %}';" />
+
     <input type="button" value="Year {{ next_year }}" onclick="location.href='{% url 'news:calender_era' era next_year %}';" />
   </div>
   <div class="calender">
@@ -34,20 +33,8 @@
         <tr>
           {% for day in week %}
             {% if day|is_int %}
-              {% if month.name == magic.Month and day == magic.Day and current_year == magic.Year and era == magic_era %}
+              {% if month.name == dream.Month and day == dream.Day and current_year == dream.Year and era == dream_era %}
                 <td id="{{ month.name }}{{ day }}" style="background-color: lavender;">
-                  {{ day }}
-                </td>
-              {% elif month.name == cipher.Month and day == cipher.Day and current_year == cipher.Year and era == cipher_era %}
-                <td id="{{ month.name }}{{ day }}" style="background-color: dodgerblue;">
-                  {{ day }}
-                </td>
-              {% elif month.name == dragon.Month and day == dragon.Day and current_year == dragon.Year and era == dragon_era %}
-                <td id="{{ month.name }}{{ day }}" style="background-color: aquamarine;">
-                  {{ day }}
-                </td>
-              {% elif month.name == calamity.Month and day == calamity.Day and current_year == calamity.Year and era == calamity_era %}
-                <td id="{{ month.name }}{{ day }}" style="background-color: lightgreen;">
                   {{ day }}
                 </td>
               {% else %}
@@ -56,26 +43,8 @@
                 </td>
               {% endif %}
             {% else %}
-              {% if month.name == magic.Month and day.number == magic.Day and current_year == magic.Year and era == magic_era %}
+              {% if month.name == dream.Month and day.number == dream.Day and current_year == dream.Year and era == dream_era %}
                 <td id="{{ month.name }}{{ day.number }}" style="background-color: lavender;">
-                  <a class="calender_link" href="{% url 'news:article_day' era current_year month.number day.number %}">
-                    {{ day.number }}
-                  </a>
-                </td>
-              {% elif month.name == cipher.Month and day.number == cipher.Day and current_year == cipher.Year and era == cipher_era %}
-                <td id="{{ month.name }}{{ day.number }}" style="background-color: dodgerblue;">
-                  <a class="calender_link" href="{% url 'news:article_day' era current_year month.number day.number %}">
-                    {{ day.number }}
-                  </a>
-                </td>
-              {% elif month.name == dragon.Month and day == dragon.Day and current_year == dragon.Year and era == dragon_era %}
-                <td id="{{ month.name }}{{ day.number }}" style="background-color: aquamarine;">
-                  <a class="calender_link" href="{% url 'news:article_day' era current_year month.number day.number %}">
-                    {{ day.number }}
-                  </a>
-                </td>
-              {% elif month.name == calamity.Month and day == calamity.Day and current_year == calamity.Year and era == calamity_era %}
-                <td id="{{ month.name }}{{ day.number }}" style="background-color: lightgreen;">
                   <a class="calender_link" href="{% url 'news:article_day' era current_year month.number day.number %}">
                     {{ day.number }}
                   </a>
