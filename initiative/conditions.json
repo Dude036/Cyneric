@@ -3,11 +3,341 @@
     "name": "Blinded",
     "description": "You can't see. All normal terrain is difficult terrain to you. You can't detect anything using vision. You automatically critically fail Perception checks that require you to be able to see, and if vision is your only precise sense, you take a –4 status penalty to Perception checks. You are immune to visual effects. Blinded overrides dazzled.",
     "has_value": false,
-    "ac_mod": 0,
-    "hp_mod": 0,
-    "will_mod": 0,
-    "fortitude_mod": 0,
-    "reflex_mod": 0,
-    "perception_mod": -4
+    "penalties": [
+      {
+        "penalty": "Perception",
+        "value": -4,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Clumsy",
+    "description": "Your movements become clumsy and inexact. Clumsy always includes a value. You take a status penalty equal to the condition value to Dexterity-based checks and DCs, including AC, Reflex saves, ranged attack rolls, and skill checks using Acrobatics, Stealth, and Thievery.",
+    "has_value": true,
+    "penalties": [
+      {
+        "penalty": "Reflex",
+        "type": "Status"
+      },
+      {
+        "penalty": "AC",
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Concealed",
+    "description": "You are difficult for one or more creatures to see due to thick fog or some other obscuring feature. You can be concealed to some creatures but not others. While concealed, you can still be observed, but you’re tougher to target. A creature that you’re concealed from must succeed at a DC 5 flat check when targeting you with an attack, spell, or other effect. If the check fails, you aren’t affected. Area effects aren’t subject to this flat check.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Confused",
+    "description": "You don’t have your wits about you, and you attack wildly. You are off-guard, you don’t treat anyone as your ally (though they might still treat you as theirs), and you can’t Delay, Ready, or use reactions.\n\nYou use all your actions to Strike or cast offensive cantrips, though the GM can have you use other actions to facilitate attack, such as draw a weapon, move so target is in reach, and so forth. Your targets are determined randomly by the GM. If you have no other viable targets, you target yourself, automatically hitting but not scoring a critical hit. If it’s impossible for you to attack or cast spells, you babble incoherently, wasting your actions.\n\nEach time you take damage from an attack or spell, you can attempt a DC 11 flat check to recover from your confusion and end the condition.\n",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "value": -2,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Controlled",
+    "description": "You have been commanded, magically dominated, or otherwise had your will subverted. The controller dictates how you act and can make you use any of your actions, including attacks, reactions, or even Delay. The controller usually doesn’t have to spend their own actions when controlling you.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Dazzled",
+    "description": "Your eyes are overstimulated or your vision is swimming. If vision is your only precise sense, all creatures and objects are concealed from you.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Deafened",
+    "description": "You can’t hear. You automatically critically fail Perception checks that require you to be able to hear. You take a –2 status penalty to Perception checks for initiative and checks that involve sound but also rely on other senses. If you perform an action that has the auditory trait, you must succeed at a DC 5 flat check or the action is lost; attempt the check after spending the action but before any effects are applied. You are immune to auditory effects while deafened.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Doomed",
+    "description": "Your soul has been gripped by a powerful force that calls you closer to death. Doomed always includes a value. The dying value at which you die is reduced by your doomed value. If your maximum dying value is reduced to 0, you instantly die. When you die, you’re no longer doomed.\n\nYour doomed value decreases by 1 each time you get a full night’s rest.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Drained",
+    "description": "Your health and vitality have been depleted as you’ve lost blood, life force, or some other essence. Drained always includes a value. You take a status penalty equal to your drained value on Constitution-based checks, such as Fortitude saves. You also lose a number of Hit Points equal to your level (minimum 1) times the drained value, and your maximum Hit Points are reduced by the same amount. For example, if you become drained 3 and you’re a 3rd-level character, you lose 9 Hit Points and reduce your maximum Hit Points by 9. Losing these Hit Points doesn’t count as taking damage.\n\nEach time you get a full night’s rest, your drained value decreases by 1. This increases your maximum Hit Points, but you don’t immediately recover the lost Hit Points.",
+    "has_value": true,
+    "penalties": [
+      {
+        "penalty": "Fortitude",
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Dying",
+    "description": "You are bleeding out or otherwise at death’s door. While you have this condition, you are unconscious. Dying always includes a value, and if it ever reaches dying 4, you die. When you’re dying, you must attempt a recovery check at the start of your turn each round to determine whether you get better or worse. Your dying condition increases by 1 if you take damage while dying, or by 2 if you take damage from an enemy’s critical hit or a critical failure on your save.\n\nIf you lose the dying condition by succeeding at a recovery check and are still at 0 Hit Points, you remain unconscious, but you can wake up as described in that condition. You lose the dying condition automatically and wake up if you ever have 1 Hit Point or more. Any time you lose the dying condition, you gain the wounded 1 condition, or increase your wounded condition value by 1 if you already have that condition.\n\nRecovery Checks: While you’re dying, attempt a recovery check at the start of each of your turns. This is a flat check with a DC equal to 10 + your current dying value to see if you get better or worse.\nCritical Success Your dying value is reduced by 2.\nSuccess Your dying value is reduced by 1.\nFailure Your dying value increases by 1.\nCritical Failure Your dying value increases by 2.\n\nTaking Damage: If you take damage while you already have the dying condition, increase your dying condition value by 1, or by 2 if the damage came from an attacker’s critical hit or your own critical failure.",
+    "has_value": true,
+    "penalties": []
+  },
+  {
+    "name": "Encumbered",
+    "description": "You are carrying more weight than you can manage. While you’re encumbered, you’re clumsy 1 and take a 10-foot penalty to all your Speeds. As with all penalties to your Speed, this can’t reduce your Speed below 5 feet.",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "value": -1,
+        "type": "Status"
+      },
+      {
+        "penalty": "Reflex",
+        "value": -1,
+        "type": "Status"
+      },
+      {
+        "penalty": "Speed",
+        "value": -10,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Enfeebled",
+    "description": "You’re physically weakened. Enfeebled always includes a value. When you are enfeebled, you take a status penalty equal to the condition value to Strength-based rolls and DCs, including Strength-based melee attack rolls, Strength-based damage rolls, and Athletics checks.",
+    "has_value": true,
+    "penalties": [
+      {
+        "penalty": "Strength",
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Fascinated",
+    "description": "You’re compelled to focus your attention on something, distracting you from whatever else is going on around you. You take a –2 status penalty to Perception and skill checks, and you can’t use concentrate actions unless they (or their intended consequences) are related to the subject of your fascination, as determined by the GM. For instance, you might be able to Seek and Recall Knowledge about the subject, but you likely couldn’t cast a spell targeting a different creature. This condition ends if a creature uses hostile actions against you or any of your allies.",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "Perception",
+        "value": -2,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Fatigued",
+    "description": "You’re tired and can’t summon much energy. You take a –1 status penalty to AC and saving throws. You can’t use exploration activities performed while traveling.\n\nYou recover from fatigue after a full night’s rest.",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "value": -1,
+        "type": "Status"
+      },
+      {
+        "penalty": "Reflex",
+        "value": -1,
+        "type": "Status"
+      },
+      {
+        "penalty": "Fortitude",
+        "value": -1,
+        "type": "Status"
+      },
+      {
+        "penalty": "Will",
+        "value": -1,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Fleeing",
+    "description": "You’re forced to run away due to fear or some other compulsion. On your turn, you must spend each of your actions trying to escape the source of the fleeing condition as expediently as possible (such as by using move actions to flee, or opening doors barring your escape). The source is usually the effect or creature that gave you the condition, though some effects might define something else as the source. You can’t Delay or Ready while fleeing.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Frightened",
+    "description": "You’re gripped by fear and struggle to control your nerves. The frightened condition always includes a value. You take a status penalty equal to this value to all your checks and DCs. Unless specified otherwise, at the end of each of your turns, the value of your frightened condition decreases by 1.",
+    "has_value": true,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "type": "Status"
+      },
+      {
+        "penalty": "Reflex",
+        "type": "Status"
+      },
+      {
+        "penalty": "Fortitude",
+        "type": "Status"
+      },
+      {
+        "penalty": "Will",
+        "type": "Status"
+      },
+      {
+        "penalty": "Perception",
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Grabbed",
+    "description": "You’re held in place by another creature, giving you the off-guard and immobilized conditions. If you attempt a manipulate action while grabbed, you must succeed at a DC 5 flat check or it is lost; roll the check after spending the action, but before any effects are applied.",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "value": -2,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Hidden",
+    "description": "While you’re hidden from a creature, that creature knows the space you’re in but can’t tell precisely where you are. You typically become hidden by using Stealth to Hide. When Seeking a creature using only imprecise senses, it remains hidden, rather than observed. A creature you’re hidden from is off-guard to you, and it must succeed at a DC 11 flat check when targeting you with an attack, spell, or other effect or it fails to affect you. Area effects aren’t subject to this flat check.\n\nA creature might be able to use the Seek action to try to observe you.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Immobilized",
+    "description": "You are incapable of movement. You can’t use any actions that have the move trait. If you’re immobilized by something holding you in place and an external force would move you out of your space, the force must succeed at a check against either the DC of the effect holding you in place or the relevant defense (usually Fortitude DC) of the monster holding you in place.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Invisible",
+    "description": "You can’t be seen. You’re undetected to everyone. Creatures can Seek to detect you; if a creature succeeds at its Perception check against your Stealth DC, you become hidden to that creature until you Sneak to become undetected again. If you become invisible while someone can already see you, you start out hidden to them (instead of undetected) until you successfully Sneak. You can’t become observed while invisible except via special abilities or magic.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Observed",
+    "description": "Anything in plain view is observed by you. If a creature takes measures to avoid detection, such as by using Stealth to Hide, it can become hidden or undetected instead of observed. If you have another precise sense besides sight, you might be able to observe a creature or object using that sense instead. You can observe a creature with only your precise senses. When Seeking a creature using only imprecise senses, it remains hidden, rather than observed.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Off-Guard",
+    "description": "You’re distracted or otherwise unable to focus your full attention on defense. You take a –2 circumstance penalty to AC. Some effects give you the off-guard condition only to certain creatures or against certain attacks. Others - especially conditions - can make you off-guard against everything. If a rule doesn’t specify that the condition applies only to certain circumstances, it applies to all of them, such as \"The target is off-guard.\"",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "value": -2,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Paralyzed",
+    "description": "You’re frozen in place. You have the off-guard condition and can’t act except to Recall Knowledge and use actions that require only your mind (as determined by the GM). Your senses still function, but only in the areas you can perceive without moving, so you can’t Seek.",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "value": -2,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Persistent Damage",
+    "description": "You are taking damage from an ongoing effect, such as from being lit on fire. This appears as \"X persistent [type] damage,\" where \"X\" is the amount of damage dealt and \"[type]\" is the damage type. Like normal damage, it can be doubled or halved based on the results of an attack roll or saving throw. Instead of taking persistent damage immediately, you take it at the end of each of your turns as long as you have the condition, rolling any damage dice anew each time. After you take persistent damage, roll a DC 15 flat check to see if you recover from the persistent damage. If you succeed, the condition ends.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Petrified",
+    "description": "You have been turned to stone. You can’t act, nor can you sense anything. You become an object with a Bulk double your normal Bulk (typically 12 for a petrified Medium creature or 6 for a petrified Small creature), AC 9, Hardness 8, and the same current Hit Points you had when alive. You don’t have a Broken Threshold. When the petrified condition ends, you have the same number of Hit Points you had as a statue. If the statue is destroyed, you immediately die. While petrified, your mind and body are in stasis, so you don’t age or notice the passing of time.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Prone",
+    "description": "You’re lying on the ground. You are off-guard and take a –2 circumstance penalty to attack rolls. The only move actions you can use while you’re prone are Crawl and Stand. Standing up ends the prone condition. You can Take Cover while prone to hunker down and gain greater cover against ranged attacks, even if you don’t have an object to get behind, which grants you a +4 circumstance bonus to AC against ranged attacks (but you remain off-guard).\n\nIf you would be knocked prone while you’re Climbing or Flying, you fall. You can’t be knocked prone when Swimming.",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "value": -2,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Quickened",
+    "description": "You’re able to act more quickly. You gain 1 additional action at the start of your turn each round. Many effects that make you quickened require you use this extra action only in certain ways. If you become quickened from multiple sources, you can use the extra action you’ve been granted for any single action allowed by any of the effects that made you quickened. Because quickened has its effect at the start of your turn, you don’t immediately gain actions if you become quickened during your turn.",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Restrained",
+    "description": "You’re tied up and can barely move, or a creature has you pinned. You have the off-guard and immobilized conditions, and you can’t use any attack or manipulate actions except to attempt to Escape or Force Open your bonds. Restrained overrides grabbed.",
+    "has_value": false,
+    "penalties": [
+      {
+        "penalty": "AC",
+        "value": -2,
+        "type": "Status"
+      }
+    ]
+  },
+  {
+    "name": "Sickened",
+    "description": "",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Slowed",
+    "description": "",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Stunned",
+    "description": "",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Stupefied",
+    "description": "",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Unconscious",
+    "description": "",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Undetected",
+    "description": "",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Unnoticed",
+    "description": "",
+    "has_value": false,
+    "penalties": []
+  },
+  {
+    "name": "Wounded",
+    "description": "",
+    "has_value": false,
+    "penalties": []
   }
 ]
