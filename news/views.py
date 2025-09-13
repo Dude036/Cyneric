@@ -21,7 +21,7 @@ Holidays = [
     Holiday(Date(20, Month.Roots, 1, Era.Eight_Age), "Moonacre Remembrance Day", "The destruction of Moonacre and its people"),
 ]
 
-dream = Holiday(Date(15, Month.Roots, 23, Era.Eight_Age), "Descent of the Dream Haze Campaign", "")
+dream = Holiday(Date(8, Month.Bloom, 23, Era.Eight_Age), "Descent of the Dream Haze Campaign", "")
 
 
 @register.filter
